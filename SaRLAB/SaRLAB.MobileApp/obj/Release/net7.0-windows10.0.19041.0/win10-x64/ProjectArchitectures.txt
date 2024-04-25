@@ -1,1 +1,0 @@
-F:\SaRLAB\SaRLAB\SaRLAB.MobileApp\SaRLAB.MobileApp.csproj;x64
