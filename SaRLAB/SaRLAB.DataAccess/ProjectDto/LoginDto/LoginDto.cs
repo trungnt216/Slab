@@ -36,5 +36,15 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
 
             return userlogin;
         }
+
+        public User LogOut(string email, string passWord)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User Register(string email, string passWord)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
