@@ -1,0 +1,15 @@
+F:\SaRLAB\SaRLAB\SaRLAB.Models\bin\Release\net7.0\SaRLAB.Models.deps.json
+F:\SaRLAB\SaRLAB\SaRLAB.Models\bin\Release\net7.0\SaRLAB.Models.dll
+F:\SaRLAB\SaRLAB\SaRLAB.Models\bin\Release\net7.0\SaRLAB.Models.pdb
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\SaRLAB.Models.csproj.AssemblyReference.cache
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\SaRLAB.Models.GeneratedMSBuildEditorConfig.editorconfig
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\SaRLAB.Models.AssemblyInfoInputs.cache
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\SaRLAB.Models.AssemblyInfo.cs
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\SaRLAB.Models.csproj.CoreCompileInputs.cache
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\SaRLAB.Models.sourcelink.json
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\SaRLAB.Models.dll
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\refint\SaRLAB.Models.dll
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\SaRLAB.Models.pdb
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\ref\SaRLAB.Models.dll
+F:\SaRLAB\SaRLAB\SaRLAB.Models\bin\Release\net7.0\SaRLAB.Models.runtimeconfig.json
+F:\SaRLAB\SaRLAB\SaRLAB.Models\obj\Release\net7.0\SaRLAB.Models.genruntimeconfig.cache
