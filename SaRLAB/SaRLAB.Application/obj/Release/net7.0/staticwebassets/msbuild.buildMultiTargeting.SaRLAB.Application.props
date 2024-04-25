@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\SaRLAB.Application.props" />
-</Project>
