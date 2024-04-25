@@ -36,5 +36,58 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
 
             return userlogin;
         }
+
+        public User Register(User user)
+        {
+            var existingUser = _context.User.SingleOrDefault(u => u.Email == user.Email);
+
+            if (existingUser != null)
+            {
+                return null;
+            }
+
+            var newUser = new User
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Password = user.Password,
+                Phone = user.Phone,
+                Role = "Student",
+                DateOfBirth = user.DateOfBirth.Date
+
+
+            };
+
+            _context.User.Add(newUser);
+            _context.SaveChanges();
+
+            return newUser;
+        }
+
+        public User ádsa(string name, string email, string passWord, string phone, DateTime dateOfBirth)
+        {
+            var existingUser = _context.User.SingleOrDefault(u => u.Email == email);
+
+            if (existingUser != null)
+            {
+                return null; 
+            }
+
+            var newUser = new User
+            {
+                Name = name,
+                Email = email,
+                Password = passWord,
+                Phone = phone,
+                Role = "Student",
+                DateOfBirth = dateOfBirth
+
+            };
+
+            _context.User.Add(newUser);
+            _context.SaveChanges();
+
+            return newUser;
+        }
     }
 }

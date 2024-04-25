@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SaRLAB.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b548aee321cb6abc573a070913a8e2add6791b14")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc91b4b234982a71f6f7caf9e7476c93b0dd7aa0")]
 [assembly: System.Reflection.AssemblyProductAttribute("SaRLAB.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SaRLAB.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -7,5 +7,7 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
         List<User> GetAll();
 
         User LogIn(string email, string passWord);
+
+        User Register(User user);
     }
 }

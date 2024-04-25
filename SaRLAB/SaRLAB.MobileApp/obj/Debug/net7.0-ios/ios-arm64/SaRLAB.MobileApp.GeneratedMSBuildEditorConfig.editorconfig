@@ -12,41 +12,41 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SaRLAB.MobileApp
-build_property.ProjectDir = H:\Slab\SaRLAB\SaRLAB.MobileApp\
+build_property.ProjectDir = C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.MobileApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[H:/Slab/SaRLAB/SaRLAB.MobileApp/App.xaml]
+[C:/Users/This PC/Desktop/Slab/Slab/SaRLAB/SaRLAB.MobileApp/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = SaRLAB.MobileApp.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[H:/Slab/SaRLAB/SaRLAB.MobileApp/AppShell.xaml]
+[C:/Users/This PC/Desktop/Slab/Slab/SaRLAB/SaRLAB.MobileApp/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = SaRLAB.MobileApp.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[H:/Slab/SaRLAB/SaRLAB.MobileApp/LoginPage.xaml]
+[C:/Users/This PC/Desktop/Slab/Slab/SaRLAB/SaRLAB.MobileApp/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = SaRLAB.MobileApp.LoginPage.xaml
 build_metadata.AdditionalFiles.TargetPath = LoginPage.xaml
 build_metadata.AdditionalFiles.RelativePath = LoginPage.xaml
 
-[H:/Slab/SaRLAB/SaRLAB.MobileApp/MainPage.xaml]
+[C:/Users/This PC/Desktop/Slab/Slab/SaRLAB/SaRLAB.MobileApp/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = SaRLAB.MobileApp.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[H:/Slab/SaRLAB/SaRLAB.MobileApp/Resources/Styles/Colors.xaml]
+[C:/Users/This PC/Desktop/Slab/Slab/SaRLAB/SaRLAB.MobileApp/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = SaRLAB.MobileApp.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[H:/Slab/SaRLAB/SaRLAB.MobileApp/Resources/Styles/Styles.xaml]
+[C:/Users/This PC/Desktop/Slab/Slab/SaRLAB/SaRLAB.MobileApp/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = SaRLAB.MobileApp.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml

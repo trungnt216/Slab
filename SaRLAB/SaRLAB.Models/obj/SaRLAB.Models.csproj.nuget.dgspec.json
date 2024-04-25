@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {}
+    "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {}
   },
   "projects": {
-    "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {
+    "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj",
+        "projectUniqueName": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj",
         "projectName": "SaRLAB.Models",
-        "projectPath": "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "H:\\Slab\\SaRLAB\\SaRLAB.Models\\obj\\",
+        "projectPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj",
+        "packagesPath": "C:\\Users\\This PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\This PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -97,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

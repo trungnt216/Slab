@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Slab\\SaRLAB\\SaRLAB.MobileApp\\SaRLAB.MobileApp.csproj": {}
+    "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.MobileApp\\SaRLAB.MobileApp.csproj": {}
   },
   "projects": {
-    "H:\\Slab\\SaRLAB\\SaRLAB.MobileApp\\SaRLAB.MobileApp.csproj": {
+    "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.MobileApp\\SaRLAB.MobileApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Slab\\SaRLAB\\SaRLAB.MobileApp\\SaRLAB.MobileApp.csproj",
+        "projectUniqueName": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.MobileApp\\SaRLAB.MobileApp.csproj",
         "projectName": "SaRLAB.MobileApp",
-        "projectPath": "H:\\Slab\\SaRLAB\\SaRLAB.MobileApp\\SaRLAB.MobileApp.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "H:\\Slab\\SaRLAB\\SaRLAB.MobileApp\\obj\\",
+        "projectPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.MobileApp\\SaRLAB.MobileApp.csproj",
+        "packagesPath": "C:\\Users\\This PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.MobileApp\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\This PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -240,7 +240,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         },
         "net7.0-ios16.1": {
           "targetAlias": "net7.0-ios",
@@ -352,7 +352,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         },
         "net7.0-maccatalyst16.1": {
           "targetAlias": "net7.0-maccatalyst",
@@ -465,7 +465,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         },
         "net7.0-windows10.0.19041": {
           "targetAlias": "net7.0-windows10.0.19041.0",
@@ -527,7 +527,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[7.0.17, 7.0.17]"
+              "version": "[7.0.18, 7.0.18]"
             },
             {
               "name": "Microsoft.Maui.Controls.Ref.win",
@@ -555,7 +555,7 @@
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[7.0.17, 7.0.17]"
+              "version": "[7.0.18, 7.0.18]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -563,7 +563,7 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[7.0.17, 7.0.17]"
+              "version": "[7.0.18, 7.0.18]"
             }
           ],
           "frameworkReferences": {
@@ -583,7 +583,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

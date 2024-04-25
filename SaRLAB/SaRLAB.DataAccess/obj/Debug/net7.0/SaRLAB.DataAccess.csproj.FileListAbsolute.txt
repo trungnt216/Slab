@@ -34,3 +34,21 @@ H:\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\refint\SaRLAB.DataAccess.dll
 H:\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.pdb
 H:\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.genruntimeconfig.cache
 H:\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\ref\SaRLAB.DataAccess.dll
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\bin\Debug\net7.0\SaRLAB.DataAccess.deps.json
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\bin\Debug\net7.0\SaRLAB.DataAccess.runtimeconfig.json
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\bin\Debug\net7.0\SaRLAB.DataAccess.dll
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\bin\Debug\net7.0\SaRLAB.DataAccess.pdb
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\bin\Debug\net7.0\SaRLAB.Models.dll
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\bin\Debug\net7.0\SaRLAB.Models.pdb
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.csproj.AssemblyReference.cache
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.AssemblyInfoInputs.cache
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.AssemblyInfo.cs
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.sourcelink.json
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.D.DCF2A93C.Up2Date
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.dll
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\refint\SaRLAB.DataAccess.dll
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.pdb
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\SaRLAB.DataAccess.genruntimeconfig.cache
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.DataAccess\obj\Debug\net7.0\ref\SaRLAB.DataAccess.dll

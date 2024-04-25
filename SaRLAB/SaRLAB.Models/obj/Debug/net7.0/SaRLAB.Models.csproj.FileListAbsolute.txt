@@ -28,3 +28,18 @@ H:\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\refint\SaRLAB.Models.dll
 H:\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.pdb
 H:\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.genruntimeconfig.cache
 H:\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\ref\SaRLAB.Models.dll
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\bin\Debug\net7.0\SaRLAB.Models.deps.json
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\bin\Debug\net7.0\SaRLAB.Models.runtimeconfig.json
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\bin\Debug\net7.0\SaRLAB.Models.dll
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\bin\Debug\net7.0\SaRLAB.Models.pdb
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.csproj.AssemblyReference.cache
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.AssemblyInfoInputs.cache
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.AssemblyInfo.cs
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.csproj.CoreCompileInputs.cache
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.sourcelink.json
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.dll
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\refint\SaRLAB.Models.dll
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.pdb
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\SaRLAB.Models.genruntimeconfig.cache
+C:\Users\This PC\Desktop\Slab\Slab\SaRLAB\SaRLAB.Models\obj\Debug\net7.0\ref\SaRLAB.Models.dll

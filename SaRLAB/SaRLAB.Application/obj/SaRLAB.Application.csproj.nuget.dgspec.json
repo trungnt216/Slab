@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Slab\\SaRLAB\\SaRLAB.Application\\SaRLAB.Application.csproj": {}
+    "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Application\\SaRLAB.Application.csproj": {}
   },
   "projects": {
-    "H:\\Slab\\SaRLAB\\SaRLAB.Application\\SaRLAB.Application.csproj": {
+    "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Application\\SaRLAB.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Slab\\SaRLAB\\SaRLAB.Application\\SaRLAB.Application.csproj",
+        "projectUniqueName": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Application\\SaRLAB.Application.csproj",
         "projectName": "SaRLAB.Application",
-        "projectPath": "H:\\Slab\\SaRLAB\\SaRLAB.Application\\SaRLAB.Application.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "H:\\Slab\\SaRLAB\\SaRLAB.Application\\obj\\",
+        "projectPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Application\\SaRLAB.Application.csproj",
+        "packagesPath": "C:\\Users\\This PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\This PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,11 +33,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "H:\\Slab\\SaRLAB\\SaRLAB.DataAccess\\SaRLAB.DataAccess.csproj": {
-                "projectPath": "H:\\Slab\\SaRLAB\\SaRLAB.DataAccess\\SaRLAB.DataAccess.csproj"
+              "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.DataAccess\\SaRLAB.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.DataAccess\\SaRLAB.DataAccess.csproj"
               },
-              "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {
-                "projectPath": "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj"
+              "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {
+                "projectPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj"
               }
             }
           }
@@ -111,24 +111,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Slab\\SaRLAB\\SaRLAB.DataAccess\\SaRLAB.DataAccess.csproj": {
+    "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.DataAccess\\SaRLAB.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Slab\\SaRLAB\\SaRLAB.DataAccess\\SaRLAB.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.DataAccess\\SaRLAB.DataAccess.csproj",
         "projectName": "SaRLAB.DataAccess",
-        "projectPath": "H:\\Slab\\SaRLAB\\SaRLAB.DataAccess\\SaRLAB.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "H:\\Slab\\SaRLAB\\SaRLAB.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.DataAccess\\SaRLAB.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\This PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\This PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -144,8 +144,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {
-                "projectPath": "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj"
+              "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {
+                "projectPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj"
               }
             }
           }
@@ -212,24 +212,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {
+    "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj",
+        "projectUniqueName": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj",
         "projectName": "SaRLAB.Models",
-        "projectPath": "H:\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "H:\\Slab\\SaRLAB\\SaRLAB.Models\\obj\\",
+        "projectPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj",
+        "packagesPath": "C:\\Users\\This PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\This PC\\Desktop\\Slab\\Slab\\SaRLAB\\SaRLAB.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\This PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -309,7 +309,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

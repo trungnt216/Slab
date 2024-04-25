@@ -18,7 +18,7 @@ namespace SaRLAB.Models
         public string? Password { get; set; }
         public string? Email { get; set; }
         public string? Phone { get; set; }
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string? CreateBy { get; set; }
         public string? UpdateBy { get; set; }
         public DateTime? CreateTime { get; set; }
