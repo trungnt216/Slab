@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SaRLAB.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b548aee321cb6abc573a070913a8e2add6791b14")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f50e4cca4886453da98feb58c025e7dc3db67511")]
 [assembly: System.Reflection.AssemblyProductAttribute("SaRLAB.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SaRLAB.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

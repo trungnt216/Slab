@@ -8,10 +8,10 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
 
         User LogIn(string email, string passWord);
 
-        User LogOut(string email, string passWord);
+        User LogOut();
 
-        User Register(string email, string passWord);
+        User Update(User user);
 
-        User djjdjdj(string email, string passWord);
+        User ForgotPassword(User user);
     }
 }

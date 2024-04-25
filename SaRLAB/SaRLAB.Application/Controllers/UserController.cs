@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using SaRLAB.DataAccess.ProjectDto.LoginDto;
-
+using System.Net.Mail;
+using System.Net;
+using SaRLAB.Models;
 
 namespace SaRLAB.Application.Controllers
 {
@@ -43,7 +45,28 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("logout")]
+        public IActionResult LogOut()
+        {
+            return Ok(new { message = "Logout successful" });
+        }
+
+        [HttpPost]
+        [Route("forgotpassword")]
+        public IActionResult ForgotPassword([FromBody] User user)
+        {
+            var _user = _loginDto.ForgotPassword(user);
 
 
+            if (_user == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_user);
+            }
+        }
     }
 }
