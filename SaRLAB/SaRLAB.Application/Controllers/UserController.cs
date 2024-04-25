@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using SaRLAB.DataAccess.ProjectDto.LoginDto;
-
+using SaRLAB.Models;
 
 namespace SaRLAB.Application.Controllers
 {
@@ -43,7 +43,53 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("logout")]
+        public IActionResult LogOut()
+        {
+            return Ok(new { message = "Logout successful" });
+        }
 
+        [HttpPost]
+        [Route("forgotpassword")]
+        public IActionResult ForgotPassword([FromBody] User user)
+        {
+            var _user = _loginDto.ForgotPassword(user);
+
+
+            if (_user == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(_user);
+            }
+        }
+
+
+        [HttpPost]
+        [Route("register")]
+        public IActionResult Register([FromBody] User newUser)
+        {
+            if (newUser == null)
+            {
+                return BadRequest("Invalid data");
+            }
+
+            var result = _loginDto.Register(newUser);
+
+            if (result != null)
+            {
+                // Return a successful response with the new user object
+                return Ok(result);
+            }
+            else
+            {
+                // If user already exists, return a 400 Bad Request response
+                return BadRequest("User already exists");
+            }
+        }
 
     }
 }
