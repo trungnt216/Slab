@@ -31,6 +31,7 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
                 Password = user.Password,
                 Email = user.Email,
                 Phone = user.Phone,
+                Role = user.Role,
             };
 
             return userlogin;
