@@ -21,6 +21,7 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
             var user = _context.User.Select(value => new User
             {
                 Name = value.Name,
+                Role = value.Role
             });
             return user.ToList();
         }
