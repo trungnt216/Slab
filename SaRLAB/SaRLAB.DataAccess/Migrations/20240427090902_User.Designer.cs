@@ -12,7 +12,7 @@ using SaRLAB.DataAccess;
 namespace SaRLAB.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240423150418_User")]
+    [Migration("20240427090902_User")]
     partial class User
     {
         /// <inheritdoc />
@@ -39,13 +39,11 @@ namespace SaRLAB.DataAccess.Migrations
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateOfBirth")
+                    b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LoginName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

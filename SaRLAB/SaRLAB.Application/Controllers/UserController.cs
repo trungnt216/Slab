@@ -50,6 +50,23 @@ namespace SaRLAB.Application.Controllers
             return Ok(new { message = "Logout successful" });
         }
 
+
+        [HttpPost]
+        [Route("update")]
+        public IActionResult Update(User user)
+        {
+            var _user = _loginDto.Update(user);
+
+            if (_user == null) 
+            { 
+                return BadRequest("Find the user error"); ;
+            }
+            else 
+            { 
+                return Ok(_user); 
+            }
+        }
+
         [HttpPost]
         [Route("forgotpassword")]
         public IActionResult ForgotPassword([FromBody] User user)

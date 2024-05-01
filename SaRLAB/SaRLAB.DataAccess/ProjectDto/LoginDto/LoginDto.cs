@@ -1,6 +1,8 @@
 ﻿using SaRLAB.Models;
 using System.Net.Mail;
 using System.Net;
+using System.CodeDom.Compiler;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SaRLAB.DataAccess.ProjectDto.LoginDto
 {
@@ -34,6 +36,10 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
                 Email = user.Email,
                 Phone = user.Phone,
                 Role = user.Role,
+                DateOfBirth = user.DateOfBirth,
+                CreateBy = user.CreateBy,
+                UpdateBy = user.UpdateBy,
+                CreateTime = user.CreateTime,
             };
 
             return userlogin;
@@ -47,7 +53,22 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
 
         public User Update(User user)
         {
-            throw new NotImplementedException();
+            var _user = _context.User.SingleOrDefault(item =>(item.Email == user.Email));
+
+            if (_user != null)
+            {
+                _user.Password = user.Password;
+                _user.Name = user.Name;
+                _user.DateOfBirth = user.DateOfBirth;
+                _user.CreateBy = user.CreateBy;
+                _user.UpdateBy = user.UpdateBy;
+                _user.CreateTime = DateTime.Now;
+                _user.Role = user.Role;
+                _context.SaveChanges();
+            }
+
+
+            return _user;
         }
 
         public User ForgotPassword(User user)
@@ -59,6 +80,7 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
                 string newPassword = GenerateRandomPassword();
                 _user.Password = newPassword;
                 _context.SaveChanges();
+                _ = SendEmail(_user.Email, _user.Password);
             }
 
             return _user;
@@ -100,7 +122,7 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
 
         public User Register(User user)
         {
-            var existingUser = _context.User.SingleOrDefault(u => u.Email == user.Email);
+            var existingUser = _context.User.SingleOrDefault(u => ((u.Email == user.Email) || (u.Phone == user.Phone)));
 
             if (existingUser != null)
             {
@@ -110,11 +132,15 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
             var newUser = new User
             {
                 Name = user.Name,
-                Email = user.Email,
+                LoginName = user.LoginName,
                 Password = user.Password,
+                Email = user.Email,
                 Phone = user.Phone,
+                DateOfBirth = user.DateOfBirth.Date,
+                CreateBy = user.CreateBy,
+                UpdateBy = user.UpdateBy,
+                CreateTime = DateTime.Now,
                 Role = "Student",
-                DateOfBirth = user.DateOfBirth.Date
 
 
             };
