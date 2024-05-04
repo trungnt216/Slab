@@ -1,8 +1,8 @@
 ﻿using SaRLAB.Models;
-using System.Net.Mail;
 using System.Net;
 using System.CodeDom.Compiler;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 
 namespace SaRLAB.DataAccess.ProjectDto.LoginDto
 {
@@ -81,7 +81,6 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
                 string newPassword = GenerateRandomPassword();
                 _user.Password = newPassword;
                 _context.SaveChanges();
-                _ = SendEmail(_user.Email, _user.Password);
             }
 
             return _user;
@@ -101,25 +100,6 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
             return new string(password);
         }
 
-        private async Task SendEmail(string toAddress, string newPassword)
-        {
-            using (MailMessage mail = new MailMessage())
-            {
-                mail.From = new MailAddress("your-email@gmail.com");
-                mail.To.Add(toAddress);
-                mail.Subject = "Password Reset";
-                mail.Body = "Your new password is: " + newPassword;
-
-                using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
-                {
-                    smtpClient.Port = 587;
-                    smtpClient.Credentials = new NetworkCredential("your-email@gmail.com", "your-password");
-                    smtpClient.EnableSsl = true;
-
-                    await smtpClient.SendMailAsync(mail);
-                }
-            }
-        }
 
         public User Register(User user)
         {
@@ -133,7 +113,6 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
             var newUser = new User
             {
                 Name = user.Name,
-                LoginName = user.LoginName,
                 Password = user.Password,
                 Email = user.Email,
                 Phone = user.Phone,
