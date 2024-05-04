@@ -84,13 +84,6 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
-/*        [HttpPost]
-        [Route("sendEmail/{email}/{title}")]
-        public IActionResult sendEmail(string email, string title) {
-            return Ok(_loginDto.SendEmail(email,title));
-        }
-*/
-
         [HttpPost]
         [Route("register")]
         public IActionResult Register([FromBody] User newUser)
