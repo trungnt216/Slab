@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaRLAB.DataAccess", "SaRLAB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaRLAB.MobileApp", "SaRLAB.MobileApp\SaRLAB.MobileApp.csproj", "{A6B3B317-42B2-4480-8713-642FCACEBE96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaRLAB.WebAdmin", "SaRLAB.WebAdmin\SaRLAB.WebAdmin.csproj", "{38E20BDE-E7BC-4CD3-9020-97858CA2ADE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaRLAB.AdminWeb", "SaRLAB.AdminWeb\SaRLAB.AdminWeb.csproj", "{AE4B4233-8D32-4F1F-A201-934630936D56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,10 @@ Global
 		{A6B3B317-42B2-4480-8713-642FCACEBE96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6B3B317-42B2-4480-8713-642FCACEBE96}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A6B3B317-42B2-4480-8713-642FCACEBE96}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{38E20BDE-E7BC-4CD3-9020-97858CA2ADE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38E20BDE-E7BC-4CD3-9020-97858CA2ADE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38E20BDE-E7BC-4CD3-9020-97858CA2ADE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38E20BDE-E7BC-4CD3-9020-97858CA2ADE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE4B4233-8D32-4F1F-A201-934630936D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE4B4233-8D32-4F1F-A201-934630936D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE4B4233-8D32-4F1F-A201-934630936D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE4B4233-8D32-4F1F-A201-934630936D56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

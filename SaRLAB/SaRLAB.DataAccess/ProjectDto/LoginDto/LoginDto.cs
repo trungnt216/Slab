@@ -20,6 +20,7 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
         {
             var user = _context.User.Select(value => new User
             {
+                ID = value.ID,
                 Name = value.Name,
                 Role = value.Role
             });
@@ -30,20 +31,28 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
         {
             var user = _context.User.SingleOrDefault(item => (item.Email == email && item.Password == passWord));
 
-            User userlogin = new User
+            if (user != null)
             {
-                Name = user.Name,
-                Password = user.Password,
-                Email = user.Email,
-                Phone = user.Phone,
-                Role = user.Role,
-                DateOfBirth = user.DateOfBirth,
-                CreateBy = user.CreateBy,
-                UpdateBy = user.UpdateBy,
-                CreateTime = user.CreateTime,
-            };
+                User userlogin = new User
+                {
+                    Name = user.Name,
+                    Password = user.Password,
+                    Email = user.Email,
+                    Phone = user.Phone,
+                    Role = user.Role,
+                    DateOfBirth = user.DateOfBirth,
+                    CreateBy = user.CreateBy,
+                    UpdateBy = user.UpdateBy,
+                    CreateTime = user.CreateTime,
+                };
 
-            return userlogin;
+                return userlogin;
+            }
+            else { 
+                return null; 
+            }
+
+ 
         }
 
         public User LogOut(string email, string passWord)
