@@ -11,5 +11,6 @@ namespace SaRLAB.DataAccess
         }
 
         public DbSet<User> User { get; set; }
+        public DbSet<Subject> Subject { get; set; }
     }
 }

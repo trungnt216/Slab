@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SaRLAB.DataAccess.ProjectDto.LoginDto;
 
 namespace SaRLAB.Application.Controllers
 {
@@ -6,9 +7,11 @@ namespace SaRLAB.Application.Controllers
     [ApiController]
     public class SubjectController : Controller
     {
-        public IActionResult Index()
+        private readonly ISubject _;
+
+        public UserController(ILoginDto loginDto)
         {
-            return View();
+            _loginDto = loginDto;
         }
     }
 }

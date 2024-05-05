@@ -2,7 +2,6 @@
 using System.Net;
 using System.CodeDom.Compiler;
 using Microsoft.AspNetCore.Mvc;
-using MimeKit;
 
 namespace SaRLAB.DataAccess.ProjectDto.LoginDto
 {
@@ -48,11 +47,12 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
 
                 return userlogin;
             }
-            else { 
-                return null; 
+            else
+            {
+                return null;
             }
 
- 
+
         }
 
         public User LogOut(string email, string passWord)
@@ -63,7 +63,7 @@ namespace SaRLAB.DataAccess.ProjectDto.LoginDto
 
         public User Update(User user)
         {
-            var _user = _context.User.SingleOrDefault(item =>(item.Email == user.Email));
+            var _user = _context.User.SingleOrDefault(item => (item.Email == user.Email));
 
             if (_user != null)
             {

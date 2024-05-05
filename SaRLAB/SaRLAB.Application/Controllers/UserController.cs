@@ -28,7 +28,7 @@ namespace SaRLAB.Application.Controllers
         [HttpGet]
         [Route("login/{email}/{passWord}")]
         public IActionResult LogIn(string email, string passWord)
-        { 
+        {
             var user = _loginDto.LogIn(email, passWord);
 
             if (user != null)
@@ -57,13 +57,13 @@ namespace SaRLAB.Application.Controllers
         {
             var _user = _loginDto.Update(user);
 
-            if (_user == null) 
-            { 
+            if (_user == null)
+            {
                 return BadRequest("Find the user error"); ;
             }
-            else 
-            { 
-                return Ok(_user); 
+            else
+            {
+                return Ok(_user);
             }
         }
 
