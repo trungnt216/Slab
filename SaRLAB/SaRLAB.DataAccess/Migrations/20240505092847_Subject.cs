@@ -16,9 +16,8 @@ namespace SaRLAB.DataAccess.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SubjectName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Manage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Rule = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    SubjectName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rule = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

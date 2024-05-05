@@ -10,5 +10,10 @@ namespace SaRLAB.DataAccess.ProjectDto.SubjectDto
     public interface ISubjectDto
     {
         List<Subject> GetAll();
+        Subject GetByID(int id);
+        Subject GetByName(string name);
+        Subject update(Subject subject);
+        Subject insert(Subject subject);
+        Subject delete(Subject subject); 
     }
 }

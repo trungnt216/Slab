@@ -12,8 +12,8 @@ using SaRLAB.DataAccess;
 namespace SaRLAB.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240505043805_Subject")]
-    partial class Subject
+    [Migration("20240505092149_ManageLogic")]
+    partial class ManageLogic
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,26 +25,21 @@ namespace SaRLAB.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SaRLAB.Models.Subject", b =>
+            modelBuilder.Entity("SaRLAB.Models.ManageLogic", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("Manage")
+                    b.Property<string>("email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Rule")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("id");
 
-                    b.Property<string>("SubjectName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Subject");
+                    b.ToTable("ManageLogic");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.User", b =>

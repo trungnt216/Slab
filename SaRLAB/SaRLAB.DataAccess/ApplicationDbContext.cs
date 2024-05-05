@@ -3,6 +3,7 @@ using SaRLAB.Models;
 
 namespace SaRLAB.DataAccess
 {
+
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -11,6 +12,8 @@ namespace SaRLAB.DataAccess
         }
 
         public DbSet<User> User { get; set; }
+        public DbSet<ManageLogic> ManageLogic { get; set; }
+
         public DbSet<Subject> Subject { get; set; }
     }
 }

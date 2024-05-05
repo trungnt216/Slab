@@ -5,6 +5,7 @@ using SaRLAB.DataAccess;
 using Microsoft.Identity.Client;
 using Microsoft.OpenApi.Models;
 using SaRLAB.DataAccess.ProjectDto.LoginDto;
+using SaRLAB.DataAccess.ProjectDto.SubjectDto;
 
 namespace SaRLAB.Application
 {
@@ -27,6 +28,7 @@ namespace SaRLAB.Application
 
             //add service
             builder.Services.AddScoped<ILoginDto, LoginDto>();
+            builder.Services.AddScoped<ISubjectDto, SubjectDto>();
 
             var app = builder.Build();
 

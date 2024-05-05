@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace SaRLAB.Models
 {
-    [Table("Subject")]
-    public class Subject
+    [Table("ManageLogic")]
+    public class ManageLogic
     {
         [Key]
-        public int ID { get; set; }
-        public string? SubjectName { get; set; }
-        public string? Rule { get; set; }
+        public int id { get; set; }
+        public string email { get; set; }
     }
 }
