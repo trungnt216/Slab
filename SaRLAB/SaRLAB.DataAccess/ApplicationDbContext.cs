@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SaRLAB.Models;
+using SaRLAB.Models.Entity;
 
 namespace SaRLAB.DataAccess
 {
@@ -11,9 +11,9 @@ namespace SaRLAB.DataAccess
 
         }
 
-        public DbSet<User> User { get; set; }
-        public DbSet<ManageLogic> ManageLogic { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<ManageLogic> ManageLogics { get; set; }
 
-        public DbSet<Subject> Subject { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
     }
 }

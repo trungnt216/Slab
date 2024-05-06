@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SaRLAB.DataAccess;
 using Microsoft.EntityFrameworkCore;
-using SaRLAB.DataAccess.ProjectDto.LoginDto;
-using SaRLAB.Models;
+using SaRLAB.Models.Entity;
+using SaRLAB.Models.Dto;
+using SaRLAB.DataAccess.Service.UserDto;
 
 namespace SaRLAB.Application.Controllers
 {
@@ -11,9 +11,9 @@ namespace SaRLAB.Application.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly ILoginDto _loginDto;
+        private readonly IUserDto _loginDto;
 
-        public UserController(ILoginDto loginDto)
+        public UserController(IUserDto loginDto)
         {
             _loginDto = loginDto;
         }

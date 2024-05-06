@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SaRLAB.DataAccess.ProjectDto.LoginDto;
-using SaRLAB.DataAccess.ProjectDto.SubjectDto;
+using SaRLAB.DataAccess.Service.SubjectDto;
 using SaRLAB.Models;
+using SaRLAB.Models.Entity;
 
 namespace SaRLAB.Application.Controllers
 {
@@ -56,7 +56,7 @@ namespace SaRLAB.Application.Controllers
         [Route("Insert")]
         public IActionResult Insert(Subject newsubject)
         {
-            var _subject = _subjectDto.insert(newsubject);
+            var _subject = _subjectDto.Insert(newsubject);
 
             if (_subject == null)
             {
@@ -72,7 +72,7 @@ namespace SaRLAB.Application.Controllers
         [Route("update")]
         public IActionResult Update(Subject newsubject)
         {
-            var _subject = _subjectDto.update(newsubject);
+            var _subject = _subjectDto.Update(newsubject);
 
             if (_subject == null)
             {

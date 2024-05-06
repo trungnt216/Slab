@@ -1,8 +1,6 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using SaRLAB.Models;
+using SaRLAB.Models.Entity;
 using System.Text;
 
 namespace SaRLAB.AdminWeb.Controllers
