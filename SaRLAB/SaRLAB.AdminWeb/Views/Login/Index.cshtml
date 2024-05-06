@@ -1,12 +1,62 @@
-﻿
+﻿@model SaRLAB.Models.Dto.LoginDto
+
 @{
-    ViewData["Title"] = "Index";
+    Layout = null;
 }
 
-<h1>Index</h1>
+<!DOCTYPE html>
 
-<p>
-    <a asp-action="GetAll">Get All</a>
-    <a asp-action="Login">Login</a>
-    <a asp-action="Register">Register</a>
-</p>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+<h4>LoginDto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

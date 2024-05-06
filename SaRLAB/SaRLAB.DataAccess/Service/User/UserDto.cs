@@ -113,12 +113,12 @@ namespace SaRLAB.DataAccess.Service.UserDto
 
         public User Register(User user)
         {
-         //   var existingUser = _context.Users.SingleOrDefault(u => ((u.Email == user.Email) || (u.Phone == user.Phone)));
+            var existingUser = _context.Users.SingleOrDefault(u => ((u.Email == user.Email) || (u.Phone == user.Phone)));
 
-//            if (existingUser != null)
-  //          {
-      //          return null;
-    //        }
+            if (existingUser != null)
+           {
+               return null;
+            }
 
             var newUser = new User
             {

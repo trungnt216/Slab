@@ -1,3 +1,13 @@
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.csproj.AssemblyReference.cache
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.GeneratedMSBuildEditorConfig.editorconfig
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.AssemblyInfoInputs.cache
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.AssemblyInfo.cs
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.csproj.CoreCompileInputs.cache
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.MvcApplicationPartsAssemblyInfo.cs
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.MvcApplicationPartsAssemblyInfo.cache
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.RazorAssemblyInfo.cache
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.RazorAssemblyInfo.cs
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.sourcelink.json
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\appsettings.Development.json
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\appsettings.json
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\SaRLAB.AdminWeb.staticwebassets.runtime.json
@@ -52,6 +62,7 @@ H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\Microsoft.VisualStudio.Web.CodeG
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\MongoDB.Bson.dll
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\Newtonsoft.Json.dll
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\NuGet.Common.dll
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\NuGet.Configuration.dll
@@ -239,16 +250,6 @@ H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.S
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\SaRLAB.Models.dll
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\SaRLAB.Models.pdb
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.csproj.AssemblyReference.cache
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.GeneratedMSBuildEditorConfig.editorconfig
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.AssemblyInfoInputs.cache
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.AssemblyInfo.cs
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.csproj.CoreCompileInputs.cache
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.MvcApplicationPartsAssemblyInfo.cs
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.MvcApplicationPartsAssemblyInfo.cache
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.RazorAssemblyInfo.cache
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.RazorAssemblyInfo.cs
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.sourcelink.json
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\staticwebassets.build.json
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\staticwebassets.development.json
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\staticwebassets\msbuild.SaRLAB.AdminWeb.Microsoft.AspNetCore.StaticWebAssets.props
@@ -265,4 +266,3 @@ H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\refint\SaRLAB.AdminWeb.dll
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.pdb
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\SaRLAB.AdminWeb.genruntimeconfig.cache
 H:\Slab\SaRLAB\SaRLAB.AdminWeb\obj\Debug\net7.0\ref\SaRLAB.AdminWeb.dll
-H:\Slab\SaRLAB\SaRLAB.AdminWeb\bin\Debug\net7.0\MongoDB.Bson.dll
