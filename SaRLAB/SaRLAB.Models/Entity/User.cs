@@ -22,9 +22,9 @@ namespace SaRLAB.Models.Entity
         public string? CreateBy { get; set; }
         public string? UpdateBy { get; set; }
         public DateTime? CreateTime { get; set; }
-        [ForeignKey("RoleManages")]
+       [ForeignKey("RoleManages")]
         public int Role_ID { get; set; }
-        public string RoleName { get; set; }
-        public RoleManage RoleManages { get; set; }
+        public string? RoleName { get; set; }
+        public RoleManage? RoleManages { get; set; }
     }
 }

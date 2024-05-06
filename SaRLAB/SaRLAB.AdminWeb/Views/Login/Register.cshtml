@@ -1,4 +1,4 @@
-﻿@model SaRLAB.Models.User
+﻿@model SaRLAB.Models.Entity.User
 
 @{
     ViewData["Title"] = "Register";
@@ -12,11 +12,11 @@
     <div class="col-md-4">
         <form asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-@*             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="ID" class="control-label"></label>
                 <input asp-for="ID" class="form-control" />
                 <span asp-validation-for="ID" class="text-danger"></span>
-            </div> *@
+            </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -58,9 +58,14 @@
                 <span asp-validation-for="CreateTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Role" class="control-label"></label>
-                <input asp-for="Role" class="form-control" />
-                <span asp-validation-for="Role" class="text-danger"></span>
+                <label asp-for="Role_ID" class="control-label"></label>
+                <input asp-for="Role_ID" class="form-control" />
+                <span asp-validation-for="Role_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -4,8 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using SaRLAB.DataAccess;
 using Microsoft.Identity.Client;
 using Microsoft.OpenApi.Models;
-using SaRLAB.DataAccess.ProjectDto.LoginDto;
-using SaRLAB.DataAccess.ProjectDto.SubjectDto;
+using SaRLAB.DataAccess.Service.SubjectDto;
+using SaRLAB.DataAccess.Dto.LoginService;
+using SaRLAB.DataAccess.Service.UserDto;
 
 namespace SaRLAB.Application
 {
@@ -27,8 +28,9 @@ namespace SaRLAB.Application
 
 
             //add service
-            builder.Services.AddScoped<ILoginDto, LoginDto>();
+            builder.Services.AddScoped<ILoginService, LoginService>();
             builder.Services.AddScoped<ISubjectDto, SubjectDto>();
+            builder.Services.AddScoped<IUserDto, UserDto>();
 
             var app = builder.Build();
 

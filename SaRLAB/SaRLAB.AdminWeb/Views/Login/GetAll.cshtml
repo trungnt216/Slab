@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SaRLAB.Models.User>
+﻿@model IEnumerable<SaRLAB.Models.Entity.User>
 
 @{
     ViewData["Title"] = "GetAll";
@@ -7,7 +7,7 @@
 <h1>GetAll</h1>
 
 <p>
-    <a asp-action="Register">Register</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -40,7 +40,10 @@
                 @Html.DisplayNameFor(model => model.CreateTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Role)
+                @Html.DisplayNameFor(model => model.Role_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
             </th>
             <th></th>
         </tr>
@@ -76,7 +79,10 @@
                 @Html.DisplayFor(modelItem => item.CreateTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Role)
+                @Html.DisplayFor(modelItem => item.Role_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleName)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
