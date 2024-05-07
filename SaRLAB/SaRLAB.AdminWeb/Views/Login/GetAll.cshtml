@@ -1,17 +1,12 @@
 ﻿@model IEnumerable<SaRLAB.Models.Entity.User>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h1>GetAll</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>GetAll</title>
-</head>
-<body>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -93,5 +88,3 @@
 }
     </tbody>
 </table>
-</body>
-</html>
