@@ -21,7 +21,6 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
-        //[HttpGet]
         public IActionResult Login(LoginDto login)
         {
 
@@ -36,11 +35,11 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 /*                    string data = response.Content.ReadAsStringAsync().Result;
                                     users = JsonConvert.DeserializeObject<List<LoginDto>>(data);*/
-                return RedirectToAction("GetAll");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
-                return View();
+                return View("Index");
             }
         }
 
@@ -63,5 +62,7 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(users);
 
         }
+
+
     }
 }

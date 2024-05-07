@@ -15,6 +15,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\Login.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.17" />
