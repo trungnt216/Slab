@@ -7,6 +7,9 @@ using Microsoft.OpenApi.Models;
 using SaRLAB.DataAccess.Service.SubjectDto;
 using SaRLAB.DataAccess.Dto.LoginService;
 using SaRLAB.DataAccess.Service.UserDto;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace SaRLAB.Application
 {
@@ -32,6 +35,27 @@ namespace SaRLAB.Application
             builder.Services.AddScoped<ISubjectDto, SubjectDto>();
             builder.Services.AddScoped<IUserDto, UserDto>();
 
+            //Add Authentication and JwtBearer
+            builder.Services
+                .AddAuthentication(options =>
+                {
+                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(options =>
+                {
+                    options.SaveToken = true;
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+                        ValidAudience = builder.Configuration["JWT:ValidAudience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+                    };
+                });
             var app = builder.Build();
 
 
@@ -52,6 +76,7 @@ namespace SaRLAB.Application
 
             app.UseHttpsRedirection();
             app.UseAuthentication();
+            app.UseAuthorization();
             app.MapControllers();
 
 

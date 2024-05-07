@@ -29,11 +29,11 @@ namespace SaRLAB.DataAccess.Dto.LoginService
             return _Login.ToList();
         }
 
-        public LoginDto Login(string username, string password)
+        public  LoginDto Login(string username, string password)
         {
-            var user = _context.Users
-                                .FromSql($"SELECT u.*, r.RoleName FROM [User] AS u INNER JOIN RoleManage AS r ON u.Role_ID = r.RoleID WHERE u.Email = {username} AND u.Password = {password}")
-                                .SingleOrDefault();
+             var user = _context.Users
+                 .Include(u => u.RoleManages) // Đảm bảo RoleManages (vai trò) được load lên
+                 .FirstOrDefault(u => u.Email == username && u.Password == password);
 
             if (user != null)
             {
@@ -42,8 +42,7 @@ namespace SaRLAB.DataAccess.Dto.LoginService
                     Email = user.Email,
                     ID = user.ID,
                     Name = user.Name,
-                    RoleName = user.RoleName,
-
+                    RoleName = user.RoleManages.RoleName
                 };
 
                 return userlogin;

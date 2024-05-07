@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using SaRLAB.DataAccess.Dto.LoginService;
-
+using System.Configuration;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 namespace SaRLAB.Application.Controllers
 {
     [Route("api/[controller]")]
@@ -8,10 +12,11 @@ namespace SaRLAB.Application.Controllers
     public class LoginController : Controller
     {
         private readonly ILoginService _loginDto;
-
-        public LoginController(ILoginService loginDto)
+        private readonly IConfiguration _configuration;
+        public LoginController(ILoginService loginDto, IConfiguration configuration)
         {
             _loginDto = loginDto;
+            _configuration = configuration;
         }
 
 
@@ -27,18 +32,40 @@ namespace SaRLAB.Application.Controllers
         [Route("login/{email}/{passWord}")]
         public IActionResult LogIn(string email, string passWord)
         {
-            var user = _loginDto.Login(email, passWord);
+            var user =  _loginDto.Login(email, passWord);
 
-            if (user != null)
+            if (user == null)
             {
-                // Return a successful response with the user object
-                return Ok(user);
-            }
-            else
-            {
-                // If user is not found, return a 404 Not Found response
                 return NotFound();
             }
+            var userRole = user.RoleName;
+            var authuClaims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name , user.Email),
+                new Claim(ClaimTypes.Role, userRole),
+                new Claim("JWTID",Guid.NewGuid().ToString()),
+
+            };
+
+            return Ok(GenerateNewJsonWebToken(authuClaims));
+            
+        }
+
+        private string GenerateNewJsonWebToken(List<Claim> claims)
+        {
+            var authSecret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
+
+            var tokenObject = new JwtSecurityToken(
+                    issuer: _configuration["JWT:ValidIssuer"],
+                    audience: _configuration["JWT:ValidAudience"],
+                    expires: DateTime.Now.AddHours(1),
+                    claims: claims,
+                    signingCredentials: new SigningCredentials(authSecret, SecurityAlgorithms.HmacSha256)
+                );
+
+            string token = new JwtSecurityTokenHandler().WriteToken(tokenObject);
+
+            return token;
         }
     }
 }
