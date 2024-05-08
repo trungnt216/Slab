@@ -1,7 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NuGet.Common;
+using NuGet.Protocol;
 using SaRLAB.Models.Dto;
 using SaRLAB.Models.Entity;
+using SaRLAB.AdminWeb.Models;
+using System.Net.Http;
 
 namespace SaRLAB.AdminWeb.Controllers
 {
@@ -10,10 +16,13 @@ namespace SaRLAB.AdminWeb.Controllers
         Uri baseAddress = new Uri("http://localhost:5200/api/");
         private readonly HttpClient _httpClient;
 
-        public LoginController()
+        private readonly IConfiguration _configuration;
+
+        public LoginController(IConfiguration configuration)
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
+            _configuration = configuration;
         }
 
         public IActionResult Index()
@@ -33,9 +42,23 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                /*                    string data = response.Content.ReadAsStringAsync().Result;
-                                    users = JsonConvert.DeserializeObject<List<LoginDto>>(data);*/
-                return RedirectToAction("Index", "Home");
+
+                string jwtToken = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine(jwtToken);
+
+                Console.WriteLine(_configuration["jwtToken:Value"]);
+
+                _configuration["JwtToken:Value"] = jwtToken;
+
+                Console.WriteLine(_configuration["jwtToken:Value"]);
+
+                /*                Uri newbaseAddress = new Uri(_httpClient.BaseAddress + "?jwt=" + jwtToken);
+
+                                _httpClient.BaseAddress = newbaseAddress;*/
+
+
+
+                return RedirectToAction("Index","Home");
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SaRLAB.DataAccess.Dto.LoginService;
 using System.Configuration;
@@ -22,6 +23,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("test")]
+        [Authorize(Roles = "Admin")]
         public IActionResult test()
         {
             return Ok(_loginDto.GetAll());
