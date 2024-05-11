@@ -54,5 +54,27 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("Update")]
+        public IActionResult Update(Banner banner)
+        {
+            var _banner = bannerService.Update(banner);
+            if (_banner == null)
+            {
+                return BadRequest("cannot find the banner");
+            }
+            else
+            {
+                return Ok(_banner);
+            }
+        }
+
+        [HttpDelete]
+        [Route("Delete")]
+        public IActionResult Delete(int id)
+        {
+            return BadRequest("cannot find the banner");
+        }
+
     }
 }
