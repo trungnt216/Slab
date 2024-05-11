@@ -10,6 +10,7 @@ using SaRLAB.DataAccess.Service.UserService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using SaRLAB.DataAccess.Service.BannerService;
 
 namespace SaRLAB.Application
 {
@@ -34,6 +35,7 @@ namespace SaRLAB.Application
             builder.Services.AddScoped<ILoginService, LoginService>();
             builder.Services.AddScoped<ISubjectDto, SubjectDto>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IBannerService, BannerService>();
 
             //Add Authentication and JwtBearer
             builder.Services

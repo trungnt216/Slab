@@ -6,11 +6,28 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SaRLAB.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class DbContext : Migration
+    public partial class DBContext : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Banner",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PathImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Banner", x => x.ID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "ManageLogic",
                 columns: table => new
@@ -65,8 +82,7 @@ namespace SaRLAB.DataAccess.Migrations
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Role_ID = table.Column<int>(type: "int", nullable: false),
-                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Role_ID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,6 +104,9 @@ namespace SaRLAB.DataAccess.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Banner");
+
             migrationBuilder.DropTable(
                 name: "ManageLogic");
 

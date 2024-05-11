@@ -127,5 +127,12 @@ namespace SaRLAB.AdminWeb.Controllers
         {
             return View();
         }
+
+        public IActionResult PostManagement()
+        {
+            return View();
+        }
+
+
     }
 }
