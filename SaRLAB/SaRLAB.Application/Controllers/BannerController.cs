@@ -38,5 +38,21 @@ namespace SaRLAB.Application.Controllers
                 return Ok(banner);
             }
         }
+
+        [HttpPost]
+        [Route("Insert")]
+        public IActionResult Insert(Banner banner)
+        {
+            var _banner= bannerService.Insert(banner);
+            if (_banner == null)
+            {
+                return BadRequest("cannot find the banner");
+            }
+            else
+            {
+                return Ok(_banner);
+            }
+        }
+
     }
 }
