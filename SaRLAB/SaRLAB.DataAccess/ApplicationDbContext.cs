@@ -13,7 +13,6 @@ namespace SaRLAB.DataAccess
 
         public DbSet<User> Users { get; set; }
         public DbSet<ManageLogic> ManageLogics { get; set; }
-
         public DbSet<Subject> Subjects { get; set; }
     }
 }

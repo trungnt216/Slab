@@ -6,7 +6,7 @@ using Microsoft.Identity.Client;
 using Microsoft.OpenApi.Models;
 using SaRLAB.DataAccess.Service.SubjectDto;
 using SaRLAB.DataAccess.Dto.LoginService;
-using SaRLAB.DataAccess.Service.UserDto;
+using SaRLAB.DataAccess.Service.UserService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -33,7 +33,7 @@ namespace SaRLAB.Application
             //add service
             builder.Services.AddScoped<ILoginService, LoginService>();
             builder.Services.AddScoped<ISubjectDto, SubjectDto>();
-            builder.Services.AddScoped<IUserDto, UserDto>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
             //Add Authentication and JwtBearer
             builder.Services

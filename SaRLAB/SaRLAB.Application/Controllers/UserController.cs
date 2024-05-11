@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SaRLAB.Models.Entity;
 using SaRLAB.Models.Dto;
-using SaRLAB.DataAccess.Service.UserDto;
+using SaRLAB.DataAccess.Service.UserService;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SaRLAB.Application.Controllers
@@ -12,9 +12,9 @@ namespace SaRLAB.Application.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserDto _loginDto;
+        private readonly IUserService _loginDto;
 
-        public UserController(IUserDto loginDto)
+        public UserController(IUserService loginDto)
         {
             _loginDto = loginDto;
         }

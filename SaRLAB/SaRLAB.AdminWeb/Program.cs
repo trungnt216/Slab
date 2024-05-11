@@ -1,3 +1,5 @@
+using SaRLAB.Models.Entity;
+
 namespace SaRLAB.AdminWeb
 {
     public class Program
@@ -5,6 +7,8 @@ namespace SaRLAB.AdminWeb
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            User loginAccout = new User();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

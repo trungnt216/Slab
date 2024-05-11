@@ -2,27 +2,32 @@
 using System.CodeDom.Compiler;
 using Microsoft.AspNetCore.Mvc;
 using SaRLAB.Models.Entity;
+using SaRLAB.Models.Dto;
 
-namespace SaRLAB.DataAccess.Service.UserDto
+namespace SaRLAB.DataAccess.Service.UserService
 {
-    public class UserDto : IUserDto
+    public class UserService : IUserService
     {
         private readonly ApplicationDbContext _context;
 
-        public UserDto(ApplicationDbContext context)
+        public UserService(ApplicationDbContext context)
         {
             _context = context;
         }
 
 
-        public List<User> GetAll()
+        public List<UserDto> GetAll()
         {
-            var user = _context.Users.Select(value => new User
+            var user = _context.Users.Select(value => new UserDto
             {
                 ID = value.ID,
+                Phone = value.Phone,
+                Email = value.Email,
                 Name = value.Name,
-                Role_ID = value.Role_ID,
-                RoleManages = value.RoleManages
+                CreateBy = value.CreateBy,
+                UpdateBy = value.UpdateBy,
+                CreateTime = value.CreateTime,
+                RoleName = value.RoleManages.RoleName
             });
             return user.ToList();
         }
@@ -116,8 +121,8 @@ namespace SaRLAB.DataAccess.Service.UserDto
             var existingUser = _context.Users.SingleOrDefault(u => ((u.Email == user.Email) || (u.Phone == user.Phone)));
 
             if (existingUser != null)
-           {
-               return null;
+            {
+                return null;
             }
 
             var newUser = new User

@@ -1,10 +1,11 @@
 ﻿using SaRLAB.Models.Entity;
+using SaRLAB.Models.Dto;
 
-namespace SaRLAB.DataAccess.Service.UserDto
+namespace SaRLAB.DataAccess.Service.UserService
 {
-    public interface IUserDto
+    public interface IUserService
     {
-        List<User> GetAll();
+        List<UserDto> GetAll();
 
         User LogIn(string email, string passWord);
 

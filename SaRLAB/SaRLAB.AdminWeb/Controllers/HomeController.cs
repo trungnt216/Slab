@@ -25,11 +25,24 @@ namespace SaRLAB.AdminWeb.Controllers
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            Console.WriteLine("in the home controller");
-            Console.WriteLine(_configuration["jwtToken:Value"]);
-            return RedirectToAction("GetAll");
+            List<Subject> subjects = new List<Subject>();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetAll").Result;
+
+            Console.WriteLine(response.StatusCode);
+
+            if(response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                subjects = JsonConvert.DeserializeObject<List<Subject>>(data);
+            }
+
+
+            return View(subjects);
         }
 
 
