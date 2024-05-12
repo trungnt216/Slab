@@ -129,5 +129,27 @@ namespace SaRLAB.Application.Controllers
                 return Ok(user);
             }
         }
+
+        [HttpDelete]
+        [Route("DeleteById/{id}")]
+        public IActionResult DeleteById(int id)
+        {
+            _loginDto.DeleteById(id);
+            return Ok("User deleted successfully.");
+        }
+
+        [HttpDelete]
+        [Route("DeleteByIds")]
+        public IActionResult DeleteByIds([FromBody] string userIds)
+        {
+            if (string.IsNullOrEmpty(userIds))
+            {
+                return BadRequest("User IDs are required.");
+            }
+
+            _loginDto.DeleteByIds(userIds);
+            return Ok("Users deleted successfully.");
+        }
+
     }
 }

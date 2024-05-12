@@ -11,9 +11,14 @@ namespace SaRLAB.DataAccess.Service.BannerService
             _context = context;
         }
 
-        public Banner Delete(Banner banner)
+        public void DeleteById(int id)
         {
-            throw new NotImplementedException();
+            var userToDelete = _context.Users.Find(id);
+            if (userToDelete != null)
+            {
+                _context.Users.Remove(userToDelete);
+                _context.SaveChanges();
+            }
         }
 
         public List<Banner> GetAll()

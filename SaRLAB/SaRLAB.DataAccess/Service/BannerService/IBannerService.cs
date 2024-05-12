@@ -12,7 +12,7 @@ namespace SaRLAB.DataAccess.Service.BannerService
         List<Banner> GetAll();
         Banner Insert(Banner banner);
         Banner Update(Banner banner);
-        Banner Delete(Banner banner);
         Banner GetById(int id);
+        void DeleteById(int id);
     }
 }
