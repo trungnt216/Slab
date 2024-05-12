@@ -4,6 +4,7 @@ using SaRLAB.Models.Entity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using Newtonsoft.Json;
 
 namespace SaRLAB.AdminWeb.Controllers
 {
@@ -46,8 +47,18 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_ScientificResearch()
         {
-            var scientificResearch = new ScientificResearch();
-            return View(scientificResearch);
+            List<ScientificResearch> scientificResearches = new List<ScientificResearch>();
+            
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearch/GetAll").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                scientificResearches = JsonConvert.DeserializeObject<List<ScientificResearch>>(data);
+            }
+
+            return View(scientificResearches);
         }
     }
 }
