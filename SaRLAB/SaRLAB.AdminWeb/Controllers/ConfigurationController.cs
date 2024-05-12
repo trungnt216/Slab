@@ -359,5 +359,12 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public IActionResult DeleteBanner(int id)
+        {
+            Console.WriteLine(id);
+            return View();
+        }
     }
 }
