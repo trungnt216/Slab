@@ -14,5 +14,6 @@ namespace SaRLAB.DataAccess.Service.BannerService
         Banner Update(Banner banner);
         Banner GetById(int id);
         void DeleteById(int id);
+        void DeleteByIds(string bannerIds);
     }
 }

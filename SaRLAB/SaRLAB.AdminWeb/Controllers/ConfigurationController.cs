@@ -221,9 +221,33 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
-        public IActionResult Delete(int id)
+/*        [HttpGet]
+        public IActionResult Delete()
         {
             return View();
+        }
+        [HttpDelete]*/
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                Console.WriteLine(id.ToString());
+                HttpResponseMessage response;
+                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "User/DeleteById/" + id).Result;
+
+                Console.WriteLine(response);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("GetAllUser");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return RedirectToAction("GetAllUser");
         }
 
         public IActionResult PostManagement()
@@ -360,11 +384,27 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
-        [HttpGet]
         public IActionResult DeleteBanner(int id)
         {
-            Console.WriteLine(id);
-            return View();
+            try
+            {
+                Console.WriteLine(id.ToString());
+                HttpResponseMessage response;
+                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id).Result;
+
+                Console.WriteLine(response);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("GetAllBanner");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return RedirectToAction("GetAllBanner");
         }
     }
 }

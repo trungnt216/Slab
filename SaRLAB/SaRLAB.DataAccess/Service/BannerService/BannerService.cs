@@ -13,10 +13,28 @@ namespace SaRLAB.DataAccess.Service.BannerService
 
         public void DeleteById(int id)
         {
-            var userToDelete = _context.Users.Find(id);
-            if (userToDelete != null)
+            var bannerToDelete = _context.Banners.Find(id);
+            if (bannerToDelete != null)
             {
-                _context.Users.Remove(userToDelete);
+                _context.Banners.Remove(bannerToDelete);
+                _context.SaveChanges();
+            }
+        }
+
+        public void DeleteByIds(string bannerIds)
+        {
+            // Split the string into individual IDs
+            var ids = bannerIds.Split(',');
+
+            // Convert string IDs to integers
+            var bannerIdIntegers = ids.Select(id => int.Parse(id)).ToList();
+
+            // Find and delete users with the specified IDs
+            var bannersToDelete = _context.Banners.Where(u => bannerIdIntegers.Contains(u.ID)).ToList();
+
+            if (bannersToDelete.Any())
+            {
+                _context.Banners.RemoveRange(bannersToDelete);
                 _context.SaveChanges();
             }
         }
