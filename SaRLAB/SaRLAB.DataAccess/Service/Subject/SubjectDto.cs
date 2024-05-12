@@ -11,9 +11,14 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
             _context = context;
         }
 
-        public Subject Delete(Subject subject)
+        public void DeleteById(int id)
         {
-            throw new NotImplementedException();
+            var subjectToDelete = _context.Subjects.Find(id);
+            if (subjectToDelete != null)
+            {
+                _context.Subjects.Remove(subjectToDelete);
+                _context.SaveChanges();
+            }
         }
 
         public List<Subject> GetAll()
@@ -105,5 +110,6 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
             return _subject;
         }
+
     }
 }
