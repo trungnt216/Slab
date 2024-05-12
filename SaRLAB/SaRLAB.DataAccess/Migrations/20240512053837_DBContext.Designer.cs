@@ -12,7 +12,7 @@ using SaRLAB.DataAccess;
 namespace SaRLAB.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240511153511_DBContext")]
+    [Migration("20240512053837_DBContext")]
     partial class DBContext
     {
         /// <inheritdoc />
@@ -114,6 +114,9 @@ namespace SaRLAB.DataAccess.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("AvtPath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreateBy")
                         .HasColumnType("nvarchar(max)");

@@ -112,6 +112,9 @@ namespace SaRLAB.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<string>("AvtPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CreateBy")
                         .HasColumnType("nvarchar(max)");
 

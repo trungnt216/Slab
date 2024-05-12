@@ -1,0 +1,33 @@
+﻿@model SaRLAB.Models.Entity.Banner
+
+@{
+    ViewData["Title"] = "InsertBanner";
+    Layout = "~/Views/Chemistry/_LayoutChemistry.cshtml";
+}
+
+<h1>InsertBanner</h1>
+
+<h4>Banner</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="InsertBanner" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label for="FileImage">Choose File:</label>
+                <input type="file" id="FileImage" name="FileImage" class="form-control-file" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

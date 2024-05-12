@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaRLAB.AdminWeb", "SaRLAB.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaRLAB.DataAccess", "SaRLAB.DataAccess\SaRLAB.DataAccess.csproj", "{DA7A8D4D-3D30-4323-908F-13963EE46731}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BannerImage", "BannerImage", "{B7BE5672-E78C-4FB8-AA54-BE6C5555BF6E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

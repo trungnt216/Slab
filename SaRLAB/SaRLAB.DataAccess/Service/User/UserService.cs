@@ -27,7 +27,8 @@ namespace SaRLAB.DataAccess.Service.UserService
                 CreateBy = value.CreateBy,
                 UpdateBy = value.UpdateBy,
                 CreateTime = value.CreateTime,
-                RoleName = value.RoleManages.RoleName
+                RoleName = value.RoleManages.RoleName,
+                AvtPath = value.AvtPath,
             });
             return user.ToList();
         }
@@ -80,6 +81,7 @@ namespace SaRLAB.DataAccess.Service.UserService
                 _user.UpdateBy = user.UpdateBy;
                 _user.CreateTime = DateTime.Now;
                 _user.Role_ID = user.Role_ID;
+                _user.AvtPath = user.AvtPath;
                 _context.SaveChanges();
             }
 
@@ -136,7 +138,7 @@ namespace SaRLAB.DataAccess.Service.UserService
                 UpdateBy = user.UpdateBy,
                 CreateTime = DateTime.Now,
                 Role_ID = 1,
-
+                AvtPath = user.AvtPath
 
             };
 

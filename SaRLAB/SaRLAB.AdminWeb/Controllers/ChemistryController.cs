@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SaRLAB.Models.Dto;
 using SaRLAB.Models.Entity;
+using System.Drawing;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
@@ -51,9 +52,21 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
-        public IActionResult BannerConfig()
+        [HttpGet]
+        public IActionResult GetAllBanner()
         {
-            return View();
+            List<Banner> banner = new List<Banner>();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "Banner/GetAll").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                banner = JsonConvert.DeserializeObject<List<Banner>>(data);
+            }
+
+            return View(banner);
         }
 
         [HttpGet]
@@ -88,13 +101,30 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult InsertUser(User user) {
+        public IActionResult InsertUser(User user, IFormFile FileImage) {
             if(user == null) 
             { 
                 return View();
             }
+
+            string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "UserAvata");
+
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
+
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                FileImage.CopyTo(stream);
+            }
             try 
             {
+                user.AvtPath = filePath;
                 user.CreateBy = userLogin.Email;
                 user.UpdateBy = userLogin.Email;
                 string data = JsonConvert.SerializeObject(user);
@@ -133,6 +163,67 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult InsertBanner()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult InsertBanner(IFormFile FileImage)
+        {
+            if (FileImage != null)
+            {
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileImage.CopyTo(stream);
+                }
+                try
+                {
+                    Banner banner = new Banner();
+                    banner.PathImage = filePath;
+                    banner.CreateBy = userLogin.Email;
+                    banner.CreateTime = DateTime.Now;
+                    banner.UpdateTime = DateTime.Now;
+                    banner.UpdateBy = userLogin.Email;
+
+
+                    string data = JsonConvert.SerializeObject(banner);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Banner/Insert", content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        TempData["Status"] = "insert success";
+                        return RedirectToAction("GetAllBanner");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["Status"] = $"{ex.Message}";
+                    return View();
+                }
+            }
+            else
+            {
+                return View();
+            }
+
+            return View();
+        }
 
     }
 }

@@ -21,5 +21,6 @@ namespace SaRLAB.Models.Dto
         public string? UpdateBy { get; set; }
         public DateTime? CreateTime { get; set; }
         public string? RoleName { get; set; }
+        public string? AvtPath { get; set; }
     }
 }

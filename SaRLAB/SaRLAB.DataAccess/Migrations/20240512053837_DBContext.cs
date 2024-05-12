@@ -82,6 +82,7 @@ namespace SaRLAB.DataAccess.Migrations
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    AvtPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Role_ID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
