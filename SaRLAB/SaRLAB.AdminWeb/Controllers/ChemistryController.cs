@@ -46,7 +46,8 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_ScientificResearch()
         {
-            return View();
+            var scientificResearch = new ScientificResearch();
+            return View(scientificResearch);
         }
     }
 }
