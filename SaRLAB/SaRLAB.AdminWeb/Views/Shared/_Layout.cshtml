@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SaRLAB.AdminWeb</title>
 @*     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SaRLAB.AdminWeb.styles.css" asp-append-version="true" />
     <link href="~/css/login.css" rel="stylesheet" />
 @*     <link href="~/css/home.css" rel="stylesheet" /> *@
@@ -32,11 +34,9 @@
             </div>
         </nav>
     </header> *@
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main">
+        @RenderBody()
+    </main>
 
 @*     <footer class="border-top footer text-muted">
         <div class="container">
