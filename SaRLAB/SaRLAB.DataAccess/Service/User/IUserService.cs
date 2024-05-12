@@ -18,5 +18,8 @@ namespace SaRLAB.DataAccess.Service.UserService
         User ForgotPassword(User user);
 
         User Register(User user);
+
+        void DeleteById(int userId);
+        void DeleteByIds(string userIds);
     }
 }

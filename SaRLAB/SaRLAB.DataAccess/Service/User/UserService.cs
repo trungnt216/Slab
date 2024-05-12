@@ -160,5 +160,33 @@ namespace SaRLAB.DataAccess.Service.UserService
 
             return newUser;
         }
+
+        public void DeleteById(int userId)
+        {
+            var userToDelete = _context.Users.Find(userId);
+            if (userToDelete != null)
+            {
+                _context.Users.Remove(userToDelete);
+                _context.SaveChanges();
+            }
+        }
+
+        public void DeleteByIds(string userIds)
+        {
+            // Split the string into individual IDs
+            var ids = userIds.Split(',');
+
+            // Convert string IDs to integers
+            var userIdIntegers = ids.Select(id => int.Parse(id)).ToList();
+
+            // Find and delete users with the specified IDs
+            var usersToDelete = _context.Users.Where(u => userIdIntegers.Contains(u.ID)).ToList();
+
+            if (usersToDelete.Any())
+            {
+                _context.Users.RemoveRange(usersToDelete);
+                _context.SaveChanges();
+            }
+        }
     }
 }
