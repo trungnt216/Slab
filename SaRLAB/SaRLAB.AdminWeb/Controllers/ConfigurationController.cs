@@ -9,10 +9,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
+using System.Web.Helpers;
 
 namespace SaRLAB.AdminWeb.Controllers
 {
-    public class ChemistryController : Controller
+    public class ConfigurationController : Controller
     {
         Uri baseAddress = new Uri("http://localhost:5200/api/");
         private readonly HttpClient _httpClient;
@@ -21,7 +22,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
         User userLogin = new User();
 
-        public ChemistryController(ILogger<HomeController> logger, IConfiguration configuration)
+        public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
@@ -235,8 +236,6 @@ namespace SaRLAB.AdminWeb.Controllers
         {
             return View();
         }
-
-
         [HttpPost]
         public IActionResult InsertBanner(IFormFile FileImage)
         {
@@ -292,5 +291,73 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult EditBanner(string id)
+        {
+            Banner banner = new Banner();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "Banner/GetByID/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                banner = JsonConvert.DeserializeObject<Banner>(data);
+            }
+            return View(banner);
+        }
+        [HttpPost]
+        public IActionResult EditBanner(Banner banner, IFormFile FileImage) 
+        {
+            var _banner = new Banner();
+            _banner.ID = banner.ID;
+            _banner.CreateBy = banner.CreateBy;
+            _banner.CreateTime = banner.CreateTime;
+            _banner.UpdateTime = DateTime.Now;
+            _banner.UpdateBy = userLogin.Email;
+            _banner.PathImage = banner.PathImage;
+
+            if(FileImage != null) 
+            {
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileImage.CopyTo(stream);
+                }
+                _banner.PathImage = filePath;
+            }
+
+            try
+            {
+                string data = JsonConvert.SerializeObject(_banner);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Banner/Update", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "Banner update success";
+                    return RedirectToAction("GetAllBanner");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
     }
 }
