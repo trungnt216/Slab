@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NuGet.Protocol.Plugins;
 using SaRLAB.Models.Dto;
 using SaRLAB.Models.Entity;
 using System.Drawing;
@@ -147,9 +148,75 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
-        public IActionResult Edit(UserDto user, string email)
+
+        [HttpGet]
+        public IActionResult Edit(string email)
         {
-            Console.WriteLine(email);
+            User user = new User();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + email).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                user = JsonConvert.DeserializeObject<User>(data);
+            }
+            return View(user);
+        }
+        [HttpPost]
+        public IActionResult Edit(User user, IFormFile FileImage)
+        {
+            var _user = new User();
+            _user.Email = user.Email;
+            _user.Password = user.Password;
+            _user.Name = user.Name;
+            _user.DateOfBirth = user.DateOfBirth;
+            _user.CreateBy = user.CreateBy;
+            _user.CreateTime = user.CreateTime;
+            _user.UpdateBy = userLogin.Email;
+            _user.Role_ID = user.Role_ID;
+
+            if (FileImage != null)
+            {
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "UserAvata");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileImage.CopyTo(stream);
+                }
+                _user.AvtPath = filePath;
+            }
+
+            try
+            {
+                string data = JsonConvert.SerializeObject(_user);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/update", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "User create success";
+                    return RedirectToAction("GetAllUser");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
             return View();
         }
 

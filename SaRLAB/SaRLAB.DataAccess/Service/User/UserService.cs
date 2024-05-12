@@ -58,8 +58,21 @@ namespace SaRLAB.DataAccess.Service.UserService
             {
                 return null;
             }
+        }
 
 
+        public User GetByID(string email)
+        {
+            var user = _context.Users.SingleOrDefault(item => (item.Email == email));
+
+            if (user == null)
+            {
+                return null;
+            }
+            else
+            {
+                return user;
+            }
         }
 
         public User LogOut(string email, string passWord)

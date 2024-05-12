@@ -109,5 +109,25 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetByID/{email}")]
+        public IActionResult GetByID(string email)
+        {
+            if(email == null)
+            {
+                return BadRequest("Invalid data");
+            }
+
+            var user = _loginDto.GetByID(email);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(user);
+            }
+        }
     }
 }
