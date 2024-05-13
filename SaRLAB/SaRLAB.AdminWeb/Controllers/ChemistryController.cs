@@ -4,6 +4,7 @@ using SaRLAB.Models.Entity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using Newtonsoft.Json;
 
 namespace SaRLAB.AdminWeb.Controllers
 {
@@ -45,6 +46,82 @@ namespace SaRLAB.AdminWeb.Controllers
 
         [HttpGet]
         public IActionResult GetAll_ScientificResearch()
+        {
+            List<ScientificResearch> scientificResearches = new List<ScientificResearch>();
+            
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearch/GetAll").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                scientificResearches = JsonConvert.DeserializeObject<List<ScientificResearch>>(data);
+            }
+
+            return View(scientificResearches);
+        }
+
+        public IActionResult Create_TopicScientificResearch() 
+        {
+            return View();
+        }
+
+        public IActionResult Create_ScientificResearch()
+        {
+            return View();
+        }
+
+        public IActionResult Browse_TopicScientificResearch()
+        {
+            return View();
+        }
+
+        public IActionResult GetAll_PaperResearch()
+        {
+            return View();
+        }
+
+        public IActionResult Create_PaperResearch()
+        {
+            return View();
+        }
+
+        public IActionResult Browse_PaperResearch()
+        {
+            return View();
+        }
+
+        public IActionResult GetAll_Equipment()
+        {
+            return View();
+        }
+
+        public IActionResult Create_Equipment()
+        {
+            return View();
+        }
+
+        public IActionResult GetAll_PlanDetail() 
+        {
+            return View();        
+        }
+
+        public IActionResult Create_PlanDetail()
+        {
+            return View();
+        }
+
+        public IActionResult GetAll_PracticePlan()
+        {
+            return View();
+        }
+
+        public IActionResult Safety_PracticePlan()
+        {
+            return View();
+        }
+
+        public IActionResult Point_PracticePlan()
         {
             return View();
         }

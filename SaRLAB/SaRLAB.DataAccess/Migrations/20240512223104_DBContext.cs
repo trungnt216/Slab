@@ -55,6 +55,25 @@ namespace SaRLAB.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ScientificResearch",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PublicationDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ScientificResearch", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Subject",
                 columns: table => new
                 {
@@ -96,6 +115,35 @@ namespace SaRLAB.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ScientificResearchFile",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Path = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ScientificResearchID = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ScientificResearchFile", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_ScientificResearchFile_ScientificResearch_ScientificResearchID",
+                        column: x => x.ScientificResearchID,
+                        principalTable: "ScientificResearch",
+                        principalColumn: "ID");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ScientificResearchFile_ScientificResearchID",
+                table: "ScientificResearchFile",
+                column: "ScientificResearchID");
+
             migrationBuilder.CreateIndex(
                 name: "IX_User_Role_ID",
                 table: "User",
@@ -112,10 +160,16 @@ namespace SaRLAB.DataAccess.Migrations
                 name: "ManageLogic");
 
             migrationBuilder.DropTable(
+                name: "ScientificResearchFile");
+
+            migrationBuilder.DropTable(
                 name: "Subject");
 
             migrationBuilder.DropTable(
                 name: "User");
+
+            migrationBuilder.DropTable(
+                name: "ScientificResearch");
 
             migrationBuilder.DropTable(
                 name: "RoleManage");
