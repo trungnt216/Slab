@@ -60,5 +60,70 @@ namespace SaRLAB.AdminWeb.Controllers
 
             return View(scientificResearches);
         }
+
+        public IActionResult Create_TopicScientificResearch() 
+        {
+            return View();
+        }
+
+        public IActionResult Create_ScientificResearch()
+        {
+            return View();
+        }
+
+        public IActionResult Browse_TopicScientificResearch()
+        {
+            return View();
+        }
+
+        public IActionResult GetAll_PaperResearch()
+        {
+            return View();
+        }
+
+        public IActionResult Create_PaperResearch()
+        {
+            return View();
+        }
+
+        public IActionResult Browse_PaperResearch()
+        {
+            return View();
+        }
+
+        public IActionResult GetAll_Equipment()
+        {
+            return View();
+        }
+
+        public IActionResult Create_Equipment()
+        {
+            return View();
+        }
+
+        public IActionResult GetAll_PlanDetail() 
+        {
+            return View();        
+        }
+
+        public IActionResult Create_PlanDetail()
+        {
+            return View();
+        }
+
+        public IActionResult GetAll_PracticePlan()
+        {
+            return View();
+        }
+
+        public IActionResult Safety_PracticePlan()
+        {
+            return View();
+        }
+
+        public IActionResult Point_PracticePlan()
+        {
+            return View();
+        }
     }
 }

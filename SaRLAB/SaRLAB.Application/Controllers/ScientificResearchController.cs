@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.ScientificResearchService;
 
 namespace SaRLAB.Application.Controllers
@@ -18,6 +19,13 @@ namespace SaRLAB.Application.Controllers
         public IActionResult GetAll() 
         {
             return Ok(_scientificResearchService.GetAll());
+        }
+
+        [HttpGet]
+        [Route("{subject}/GetAll")]
+        public IActionResult GetAllBySubject(string subject)
+        {
+            return Ok();
         }
     }
 }

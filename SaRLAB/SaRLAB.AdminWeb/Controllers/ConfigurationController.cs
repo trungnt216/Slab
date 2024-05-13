@@ -109,24 +109,29 @@ namespace SaRLAB.AdminWeb.Controllers
                 return View();
             }
 
-            string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "UserAvata");
-
-            if (!Directory.Exists(uploadsFolder))
+            if (FileImage != null)
             {
-                Directory.CreateDirectory(uploadsFolder);
+
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "UserAvata");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileImage.CopyTo(stream);
+                }
+                user.AvtPath = filePath;
             }
 
-            string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
-
-            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                FileImage.CopyTo(stream);
-            }
             try 
             {
-                user.AvtPath = filePath;
                 user.CreateBy = userLogin.Email;
                 user.UpdateBy = userLogin.Email;
                 string data = JsonConvert.SerializeObject(user);
