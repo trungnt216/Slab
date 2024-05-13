@@ -14,13 +14,16 @@ namespace SaRLAB.Models.Entity
         public string? Name { get; set; }
         public string? Author { get; set; }
         public string? CreateBy { get; set; }
+        public string? remark { get; set; }
         public DateTime? CreateTime { get; set; }
         public string? UpdateBy { get; set; }
         public DateTime? UpdateTime { get; set; }
         public DateTime? PublicationDate { get; set; }
         public string UserVerifyFlag { get; set; }
         public string AdminVerifyFlag { get; set; }
-        public ICollection<ScientificResearchFile> ScientificResearchFiles { get; set; }
+        public ICollection<ScientificResearchFile>? ScientificResearchFiles { get; set; }
+        public int SubjectId { get; set; }
+        public Subject? Subject { get; set; }
     }
 }
 

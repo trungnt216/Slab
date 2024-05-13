@@ -15,5 +15,7 @@ namespace SaRLAB.DataAccess
         public DbSet<ManageLogic> ManageLogics { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Banner> Banners { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<ScientificResearch> ScientificResearchs { get; set; }
     }
 }
