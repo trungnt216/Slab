@@ -64,8 +64,42 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit_TopicScientificResearch()
+        public IActionResult Edit_TopicScientificResearch(int id)
         {
+            ScientificResearch sc = new ScientificResearch();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearch/GetById/" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                sc = JsonConvert.DeserializeObject<ScientificResearch>(data);
+            }
+
+            return View(sc);
+        }
+        [HttpPost]
+        public IActionResult Edit_TopicScientificResearch(ScientificResearch sc)
+        {
+            try
+            {
+                string data = JsonConvert.SerializeObject(sc);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "ScientificResearch/Update/" + sc.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "User create success";
+                    return RedirectToAction("GetAll_ScientificResearch");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
             return View();
         }
 
@@ -154,13 +188,56 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
+
+        [HttpGet]
         public IActionResult GetAll_Equipment()
+        {
+            List<Equipment> equipment = new List<Equipment>();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "").Result;
+
+            if(response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult Create_Equipment()
         {
             return View();
         }
-
-        public IActionResult Create_Equipment()
+        [HttpPost]
+        public IActionResult Create_Equipment(Equipment equipment)
         {
+            try
+            {
+                equipment.UpdateTime = DateTime.Now;
+                equipment.CreateTime = DateTime.Now;
+                equipment.CreateBy = userLogin.Email;
+                equipment.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["Status"] = "insert success";
+                    return RedirectToAction("GetAll_Equipment");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Status"] = $"{ex.Message}";
+                return View();
+            }
+
             return View();
         }
 

@@ -29,8 +29,15 @@ namespace SaRLAB.Application.Controllers
             return Ok(_scientificResearchService.GetScientificResearchsBySubjectId(subjectId));
         }
 
+        [HttpGet]
+        [Route("GetById/{id}")]
+        public IActionResult GetById(int id)
+        {
+            return Ok(_scientificResearchService.GetScientificResearchById(id));
+        }
+
         [HttpPost]
-        [Route("{subjectId}/Update")]
+        [Route("Update/{subjectId}")]
         public IActionResult UpdateBySubject(int subjectId, ScientificResearch updatedResearch)
         {
             if(subjectId == null)
