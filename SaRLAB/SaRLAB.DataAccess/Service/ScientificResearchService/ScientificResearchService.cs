@@ -27,6 +27,18 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchService
             return 0;
         }
 
+        public ScientificResearch GetScientificResearchById(int id)
+        {
+            var scientificResearch = _context.ScientificResearchs.SingleOrDefault(item => (item.ID == id));
+
+            if (scientificResearch == null)
+            {
+                return null;
+            }else{
+                return scientificResearch;
+            }
+        }
+
         public List<ScientificResearch> GetScientificResearchsBySubjectId(int subjectId)
         {
             return _context.ScientificResearchs

@@ -13,5 +13,6 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchService
         int InsertScientificResearch(ScientificResearch scientificResearch);
         int UpdateScientificResearchById(int id, ScientificResearch scientificResearch);
         int DeleteScientificResearchById(int id);
+        ScientificResearch GetScientificResearchById(int id);
     }
 }
