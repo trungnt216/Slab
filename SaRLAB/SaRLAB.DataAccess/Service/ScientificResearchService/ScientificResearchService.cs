@@ -46,6 +46,7 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchService
             if (existingResearch != null)
             {
                 // Cập nhật thông tin của nghiên cứu hiện có với thông tin mới
+
                 existingResearch.Name = updatedResearch.Name ?? existingResearch.Name;
                 existingResearch.Author = updatedResearch.Author ?? existingResearch.Author;
                 existingResearch.CreateBy = updatedResearch.CreateBy ?? existingResearch.CreateBy;
@@ -54,9 +55,8 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchService
                 existingResearch.UpdateBy = updatedResearch.UpdateBy ?? existingResearch.UpdateBy;
                 existingResearch.UpdateTime = updatedResearch.UpdateTime ?? existingResearch.UpdateTime;
                 existingResearch.PublicationDate = updatedResearch.PublicationDate ?? existingResearch.PublicationDate;
-                existingResearch.UserVerifyFlag = updatedResearch.UserVerifyFlag ?? existingResearch.UserVerifyFlag;
                 existingResearch.AdminVerifyFlag = updatedResearch.AdminVerifyFlag ?? existingResearch.AdminVerifyFlag;
-                existingResearch.SubjectId = updatedResearch.SubjectId;
+                existingResearch.UserVerifyFlag = updatedResearch.UserVerifyFlag ?? existingResearch.UserVerifyFlag;
 
                 // Cập nhật thông tin trong context và trả về số lượng hàng bị ảnh hưởng
                 return _context.SaveChanges();

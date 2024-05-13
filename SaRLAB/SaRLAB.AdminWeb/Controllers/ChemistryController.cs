@@ -5,6 +5,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using Newtonsoft.Json;
+using System.Text;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace SaRLAB.AdminWeb.Controllers
 {
@@ -50,7 +52,7 @@ namespace SaRLAB.AdminWeb.Controllers
             List<ScientificResearch> scientificResearches = new List<ScientificResearch>();
             
             HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearch/GetAll").Result;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearch/1/GetAll").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -61,8 +63,69 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(scientificResearches);
         }
 
-        public IActionResult Create_TopicScientificResearch() 
+        [HttpGet]
+        public IActionResult Edit_TopicScientificResearch()
         {
+            return View();
+        }
+
+        public IActionResult Delete_TopicScientificResearch(int id)
+        {
+            try
+            {
+                HttpResponseMessage response;
+                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "ScientificResearch/Delete/" + id).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("GetAll_ScientificResearch");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return RedirectToAction("GetAll_ScientificResearch");
+        }
+
+        [HttpGet]
+        public IActionResult Create_TopicScientificResearch()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create_TopicScientificResearch(ScientificResearch scientificResearch) 
+        {
+            if(scientificResearch == null)
+            {
+                return View();
+            }
+
+            try
+            {
+                scientificResearch.CreateBy = userLogin.Email;
+                scientificResearch.CreateTime = DateTime.Now;
+                scientificResearch.UpdateTime = DateTime.Now;
+                scientificResearch.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(scientificResearch);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response;
+                response = _httpClient.PostAsync(_httpClient.BaseAddress + "ScientificResearch/1/Insert", content).Result;
+
+                if(response.IsSuccessStatusCode) 
+                {
+                    TempData["successMessage"] = "User create success";
+                    return RedirectToAction("GetAll_ScientificResearch");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
             return View();
         }
 
