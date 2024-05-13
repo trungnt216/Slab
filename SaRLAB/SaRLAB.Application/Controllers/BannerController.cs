@@ -70,10 +70,24 @@ namespace SaRLAB.Application.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete")]
-        public IActionResult Delete(int id)
+        [Route("DeleteById/{id}")]
+        public IActionResult DeleteById(int id)
         {
-            return BadRequest("cannot find the banner");
+            bannerService.DeleteById(id);
+            return Ok("Banner deleted successfully.");
+        }
+
+        [HttpDelete]
+        [Route("DeleteByIds")]
+        public IActionResult DeleteByIds([FromBody] string bannerIds)
+        {
+            if (string.IsNullOrEmpty(bannerIds))
+            {
+                return BadRequest("Banner IDs are required.");
+            }
+
+            bannerService.DeleteByIds(bannerIds);
+            return Ok("Banners deleted successfully.");
         }
 
     }

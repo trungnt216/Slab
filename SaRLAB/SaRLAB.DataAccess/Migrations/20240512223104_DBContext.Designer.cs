@@ -12,7 +12,7 @@ using SaRLAB.DataAccess;
 namespace SaRLAB.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240512053837_DBContext")]
+    [Migration("20240512223104_DBContext")]
     partial class DBContext
     {
         /// <inheritdoc />
@@ -88,6 +88,81 @@ namespace SaRLAB.DataAccess.Migrations
                     b.ToTable("RoleManage");
                 });
 
+            modelBuilder.Entity("SaRLAB.Models.Entity.ScientificResearch", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreateBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PublicationDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdateBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ScientificResearch");
+                });
+
+            modelBuilder.Entity("SaRLAB.Models.Entity.ScientificResearchFile", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("CreateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ScientificResearchID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ScientificResearchID");
+
+                    b.ToTable("ScientificResearchFile");
+                });
+
             modelBuilder.Entity("SaRLAB.Models.Entity.Subject", b =>
                 {
                     b.Property<int>("ID")
@@ -150,6 +225,15 @@ namespace SaRLAB.DataAccess.Migrations
                     b.HasIndex("Role_ID");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("SaRLAB.Models.Entity.ScientificResearchFile", b =>
+                {
+                    b.HasOne("SaRLAB.Models.Entity.ScientificResearch", "ScientificResearch")
+                        .WithMany()
+                        .HasForeignKey("ScientificResearchID");
+
+                    b.Navigation("ScientificResearch");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.User", b =>
