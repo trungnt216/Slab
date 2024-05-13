@@ -10,9 +10,9 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchService
     public interface  IScientificResearchService
     {
         List<ScientificResearch> GetScientificResearchsBySubjectId(int subjectId);
-        ScientificResearch GetScientificResearchById(int id);
         int InsertScientificResearch(ScientificResearch scientificResearch);
         int UpdateScientificResearchById(int id, ScientificResearch scientificResearch);
         int DeleteScientificResearchById(int id);
+        ScientificResearch GetScientificResearchById(int id);
     }
 }

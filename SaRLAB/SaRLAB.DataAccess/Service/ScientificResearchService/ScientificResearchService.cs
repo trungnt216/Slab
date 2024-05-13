@@ -34,9 +34,7 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchService
             if (scientificResearch == null)
             {
                 return null;
-            }
-            else
-            {
+            }else{
                 return scientificResearch;
             }
         }
