@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "GetAllUser";
-    Layout = "~/Views/Chemistry/_LayoutChemistry.cshtml";
+    Layout = "~/Views/Configuration/_LayoutChemistry.cshtml";
 }
 
 <h1>GetAllUser</h1>
@@ -69,7 +69,7 @@
             </td>
             <td>
                     @Html.ActionLink("Edit", "Edit", new { email = item.Email }) |
-                    @Html.ActionLink("Delete", "Delete", new { email = item.Email })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
             </td>
         </tr>
 }

@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "GetAllBanner";
-    Layout = "~/Views/Chemistry/_LayoutChemistry.cshtml";
+    Layout = "~/Views/Configuration/_LayoutChemistry.cshtml";
 }
 
 <h1>GetAllBanner</h1>
@@ -56,9 +56,8 @@
                 @Html.DisplayFor(modelItem => item.UpdateTime)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "EditBanner", new { id=item.ID}) |
+                @Html.ActionLink("Delete", "DeleteBanner", new { id = item.ID })
             </td>
         </tr>
 }

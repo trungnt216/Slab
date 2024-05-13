@@ -86,17 +86,30 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 Console.WriteLine(_configuration["jwtToken:Value"]);
 
-                /*                Uri newbaseAddress = new Uri(_httpClient.BaseAddress + "?jwt=" + jwtToken);
-
-                                _httpClient.BaseAddress = newbaseAddress;*/
-
                 DecodeJwtToken(jwtToken);
+
+                var tokenHandler = new JwtSecurityTokenHandler();
+
+                var token = tokenHandler.ReadJwtToken(jwtToken);
+
+                foreach (Claim claim in token.Claims)
+                {
+                    if (claim.Type == ClaimTypes.Role)
+                    {
+                        Console.WriteLine(claim.Value);
+                        if(!claim.Value.Equals("Admin") && !claim.Value.Equals("Owner"))
+                        {
+                            TempData["Error"] = "Tài khoản này không có quyền truy cập. Vui lòng thử lại!";
+                            return View("Index");
+                        }
+                    }
+                }
 
                 return RedirectToAction("Index","Home");
             }
             else
             {
-                TempData["Error"] = "Wrong credentials. Please, try again!";
+                TempData["Error"] = "Không có tài khoản. Vui lòng thử lại!";
                 return View("Index");
             }
         }
