@@ -1,4 +1,5 @@
-﻿using SaRLAB.Models.Entity;
+﻿using SaRLAB.DataAccess.Service.RoleManageService;
+using SaRLAB.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,21 +16,52 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchService
         {
             _context = context;
         }
-
-        public List<ScientificResearch> GetAll()
+        public int DeleteScientificResearchById(int id)
         {
-            var scientificResearch = _context.scientificResearches.Select(x => new ScientificResearch
+            var researchToDelete = _context.ScientificResearchs.Find(id);
+            if (researchToDelete != null)
             {
-                Author = x.Author,
-                CreateBy = x.CreateBy,
-                CreateTime = x.CreateTime,
-                ID = x.ID,
-                Name = x.Name,
-                PublicationDate = x.PublicationDate,
-                UpdateBy = x.UpdateBy,
-                UpdateTime = x.UpdateTime,
-            });
-            return scientificResearch.ToList();
+                _context.ScientificResearchs.Remove(researchToDelete);
+                return _context.SaveChanges();
+            }
+            return 0;
+        }
+
+        public List<ScientificResearch> GetScientificResearchsBySubjectId(int subjectId)
+        {
+            return _context.ScientificResearchs
+                            .Where(r => r.SubjectId == subjectId)
+                            .ToList();
+        }
+
+        public int InsertScientificResearch(ScientificResearch scientificResearch)
+        {
+            _context.ScientificResearchs.Add(scientificResearch);
+            return _context.SaveChanges();
+        }
+
+        public int UpdateScientificResearchById(int id, ScientificResearch updatedResearch)
+        {
+            var existingResearch = _context.ScientificResearchs.Find(id);
+            if (existingResearch != null)
+            {
+                // Cập nhật thông tin của nghiên cứu hiện có với thông tin mới
+                existingResearch.Name = updatedResearch.Name ?? existingResearch.Name;
+                existingResearch.Author = updatedResearch.Author ?? existingResearch.Author;
+                existingResearch.CreateBy = updatedResearch.CreateBy ?? existingResearch.CreateBy;
+                existingResearch.remark = updatedResearch.remark ?? existingResearch.remark;
+                existingResearch.CreateTime = updatedResearch.CreateTime ?? existingResearch.CreateTime;
+                existingResearch.UpdateBy = updatedResearch.UpdateBy ?? existingResearch.UpdateBy;
+                existingResearch.UpdateTime = updatedResearch.UpdateTime ?? existingResearch.UpdateTime;
+                existingResearch.PublicationDate = updatedResearch.PublicationDate ?? existingResearch.PublicationDate;
+                existingResearch.UserVerifyFlag = updatedResearch.UserVerifyFlag ?? existingResearch.UserVerifyFlag;
+                existingResearch.AdminVerifyFlag = updatedResearch.AdminVerifyFlag ?? existingResearch.AdminVerifyFlag;
+                existingResearch.SubjectId = updatedResearch.SubjectId;
+
+                // Cập nhật thông tin trong context và trả về số lượng hàng bị ảnh hưởng
+                return _context.SaveChanges();
+            }
+            return 0;
         }
     }
 }

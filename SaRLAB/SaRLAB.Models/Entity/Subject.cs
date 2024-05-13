@@ -15,6 +15,7 @@ namespace SaRLAB.Models.Entity
         public int ID { get; set; }
         public string? SubjectName { get; set; }
         public string? Rule { get; set; }
-        public ICollection<PracticePlan> PracticePlans { get; set; }
+        public ICollection<PracticePlan>? PracticePlans { get; set; }
+        public ICollection<ScientificResearch>? ScientificResearches { get; set; }
     }
 }
