@@ -21,6 +21,5 @@ namespace SaRLAB.Models.Entity
         public string? Remark { get; set; }
         public int? EquipmentQuantity { get; set; }
         public ICollection<PlanDetail>? PlanDetails { get; set; }
-
     }
 }

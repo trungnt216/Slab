@@ -10,6 +10,7 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchFileService
     public interface IScientificResearchFileService
     {
         List<ScientificResearchFile> GetFilesByScientificResearchId(int ScientificResearchId);
+        ScientificResearchFile GetScientificResearchFileId(int id);
         int InsertScientificResearchFile(ScientificResearchFile scientificResearchFile);
         int UpdateScientificResearchFileById(int id, ScientificResearchFile scientificResearchFile);
         int DeleteScientificResearchFileById(int id);
