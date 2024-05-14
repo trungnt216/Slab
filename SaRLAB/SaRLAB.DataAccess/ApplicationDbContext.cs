@@ -18,5 +18,6 @@ namespace SaRLAB.DataAccess
         public DbSet<Document> Documents { get; set; }
         public DbSet<ScientificResearch> ScientificResearchs { get; set; }
         public DbSet<ScientificResearchFile> ScientificResearchFiles { get; set; }
+        public DbSet<Equipment> Equipments { get; set; }
     }
 }

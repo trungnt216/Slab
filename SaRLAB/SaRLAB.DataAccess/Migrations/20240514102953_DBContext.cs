@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SaRLAB.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class DBCOntext : Migration
+    public partial class DBContext : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -124,6 +124,31 @@ namespace SaRLAB.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Equipment",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    SubjectId = table.Column<int>(type: "int", nullable: true),
+                    Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EquipmentQuantity = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Equipment", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Equipment_Subject_SubjectId",
+                        column: x => x.SubjectId,
+                        principalTable: "Subject",
+                        principalColumn: "ID");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PracticePlan",
                 columns: table => new
                 {
@@ -177,6 +202,35 @@ namespace SaRLAB.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PlanDetail",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EquipmentQuantity = table.Column<int>(type: "int", nullable: true),
+                    EquipmentId = table.Column<int>(type: "int", nullable: true),
+                    PracticePlanId = table.Column<int>(type: "int", nullable: true),
+                    CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlanDetail", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_PlanDetail_Equipment_EquipmentId",
+                        column: x => x.EquipmentId,
+                        principalTable: "Equipment",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "FK_PlanDetail_PracticePlan_PracticePlanId",
+                        column: x => x.PracticePlanId,
+                        principalTable: "PracticePlan",
+                        principalColumn: "ID");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ScientificResearchFile",
                 columns: table => new
                 {
@@ -204,6 +258,21 @@ namespace SaRLAB.DataAccess.Migrations
                 name: "IX_Documents_SubjectId",
                 table: "Documents",
                 column: "SubjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Equipment_SubjectId",
+                table: "Equipment",
+                column: "SubjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PlanDetail_EquipmentId",
+                table: "PlanDetail",
+                column: "EquipmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PlanDetail_PracticePlanId",
+                table: "PlanDetail",
+                column: "PracticePlanId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PracticePlan_SubjectId",
@@ -239,13 +308,19 @@ namespace SaRLAB.DataAccess.Migrations
                 name: "ManageLogic");
 
             migrationBuilder.DropTable(
-                name: "PracticePlan");
+                name: "PlanDetail");
 
             migrationBuilder.DropTable(
                 name: "ScientificResearchFile");
 
             migrationBuilder.DropTable(
                 name: "User");
+
+            migrationBuilder.DropTable(
+                name: "Equipment");
+
+            migrationBuilder.DropTable(
+                name: "PracticePlan");
 
             migrationBuilder.DropTable(
                 name: "ScientificResearch");

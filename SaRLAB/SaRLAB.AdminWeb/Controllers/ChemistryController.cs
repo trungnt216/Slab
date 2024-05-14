@@ -351,7 +351,7 @@ namespace SaRLAB.AdminWeb.Controllers
             List<Equipment> equipment = new List<Equipment>();
 
             HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "").Result;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "GetAllBySubject/1").Result;
 
             if(response.IsSuccessStatusCode)
             {
@@ -376,11 +376,12 @@ namespace SaRLAB.AdminWeb.Controllers
                 equipment.CreateTime = DateTime.Now;
                 equipment.CreateBy = userLogin.Email;
                 equipment.UpdateBy = userLogin.Email;
+                equipment.SubjectId = 1;
 
                 string data = JsonConvert.SerializeObject(equipment);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "", content).Result;
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert", content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {

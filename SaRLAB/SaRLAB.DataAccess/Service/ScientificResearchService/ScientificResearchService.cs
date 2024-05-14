@@ -1,5 +1,6 @@
 ﻿using SaRLAB.DataAccess.Service.RoleManageService;
 using SaRLAB.Models.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +19,21 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchService
         }
         public int DeleteScientificResearchById(int id)
         {
-            var researchToDelete = _context.ScientificResearchs.Find(id);
+            var researchToDelete = _context.ScientificResearchs
+                                           .Include(sr => sr.ScientificResearchFiles)
+                                           .FirstOrDefault(sr => sr.ID == id);
+
             if (researchToDelete != null)
             {
+                // Xóa tất cả các thực thể ScientificResearchFile liên quan trước
+                _context.ScientificResearchFiles.RemoveRange(researchToDelete.ScientificResearchFiles);
+
+                // Sau đó xóa thực thể ScientificResearch
                 _context.ScientificResearchs.Remove(researchToDelete);
+
                 return _context.SaveChanges();
             }
+
             return 0;
         }
 
