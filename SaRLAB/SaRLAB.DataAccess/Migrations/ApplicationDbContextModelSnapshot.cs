@@ -95,6 +95,45 @@ namespace SaRLAB.DataAccess.Migrations
                     b.ToTable("Documents");
                 });
 
+            modelBuilder.Entity("SaRLAB.Models.Entity.Equipment", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("CreateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("EquipmentQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("Equipment");
+                });
+
             modelBuilder.Entity("SaRLAB.Models.Entity.ManageLogic", b =>
                 {
                     b.Property<int>("id")
@@ -109,6 +148,44 @@ namespace SaRLAB.DataAccess.Migrations
                     b.HasKey("id");
 
                     b.ToTable("ManageLogic");
+                });
+
+            modelBuilder.Entity("SaRLAB.Models.Entity.PlanDetail", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("CreateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("EquipmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EquipmentQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PracticePlanId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("EquipmentId");
+
+                    b.HasIndex("PracticePlanId");
+
+                    b.ToTable("PlanDetail");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.PracticePlan", b =>
@@ -322,6 +399,30 @@ namespace SaRLAB.DataAccess.Migrations
                     b.Navigation("Subject");
                 });
 
+            modelBuilder.Entity("SaRLAB.Models.Entity.Equipment", b =>
+                {
+                    b.HasOne("SaRLAB.Models.Entity.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId");
+
+                    b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("SaRLAB.Models.Entity.PlanDetail", b =>
+                {
+                    b.HasOne("SaRLAB.Models.Entity.Equipment", "Equipment")
+                        .WithMany("PlanDetails")
+                        .HasForeignKey("EquipmentId");
+
+                    b.HasOne("SaRLAB.Models.Entity.PracticePlan", "PracticePlan")
+                        .WithMany()
+                        .HasForeignKey("PracticePlanId");
+
+                    b.Navigation("Equipment");
+
+                    b.Navigation("PracticePlan");
+                });
+
             modelBuilder.Entity("SaRLAB.Models.Entity.PracticePlan", b =>
                 {
                     b.HasOne("SaRLAB.Models.Entity.Subject", "Subject")
@@ -360,6 +461,11 @@ namespace SaRLAB.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("RoleManages");
+                });
+
+            modelBuilder.Entity("SaRLAB.Models.Entity.Equipment", b =>
+                {
+                    b.Navigation("PlanDetails");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.ScientificResearch", b =>
