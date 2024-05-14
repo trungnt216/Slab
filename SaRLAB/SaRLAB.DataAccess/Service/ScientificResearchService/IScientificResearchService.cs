@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace SaRLAB.DataAccess.Service.ScientificResearchService
 {
-    public interface IScientificResearchService
+    public interface  IScientificResearchService
     {
-        List<ScientificResearch> GetAll();
+        List<ScientificResearch> GetScientificResearchsBySubjectId(int subjectId);
+        int InsertScientificResearch(ScientificResearch scientificResearch);
+        int UpdateScientificResearchById(int id, ScientificResearch scientificResearch);
+        int DeleteScientificResearchById(int id);
+        ScientificResearch GetScientificResearchById(int id);
     }
 }

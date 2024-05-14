@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using SaRLAB.DataAccess.Service.BannerService;
 using SaRLAB.DataAccess.Service.ScientificResearchService;
+using SaRLAB.DataAccess.Service.ScientificResearchFileService;
 
 namespace SaRLAB.Application
 {
@@ -38,6 +39,7 @@ namespace SaRLAB.Application
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IBannerService, BannerService>();
             builder.Services.AddScoped<IScientificResearchService, ScientificResearchService>();
+            builder.Services.AddScoped<IScientificResearchFileService, ScientificResearchFileService>();
 
             //Add Authentication and JwtBearer
             builder.Services

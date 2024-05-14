@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace SaRLAB.Models.Entity
 {
-
     [Table("ScientificResearchFile")]
     public class ScientificResearchFile
     {
@@ -20,7 +19,7 @@ namespace SaRLAB.Models.Entity
         public DateTime? CreateTime { get; set; }
         public string? UpdateBy { get; set; }
         public DateTime? UpdateTime { get; set; }
-        public int ResearchFileID { get; set; }
+        public int?ScientificResearchId { get; set; }
         public ScientificResearch? ScientificResearch { get; set; }
     }
 }

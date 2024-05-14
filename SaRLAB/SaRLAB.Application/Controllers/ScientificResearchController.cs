@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.ScientificResearchService;
+using SaRLAB.Models.Entity;
 
 namespace SaRLAB.Application.Controllers
 {
@@ -15,9 +17,66 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        public IActionResult GetAll() 
+        public IActionResult GetAll()
         {
-            return Ok(_scientificResearchService.GetAll());
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("{subjectId}/GetAll")]
+        public IActionResult GetAllBySubject(int subjectId)
+        {
+            return Ok(_scientificResearchService.GetScientificResearchsBySubjectId(subjectId));
+        }
+
+        [HttpGet]
+        [Route("GetById/{id}")]
+        public IActionResult GetById(int id)
+        {
+            return Ok(_scientificResearchService.GetScientificResearchById(id));
+        }
+
+        [HttpPost]
+        [Route("Update/{subjectId}")]
+        public IActionResult UpdateBySubject(int subjectId, ScientificResearch updatedResearch)
+        {
+            if(subjectId == null)
+            {
+                return BadRequest("Error to search subject");
+            }
+            else
+            {
+                return Ok(_scientificResearchService.UpdateScientificResearchById(subjectId, updatedResearch));
+            }
+        }
+
+        [HttpPost]
+        [Route("{subjectId}/Insert")]
+        public IActionResult InsertBySubject(int subjectId, ScientificResearch updatedResearch)
+        {
+            if (subjectId == null && updatedResearch == null)
+            {
+                return BadRequest("Error to search subject");
+            }
+            else
+            {
+                updatedResearch.SubjectId = subjectId;
+                return Ok(_scientificResearchService.InsertScientificResearch(updatedResearch));
+            }
+        }
+
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public IActionResult DeleteBySubject(int id)
+        {
+            if (id == null)
+            {
+                return BadRequest("Error to search subject");
+            }
+            else
+            {
+                return Ok(_scientificResearchService.DeleteScientificResearchById(id));
+            }
         }
     }
 }
