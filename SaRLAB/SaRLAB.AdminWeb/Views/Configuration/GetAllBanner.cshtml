@@ -2,13 +2,13 @@
 
 @{
     ViewData["Title"] = "GetAllBanner";
-    Layout = "~/Views/Configuration/_LayoutChemistry.cshtml";
+    Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
 <h1>GetAllBanner</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-area="" asp-controller="Configuration" asp-action="InsertBanner">Create New</a>
 </p>
 <table class="table">
     <thead>

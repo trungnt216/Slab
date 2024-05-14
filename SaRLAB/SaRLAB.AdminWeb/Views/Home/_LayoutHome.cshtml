@@ -6,27 +6,35 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <a asp-area="" asp-controller="Configuration" asp-action="Index">Configuration</a>
+    <div>Configuration</div>
+    <div>
+        <div>Cấu hình</div>
+        <a asp-area="" asp-controller="Configuration" asp-action="GetAllBanner">BannerConfig</a>
+    </div>
+
+    <div>
+        <div>Quản lý nhân sự</div>
+        <a asp-area="" asp-action="GetAllUser">Quản lý người dùng</a>
+
+    </div>
 
     <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_ScientificResearch">Hoá học</a>
     <div>
         <div>Nghiên cứu khoa học</div>
         <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_ScientificResearch">Quản lý đề tài</a>
-        <a asp-area="" asp-controller="Chemistry" asp-action="Create_TopicScientificResearch">Tạo đề tài</a>
         <a asp-area="" asp-controller="Chemistry" asp-action="Browse_TopicScientificResearch">Duyệt đề tài</a>
     </div>
 
-    <div>
+@*     <div>
         <div>Bài báo khoa học</div></>
         <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_PaperResearch">Quản lý bài báo</a>
         <a asp-area="" asp-controller="Chemistry" asp-action="Create_PaperResearch">Thêm đề tài</a>
         <a asp-area ="" asp-controller="Chemistry" asp-action="Browse_PaperResearch">Duyệt đề tài</a>
-    </div>
+    </div> *@
 
     <div>
         <div>Dụng cụ thí nghiệm</div>
         <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Equipment">Quản lý dụng cụ</a>
-        <a asp-area="" asp-controller="Chemistry" asp-action="Create_Equipment">Thêm dụng cụ thí nghiệm</a>
     </div>
 
     <div>

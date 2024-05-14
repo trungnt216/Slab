@@ -30,7 +30,7 @@ namespace SaRLAB.Application.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllBySubject/{id}")]
+        [Route("GetBySubject/{id}")]
         public IActionResult GetAllBySubject(int id) 
         {
             return Ok(_equipmentService.GetEquipmentsBySubjectId(id));

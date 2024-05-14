@@ -2,13 +2,14 @@
 
 @{
     ViewData["Title"] = "Detail_TopicScientificResearch";
+    var id = TempData["id"];
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
 <h1>Detail_TopicScientificResearch</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="Chemistry" asp-action="Create_ScientificResearch" asp-route-scId="@TempData["id"]">Create New</a>
 </p>
 <table class="table">
     <thead>
