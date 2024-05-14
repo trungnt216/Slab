@@ -1,11 +1,11 @@
-﻿@model IEnumerable<SaRLAB.Models.Entity.ScientificResearch>
+﻿@model IEnumerable<SaRLAB.Models.Entity.ScientificResearchFile>
 
 @{
-    ViewData["Title"] = "GetAll_ScientificResearch";
+    ViewData["Title"] = "Detail_TopicScientificResearch";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
-<h1>GetAll_ScientificResearch</h1>
+<h1>Detail_TopicScientificResearch</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -17,25 +17,25 @@
                 @Html.DisplayNameFor(model => model.ID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Path)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PublicationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateTime)
+                @Html.DisplayNameFor(model => model.Type)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreateBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateTime)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UpdateBy)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UpdateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScientificResearchId)
             </th>
             <th></th>
         </tr>
@@ -47,19 +47,16 @@
                 @Html.DisplayFor(modelItem => item.ID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Path)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublicationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateTime)
+                @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreateBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateTime)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UpdateBy)
@@ -68,10 +65,11 @@
                 @Html.DisplayFor(modelItem => item.UpdateTime)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit_TopicScientificResearch", new { id = item.ID }) |
-                    @Html.ActionLink("Detail", "Detail_TopicScientificResearch", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete_TopicScientificResearch", new {  id=item.ID }) |
-                    @Html.ActionLink("Theem bafi vieets", "Create_ScientificResearch", new { ScientificResearchId = item.ID })
+                    @Html.DisplayFor(modelItem => item.ScientificResearchId)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit_FileScientificResearch", new { id=item.ID}) |
+                    @Html.ActionLink("Delete", "Delete_FileScientificResearch", new { id = item.ID })
             </td>
         </tr>
 }

@@ -17,7 +17,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        public IActionResult GetAll() 
+        public IActionResult GetAll()
         {
             return Ok();
         }

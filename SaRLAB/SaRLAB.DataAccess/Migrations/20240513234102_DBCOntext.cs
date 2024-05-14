@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SaRLAB.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class DBContext : Migration
+    public partial class DBCOntext : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -162,9 +162,9 @@ namespace SaRLAB.DataAccess.Migrations
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     PublicationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserVerifyFlag = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AdminVerifyFlag = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SubjectId = table.Column<int>(type: "int", nullable: false)
+                    UserVerifyFlag = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AdminVerifyFlag = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SubjectId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -173,8 +173,7 @@ namespace SaRLAB.DataAccess.Migrations
                         name: "FK_ScientificResearch_Subject_SubjectId",
                         column: x => x.SubjectId,
                         principalTable: "Subject",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ID");
                 });
 
             migrationBuilder.CreateTable(
@@ -189,15 +188,14 @@ namespace SaRLAB.DataAccess.Migrations
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ResearchFileID = table.Column<int>(type: "int", nullable: false),
-                    ScientificResearchID = table.Column<int>(type: "int", nullable: true)
+                    ScientificResearchId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ScientificResearchFile", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ScientificResearchFile_ScientificResearch_ScientificResearchID",
-                        column: x => x.ScientificResearchID,
+                        name: "FK_ScientificResearchFile_ScientificResearch_ScientificResearchId",
+                        column: x => x.ScientificResearchId,
                         principalTable: "ScientificResearch",
                         principalColumn: "ID");
                 });
@@ -218,9 +216,9 @@ namespace SaRLAB.DataAccess.Migrations
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ScientificResearchFile_ScientificResearchID",
+                name: "IX_ScientificResearchFile_ScientificResearchId",
                 table: "ScientificResearchFile",
-                column: "ScientificResearchID");
+                column: "ScientificResearchId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_Role_ID",

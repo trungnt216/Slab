@@ -172,7 +172,6 @@ namespace SaRLAB.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("AdminVerifyFlag")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Author")
@@ -190,7 +189,7 @@ namespace SaRLAB.DataAccess.Migrations
                     b.Property<DateTime?>("PublicationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SubjectId")
+                    b.Property<int?>("SubjectId")
                         .HasColumnType("int");
 
                     b.Property<string>("UpdateBy")
@@ -200,7 +199,6 @@ namespace SaRLAB.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserVerifyFlag")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("remark")
@@ -230,10 +228,7 @@ namespace SaRLAB.DataAccess.Migrations
                     b.Property<string>("Path")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ResearchFileID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ScientificResearchID")
+                    b.Property<int?>("ScientificResearchId")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
@@ -247,7 +242,7 @@ namespace SaRLAB.DataAccess.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ScientificResearchID");
+                    b.HasIndex("ScientificResearchId");
 
                     b.ToTable("ScientificResearchFile");
                 });
@@ -342,9 +337,7 @@ namespace SaRLAB.DataAccess.Migrations
                 {
                     b.HasOne("SaRLAB.Models.Entity.Subject", "Subject")
                         .WithMany("ScientificResearches")
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SubjectId");
 
                     b.Navigation("Subject");
                 });
@@ -353,7 +346,7 @@ namespace SaRLAB.DataAccess.Migrations
                 {
                     b.HasOne("SaRLAB.Models.Entity.ScientificResearch", "ScientificResearch")
                         .WithMany("ScientificResearchFiles")
-                        .HasForeignKey("ScientificResearchID");
+                        .HasForeignKey("ScientificResearchId");
 
                     b.Navigation("ScientificResearch");
                 });

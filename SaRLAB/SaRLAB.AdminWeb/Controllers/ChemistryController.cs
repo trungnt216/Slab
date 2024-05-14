@@ -163,9 +163,165 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
-        public IActionResult Create_ScientificResearch()
+
+        [HttpGet]
+        public IActionResult Detail_TopicScientificResearch(int id)
         {
+            List<ScientificResearchFile> sc = new List<ScientificResearchFile>();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearchFile/GetAll/" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                sc = JsonConvert.DeserializeObject<List<ScientificResearchFile>>(data);
+            }
+
+            return View(sc);
+        }
+
+        [HttpGet]
+        public IActionResult Create_ScientificResearch(int ScientificResearchId)
+        {
+            ScientificResearchFile sc = new ScientificResearchFile();
+            sc.ScientificResearchId = ScientificResearchId;
+            return View(sc);
+        }
+        [HttpPost]
+        public IActionResult Create_ScientificResearch(ScientificResearchFile sc, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "FileFolder/ScientificResearchFile");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                sc.Path = filePath;
+                sc.Type = File.GetType().ToString();
+            }
+
+            try
+            {
+                sc.CreateBy = userLogin.Email;
+                sc.CreateTime = DateTime.Now;
+                sc.UpdateTime = DateTime.Now;
+                sc.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(sc);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "ScientificResearchFile/Insert", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("Detail_TopicScientificResearch");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
             return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult Edit_FileScientificResearch(int id)
+        {
+            ScientificResearchFile sc = new ScientificResearchFile();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearchFile/GetById/" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                sc = JsonConvert.DeserializeObject<ScientificResearchFile>(data);
+            }
+
+            return View(sc);
+        }
+        [HttpPost]
+        public IActionResult Edit_FileScientificResearch(ScientificResearchFile sc, IFormFile File)
+        {
+            if(File != null)
+            {
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "FileFolder/ScientificResearchFile");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                sc.Path = filePath;
+                sc.Type = File.GetType().ToString();
+            }
+
+            try
+            {
+                sc.UpdateTime = DateTime.Now;
+                sc.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(sc);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "ScientificResearchFile/Update/" +sc.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_ScientificResearch");
+                }
+            }
+            catch(Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        public IActionResult Delete_FileScientificResearch(int id)
+        {
+            try
+            {
+                HttpResponseMessage response;
+                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "ScientificResearchFile/Delete/" + id).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("GetAll_ScientificResearch");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return RedirectToAction("GetAll_ScientificResearch");
         }
 
         public IActionResult Browse_TopicScientificResearch()

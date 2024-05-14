@@ -29,7 +29,7 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchFileService
         public List<ScientificResearchFile> GetFilesByScientificResearchId(int id)
         {
             return _context.ScientificResearchFiles
-              .Where(file => file.ResearchFileID== id)
+              .Where(file => file.ScientificResearchId == id)
               .ToList();
         }
 
@@ -64,7 +64,7 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchFileService
                 existingFile.CreateTime = scientificResearchFile.CreateTime;
                 existingFile.UpdateBy = scientificResearchFile.UpdateBy;
                 existingFile.UpdateTime = scientificResearchFile.UpdateTime;
-                existingFile.ResearchFileID = scientificResearchFile.ResearchFileID;
+                existingFile.ScientificResearchId = scientificResearchFile.ScientificResearchId;
                 return _context.SaveChanges();
             }
             return 0;
