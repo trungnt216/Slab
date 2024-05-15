@@ -14,11 +14,11 @@
 
     <div>
         <div>Quản lý nhân sự</div>
-        <a asp-area="" asp-action="GetAllUser">Quản lý người dùng</a>
+        <a asp-area="" asp-controller="Configuration" asp-action="GetAllUser">Quản lý người dùng</a>
 
     </div>
 
-    <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_ScientificResearch">Hoá học</a>
+    <a asp-area="" >Hoá học</a>
     <div>
         <div>Nghiên cứu khoa học</div>
         <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_ScientificResearch">Quản lý đề tài</a>
@@ -55,36 +55,26 @@
     <a>Sinh học</a>
     <div>
         <div>Nghiên cứu khoa học</div>
-        <a>Quản lý bài viết</a>
-        <a>Tạo đề tài</a>
-        <a>Tạo bài viết</a>
-        <a>Duyệt đề tài</a>
-    </div>
-
-    <div>
-        <div>Bài báo khoa học</div></>
-        <a>Quản lý bài báo</a>
-        <a>Thêm đề tài</a>
-        <a>Duyệt đề tài</a>
+        <a asp-area="" asp-controller="Biology" asp-action="GetAll_ScientificResearch">Quản lý đề tài</a>
+        <a asp-area="" asp-controller="Biology" asp-action="Browse_TopicScientificResearch">Duyệt đề tài</a>
     </div>
 
     <div>
         <div>Dụng cụ thí nghiệm</div>
-        <a>Quản lý dụng cụ</a>
-        <a>Thêm dụng cụ thí nghiệm</a>
+        <a asp-area="" asp-controller="Biology" asp-action="GetAll_Equipment">Quản lý dụng cụ</a>
     </div>
 
     <div>
         <div>Giáo trình</div>
-        <a>Quản lý giáo trình</a>
-        <a>Thêm giáo trình</a>
+        <a asp-area="" asp-controller="Biology" asp-action="GetAll_PlanDetail">Quản lý giáo trình</a>
+        <a asp-area="" asp-controller="Biology" asp-action="Create_PlanDetail">Thêm giáo trình</a>
     </div>
 
     <div>
         <div>Thực hành</div>
-        <a>Bài thực hành</a>
-        <a>An toàn thí nghiệm</a>
-        <a>Điểm thực hành</a>
+        <a asp-area="" asp-controller="Biology" asp-action="GetAll_PracticePlan">Bài thực hành</a>
+        <a asp-area="" asp-controller="Biology" asp-action="Safety_PracticePlan">An toàn thí nghiệm</a>
+        <a asp-area="" asp-controller="Biology" asp-action="Point_PracticePlan">Điểm thực hành</a>
     </div>
 
 

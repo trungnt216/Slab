@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SaRLAB.Models.Dto;
 using SaRLAB.Models.Entity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
-using Newtonsoft.Json;
 using System.Text;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace SaRLAB.AdminWeb.Controllers
 {
-    public class ChemistryController : Controller
+    public class BiologyController : Controller
     {
         Uri baseAddress = new Uri("http://localhost:5200/api/");
         private readonly HttpClient _httpClient;
@@ -19,7 +18,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
-        public ChemistryController(ILogger<HomeController> logger, IConfiguration configuration)
+        public BiologyController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
@@ -45,14 +44,13 @@ namespace SaRLAB.AdminWeb.Controllers
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
         }
 
-
         [HttpGet]
         public IActionResult GetAll_ScientificResearch()
         {
             List<ScientificResearch> scientificResearches = new List<ScientificResearch>();
-            
+
             HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearch/1/GetAll").Result;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearch/3/GetAll").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -129,9 +127,9 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create_TopicScientificResearch(ScientificResearch scientificResearch) 
+        public IActionResult Create_TopicScientificResearch(ScientificResearch scientificResearch)
         {
-            if(scientificResearch == null)
+            if (scientificResearch == null)
             {
                 return View();
             }
@@ -142,7 +140,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 scientificResearch.CreateTime = DateTime.Now;
                 scientificResearch.UpdateTime = DateTime.Now;
                 scientificResearch.UpdateBy = userLogin.Email;
-                scientificResearch.SubjectId = 1;
+                scientificResearch.SubjectId = 3;
 
                 string data = JsonConvert.SerializeObject(scientificResearch);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -150,7 +148,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 HttpResponseMessage response;
                 response = _httpClient.PostAsync(_httpClient.BaseAddress + "ScientificResearch/Insert", content).Result;
 
-                if(response.IsSuccessStatusCode) 
+                if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "User create success";
                     return RedirectToAction("GetAll_ScientificResearch");
@@ -180,7 +178,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
 
             TempData["id"] = id;
-            
+
             return View(sc);
         }
 
@@ -261,7 +259,7 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpPost]
         public IActionResult Edit_FileScientificResearch(ScientificResearchFile sc, IFormFile File)
         {
-            if(File != null)
+            if (File != null)
             {
                 string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "FileFolder/ScientificResearchFile");
 
@@ -291,7 +289,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = JsonConvert.SerializeObject(sc);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "ScientificResearchFile/Update/" +sc.ID, content).Result;
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "ScientificResearchFile/Update/" + sc.ID, content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -299,7 +297,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     return RedirectToAction("GetAll_ScientificResearch");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
                 return View();
@@ -334,9 +332,9 @@ namespace SaRLAB.AdminWeb.Controllers
             List<Equipment> equipment = new List<Equipment>();
 
             HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetBySubject/1").Result;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetBySubject/3").Result;
 
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
                 equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
@@ -359,7 +357,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 equipment.CreateTime = DateTime.Now;
                 equipment.CreateBy = userLogin.Email;
                 equipment.UpdateBy = userLogin.Email;
-                equipment.SubjectId = 1;
+                equipment.SubjectId = 3;
 
                 string data = JsonConvert.SerializeObject(equipment);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -397,11 +395,11 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(equipment);
         }
         [HttpPost]
-        public IActionResult Edit_Equipment(Equipment equipment) 
+        public IActionResult Edit_Equipment(Equipment equipment)
         {
             equipment.UpdateTime = DateTime.Now;
             equipment.UpdateBy = userLogin.Email;
-            equipment.SubjectId = 1;
+            equipment.SubjectId = 3;
             try
             {
                 string data = JsonConvert.SerializeObject(equipment);
@@ -447,9 +445,9 @@ namespace SaRLAB.AdminWeb.Controllers
             return RedirectToAction("GetAll_Equipment");
         }
 
-        public IActionResult GetAll_PlanDetail() 
+        public IActionResult GetAll_PlanDetail()
         {
-            return View();        
+            return View();
         }
 
         public IActionResult Create_PlanDetail()

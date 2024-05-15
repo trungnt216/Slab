@@ -51,16 +51,15 @@ namespace SaRLAB.Application.Controllers
         }
 
         [HttpPost]
-        [Route("{subjectId}/Insert")]
-        public IActionResult InsertBySubject(int subjectId, ScientificResearch updatedResearch)
+        [Route("Insert")]
+        public IActionResult InsertBySubject(ScientificResearch updatedResearch)
         {
-            if (subjectId == null && updatedResearch == null)
+            if (updatedResearch == null)
             {
                 return BadRequest("Error to search subject");
             }
             else
             {
-                updatedResearch.SubjectId = subjectId;
                 return Ok(_scientificResearchService.InsertScientificResearch(updatedResearch));
             }
         }
