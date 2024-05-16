@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SaRLAB.DataAccess.Service.DocumentService
 {
-    internal interface IDocumentService
+    public interface IDocumentService
     {
         List<Document> GetDocumentsBySubjectId (int subjectId);
         Document GetDocumentById (int id);

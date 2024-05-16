@@ -12,7 +12,7 @@ using SaRLAB.DataAccess;
 namespace SaRLAB.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240514102953_DBContext")]
+    [Migration("20240516132241_DBContext")]
     partial class DBContext
     {
         /// <inheritdoc />
@@ -95,7 +95,7 @@ namespace SaRLAB.DataAccess.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("Documents");
+                    b.ToTable("Document");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.Equipment", b =>

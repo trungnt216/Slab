@@ -97,7 +97,7 @@ namespace SaRLAB.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Documents",
+                name: "Document",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -114,9 +114,9 @@ namespace SaRLAB.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Documents", x => x.ID);
+                    table.PrimaryKey("PK_Document", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Documents_Subject_SubjectId",
+                        name: "FK_Document_Subject_SubjectId",
                         column: x => x.SubjectId,
                         principalTable: "Subject",
                         principalColumn: "ID",
@@ -255,8 +255,8 @@ namespace SaRLAB.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Documents_SubjectId",
-                table: "Documents",
+                name: "IX_Document_SubjectId",
+                table: "Document",
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
@@ -302,7 +302,7 @@ namespace SaRLAB.DataAccess.Migrations
                 name: "Banner");
 
             migrationBuilder.DropTable(
-                name: "Documents");
+                name: "Document");
 
             migrationBuilder.DropTable(
                 name: "ManageLogic");
