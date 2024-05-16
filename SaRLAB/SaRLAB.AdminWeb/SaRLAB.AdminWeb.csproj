@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\Login.css" />
+    <None Include="wwwroot\css\login.css" />
     <None Include="wwwroot\images\login.svg" />
     <None Include="wwwroot\images\register.svg" />
   </ItemGroup>
