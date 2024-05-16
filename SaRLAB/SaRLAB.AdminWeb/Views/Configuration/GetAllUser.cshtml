@@ -2,8 +2,11 @@
 
 @{
     ViewData["Title"] = "GetAllUser";
+
     Layout = "~/Views/Home/_LayoutHome.cshtml";
+
     ViewBag.TitleCustom = "Danh sách người dùng";
+
     int counter = 1;
 }
 
@@ -61,6 +64,7 @@
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
+
                     {
                         <tr>
                             <td>
@@ -92,13 +96,21 @@
                             </td>
                             @{
                                 string backgroundColor = "";
+
                                 if (item.RoleName == "Admin")
+
                                 {
+
                                     backgroundColor = "#8ed4ff";
+
                                 }
+
                                 else if (item.RoleName == "Moderator")
+
                                 {
+
                                     backgroundColor = "#3783c4";
+
                                 }
                             }
                             <td>
@@ -122,9 +134,81 @@
                             </td>
                         </tr>
                         counter++;
+
                     }
                 </tbody>
             </table>
         </div>
 
-</div>
+        <<<<<<< HEAD </div>
+            =======
+            <p>
+                <a asp-area="" asp-controller="Configuration" asp-action="InsertUser">Create New</a>
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+                        </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.CreateBy)
+                        </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.UpdateBy)
+                        </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.CreateTime)
+                        </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+        @foreach (var item in Model)
+        {
+                        <tr>
+                            <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                            </td>
+                            <td>
+                    @Html.DisplayFor(modelItem => item.CreateBy)
+                            </td>
+                            <td>
+                    @Html.DisplayFor(modelItem => item.UpdateBy)
+                            </td>
+                            <td>
+                    @Html.DisplayFor(modelItem => item.CreateTime)
+                            </td>
+                            <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                            </td>
+                            <td>
+                    @Html.ActionLink("Edit", "Edit", new { email = item.Email }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                            </td>
+                        </tr>
+        }
+                </tbody>
+            </table>
+            >>>>>>> 3afa05443f344d9ef24dd06fc100fc9e496033cc

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "GetAll_ScientificResearch";
+
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
@@ -9,7 +10,7 @@
     <h1>GetAll_ScientificResearch</h1>
 
     <p>
-        <a asp-action="Create">Create New</a>
+        <a asp-area="" asp-controller="Chemistry" asp-action="Create_TopicScientificResearch">Create New</a>
     </p>
     <table class="table">
         <thead>
@@ -73,7 +74,11 @@
                         @Html.ActionLink("Edit", "Edit_TopicScientificResearch", new { id = item.ID }) |
                         @Html.ActionLink("Detail", "Detail_TopicScientificResearch", new { id = item.ID }) |
                         @Html.ActionLink("Delete", "Delete_TopicScientificResearch", new { id = item.ID }) |
-                        @Html.ActionLink("Theem bafi vieets", "Create_ScientificResearch", new { ScientificResearchId = item.ID })
+                        @Html.ActionLink("Theem bafi vieets", "Create_ScientificResearch", new
+                            {
+                                ScientificResearchId =
+                                 item.ID
+                            })
                     </td>
                 </tr>
             }

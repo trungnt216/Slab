@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SaRLAB.Models.Entity.PlanDetail>
+
+@{
+    ViewData["Title"] = "GetAll_PlanDetail";
+    Layout = "~/Views/Home/_LayoutHome.cshtml";
+}
+
+<h1>GetAll_PlanDetail</h1>
+
+<p>
+    <a asp-controller="Biology" asp-action="Create_PlanDetail">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EquipmentQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EquipmentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PracticePlanId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquipmentQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquipmentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PracticePlanId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateTime)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit_PlanDetail", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete_PlanDetail", new { id=item.ID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

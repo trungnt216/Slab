@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "GetUsedByRole";
+
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
@@ -75,5 +76,7 @@
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
