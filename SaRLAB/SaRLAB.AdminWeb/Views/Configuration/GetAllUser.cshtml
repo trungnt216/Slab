@@ -12,203 +12,131 @@
 
 <div id="sub-content">
     <partial name="TitleCustom">
-        <div class="table-container">
-            <div class="table-action row">
-                <div class="col-8">
-                    <div class="search-box">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" class="form-control" placeholder="Search&hellip;">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-                        <i class="fa-solid fa-trash-can"></i>
-                        Xóa
-                    </button>
-                    <partial name="ButtonCreate">
+    <div class="table-container">
+        <div class="table-action row">
+            <div class="col-8">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="form-control" placeholder="Search&hellip;">
                 </div>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            <input type="checkbox" id="selectAll" />
-                        </th>
-                        <th>#</th>
-                        <th>
-                            Họ và tên
-                        </th>
-                        <th>
-                            Email
-                        </th>
-                        <th>
-                            Số điện thoại
-                        </th>
-                        <th>
-                            Ngày sinh
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.CreateBy)
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.UpdateBy)
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.CreateTime)
-                        </th>
-                        <th>
-                            Vai trò
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-
-                    {
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="selectRow" data-id="@item.ID" />
-                            </td>
-                            <td>
-                                @counter
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Phone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DateOfBirth)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.CreateBy)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.UpdateBy)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.CreateTime)
-                            </td>
-                            @{
-                                string backgroundColor = "";
-
-                                if (item.RoleName == "Admin")
-
-                                {
-
-                                    backgroundColor = "#8ed4ff";
-
-                                }
-
-                                else if (item.RoleName == "Moderator")
-
-                                {
-
-                                    backgroundColor = "#3783c4";
-
-                                }
-                            }
-                            <td>
-                                <p style="
-                                   margin: 0;
-                                   background: @backgroundColor;
-                                   padding: 2px;
-                                   text-align: center;
-                                   border-radius: 15px;
-                                   color: white;
-                                   font-style: italic">
-                                    @Html.DisplayFor(modelItem => item.RoleName)</p>
-                            </td>
-                            <td>
-                                <a class="edit" href="@Url.Action("EditBanner", new { id = item.ID })" title="Edit">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a class="delete" href="@Url.Action("DeleteBanner", new { id = item.ID })" title="Delete">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        counter++;
-
-                    }
-                </tbody>
-            </table>
+            <div class="col-4">
+                <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Xóa
+                </button>
+                <partial name="ButtonCreate">
+            </div>
         </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="selectAll" />
+                    </th>
+                    <th>#</th>
+                    <th>
+                        Họ và tên
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Số điện thoại
+                    </th>
+                    <th>
+                        Ngày sinh
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.CreateBy)
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.UpdateBy)
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.CreateTime)
+                    </th>
+                    <th>
+                        Vai trò
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
 
-        <<<<<<< HEAD </div>
-            =======
-            <p>
-                <a asp-area="" asp-controller="Configuration" asp-action="InsertUser">Create New</a>
-            </p>
-            <table class="table">
-                <thead>
+                {
                     <tr>
-                        <th>
-                @Html.DisplayNameFor(model => model.Name)
-                        </th>
-                        <th>
-                @Html.DisplayNameFor(model => model.Email)
-                        </th>
-                        <th>
-                @Html.DisplayNameFor(model => model.Phone)
-                        </th>
-                        <th>
-                @Html.DisplayNameFor(model => model.DateOfBirth)
-                        </th>
-                        <th>
-                @Html.DisplayNameFor(model => model.CreateBy)
-                        </th>
-                        <th>
-                @Html.DisplayNameFor(model => model.UpdateBy)
-                        </th>
-                        <th>
-                @Html.DisplayNameFor(model => model.CreateTime)
-                        </th>
-                        <th>
-                @Html.DisplayNameFor(model => model.RoleName)
-                        </th>
-                        <th></th>
+                        <td>
+                            <input type="checkbox" class="selectRow" data-id="@item.ID" />
+                        </td>
+                        <td>
+                            @counter
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.CreateBy)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.UpdateBy)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.CreateTime)
+                        </td>
+                        @{
+                            string backgroundColor = "";
+
+                            if (item.RoleName == "Admin")
+
+                            {
+
+                                backgroundColor = "#8ed4ff";
+
+                            }
+
+                            else if (item.RoleName == "Moderator")
+
+                            {
+
+                                backgroundColor = "#3783c4";
+
+                            }
+                        }
+                        <td>
+                            <p style="
+                                margin: 0;
+                                background: @backgroundColor;
+                                padding: 2px;
+                                text-align: center;
+                                border-radius: 15px;
+                                color: white;
+                                font-style: italic">
+                                @Html.DisplayFor(modelItem => item.RoleName)</p>
+                        </td>
+                        <td>
+                            <a class="edit" href="@Url.Action("EditBanner", new { id = item.ID })" title="Edit">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a class="delete" href="@Url.Action("DeleteBanner", new { id = item.ID })" title="Delete">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-        @foreach (var item in Model)
-        {
-                        <tr>
-                            <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                            </td>
-                            <td>
-                    @Html.DisplayFor(modelItem => item.DateOfBirth)
-                            </td>
-                            <td>
-                    @Html.DisplayFor(modelItem => item.CreateBy)
-                            </td>
-                            <td>
-                    @Html.DisplayFor(modelItem => item.UpdateBy)
-                            </td>
-                            <td>
-                    @Html.DisplayFor(modelItem => item.CreateTime)
-                            </td>
-                            <td>
-                    @Html.DisplayFor(modelItem => item.RoleName)
-                            </td>
-                            <td>
-                    @Html.ActionLink("Edit", "Edit", new { email = item.Email }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                            </td>
-                        </tr>
-        }
-                </tbody>
-            </table>
-            >>>>>>> 3afa05443f344d9ef24dd06fc100fc9e496033cc
+                    counter++;
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
