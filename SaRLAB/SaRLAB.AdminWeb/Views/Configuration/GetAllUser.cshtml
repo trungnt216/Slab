@@ -2,11 +2,8 @@
 
 @{
     ViewData["Title"] = "GetAllUser";
-
     Layout = "~/Views/Home/_LayoutHome.cshtml";
-
     ViewBag.TitleCustom = "Danh sách người dùng";
-
     int counter = 1;
 }
 
@@ -17,7 +14,7 @@
             <div class="col-8">
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" class="form-control" placeholder="Search&hellip;">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search&hellip;">
                 </div>
             </div>
             <div class="col-4">
@@ -25,7 +22,10 @@
                     <i class="fa-solid fa-trash-can"></i>
                     Xóa
                 </button>
-                <partial name="ButtonCreate">
+                <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="InsertUser" asp-controller="Configuration">
+                    <i class="fa-solid fa-plus"></i>
+                    Thêm mới
+                </a>
             </div>
         </div>
         <table class="table">
@@ -82,8 +82,11 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Phone)
                         </td>
+                        @{
+                            var formattedDateOfBirth = item.DateOfBirth.ToString("dd/MM/yyyy");
+                        }
                         <td>
-                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                            @formattedDateOfBirth
                         </td>
                         <td class="d-none">
                             @Html.DisplayFor(modelItem => item.CreateBy)
@@ -121,22 +124,26 @@
                                 text-align: center;
                                 border-radius: 15px;
                                 color: white;
-                                font-style: italic">
+                                font-size: 12px">
                                 @Html.DisplayFor(modelItem => item.RoleName)</p>
                         </td>
                         <td>
-                            <a class="edit" href="@Url.Action("EditBanner", new { id = item.ID })" title="Edit">
+                            <a class="btn-custom-edit" asp-action="Edit" asp-controller="Configuration" asp-route-email="@item.Email">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
-                            <a class="delete" href="@Url.Action("DeleteBanner", new { id = item.ID })" title="Delete">
+                            <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>
                     </tr>
                     counter++;
-
                 }
             </tbody>
         </table>
     </div>
+    @* modal delete *@
+    @{
+        ViewBag.DeleteAction = "DeleteMultipleUsers";
+    }
+    <partial name="ModalDelete">
 </div>

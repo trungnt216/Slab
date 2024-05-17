@@ -39,7 +39,7 @@
 }
 
 .sidebar .subject-content {
-    background: var(--primary);
+    background: #5d82c2;
     float: left;
     height: 100%;
     position: fixed;
@@ -301,15 +301,17 @@ a[data-toggle="collapse"] {
     align-content: center;
 }
 
-.table-container .table tbody td a.edit {
+.table-container .table tbody td a.btn-custom-edit {
     font-size: var(--text-xs);
     color: #f8c221;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .table-container .table tbody td a.delete {
     font-size: var(--text-xs);
     color: #dc3545;
+    cursor: pointer;
 }
 
 .table-container .table-action {
@@ -356,3 +358,56 @@ a[data-toggle="collapse"] {
 .table-container .table-action .btn i {
     margin-right: 5px;
 }
+
+.noti-table {
+    font-style: italic;
+    color: #e87c86;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+}
+
+/*custom button*/
+.btn-custom-create {
+    background: #04af60;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 7px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: var(--text-xss);
+    text-decoration: none;
+    text-decoration: none;
+}
+
+.btn-custom-create:hover {
+    background: #03904f;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-custom-create i {
+    margin-right: 5px;
+}
+
+.btn-custom-return {
+    background: #04af60;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 7px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: var(--text-xss);
+    text-decoration: none;
+}
+
+.btn-custom-return:hover {
+    background: #03904f;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-custom-return i {
+    margin-right: 5px;
+}
+

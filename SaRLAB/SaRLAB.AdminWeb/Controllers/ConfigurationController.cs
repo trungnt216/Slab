@@ -418,5 +418,33 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             return RedirectToAction("GetAllBanner");
         }
+
+        [HttpPost]
+        public IActionResult DeleteMultipleBanners([FromBody] DeleteMultipleRequest request)
+        {
+            try
+            {
+                foreach (var id in request.Ids)
+                {
+                    HttpResponseMessage response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id).Result;
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine($"Failed to delete banner with ID {id}");
+                    }
+                }
+                return RedirectToAction("GetAllBanner");
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+        }
+
+        public class DeleteMultipleRequest
+        {
+            public List<int> Ids { get; set; }
+        }
     }
 }

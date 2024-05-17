@@ -2,63 +2,63 @@
 
 @{
     ViewData["Title"] = "EditBanner";
+    ViewBag.TitleCustom = "Chỉnh sửa banner";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
 <div id="sub-content">
-    <h1>EditBanner</h1>
-
-    <h4>Banner</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="EditBanner" method="post" enctype="multipart/form-data">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label for="FileImage">Choose File:</label>
-                    <input type="file" id="FileImage" name="FileImage" class="form-control-file" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="ID" class="control-label"></label>
-                    <input asp-for="ID" class="form-control" />
-                    <span asp-validation-for="ID" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="PathImage" class="control-label"></label>
-                    <input asp-for="PathImage" class="form-control" />
-                    <span asp-validation-for="PathImage" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CreateBy" class="control-label"></label>
-                    <input asp-for="CreateBy" class="form-control" />
-                    <span asp-validation-for="CreateBy" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CreateTime" class="control-label"></label>
-                    <input asp-for="CreateTime" class="form-control" />
-                    <span asp-validation-for="CreateTime" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="UpdateBy" class="control-label"></label>
-                    <input asp-for="UpdateBy" class="form-control" />
-                    <span asp-validation-for="UpdateBy" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="UpdateTime" class="control-label"></label>
-                    <input asp-for="UpdateTime" class="form-control" />
-                    <span asp-validation-for="UpdateTime" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
+    <div class="d-flex justify-content-between">
+        <partial name="TitleCustom">
+        <a asp-area="" asp-controller="Configuration" asp-action="GetAllBanner" class="btn-custom-return" type="button">
+            <i class="fa-solid fa-angles-left"></i>
+            Trở về
+        </a>
     </div>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
+    <div class="form-container">
+        <form asp-action="EditBanner" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group d-none">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label for="FileImage" class="col-2 form-label">Chọn file</label>
+                <div class="col">
+                    <input type="file" id="FileImage" name="FileImage" class="form-control-file" asp-for="PathImage" />
+                </div>
+            </div>
+            <div class="form-group">
+@*                 <img src="@Url.Content(Model.PathImage)"
+                     style="max-width: 100px; max-height: 100px;" /> *@
+                <img src="@Url.Content("https://d3design.vn/uploads/5495874gh6y5356.jpg")"
+                     style="max-width: 580px; max-height: 580px;" style="margin-top: -10px" />
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="CreateBy" class="control-label"></label>
+                <input asp-for="CreateBy" class="form-control" />
+                <span asp-validation-for="CreateBy" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="CreateTime" class="control-label"></label>
+                <input asp-for="CreateTime" class="form-control" />
+                <span asp-validation-for="CreateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="UpdateBy" class="control-label"></label>
+                <input asp-for="UpdateBy" class="form-control" />
+                <span asp-validation-for="UpdateBy" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="UpdateTime" class="control-label"></label>
+                <input asp-for="UpdateTime" class="form-control" />
+                <span asp-validation-for="UpdateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cập nhật" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
-
 </div>
 
 @section Scripts {

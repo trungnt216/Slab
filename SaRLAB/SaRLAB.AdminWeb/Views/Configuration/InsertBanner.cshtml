@@ -8,7 +8,10 @@
 <div id="sub-content">
     <div class="d-flex justify-content-between">
         <partial name="TitleCustom">
-        <partial name="ButtonReturn">
+        <a asp-area="" asp-controller="Configuration" asp-action="GetAllBanner" class="btn-custom-return" type="button">
+            <i class="fa-solid fa-angles-left"></i>
+            Trở về
+        </a>
     </div>
     <div class="form-container">
         <form asp-action="InsertBanner" method="post" enctype="multipart/form-data">
@@ -19,8 +22,6 @@
                     <input id="imgInp" accept="image/*" name="FileImage" class="form-control" type="file" />
                 </div>
             </div>
-@*             <img src="@Url.Content("~/images/placehold.png")" id="blah" alt="Banner"
-                 style="width: 100px; height: 100px; border: 1px solid red; " /> *@
             <div class="form-group">
                 <input type="submit" value="Thêm mới" class="btn btn-primary" />
             </div>
@@ -29,5 +30,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
