@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
@@ -14,30 +13,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="~/js/test.js"></script>
+    <script src="~/js/table.js"></script>
+    <script src="~/js/form.js"></script>
 </head>
 
 <body>
     @* sidebar *@
     <div class="sidebar">
         <div class="subject">
-            <a asp-area="" asp-controller="Configuration" asp-action="Index" data-target="#collapseConfig" data-id="config">
+            <a class="active" asp-area="" asp-controller="Configuration" asp-action="GetAllBanner" data-target="#collapseConfig" data-id="config" aria-expanded="true">
                 <i class="fas fa-gear"></i>
                 <span>Cấu hình</span>
             </a>
-            <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_ScientificResearch" data-target="#collapseChem"
-                data-id="chem">
+            <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_ScientificResearch" data-target="#collapseChem" data-id="chem" aria-expanded="false">
                 <i class="fas fa-flask"></i>
                 <span>Hóa học</span>
             </a>
-            <a href="#" data-target="#collapseBio" data-id="bio">
+            <a href="#" data-target="#collapseBio" data-id="bio" aria-expanded="false">
                 <i class="fas fa-dna"></i>
                 <span>Sinh học</span>
             </a>
-            <a href="#" data-target="#collapsePhys" data-id="phys">
+            <a href="#" data-target="#collapsePhys" data-id="phys" aria-expanded="false">
                 <i class="fas fa-square-root-variable"></i>
                 <span>Vật lý</span>
             </a>
-            <a href="#" data-target="#collapseMath" data-id="math">
+            <a href="#" data-target="#collapseMath" data-id="math" aria-expanded="false">
                 <i class="fas fa-vector-square"></i>
                 <span>Toán học</span>
             </a>
@@ -58,7 +59,7 @@
                     </p>
                     <ul class="collapse list-unstyled" id="collapseBanner">
                         <li>
-                            <a class="item" asp-area="" data-url="/Configuration/GetAllBanner">
+                            <a class="item" asp-area="" asp-controller="Configuration" asp-action="GetAllBanner">
                                 Banner trang chủ
                             </a>
                         </li>
@@ -77,7 +78,7 @@
                     </p>
                     <ul class="collapse list-unstyled" id="collapseUser">
                         <li>
-                            <a class="item" asp-area="" data-url="/Configuration/GetAllUser">
+                            <a class="item" asp-area="" asp-controller="Configuration" asp-action="GetAllUser">
                                 Quản lý người dùng
                             </a>
                         </li>
@@ -86,13 +87,13 @@
             </ul>
 
             @* hoa hoc *@
-            <ul id="collapseChem" class="list-unstyled components">
+            <ul id="collapseChem" class="list-unstyled components d-none">
                 <li class="active">
                     <p class="d-flex justify-content-between">
                         <span class="left">
                             <i class="fas fa-file icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseScienceChem" role="button"
-                               aria-expanded="true" aria-controls="collapseScienceChem">
+                               aria-expanded="false" aria-controls="collapseScienceChem">
                                 Nghiên cứu khoa học
                             </a>
                         </span>
@@ -100,11 +101,12 @@
                     </p>
                     <ul class="collapse list-unstyled" id="collapseScienceChem">
                         <li>
-                            <a class="item" asp-area="" data-url="/Chemistry/GetAll_ScientificResearch">
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_ScientificResearch">
                                 Quản lý đề tài</a>
                         </li>
                         <li>
-                            <a class="item" asp-area="" data-url="/Chemistry/Browse_TopicScientificResearch"> Duyệt đề tài</a>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="Browse_TopicScientificResearch">
+                                Duyệt đề tài</a>
                         </li>
                     </ul>
                 </li>
@@ -113,7 +115,7 @@
                         <span class="left">
                             <i class="fas fa-vial icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseToolChem" role="button"
-                               aria-expanded="true" aria-controls="collapseToolChem">
+                               aria-expanded="false" aria-controls="collapseToolChem">
                                 Dụng cụ thí nghiệm
                             </a>
                         </span>
@@ -121,9 +123,8 @@
                     </p>
                     <ul class="collapse list-unstyled" id="collapseToolChem">
                         <li>
-                            <a class="item" asp-area="" data-url="/Chemistry/GetAll_Equipment">
-                                Quản
-                                lý dụng cụ</a>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_Equipment">
+                                Quản lý dụng cụ</a>
                         </li>
                     </ul>
                 </li>
@@ -132,7 +133,7 @@
                         <span class="left">
                             <i class="fas fa-file-pdf icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseDocumentChem" role="button"
-                               aria-expanded="true" aria-controls="collapseDocumentChem">
+                               aria-expanded="false" aria-controls="collapseDocumentChem">
                                 Giáo trình
                             </a>
                         </span>
@@ -140,7 +141,7 @@
                     </p>
                     <ul class="collapse list-unstyled" id="collapseDocumentChem">
                         <li>
-                            <a class="item" asp-area="" data-url="/Chemistry/GetAll_PlanDetail">
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_PlanDetail">
                                 Quản
                                 lý giáo trình</a>
                         </li>
@@ -151,7 +152,7 @@
                         <span class="left">
                             <i class="fas fa-folder-minus icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapsePracticeChem" role="button"
-                               aria-expanded="true" aria-controls="collapsePracticeChem">
+                               aria-expanded="false" aria-controls="collapsePracticeChem">
                                 Thực hành
                             </a>
                         </span>
@@ -159,17 +160,17 @@
                     </p>
                     <ul class="collapse list-unstyled" id="collapsePracticeChem">
                         <li>
-                            <a class="item" asp-area="" data-url="/Chemistry/GetAll_PracticePlan">
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_PracticePlan">
                                 Bài
                                 thực hành</a>
                         </li>
                         <li>
-                            <a class="item" asp-area="" data-url="/Chemistry/Safety_PracticePlan">
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="Safety_PracticePlan">
                                 An
                                 toàn thí nghiệm</a>
                         </li>
                         <li>
-                            <a class="item" asp-area="" data-url="/Chemistry/Point_PracticePlan">
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="Point_PracticePlan">
                                 Điểm
                                 thực hành</a>
                         </li>
@@ -178,7 +179,7 @@
             </ul>
 
             @* sinh hoc *@
-            <ul id="collapseBio" class="list-unstyled components">
+            <ul id="collapseBio" class="list-unstyled components d-none">
                 <li class="active">
                     <p class="d-flex justify-content-between">
                         <span class="left">
@@ -204,7 +205,7 @@
                         <span class="left">
                             <i class="fas fa-vial icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseToolBio" role="button"
-                               aria-expanded="true" aria-controls="collapseToolBio">
+                               aria-expanded="false" aria-controls="collapseToolBio">
                                 Dụng cụ thí nghiệm
                             </a>
                         </span>
@@ -221,7 +222,7 @@
                         <span class="left">
                             <i class="fas fa-file-pdf icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseDocumentBio" role="button"
-                               aria-expanded="true" aria-controls="collapseDocumentBio">
+                               aria-expanded="false" aria-controls="collapseDocumentBio">
                                 Giáo trình
                             </a>
                         </span>
@@ -238,7 +239,7 @@
                         <span class="left">
                             <i class="fas fa-folder-minus icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapsePracticeBio" role="button"
-                               aria-expanded="true" aria-controls="collapsePracticeBio">
+                               aria-expanded="false" aria-controls="collapsePracticeBio">
                                 Thực hành
                             </a>
                         </span>
@@ -259,13 +260,13 @@
             </ul>
 
             @* vat ly *@
-            <ul id="collapsePhys" class="list-unstyled components">
+            <ul id="collapsePhys" class="list-unstyled components d-none">
                 <li class="active">
                     <p class="d-flex justify-content-between">
                         <span class="left">
                             <i class="fas fa-file icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseSciencePhys" role="button"
-                               aria-expanded="true" aria-controls="collapseSciencePhys">
+                               aria-expanded="false" aria-controls="collapseSciencePhys">
                                 Nghiên cứu khoa học
                             </a>
                         </span>
@@ -285,7 +286,7 @@
                         <span class="left">
                             <i class="fas fa-vial icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseToolPhys" role="button"
-                               aria-expanded="true" aria-controls="collapseToolPhys">
+                               aria-expanded="false" aria-controls="collapseToolPhys">
                                 Dụng cụ thí nghiệm
                             </a>
                         </span>
@@ -302,7 +303,7 @@
                         <span class="left">
                             <i class="fas fa-file-pdf icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseDocumentPhys" role="button"
-                               aria-expanded="true" aria-controls="collapseDocumentPhys">
+                               aria-expanded="false" aria-controls="collapseDocumentPhys">
                                 Giáo trình
                             </a>
                         </span>
@@ -319,7 +320,7 @@
                         <span class="left">
                             <i class="fas fa-folder-minus icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapsePracticePhys" role="button"
-                               aria-expanded="true" aria-controls="collapsePracticePhys">
+                               aria-expanded="false" aria-controls="collapsePracticePhys">
                                 Thực hành
                             </a>
                         </span>
@@ -340,13 +341,13 @@
             </ul>
 
             @* toan hoc *@
-            <ul id="collapseMath" class="list-unstyled components">
+            <ul id="collapseMath" class="list-unstyled components d-none">
                 <li class="active">
                     <p class="d-flex justify-content-between">
                         <span class="left">
                             <i class="fas fa-file icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseScienceMath" role="button"
-                               aria-expanded="true" aria-controls="collapseScienceMath">
+                               aria-expanded="false" aria-controls="collapseScienceMath">
                                 Nghiên cứu khoa học
                             </a>
                         </span>
@@ -366,7 +367,7 @@
                         <span class="left">
                             <i class="fas fa-vial icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseToolMath" role="button"
-                               aria-expanded="true" aria-controls="collapseToolMath">
+                               aria-expanded="false" aria-controls="collapseToolMath">
                                 Dụng cụ thí nghiệm
                             </a>
                         </span>
@@ -383,7 +384,7 @@
                         <span class="left">
                             <i class="fas fa-file-pdf icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseDocumentMath" role="button"
-                               aria-expanded="true" aria-controls="collapseDocumentMath">
+                               aria-expanded="false" aria-controls="collapseDocumentMath">
                                 Giáo trình
                             </a>
                         </span>
@@ -400,7 +401,7 @@
                         <span class="left">
                             <i class="fas fa-folder-minus icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapsePracticeMath" role="button"
-                               aria-expanded="true" aria-controls="collapsePracticeMath">
+                               aria-expanded="false" aria-controls="collapsePracticeMath">
                                 Thực hành
                             </a>
                         </span>
@@ -474,7 +475,6 @@
     @await RenderSectionAsync("Scripts", required: false)
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/home.js" asp-append-version="true"></script>
     <script>
         // todo
         var toggleMenu = localStorage.getItem('toggleMenu');
@@ -515,5 +515,4 @@
         };
     </script>
 </body>
-
 </html>

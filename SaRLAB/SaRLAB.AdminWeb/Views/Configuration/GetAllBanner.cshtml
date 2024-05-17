@@ -10,20 +10,15 @@
 <div id="sub-content">
     <partial name="TitleCustom">
         <div class="table-container">
-            <div class="table-action row">
-                <div class="col-8">
-                    <div class="search-box">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" class="form-control" placeholder="Search&hellip;">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-                        <i class="fa-solid fa-trash-can"></i>
-                        Xóa
-                    </button>
-                    <partial name="ButtonCreate">
-                </div>
+            <div class="table-action d-flex" style="float: right">
+                <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Xóa
+                </button>
+                <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="InsertBanner" asp-controller="Configuration">
+                    <i class="fa-solid fa-plus"></i>
+                    Thêm mới
+                </a>
             </div>
             <table class="table">
                 <thead>
@@ -36,15 +31,12 @@
                             @Html.DisplayNameFor(model => model.ID)
                         </th>
                         <th>
-                            @* @Html.DisplayNameFor(model => model.PathImage) *@
                             Hình ảnh
                         </th>
                         <th>
-                            @* @Html.DisplayNameFor(model => model.CreateBy) *@
                             Người tạo
                         </th>
                         <th>
-                            @* @Html.DisplayNameFor(model => model.CreateTime) *@
                             Thời gian tạo
                         </th>
                         <th class="d-none">
@@ -71,8 +63,8 @@
                             </td>
                             <td>
                                 @* @Html.DisplayFor(modelItem => item.PathImage) *@
-                                <img src="@Url.Content("https://d3design.vn/uploads/5495874gh6y5356.jpg")"
-                                    style="max-width: 100px; max-height: 100px;" />
+                                <img src="@Url.Content(@item.PathImage)"
+                                     style="width: 80px; height: 80px; object-fit: cover;" />
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CreateBy)
@@ -87,10 +79,10 @@
                                 @Html.DisplayFor(modelItem => item.UpdateTime)
                             </td>
                             <td>
-                                <a class="edit" href="@Url.Action("EditBanner", new { id = item.ID })" title="Edit">
+                                <a class="btn-custom-edit" asp-action="EditBanner" asp-controller="Configuration" data-id="@item.ID">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a class="delete" href="@Url.Action("DeleteBanner", new { id = item.ID })" title="Delete">
+                                <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>
@@ -100,5 +92,9 @@
                 </tbody>
             </table>
         </div>
+        @* modal delete *@
+        @{
+            ViewBag.DeleteAction = "DeleteMultipleBanners";
+        }
         <partial name="ModalDelete">
 </div>
