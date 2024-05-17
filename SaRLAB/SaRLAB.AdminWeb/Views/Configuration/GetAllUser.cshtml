@@ -128,7 +128,7 @@
                                 @Html.DisplayFor(modelItem => item.RoleName)</p>
                         </td>
                         <td>
-                            <a class="btn-custom-edit" asp-action="Edit" asp-controller="Configuration" asp-route-email="@item.Email">
+                                <a class="btn-custom-edit-by-email" asp-action="Edit" asp-controller="Configuration" asp-route-email="@item.Email">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
                             <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">

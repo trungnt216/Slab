@@ -1,8 +1,8 @@
 ﻿$(document).ready(function () {
     let selectedIds = [];
     checkEmptyTable();
-/*    updateDeleteButtonState();*/
-
+    updateDeleteButtonState();
+    console.log(selectedIds);
 
     // handle click delete item
     $('.delete').on('click', function () {
@@ -77,10 +77,12 @@
                 $("#content .home-container").html(subContent);
                 history.pushState(null, "", url);
 
+                console.log("table" + $(data).find("script[src]"));
+                $('script[src]').remove();
+
                 $(data).find("script[src]").each(function () {
-                    var script = document.createElement("script");
-                    script.src = this.src;
-                    document.head.appendChild(script);
+                    var src = $(this).attr("src");
+                    $.getScript(src + '?t=' + new Date().getTime());
                 });
             },
             error: function (xhr, status, error) {
@@ -101,11 +103,11 @@
     }
 
     // update state btn delete
-/*    function updateDeleteButtonState() {
+    function updateDeleteButtonState() {
         if (selectedIds.length > 0) {
             $('#deleteSelected').prop('disabled', false);
         } else {
             $('#deleteSelected').prop('disabled', true);
         }
-    }*/
+    }
 });

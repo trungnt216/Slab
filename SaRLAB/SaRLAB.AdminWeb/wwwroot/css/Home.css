@@ -308,6 +308,13 @@ a[data-toggle="collapse"] {
     cursor: pointer;
 }
 
+.table-container .table tbody td a.btn-custom-edit-by-email {
+    font-size: var(--text-xs);
+    color: #f8c221;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
 .table-container .table tbody td a.delete {
     font-size: var(--text-xs);
     color: #dc3545;

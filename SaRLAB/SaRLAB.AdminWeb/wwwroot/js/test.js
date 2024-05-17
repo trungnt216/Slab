@@ -39,6 +39,13 @@
         var url = $(this).attr("href") + "/" + $(this).data("id");
         loadContent(url);
     });
+    $("a.btn-custom-edit-by-email").on("click", function (e) {
+        e.preventDefault();
+
+        var url = $(this).attr("href");
+        loadContent(url);
+    });
+
 
     $("a.btn-custom-return").on("click", function (e) {
         e.preventDefault();
@@ -47,7 +54,6 @@
         loadContent(url);
     });
 
-    var loadedScripts = {};
     // load content using ajax
     function loadContent(url) {
         $.ajax({
@@ -58,13 +64,12 @@
                 $("#content .home-container").html(subContent);
                 history.pushState(null, "", url);
 
+                console.log("test" + $(data).find("script[src]"));
+                $('script[src]').remove();
 
-                  // Remove all existing scripts
-                $('script').remove();
                 $(data).find("script[src]").each(function () {
-                    var script = document.createElement("script");
-                    script.src = this.src;
-                    document.head.appendChild(script);
+                    var src = $(this).attr("src");
+                    $.getScript(src + '?t=' + new Date().getTime());
                 });
             },
             error: function (xhr, status, error) {
