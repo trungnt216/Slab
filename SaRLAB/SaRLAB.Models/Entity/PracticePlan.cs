@@ -20,7 +20,7 @@ namespace SaRLAB.Models.Entity
         public int? SubjectId  { get; set; }
         public Subject? Subject { get; set; }
 
-        public ICollection<PlanDetail>? PlanDetails { get; set; }
+        public ICollection<PlanDetail>?  PlanDetails { get; set; }
 
     }
 }

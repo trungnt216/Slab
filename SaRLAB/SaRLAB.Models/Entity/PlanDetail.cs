@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SaRLAB.Models.Entity
 {
-    public class PlanDetail
+    public class  PlanDetail
     {
         [Key]
         public int ID { get; set; }
