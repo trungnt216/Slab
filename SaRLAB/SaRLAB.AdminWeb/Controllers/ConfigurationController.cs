@@ -15,6 +15,8 @@ namespace SaRLAB.AdminWeb.Controllers
 {
     public class ConfigurationController : Controller
     {
+        string pathFolderSave = "https://localhost:7135//uploads/";
+
         Uri baseAddress = new Uri("http://localhost:5200/api/");
         private readonly HttpClient _httpClient;
 
@@ -133,7 +135,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     FileImage.CopyTo(stream);
                 }
-                user.AvtPath = filePath;
+                user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName;
             }
 
             try 
@@ -209,7 +211,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     FileImage.CopyTo(stream);
                 }
-                _user.AvtPath = filePath;
+                _user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName; ;
             }
 
             try
@@ -298,7 +300,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     Banner banner = new Banner();
-                    banner.PathImage = "https://localhost:7135//uploads/" + uniqueFileName;
+                    banner.PathImage = pathFolderSave + "image/banner/" + uniqueFileName;
                     banner.CreateBy = userLogin.Email;
                     banner.CreateTime = DateTime.Now;
                     banner.UpdateTime = DateTime.Now;
@@ -350,7 +352,6 @@ namespace SaRLAB.AdminWeb.Controllers
         public IActionResult EditBanner(Banner banner, IFormFile FileImage) 
         {
             var _banner = new Banner();
-            _banner.ID = banner.ID;
             _banner.CreateBy = banner.CreateBy;
             _banner.CreateTime = banner.CreateTime;
             _banner.UpdateTime = DateTime.Now;
@@ -377,7 +378,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     FileImage.CopyTo(stream);
                 }
 
-                _banner.PathImage = filePath;
+                _banner.PathImage = pathFolderSave + "image/banner/" + uniqueFileName; ;
             }
 
             try
@@ -503,7 +504,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     FileImage.CopyTo(stream);
                 }
-                _user.AvtPath = filePath;
+                _user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName; ;
             }
 
             try
