@@ -116,8 +116,9 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (FileImage != null)
             {
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
 
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "UserAvata");
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -191,7 +192,9 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (FileImage != null)
             {
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "UserAvata");
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -277,7 +280,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
 
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/banner");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -354,9 +357,11 @@ namespace SaRLAB.AdminWeb.Controllers
             _banner.UpdateBy = userLogin.Email;
             _banner.PathImage = banner.PathImage;
 
-            if(FileImage != null) 
+            if (FileImage != null)
             {
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/banner");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -371,6 +376,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     FileImage.CopyTo(stream);
                 }
+
                 _banner.PathImage = filePath;
             }
 
@@ -445,6 +451,81 @@ namespace SaRLAB.AdminWeb.Controllers
         public class DeleteMultipleRequest
         {
             public List<int> Ids { get; set; }
+        }
+
+
+        //action fix the information of the user
+        [HttpGet]
+        public IActionResult Fix_Information()
+        {
+            User user = new User();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + userLogin.Email).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                user = JsonConvert.DeserializeObject<User>(data);
+            }
+            return View(user);
+        }
+        [HttpPost]
+        public IActionResult Fix_Information(User user, IFormFile FileImage)
+        {
+            var _user = new User();
+            _user.Email = user.Email;
+            _user.Password = user.Password;
+            _user.Name = user.Name;
+            _user.DateOfBirth = user.DateOfBirth;
+            _user.CreateBy = user.CreateBy;
+            _user.CreateTime = user.CreateTime;
+            _user.UpdateBy = userLogin.Email;
+            _user.Role_ID = user.Role_ID;
+
+            if (FileImage != null)
+            {
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileImage.CopyTo(stream);
+                }
+                _user.AvtPath = filePath;
+            }
+
+            try
+            {
+                string data = JsonConvert.SerializeObject(_user);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/update", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "User create success";
+                    return RedirectToAction("GetAllUser");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
         }
     }
 }
