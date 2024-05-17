@@ -10,7 +10,6 @@ namespace SaRLAB.DataAccess
         {
 
         }
-
         public DbSet<User> Users { get; set; }
         public DbSet<ManageLogic> ManageLogics { get; set; }
         public DbSet<Subject> Subjects { get; set; }
@@ -19,5 +18,7 @@ namespace SaRLAB.DataAccess
         public DbSet<ScientificResearch> ScientificResearchs { get; set; }
         public DbSet<ScientificResearchFile> ScientificResearchFiles { get; set; }
         public DbSet<Equipment> Equipments { get; set; }
+        public DbSet<PracticePlan> PracticePlans { get; set; }
+        public DbSet<PlanDetail> PlanDetails { get; set; }
     }
 }
