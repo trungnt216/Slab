@@ -7,6 +7,8 @@ namespace SaRLAB.DataAccess.Service.UserService
     {
         List<UserDto> GetAll();
 
+        List<User> GetAllUser();
+
         User GetByID(string email);
 
         User LogIn(string email, string passWord);

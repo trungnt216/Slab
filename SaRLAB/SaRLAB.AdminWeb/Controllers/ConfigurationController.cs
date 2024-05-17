@@ -15,15 +15,22 @@ namespace SaRLAB.AdminWeb.Controllers
 {
     public class ConfigurationController : Controller
     {
+        string pathFolderSave = "https://localhost:7135//uploads/";
+
         Uri baseAddress = new Uri("http://localhost:5200/api/");
         private readonly HttpClient _httpClient;
 
         private readonly IConfiguration _configuration;
 
+        private readonly IWebHostEnvironment _env;
+
+
         User userLogin = new User();
 
-        public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration)
+        public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
+            _env = env;
+
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
@@ -111,8 +118,9 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (FileImage != null)
             {
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
 
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "UserAvata");
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -127,7 +135,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     FileImage.CopyTo(stream);
                 }
-                user.AvtPath = filePath;
+                user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName;
             }
 
             try 
@@ -186,7 +194,9 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (FileImage != null)
             {
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "UserAvata");
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -201,7 +211,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     FileImage.CopyTo(stream);
                 }
-                _user.AvtPath = filePath;
+                _user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName; ;
             }
 
             try
@@ -270,7 +280,9 @@ namespace SaRLAB.AdminWeb.Controllers
         {
             if (FileImage != null)
             {
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/banner");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -288,7 +300,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     Banner banner = new Banner();
-                    banner.PathImage = filePath;
+                    banner.PathImage = pathFolderSave + "image/banner/" + uniqueFileName;
                     banner.CreateBy = userLogin.Email;
                     banner.CreateTime = DateTime.Now;
                     banner.UpdateTime = DateTime.Now;
@@ -340,16 +352,17 @@ namespace SaRLAB.AdminWeb.Controllers
         public IActionResult EditBanner(Banner banner, IFormFile FileImage) 
         {
             var _banner = new Banner();
-            _banner.ID = banner.ID;
             _banner.CreateBy = banner.CreateBy;
             _banner.CreateTime = banner.CreateTime;
             _banner.UpdateTime = DateTime.Now;
             _banner.UpdateBy = userLogin.Email;
             _banner.PathImage = banner.PathImage;
 
-            if(FileImage != null) 
+            if (FileImage != null)
             {
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/banner");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -364,7 +377,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     FileImage.CopyTo(stream);
                 }
-                _banner.PathImage = filePath;
+
+                _banner.PathImage = pathFolderSave + "image/banner/" + uniqueFileName; ;
             }
 
             try
@@ -410,6 +424,109 @@ namespace SaRLAB.AdminWeb.Controllers
                 return View();
             }
             return RedirectToAction("GetAllBanner");
+        }
+
+        [HttpPost]
+        public IActionResult DeleteMultipleBanners([FromBody] DeleteMultipleRequest request)
+        {
+            try
+            {
+                foreach (var id in request.Ids)
+                {
+                    HttpResponseMessage response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id).Result;
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine($"Failed to delete banner with ID {id}");
+                    }
+                }
+                return RedirectToAction("GetAllBanner");
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+        }
+
+        public class DeleteMultipleRequest
+        {
+            public List<int> Ids { get; set; }
+        }
+
+
+        //action fix the information of the user
+        [HttpGet]
+        public IActionResult Fix_Information()
+        {
+            User user = new User();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + userLogin.Email).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                user = JsonConvert.DeserializeObject<User>(data);
+            }
+            return View(user);
+        }
+        [HttpPost]
+        public IActionResult Fix_Information(User user, IFormFile FileImage)
+        {
+            var _user = new User();
+            _user.Email = user.Email;
+            _user.Password = user.Password;
+            _user.Name = user.Name;
+            _user.DateOfBirth = user.DateOfBirth;
+            _user.CreateBy = user.CreateBy;
+            _user.CreateTime = user.CreateTime;
+            _user.UpdateBy = userLogin.Email;
+            _user.Role_ID = user.Role_ID;
+
+            if (FileImage != null)
+            {
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileImage.CopyTo(stream);
+                }
+                _user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName; ;
+            }
+
+            try
+            {
+                string data = JsonConvert.SerializeObject(_user);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/update", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "User create success";
+                    return RedirectToAction("GetAllUser");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
         }
     }
 }

@@ -1,156 +1,518 @@
-﻿<!DOCTYPE html>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="~/js/test.js"></script>
+    <script src="~/js/table.js"></script>
+    <script src="~/js/form.js"></script>
 </head>
+
 <body>
-    <div>Configuration</div>
-    <div>
-        <div>Cấu hình</div>
-        <a asp-area="" asp-controller="Configuration" asp-action="GetAllBanner">BannerConfig</a>
+    @* sidebar *@
+    <div class="sidebar">
+        <div class="subject">
+            <a class="active" asp-area="" asp-controller="Configuration" asp-action="GetAllBanner" data-target="#collapseConfig" data-id="config" aria-expanded="true">
+                <i class="fas fa-gear"></i>
+                <span>Cấu hình</span>
+            </a>
+            <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_ScientificResearch" data-target="#collapseChem" data-id="chem" aria-expanded="false">
+                <i class="fas fa-flask"></i>
+                <span>Hóa học</span>
+            </a>
+            <a href="#" data-target="#collapseBio" data-id="bio" aria-expanded="false">
+                <i class="fas fa-dna"></i>
+                <span>Sinh học</span>
+            </a>
+            <a href="#" data-target="#collapsePhys" data-id="phys" aria-expanded="false">
+                <i class="fas fa-square-root-variable"></i>
+                <span>Vật lý</span>
+            </a>
+            <a href="#" data-target="#collapseMath" data-id="math" aria-expanded="false">
+                <i class="fas fa-vector-square"></i>
+                <span>Toán học</span>
+            </a>
+        </div>
+        <div class="subject-content">
+            @* cau hinh *@
+            <ul id="collapseConfig" class="list-unstyled components">
+                <li class="active">
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-image"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseBanner" role="button"
+                               aria-expanded="true" aria-controls="collapseBanner">
+                                Cấu hình
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseBanner">
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Configuration" asp-action="GetAllBanner">
+                                Banner trang chủ
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-user-tie icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseUser" role="button"
+                               aria-expanded="true" aria-controls="collapseUser">
+                                Quản lý nhân sự
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseUser">
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Configuration" asp-action="GetAllUser">
+                                Quản lý người dùng
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            @* hoa hoc *@
+            <ul id="collapseChem" class="list-unstyled components d-none">
+                <li class="active">
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-file icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseScienceChem" role="button"
+                               aria-expanded="false" aria-controls="collapseScienceChem">
+                                Nghiên cứu khoa học
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseScienceChem">
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_ScientificResearch">
+                                Quản lý đề tài</a>
+                        </li>
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="Browse_TopicScientificResearch">
+                                Duyệt đề tài</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-vial icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseToolChem" role="button"
+                               aria-expanded="false" aria-controls="collapseToolChem">
+                                Dụng cụ thí nghiệm
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseToolChem">
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_Equipment">
+                                Quản lý dụng cụ</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-file-pdf icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseDocumentChem" role="button"
+                               aria-expanded="false" aria-controls="collapseDocumentChem">
+                                Giáo trình
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseDocumentChem">
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_PlanDetail">
+                                Quản
+                                lý giáo trình</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-folder-minus icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapsePracticeChem" role="button"
+                               aria-expanded="false" aria-controls="collapsePracticeChem">
+                                Thực hành
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapsePracticeChem">
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_PracticePlan">
+                                Bài
+                                thực hành</a>
+                        </li>
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="Safety_PracticePlan">
+                                An
+                                toàn thí nghiệm</a>
+                        </li>
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="Point_PracticePlan">
+                                Điểm
+                                thực hành</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            @* sinh hoc *@
+            <ul id="collapseBio" class="list-unstyled components d-none">
+                <li class="active">
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-file icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseScienceBio" role="button"
+                               aria-expanded="true" aria-controls="collapseScienceBio">
+                                Nghiên cứu khoa học
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseScienceBio">
+                        <li>
+                            <a class="item" href="#"> Quản lý bài viết</a>
+                        </li>
+                        <li>
+                            <a class="item" href="#"> Duyệt đề tài</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-vial icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseToolBio" role="button"
+                               aria-expanded="false" aria-controls="collapseToolBio">
+                                Dụng cụ thí nghiệm
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseToolBio">
+                        <li>
+                            <a class="item" href="#"> Quản lý dụng cụ</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-file-pdf icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseDocumentBio" role="button"
+                               aria-expanded="false" aria-controls="collapseDocumentBio">
+                                Giáo trình
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseDocumentBio">
+                        <li>
+                            <a class="item" href="#"> Quản lý giáo trình</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-folder-minus icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapsePracticeBio" role="button"
+                               aria-expanded="false" aria-controls="collapsePracticeBio">
+                                Thực hành
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapsePracticeBio">
+                        <li>
+                            <a class="item" href="#"> Bài thực hành</a>
+                        </li>
+                        <li>
+                            <a class="item" href="#"> An toàn thí nghiệm</a>
+                        </li>
+                        <li>
+                            <a class="item" href="#"> Điểm thí nghiệm</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            @* vat ly *@
+            <ul id="collapsePhys" class="list-unstyled components d-none">
+                <li class="active">
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-file icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseSciencePhys" role="button"
+                               aria-expanded="false" aria-controls="collapseSciencePhys">
+                                Nghiên cứu khoa học
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseSciencePhys">
+                        <li>
+                            <a class="item" href="#"> Quản lý bài viết</a>
+                        </li>
+                        <li>
+                            <a class="item" href="#"> Duyệt đề tài</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-vial icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseToolPhys" role="button"
+                               aria-expanded="false" aria-controls="collapseToolPhys">
+                                Dụng cụ thí nghiệm
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseToolPhys">
+                        <li>
+                            <a class="item" href="#"> Quản lý dụng cụ</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-file-pdf icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseDocumentPhys" role="button"
+                               aria-expanded="false" aria-controls="collapseDocumentPhys">
+                                Giáo trình
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseDocumentPhys">
+                        <li>
+                            <a class="item" href="#"> Quản lý giáo trình</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-folder-minus icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapsePracticePhys" role="button"
+                               aria-expanded="false" aria-controls="collapsePracticePhys">
+                                Thực hành
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapsePracticePhys">
+                        <li>
+                            <a class="item" href="#"> Bài thực hành</a>
+                        </li>
+                        <li>
+                            <a class="item" href="#"> An toàn thí nghiệm</a>
+                        </li>
+                        <li>
+                            <a class="item" href="#"> Điểm thí nghiệm</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            @* toan hoc *@
+            <ul id="collapseMath" class="list-unstyled components d-none">
+                <li class="active">
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-file icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseScienceMath" role="button"
+                               aria-expanded="false" aria-controls="collapseScienceMath">
+                                Nghiên cứu khoa học
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseScienceMath">
+                        <li>
+                            <a class="item" href="#"> Quản lý bài viết</a>
+                        </li>
+                        <li>
+                            <a class="item" href="#"> Duyệt đề tài</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-vial icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseToolMath" role="button"
+                               aria-expanded="false" aria-controls="collapseToolMath">
+                                Dụng cụ thí nghiệm
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseToolMath">
+                        <li>
+                            <a class="item" href="#"> Quản lý dụng cụ</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-file-pdf icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseDocumentMath" role="button"
+                               aria-expanded="false" aria-controls="collapseDocumentMath">
+                                Giáo trình
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseDocumentMath">
+                        <li>
+                            <a class="item" href="#"> Quản lý giáo trình</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-folder-minus icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapsePracticeMath" role="button"
+                               aria-expanded="false" aria-controls="collapsePracticeMath">
+                                Thực hành
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapsePracticeMath">
+                        <li>
+                            <a class="item" href="#"> Bài thực hành</a>
+                        </li>
+                        <li>
+                            <a class="item" href="#"> An toàn thí nghiệm</a>
+                        </li>
+                        <li>
+                            <a class="item" href="#"> Điểm thí nghiệm</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <div>
-        <div>Quản lý nhân sự</div>
-        <a asp-area="" asp-controller="Configuration" asp-action="GetAllUser">Quản lý người dùng</a>
-
+    @* page content *@
+    <div id="content">
+        <div class="header d-flex justify-content-between">
+            <div class="left d-flex">
+                <div class="custom-menu-close">
+                    <button class="close-menu" onclick="closeMenu()">
+                        <i class="fas fa-angle-left"></i>
+                    </button>
+                </div>
+                <div class="custom-menu-open">
+                    <button class="open-menu" onclick="openMenu()">
+                        <i class="fas fa-angle-right"></i>
+                    </button>
+                </div>
+                <p class="title">Dashboard</p>
+            </div>
+            <div class="right d-flex">
+                <div class="icon-group d-flex">
+                    <i class="fa-regular fa-bell icon-right"></i>
+                    <i class="fa-regular fa-comments icon-right"></i>
+                    <i class="fa-regular fa-moon icon-right"></i>
+                </div>
+                <div class="info-user d-flex">
+                    <img src="@Url.Content("~/images/ic_user.png")" class="icon" alt="" />
+                    <div class="info">
+                        <p class="name">John Doe</p>
+                        <p class="role">Admin</p>
+                    </div>
+                    <div class="dropdown">
+                         <i class="fa-solid fa-ellipsis-vertical" id="ellipsis-icon" data-bs-toggle="dropdown"></i>
+                        <ul class="dropdown-menu">
+                            <li class="d-flex">
+                                <i class="fa-regular fa-user"></i>
+                                <a class="dropdown-item" href="#">Chỉnh sửa thông tin</a>
+                            </li>
+                            <li class="d-flex">
+                                <i class="fa-solid fa-door-open"></i>
+                                <a class="dropdown-item" href="#">Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="home-container">
+            @RenderBody()
+        </div>
     </div>
 
-    <a asp-area="" >Hoá học</a>
-    <div>
-        <div>Nghiên cứu khoa học</div>
-        <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_ScientificResearch">Quản lý đề tài</a>
-        <a asp-area="" asp-controller="Chemistry" asp-action="Browse_TopicScientificResearch">Duyệt đề tài</a>
-    </div>
-
-@*     <div>
-        <div>Bài báo khoa học</div></>
-        <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_PaperResearch">Quản lý bài báo</a>
-        <a asp-area="" asp-controller="Chemistry" asp-action="Create_PaperResearch">Thêm đề tài</a>
-        <a asp-area ="" asp-controller="Chemistry" asp-action="Browse_PaperResearch">Duyệt đề tài</a>
-    </div> *@
-
-    <div>
-        <div>Dụng cụ thí nghiệm</div>
-        <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Equipment">Quản lý dụng cụ</a>
-    </div>
-
-    <div>
-        <div>Giáo trình</div>
-        <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_PlanDetail">Quản lý giáo trình</a>
-    </div>
-
-    <div>
-        <div>Thực hành</div>
-        <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_PracticePlan">Bài thực hành</a>
-        <a asp-area="" asp-controller="Chemistry" asp-action="Safety_PracticePlan">An toàn thí nghiệm</a>
-        <a asp-area="" asp-controller="Chemistry" asp-action="Point_PracticePlan">Điểm thực hành</a>
-    </div>
-
-
-
-    <a>Sinh học</a>
-    <div>
-        <div>Nghiên cứu khoa học</div>
-        <a asp-area="" asp-controller="Biology" asp-action="GetAll_ScientificResearch">Quản lý đề tài</a>
-        <a asp-area="" asp-controller="Biology" asp-action="Browse_TopicScientificResearch">Duyệt đề tài</a>
-    </div>
-
-    <div>
-        <div>Dụng cụ thí nghiệm</div>
-        <a asp-area="" asp-controller="Biology" asp-action="GetAll_Equipment">Quản lý dụng cụ</a>
-    </div>
-
-    <div>
-        <div>Giáo trình</div>
-        <a asp-area="" asp-controller="Biology" asp-action="GetAll_PlanDetail">Quản lý giáo trình</a>
-        <a asp-area="" asp-controller="Biology" asp-action="Create_PlanDetail">Thêm giáo trình</a>
-    </div>
-
-    <div>
-        <div>Thực hành</div>
-        <a asp-area="" asp-controller="Biology" asp-action="GetAll_PracticePlan">Bài thực hành</a>
-        <a asp-area="" asp-controller="Biology" asp-action="Safety_PracticePlan">An toàn thí nghiệm</a>
-        <a asp-area="" asp-controller="Biology" asp-action="Point_PracticePlan">Điểm thực hành</a>
-    </div>
-
-
-    <a>Vật lý</a>
-    <div>
-        <div>Nghiên cứu khoa học</div>
-        <a>Quản lý bài viết</a>
-        <a>Tạo đề tài</a>
-        <a>Tạo bài viết</a>
-        <a>Duyệt đề tài</a>
-    </div>
-
-    <div>
-        <div>Bài báo khoa học</div></>
-        <a>Quản lý bài báo</a>
-        <a>Thêm đề tài</a>
-        <a>Duyệt đề tài</a>
-    </div>
-
-    <div>
-        <div>Dụng cụ thí nghiệm</div>
-        <a>Quản lý dụng cụ</a>
-        <a>Thêm dụng cụ thí nghiệm</a>
-    </div>
-
-    <div>
-        <div>Giáo trình</div>
-        <a>Quản lý giáo trình</a>
-        <a>Thêm giáo trình</a>
-    </div>
-
-    <div>
-        <div>Thực hành</div>
-        <a>Bài thực hành</a>
-        <a>An toàn thí nghiệm</a>
-        <a>Điểm thực hành</a>
-    </div>
-
-
-    <a>Toán Học</a>
-    <div>
-        <div>Nghiên cứu khoa học</div>
-        <a>Quản lý bài viết</a>
-        <a>Tạo đề tài</a>
-        <a>Tạo bài viết</a>
-        <a>Duyệt đề tài</a>
-    </div>
-
-    <div>
-        <div>Bài báo khoa học</div></>
-        <a>Quản lý bài báo</a>
-        <a>Thêm đề tài</a>
-        <a>Duyệt đề tài</a>
-    </div>
-
-    <div>
-        <div>Dụng cụ thí nghiệm</div>
-        <a>Quản lý dụng cụ</a>
-        <a>Thêm dụng cụ thí nghiệm</a>
-    </div>
-
-    <div>
-        <div>Giáo trình</div>
-        <a>Quản lý giáo trình</a>
-        <a>Thêm giáo trình</a>
-    </div>
-
-    <div>
-        <div>Thực hành</div>
-        <a>Bài thực hành</a>
-        <a>An toàn thí nghiệm</a>
-        <a>Điểm thực hành</a>
-    </div>
-
-    <div>
-        @RenderBody()
-    </div>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        // todo
+        var toggleMenu = localStorage.getItem('toggleMenu');
+        if (toggleMenu === 'TOGGLE_CLOSE') {
+            console.log("TOGGLE_CLOSE");
+            document.getElementById("content").style.marginLeft = "90px";
+            document.getElementsByClassName("subject-content")[0].style.width = "0px";
+            document.getElementsByClassName("subject-content")[0].style.marginLeft = "0px";
+            document.getElementsByClassName("custom-menu-close")[0].style.display = "none";
+            document.getElementsByClassName("custom-menu-open")[0].style.display = "block";
+        } else {
+            console.log("TOGGLE_OPEN");
+            document.getElementById("content").style.marginLeft = "340px";
+            document.getElementsByClassName("subject-content")[0].style.width = "250px";
+            document.getElementsByClassName("subject-content")[0].style.marginLeft = "90px";
+            document.getElementsByClassName("custom-menu-close")[0].style.display = "block";
+            document.getElementsByClassName("custom-menu-open")[0].style.display = "none";
+        }
+
+        function openMenu() {
+            console.log("open");
+            document.getElementById("content").style.marginLeft = "340px";
+            document.getElementsByClassName("subject-content")[0].style.width = "250px";
+            document.getElementsByClassName("subject-content")[0].style.marginLeft = "90px";
+            document.getElementsByClassName("custom-menu-close")[0].style.display = "block";
+            document.getElementsByClassName("custom-menu-open")[0].style.display = "none";
+            localStorage.setItem('toggleMenu', "TOGGLE_OPEN");
+        };
+
+        function closeMenu() {
+            console.log("close");
+            document.getElementById("content").style.marginLeft = "90px";
+            document.getElementsByClassName("subject-content")[0].style.width = "0px";
+            document.getElementsByClassName("subject-content")[0].style.marginLeft = "0px";
+            document.getElementsByClassName("custom-menu-close")[0].style.display = "none";
+            document.getElementsByClassName("custom-menu-open")[0].style.display = "block";
+            localStorage.setItem('toggleMenu', "TOGGLE_CLOSE");
+        };
+    </script>
 </body>
 </html>

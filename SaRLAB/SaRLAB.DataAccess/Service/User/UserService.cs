@@ -29,6 +29,7 @@ namespace SaRLAB.DataAccess.Service.UserService
                 CreateTime = value.CreateTime,
                 RoleName = value.RoleManages.RoleName,
                 AvtPath = value.AvtPath,
+                DateOfBirth = value.DateOfBirth,
             });
             return user.ToList();
         }
@@ -187,6 +188,25 @@ namespace SaRLAB.DataAccess.Service.UserService
                 _context.Users.RemoveRange(usersToDelete);
                 _context.SaveChanges();
             }
+        }
+
+        public List<User> GetAllUser()
+        {
+            var user = _context.Users.Select(value => new User
+            {
+                ID = value.ID,
+                Phone = value.Phone,
+                Email = value.Email,
+                Name = value.Name,
+                CreateBy = value.CreateBy,
+                UpdateBy = value.UpdateBy,
+                CreateTime = value.CreateTime,
+                AvtPath = value.AvtPath,
+                DateOfBirth = value.DateOfBirth,
+                RoleManages = value.RoleManages,
+                Role_ID = value.Role_ID,
+            });
+            return user.ToList();
         }
     }
 }

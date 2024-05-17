@@ -1,87 +1,91 @@
 ﻿@model SaRLAB.Models.Entity.ScientificResearch
 
 @{
-    ViewData["Title"] = "Create_TopicScientificResearch";
+    ViewBag.TitleCustom = "Thêm mới đề tài";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
-<h1>Create_TopicScientificResearch</h1>
-
-<h4>ScientificResearch</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create_TopicScientificResearch">
+<div id="sub-content">
+    <div class="d-flex justify-content-between">
+        <partial name="TitleCustom">
+        <partial name="ButtonReturn">
+    </div>
+    <div class="form-container">
+         <form asp-action="Create_TopicScientificResearch">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ID" class="control-label"></label>
+            <div class="form-group d-none">
+                <label asp-for="ID" class="form-label"></label>
                 <input asp-for="ID" class="form-control" />
-                <span asp-validation-for="ID" class="text-danger"></span>
+                <span asp-validation-for="ID" class="text-danger form-text"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="Name" class="col-3 form-label">Tên đề tài</label>
+                <div class="col">
+                    <input asp-for="Name" class="form-control" placeholder="Nhập tên" />
+                    <span asp-validation-for="Name" class="text-danger form-text"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
-                <input asp-for="Author" class="form-control" />
-                <span asp-validation-for="Author" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="Author" class="col-3 form-label">Tác giả</label>
+                <div class="col">
+                    <input asp-for="Author" class="form-control" placeholder="Nhập tác giả" />
+                    <span asp-validation-for="Author" class="text-danger form-text"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="CreateBy" class="control-label"></label>
-                <input asp-for="CreateBy" class="form-control" />
-                <span asp-validation-for="CreateBy" class="text-danger"></span>
+            <div class="form-group d-none">
+                <label asp-for="CreateBy" class="form-label"></label>
+                <input asp-for="CreateBy" class="form-control"/>
+                <span asp-validation-for="CreateBy" class="text-danger form-text"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="remark" class="control-label"></label>
-                <input asp-for="remark" class="form-control" />
-                <span asp-validation-for="remark" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreateTime" class="control-label"></label>
+            <div class="form-group d-none">
+                <label asp-for="CreateTime" class="form-label"></label>
                 <input asp-for="CreateTime" class="form-control" />
-                <span asp-validation-for="CreateTime" class="text-danger"></span>
+                <span asp-validation-for="CreateTime" class="text-danger form-text"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="UpdateBy" class="control-label"></label>
+            <div class="form-group d-none">
+                <label asp-for="UpdateBy" class="form-label"></label>
                 <input asp-for="UpdateBy" class="form-control" />
-                <span asp-validation-for="UpdateBy" class="text-danger"></span>
+                <span asp-validation-for="UpdateBy" class="text-danger form-text"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="UpdateTime" class="control-label"></label>
+            <div class="form-group d-none">
+                <label asp-for="UpdateTime" class="form-label"></label>
                 <input asp-for="UpdateTime" class="form-control" />
-                <span asp-validation-for="UpdateTime" class="text-danger"></span>
+                <span asp-validation-for="UpdateTime" class="text-danger form-text"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PublicationDate" class="control-label"></label>
-                <input asp-for="PublicationDate" class="form-control" />
-                <span asp-validation-for="PublicationDate" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="PublicationDate" class="col-3 form-label">Ngày xuất bản</label>
+                <div class="col">
+                    <input asp-for="PublicationDate" type="date" class="form-control" placeholder="Chọn ngày xuất bản" />
+                    <span asp-validation-for="PublicationDate" class="text-danger form-text"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="UserVerifyFlag" class="control-label"></label>
+            <div class="form-group row">
+                <label asp-for="remark" class="col-3 form-label">Nhận xét</label>
+                <div class="col">
+                    <input asp-for="remark" class="form-control" placeholder="Nhập nhận xét" />
+                    <span asp-validation-for="remark" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="UserVerifyFlag" class="form-label"></label>
                 <input asp-for="UserVerifyFlag" class="form-control" />
-                <span asp-validation-for="UserVerifyFlag" class="text-danger"></span>
+                <span asp-validation-for="UserVerifyFlag" class="text-danger form-text"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="AdminVerifyFlag" class="control-label"></label>
+            <div class="form-group d-none">
+                <label asp-for="AdminVerifyFlag" class="form-label"></label>
                 <input asp-for="AdminVerifyFlag" class="form-control" />
-                <span asp-validation-for="AdminVerifyFlag" class="text-danger"></span>
+                <span asp-validation-for="AdminVerifyFlag" class="text-danger form-text"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="SubjectId" class="control-label"></label>
+            <div class="form-group d-none">
+                <label asp-for="SubjectId" class="form-label"></label>
                 <input asp-for="SubjectId" class="form-control" />
-                <span asp-validation-for="SubjectId" class="text-danger"></span>
+                <span asp-validation-for="SubjectId" class="text-danger form-text"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Thêm mới" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
