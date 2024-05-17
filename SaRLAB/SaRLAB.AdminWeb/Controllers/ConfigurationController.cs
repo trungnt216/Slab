@@ -20,10 +20,15 @@ namespace SaRLAB.AdminWeb.Controllers
 
         private readonly IConfiguration _configuration;
 
+        private readonly IWebHostEnvironment _env;
+
+
         User userLogin = new User();
 
-        public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration)
+        public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
+            _env = env;
+
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
@@ -270,7 +275,9 @@ namespace SaRLAB.AdminWeb.Controllers
         {
             if (FileImage != null)
             {
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -288,7 +295,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     Banner banner = new Banner();
-                    banner.PathImage = filePath;
+                    banner.PathImage = "https://localhost:7135//uploads/" + uniqueFileName;
                     banner.CreateBy = userLogin.Email;
                     banner.CreateTime = DateTime.Now;
                     banner.UpdateTime = DateTime.Now;
