@@ -23,6 +23,7 @@ namespace SaRLAB.DataAccess.Dto.LoginService
                Name = value.Name,
                Password = value.Password,
                RoleName = value.RoleManages.RoleName,
+               DateOfBirth = value.DateOfBirth,
 
             });
 
