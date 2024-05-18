@@ -49,6 +49,8 @@ namespace SaRLAB.DataAccess.Service.BannerService
                 CreateTime = value.CreateTime,
                 UpdateBy = value.UpdateBy,
                 UpdateTime = value.UpdateTime,
+                remark = value.remark,
+                status = value.status,
             });
             return banner.ToList();
         }
@@ -67,6 +69,8 @@ namespace SaRLAB.DataAccess.Service.BannerService
                     CreateTime = banner.CreateTime,
                     UpdateBy = banner.UpdateBy,
                     UpdateTime = banner.UpdateTime,
+                    remark = banner.remark,
+                    status = banner.status,
                 };
 
                 return _banner;
@@ -93,6 +97,8 @@ namespace SaRLAB.DataAccess.Service.BannerService
                 CreateTime = banner.CreateTime,
                 UpdateBy = banner.UpdateBy,
                 UpdateTime = banner.UpdateTime,
+                remark = banner.remark,
+                status = banner.status,
             };
 
             _context.Banners.Add(newbanner);
@@ -112,6 +118,8 @@ namespace SaRLAB.DataAccess.Service.BannerService
                 _bannner.CreateTime = banner.CreateTime;
                 _bannner.UpdateTime = banner.UpdateTime;
                 _bannner.UpdateBy = banner.UpdateBy;
+                _bannner.remark = banner.remark;
+                _bannner.status = banner.status;
                 _context.SaveChanges();
             }
 
