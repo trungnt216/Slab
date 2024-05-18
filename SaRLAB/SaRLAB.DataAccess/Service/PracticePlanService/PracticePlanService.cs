@@ -61,6 +61,23 @@ namespace SaRLAB.DataAccess.Service.PracticePlanService
             return query.ToList();
         }
 
+        public int InsertPracticePlan(PracticePlan practicePlan)
+        {
+            // Check if a practice plan with the same name already exists
+            var existingPlan = _context.PracticePlans.FirstOrDefault(pp => pp.Name == practicePlan.Name);
+            if (existingPlan != null)
+            {
+                // Return a status code or throw an exception indicating that the plan already exists
+                return -1; // Or throw new Exception("Practice plan with the same name already exists.");
+            }
+
+            // Add the new practice plan to the context
+            _context.PracticePlans.Add(practicePlan);
+
+            // Save changes to the database
+            return _context.SaveChanges();
+        }
+
         public int UpdatePracticePlanById(int id, PracticePlan updatedPracticePlan)
         {
             var practicePlan = _context.PracticePlans.Find(id);

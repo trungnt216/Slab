@@ -8,5 +8,7 @@ namespace SaRLAB.DataAccess.Service.PlanDetailService
         PlanDetail GetPlanDetailById(int id);
         int UpdatePlanDetailById(int id, PlanDetail PlanDetail);
         int DeletePlanDetailById(int id);
+
+        int InsertlanDetail(PlanDetail planDetail);
     }
 }

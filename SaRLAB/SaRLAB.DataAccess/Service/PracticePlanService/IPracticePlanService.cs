@@ -8,6 +8,7 @@ namespace SaRLAB.DataAccess.Service.PracticePlanService
         PracticePlan GetPracticePlanById(int id);
         int UpdatePracticePlanById(int id, PracticePlan practicePlan);
         int DeletePracticePlanById(int id);
+        int InsertPracticePlan(PracticePlan practicePlan);
 
     }
 }

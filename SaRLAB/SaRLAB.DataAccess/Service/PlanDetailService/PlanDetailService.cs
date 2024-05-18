@@ -37,6 +37,15 @@ namespace SaRLAB.DataAccess.Service.PlanDetailService
             return _context.PlanDetails.Where(p => p.PracticePlanId == planDetail.PracticePlanId).ToList();
         }
 
+        public int InsertlanDetail(PlanDetail planDetail)
+        {
+            // Add the new plan detail to the context
+            _context.PlanDetails.Add(planDetail);
+
+            // Save changes to the database
+            return _context.SaveChanges();
+        }
+
         public int UpdatePlanDetailById(int id, PlanDetail updatedPlanDetail)
         {
             {
