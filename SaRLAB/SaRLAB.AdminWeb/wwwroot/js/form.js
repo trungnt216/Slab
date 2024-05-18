@@ -1,4 +1,4 @@
-﻿/*$(document).ready(function () {
+﻿$(document).ready(function () {
     $("form").submit(function (event) {
         event.preventDefault();
 
@@ -17,6 +17,13 @@
                 var subContent = $(data).find("#sub-content").html();
                 $("#content .home-container").html(subContent);
                 history.pushState(null, "", url);
+
+                $(data).filter("script").each(function () {
+                    var scriptContent = $(this).html();
+                    var scriptElement = document.createElement('script');
+                    scriptElement.text = scriptContent;
+                    document.head.appendChild(scriptElement);
+                });
             },
             error: function (xhr, status, error) {
                 console.error("Đã xảy ra lỗi:", error);
@@ -24,4 +31,3 @@
         });
     });
 });
-*/
