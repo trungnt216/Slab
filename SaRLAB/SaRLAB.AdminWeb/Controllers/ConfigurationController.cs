@@ -101,6 +101,11 @@ namespace SaRLAB.AdminWeb.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult InsertUser()
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult InsertUser(User user, IFormFile FileImage) {
             if(user == null) 
