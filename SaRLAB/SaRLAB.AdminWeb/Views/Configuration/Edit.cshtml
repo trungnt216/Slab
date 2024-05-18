@@ -9,113 +9,110 @@
 <div id="sub-content">
     <div class="d-flex justify-content-between">
         <partial name="TitleCustom">
-        <a asp-area="" asp-controller="Configuration" asp-action="GetAllUser" class="btn-custom-return" type="button">
-            <i class="fa-solid fa-angles-left"></i>
-            Trở về
-        </a>
+            <a asp-area="" asp-controller="Configuration" asp-action="GetAllUser" class="btn-custom-return"
+                type="button">
+                <i class="fa-solid fa-angles-left"></i>
+                Trở về
+            </a>
     </div>
     <div class="form-container">
         <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label for="FileImage">Choose File:</label>
-                <input type="file" id="FileImage" name="FileImage" class="form-control-file" />
-            </div>
-            <div class="form-group d-none">
-                <label asp-for="ID" class="control-label"></label>
-                <input asp-for="ID" class="form-control" />
-                <span asp-validation-for="ID" class="text-danger"></span>
-            </div>
             <div class="form-group row">
-                <label asp-for="Name" class="col-3 form-label">Họ và tên</label>
+                <label asp-for="Name" class="col-3 control-label">Họ và tên</label>
                 <div class="col">
                     <input asp-for="Name" class="form-control" placeholder="Nhập tên" />
                     <span asp-validation-for="Name" class="text-danger form-text"></span>
                 </div>
             </div>
-            <div class="form-group row">
-                <label asp-for="Email" class="col-3 form-label">Email</label>
+            <div class="form-group row d-none">
+                <label asp-for="Email" class="col-3 control-label">Email</label>
                 <div class="col">
                     <input asp-for="Email" class="form-control" placeholder="Nhập email" />
                     <span asp-validation-for="Email" class="text-danger form-text"></span>
                 </div>
             </div>
             <div class="form-group row">
-                <label asp-for="Password" class="col-3 form-label">Mật khẩu</label>
+                <label asp-for="Password" class="col-3 control-label">Mật khẩu</label>
                 <div class="col">
                     <input asp-for="Password" class="form-control" placeholder="Nhập mật khẩu" />
                     <span asp-validation-for="Password" class="text-danger form-text"></span>
                 </div>
             </div>
-            <div class="form-group row">
-                <label asp-for="Phone" class="col-3 form-label">Số điện thoại</label>
+            <div class="form-group row d-none">
+                <label asp-for="Phone" class="col-3 control-label">Số điện thoại</label>
                 <div class="col">
                     <input asp-for="Phone" class="form-control" placeholder="Nhập số điện thoại" />
                     <span asp-validation-for="Phone" class="text-danger form-text"></span>
                 </div>
             </div>
             <div class="form-group row">
-                <label asp-for="DateOfBirth" class="col-3 form-label">Ngày sinh</label>
+                <label asp-for="DateOfBirth" class="col-3 control-label">Ngày sinh</label>
                 <div class="col">
                     <input type="date" asp-for="DateOfBirth" class="form-control" placeholder="Chọn ngày sinh" />
                     <span asp-validation-for="DateOfBirth" class="text-danger form-text"></span>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="FileImage" class="col-3 form-label">Chọn file</label>
+                <label for="FileImage" class="col-3 control-label">Chọn file</label>
                 <div class="col">
                     <input id="FileImage" accept="image/*" name="FileImage" class="form-control" type="file" />
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="form-group row">
+                <label class="col-3 form-label"></label>
+                <div class="col">
+                    @{
+                        string url = "";
+                        if (string.IsNullOrEmpty(Model.AvtPath))
+                        {
+                            url = "~/images/placehold.png";
+                        }
+                        else
+                        {
+                            url = Model.AvtPath;
+                        }
+                    }
+                    <img id="previewImage" src="@Url.Content(url)" style="width: 150px;
+                                height: 150px;
+                                margin-top: -15px;
+                                border: 3px solid #eeeeee;
+                                border-radius: 15px;
+                                object-fit: cover;" />
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group" type="hidden">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateOfBirth" class="control-label"></label>
-                <input asp-for="DateOfBirth" class="form-control" />
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-            <div class="form-group" type="hidden">
+            <div class="form-group d-none" type="hidden">
                 <label asp-for="CreateBy" class="control-label"></label>
                 <input asp-for="CreateBy" class="form-control" />
                 <span asp-validation-for="CreateBy" class="text-danger"></span>
             </div>
-            <div class="form-group" type="hidden">
+            <div class="form-group d-none" type="hidden">
                 <label asp-for="UpdateBy" class="control-label"></label>
                 <input asp-for="UpdateBy" class="form-control" />
                 <span asp-validation-for="UpdateBy" class="text-danger"></span>
             </div>
-            <div class="form-group" type="hidden">
+            <div class="form-group d-none" type="hidden">
                 <label asp-for="CreateTime" class="control-label"></label>
                 <input asp-for="CreateTime" class="form-control" />
                 <span asp-validation-for="CreateTime" class="text-danger"></span>
             </div>
-            <div class="form-group" type="hidden">
+            <div class="form-group d-none" type="hidden">
                 <label asp-for="AvtPath" class="control-label"></label>
                 <input asp-for="AvtPath" class="form-control" />
                 <span asp-validation-for="AvtPath" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Role_ID" class="control-label"></label>
-                <input asp-for="Role_ID" class="form-control" />
-                <span asp-validation-for="Role_ID" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="Role_ID" class="col-3 control-label">Vai trò</label>
+                <div class="col">
+                    <select asp-for="Role_ID" class="form-control">
+                        <option value="1">Admin</option>
+                        <option value="2">Owner</option>
+                        <option value="3">Teacher</option>
+                        <option value="4">Technical</option>
+                        <option value="5">User</option>
+                    </select>
+                    <span asp-validation-for="Role_ID" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -125,6 +122,18 @@
 </div>
 
 @section Scripts {
+    <script>
+        document.getElementById('FileImage').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }

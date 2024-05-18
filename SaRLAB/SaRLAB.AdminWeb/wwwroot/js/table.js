@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿/*$(document).ready(function () {
     let selectedIds = [];
     checkEmptyTable();
     updateDeleteButtonState();
@@ -77,12 +77,12 @@
                 $("#content .home-container").html(subContent);
                 history.pushState(null, "", url);
 
-                console.log("table" + $(data).find("script[src]"));
-                $('script[src]').remove();
-
-                $(data).find("script[src]").each(function () {
-                    var src = $(this).attr("src");
-                    $.getScript(src + '?t=' + new Date().getTime());
+                $(data).filter("script").each(function () {
+                    var scriptContent = $(this).html();
+                    var scriptElement = document.createElement('script');
+                    scriptElement.text = scriptContent;
+                    document.head.appendChild(scriptElement);
+                    document.head.removeChild(scriptElement);
                 });
             },
             error: function (xhr, status, error) {
@@ -110,4 +110,4 @@
             $('#deleteSelected').prop('disabled', true);
         }
     }
-});
+});*/

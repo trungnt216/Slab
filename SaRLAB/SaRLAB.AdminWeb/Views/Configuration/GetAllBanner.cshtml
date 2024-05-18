@@ -15,7 +15,8 @@
                     <i class="fa-solid fa-trash-can"></i>
                     Xóa
                 </button>
-                <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="InsertBanner" asp-controller="Configuration">
+                <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button"
+                    asp-action="InsertBanner" asp-controller="Configuration">
                     <i class="fa-solid fa-plus"></i>
                     Thêm mới
                 </a>
@@ -38,9 +39,6 @@
                         </th>
                         <th>
                             Thời gian tạo
-                        </th>
-                        <th>
-                            Trạng thái
                         </th>
                         <th class="d-none">
                             @Html.DisplayNameFor(model => model.UpdateBy)
@@ -67,16 +65,13 @@
                             <td>
                                 @* @Html.DisplayFor(modelItem => item.PathImage) *@
                                 <img src="@Url.Content(@item.PathImage)"
-                                     style="width: 80px; height: 80px; object-fit: cover;" />
+                                    style="width: 80px; height: 80px; object-fit: cover;" />
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CreateBy)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CreateTime)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.status)
                             </td>
                             <td class="d-none">
                                 @Html.DisplayFor(modelItem => item.UpdateBy)
@@ -85,11 +80,12 @@
                                 @Html.DisplayFor(modelItem => item.UpdateTime)
                             </td>
                             <td>
-                              @*   @Html.ActionLink("Edit", "EditBanner", new { id = item.ID }) *@
-                                <a asp-action="EditBanner" asp-route-id="@item.ID">
+                                <a class="btn-custom-edit" asp-controller="Configuration" asp-action="EditBanner"
+                                    asp-route-id="@item.ID">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a class="delete" title="Delete">
+                                <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal"
+                                    data-id="@item.ID">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>

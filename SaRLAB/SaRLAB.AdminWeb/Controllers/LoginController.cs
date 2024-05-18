@@ -42,10 +42,10 @@ namespace SaRLAB.AdminWeb.Controllers
             var token = tokenHandler.ReadJwtToken(jwtToken);
 
             // Access the claims from the JWT token
-/*            foreach (Claim claim in token.Claims)
-            {
-                Console.WriteLine($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
-            }*/
+            /*            foreach (Claim claim in token.Claims)
+                        {
+                            Console.WriteLine($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
+                        }*/
 
             foreach (Claim claim in token.Claims)
             {
@@ -103,7 +103,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (claim.Type == ClaimTypes.Role)
                     {
                         Console.WriteLine(claim.Value);
-                        if(!claim.Value.Equals("Admin") && !claim.Value.Equals("Owner"))
+                        if (!claim.Value.Equals("Admin") && !claim.Value.Equals("Owner"))
                         {
                             TempData["Error"] = "Tài khoản này không có quyền truy cập. Vui lòng thử lại!";
                             return View("Index");
@@ -111,7 +111,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     }
                 }
 
-                return RedirectToAction("Index","Home");
+                /* return RedirectToAction("Index", "Home");*/
+                return RedirectToAction("GetAllBanner", "Configuration");
             }
             else
             {

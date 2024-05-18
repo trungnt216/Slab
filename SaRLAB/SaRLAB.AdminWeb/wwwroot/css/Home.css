@@ -235,7 +235,7 @@ a[data-toggle="collapse"] {
 #content .home-container {
     background: #f9fafd;
     padding: 20px 25px;
-    height: calc(100vh - 50px);
+    /*height: calc(100vh - 50px);*/
 }
 
 /* form-container */

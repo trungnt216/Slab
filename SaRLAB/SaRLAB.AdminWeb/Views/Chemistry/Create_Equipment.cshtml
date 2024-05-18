@@ -2,64 +2,70 @@
 
 @{
     ViewData["Title"] = "Create_Equipment";
+    ViewBag.TitleCustom = "Thêm mới thiết bị";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
 <div id="sub-content">
-    <h1>Create_Equipment</h1>
-
-    <h4>Equipment</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create_Equipment">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="ID" class="control-label"></label>
-                    <input asp-for="ID" class="form-control" />
-                    <span asp-validation-for="ID" class="text-danger"></span>
+    <div class="d-flex justify-content-between">
+        <partial name="TitleCustom">
+        <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Equipment" class="btn-custom-return" type="button">
+            <i class="fa-solid fa-angles-left"></i>
+            Trở về
+        </a>
+    </div>
+    <div class="form-container">
+        <form asp-action="Create_Equipment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <label asp-for="Name" class="col-3 form-label">Tên thiết bị</label>
+                <div class="col">
+                    <input asp-for="Name" class="form-control" placeholder="Nhập tên" />
+                    <span asp-validation-for="Name" class="text-danger form-text"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="CreateBy" class="control-label"></label>
+                <input asp-for="CreateBy" class="form-control" />
+                <span asp-validation-for="CreateBy" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="CreateTime" class="control-label"></label>
+                <input asp-for="CreateTime" class="form-control" />
+                <span asp-validation-for="CreateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="UpdateBy" class="control-label"></label>
+                <input asp-for="UpdateBy" class="form-control" />
+                <span asp-validation-for="UpdateBy" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="UpdateTime" class="control-label"></label>
+                <input asp-for="UpdateTime" class="form-control" />
+                <span asp-validation-for="UpdateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="SubjectId" class="control-label"></label>
+                <input asp-for="SubjectId" class="form-control" />
+                <span asp-validation-for="SubjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="EquipmentQuantity" class="col-3 form-label">Số lượng</label>
+                <div class="col">
+                    <input asp-for="EquipmentQuantity" class="form-control" placeholder="Nhập số lượng" min="0" type="number" value="0" />
+                    <span asp-validation-for="EquipmentQuantity" class="text-danger form-text"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="CreateBy" class="control-label"></label>
-                    <input asp-for="CreateBy" class="form-control" />
-                    <span asp-validation-for="CreateBy" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CreateTime" class="control-label"></label>
-                    <input asp-for="CreateTime" class="form-control" />
-                    <span asp-validation-for="CreateTime" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="UpdateBy" class="control-label"></label>
-                    <input asp-for="UpdateBy" class="form-control" />
-                    <span asp-validation-for="UpdateBy" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="UpdateTime" class="control-label"></label>
-                    <input asp-for="UpdateTime" class="form-control" />
-                    <span asp-validation-for="UpdateTime" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SubjectId" class="control-label"></label>
-                    <input asp-for="SubjectId" class="form-control" />
-                    <span asp-validation-for="SubjectId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm mới" class="btn btn-primary" />
+            </div>
             </form>
-        </div>
     </div>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-
 </div>
 
 @section Scripts {
