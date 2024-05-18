@@ -3,76 +3,122 @@
 @{
     ViewData["Title"] = "GetAll_PlanDetail";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
+    ViewBag.TitleCustom = "Danh sách giáo trình";
+    int counter = 1;
 }
 
-<h1>GetAll_PlanDetail</h1>
-
-<p>
-    <a asp-controller="Biology" asp-action="Create_PlanDetail">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EquipmentQuantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EquipmentId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PracticePlanId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdateBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdateTime)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EquipmentQuantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EquipmentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PracticePlanId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdateBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdateTime)
-            </td>
-            <td>
-                    @Html.ActionLink("Edit", "Edit_PlanDetail", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete_PlanDetail", new { id=item.ID })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div id="sub-content">
+    <partial name="TitleCustom">
+    <div class="table-container">
+        <div class="table-action row">
+            <div class="col-8">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search&hellip;">
+                </div>
+            </div>
+            <div class="col-4">
+                <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Xóa
+                </button>
+                    <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="Create_PlanDetail" asp-controller="Chemistry">
+                    <i class="fa-solid fa-plus"></i>
+                    Thêm mới
+                </a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="selectAll" />
+                    </th>
+                    <th>#</th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        Số lượng thiết bị
+                    </th>
+                    <th>
+                        Mã thiết bị
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.PracticePlanId)
+                    </th>
+                    <th>
+                        Người tạo
+                    </th>
+                    <th>
+                        Thời gian tạo
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.UpdateBy)
+                    </th>
+                    <th class="d-none"> 
+                        @Html.DisplayNameFor(model => model.UpdateTime)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="selectRow" data-id="@item.ID" />
+                        </td>
+                        <td>
+                            @counter
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EquipmentQuantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EquipmentId)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.PracticePlanId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateTime)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.UpdateBy)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.UpdateTime)
+                        </td>
+                        <td>
+                            <a class="btn-custom-view-detail" asp-action="Detail_PlanDetail" asp-controller="Chemistry" asp-route-id="@item.ID">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            <a class="btn-custom-edit" asp-action="Edit_PlanDetail" asp-controller="Chemistry" asp-route-id="@item.ID">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                            @* @Html.ActionLink("Edit", "Edit_PlanDetail", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete_PlanDetail", new { id = item.ID }) *@
+                        </td>
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+    @* modal delete *@
+    @{
+        ViewBag.DeleteAction = "DeleteMultiplePlanDetail";
+    }
+    <partial name="ModalDelete">
+</div>

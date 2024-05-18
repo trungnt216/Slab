@@ -6,6 +6,7 @@
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
+
 <div id="sub-content">
     <div class="d-flex justify-content-between">
         <partial name="TitleCustom">
@@ -23,16 +24,38 @@
                 <span asp-validation-for="ID" class="text-danger"></span>
             </div>
             <div class="form-group row">
-                <label for="FileImage" class="col-2 form-label">Chọn file</label>
+                <label for="FileImage" class="col-3 form-label">Chọn file</label>
                 <div class="col">
-                    <input type="file" id="FileImage" name="FileImage" class="form-control-file" asp-for="PathImage" />
+                    <input id="FileImage" accept="image/*" name="FileImage" class="form-control" type="file" />
                 </div>
             </div>
-            <div class="form-group">
-@*                 <img src="@Url.Content(Model.PathImage)"
-                     style="max-width: 100px; max-height: 100px;" /> *@
-                <img src="@Url.Content("https://d3design.vn/uploads/5495874gh6y5356.jpg")"
-                     style="max-width: 580px; max-height: 580px;" style="margin-top: -10px" />
+            <div class="form-group row">
+                <label class="col-3 form-label"></label>
+                <div class="col">
+                    @{
+                        string url = "";
+                        if (string.IsNullOrEmpty(Model.PathImage))
+                        {
+                            url = "~/images/placehold.png";
+                        }
+                        else
+                        {
+                            url = Model.PathImage;
+                        }
+                    }
+                    <img id="previewImage" src="@Url.Content(url)"
+                         style="width: 300px;
+                                height: 200px;
+                                margin-top: -15px;
+                                border: 3px solid #eeeeee;
+                                border-radius: 15px;
+                                object-fit: cover" />
+                </div>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="PathImage" class="control-label"></label>
+                <input asp-for="PathImage" class="form-control" />
+                <span asp-validation-for="PathImage" class="text-danger"></span>
             </div>
             <div class="form-group d-none">
                 <label asp-for="CreateBy" class="control-label"></label>
@@ -62,5 +85,21 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.getElementById('FileImage').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            console.log(file);
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

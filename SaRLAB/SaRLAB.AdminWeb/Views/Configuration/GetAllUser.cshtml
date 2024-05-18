@@ -97,43 +97,49 @@
                         <td class="d-none">
                             @Html.DisplayFor(modelItem => item.CreateTime)
                         </td>
-                        @{
-                            string backgroundColor = "";
+                            @{
+                                string backgroundColor = "";
 
-                            if (item.RoleName == "Admin")
-
-                            {
-
-                                backgroundColor = "#8ed4ff";
-
+                                if (item.RoleName == "Admin")
+                                {
+                                    backgroundColor = "#115b9a";
+                                }
+                                else if (item.RoleName == "Owner")
+                                {
+                                    backgroundColor = "#9d2d38";
+                                }
+                                else if (item.RoleName == "Teacher")
+                                {
+                                    backgroundColor = "#7badd9";
+                                }
+                                else if (item.RoleName == "Technical")
+                                {
+                                    backgroundColor = "#c76871";
+                                }
+                                else if (item.RoleName == "User")
+                                {
+                                    backgroundColor = "#efd37d";
+                                }
                             }
-
-                            else if (item.RoleName == "Moderator")
-
-                            {
-
-                                backgroundColor = "#3783c4";
-
-                            }
-                        }
+                            <td>
+                                <p style="
+                                    margin: 0;
+                                    background: @backgroundColor;
+                                    padding: 2px;
+                                    text-align: center;
+                                    border-radius: 15px;
+                                    color: white;
+                                    font-size: 12px">
+                                    @Html.DisplayFor(modelItem => item.RoleName)
+                                </p>
+                            </td>
                         <td>
-                            <p style="
-                                margin: 0;
-                                background: @backgroundColor;
-                                padding: 2px;
-                                text-align: center;
-                                border-radius: 15px;
-                                color: white;
-                                font-size: 12px">
-                                @Html.DisplayFor(modelItem => item.RoleName)</p>
-                        </td>
-                        <td>
-                                <a class="btn-custom-edit-by-email" asp-action="Edit" asp-controller="Configuration" asp-route-email="@item.Email">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-                            <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
+                        <a class="btn-custom-edit-by-email" asp-action="Edit" asp-route-email="@item.Email">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
                         </td>
                     </tr>
                     counter++;

@@ -9,92 +9,92 @@
 
 <div id="sub-content">
     <partial name="TitleCustom">
-        <div class="table-container">
-            <div class="table-action d-flex" style="float: right">
-                <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-                    <i class="fa-solid fa-trash-can"></i>
-                    Xóa
-                </button>
-                <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="InsertBanner" asp-controller="Configuration">
-                    <i class="fa-solid fa-plus"></i>
-                    Thêm mới
-                </a>
-            </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            <input type="checkbox" id="selectAll" />
-                        </th>
-                        <th>#</th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.ID)
-                        </th>
-                        <th>
-                            Hình ảnh
-                        </th>
-                        <th>
-                            Người tạo
-                        </th>
-                        <th>
-                            Thời gian tạo
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.UpdateBy)
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.UpdateTime)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="selectRow" data-id="@item.ID" />
-                            </td>
-                            <td>
-                                @counter
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.ID)
-                            </td>
-                            <td>
-                                @* @Html.DisplayFor(modelItem => item.PathImage) *@
-                                <img src="@Url.Content(@item.PathImage)"
-                                     style="width: 80px; height: 80px; object-fit: cover;" />
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CreateBy)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CreateTime)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.UpdateBy)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.UpdateTime)
-                            </td>
-                            <td>
-                                <a class="btn-custom-edit" asp-action="EditBanner" asp-controller="Configuration" data-id="@item.ID">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        counter++;
-                    }
-                </tbody>
-            </table>
+    <div class="table-container">
+        <div class="table-action d-flex" style="float: right">
+            <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                <i class="fa-solid fa-trash-can"></i>
+                Xóa
+            </button>
+            <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="InsertBanner" asp-controller="Configuration">
+                <i class="fa-solid fa-plus"></i>
+                Thêm mới
+            </a>
         </div>
-        @* modal delete *@
-        @{
-            ViewBag.DeleteAction = "DeleteMultipleBanners";
-        }
-        <partial name="ModalDelete">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="selectAll" />
+                    </th>
+                    <th>#</th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        Hình ảnh
+                    </th>
+                    <th>
+                        Người tạo
+                    </th>
+                    <th>
+                        Thời gian tạo
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.UpdateBy)
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.UpdateTime)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="selectRow" data-id="@item.ID" />
+                        </td>
+                        <td>
+                            @counter
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @* @Html.DisplayFor(modelItem => item.PathImage) *@
+                            <img src="@Url.Content(@item.PathImage)"
+                                    style="width: 80px; height: 80px; object-fit: cover;" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateTime)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.UpdateBy)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.UpdateTime)
+                        </td>
+                        <td>
+                            <a class="btn-custom-edit" asp-controller="Configuration" asp-action="EditBanner" asp-route-id="@item.ID">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+    @* modal delete *@
+    @{
+        ViewBag.DeleteAction = "DeleteMultipleBanners";
+    }
+    <partial name="ModalDelete">
 </div>

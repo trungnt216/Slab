@@ -36,7 +36,7 @@
     $("a.btn-custom-edit").on("click", function (e) {
         e.preventDefault();
 
-        var url = $(this).attr("href") + "/" + $(this).data("id");
+        var url = $(this).attr("href");
         loadContent(url);
     });
     $("a.btn-custom-edit-by-email").on("click", function (e) {
@@ -64,16 +64,15 @@
                 $("#content .home-container").html(subContent);
                 history.pushState(null, "", url);
 
-                console.log("test" + $(data).find("script[src]"));
-                $('script[src]').remove();
-
-                $(data).find("script[src]").each(function () {
-                    var src = $(this).attr("src");
-                    $.getScript(src + '?t=' + new Date().getTime());
+                $(data).filter("script").each(function () {
+                    var scriptContent = $(this).html();
+                    var scriptElement = document.createElement('script');
+                    scriptElement.text = scriptContent;
+                    document.head.appendChild(scriptElement);
                 });
             },
             error: function (xhr, status, error) {
-                console.log("Đã xảy ra lỗi: " + error);
+                console.log("Error: " + error);
             },
         });
     }

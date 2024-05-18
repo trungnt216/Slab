@@ -191,6 +191,7 @@ namespace SaRLAB.AdminWeb.Controllers
             _user.CreateTime = user.CreateTime;
             _user.UpdateBy = userLogin.Email;
             _user.Role_ID = user.Role_ID;
+            _user.AvtPath = user.AvtPath;
 
             if (FileImage != null)
             {
@@ -333,7 +334,7 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditBanner(string id)
+        public IActionResult EditBanner(int id)
         {
             Banner banner = new Banner();
 
@@ -349,9 +350,10 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(banner);
         }
         [HttpPost]
-        public IActionResult EditBanner(Banner banner, IFormFile FileImage) 
+        public IActionResult EditBanner(Banner banner, IFormFile FileImage)
         {
             var _banner = new Banner();
+            _banner.ID = banner.ID;
             _banner.CreateBy = banner.CreateBy;
             _banner.CreateTime = banner.CreateTime;
             _banner.UpdateTime = DateTime.Now;
@@ -375,7 +377,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    FileImage.CopyTo(stream);
+                    FileImage.CopyTo(stream)
+;
                 }
 
                 _banner.PathImage = pathFolderSave + "image/banner/" + uniqueFileName; ;
