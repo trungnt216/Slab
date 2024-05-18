@@ -39,6 +39,9 @@
                         <th>
                             Thời gian tạo
                         </th>
+                        <th>
+                            Trạng thái
+                        </th>
                         <th class="d-none">
                             @Html.DisplayNameFor(model => model.UpdateBy)
                         </th>
@@ -72,6 +75,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.CreateTime)
                             </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.status)
+                            </td>
                             <td class="d-none">
                                 @Html.DisplayFor(modelItem => item.UpdateBy)
                             </td>
@@ -79,10 +85,11 @@
                                 @Html.DisplayFor(modelItem => item.UpdateTime)
                             </td>
                             <td>
-                                <a class="btn-custom-edit" asp-action="EditBanner" asp-controller="Configuration" data-id="@item.ID">
+                              @*   @Html.ActionLink("Edit", "EditBanner", new { id = item.ID }) *@
+                                <a asp-action="EditBanner" asp-route-id="@item.ID">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
+                                <a class="delete" title="Delete">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>
