@@ -46,6 +46,31 @@ namespace SaRLAB.DataAccess.Service.DocumentService
             return _context.Documents.Where(e => e.SubjectId == subjectId).ToList();
         }
 
+        public List<Document> getNormalDocument()
+        {
+                return _context.Documents
+                    .Where(doc => doc.SpecializedEnglishFlag == false && doc.PageFlag == false)
+                    .ToList();
+        }
+
+        public List<Document> getPageDocument()
+        {
+            {
+                return _context.Documents
+                    .Where(doc => doc.SpecializedEnglishFlag == false && doc.PageFlag == true)
+                    .ToList();
+            }
+        }
+
+        public List<Document> getSpecializedEnglishDocument()
+        {
+            {
+                return _context.Documents
+                    .Where(doc => doc.SpecializedEnglishFlag == true && doc.PageFlag == false)
+                    .ToList();
+            }
+        }
+
         public int InsertDocument(Document document)
         {
             _context.Documents.Add(document);
