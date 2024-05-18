@@ -12,7 +12,7 @@ using SaRLAB.DataAccess;
 namespace SaRLAB.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240517174740_DBContext")]
+    [Migration("20240518003128_DBContext")]
     partial class DBContext
     {
         /// <inheritdoc />
@@ -191,7 +191,7 @@ namespace SaRLAB.DataAccess.Migrations
 
                     b.HasIndex("PracticePlanId");
 
-                    b.ToTable("PlanDetail");
+                    b.ToTable("PlanDetails");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.PracticePlan", b =>
@@ -214,7 +214,7 @@ namespace SaRLAB.DataAccess.Migrations
                     b.Property<string>("PracticeType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SubjectId")
+                    b.Property<int?>("SubjectId")
                         .HasColumnType("int");
 
                     b.Property<string>("UpdateBy")
@@ -227,7 +227,7 @@ namespace SaRLAB.DataAccess.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("PracticePlan");
+                    b.ToTable("PracticePlans");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.RoleManage", b =>
@@ -419,7 +419,7 @@ namespace SaRLAB.DataAccess.Migrations
                         .HasForeignKey("EquipmentId");
 
                     b.HasOne("SaRLAB.Models.Entity.PracticePlan", "PracticePlan")
-                        .WithMany()
+                        .WithMany("PlanDetails")
                         .HasForeignKey("PracticePlanId");
 
                     b.Navigation("Equipment");
@@ -431,9 +431,7 @@ namespace SaRLAB.DataAccess.Migrations
                 {
                     b.HasOne("SaRLAB.Models.Entity.Subject", "Subject")
                         .WithMany("PracticePlans")
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SubjectId");
 
                     b.Navigation("Subject");
                 });
@@ -468,6 +466,11 @@ namespace SaRLAB.DataAccess.Migrations
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.Equipment", b =>
+                {
+                    b.Navigation("PlanDetails");
+                });
+
+            modelBuilder.Entity("SaRLAB.Models.Entity.PracticePlan", b =>
                 {
                     b.Navigation("PlanDetails");
                 });
