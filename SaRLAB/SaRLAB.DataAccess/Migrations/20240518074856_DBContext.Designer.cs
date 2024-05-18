@@ -12,7 +12,7 @@ using SaRLAB.DataAccess;
 namespace SaRLAB.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240518003128_DBContext")]
+    [Migration("20240518074856_DBContext")]
     partial class DBContext
     {
         /// <inheritdoc />
@@ -191,7 +191,7 @@ namespace SaRLAB.DataAccess.Migrations
 
                     b.HasIndex("PracticePlanId");
 
-                    b.ToTable("PlanDetails");
+                    b.ToTable("PlanDetail");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.PracticePlan", b =>
@@ -227,7 +227,7 @@ namespace SaRLAB.DataAccess.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("PracticePlans");
+                    b.ToTable("PracticePlan");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.RoleManage", b =>

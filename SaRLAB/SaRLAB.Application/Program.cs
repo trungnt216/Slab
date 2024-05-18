@@ -15,6 +15,8 @@ using SaRLAB.DataAccess.Service.ScientificResearchService;
 using SaRLAB.DataAccess.Service.ScientificResearchFileService;
 using SaRLAB.DataAccess.Service.EquipmentService;
 using SaRLAB.DataAccess.Service.DocumentService;
+using SaRLAB.DataAccess.Service.PlanDetailService;
+using SaRLAB.DataAccess.Service.PracticePlanService;
 
 namespace SaRLAB.Application
 {
@@ -44,6 +46,8 @@ namespace SaRLAB.Application
             builder.Services.AddScoped<IScientificResearchFileService, ScientificResearchFileService>();
             builder.Services.AddScoped<IEquipmentService, EquipmentService>();
             builder.Services.AddScoped<IDocumentService, DocumentService>();
+            builder.Services.AddScoped<IPlanDetailService, PlanDetailService>();
+            builder.Services.AddScoped<IPracticePlanService, PracticePlanService>();
 
 
             //Add Authentication and JwtBearer

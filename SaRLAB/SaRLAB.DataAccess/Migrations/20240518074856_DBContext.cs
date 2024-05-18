@@ -150,7 +150,7 @@ namespace SaRLAB.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PracticePlans",
+                name: "PracticePlan",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -165,9 +165,9 @@ namespace SaRLAB.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PracticePlans", x => x.ID);
+                    table.PrimaryKey("PK_PracticePlan", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_PracticePlans_Subject_SubjectId",
+                        name: "FK_PracticePlan_Subject_SubjectId",
                         column: x => x.SubjectId,
                         principalTable: "Subject",
                         principalColumn: "ID");
@@ -202,7 +202,7 @@ namespace SaRLAB.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PlanDetails",
+                name: "PlanDetail",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -217,16 +217,16 @@ namespace SaRLAB.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlanDetails", x => x.ID);
+                    table.PrimaryKey("PK_PlanDetail", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_PlanDetails_Equipment_EquipmentId",
+                        name: "FK_PlanDetail_Equipment_EquipmentId",
                         column: x => x.EquipmentId,
                         principalTable: "Equipment",
                         principalColumn: "ID");
                     table.ForeignKey(
-                        name: "FK_PlanDetails_PracticePlans_PracticePlanId",
+                        name: "FK_PlanDetail_PracticePlan_PracticePlanId",
                         column: x => x.PracticePlanId,
-                        principalTable: "PracticePlans",
+                        principalTable: "PracticePlan",
                         principalColumn: "ID");
                 });
 
@@ -265,18 +265,18 @@ namespace SaRLAB.DataAccess.Migrations
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlanDetails_EquipmentId",
-                table: "PlanDetails",
+                name: "IX_PlanDetail_EquipmentId",
+                table: "PlanDetail",
                 column: "EquipmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlanDetails_PracticePlanId",
-                table: "PlanDetails",
+                name: "IX_PlanDetail_PracticePlanId",
+                table: "PlanDetail",
                 column: "PracticePlanId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PracticePlans_SubjectId",
-                table: "PracticePlans",
+                name: "IX_PracticePlan_SubjectId",
+                table: "PracticePlan",
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
@@ -308,7 +308,7 @@ namespace SaRLAB.DataAccess.Migrations
                 name: "ManageLogic");
 
             migrationBuilder.DropTable(
-                name: "PlanDetails");
+                name: "PlanDetail");
 
             migrationBuilder.DropTable(
                 name: "ScientificResearchFile");
@@ -320,7 +320,7 @@ namespace SaRLAB.DataAccess.Migrations
                 name: "Equipment");
 
             migrationBuilder.DropTable(
-                name: "PracticePlans");
+                name: "PracticePlan");
 
             migrationBuilder.DropTable(
                 name: "ScientificResearch");

@@ -188,7 +188,7 @@ namespace SaRLAB.DataAccess.Migrations
 
                     b.HasIndex("PracticePlanId");
 
-                    b.ToTable("PlanDetails");
+                    b.ToTable("PlanDetail");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.PracticePlan", b =>
@@ -224,7 +224,7 @@ namespace SaRLAB.DataAccess.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("PracticePlans");
+                    b.ToTable("PracticePlan");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.RoleManage", b =>

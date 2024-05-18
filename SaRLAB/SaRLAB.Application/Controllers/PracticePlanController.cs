@@ -18,9 +18,9 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetByPracticePlan")]
-        public IActionResult GetPracticePlanList(PracticePlan practicePlan)
+        public IActionResult GetPracticePlanList([FromBody] PracticePlan practicePlan)
         {
-            return Ok(practicePlan);
+            return Ok(_practicePlanService.GetPracticePlanList(practicePlan));
         }
 
         [HttpGet]
@@ -32,9 +32,16 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
-        public IActionResult UpdatePracticePlanById(int id, PracticePlan practicePlan)
+        public IActionResult UpdatePracticePlanById(int id, [FromBody] PracticePlan practicePlan)
         {
             return Ok(_practicePlanService.UpdatePracticePlanById(id,practicePlan));
+        }
+
+        [HttpPost]
+        [Route("Insert")]
+        public IActionResult InsertPracticePlan([FromBody] PracticePlan practicePlan)
+        {
+            return Ok(_practicePlanService.InsertPracticePlan(practicePlan));
         }
 
         [HttpDelete]
