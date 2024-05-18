@@ -28,6 +28,13 @@ namespace SaRLAB.Application.Controllers
         }
 
         [HttpGet]
+        [Route("GetUser")]
+        public IActionResult GetAllUser()
+        {
+            return Ok(_loginDto.GetAllUser());
+        }
+
+        [HttpGet]
         [Route("login/{email}/{passWord}")]
         public IActionResult LogIn(string email, string passWord)
         {

@@ -20,4 +20,8 @@
     <ProjectReference Include="..\SaRLAB.Models\SaRLAB.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Service\PracticePlanService\" />
+  </ItemGroup>
+
 </Project>

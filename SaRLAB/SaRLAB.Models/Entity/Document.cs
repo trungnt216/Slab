@@ -21,7 +21,7 @@ namespace SaRLAB.Models.Entity
         public DateTime? CreateTime { get; set; }
         public string? UpdateBy { get; set; }
         public DateTime? UpdateTime { get; set; }
-        public int SubjectId { get; set; }
+        public int? SubjectId { get; set; }
         public Subject? Subject { get; set; }
     }
 }

@@ -46,23 +46,9 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult GetAll_ScientificResearch()
-        {
-            List<ScientificResearch> scientificResearches = new List<ScientificResearch>();
-            
-            HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearch/1/GetAll").Result;
 
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                scientificResearches = JsonConvert.DeserializeObject<List<ScientificResearch>>(data);
-            }
 
-            return View(scientificResearches);
-        }
-
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------
         [HttpGet]
         public IActionResult Edit_TopicScientificResearch(int id)
         {
@@ -142,12 +128,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 scientificResearch.CreateTime = DateTime.Now;
                 scientificResearch.UpdateTime = DateTime.Now;
                 scientificResearch.UpdateBy = userLogin.Email;
+                scientificResearch.SubjectId = 1;
 
                 string data = JsonConvert.SerializeObject(scientificResearch);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response;
-                response = _httpClient.PostAsync(_httpClient.BaseAddress + "ScientificResearch/1/Insert", content).Result;
+                response = _httpClient.PostAsync(_httpClient.BaseAddress + "ScientificResearch/Insert", content).Result;
 
                 if(response.IsSuccessStatusCode) 
                 {
@@ -182,6 +169,25 @@ namespace SaRLAB.AdminWeb.Controllers
             
             return View(sc);
         }
+
+        //----------------------------------------------------------------------------------------------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_ScientificResearch()
+        {
+            List<ScientificResearch> scientificResearches = new List<ScientificResearch>();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearch/1/GetAll").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                scientificResearches = JsonConvert.DeserializeObject<List<ScientificResearch>>(data);
+            }
+
+            return View(scientificResearches);
+        }
+
 
         [HttpGet]
         public IActionResult Create_ScientificResearch(int scId)
@@ -326,27 +332,8 @@ namespace SaRLAB.AdminWeb.Controllers
             return RedirectToAction("GetAll_ScientificResearch");
         }
 
-        public IActionResult Browse_TopicScientificResearch()
-        {
-            return View();
-        }
-
-        public IActionResult GetAll_PaperResearch()
-        {
-            return View();
-        }
-
-        public IActionResult Create_PaperResearch()
-        {
-            return View();
-        }
-
-        public IActionResult Browse_PaperResearch()
-        {
-            return View();
-        }
-
-
+        
+        //--------------------------------------------------------------------------------------------------------------------------------------------
         [HttpGet]
         public IActionResult GetAll_Equipment()
         {
@@ -465,20 +452,142 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             return RedirectToAction("GetAll_Equipment");
         }
-
+        
+        
+        //------------------------------------------------------------------------------------------------------------------------------------
+        [HttpGet]
         public IActionResult GetAll_PlanDetail() 
         {
-            return View();        
+            List<PlanDetail> planDetail = new List<PlanDetail>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "").Result;
+
+            if(response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                planDetail = JsonConvert.DeserializeObject<List<PlanDetail>>(data);
+            }
+
+            return View(planDetail);        
         }
 
+        [HttpGet]
         public IActionResult Create_PlanDetail()
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Create_PlanDetail(PlanDetail planDetail)
+        {
+            if(planDetail == null)
+            {
+                return View();
+            }
+            try
+            {
+                planDetail.CreateTime = DateTime.Now;
+                planDetail.UpdateTime = DateTime.Now;
+                planDetail.CreateBy = userLogin.Email;
+                planDetail.UpdateBy = userLogin.Email;
 
+                string data =JsonConvert.SerializeObject(planDetail);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response;
+                response = _httpClient.PostAsync(_httpClient.BaseAddress + "", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "User create success";
+                    return RedirectToAction("GetAll_PlanDetail");
+                }
+            }
+            catch(Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+
+            return View();
+        }
+
+
+        [HttpGet]        
+        public IActionResult Edit_PlanDetail(int  id)
+        {
+
+            PlanDetail planDetail = new PlanDetail();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                planDetail = JsonConvert.DeserializeObject<PlanDetail>(data);
+            }
+
+            return View(planDetail);
+        }
+        [HttpPost]
+        public IActionResult Edit_PlanDetail(PlanDetail planDetail)
+        {
+            try
+            {
+                string data = JsonConvert.SerializeObject(planDetail);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "" + planDetail.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "User create success";
+                    return RedirectToAction("GetAll_ScientificResearch");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+
+        public IActionResult Delete_PlanDetail(int id)
+        {
+            try
+            {
+                HttpResponseMessage response;
+                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "" + id).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("GetAll_PlanDetail");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return RedirectToAction("GetAll_PlanDetail");
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------------------------
+        [HttpGet]
         public IActionResult GetAll_PracticePlan()
         {
-            return View();
+            List<PracticePlan> practicePlans = new List<PracticePlan>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                practicePlans = JsonConvert.DeserializeObject<List<PracticePlan>>(data);
+            }
+
+            return View(practicePlans);
         }
 
         public IActionResult Safety_PracticePlan()

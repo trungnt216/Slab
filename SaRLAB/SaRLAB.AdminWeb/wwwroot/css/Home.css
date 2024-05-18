@@ -1,1 +1,420 @@
-﻿
+﻿.sidebar .subject {
+    width: 90px;
+    background: #10264d;
+    float: left;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 15px;
+}
+
+.sidebar .subject a {
+    padding: 8px 8px 18px 8px;
+    text-decoration: none;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.3s;
+    text-align: center;
+    font-weight: 600;
+}
+
+.sidebar .subject .active {
+    color: #84b1ff;
+}
+
+.sidebar .subject a:hover {
+    color: #84b1ff;
+}
+
+.sidebar .subject a i {
+    font-size: var(--text-sm);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.sidebar .subject a span {
+    font-size: var(--text-xss);
+    display: block;
+}
+
+.sidebar .subject-content {
+    background: #5d82c2;
+    float: left;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 15px;
+}
+
+.sidebar .subject-content::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+}
+
+.sidebar .subject-content::-webkit-scrollbar {
+    width: 4px;
+    background-color: #F5F5F5;
+}
+
+.sidebar .subject-content::-webkit-scrollbar-thumb {
+    background-color: #649bfa;
+}
+
+.sidebar .subject-content ul li {
+    font-size: var(--text-xss);
+}
+
+.sidebar .subject-content ul li p {
+    margin: 0 10px;
+    padding: 10px 10px;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    color: rgba(255,255,255,.8);
+}
+
+.sidebar .subject-content ul li p span i {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.sidebar .subject-content ul li p span a.title {
+    text-decoration: none;
+    outline: none;
+    font-weight: 600;
+    white-space: nowrap;
+    color: white;
+}
+
+.sidebar .subject-content ul li > a.item {
+    margin-left: 25px;
+    margin-right: 10px;
+    padding: 10px 0 10px 25px;
+    display: block;
+    color: rgba(255,255,255,.8);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    text-decoration: none;
+    outline: none;
+}
+
+.sidebar .subject-content ul li > a.item.active {
+    color: white;
+    font-weight: 600;
+}
+
+.sidebar .subject-content ul li a:hover {
+    color: white;
+    font-weight: 600;
+}
+
+.sidebar .subject-content ul li a:active {
+    color: white;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+#content .header {
+    height: 50px;
+    border-bottom: 1px solid #eaeaea;
+    box-shadow: #dedede33 0px 5px;
+    align-items: center;
+    padding: 0 20px;
+}
+
+#content .header .left p.title{
+    margin: 0;
+    font-weight: 500;
+}
+
+#content .header .right .icon-group {
+    align-items: center;
+}
+
+#content .header .right .icon-group i {
+    padding: 0px 10px;
+    color: #10264d;
+    cursor: pointer;
+}
+
+.custom-menu-close button {
+    padding: 0px 8px;
+    border-radius: 25px;
+    border: none;
+    background: none;
+}
+
+.custom-menu-close button i {
+    color: #10264d;
+    cursor: pointer;
+}
+
+.custom-menu-close button i:hover {
+    color: #84b1ff;
+    cursor: pointer;
+}
+
+.custom-menu-open button {
+    padding: 0px 8px;
+    border-radius: 25px;
+    border: none;
+    background: none;
+}
+
+.custom-menu-open button i {
+    color: #10264d;
+    cursor: pointer;
+}
+
+.custom-menu-open button i:hover {
+    color: #84b1ff;
+    cursor: pointer;
+}
+
+#content .header .right .icon-group i:hover {
+    color: #84b1ff;
+}
+
+#content .header .right .info-user {
+    align-items: center;
+    border-left: 1px solid #dedede;
+    padding-left: 10px;
+}
+
+#content .header .right .info-user .icon {
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    border-radius: 30px;
+    border: 1px solid #dedede;
+    margin-right: 7px;
+}
+
+#content .header .right .info-user .info p {
+    margin: 0;
+    margin-right: 12px;
+}
+
+#content .header .right .info-user .info p.name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#content .header .right .info-user .info p.role {
+    font-size: 12px;
+}
+
+#content .header .right .info-user .dropdown i {
+    color: #10264d;
+    cursor: pointer;
+}
+
+#content .header .right .info-user .dropdown i:hover {
+    color: #84b1ff;
+}
+
+#content .header .right .info-user .dropdown .dropdown-menu li.d-flex {
+    padding-left: 10px;
+}
+
+#content .header .right .info-user .dropdown .dropdown-menu li i {
+    font-size: 14px;
+}
+
+#content .header .right .info-user .dropdown .dropdown-menu li a {
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+#content .header .right .info-user .dropdown .dropdown-menu li a:hover {
+    background: none;
+    color: #84b1ff;
+}
+
+#content .home-container {
+    background: #f9fafd;
+    padding: 20px 25px;
+    height: calc(100vh - 50px);
+}
+
+/* form-container */
+.form-container {
+    background: white;
+    margin: 20px 150px;
+    padding: 30px 40px;
+    border-radius: 10px;
+}
+
+.form-container .form-group {
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+.form-container .form-group .form-label{
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+
+.form-container .form-group .form-text {
+    font-size: 13px;
+    font-style: italic;
+}
+
+.form-container .form-group .form-control {
+    font-size: 14px;
+}
+
+.form-container .form-group .btn-primary {
+    padding: 7px 25px;
+    border-radius: 7px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: var(--text-xss);
+    background: #5995fd;
+    border: none;
+    float: right;
+}
+
+.form-container .form-group .btn-primary:hover {
+    background: #1e61c3;
+}
+
+
+/* table-container */
+.table-container {
+    background: white;
+    margin: 20px 0px;
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+.table-container .table thead th {
+    font-weight: 600;
+    font-size: var(--text-xss);
+}
+
+.table-container .table tbody td {
+    font-size: var(--text-xss);
+    align-content: center;
+}
+
+.table-container .table tbody td a.btn-custom-edit {
+    font-size: var(--text-xs);
+    color: #f8c221;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.table-container .table tbody td a.btn-custom-edit-by-email {
+    font-size: var(--text-xs);
+    color: #f8c221;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.table-container .table tbody td a.delete {
+    font-size: var(--text-xs);
+    color: #dc3545;
+    cursor: pointer;
+}
+
+.table-container .table-action {
+    margin-bottom: 20px;
+    padding: 0px 0px 0px 10px;
+}
+
+.table-container .table-action .search-box {
+    position: relative;
+    float: left;
+}
+
+.table-container .table-action .search-box input {
+    height: 34px;
+    border-radius: 20px;
+    padding-left: 35px;
+    border-color: #ddd;
+    box-shadow: none;
+}
+
+.table-container .table-action .col-4{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.table-container .table-action .search-box i {
+    color: #a0a5b1;
+    position: absolute;
+    font-size: 16px;
+    top: 8px;
+    left: 10px;
+}
+
+.table-container .table-action .btn {
+    float: right;
+    padding: 7px 25px;
+    border: none;
+    border-radius: 7px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: var(--text-xss);
+}
+
+.table-container .table-action .btn i {
+    margin-right: 5px;
+}
+
+.noti-table {
+    font-style: italic;
+    color: #e87c86;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+}
+
+/*custom button*/
+.btn-custom-create {
+    background: #04af60;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 7px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: var(--text-xss);
+    text-decoration: none;
+    text-decoration: none;
+}
+
+.btn-custom-create:hover {
+    background: #03904f;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-custom-create i {
+    margin-right: 5px;
+}
+
+.btn-custom-return {
+    background: #04af60;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 7px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: var(--text-xss);
+    text-decoration: none;
+}
+
+.btn-custom-return:hover {
+    background: #03904f;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-custom-return i {
+    margin-right: 5px;
+}
+

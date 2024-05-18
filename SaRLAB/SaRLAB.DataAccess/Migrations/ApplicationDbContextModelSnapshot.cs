@@ -92,7 +92,7 @@ namespace SaRLAB.DataAccess.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("Documents");
+                    b.ToTable("Document");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.Equipment", b =>

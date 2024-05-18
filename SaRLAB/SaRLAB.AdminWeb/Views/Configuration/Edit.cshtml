@@ -2,25 +2,70 @@
 
 @{
     ViewData["Title"] = "Edit";
+    ViewBag.TitleCustom = "Chỉnh sửa người dùng";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div id="sub-content">
+    <div class="d-flex justify-content-between">
+        <partial name="TitleCustom">
+        <a asp-area="" asp-controller="Configuration" asp-action="GetAllUser" class="btn-custom-return" type="button">
+            <i class="fa-solid fa-angles-left"></i>
+            Trở về
+        </a>
+    </div>
+    <div class="form-container">
         <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label for="FileImage">Choose File:</label>
                 <input type="file" id="FileImage" name="FileImage" class="form-control-file" />
             </div>
-            <div class="form-group" type="hidden">
+            <div class="form-group d-none">
                 <label asp-for="ID" class="control-label"></label>
                 <input asp-for="ID" class="form-control" />
                 <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Name" class="col-3 form-label">Họ và tên</label>
+                <div class="col">
+                    <input asp-for="Name" class="form-control" placeholder="Nhập tên" />
+                    <span asp-validation-for="Name" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Email" class="col-3 form-label">Email</label>
+                <div class="col">
+                    <input asp-for="Email" class="form-control" placeholder="Nhập email" />
+                    <span asp-validation-for="Email" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Password" class="col-3 form-label">Mật khẩu</label>
+                <div class="col">
+                    <input asp-for="Password" class="form-control" placeholder="Nhập mật khẩu" />
+                    <span asp-validation-for="Password" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Phone" class="col-3 form-label">Số điện thoại</label>
+                <div class="col">
+                    <input asp-for="Phone" class="form-control" placeholder="Nhập số điện thoại" />
+                    <span asp-validation-for="Phone" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="DateOfBirth" class="col-3 form-label">Ngày sinh</label>
+                <div class="col">
+                    <input type="date" asp-for="DateOfBirth" class="form-control" placeholder="Chọn ngày sinh" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="FileImage" class="col-3 form-label">Chọn file</label>
+                <div class="col">
+                    <input id="FileImage" accept="image/*" name="FileImage" class="form-control" type="file" />
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -79,10 +124,8 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
