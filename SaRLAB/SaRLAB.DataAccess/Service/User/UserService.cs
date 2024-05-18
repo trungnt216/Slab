@@ -208,5 +208,27 @@ namespace SaRLAB.DataAccess.Service.UserService
             });
             return user.ToList();
         }
+
+        public List<User> SearchUsers(string name, string email, int? roleId)
+        {
+            IQueryable<User> query = _context.Users;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(u => u.Name.Contains(name));
+            }
+
+            if (!string.IsNullOrEmpty(email))
+            {
+                query = query.Where(u => u.Email.Contains(email));
+            }
+
+            if (roleId.HasValue)
+            {
+                query = query.Where(u => u.Role_ID == roleId.Value);
+            }
+
+            return query.ToList();
+        }
     }
 }
