@@ -12,6 +12,8 @@ namespace SaRLAB.AdminWeb.Controllers
 {
     public class ChemistryController : Controller
     {
+        string pathFolderSave = "https://localhost:7135//uploads/";
+
         Uri baseAddress = new Uri("http://localhost:5200/api/");
         private readonly HttpClient _httpClient;
 

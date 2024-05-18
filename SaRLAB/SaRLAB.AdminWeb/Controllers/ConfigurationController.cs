@@ -18,6 +18,7 @@ namespace SaRLAB.AdminWeb.Controllers
         string pathFolderSave = "https://localhost:7135//uploads/";
 
         Uri baseAddress = new Uri("http://localhost:5200/api/");
+
         private readonly HttpClient _httpClient;
 
         private readonly IConfiguration _configuration;
@@ -37,23 +38,25 @@ namespace SaRLAB.AdminWeb.Controllers
 
             string jwtToken = _configuration["JwtToken:Value"];
 
-            var tokenHandler = new JwtSecurityTokenHandler();
 
-            var token = tokenHandler.ReadJwtToken(jwtToken);
+                var tokenHandler = new JwtSecurityTokenHandler();
 
-            foreach (Claim claim in token.Claims)
-            {
-                if (claim.Type == ClaimTypes.Name)
+                var token = tokenHandler.ReadJwtToken(jwtToken);
+
+                foreach (Claim claim in token.Claims)
                 {
-                    userLogin.Email = claim.Value;
-                }
-                else if (claim.Type == ClaimTypes.Role)
-                {
-                    
-                }
-            }
+                    if (claim.Type == ClaimTypes.Name)
+                    {
+                        userLogin.Email = claim.Value;
+                    }
+                    else if (claim.Type == ClaimTypes.Role)
+                    {
 
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+                    }
+                }
+
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+            
         }
 
         public IActionResult Index()
@@ -96,17 +99,6 @@ namespace SaRLAB.AdminWeb.Controllers
 
             return View(users);
 
-        }
-
-        public IActionResult GetUsedByRole()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult InsertUser()
-        {
-            return View();
         }
 
         [HttpPost]
@@ -266,11 +258,6 @@ namespace SaRLAB.AdminWeb.Controllers
             return RedirectToAction("GetAllUser");
         }
 
-        public IActionResult PostManagement()
-        {
-            return View();
-        }
-
         [HttpGet]
         public IActionResult InsertBanner()
         {
@@ -336,6 +323,15 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult EditBanner(int id)
         {
+
+/*            string substringToRemove = "/undefined";
+
+            if (id.EndsWith(substringToRemove))
+            {
+                // Remove the undesired substring
+                id = id.Remove(id.Length - substringToRemove.Length);
+            }*/
+
             Banner banner = new Banner();
 
             HttpResponseMessage response;
@@ -347,6 +343,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 banner = JsonConvert.DeserializeObject<Banner>(data);
             }
+
+/*            banner.ID = Convert.ToInt32(id);*/
+
             return View(banner);
         }
         [HttpPost]
@@ -359,6 +358,7 @@ namespace SaRLAB.AdminWeb.Controllers
             _banner.UpdateTime = DateTime.Now;
             _banner.UpdateBy = userLogin.Email;
             _banner.PathImage = banner.PathImage;
+            _banner.status = banner.status;
 
             if (FileImage != null)
             {

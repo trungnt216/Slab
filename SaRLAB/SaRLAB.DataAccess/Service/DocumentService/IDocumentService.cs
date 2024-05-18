@@ -15,5 +15,9 @@ namespace SaRLAB.DataAccess.Service.DocumentService
 
         int UpdateDocumentById(int id,Document document);
         int DeleteDocumentById(int id);
+
+        List<Document> getNormalDocument();
+        List<Document> getPageDocument();
+        List<Document> getSpecializedEnglishDocument():
     }
 }

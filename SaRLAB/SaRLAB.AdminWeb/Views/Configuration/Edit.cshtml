@@ -9,10 +9,11 @@
 <div id="sub-content">
     <div class="d-flex justify-content-between">
         <partial name="TitleCustom">
-        <a asp-area="" asp-controller="Configuration" asp-action="GetAllUser" class="btn-custom-return" type="button">
-            <i class="fa-solid fa-angles-left"></i>
-            Trở về
-        </a>
+            <a asp-area="" asp-controller="Configuration" asp-action="GetAllUser" class="btn-custom-return"
+                type="button">
+                <i class="fa-solid fa-angles-left"></i>
+                Trở về
+            </a>
     </div>
     <div class="form-container">
         <form asp-action="Edit" method="post" enctype="multipart/form-data">
@@ -63,16 +64,16 @@
                 <div class="col">
                     @{
                         string url = "";
-                        if(string.IsNullOrEmpty(Model.AvtPath))
+                        if (string.IsNullOrEmpty(Model.AvtPath))
                         {
                             url = "~/images/placehold.png";
-                        } else
+                        }
+                        else
                         {
                             url = Model.AvtPath;
                         }
                     }
-                    <img id="previewImage" src="@Url.Content(url)"
-                         style="width: 150px;
+                    <img id="previewImage" src="@Url.Content(url)" style="width: 150px;
                                 height: 150px;
                                 margin-top: -15px;
                                 border: 3px solid #eeeeee;

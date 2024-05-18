@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using  SaRLAB.Models.Entity;
 
 namespace SaRLAB.DataAccess.Service.PlanDetailService
 {
     public interface IPlanDetailService
     {
+        List<PlanDetail> GetPlanDetailListByPracticePlanId(PlanDetail planDetail);
+        PlanDetail GetPlanDetailById(int id);
+        int UpdatePlanDetailById(int id, PlanDetail PlanDetail);
+        int DeletePlanDetailById(int id);
+
+        int InsertlanDetail(PlanDetail planDetail);
     }
 }
