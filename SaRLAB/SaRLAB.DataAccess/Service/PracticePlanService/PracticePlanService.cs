@@ -36,29 +36,23 @@ namespace SaRLAB.DataAccess.Service.PracticePlanService
             return 0;
         }
 
+        public List<PracticePlan> GetPracticePlanAccordingtoProgramList()
+        {
+            return _context.PracticePlans
+                .Where(plan => plan.PracticeType.Equals("1"))
+                .ToList();
+        }
+
         public PracticePlan GetPracticePlanById(int id)
         {
             return _context.PracticePlans.Find(id);
         }
 
-        public List<PracticePlan> GetPracticePlanList(PracticePlan practicePlan)
+        public List<PracticePlan> GetPracticePlanResearchList()
         {
-            IQueryable<PracticePlan> query = _context.PracticePlans;
-
-            if (practicePlan != null)
-            {
-                if (!string.IsNullOrEmpty(practicePlan.Name))
-                    query = query.Where(pp => pp.Name == practicePlan.Name);
-
-                if (!string.IsNullOrEmpty(practicePlan.PracticeType))
-                    query = query.Where(pp => pp.PracticeType == practicePlan.PracticeType);
-
-
-                if (practicePlan.SubjectId != 0)
-                    query = query.Where(pp => pp.SubjectId == practicePlan.SubjectId);
-            }
-
-            return query.ToList();
+            return _context.PracticePlans
+                .Where(plan => plan.PracticeType.Equals("2"))
+                .ToList();
         }
 
         public int InsertPracticePlan(PracticePlan practicePlan)
@@ -78,6 +72,17 @@ namespace SaRLAB.DataAccess.Service.PracticePlanService
             return _context.SaveChanges();
         }
 
+        public List<PracticePlan> SearchPracticePlan(string name)
+        {
+            IQueryable<PracticePlan> query = _context.PracticePlans;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(u => u.Name.Contains(name));
+            }
+            return query.ToList();
+        }
+
         public int UpdatePracticePlanById(int id, PracticePlan updatedPracticePlan)
         {
             var practicePlan = _context.PracticePlans.Find(id);
@@ -88,7 +93,6 @@ namespace SaRLAB.DataAccess.Service.PracticePlanService
                 practicePlan.PracticeType = updatedPracticePlan.PracticeType;   
                 practicePlan.UpdateBy = updatedPracticePlan.UpdateBy;
                 practicePlan.UpdateTime = updatedPracticePlan.UpdateTime;
-                practicePlan.SubjectId = updatedPracticePlan.SubjectId;
 
                 return _context.SaveChanges();
             }

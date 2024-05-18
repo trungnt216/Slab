@@ -209,7 +209,7 @@ namespace SaRLAB.DataAccess.Service.UserService
             return user.ToList();
         }
 
-        public List<User> SearchUsers(string name, string email, int? roleId)
+        public List<User> SearchUsers(string? name, string? email, int? roleId)
         {
             IQueryable<User> query = _context.Users;
 

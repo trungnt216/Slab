@@ -160,7 +160,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("SearchUser")]
-        public IActionResult SearchUsers(string name, string email, int? roleId)
+        public IActionResult SearchUsers(string? name, string? email, int? roleId)
         {
             return Ok(_loginDto.SearchUsers(name,email,roleId));
         }
