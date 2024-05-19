@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Login";
+
     Layout = "~/Views/Home/_LayoutLogin.cshtml";
 }
 <form asp-action="Login" class="sign-in-form">
@@ -20,6 +21,7 @@
     <input type="submit" value="Đăng nhập" class="btn solid" />
 
     @if (TempData["Error"] != null)
+
     {
         <div>
             <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
@@ -52,6 +54,7 @@
     <input type="submit" class="btn" value="Đăng ký" />
 
     @if (TempData["Error"] != null)
+
     {
         <div>
             <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
@@ -60,5 +63,7 @@
 </form>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
