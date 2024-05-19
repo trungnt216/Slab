@@ -1,17 +1,17 @@
-﻿@model SaRLAB.Models.Entity.PlanDetail
+﻿@model SaRLAB.Models.Entity.Document
 
 @{
-    ViewData["Title"] = "Edit_PlanDetail";
+    ViewData["Title"] = "Create_SubjectSyllabus";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
-<h1>Edit_PlanDetail</h1>
+<h1>Create_SubjectSyllabus</h1>
 
-<h4>PlanDetail</h4>
+<h4>Document</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit_PlanDetail">
+        <form asp-action="Create_SubjectSyllabus">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ID" class="control-label"></label>
@@ -19,19 +19,24 @@
                 <span asp-validation-for="ID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EquipmentQuantity" class="control-label"></label>
-                <input asp-for="EquipmentQuantity" class="form-control" />
-                <span asp-validation-for="EquipmentQuantity" class="text-danger"></span>
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EquipmentId" class="control-label"></label>
-                <input asp-for="EquipmentId" class="form-control" />
-                <span asp-validation-for="EquipmentId" class="text-danger"></span>
+                <label asp-for="Path" class="control-label"></label>
+                <input asp-for="Path" class="form-control" />
+                <span asp-validation-for="Path" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PracticePlanId" class="control-label"></label>
-                <input asp-for="PracticePlanId" class="form-control" />
-                <span asp-validation-for="PracticePlanId" class="text-danger"></span>
+                <label asp-for="SpecializedEnglishFlag" class="control-label"></label>
+                <input asp-for="SpecializedEnglishFlag" class="form-control" />
+                <span asp-validation-for="SpecializedEnglishFlag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageFlag" class="control-label"></label>
+                <input asp-for="PageFlag" class="form-control" />
+                <span asp-validation-for="PageFlag" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CreateBy" class="control-label"></label>
@@ -54,7 +59,12 @@
                 <span asp-validation-for="UpdateTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="SubjectId" class="control-label"></label>
+                <input asp-for="SubjectId" class="form-control" />
+                <span asp-validation-for="SubjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>

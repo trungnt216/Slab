@@ -72,5 +72,11 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetScientificResearchFileByType/{type}")]
+        public IActionResult GetScientificResearchFileByType(string type)
+        {
+            return Ok(_scientificResearchFileService.GetScientificResearchFileByType(type));
+        }
     }
 }
