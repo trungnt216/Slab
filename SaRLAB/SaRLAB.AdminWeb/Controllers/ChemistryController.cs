@@ -176,7 +176,7 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetImage_TopicScientificResearch(int id)
+        public ActionResult GetImage_TopicScientificResearch(int id)
         {
             List<ScientificResearchFile> sc = new List<ScientificResearchFile>();
 
@@ -191,7 +191,9 @@ namespace SaRLAB.AdminWeb.Controllers
 
             TempData["id"] = id;
 
-            return RedirectToAction("Detail_TopicScientificResearch",sc);
+            ViewBag.ScientificResearchFile = sc;
+
+            return View("Detail_TopicScientificResearch",sc);
         }
 
         //----------------------------------------------------------------------------------------------------------------------------------
