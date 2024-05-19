@@ -105,7 +105,7 @@ namespace SaRLAB.UserWeb.Controllers
 
                         if (claim.Value.Equals("Admin"))
                         {
-                            return View();
+                            return RedirectToAction("Index","HomePage");
                         }
                     }
                 }
@@ -114,7 +114,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["Error"] = "Không có tài khoản. Vui lòng thử lại!";
-                return View("Index");
+                return View();
             }
         }
 
