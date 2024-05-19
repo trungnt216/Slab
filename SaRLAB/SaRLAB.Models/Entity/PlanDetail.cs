@@ -12,7 +12,7 @@ namespace SaRLAB.Models.Entity
     public class  PlanDetail
     {
         [Key]
-        public int ID { get; set; }
+        public int? ID { get; set; }
 
         public int? EquipmentQuantity { get; set; }
         public int? EquipmentId { get; set; }

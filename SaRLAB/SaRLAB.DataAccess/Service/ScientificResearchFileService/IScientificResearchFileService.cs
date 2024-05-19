@@ -11,6 +11,7 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchFileService
     {
         List<ScientificResearchFile> GetFilesByScientificResearchId(int ScientificResearchId);
         ScientificResearchFile GetScientificResearchFileId(int id);
+        ScientificResearchFile GetScientificResearchFileByType(String type);
         int InsertScientificResearchFile(ScientificResearchFile scientificResearchFile);
         int UpdateScientificResearchFileById(int id, ScientificResearchFile scientificResearchFile);
         int DeleteScientificResearchFileById(int id);
