@@ -22,5 +22,6 @@ namespace SaRLAB.Models.Dto
         public DateTime? CreateTime { get; set; }
         public string? RoleName { get; set; }
         public string? AvtPath { get; set; }
+        public int? SchoolId { get; set; }
     }
 }

@@ -501,24 +501,25 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create_SubjectSyllabus(PlanDetail planDetail)
+        public IActionResult Create_SubjectSyllabus(Document document)
         {
-            if(planDetail == null)
+            if(document == null)
             {
                 return View();
             }
             try
             {
-                planDetail.CreateTime = DateTime.Now;
-                planDetail.UpdateTime = DateTime.Now;
-                planDetail.CreateBy = userLogin.Email;
-                planDetail.UpdateBy = userLogin.Email;
+                document.CreateTime = DateTime.Now;
+                document.UpdateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateBy = userLogin.Email;
+                document.SubjectId = 1;
 
-                string data =JsonConvert.SerializeObject(planDetail);
+                string data =JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response;
-                response = _httpClient.PostAsync(_httpClient.BaseAddress + "", content).Result;
+                response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert", content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -636,6 +637,44 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public ActionResult Create_References()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create_References(Document document)
+        {
+            if (document == null)
+            {
+                return View();
+            }
+
+            try
+            {
+                document.SpecializedEnglishFlag = false;
+                document.PageFlag = true;
+                document.CreateBy = userLogin.Email;
+                document.CreateTime = DateTime.Now;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SubjectId = 1;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response;
+                response = _httpClient.PostAsync(_httpClient.BaseAddress + "ScientificResearch/Insert", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "User create success";
+                    return RedirectToAction("GetAll_ScientificResearch");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+
             return View();
         }
         //------------tiếng anh chuyên ngành --------------------

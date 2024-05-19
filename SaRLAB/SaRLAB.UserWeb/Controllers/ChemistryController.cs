@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SaRLAB.Models.Dto;
+using SaRLAB.Models.Entity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
@@ -50,6 +52,53 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
 
+        //----------------------------hóa chất ------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Chemistry()
+        {
+            List<Equipment> equipment = new List<Equipment>();
 
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/CHEMISTRY").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //----------------------------dụng cụ-----------------------------------------------
+        public IActionResult GetAll_ToolChemistry()
+        {
+            List<Equipment> equipment = new List<Equipment>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/TOOLCHEMISTRY").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //------------------------Thiết bị ----------------------------------------------
+        public IActionResult GetAll_EquipmentChemistry()
+        {
+            List<Equipment> equipment = new List<Equipment>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/EQUIPMENTCHEMISTRY").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            return View(equipment);
+        }
     }
 }
