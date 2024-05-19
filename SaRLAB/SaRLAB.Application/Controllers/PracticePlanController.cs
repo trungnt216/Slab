@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SaRLAB.DataAccess.Service.EquipmentService;
 using SaRLAB.DataAccess.Service.PracticePlanService;
 using SaRLAB.Models.Entity;
 using System.Security.AccessControl;
@@ -55,6 +56,7 @@ namespace SaRLAB.Application.Controllers
         [Route("Insert")]
         public IActionResult InsertPracticePlan([FromBody] PracticePlan practicePlan)
         {
+
             return Ok(_practicePlanService.InsertPracticePlan(practicePlan));
         }
 

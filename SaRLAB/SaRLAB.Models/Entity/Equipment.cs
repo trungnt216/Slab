@@ -12,7 +12,7 @@ namespace SaRLAB.Models.Entity
     public class Equipment
     {
         [Key]
-        public int ID { get; set; }
+        public int? ID { get; set; }
         public string? Name { get; set; }
         public string? CreateBy { get; set; }
         public DateTime? CreateTime { get; set; }

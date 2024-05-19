@@ -33,6 +33,12 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchFileService
               .ToList();
         }
 
+        public ScientificResearchFile GetScientificResearchFileByType(string type)
+        {
+            return _context.ScientificResearchFiles
+                .FirstOrDefault(file => file.Type == type);
+        }
+
         public ScientificResearchFile GetScientificResearchFileId(int id)
         {
             var ScientificResearchFile = _context.ScientificResearchFiles.SingleOrDefault(item => (item.ID == id));
