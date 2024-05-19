@@ -28,7 +28,7 @@ namespace SaRLAB.UserWeb
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Login}/{id?}");
+                pattern: "{controller=Login}/{action=Login}/{id?}");
 
             app.Run();
         }

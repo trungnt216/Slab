@@ -6,10 +6,12 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using SaRLAB.Models.Entity;
 using SaRLAB.Models.Dto;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace SaRLAB.UserWeb.Controllers
 {
-    public class HomeController : Controller
+    public class LoginController : Controller
     {
         Uri baseAddress = new Uri("http://localhost:5200/api/");
         private readonly HttpClient _httpClient;
@@ -18,7 +20,7 @@ namespace SaRLAB.UserWeb.Controllers
 
         private readonly IWebHostEnvironment _env;
 
-        public HomeController(IConfiguration configuration, IWebHostEnvironment env)
+        public LoginController(IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
             _httpClient = new HttpClient();
@@ -100,11 +102,14 @@ namespace SaRLAB.UserWeb.Controllers
                             TempData["Error"] = "Tài khoản này không có quyền truy cập. Vui lòng thử lại!";
                             return View("Index");
                         }
+
+                        if (claim.Value.Equals("Admin"))
+                        {
+                            return View();
+                        }
                     }
                 }
-
-                /* return RedirectToAction("Index", "Home");*/
-                return RedirectToAction("GetAllBanner", "Configuration");
+                return View();
             }
             else
             {
@@ -114,9 +119,30 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
         //----------------------------register-------------------------
-        [HttpGet]
-        public IActionResult Register()
+        [HttpPost]
+        public IActionResult Register(User user)
         {
+            try
+            {
+                user.CreateBy = user.Email;
+                user.UpdateBy = user.Email;
+                string data = JsonConvert.SerializeObject(user);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/register", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "User create success";
+                    return RedirectToAction("Index");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
             return View();
         }
     }
