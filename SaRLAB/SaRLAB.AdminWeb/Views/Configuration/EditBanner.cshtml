@@ -37,37 +37,13 @@
                 <div class="col">
                     @{
                         string url = "";
-
-
-
                         if (string.IsNullOrEmpty(Model.PathImage))
-
-
-
                         {
-
-
-
                             url = "~/images/placehold.png";
-
-
-
                         }
-
-
-
                         else
-
-
-
                         {
-
-
-
                             url = Model.PathImage;
-
-
-
                         }
                     }
                     <img id="previewImage" src="@Url.Content(url)" style="width: 300px;

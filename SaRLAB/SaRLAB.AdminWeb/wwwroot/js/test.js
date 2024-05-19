@@ -13,7 +13,7 @@
         $(target).show();
     });
 
-    // handle click item in collapse by subject
+/*    // handle click item in collapse by subject
     $("a.item").on("click", function (event) {
         event.preventDefault();
 
@@ -24,9 +24,9 @@
 
         loadContent(url);
     });
-
+*/
     // handle click for btn
-    $("a.btn-custom-create").on("click", function (e) {
+    /*$("a.btn-custom-create").on("click", function (e) {
         e.preventDefault();
 
         var url = $(this).attr("href");
@@ -52,7 +52,7 @@
 
         var url = $(this).attr("href");
         loadContent(url);
-    });
+    });*/
 
     // load content using ajax
     function loadContent(url) {

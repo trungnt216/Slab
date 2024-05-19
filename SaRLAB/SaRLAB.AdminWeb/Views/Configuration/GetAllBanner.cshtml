@@ -63,7 +63,6 @@
                                 @Html.DisplayFor(modelItem => item.ID)
                             </td>
                             <td>
-                                @* @Html.DisplayFor(modelItem => item.PathImage) *@
                                 <img src="@Url.Content(@item.PathImage)"
                                     style="width: 80px; height: 80px; object-fit: cover;" />
                             </td>
@@ -84,10 +83,14 @@
                                     asp-route-id="@item.ID">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal"
-                                    data-id="@item.ID">
+                                <a class="delete" asp-controller="Configuration" asp-action="DeleteBanner"
+                                   asp-route-id="@item.ID">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
+                                @* <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal"
+                                    data-id="@item.ID">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a> *@
                             </td>
                         </tr>
                         counter++;

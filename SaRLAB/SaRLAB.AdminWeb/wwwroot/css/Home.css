@@ -304,20 +304,41 @@ a[data-toggle="collapse"] {
 .table-container .table tbody td a.btn-custom-edit {
     font-size: var(--text-xs);
     color: #f8c221;
-    margin-right: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.table-container .table tbody td a.btn-custom-view-detail {
+    font-size: var(--text-xs);
+    color: #7bafdc;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.table-container .table tbody td a.btn-custom-create-item {
+    font-size: var(--text-xs);
+    color: #04af60ab;
     cursor: pointer;
 }
 
 .table-container .table tbody td a.btn-custom-edit-by-email {
     font-size: var(--text-xs);
     color: #f8c221;
-    margin-right: 10px;
+    margin-right: 5px;
     cursor: pointer;
 }
 
+.table-container .table tbody td a.btn-custom-delete {
+    font-size: var(--text-xs);
+    color: #df6b76;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+
 .table-container .table tbody td a.delete {
     font-size: var(--text-xs);
-    color: #dc3545;
+    color: #df6b76;
     cursor: pointer;
 }
 
