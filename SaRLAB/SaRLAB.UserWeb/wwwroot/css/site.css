@@ -1,22 +1,42 @@
-html {
-  font-size: 14px;
+:root {
+    --primary: #4481eb;
+    --secondary: #10264d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    /* font size*/
+    --text-xss: 14px;
+    --text-xs: 16px;
+    --text-sm: 20px;
+    --text-base: 24px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+body, input, button {
+    font-family: "Montserrat", sans-serif;
 }
 
 body {
-  margin-bottom: 60px;
+    overflow-x: hidden;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.d-flex {
+    align-items: center;
 }

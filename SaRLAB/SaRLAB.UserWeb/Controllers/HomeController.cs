@@ -98,7 +98,7 @@ namespace SaRLAB.UserWeb.Controllers
                         if (!claim.Value.Equals("Admin") && !claim.Value.Equals("Owner"))
                         {
                             TempData["Error"] = "Tài khoản này không có quyền truy cập. Vui lòng thử lại!";
-                            return View("Index");
+                            return View();
                         }
                     }
                 }
@@ -109,7 +109,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["Error"] = "Không có tài khoản. Vui lòng thử lại!";
-                return View("Index");
+                return View();
             }
         }
 
