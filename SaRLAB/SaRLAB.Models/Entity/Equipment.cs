@@ -19,6 +19,8 @@ namespace SaRLAB.Models.Entity
         public string? UpdateBy { get; set; }
         public DateTime? UpdateTime { get; set; }
         public int? SubjectId { get; set; }
+        public string? Type { get; set;}
+        public string? imagePath { get; set; }
         public Subject? Subject { get; set; }
         public string? Remark { get; set; }
         public int? EquipmentQuantity { get; set; }
