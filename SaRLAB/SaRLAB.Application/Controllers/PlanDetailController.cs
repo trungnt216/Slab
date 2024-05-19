@@ -40,6 +40,8 @@ namespace SaRLAB.Application.Controllers
         [Route("Insert")]
         public IActionResult InsertPlanDetailById([FromBody] PlanDetail planDetail)
         {
+
+
             return Ok(_planDetailService.InsertlanDetail(planDetail));
         }
 

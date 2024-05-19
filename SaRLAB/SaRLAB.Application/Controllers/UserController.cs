@@ -158,5 +158,12 @@ namespace SaRLAB.Application.Controllers
             return Ok("Users deleted successfully.");
         }
 
+        [HttpGet]
+        [Route("SearchUser")]
+        public IActionResult SearchUsers(string? name, string? email, int? roleId)
+        {
+            return Ok(_loginDto.SearchUsers(name,email,roleId));
+        }
+
     }
 }

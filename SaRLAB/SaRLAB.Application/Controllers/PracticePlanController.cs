@@ -16,11 +16,25 @@ namespace SaRLAB.Application.Controllers
             _practicePlanService = practicePlanService;
         }
 
-        [HttpGet]
-        [Route("GetByPracticePlan")]
-        public IActionResult GetPracticePlanList([FromBody] PracticePlan practicePlan)
+        [HttpPost]
+        [Route("SearchPracticePlan")]
+        public IActionResult SearchPracticePlan(String? name)
         {
-            return Ok(_practicePlanService.GetPracticePlanList(practicePlan));
+            return Ok(_practicePlanService.SearchPracticePlan(name));
+        }
+
+        [HttpPost]
+        [Route("GetPracticePlanAccordingtoProgramList")]
+        public IActionResult GetPracticePlanAccordingtoProgramList()
+        {
+            return Ok(_practicePlanService.GetPracticePlanAccordingtoProgramList());
+        }
+
+        [HttpPost]
+        [Route("GetPracticePlanResearchList")]
+        public IActionResult GetPracticePlanResearchList()
+        {
+            return Ok(_practicePlanService.GetPracticePlanResearchList());
         }
 
         [HttpGet]
