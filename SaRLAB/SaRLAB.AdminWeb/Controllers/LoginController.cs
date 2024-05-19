@@ -112,7 +112,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 }
 
                 /* return RedirectToAction("Index", "Home");*/
-                return RedirectToAction("GetAllBanner", "Configuration");
+                //return RedirectToAction("GetAllBanner", "Configuration");
             }
             else
             {

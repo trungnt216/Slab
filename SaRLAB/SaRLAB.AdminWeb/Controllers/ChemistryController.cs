@@ -7,6 +7,7 @@ using System.Security.Claims;
 using Newtonsoft.Json;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SaRLAB.AdminWeb.Controllers
 {
@@ -168,8 +169,29 @@ namespace SaRLAB.AdminWeb.Controllers
             }
 
             TempData["id"] = id;
-            
-            return View(sc);
+
+            List<ScientificResearchFile> sctest = new List<ScientificResearchFile>();
+
+            return View(sctest);
+        }
+
+        [HttpGet]
+        public IActionResult GetImage_TopicScientificResearch(int id)
+        {
+            List<ScientificResearchFile> sc = new List<ScientificResearchFile>();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearchFile/GetAll/" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                sc = JsonConvert.DeserializeObject<List<ScientificResearchFile>>(data);
+            }
+
+            TempData["id"] = id;
+
+            return RedirectToAction("Detail_TopicScientificResearch",sc);
         }
 
         //----------------------------------------------------------------------------------------------------------------------------------
