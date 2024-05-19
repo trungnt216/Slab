@@ -1,87 +1,127 @@
 ﻿@model IEnumerable<SaRLAB.Models.Entity.ScientificResearch>
 
 @{
-    ViewData["Title"] = "GetAll_ScientificResearch";
-
+    ViewData["Title"] = "GetAll_Equipment";
+    ViewBag.TitleCustom = "Danh sách thiết bị";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
+    int counter = 1;
 }
 
 <div id="sub-content">
-    <h1>GetAll_ScientificResearch</h1>
-
-    <p>
-        <a asp-area="" asp-controller="Chemistry" asp-action="Create_TopicScientificResearch">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="d-none">
-                    @Html.DisplayNameFor(model => model.ID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Author)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PublicationDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreateTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreateBy)
-                </th>
-                <th class="d-none">
-                    @Html.DisplayNameFor(model => model.UpdateBy)
-                </th>
-                <th class="d-none">
-                    @Html.DisplayNameFor(model => model.UpdateTime)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <partial name="TitleCustom">
+    <div class="table-container">
+        <div class="table-action row">
+            <div class="col-8">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search&hellip;">
+                </div>
+            </div>
+            <div class="col-4">
+                <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Xóa
+                </button>
+                    <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-controller="Chemistry" asp-action="Create_TopicScientificResearch">
+                    <i class="fa-solid fa-plus"></i>
+                    Thêm mới
+                </a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
                 <tr>
-                    <td class="d-none">
-                        @Html.DisplayFor(modelItem => item.ID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Author)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PublicationDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreateTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreateBy)
-                    </td>
-                    <td class="d-none">
-                        @Html.DisplayFor(modelItem => item.UpdateBy)
-                    </td>
-                    <td class="d-none">
-                        @Html.DisplayFor(modelItem => item.UpdateTime)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit_TopicScientificResearch", new { id = item.ID }) |
-                        @Html.ActionLink("Detail", "Detail_TopicScientificResearch", new { id = item.ID }) |
-                        @Html.ActionLink("Delete", "Delete_TopicScientificResearch", new { id = item.ID }) |
-                        @Html.ActionLink("Theem bafi vieets", "Create_ScientificResearch", new
-                            {
-                                ScientificResearchId =
-                                 item.ID
-                            })
-                    </td>
+                    <th>
+                        <input type="checkbox" id="selectAll" />
+                    </th>
+                    <th>#</th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        Tên đề tài
+                    </th>
+                    <th>
+                        Tác giả
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.PublicationDate)
+                    </th>
+                    <th>
+                        Người đăng
+                    </th>
+                    <th>
+                        Thời gian đăng
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.UpdateBy)
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.UpdateTime)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="selectRow" data-id="@item.ID" />
+                        </td>
+                        <td>
+                            @counter
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Author)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.PublicationDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateTime)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.UpdateBy)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.UpdateTime)
+                        </td>
+                        <td>
+                            <a class="btn-custom-view-detail" asp-action="Detail_TopicScientificResearch" asp-route-id="@item.ID">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            <a class="btn-custom-edit" asp-action="Edit_TopicScientificResearch" asp-route-id="@item.ID">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a class="btn-custom-delete" asp-action="Delete_TopicScientificResearch" asp-route-id="@item.ID">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                            @{
+                                var url = Url.Action("Create_ScientificResearch", new { ScientificResearchId = item.ID });
+                            }
+                            <a class="btn-custom-create-item" href="@url">
+                                <i class="fa-solid fa-circle-plus"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+    @* modal delete *@
+    @{
+        ViewBag.DeleteAction = "DeleteMultipleScientificSearch";
+    }
+    <partial name="ModalDelete">
 </div>

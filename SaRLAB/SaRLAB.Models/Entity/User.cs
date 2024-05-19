@@ -23,6 +23,7 @@ namespace SaRLAB.Models.Entity
         public string? UpdateBy { get; set; }
         public DateTime? CreateTime { get; set; }
         public string? AvtPath { get; set; }
+        public int? SchoolId { get; set; }
        [ForeignKey("RoleManages")]
         public int Role_ID { get; set; }
         public RoleManage? RoleManages { get; set; }

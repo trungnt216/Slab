@@ -137,9 +137,13 @@
                         <a class="btn-custom-edit-by-email" asp-action="Edit" asp-route-email="@item.Email">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-                        <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
+                        <a class="delete" asp-controller="Configuration" asp-action="Delete"
+                            asp-route-id="@item.ID">
                             <i class="fa-solid fa-trash"></i>
                         </a>
+                        @* <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
+                            <i class="fa-solid fa-trash"></i>
+                        </a> *@
                         </td>
                     </tr>
                     counter++;

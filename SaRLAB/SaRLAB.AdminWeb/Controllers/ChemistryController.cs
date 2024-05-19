@@ -7,6 +7,7 @@ using System.Security.Claims;
 using Newtonsoft.Json;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SaRLAB.AdminWeb.Controllers
 {
@@ -168,8 +169,29 @@ namespace SaRLAB.AdminWeb.Controllers
             }
 
             TempData["id"] = id;
-            
-            return View(sc);
+
+            List<ScientificResearchFile> sctest = new List<ScientificResearchFile>();
+
+            return View(sctest);
+        }
+
+        [HttpGet]
+        public ActionResult GetImage_TopicScientificResearch(int id)
+        {
+            List<ScientificResearchFile> sc = new List<ScientificResearchFile>();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "ScientificResearchFile/GetAll/" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                sc = JsonConvert.DeserializeObject<List<ScientificResearchFile>>(data);
+            }
+
+            TempData["id"] = id;
+
+            return View("Detail_TopicScientificResearch",sc);
         }
 
         //----------------------------------------------------------------------------------------------------------------------------------
@@ -456,30 +478,30 @@ namespace SaRLAB.AdminWeb.Controllers
         }
         
         
-        //------------------------------------------------------------------------------------------------------------------------------------
+        //---------------------------giáo trình---------------------------------------------------------------------------------------------------------
         [HttpGet]
-        public IActionResult GetAll_PlanDetail() 
+        public IActionResult GetAll_SubjectSyllabus() 
         {
-            List<PlanDetail> planDetail = new List<PlanDetail>();
+            List<Document> documents = new List<Document>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/getNormalDocument").Result;
 
             if(response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
-                planDetail = JsonConvert.DeserializeObject<List<PlanDetail>>(data);
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
-            return View(planDetail);        
+            return View(documents);        
         }
 
         [HttpGet]
-        public IActionResult Create_PlanDetail()
+        public IActionResult Create_SubjectSyllabus()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Create_PlanDetail(PlanDetail planDetail)
+        public IActionResult Create_SubjectSyllabus(PlanDetail planDetail)
         {
             if(planDetail == null)
             {
@@ -515,7 +537,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
 
         [HttpGet]        
-        public IActionResult Edit_PlanDetail(int  id)
+        public IActionResult Edit_SubjectSyllabus(int  id)
         {
 
             PlanDetail planDetail = new PlanDetail();
@@ -531,7 +553,7 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(planDetail);
         }
         [HttpPost]
-        public IActionResult Edit_PlanDetail(PlanDetail planDetail)
+        public IActionResult Edit_SubjectSyllabus(PlanDetail planDetail)
         {
             try
             {
@@ -555,7 +577,7 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
 
-        public IActionResult Delete_PlanDetail(int id)
+        public IActionResult Delete_SubjectSyllabus(int id)
         {
             try
             {
@@ -575,7 +597,7 @@ namespace SaRLAB.AdminWeb.Controllers
             return RedirectToAction("GetAll_PlanDetail");
         }
 
-        //---------------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------kế hoạch thực hành----------------------------------------------------------------
         [HttpGet]
         public IActionResult GetAll_PracticePlan()
         {
@@ -592,14 +614,46 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(practicePlans);
         }
 
-        public IActionResult Safety_PracticePlan()
+
+        //-------- tai lieu kham khao-------------------
+        [HttpGet]
+        public ActionResult GetAll_References()
+        {
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/getPageDocument").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_References()
         {
             return View();
         }
+        //------------tiếng anh chuyên ngành --------------------
 
-        public IActionResult Point_PracticePlan()
+        [HttpGet]
+        public ActionResult GetAll_TechnicalEnglish()
         {
-            return View();
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/getSpecializedEnglishDocument").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            return View(documents);
         }
     }
 }

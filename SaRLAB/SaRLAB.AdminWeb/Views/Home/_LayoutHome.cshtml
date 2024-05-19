@@ -141,9 +141,33 @@
                     </p>
                     <ul class="collapse list-unstyled" id="collapseDocumentChem">
                         <li>
-                            <a class="item" asp-area="" asp-controller="GetAll_PlanDetail" asp-action="GetAll_PlanDetail"> Quản lý giáo trình</a>
-                            <a class="item" href="#"> Tài liệu kham khảo</a>
-                            <a class="item" href="#"> Tiếng anh chuyên ngành</a>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_SubjectSyllabus">Giáo trình môn học</a>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_References"> Tài liệu kham khảo</a>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_TechnicalEnglish"> Tiếng anh chuyên ngành</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-folder-minus icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapsePracticeChem" role="button"
+                               aria-expanded="false" aria-controls="collapsePracticeChem">
+                                Kế hoạck thực hành
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapsePracticeChem">
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_PracticePlan">
+                                Thực hành theo chương trình
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item" asp-area="" asp-controller="Chemistry" asp-action="GetAll_PracticePlan">
+                                Thực hành nghiên cứu
+                            </a>
                         </li>
                     </ul>
                 </li>

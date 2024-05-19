@@ -18,8 +18,8 @@ namespace SaRLAB.Application.Controllers
         }
 
         [HttpGet]
-        [Route("GetByPracticePlanId")]
-        public IActionResult GetPlanDetailListByPracticePlanId([FromBody] PlanDetail planDetail)
+        [Route("GetPlanDetailListByPracticePlanId")]
+        public IActionResult GetPlanDetailListByPracticePlanId(PlanDetail planDetail)
         {
             return Ok(_planDetailService.GetPlanDetailListByPracticePlanId(planDetail));
         }

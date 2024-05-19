@@ -72,5 +72,28 @@ namespace SaRLAB.Application.Controllers
                 return Ok(_documentService.UpdateDocumentById(id, document));
             }
         }
+
+        [HttpGet]
+        [Route("getNormalDocument")]
+        public IActionResult getNormalDocument()
+        {
+            return Ok(_documentService.getNormalDocument());
+        }
+
+        [HttpGet]
+        [Route("getPageDocument")]
+        public IActionResult getPageDocument()
+        {
+            return Ok(_documentService.getPageDocument());
+        }
+
+        [HttpGet]
+        [Route("getSpecializedEnglishDocument")]
+        public IActionResult getSpecializedEnglishDocument()
+        {
+            return Ok(_documentService.getSpecializedEnglishDocument());
+        }
+
+
     }
 }

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
+}
+
+@* banner *@
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                            <h6>Chào mừng đến với <b>SaRLAB</b></h6>
+                            <h2>Nơi thỏa sức <em>đam mê</em> &amp; <span>sáng tạo</span></h2>
+                            <p>Bạn có thể khám phá những tài liệu, bài báo khoa học, đề tài nghiên cứu,... phục vụ mục đích của mình.</p>
+                            <form id="search" action="#" method="GET">
+                                <fieldset>
+                                    <input type="text" name="address" class="email" placeholder="Nếu có thắc mắc..." autocomplete="on" required>
+                                </fieldset>
+                                <fieldset>
+                                    <button type="submit" class="main-button">Gửi email</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                            <img src="@Url.Content("~/images/bannerRightImage.svg")" alt="team meeting">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
