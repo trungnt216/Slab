@@ -18,7 +18,13 @@ namespace SaRLAB.Models.Entity
         public DateTime? CreateTime { get; set; }
         public string? UpdateBy { get; set; }
         public DateTime? UpdateTime { get; set; }
+        public DateTime? DueDateTime { get; set; }
+        public bool? Status { get; set; }
+        public string? type { get; set; }
+        public string? description { get; set; }
+        public string? pathImage { get; set; }
         public int? SubjectId { get; set; }
+        public int? SchoolId { get; set; }
         public Subject? Subject { get; set; }
         public string? Remark { get; set; }
         public int? EquipmentQuantity { get; set; }
