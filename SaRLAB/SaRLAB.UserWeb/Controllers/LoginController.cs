@@ -105,7 +105,7 @@ namespace SaRLAB.UserWeb.Controllers
 
                         if (claim.Value.Equals("Admin"))
                         {
-                            return View();
+                            return RedirectToAction("Index", "HomePage");
                         }
                     }
                 }
