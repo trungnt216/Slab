@@ -77,26 +77,5 @@ namespace SaRLAB.Application.Controllers
         {
             return Ok();
         }
-
-        [HttpGet]
-        [Route("GetById/{schoolId}/{subjectId}/{type}/{id}")]
-        public IActionResult GetEquipmentByTypeAndId(int schoolId, int subjectId, string type, int id)
-        {
-            return Ok();
-        }
-
-        [HttpGet]
-        [Route("Update/{schoolId}/{subjectId}/{type}/{id}")]
-        public IActionResult UpdateEquipmentByTypeAndId(int schoolId, int subjectId, string type, int id, Equipment equipment)
-        {
-            return Ok();
-        }
-
-        [HttpPost]
-        [Route("Insert/{schoolId}/{subjectId}/{type}")]
-        public IActionResult CreateEquipmentByType(int schoolId, int subjectId, string type, Equipment equipment)
-        {
-            return Ok();
-        }
     }
 }
