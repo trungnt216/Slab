@@ -43,7 +43,8 @@ namespace SaRLAB.DataAccess.Dto.LoginService
                     Email = user.Email,
                     ID = user.ID,
                     Name = user.Name,
-                    RoleName = user.RoleManages.RoleName
+                    RoleName = user.RoleManages.RoleName,
+                    SchoolId = user.SchoolId,
                 };
 
                 return userlogin;

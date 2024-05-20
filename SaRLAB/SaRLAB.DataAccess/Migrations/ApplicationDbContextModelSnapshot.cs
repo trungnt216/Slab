@@ -58,11 +58,11 @@ namespace SaRLAB.DataAccess.Migrations
 
             modelBuilder.Entity("SaRLAB.Models.Entity.Document", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int?>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ID"));
 
                     b.Property<string>("CreateBy")
                         .HasColumnType("nvarchar(max)");
@@ -79,11 +79,20 @@ namespace SaRLAB.DataAccess.Migrations
                     b.Property<string>("Path")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Remark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SchoolId")
+                        .HasColumnType("int");
+
                     b.Property<bool?>("SpecializedEnglishFlag")
                         .HasColumnType("bit");
 
                     b.Property<int?>("SubjectId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdateBy")
                         .HasColumnType("nvarchar(max)");
@@ -100,11 +109,11 @@ namespace SaRLAB.DataAccess.Migrations
 
             modelBuilder.Entity("SaRLAB.Models.Entity.Equipment", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int?>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ID"));
 
                     b.Property<string>("CreateBy")
                         .HasColumnType("nvarchar(max)");
@@ -115,14 +124,26 @@ namespace SaRLAB.DataAccess.Migrations
                     b.Property<int?>("EquipmentQuantity")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("ExpiredTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Remark")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("SchoolId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("SubjectId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdateBy")
                         .HasColumnType("nvarchar(max)");
@@ -155,11 +176,11 @@ namespace SaRLAB.DataAccess.Migrations
 
             modelBuilder.Entity("SaRLAB.Models.Entity.PlanDetail", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int?>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ID"));
 
                     b.Property<string>("CreateBy")
                         .HasColumnType("nvarchar(max)");
@@ -241,6 +262,25 @@ namespace SaRLAB.DataAccess.Migrations
                     b.HasKey("RoleID");
 
                     b.ToTable("RoleManage");
+                });
+
+            modelBuilder.Entity("SaRLAB.Models.Entity.School", b =>
+                {
+                    b.Property<int?>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ID"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("School");
                 });
 
             modelBuilder.Entity("SaRLAB.Models.Entity.ScientificResearch", b =>
@@ -379,6 +419,9 @@ namespace SaRLAB.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Role_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SchoolId")
                         .HasColumnType("int");
 
                     b.Property<string>("UpdateBy")

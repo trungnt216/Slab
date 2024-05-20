@@ -19,7 +19,6 @@ namespace SaRLAB.Models.Entity
         public string? UpdateBy { get; set; }
         public DateTime? UpdateTime { get; set; }
         public DateTime? ExpiredTime { get; set; }
-        public bool? Status { get; set; }
         public string? Remark { get; set; }
         public int? SubjectId { get; set; }
         public string? Type { get; set;}

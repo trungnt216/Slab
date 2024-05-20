@@ -57,6 +57,20 @@ namespace SaRLAB.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "School",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_School", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Subject",
                 columns: table => new
                 {
@@ -85,6 +99,7 @@ namespace SaRLAB.DataAccess.Migrations
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AvtPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SchoolId = table.Column<int>(type: "int", nullable: true),
                     Role_ID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -108,6 +123,9 @@ namespace SaRLAB.DataAccess.Migrations
                     Path = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SpecializedEnglishFlag = table.Column<bool>(type: "bit", nullable: true),
                     PageFlag = table.Column<bool>(type: "bit", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SchoolId = table.Column<int>(type: "int", nullable: true),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -135,8 +153,12 @@ namespace SaRLAB.DataAccess.Migrations
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    SubjectId = table.Column<int>(type: "int", nullable: true),
+                    ExpiredTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SubjectId = table.Column<int>(type: "int", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SchoolId = table.Column<int>(type: "int", nullable: true),
                     EquipmentQuantity = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -309,6 +331,9 @@ namespace SaRLAB.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "PlanDetail");
+
+            migrationBuilder.DropTable(
+                name: "School");
 
             migrationBuilder.DropTable(
                 name: "ScientificResearchFile");

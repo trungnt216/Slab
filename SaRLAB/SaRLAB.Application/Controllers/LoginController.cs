@@ -41,10 +41,12 @@ namespace SaRLAB.Application.Controllers
                 return NotFound();
             }
             var userRole = user.RoleName;
+            string schoolId = user.SchoolId.ToString();
             var authuClaims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name , user.Email),
                 new Claim(ClaimTypes.Role, userRole),
+                new Claim("SchoolId", schoolId),
                 new Claim("JWTID",Guid.NewGuid().ToString()),
 
             };

@@ -51,6 +51,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     userLogin.RoleName = claim.Value;
                 }
+                if(claim.Type == "SchoolId")
+                {
+                    userLogin.SchoolId = int.Parse(claim.Value);
+                }
             }
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
@@ -234,7 +238,7 @@ namespace SaRLAB.UserWeb.Controllers
         {
             Equipment equipment = new Equipment();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + userLogin.SchoolId + "/1/CHEMISTRY/" + id).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
 
 
             if (response.IsSuccessStatusCode)
