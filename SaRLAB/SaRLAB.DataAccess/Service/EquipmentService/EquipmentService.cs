@@ -63,14 +63,14 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
             if (existingEquipment == null)
                 return 0; 
 
-            existingEquipment.Name = equipment.Name;
-            existingEquipment.imagePath = equipment.imagePath;
+            existingEquipment.ImagePath = equipment.ImagePath;
             existingEquipment.UpdateBy = equipment.UpdateBy;
             existingEquipment.UpdateTime = equipment.UpdateTime;
-            existingEquipment.SubjectId = equipment.SubjectId;
             existingEquipment.Remark = equipment.Remark;
             existingEquipment.EquipmentQuantity = equipment.EquipmentQuantity;
-
+            existingEquipment.Type = equipment.Type;
+            existingEquipment.ExpiredTime = equipment.ExpiredTime;
+            
             return _context.SaveChanges();
         }
     }
