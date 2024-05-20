@@ -44,6 +44,13 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
             return _context.Equipments.Where(e => e.SubjectId == id).ToList();
         }
 
+        public List<Equipment> GetEquipmentsByType(int subjectId, string type)
+        {
+            return _context.Equipments
+                .Where(e => e.SubjectId == subjectId && e.Type == type)
+                .ToList();
+        }
+
         public int InsertEquipment(Equipment equipment)
         {
             _context.Equipments.Add(equipment);
@@ -56,15 +63,14 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
             if (existingEquipment == null)
                 return 0; 
 
-            existingEquipment.Name = equipment.Name;
-            existingEquipment.CreateBy = equipment.CreateBy;
-            existingEquipment.CreateTime = equipment.CreateTime;
+            existingEquipment.ImagePath = equipment.ImagePath;
             existingEquipment.UpdateBy = equipment.UpdateBy;
             existingEquipment.UpdateTime = equipment.UpdateTime;
-            existingEquipment.SubjectId = equipment.SubjectId;
             existingEquipment.Remark = equipment.Remark;
             existingEquipment.EquipmentQuantity = equipment.EquipmentQuantity;
-
+            existingEquipment.Type = equipment.Type;
+            existingEquipment.ExpiredTime = equipment.ExpiredTime;
+            
             return _context.SaveChanges();
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.EquipmentService;
 using SaRLAB.Models.Entity;
 
@@ -34,6 +35,13 @@ namespace SaRLAB.Application.Controllers
         public IActionResult GetAllBySubject(int id) 
         {
             return Ok(_equipmentService.GetEquipmentsBySubjectId(id));
+        }
+
+        [HttpGet]
+        [Route("GetByType/{subjectId}/{type}")]
+        public IActionResult GetEquipmentsByType(int subjectId, string type)
+        {
+            return Ok(_equipmentService.GetEquipmentsByType(subjectId, type));
         }
 
         [HttpGet]
