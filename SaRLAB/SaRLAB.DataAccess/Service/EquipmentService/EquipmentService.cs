@@ -51,6 +51,13 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
                 .ToList();
         }
 
+        public List<Equipment> GetEquipmentsByType(int schoolId, int subjectId, string type)
+        {
+            return _context.Equipments
+               .Where(d => d.SchoolId == schoolId && d.SubjectId == subjectId && d.Type == type)
+               .ToList();
+        }
+
         public int InsertEquipment(Equipment equipment)
         {
             _context.Equipments.Add(equipment);
