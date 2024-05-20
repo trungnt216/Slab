@@ -23,7 +23,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="#" class="logo">
+                        <a asp-action="Index" class="logo">
                             <h4>Sa<span>RLAB</span></h4>
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -46,6 +46,8 @@
     <script src="~/js/animation.js"></script>
     <script src="~/js/imagesloaded.js"></script>
     <script src="~/js/templatemo-custom.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 
     <script>
         document.querySelectorAll('.dropdown > a').forEach(menu => {

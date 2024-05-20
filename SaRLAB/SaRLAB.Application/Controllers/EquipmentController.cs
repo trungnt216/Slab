@@ -78,5 +78,12 @@ namespace SaRLAB.Application.Controllers
                 return Ok(_equipmentService.UpdateEquipmentById(id,equipment));
             }
         }
+
+        [HttpGet]
+        [Route("GetAll/{schoolId}/{subjectId}/{type}")]
+        public IActionResult GetAllEquipmentByType(int schoolId, int subjectId, string type)
+        {
+            return Ok();
+        }
     }
 }
