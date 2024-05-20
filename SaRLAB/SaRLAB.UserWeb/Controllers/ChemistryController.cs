@@ -119,7 +119,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -174,7 +174,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -185,7 +185,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.UpdateBy = userLogin.Email;
                 equipment.SchoolId = userLogin.SchoolId;
                 equipment.SubjectId = 1;
-                equipment.type = "CHEMISTRY";
+                equipment.Type = "CHEMISTRY";
                 equipment.SchoolId = userLogin.SchoolId;
 
                 string data = JsonConvert.SerializeObject(equipment);
@@ -290,7 +290,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -361,7 +361,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -470,7 +470,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -541,7 +541,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
