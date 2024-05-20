@@ -47,6 +47,8 @@
     <script src="~/js/imagesloaded.js"></script>
     <script src="~/js/templatemo-custom.js"></script>
 
+    @await RenderSectionAsync("Scripts", required: false)
+
     <script>
         document.querySelectorAll('.dropdown > a').forEach(menu => {
             menu.addEventListener('click', function (e) {

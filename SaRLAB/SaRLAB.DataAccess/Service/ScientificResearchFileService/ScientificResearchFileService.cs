@@ -75,5 +75,10 @@ namespace SaRLAB.DataAccess.Service.ScientificResearchFileService
             }
             return 0;
         }
+
+        List<ScientificResearchFile> IScientificResearchFileService.GetScientificResearchFileByType(string type)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

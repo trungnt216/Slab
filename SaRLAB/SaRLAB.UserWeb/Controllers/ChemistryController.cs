@@ -5,12 +5,15 @@ using SaRLAB.Models.Entity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Text;
 
 namespace SaRLAB.UserWeb.Controllers
 {
     public class ChemistryController : Controller
     {
-        string pathFolderSave = "https://localhost:7135//uploads/";
+        string pathFolderSave = null;
+
+        private readonly IWebHostEnvironment _env;
 
         Uri baseAddress = new Uri("http://localhost:5200/api/");
         private readonly HttpClient _httpClient;
@@ -21,13 +24,18 @@ namespace SaRLAB.UserWeb.Controllers
 
         int checkRole = 0;
 
-        public ChemistryController(ILogger<HomePageController> logger, IConfiguration configuration)
+        public ChemistryController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
+            _env = env;
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
 
             string jwtToken = _configuration["JwtToken:Value"];
+
+            pathFolderSave = _configuration["PathFolder:Value"];
+
+            Console.WriteLine(pathFolderSave);
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -64,6 +72,167 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 string data = response.Content.ReadAsStringAsync().Result;
                 equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            return View(equipment);
+        }
+
+
+        [HttpGet]
+        public ActionResult Edit_Chemistry(int id)
+        {
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + userLogin.SchoolId + "/1/CHEMISTRY/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            return View(equipment);
+        }
+        [HttpPost]
+        public ActionResult Edit_Chemistry(Equipment equipment, IFormFile File) 
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                equipment.pathImage = filePath;
+            }
+
+            try
+            {
+                equipment.UpdateTime = DateTime.Now;
+                equipment.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Update/" + equipment.SchoolId + "/1/CHEMISTRY/" + equipment.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Chemistry");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Create_Chemistry()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create_Chemistry(Equipment equipment, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                equipment.pathImage = filePath;
+            }
+
+            try
+            {
+                equipment.CreateTime = DateTime.Now;
+                equipment.CreateBy = userLogin.Email;
+                equipment.UpdateTime = DateTime.Now;
+                equipment.UpdateBy = userLogin.Email;
+                equipment.SchoolId = userLogin.SchoolId;
+                equipment.SubjectId = 1;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert/" + equipment.SchoolId + "/1/CHEMISTRY/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Chemistry");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+
+        public IActionResult Delete_Chemistry(int id)
+        {
+            try
+            {
+                HttpResponseMessage response;
+                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("GetAll_Chemistry");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return RedirectToAction("GetAll_Chemistry");
+            }
+            return RedirectToAction("GetAll_Chemistry");
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Chemistry(int id)
+        {
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + userLogin.SchoolId + "/1/CHEMISTRY/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
             return View(equipment);
