@@ -46,6 +46,13 @@ namespace SaRLAB.DataAccess.Service.DocumentService
             return _context.Documents.Where(e => e.SubjectId == subjectId).ToList();
         }
 
+        public List<Document> GetDocumentsByType(int schoolId, int subjectId, string type)
+        {
+                return _context.Documents
+                    .Where(d => d.SchoolId == schoolId && d.SubjectId == subjectId && d.Type == type)
+                   .ToList();
+        }
+
         public List<Document> getNormalDocument()
         {
                 return _context.Documents

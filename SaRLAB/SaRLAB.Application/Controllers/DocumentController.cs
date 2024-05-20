@@ -99,7 +99,7 @@ namespace SaRLAB.Application.Controllers
         [Route("GetAllByType/{schoolId}/{subjectId}/{type}")]
         public IActionResult GetAllByType(int schoolId, int subjectId, string type)
         {
-            return Ok();
+            return Ok(_documentService.GetDocumentsByType(schoolId, subjectId, type));
         }
 
     }

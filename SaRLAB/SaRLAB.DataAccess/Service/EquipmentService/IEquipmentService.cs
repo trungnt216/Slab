@@ -15,5 +15,6 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
         int InsertEquipment(Equipment equipment);
         int UpdateEquipmentById(int id, Equipment equipment);
         int DeleteEquipmentById(int id);
+        List<Equipment> GetEquipmentsByType(int schoolId, int subjectId, string type);
     }
 }
