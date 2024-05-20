@@ -95,5 +95,12 @@ namespace SaRLAB.Application.Controllers
         }
 
 
+        [HttpGet]
+        [Route("GetAllByType/{schoolId}/{subjectId}/{type}")]
+        public IActionResult GetAllByType(int schoolId, int subjectId, string type)
+        {
+            return Ok();
+        }
+
     }
 }

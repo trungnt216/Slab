@@ -119,7 +119,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -174,7 +174,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -185,7 +185,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.UpdateBy = userLogin.Email;
                 equipment.SchoolId = userLogin.SchoolId;
                 equipment.SubjectId = 1;
-                equipment.type = "CHEMISTRY";
+                equipment.Type = "CHEMISTRY";
                 equipment.SchoolId = userLogin.SchoolId;
 
                 string data = JsonConvert.SerializeObject(equipment);
@@ -290,7 +290,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -301,7 +301,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.UpdateBy = userLogin.Email;
                 equipment.SchoolId = userLogin.SchoolId;
                 equipment.SubjectId = 1;
-                equipment.type = "TOOLCHEMISTRY";
+                equipment.Type = "TOOLCHEMISTRY";
                 equipment.SchoolId = userLogin.SchoolId;
 
                 string data = JsonConvert.SerializeObject(equipment);
@@ -361,7 +361,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -428,6 +428,7 @@ namespace SaRLAB.UserWeb.Controllers
 
 
         //------------------------Thiết bị ----------------------------------------------
+        [HttpGet]
         public IActionResult GetAll_EquipmentChemistry()
         {
             List<Equipment> equipment = new List<Equipment>();
@@ -470,7 +471,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -481,7 +482,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.UpdateBy = userLogin.Email;
                 equipment.SchoolId = userLogin.SchoolId;
                 equipment.SubjectId = 1;
-                equipment.type = "EQUIPMENTCHEMISTRY";
+                equipment.Type = "EQUIPMENTCHEMISTRY";
                 equipment.SchoolId = userLogin.SchoolId;
 
                 string data = JsonConvert.SerializeObject(equipment);
@@ -541,7 +542,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.pathImage = filePath;
+                equipment.ImagePath = filePath;
             }
 
             try
@@ -609,5 +610,184 @@ namespace SaRLAB.UserWeb.Controllers
         //---------------------------------------------------------------------------------------------------------
         //---------------------------------------------------------------------------------------------------------
         //---------------------------------------------------------------------------------------------------------
+
+        //------------------------- thực nghiệm -------------------------------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Experiment()
+        {
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/EXPERIMENT").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Experiment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create_Experiment(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = filePath;
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 1;
+                document.Type = "EXPERIMENT";
+                document.SchoolId = userLogin.SchoolId;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Experiment");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Experiment(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            return View(document);
+        }
+        [HttpPost]
+        public ActionResult Edit_Experiment(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = filePath;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Experiment");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        public IActionResult Delete_Experiment(int id)
+        {
+            try
+            {
+                HttpResponseMessage response;
+                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("GetAll_Experiment");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return RedirectToAction("GetAll_Experiment");
+            }
+            return RedirectToAction("GetAll_Experiment");
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Experiment(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            return View(document);
+        }
     }
 }
