@@ -36,6 +36,12 @@ namespace SaRLAB.DataAccess.Service.SchoolService
             return _context.Schools.FirstOrDefault(s => s.ID == id);
         }
 
+        public int InsertSchool(School school)
+        {
+            _context.Schools.Add(school);
+            return _context.SaveChanges();
+        }
+
         public int UpdateSchoolById(int id, School updatedSchool)
         {
             var school = _context.Schools.FirstOrDefault(s => s.ID == id);
