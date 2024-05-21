@@ -1,0 +1,59 @@
+﻿using SaRLAB.Models.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SaRLAB.DataAccess.Service.SchoolService
+{
+    public class SchoolService : ISchoolService
+    {
+        private readonly ApplicationDbContext _context;
+
+        public SchoolService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        public int DeleteSchoolById(int id)
+        {
+            var school = _context.Schools.FirstOrDefault(s => s.ID == id);
+            if (school != null)
+            {
+                _context.Schools.Remove(school);
+                return _context.SaveChanges(); // Returns the number of entities deleted
+            }
+            return 0; // School with given ID not found
+        }
+
+        public List<School> GetAllSchool()
+        {
+            return _context.Schools.ToList();
+        }
+
+        public School GetSchoolById(int id)
+        {
+            return _context.Schools.FirstOrDefault(s => s.ID == id);
+        }
+
+        public int InsertSchool(School school)
+        {
+            _context.Schools.Add(school);
+            return _context.SaveChanges();
+        }
+
+        public int UpdateSchoolById(int id, School updatedSchool)
+        {
+            var school = _context.Schools.FirstOrDefault(s => s.ID == id);
+            if (school != null)
+            {
+                // Update properties of the existing school with the properties of the updated school
+                school.Name = updatedSchool.Name;
+                school.Address = updatedSchool.Address;
+
+                return _context.SaveChanges(); // Returns the number of entities updated
+            }
+            return 0; // School with given ID not found
+        }
+    }
+}
