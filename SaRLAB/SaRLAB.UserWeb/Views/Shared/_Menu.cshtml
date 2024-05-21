@@ -7,21 +7,21 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
-        background-color: #fff;
+        background: linear-gradient(45deg, #3a69af, #000000);
         box-shadow: 0 8px 16px rgb(0 0 0 / 6%);
         z-index: 1;
         border: none;
         min-width: 9rem;
     }
 
-        .dropdown-menu > li {
-            position: relative;
-        }
+    .dropdown-menu > li {
+        position: relative;
+    }
 
-        .dropdown-menu a {
-            padding: 10px;
-            white-space: nowrap;
-        }
+    .dropdown-menu a {
+        padding: 10px;
+        white-space: nowrap;
+    }
 
     .dropdown:hover > .dropdown-menu {
         display: block;
@@ -39,19 +39,20 @@
     a.submenu {
         align-content: center;
         padding-left: 15px;
+        line-height: 0px !important;
     }
 
-        a.submenu:hover {
-            color: #f77a86 !important;
-        }
+    a.submenu:hover {
+       color: #e9c290 !important;
+    }
 
-        a.submenu i {
-            margin-right: 3px;
-        }
+    a.submenu i {
+        margin-right: 3px;
+    }
 </style>
 
 <ul class="nav">
-    <li class="scroll-to-section menu"><a href="#top" class="active menu" data-toggle="dropdown">Trang chủ</a></li>
+    <li class="scroll-to-section menu"><a class="active menu" data-toggle="dropdown" asp-controller="HomePage" asp-action="Index">Trang chủ</a></li>
     <li class="scroll-to-section dropdown menu">
         <a href="#chem" data-toggle="dropdown">Hóa học</a>
         <ul class="dropdown-menu">
@@ -140,7 +141,16 @@
     <li class="scroll-to-section menu"><a class="menu" href="#bio">Sinh học</a></li>
     <li class="scroll-to-section menu"><a class="menu" href="#phys">Vật lý</a></li>
     <li class="scroll-to-section menu"><a class="menu" href="#math">Toán học</a></li>
-    <li class="scroll-to-section logout menu"><div class="main-red-button"><a href="#logout">Đăng xuất</a></div></li>
+    <li class="scroll-to-section info-group d-flex">
+        <a class="menu d-flex" href="#info">
+            <img src="@Url.Content("~/images/ic_user.png")"/>
+            <div class="info-user">
+                <p class="name">Lê Thị Giang</p>
+                <p class="role">Sinh viên</p>
+            </div>
+        </a>
+    </li>
+@*     <li class="scroll-to-section logout menu"><div class="main-red-button"><a href="#logout">Đăng xuất</a></div></li> *@
 </ul>
 <a class='menu-trigger'>
     <span>Menu</span>
