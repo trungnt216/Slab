@@ -123,7 +123,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.ImagePath = filePath;
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
 
             try
@@ -178,7 +178,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.ImagePath = filePath;
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
 
             try
@@ -294,7 +294,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.ImagePath = filePath;
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
 
             try
@@ -365,7 +365,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.ImagePath = filePath;
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
 
             try
@@ -475,7 +475,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.ImagePath = filePath;
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
 
             try
@@ -546,7 +546,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                equipment.ImagePath = filePath;
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
 
             try
@@ -659,7 +659,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                document.Path = filePath;
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
 
             try
@@ -729,7 +729,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                document.Path = filePath;
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
 
             try
@@ -839,7 +839,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                document.Path = filePath;
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
 
             try
@@ -909,7 +909,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                document.Path = filePath;
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
 
             try
@@ -1034,7 +1034,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                document.Path = filePath;
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
 
             try
@@ -1103,7 +1103,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     File.CopyTo(stream);
                 }
-                document.Path = filePath;
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
 
             try

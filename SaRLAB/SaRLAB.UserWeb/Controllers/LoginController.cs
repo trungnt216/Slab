@@ -26,7 +26,7 @@ namespace SaRLAB.UserWeb.Controllers
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
-            _configuration["PathFolder:Value"] = "https://localhost:7135//uploads/";
+            _configuration["PathFolder:Value"] = "https://localhost:7050//";
         }
 
         public void DecodeJwtToken(string jwtToken)

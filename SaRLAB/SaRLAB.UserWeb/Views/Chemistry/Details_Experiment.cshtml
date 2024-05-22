@@ -86,19 +86,19 @@
 
                             if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
                             {
-                                <img src="https://res.cloudinary.com/dp0hbi49d/image/upload/v1715945428/SaRLAB/thumb---banner-la-gi_-kich-thuoc-tieu-chuan-va-cach-thiet-ke-banner-thu-hut-_od2glp.jpg" alt="Image" style="max-width: 100%; height: auto;" />
+                                <img src="@Url.Content(path)" alt="Image" style="max-width: 100%; height: auto;" />
                             }
                             else if (extension == ".mp4" || extension == ".webm" || extension == ".ogg")
                             {
                                 <video width="100%" height="100%" controls>
-                                    <source src="https://res.cloudinary.com/dp0hbi49d/video/upload/v1716303332/SaRLAB/2024-05-18_22-16-51_dllynk.mp4" type="video/@extension.Substring(1)">
+                                    <source src="@Url.Content(path)" type="video/@extension.Substring(1)">
                                     Your browser does not support the video tag.
                                 </video>
                             }
                             else if (extension == ".pdf")
                             {
                                 <object class="pdf"
-                                        data="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210101201653/PDF.pdf"
+                                        data="@Url.Content(path)"
                                         width="100%"
                                         height="400">
                                 </object>
