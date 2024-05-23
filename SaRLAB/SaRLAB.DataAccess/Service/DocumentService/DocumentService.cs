@@ -99,6 +99,7 @@ namespace SaRLAB.DataAccess.Service.DocumentService
             existingDocument.Path = document.Path ?? existingDocument.Path;
             existingDocument.SpecializedEnglishFlag = document.SpecializedEnglishFlag ?? existingDocument.SpecializedEnglishFlag;
             existingDocument.PageFlag = document.PageFlag ?? existingDocument.PageFlag;
+            existingDocument.Remark = document.Remark ?? existingDocument.Remark;
             existingDocument.UpdateBy = document.UpdateBy ?? existingDocument.UpdateBy;
             existingDocument.UpdateTime = document.UpdateTime ?? existingDocument.UpdateTime;
             existingDocument.SubjectId = document.SubjectId; // Assuming SubjectId should always be updated

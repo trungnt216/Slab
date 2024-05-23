@@ -100,7 +100,15 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
-            return View(equipment);
+            if (userLogin.Email == equipment.CreateBy)
+            {
+                return View(equipment);
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAll_Chemistry");
+            }
         }
         [HttpPost]
         public ActionResult Edit_Chemistry(Equipment equipment, IFormFile File) 
@@ -214,22 +222,42 @@ namespace SaRLAB.UserWeb.Controllers
 
         public IActionResult Delete_Chemistry(int id)
         {
-            try
-            {
-                HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id).Result;
+            Equipment equipment = new Equipment();
 
-                if (response.IsSuccessStatusCode)
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (userLogin.Email == equipment.CreateBy)
+            {
+                try
                 {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Chemistry");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Chemistry");
                 }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
                 return RedirectToAction("GetAll_Chemistry");
             }
-            return RedirectToAction("GetAll_Chemistry");
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAll_Chemistry");
+            }
+
         }
 
 
@@ -706,7 +734,15 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
-            return View(document);
+            if (userLogin.Email == document.CreateBy)
+            {
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return NoContent();
+            }
         }
         [HttpPost]
         public ActionResult Edit_Experiment(Document document, IFormFile File)
@@ -758,22 +794,41 @@ namespace SaRLAB.UserWeb.Controllers
 
         public IActionResult Delete_Experiment(int id)
         {
-            try
-            {
-                HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+            Document document = new Document();
 
-                if (response.IsSuccessStatusCode)
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                try
                 {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Experiment");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Experiment");
                 }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
                 return RedirectToAction("GetAll_Experiment");
             }
-            return RedirectToAction("GetAll_Experiment");
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAll_Experiment");
+            }
         }
 
 
