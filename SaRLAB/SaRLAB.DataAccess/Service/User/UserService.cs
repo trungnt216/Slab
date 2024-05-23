@@ -152,7 +152,8 @@ namespace SaRLAB.DataAccess.Service.UserService
                 UpdateBy = user.UpdateBy,
                 CreateTime = DateTime.Now,
                 Role_ID = 1,
-                AvtPath = user.AvtPath
+                AvtPath = user.AvtPath,
+                SchoolId = user.SchoolId
 
             };
 

@@ -28,7 +28,13 @@ namespace SaRLAB.DataAccess.Service.SchoolService
 
         public List<School> GetAllSchool()
         {
-            return _context.Schools.ToList();
+            var school = _context.Schools.Select(value => new School
+            {
+                ID = value.ID.Value,
+                Name = value.Name,
+                Address = value.Address
+            });
+            return school.ToList();
         }
 
         public School GetSchoolById(int id)

@@ -11,12 +11,17 @@ namespace SaRLAB.Application.Controllers
     {
         private readonly ISchoolService _schoolService;
 
+        public SchoolController(ISchoolService schoolService)
+        {
+            _schoolService = schoolService;
+        }
+
 
         [HttpGet]
         [Route("GetAllSchool")]
         public IActionResult GetAll()
         {
-            return Ok(_schoolService.GetAllSchool);
+            return Ok(_schoolService.GetAllSchool());
         }
 
         [HttpGet]
