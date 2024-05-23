@@ -56,9 +56,12 @@
     <div class="input-field">
         <i class="fas fa-school"></i>
         <select asp-for="SchoolId" class="form-control">
-            @foreach (var schoolItem in ViewBag.Schools as List<SelectListItem>)
+            @if (ViewBag.Schools != null)
             {
-                <option value="@schoolItem.Value">@schoolItem.Text</option>
+                @foreach (var schoolItem in ViewBag.Schools as List<SelectListItem>)
+                {
+                    <option value="@schoolItem.Value">@schoolItem.Text</option>
+                }
             }
         </select>
     </div>
