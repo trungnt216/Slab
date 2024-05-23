@@ -51,6 +51,17 @@
         <input asp-for="Phone" type="text" placeholder="Số điện thoại" />
     </div>
     <span asp-validation-for="Phone" class="text-danger"></span>
+
+    <!-- Combobox sử dụng dữ liệu từ ViewBag.Schools -->
+    <div class="input-field">
+        <i class="fas fa-school"></i>
+        <select asp-for="SchoolId" class="form-control">
+            @foreach (var schoolItem in ViewBag.Schools as List<SelectListItem>)
+            {
+                <option value="@schoolItem.Value">@schoolItem.Text</option>
+            }
+        </select>
+    </div>
     <input type="submit" class="btn" value="Đăng ký" />
 
     @if (TempData["Error"] != null)
