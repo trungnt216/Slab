@@ -51,14 +51,14 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     userLogin.RoleName = claim.Value;
                 }
-                if(claim.Type == "SchoolId")
+                if (claim.Type == "SchoolId")
                 {
                     userLogin.SchoolId = int.Parse(claim.Value);
                 }
             }
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
-            if (userLogin.RoleName == ("Admin")) 
+            if (userLogin.RoleName == ("Admin"))
             {
                 checkRole = 1;
             }
@@ -67,7 +67,7 @@ namespace SaRLAB.UserWeb.Controllers
         //----------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
         //-------------------------------hoá học--------------------------------------------------------
-          
+
         //----------------------------hóa chất ------------------------------------------
         [HttpGet]
         public IActionResult GetAll_Chemistry()
@@ -90,14 +90,17 @@ namespace SaRLAB.UserWeb.Controllers
         public ActionResult Edit_Chemistry(int id)
         {
             Equipment equipment = new Equipment();
-
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy dữ liệu";
+                return Ok();
             }
 
             if (userLogin.Email == equipment.CreateBy)
@@ -107,11 +110,11 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return RedirectToAction("GetAll_Chemistry");
+                return Ok();
             }
         }
         [HttpPost]
-        public ActionResult Edit_Chemistry(Equipment equipment, IFormFile File) 
+        public ActionResult Edit_Chemistry(Equipment equipment, IFormFile File)
         {
             if (File != null)
             {
@@ -163,7 +166,15 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Chemistry()
         {
-            return View();
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Create_Chemistry(Equipment equipment, IFormFile File)
@@ -220,7 +231,7 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
 
-        public IActionResult Delete_Chemistry(int id)
+        public ActionResult Delete_Chemistry(int id)
         {
             Equipment equipment = new Equipment();
 
@@ -231,6 +242,12 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 string data = responses.Content.ReadAsStringAsync().Result;
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy dữ liệu";
+                return RedirectToAction("GetAll_Chemistry");
             }
 
             if (userLogin.Email == equipment.CreateBy)
@@ -268,7 +285,6 @@ namespace SaRLAB.UserWeb.Controllers
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
 
-
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
@@ -299,7 +315,15 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_ToolChemistry()
         {
-            return View();
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Create_ToolChemistry(Equipment equipment, IFormFile File)
@@ -370,191 +394,24 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
-            return View(equipment);
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy thiết bị";
+                return Ok();
+            }
+
+            if (userLogin.Email == equipment.CreateBy)
+            {
+                return View(equipment);
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Edit_ToolChemistry(Equipment equipment, IFormFile File)
-        {
-            if (File != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    File.CopyTo(stream);
-                }
-                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-
-            try
-            {
-                equipment.UpdateTime = DateTime.Now;
-                equipment.UpdateBy = userLogin.Email;
-
-                string data = JsonConvert.SerializeObject(equipment);
-                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Update/" +  equipment.ID, content).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    TempData["successMessage"] = "create success";
-                    return RedirectToAction("GetAll_ToolChemistry");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                return View();
-            }
-            return View();
-        }
-
-        public IActionResult Delete_ToolChemistry(int id)
-        {
-            try
-            {
-                HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("GetAll_ToolChemistry");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                return RedirectToAction("GetAll_ToolChemistry");
-            }
-            return RedirectToAction("GetAll_ToolChemistry");
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_ToolChemistry(int id)
-        {
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            return View(equipment);
-        }
-
-
-        //------------------------Thiết bị ----------------------------------------------
-        [HttpGet]
-        public IActionResult GetAll_EquipmentChemistry()
-        {
-            List<Equipment> equipment = new List<Equipment>();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/EQUIPMENTCHEMISTRY").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
-            }
-
-            return View(equipment);
-        }
-
-
-        [HttpGet]
-        public ActionResult Create_EquipmentChemistry()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Create_EquipmentChemistry(Equipment equipment, IFormFile File)
-        {
-            if (File != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    File.CopyTo(stream);
-                }
-                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-
-            try
-            {
-                equipment.CreateTime = DateTime.Now;
-                equipment.CreateBy = userLogin.Email;
-                equipment.UpdateTime = DateTime.Now;
-                equipment.UpdateBy = userLogin.Email;
-                equipment.SchoolId = userLogin.SchoolId;
-                equipment.SubjectId = 1;
-                equipment.Type = "EQUIPMENTCHEMISTRY";
-                equipment.SchoolId = userLogin.SchoolId;
-
-                string data = JsonConvert.SerializeObject(equipment);
-                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert/", content).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    TempData["successMessage"] = "create success";
-                    return RedirectToAction("GetAll_ToolChemistry");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                return View();
-            }
-            return View();
-        }
-
-
-        [HttpGet]
-        public ActionResult Edit_EquipmentChemistry(int id)
-        {
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            return View(equipment);
-        }
-        [HttpPost]
-        public ActionResult Edit_EquipmentChemistry(Equipment equipment, IFormFile File)
         {
             if (File != null)
             {
@@ -601,24 +458,277 @@ namespace SaRLAB.UserWeb.Controllers
             return View();
         }
 
-        public IActionResult Delete_EquipmentChemistry(int id)
+        public ActionResult Delete_ToolChemistry(int id)
         {
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy";
+                return RedirectToAction("GetAll_ToolChemistry");
+            }
+
+            if (userLogin.Email == equipment.CreateBy)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_ToolChemistry");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_ToolChemistry");
+                }
+                return RedirectToAction("GetAll_ToolChemistry");
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAll_ToolChemistry");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_ToolChemistry(int id)
+        {
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            return View(equipment);
+        }
+
+
+        //------------------------Thiết bị ----------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_EquipmentChemistry()
+        {
+            List<Equipment> equipment = new List<Equipment>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/EQUIPMENTCHEMISTRY").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            return View(equipment);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_EquipmentChemistry()
+        {
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return Ok();
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_EquipmentChemistry(Equipment equipment, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
             try
             {
-                HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id).Result;
+                equipment.CreateTime = DateTime.Now;
+                equipment.CreateBy = userLogin.Email;
+                equipment.UpdateTime = DateTime.Now;
+                equipment.UpdateBy = userLogin.Email;
+                equipment.SchoolId = userLogin.SchoolId;
+                equipment.SubjectId = 1;
+                equipment.Type = "EQUIPMENTCHEMISTRY";
+                equipment.SchoolId = userLogin.SchoolId;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert/", content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("GetAll_ToolChemistry");
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_EquipmentChemistry");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                return RedirectToAction("GetAll_ToolChemistry");
+                return View();
             }
-            return RedirectToAction("GetAll_ToolChemistry");
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult Edit_EquipmentChemistry(int id)
+        {
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy";
+                return Ok();
+            }
+
+            if (userLogin.Email == equipment.CreateBy)
+            {
+                return View(equipment);
+            }
+            else
+            {
+                TempData["notice"] = "bạn khoong cos quyeefn chirnh suwar";
+                return Ok();
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_EquipmentChemistry(Equipment equipment, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            try
+            {
+                equipment.UpdateTime = DateTime.Now;
+                equipment.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Update/" + equipment.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_EquipmentChemistry");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        public ActionResult Delete_EquipmentChemistry(int id)
+        {
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy";
+                return RedirectToAction("GetAll_EquipmentChemistry");
+            }
+
+            if (userLogin.Name == equipment.CreateBy)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_EquipmentChemistry");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_EquipmentChemistry");
+                }
+                return RedirectToAction("GetAll_EquipmentChemistry");
+            }
+            else
+            {
+                TempData["notice"] = "banj khoong cos quyeefn chirnh suwar";
+                return RedirectToAction("GetAll_EquipmentChemistry");
+            }
         }
 
 
@@ -664,7 +774,15 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Experiment()
         {
-            return View();
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Create_Experiment(Document document, IFormFile File)
@@ -734,6 +852,12 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return Ok();
+            }
+
             if (userLogin.Email == document.CreateBy)
             {
                 return View(document);
@@ -792,7 +916,8 @@ namespace SaRLAB.UserWeb.Controllers
             return View();
         }
 
-        public IActionResult Delete_Experiment(int id)
+
+        public ActionResult Delete_Experiment(int id)
         {
             Document document = new Document();
 
@@ -803,6 +928,12 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 string data = responses.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Experiment");
             }
 
             if (document.CreateBy == userLogin.Email)
@@ -871,7 +1002,15 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Conspectus()
         {
-            return View();
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Create_Conspectus(Document document, IFormFile File)
@@ -941,7 +1080,21 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
-            return View(document);
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return Ok();
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "ban khong co quyen them moi";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Edit_Conspectus(Document document, IFormFile File)
@@ -991,24 +1144,49 @@ namespace SaRLAB.UserWeb.Controllers
             return View();
         }
 
-        public IActionResult Delete_Conspectus(int id)
+        public ActionResult Delete_Conspectus(int id)
         {
-            try
-            {
-                HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+            Document document = new Document();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("GetAll_Conspectus");
-                }
-            }
-            catch (Exception ex)
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
             {
-                TempData["errorMessage"] = ex.Message;
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Conspectus");
             }
-            return RedirectToAction("GetAll_Conspectus");
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Conspectus");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Conspectus");
+                }
+                return RedirectToAction("GetAll_Conspectus");
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAll_Conspectus");
+            }
         }
 
 
@@ -1066,7 +1244,15 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Inorganic_Organic()
         {
-            return View();
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Create_Inorganic_Organic(Document document, IFormFile File)
@@ -1135,7 +1321,21 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
-            return View(document);
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return Ok();
+            }
+
+            if (userLogin.Email == document.CreateBy)
+            {
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "ban khong co quyen chinh sua";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Edit_Inorganic_Organic(Document document, IFormFile File)
@@ -1185,24 +1385,49 @@ namespace SaRLAB.UserWeb.Controllers
             return View();
         }
 
-        public IActionResult Delete_Inorganic_Organic(int id)
+        public ActionResult Delete_Inorganic_Organic(int id)
         {
-            try
-            {
-                HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+            Document document = new Document();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("GetAll_Inorganic_Organic");
-                }
-            }
-            catch (Exception ex)
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
             {
-                TempData["errorMessage"] = ex.Message;
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
-            return RedirectToAction("GetAll_Inorganic_Organic");
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Inorganic_Organic");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Inorganic_Organic");
+                }
+                return RedirectToAction("GetAll_Inorganic_Organic");
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAll_Inorganic_Organic");
+            }
         }
 
 
@@ -1245,7 +1470,15 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Inorganic()
         {
-            return View();
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Create_Inorganic(Document document, IFormFile File)
@@ -1315,7 +1548,21 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
-            return View(document);
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return Ok();
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "ban khong co quyen chinh sua";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Edit_Inorganic(Document document, IFormFile File)
@@ -1365,24 +1612,49 @@ namespace SaRLAB.UserWeb.Controllers
             return View();
         }
 
-        public IActionResult Delete_Inorganic(int id)
+        public ActionResult Delete_Inorganic(int id)
         {
-            try
-            {
-                HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+            Document document = new Document();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("GetAll_Inorganic");
-                }
-            }
-            catch (Exception ex)
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
             {
-                TempData["errorMessage"] = ex.Message;
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Inorganic");
             }
-            return RedirectToAction("GetAll_Inorganic");
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Inorganic");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Inorganic");
+                }
+                return RedirectToAction("GetAll_Inorganic");
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAll_Inorganic");
+            }
         }
 
 
@@ -1426,7 +1698,15 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Organic()
         {
-            return View();
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Create_Organic(Document document, IFormFile File)
@@ -1495,7 +1775,21 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
-            return View(document);
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return Ok();
+            }
+
+            if (userLogin.Email == document.CreateBy)
+            {
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "ban khong co quyen chinh sua";
+                return Ok();
+            }
         }
         [HttpPost]
         public ActionResult Edit_Organic(Document document, IFormFile File)
@@ -1545,29 +1839,282 @@ namespace SaRLAB.UserWeb.Controllers
             return View();
         }
 
-        public IActionResult Delete_Organic(int id)
+        public ActionResult Delete_Organic(int id)
         {
-            try
-            {
-                HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+            Document document = new Document();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("GetAll_Organic");
-                }
-            }
-            catch (Exception ex)
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
             {
-                TempData["errorMessage"] = ex.Message;
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Organic");
             }
-            return RedirectToAction("GetAll_Organic");
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Organic");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Organic");
+                }
+                return RedirectToAction("GetAll_Organic");
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAll_Organic");
+            }
         }
 
 
         [HttpGet]
         public ActionResult Details_Organic(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            return View(document);
+        }
+
+        //--------------------------------hoạt tính sinh học---- biological ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Biological()
+        {
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/BIOLOGICAL").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Biological()
+        {
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                return Ok();
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Biological(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 1;
+                document.SchoolId = userLogin.SchoolId;
+                document.Type = "BIOLOGICAL";
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Biological");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Biological(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return Ok();
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "ban khong co quyen chinh sua";
+                return Ok();
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Biological(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Biological");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        public ActionResult Delete_Biological(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Biological");
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Biological");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Biological");
+                }
+                return RedirectToAction("GetAll_Biological");
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAll_Biological");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Biological(int id)
         {
             Document document = new Document();
 
