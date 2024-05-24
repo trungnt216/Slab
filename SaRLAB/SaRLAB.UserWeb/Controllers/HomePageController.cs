@@ -27,9 +27,9 @@ namespace SaRLAB.UserWeb.Controllers
             string jwtToken = _configuration["JwtToken:Value"];
 
             var tokenHandler = new JwtSecurityTokenHandler();
-
-            var token = tokenHandler.ReadJwtToken(jwtToken);
-
+/*
+            var token = tokenHandler.ReadJwtToken(jwtToken);*/
+/*
             foreach (Claim claim in token.Claims)
             {
                 if (claim.Type == ClaimTypes.Name)
@@ -40,8 +40,8 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     userLogin.RoleName = claim.Value;
                 }
-            }
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+            }*/
+/*            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);*/
         }
 
 
