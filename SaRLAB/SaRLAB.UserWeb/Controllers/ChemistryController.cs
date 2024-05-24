@@ -109,8 +109,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Chemistry");
             }
         }
         [HttpPost]
@@ -172,8 +172,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Chemistry");
             }
         }
         [HttpPost]
@@ -271,7 +271,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Chemistry");
             }
 
@@ -321,8 +321,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_ToolChemistry");
             }
         }
         [HttpPost]
@@ -406,8 +406,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_ToolChemistry");
             }
         }
         [HttpPost]
@@ -498,7 +498,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_ToolChemistry");
             }
         }
@@ -549,8 +549,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_EquipmentChemistry");
             }
         }
         [HttpPost]
@@ -705,7 +705,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_EquipmentChemistry");
             }
 
-            if (userLogin.Name == equipment.CreateBy)
+            if (userLogin.Email == equipment.CreateBy)
             {
                 try
                 {
@@ -780,8 +780,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Experiment");
             }
         }
         [HttpPost]
@@ -864,8 +864,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return NoContent();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Experiment");
             }
         }
         [HttpPost]
@@ -957,7 +957,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -1008,8 +1008,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Conspectus");
             }
         }
         [HttpPost]
@@ -1092,8 +1092,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen them moi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Conspectus");
             }
         }
         [HttpPost]
@@ -1184,7 +1184,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -1250,8 +1250,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Inorganic_Organic");
             }
         }
         [HttpPost]
@@ -1333,8 +1333,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Inorganic_Organic");
             }
         }
         [HttpPost]
@@ -1425,7 +1425,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
         }
@@ -1476,8 +1476,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Inorganic");
             }
         }
         [HttpPost]
@@ -1560,8 +1560,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Inorganic");
             }
         }
         [HttpPost]
@@ -1652,7 +1652,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Inorganic");
             }
         }
@@ -1704,8 +1704,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Organic");
             }
         }
         [HttpPost]
@@ -1741,6 +1741,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SchoolId = userLogin.SchoolId;
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
+                document.Type = "ORGANIC";
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -1787,8 +1788,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh s!";
+                return RedirectToAction("GetAll_Organic");
             }
         }
         [HttpPost]
@@ -1879,7 +1880,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Organic");
             }
         }
@@ -1931,8 +1932,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Biological");
             }
         }
         [HttpPost]
@@ -2015,8 +2016,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Biological");
             }
         }
         [HttpPost]
@@ -2107,7 +2108,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Biological");
             }
         }
@@ -2159,8 +2160,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Vocabulary");
             }
         }
         [HttpPost]
@@ -2243,8 +2244,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Vocabulary");
             }
         }
         [HttpPost]
@@ -2335,7 +2336,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Vocabulary");
             }
         }
@@ -2387,8 +2388,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Exam");
             }
         }
         [HttpPost]
@@ -2471,8 +2472,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Exam");
             }
         }
         [HttpPost]
@@ -2563,7 +2564,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Exam");
             }
         }
@@ -2615,8 +2616,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Examenglish");
             }
         }
         [HttpPost]
@@ -2699,8 +2700,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Examenglish");
             }
         }
         [HttpPost]
@@ -2791,7 +2792,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Examenglish");
             }
         }

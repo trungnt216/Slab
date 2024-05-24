@@ -1,4 +1,4 @@
-/* 
+﻿/* 
 
 TemplateMo 562 Space Dynamic
 
@@ -103,11 +103,11 @@ header, nav, section, article, aside, footer, hgroup {
 }
 
 html, body {
-  font-family: Montserrat, sans-serif !important;
-  background-color: #eaf2ff;
-  -ms-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: Montserrat, sans-serif !important;
+    background-color: #c4daff;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -1019,7 +1019,7 @@ Banner Style
 }
  /* table-container */
 .table-container {
-    background: white;
+    background: #ffffffd9;
     padding: 35px 50px;
     border-radius: 15px;
 }
@@ -1203,10 +1203,35 @@ Banner Style
     padding-left: 8px;
 }
 
+.edit-container .form-group .select {
+    padding: 8px;
+    background: transparent;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    width: 100%;    
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none; 
+    background: url('../images/downArrow.png') no-repeat; 
+    background-position: calc(100% - 20px) center; 
+    background-size: 12px;
+}
+
+.edit-container .form-group .select:focus-visible {
+    outline: none;
+}
+
 .edit-container .form-group input {
     margin-top: 5px;
 }
 
 .edit-container .form-group .btn-primary {
     float: right;
+}
+
+.form-text-danger {
+    margin-top: -15px;
+    font-style: italic;
+    color: red;
+    margin-left: 20px;
 }
