@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-file-signature"></i>
-                                    <label asp-for="Name" class="control-label"></label>
+                                    <label asp-for="Name" class="control-label">Tên</label>
                                 </div>
                                 <input asp-for="Name" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
@@ -99,12 +99,12 @@
                                 <input type="file" id="File" name="File" class="form-control-file" />
                             </div>
                             <div class="file-detail">
-                                <span id="fileDisplay" style="color: #5d6975; font-style: italic; padding-left: 25px;">
+                                <span id="fileDisplay" style="color: #5d6975; font-style: italic;">
                                     Không có sẵn file nào!
                                 </span>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                                <input type="submit" value="Thêm mới" class="btn btn-primary" />
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,6 @@
         </div>
      </div>
 </div>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
@@ -125,7 +124,7 @@
             var fileURL = URL.createObjectURL(file);
             var extension = file.name.split('.').pop().toLowerCase();
 
-            fileDisplay.innerHTML = '';  // Clear the current content
+            fileDisplay.innerHTML = ''; 
 
             if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
                 var img = document.createElement('img');
@@ -136,18 +135,18 @@
             } else if (['mp4', 'webm', 'ogg'].includes(extension)) {
                 var video = document.createElement('video');
                 video.src = fileURL;
-                video.width = '100%';
-                video.height = '100%';
+                video.style.maxWidth = '100%';
+                video.style.height = 'auto';
                 video.controls = true;
                 fileDisplay.appendChild(video);
             } else if (extension === 'pdf') {
                 var object = document.createElement('object');
                 object.data = fileURL;
                 object.width = '100%';
-                object.height = '400px';
+                object.height = '800px';
                 fileDisplay.appendChild(object);
             } else {
-                fileDisplay.textContent = 'Unsupported file type';
+                fileDisplay.textContent = 'Không hỗ trợ file này!';
             }
         });
     </script>

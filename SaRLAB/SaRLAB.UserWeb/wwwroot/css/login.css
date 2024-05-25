@@ -89,6 +89,20 @@ form.sign-in-form {
     padding-right: 15px;
 }
 
+.input-field select {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    color: #adadad;
+    margin-right: 25px;
+}
+
+.input-field select:focus-visible {
+    outline: none;
+}
+
+
 .input-field input::placeholder {
     color: #aaa;
     font-weight: 500;

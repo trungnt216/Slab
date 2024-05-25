@@ -109,8 +109,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Chemistry");
             }
         }
         [HttpPost]
@@ -172,8 +172,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Chemistry");
             }
         }
         [HttpPost]
@@ -271,7 +271,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Chemistry");
             }
 
@@ -321,8 +321,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_ToolChemistry");
             }
         }
         [HttpPost]
@@ -406,8 +406,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_ToolChemistry");
             }
         }
         [HttpPost]
@@ -498,7 +498,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_ToolChemistry");
             }
         }
@@ -549,8 +549,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_EquipmentChemistry");
             }
         }
         [HttpPost]
@@ -705,7 +705,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_EquipmentChemistry");
             }
 
-            if (userLogin.Name == equipment.CreateBy)
+            if (userLogin.Email == equipment.CreateBy)
             {
                 try
                 {
@@ -780,8 +780,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Experiment");
             }
         }
         [HttpPost]
@@ -864,8 +864,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return NoContent();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Experiment");
             }
         }
         [HttpPost]
@@ -957,7 +957,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -1008,8 +1008,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Conspectus");
             }
         }
         [HttpPost]
@@ -1092,8 +1092,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen them moi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Conspectus");
             }
         }
         [HttpPost]
@@ -1184,7 +1184,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -1250,8 +1250,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Inorganic_Organic");
             }
         }
         [HttpPost]
@@ -1333,8 +1333,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Inorganic_Organic");
             }
         }
         [HttpPost]
@@ -1425,7 +1425,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
         }
@@ -1476,8 +1476,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Inorganic");
             }
         }
         [HttpPost]
@@ -1560,8 +1560,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Inorganic");
             }
         }
         [HttpPost]
@@ -1652,7 +1652,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Inorganic");
             }
         }
@@ -1704,8 +1704,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Organic");
             }
         }
         [HttpPost]
@@ -1741,6 +1741,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SchoolId = userLogin.SchoolId;
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
+                document.Type = "ORGANIC";
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -1787,8 +1788,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh s!";
+                return RedirectToAction("GetAll_Organic");
             }
         }
         [HttpPost]
@@ -1879,7 +1880,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Organic");
             }
         }
@@ -1931,8 +1932,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Biological");
             }
         }
         [HttpPost]
@@ -2015,8 +2016,8 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return Ok();
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Biological");
             }
         }
         [HttpPost]
@@ -2107,7 +2108,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Biological");
             }
         }
@@ -2115,6 +2116,918 @@ namespace SaRLAB.UserWeb.Controllers
 
         [HttpGet]
         public ActionResult Details_Biological(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            return View(document);
+        }
+
+        //-------------------------------Từ Vựng ----- Vocabulary ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Vocabulary()
+        {
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/VOCABULARY").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Vocabulary()
+        {
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Vocabulary");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Vocabulary(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 1;
+                document.SchoolId = userLogin.SchoolId;
+                document.Type = "VOCABULARY";
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Vocabulary");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Vocabulary(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return Ok();
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Vocabulary");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Vocabulary(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Vocabulary");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        public ActionResult Delete_Vocabulary(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Vocabulary");
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Vocabulary");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Vocabulary");
+                }
+                return RedirectToAction("GetAll_Vocabulary");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                return RedirectToAction("GetAll_Vocabulary");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Vocabulary(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            return View(document);
+        }
+
+        //-------------------------------Bài tập ----- Exam ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Exam()
+        {
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/EXAM").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Exam()
+        {
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Exam");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Exam(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 1;
+                document.SchoolId = userLogin.SchoolId;
+                document.Type = "EXAM";
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Exam");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Exam(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return Ok();
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Exam");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Exam(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Exam");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        public ActionResult Delete_Exam(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Exam");
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Exam");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Exam");
+                }
+                return RedirectToAction("GetAll_Exam");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                return RedirectToAction("GetAll_Exam");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Exam(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            return View(document);
+        }
+
+        //-------------------------------Bài tập song ngữ ----- Examenglish ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Examenglish()
+        {
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/EXAMENG").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Examenglish()
+        {
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Examenglish");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Examenglish(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 1;
+                document.SchoolId = userLogin.SchoolId;
+                document.Type = "EXAMENG";
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Examenglish");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Examenglish(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return Ok();
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                return RedirectToAction("GetAll_Examenglish");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Examenglish(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Examenglish");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        public ActionResult Delete_Examenglish(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Examenglish");
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Examenglish");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Examenglish");
+                }
+                return RedirectToAction("GetAll_Examenglish");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                return RedirectToAction("GetAll_Examenglish");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Examenglish(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            return View(document);
+        }
+
+        //-------------------------------Đề tài cấp sở----- Department_level topic ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Department_level()
+        {
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/DEPARTMENTLEVEL").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Examenglish()
+        {
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                return Ok();
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Examenglish(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 1;
+                document.SchoolId = userLogin.SchoolId;
+                document.Type = "EXAMENG";
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Examenglish");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Examenglish(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return Ok();
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "ban khong co quyen chinh sua";
+                return Ok();
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Examenglish(Document document, IFormFile File)
+        {
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    return RedirectToAction("GetAll_Examenglish");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            return View();
+        }
+
+        public ActionResult Delete_Examenglish(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Examenglish");
+            }
+
+            if (document.CreateBy == userLogin.Email)
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("GetAll_Examenglish");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Examenglish");
+                }
+                return RedirectToAction("GetAll_Examenglish");
+            }
+            else
+            {
+                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAll_Examenglish");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Examenglish(int id)
         {
             Document document = new Document();
 

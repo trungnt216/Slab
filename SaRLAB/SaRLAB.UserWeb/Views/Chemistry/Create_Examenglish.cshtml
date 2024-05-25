@@ -1,9 +1,9 @@
 ﻿@model SaRLAB.Models.Entity.Document
 
 @{
-    ViewData["Title"] = "Create_Biological";
+    ViewData["Title"] = "Create_Examenglish";
     Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
-    ViewBag.TitleCustom = "Thêm mới hoạt tính sinh học";
+    ViewBag.TitleCustom = "Thêm mới bài giảng song ngữ";
 }
 
 <div id="sub-content">
@@ -12,12 +12,12 @@
             <div class="col-12 edit-container">
                 <div class="d-flex justify-content-between">
                     <partial name="_TitleCustom">
-                    <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Biological" class="btn-custom-return" type="button">
+                    <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Examenglish" class="btn-custom-return" type="button">
                         <i class="fa-solid fa-angles-left"></i>
                         Trở về
                     </a>
                 </div>
-                <form asp-action="Create_Biological" method="post" enctype="multipart/form-data">
+                <form asp-action="Create_Examenglish" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row">
                         <div class="col-4">
@@ -124,7 +124,7 @@
             var fileURL = URL.createObjectURL(file);
             var extension = file.name.split('.').pop().toLowerCase();
 
-            fileDisplay.innerHTML = '';
+            fileDisplay.innerHTML = '';  // Clear the current content
 
             if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
                 var img = document.createElement('img');
@@ -146,7 +146,7 @@
                 object.height = '800px';
                 fileDisplay.appendChild(object);
             } else {
-                fileDisplay.textContent = 'Không hỗ trợ file này!';
+                fileDisplay.textContent = 'Unsupported file type';
             }
         });
     </script>

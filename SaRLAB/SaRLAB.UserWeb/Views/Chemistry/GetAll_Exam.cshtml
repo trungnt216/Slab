@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<SaRLAB.Models.Entity.Document>
 
 @{
-    ViewData["Title"] = "GetAll_Inorganic_Organic";
+    ViewData["Title"] = "GetAll_Exam";
     Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
-    ViewBag.TitleCustom = "Danh sách vô cơ - hữu cơ";
+    ViewBag.TitleCustom = "Danh sách bài tập tiếng Anh chuyên ngành";
     int counter = 1;
 }
 
@@ -38,10 +38,10 @@
             <div class="col-12 table-container">
                 <div class="table-action d-flex justify-content-between">
                     <partial name="_TitleCustom">
-                    <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_Inorganic_Organic">
-                        <i class="fa-solid fa-plus"></i>
-                        Thêm mới
-                    </a>
+                        <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_Exam">
+                            <i class="fa-solid fa-plus"></i>
+                            Thêm mới
+                        </a>
                 </div>
                 <div id="popupNotification" class="alert alert-danger">
                     @TempData["notice"]
@@ -65,8 +65,8 @@
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.PageFlag)
                             </th>
-                            <th>
-                                Loại
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.Type)
                             </th>
                             <th>
                                 Nhận xét
@@ -93,77 +93,65 @@
                         </tr>
                     </thead>
                     <tbody>
-                @foreach (var item in Model) {
-                        <tr>
-                            <td>
-                                @counter
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.ID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.Path)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.PageFlag)
-                            </td>
-                            @{
-                                var type = item.Type == "INORGANIC" ? "Vô cơ" : "Hữu cơ";
-                                var backgroundColor = item.Type == "INORGANIC" ? "#63c799" : "#ead38e";
-                            }
-                            <td>
-                                <p style="
-                                    margin: 0;
-                                    background: @backgroundColor;
-                                    text-align: center;
-                                    border-radius: 15px;
-                                    color: white;
-                                    font-size: 14px;
-                                    line-height: 25px;">
-                                    @type
-                                </p>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Remark)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SchoolId)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.CreateBy)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.CreateTime)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.UpdateBy)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UpdateTime)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SubjectId)
-                            </td>
-                            <td>
-                                <a class="btn-custom-view-detail" asp-action="Details_Inorganic_Organic" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a class="btn-custom-edit" asp-action="Edit_Inorganic_Organic" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a class="btn-custom-delete" asp-action="Delete_Inorganic_Organic" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        counter++;
-                    }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @counter
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Path)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.PageFlag)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Type)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Remark)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.SchoolId)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.CreateBy)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.CreateTime)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.UpdateBy)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UpdateTime)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.SubjectId)
+                                </td>
+                                <td>
+                                    <a class="btn-custom-view-detail" asp-action="Details_Exam" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a class="btn-custom-edit" asp-action="Edit_Exam" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a class="btn-custom-delete" asp-action="Delete_Exam" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            counter++;
+                        }
                     </tbody>
                 </table>
                 @if (Model == null || !Model.Any())

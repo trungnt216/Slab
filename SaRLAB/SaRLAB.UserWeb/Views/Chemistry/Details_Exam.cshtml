@@ -1,10 +1,11 @@
-﻿@model SaRLAB.Models.Entity.Equipment
+﻿@model SaRLAB.Models.Entity.Document
 
 @{
-    ViewData["Title"] = "Details_ToolChemistry";
+    ViewData["Title"] = "Details_Exam";
     Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
-    ViewBag.TitleCustom = "Chi tiết dụng cụ";
+    ViewBag.TitleCustom = "Chi tiết bài tập tiếng Anh chuyên ngành";
 }
+
 
 <div id="sub-content">
     <div class="container">
@@ -13,11 +14,11 @@
                 <div class="d-flex justify-content-between">
                     <partial name="_TitleCustom">
                     <div class="detail-action">
-                        <a asp-area="" asp-controller="Chemistry" asp-action="Edit_ToolChemistry" asp-route-id="@Model.ID" class="btn-edit" type="button">
+                        <a asp-area="" asp-controller="Chemistry" asp-action="Edit_Exam" asp-route-id="@Model.ID" class="btn-edit" type="button">
                             <i class="fa-solid fa-pen-to-square"></i>
                             Chỉnh sửa
                         </a>
-                        <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_ToolChemistry" class="btn-custom-return" type="button">
+                        <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Exam" class="btn-custom-return" type="button">
                             <i class="fa-solid fa-angles-left"></i>
                             Trở về
                         </a>
@@ -38,20 +39,6 @@
                                 <p>Nhận xét</p>
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.Remark)</p>
-                        </div>
-                        <div class="detail-item">
-                            <div class="title">
-                                <i class="fa-solid fa-inbox"></i>
-                                <p>Số lượng</p>
-                            </div>
-                            <p class="detail">@Html.DisplayFor(model => model.EquipmentQuantity)</p>
-                        </div>
-                        <div class="detail-item">
-                            <div class="title">
-                                <i class="fa-solid fa-clock"></i>
-                                <p>Thời gian hết hạn</p>
-                            </div>
-                            <p class="detail">@Html.DisplayFor(model => model.ExpiredTime)</p>
                         </div>
                         <div class="detail-item">
                             <div class="title">
@@ -89,13 +76,13 @@
                                 <p>Chi tiết file</p>
                             </div>
                         </div>
-                        @if (string.IsNullOrEmpty(Model.ImagePath))
+                        @if (string.IsNullOrEmpty(Model.Path))
                         {
                             <span style="color: #5d6975; font-style: italic; padding-left: 25px;">Không có sẵn file nào!</span>
                         }
                         else
                         {
-                            string path = Model.ImagePath;
+                            string path = Model.Path;
                             string extension = System.IO.Path.GetExtension(path).ToLower();
 
                             if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
@@ -130,16 +117,22 @@
                         @Html.DisplayFor(model => model.ID)
                     </dd>
                     <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.SpecializedEnglishFlag)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.SpecializedEnglishFlag)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.PageFlag)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.PageFlag)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
                         @Html.DisplayNameFor(model => model.Type)
                     </dt>
                     <dd class="col-sm-10 d-none">
                         @Html.DisplayFor(model => model.Type)
-                    </dd>
-                    <dt class="col-sm-2 d-none">
-                        @Html.DisplayNameFor(model => model.SubjectId)
-                    </dt>
-                    <dd class="col-sm-10 d-none">
-                        @Html.DisplayFor(model => model.SubjectId)
                     </dd>
                     <dt class="col-sm-2 d-none">
                         @Html.DisplayNameFor(model => model.SchoolId)
@@ -147,8 +140,15 @@
                     <dd class="col-sm-10 d-none">
                         @Html.DisplayFor(model => model.SchoolId)
                     </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.SubjectId)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.SubjectId)
+                    </dd>
                 </dl>
             </div>
         </div>
     </div>
 </div>
+
