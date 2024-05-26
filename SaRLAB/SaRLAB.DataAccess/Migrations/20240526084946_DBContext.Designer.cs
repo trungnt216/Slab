@@ -12,7 +12,7 @@ using SaRLAB.DataAccess;
 namespace SaRLAB.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240526013641_DBContext")]
+    [Migration("20240526084946_DBContext")]
     partial class DBContext
     {
         /// <inheritdoc />
