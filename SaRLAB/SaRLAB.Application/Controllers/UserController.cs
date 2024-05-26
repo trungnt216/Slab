@@ -120,7 +120,7 @@ namespace SaRLAB.Application.Controllers
         [Route("GetByID/{email}")]
         public IActionResult GetByID(string email)
         {
-            if(email == null)
+            if (email == null)
             {
                 return BadRequest("Invalid data");
             }
@@ -162,7 +162,32 @@ namespace SaRLAB.Application.Controllers
         [Route("SearchUser")]
         public IActionResult SearchUsers(string? name, string? email, int? roleId)
         {
-            return Ok(_loginDto.SearchUsers(name,email,roleId));
+            return Ok(_loginDto.SearchUsers(name, email, roleId));
+        }
+
+
+        //lấy toàn bộ user có schoolID, subjectID được nhập vào và có role là Admin
+        [HttpGet]
+        [Route("GetAllAdminUser/{schoolId}/{subjectId}")]
+        public IActionResult GetAllAdminUser(int schoolId, int subjectId)
+        {
+            return Ok();
+        }
+
+        //lấy toàn bộ user có schoolID, subjectID được nhập vào và có role là Teacher
+        [HttpGet]
+        [Route("GetAllTeacherUser/{schoolId}/{subjectId}")]
+        public IActionResult GetAllTeacherUser(int schoolId, int subjectId)
+        {
+            return Ok();
+        }
+
+        //lấy toàn bộ user có schoolID, subjectID được nhập vào và có role là Technical
+        [HttpGet]
+        [Route("GetAllTechnicalUser/{schoolId}/{subjectId}")]
+        public IActionResult GetAllTechnicalUser(int schoolId, int subjectId)
+        {
+            return Ok();
         }
 
     }

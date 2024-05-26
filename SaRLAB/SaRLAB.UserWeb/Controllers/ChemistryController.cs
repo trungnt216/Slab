@@ -3953,5 +3953,56 @@ namespace SaRLAB.UserWeb.Controllers
             return View(document);
         }
 
+        //---------------------------- Ban chủ nhiệm -----------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Directors()
+        {
+            List<Equipment> equipment = new List<Equipment>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllAdminUser/" + userLogin.SchoolId + "/1").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //---------------------------- Giảng viên -----------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Teacher()
+        {
+            List<Equipment> equipment = new List<Equipment>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTeacherUser/" + userLogin.SchoolId + "/1").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //---------------------------- Tổ kĩ thuật -----------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Technical()
+        {
+            List<Equipment> equipment = new List<Equipment>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTechnicalUser/" + userLogin.SchoolId + "/1").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            return View(equipment);
+        }
+
     }
 }

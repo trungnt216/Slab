@@ -68,8 +68,10 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
         {
             var existingEquipment = _context.Equipments.Find(id);
             if (existingEquipment == null)
-                return 0; 
-
+                return 0;
+            existingEquipment.Name = equipment.Name;
+            existingEquipment.Property = equipment.Property;
+            existingEquipment.From = equipment.From;
             existingEquipment.ImagePath = equipment.ImagePath;
             existingEquipment.UpdateBy = equipment.UpdateBy;
             existingEquipment.UpdateTime = equipment.UpdateTime;
