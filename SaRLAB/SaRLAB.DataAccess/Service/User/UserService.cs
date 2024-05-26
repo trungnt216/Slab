@@ -231,5 +231,17 @@ namespace SaRLAB.DataAccess.Service.UserService
 
             return query.ToList();
         }
+
+        public List<User> GetUsersByRole(int role, int schoolId, int? subjectId)
+        {
+             IQueryable<User> query = _context.Users.Where(u => u.Role_ID == role && u.SchoolId == schoolId);
+
+             if (subjectId.HasValue && subjectId != 0)
+                   {
+                         query = query.Where(u => u.SubjectId == subjectId);
+                   }
+
+              return query.ToList();
+        }
     }
 }

@@ -26,6 +26,9 @@ namespace SaRLAB.Models.Entity
         public string? CreateBy { get; set; }
         public string? UpdateBy { get; set; }
         public DateTime? CreateTime { get; set; }
+        public int? SubjectId { get; set; }
+        public string? AcademyRank { get; set; }
+        public int? Experience { get; set; }
         public string? AvtPath { get; set; }
         [Required(ErrorMessage = "Vui lòng chọn 1 trường!")]
         public int? SchoolId { get; set; }
