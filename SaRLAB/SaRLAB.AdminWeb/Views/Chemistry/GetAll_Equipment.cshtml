@@ -1,0 +1,122 @@
+﻿@model IEnumerable<SaRLAB.Models.Entity.Equipment>
+
+@{
+    ViewData["Title"] = "GetAll_Equipment";
+    ViewBag.TitleCustom = "Danh sách thiết bị";
+    Layout = "~/Views/Home/_LayoutHome.cshtml";
+    int counter = 1;
+}
+
+<div id="sub-content">
+    <partial name="TitleCustom">
+    <div class="table-container">
+        <div class="table-action row">
+            <div class="col-8">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search&hellip;">
+                </div>
+            </div>
+            <div class="col-4">
+                <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Xóa
+                </button>
+                    <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="Create_Equipment" asp-controller="Chemistry">
+                    <i class="fa-solid fa-plus"></i>
+                    Thêm mới
+                </a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="selectAll" />
+                    </th>
+                    <th>#</th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        Tên thiết bị
+                    </th>
+                    <th>
+                        Người tạo
+                    </th>
+                    <th>
+                        Thời gian tạo
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.UpdateBy)
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.UpdateTime)
+                    </th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.SubjectId)
+                    </th>
+                    <th>
+                        Số lượng
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="selectRow" data-id="@item.ID" />
+                        </td>
+                        <td>
+                            @counter
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateTime)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.UpdateBy)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.UpdateTime)
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.SubjectId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EquipmentQuantity)
+                        </td>
+                        <td>
+                            <a class="btn-custom-edit" asp-action="Edit_Equipment" asp-route-id="@item.ID">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a class="delete" asp-action="Delete_Equipment" asp-route-id="@item.ID">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                            @* <a class="delete" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id="@item.ID">
+                                <i class="fa-solid fa-trash"></i>
+                            </a> *@
+                            @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                        </td>
+                    </tr>
+                     counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+    @* modal delete *@
+    @{
+        ViewBag.DeleteAction = "DeleteMultipleEquipments";
+    }
+    <partial name="ModalDelete">
+</div>
