@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SaRLAB.Models.Dto;
 using SaRLAB.Models.Entity;
@@ -74,7 +74,7 @@ namespace SaRLAB.UserWeb.Controllers
         {
             List<Equipment> equipment = new List<Equipment>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/CHEMISTRY").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/CHEMISTRYE").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -208,7 +208,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.UpdateBy = userLogin.Email;
                 equipment.SchoolId = userLogin.SchoolId;
                 equipment.SubjectId = 1;
-                equipment.Type = "CHEMISTRY";
+                equipment.Type = "CHEMISTRYE";
                 equipment.SchoolId = userLogin.SchoolId;
 
                 string data = JsonConvert.SerializeObject(equipment);

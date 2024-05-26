@@ -14,15 +14,20 @@ namespace SaRLAB.Models.Entity
     {
         [Key]
         public int ID { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập tên!")]
         public string? Name { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu!")]
         public string? Password { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập email!")]
         public string? Email { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập số điện thoại!")]
         public string? Phone { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string? CreateBy { get; set; }
         public string? UpdateBy { get; set; }
         public DateTime? CreateTime { get; set; }
         public string? AvtPath { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn 1 trường!")]
         public int? SchoolId { get; set; }
        [ForeignKey("RoleManages")]
         public int Role_ID { get; set; }

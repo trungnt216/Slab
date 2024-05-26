@@ -13,11 +13,13 @@ namespace SaRLAB.Models.Entity
     {
         [Key]
         public int? ID { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập tên!")]
         public string? Name { get; set; }
         public string? CreateBy { get; set; }
         public DateTime? CreateTime { get; set; }
         public string? UpdateBy { get; set; }
         public DateTime? UpdateTime { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập ngày hết hạn!")]
         public DateTime? ExpiredTime { get; set; }
         public string? Remark { get; set; }
         public int? SubjectId { get; set; }
@@ -27,5 +29,7 @@ namespace SaRLAB.Models.Entity
         public Subject? Subject { get; set; }
         public int? EquipmentQuantity { get; set; }
         public ICollection<PlanDetail>? PlanDetails { get; set; }
+        public string? Property { get; set; }
+        public string? From { get; set; }
     }
 }
