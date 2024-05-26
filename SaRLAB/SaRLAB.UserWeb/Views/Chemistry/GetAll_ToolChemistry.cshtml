@@ -122,8 +122,14 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.UpdateTime)
                                 </td>
+                                @{
+                                    var currentTime = DateTime.Now;
+                                    var style = item.ExpiredTime <= currentTime ? "color: #cf656f; font-weight: 500" : "";
+                                }
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.ExpiredTime)
+                                    <p style="@style">
+                                        @item.ExpiredTime
+                                    </p>
                                 </td>
                                 <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.Type)
@@ -143,8 +149,21 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.EquipmentQuantity)
                                 </td>
+                                @{
+                                    var props = item.Property == "poison" ? "Độc" : "Không độc";
+                                    var backgroundColor = item.Property == "poison" ? "#a8424c" : "#32a771";
+                                }
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Property)
+                                    <p style="
+                                margin: 0;
+                                background: @backgroundColor;
+                                text-align: center;
+                                border-radius: 15px;
+                                color: white;
+                                font-size: 14px;
+                                line-height: 25px;">
+                                        @props
+                                    </p>
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.From)

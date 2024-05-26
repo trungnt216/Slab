@@ -92,27 +92,30 @@
                             </div>
                             <div class="form-group">
                                 <div class="title d-flex">
+                                    <i class="fa-solid fa-tag"></i>
+                                    <label asp-for="Property" class="control-label">Đặc tính</label>
+                                </div>
+                                <select asp-for="Property" class="select">
+                                    <option value="poison">Độc</option>
+                                    <option value="nonpoison">Không độc</option>
+                                </select>
+                                <span asp-validation-for="Property" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-barcode"></i>
+                                    <label asp-for="From" class="control-label">Xuất xứ</label>
+                                </div>
+                                <input asp-for="From" class="form-control" />
+                                <span asp-validation-for="From" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
                                     <i class="fa-solid fa-comment"></i>
                                     <label asp-for="Remark" class="control-label">Nhận xét</label>
                                 </div>
                                 <textarea asp-for="Remark" class="form-control" rows="8" cols="50"></textarea>
                                 <span asp-validation-for="Remark" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="title d-flex">
-                                    <i class="fa-solid fa-comment"></i>
-                                    <label asp-for="Property" class="control-label">Đặc tính</label>
-                                </div>
-                                <textarea asp-for="Property" class="form-control" rows="8" cols="50"></textarea>
-                                <span asp-validation-for="Property" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="title d-flex">
-                                    <i class="fa-solid fa-comment"></i>
-                                    <label asp-for="From" class="control-label">Xuát xứ</label>
-                                </div>
-                                <textarea asp-for="From" class="form-control" rows="8" cols="50"></textarea>
-                                <span asp-validation-for="From" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-8">
