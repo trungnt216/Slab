@@ -177,7 +177,7 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(user);
         }
         [HttpPost]
-        public IActionResult Edit(User user, IFormFile FileImage)
+        public IActionResult Edit(User user)
         {
             var _user = new User();
             _user.Email = user.Email;
@@ -189,32 +189,9 @@ namespace SaRLAB.AdminWeb.Controllers
             _user.UpdateBy = userLogin.Email;
             _user.Role_ID = user.Role_ID;
             _user.AvtPath = user.AvtPath;
-
-            if (FileImage != null)
-            {
-                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
-
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    FileImage.CopyTo(stream);
-                }
-                _user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName; ;
-            }
-
             try
             {
-                string data = JsonConvert.SerializeObject(_user);
+                string data = JsonConvert.SerializeObject(user);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/update", content).Result;
