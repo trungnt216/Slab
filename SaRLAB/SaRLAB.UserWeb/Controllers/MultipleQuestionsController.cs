@@ -3,6 +3,8 @@ using SaRLAB.Models.Dto;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using SaRLAB.Models.Entity;
+using Newtonsoft.Json;
 
 namespace SaRLAB.UserWeb.Controllers
 {
@@ -52,6 +54,24 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 checkRole = 1;
             }
+
+        }
+
+
+        [HttpGet]
+        public IActionResult GetAllQuestion()
+        {
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/CHEMISTRYE").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
         }
     }
 }

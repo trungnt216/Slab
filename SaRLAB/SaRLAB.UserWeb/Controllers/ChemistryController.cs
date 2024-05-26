@@ -161,8 +161,6 @@ namespace SaRLAB.UserWeb.Controllers
             return View();
         }
 
-
-
         [HttpGet]
         public ActionResult Create_Chemistry()
         {
