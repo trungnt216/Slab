@@ -39,12 +39,16 @@
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.EquipmentQuantity)</p>
                         </div>
+                        @{
+                            var currentTime = DateTime.Now as DateTime?;
+                            var isExpired = Model.ExpiredTime <= currentTime ? "red" : "";
+                        }
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-clock"></i>
                                 <p>Thời gian hết hạn</p>
                             </div>
-                            <p class="detail">@Html.DisplayFor(model => model.ExpiredTime)</p>
+                            <p class="detail" style="color: @isExpired">@Html.DisplayFor(model => model.ExpiredTime)</p>
                         </div>
                         <div class="detail-item">
                             <div class="title">

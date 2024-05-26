@@ -29,7 +29,9 @@ namespace SaRLAB.Models.Entity
         public Subject? Subject { get; set; }
         public int? EquipmentQuantity { get; set; }
         public ICollection<PlanDetail>? PlanDetails { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn đặc tính!")]
         public string? Property { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập xuất xử!")]
         public string? From { get; set; }
     }
 }
