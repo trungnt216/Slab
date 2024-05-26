@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
@@ -27,7 +28,7 @@
                         <span class="left">
                             <i class="fas fa-image"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseBanner" role="button"
-                               aria-expanded="true" aria-controls="collapseBanner">
+                                aria-expanded="true" aria-controls="collapseBanner">
                                 Cấu hình
                             </a>
                         </span>
@@ -46,7 +47,7 @@
                         <span class="left">
                             <i class="fas fa-user-tie icon"></i>
                             <a class="title" data-bs-toggle="collapse" href="#collapseUser" role="button"
-                               aria-expanded="true" aria-controls="collapseUser">
+                                aria-expanded="true" aria-controls="collapseUser">
                                 Quản lý nhân sự
                             </a>
                         </span>
@@ -83,11 +84,12 @@
                         <p class="role">Admin</p>
                     </div>
                     <div class="dropdown">
-                         <i class="fa-solid fa-ellipsis-vertical" id="ellipsis-icon" data-bs-toggle="dropdown"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" id="ellipsis-icon" data-bs-toggle="dropdown"></i>
                         <ul class="dropdown-menu">
                             <li class="d-flex">
                                 <i class="fa-regular fa-user"></i>
-                                <a class="dropdown-item" asp-area="" asp-controller="Configuration" asp-action="Fix_Information">Chỉnh sửa thông tin</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Configuration"
+                                    asp-action="Fix_Information">Chỉnh sửa thông tin</a>
                             </li>
                             <li class="d-flex">
                                 <i class="fa-solid fa-door-open"></i>
@@ -107,4 +109,5 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 </body>
+
 </html>
