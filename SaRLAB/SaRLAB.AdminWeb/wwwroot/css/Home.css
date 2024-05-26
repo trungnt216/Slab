@@ -1,44 +1,4 @@
-﻿.sidebar .subject {
-    width: 90px;
-    background: #10264d;
-    float: left;
-    height: 100%;
-    position: fixed;
-    z-index: 1;
-    overflow-x: hidden;
-    padding-top: 15px;
-}
-
-.sidebar .subject a {
-    padding: 8px 8px 18px 8px;
-    text-decoration: none;
-    color: #f1f1f1;
-    display: block;
-    transition: 0.3s;
-    text-align: center;
-    font-weight: 600;
-}
-
-.sidebar .subject .active {
-    color: #84b1ff;
-}
-
-.sidebar .subject a:hover {
-    color: #84b1ff;
-}
-
-.sidebar .subject a i {
-    font-size: var(--text-sm);
-    display: block;
-    margin-bottom: 8px;
-}
-
-.sidebar .subject a span {
-    font-size: var(--text-xss);
-    display: block;
-}
-
-.sidebar .subject-content {
+﻿.sidebar .subject-content {
     background: #5d82c2;
     float: left;
     height: 100%;
@@ -46,6 +6,7 @@
     z-index: 1;
     overflow-x: hidden;
     padding-top: 15px;
+    width: 250px;
 }
 
 .sidebar .subject-content::-webkit-scrollbar-track {
@@ -115,6 +76,10 @@ a[data-toggle="collapse"] {
     position: relative;
 }
 
+#content {
+    margin-left: 250px;
+}
+
 #content .header {
     height: 50px;
     border-bottom: 1px solid #eaeaea;
@@ -125,7 +90,7 @@ a[data-toggle="collapse"] {
 
 #content .header .left p.title{
     margin: 0;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 #content .header .right .icon-group {
