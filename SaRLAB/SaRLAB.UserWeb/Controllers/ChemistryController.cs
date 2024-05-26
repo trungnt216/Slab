@@ -179,6 +179,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Chemistry(Equipment equipment, IFormFile File)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(equipment);
+            }
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
@@ -328,6 +332,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_ToolChemistry(Equipment equipment, IFormFile File)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(equipment);
+            }
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
@@ -556,6 +564,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_EquipmentChemistry(Equipment equipment, IFormFile File)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(equipment);
+            }
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
@@ -2835,7 +2847,7 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
 
-        [HttpGet]
+        /*[HttpGet]
         public ActionResult Create_Examenglish()
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
@@ -3041,7 +3053,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             return View(document);
-        }
+        }*/
 
     }
 }
