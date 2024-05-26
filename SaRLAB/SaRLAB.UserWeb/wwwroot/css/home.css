@@ -1024,6 +1024,11 @@ Banner Style
     border-radius: 15px;
 }
 
+.table-container .table-action {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 .table-container .table thead th {
     font-weight: 600;
     font-size: var(--text-xss);
@@ -1073,6 +1078,10 @@ Banner Style
     font-size: var(--text-xs);
     color: #df6b76;
     cursor: pointer;
+}
+
+.table-container .table .fa-sort {
+    margin-left: 8px;
 }
 
 /*custom button*/
@@ -1238,4 +1247,50 @@ Banner Style
 
 .text-danger {
     font-style: italic !important;
+}
+
+.search-box {
+    position: relative;
+    float: left;
+    width: 400px;
+}
+
+.search-box input {
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 35px;
+    border-color: #ddd;
+    box-shadow: none;
+}
+
+.search-box i {
+    color: #a0a5b1;
+    position: absolute;
+    font-size: 16px;
+    top: 12px;
+    left: 10px;
+}
+
+/*popup*/
+#popupNotification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 300px;
+    border: 2px solid #b1787d;
+    font-weight: 500;
+    font-style: italic;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+#popupNotification.show {
+    right: 20px;
+    opacity: 1;
+}
+
+#popupNotification.hide {
+    right: -300px;
+    opacity: 0;
 }
