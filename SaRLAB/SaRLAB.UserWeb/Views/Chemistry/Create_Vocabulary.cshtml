@@ -105,6 +105,9 @@
                                 <span id="fileDisplay" style="color: #5d6975; font-style: italic;">
                                     Không có sẵn file nào!
                                 </span>
+                                <div>
+                                    <span id="errorFile" class="text-danger"></span>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Thêm mới" class="btn btn-primary" />
@@ -120,6 +123,8 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
     <script>
         document.getElementById('File').addEventListener('change', function (event) {
@@ -128,7 +133,7 @@
             var fileURL = URL.createObjectURL(file);
             var extension = file.name.split('.').pop().toLowerCase();
 
-            fileDisplay.innerHTML = '';  // Clear the current content
+            fileDisplay.innerHTML = '';
 
             if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
                 var img = document.createElement('img');
@@ -136,6 +141,7 @@
                 img.style.maxWidth = '100%';
                 img.style.height = 'auto';
                 fileDisplay.appendChild(img);
+                document.getElementById('errorFile').innerText = "";
             } else if (['mp4', 'webm', 'ogg'].includes(extension)) {
                 var video = document.createElement('video');
                 video.src = fileURL;
@@ -143,14 +149,35 @@
                 video.style.height = 'auto';
                 video.controls = true;
                 fileDisplay.appendChild(video);
+                document.getElementById('errorFile').innerText = "";
             } else if (extension === 'pdf') {
                 var object = document.createElement('object');
                 object.data = fileURL;
                 object.width = '100%';
                 object.height = '800px';
                 fileDisplay.appendChild(object);
+                document.getElementById('errorFile').innerText = "";
             } else {
-                fileDisplay.textContent = 'Unsupported file type';
+                document.getElementById('errorFile').innerText = "Vui lòng chọn một file hợp lệ!";
+            }
+        });
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+            var fileInput = document.getElementById('File');
+            var file = fileInput.files[0];
+            if (!file) {
+                document.getElementById('errorFile').innerText = "Vui lòng chọn một file!";
+                fileDisplay.innerText = "";
+                event.preventDefault();
+            } else {
+                var extension = file.name.split('.').pop().toLowerCase();
+                var supportedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'ogg', 'pdf'];
+                if (!supportedExtensions.includes(extension)) {
+                    document.getElementById('errorFile').innerText = "Vui lòng chọn một file hợp lệ!";
+                    event.preventDefault();
+                } else {
+                    document.getElementById('errorFile').innerText = "";
+                }
             }
         });
     </script>

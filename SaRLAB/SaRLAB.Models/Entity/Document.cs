@@ -13,7 +13,8 @@ namespace SaRLAB.Models.Entity
     {
         [Key]
         public int? ID { get; set; }
-        public string? Name { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập tên!")]
+        public string Name { get; set; }
         public string? Path { get; set; }
         public Boolean? SpecializedEnglishFlag { get; set; }
         public Boolean? PageFlag { get; set; }

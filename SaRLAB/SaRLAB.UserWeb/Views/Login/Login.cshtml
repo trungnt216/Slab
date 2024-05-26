@@ -64,6 +64,7 @@
             }
         </select>
     </div>
+    <span asp-validation-for="SchoolId" class="text-danger"></span>
     <input type="submit" class="btn" value="Đăng ký" />
 
     @if (TempData["Error"] != null)
@@ -78,4 +79,7 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }

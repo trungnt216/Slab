@@ -12,9 +12,13 @@ namespace SaRLAB.Models.Dto
     public class UserDto
     {
         public int ID { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập tên!")]
         public string? Name { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu!")]
         public string? Password { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập email!")]
         public string? Email { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập số điện thoại!")]
         public string? Phone { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string? CreateBy { get; set; }
@@ -22,6 +26,7 @@ namespace SaRLAB.Models.Dto
         public DateTime? CreateTime { get; set; }
         public string? RoleName { get; set; }
         public string? AvtPath { get; set; }
+        [Required(ErrorMessage = "Vui lòng chọn trường!")]
         public int? SchoolId { get; set; }
     }
 }
