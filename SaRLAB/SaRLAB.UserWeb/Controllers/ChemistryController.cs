@@ -3955,51 +3955,51 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Directors()
         {
-            List<Equipment> equipment = new List<Equipment>();
+            List<User> users = new List<User>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllAdminUser/" + userLogin.SchoolId + "/1").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+                users = JsonConvert.DeserializeObject<List<User>>(data);
             }
 
-            return View(equipment);
+            return View(users);
         }
 
         //---------------------------- Giảng viên -----------------------------------------------
         [HttpGet]
         public IActionResult GetAll_Teacher()
         {
-            List<Equipment> equipment = new List<Equipment>();
+            List<User> users = new List<User>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTeacherUser/" + userLogin.SchoolId + "/1").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+                users = JsonConvert.DeserializeObject<List<User>>(data);
             }
 
-            return View(equipment);
+            return View(users);
         }
 
         //---------------------------- Tổ kĩ thuật -----------------------------------------------
         [HttpGet]
         public IActionResult GetAll_Technical()
         {
-            List<Equipment> equipment = new List<Equipment>();
+            List<User> users = new List<User>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTechnicalUser/" + userLogin.SchoolId + "/1").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+                users = JsonConvert.DeserializeObject<List<User>>(data);
             }
 
-            return View(equipment);
+            return View(users);
         }
 
     }
