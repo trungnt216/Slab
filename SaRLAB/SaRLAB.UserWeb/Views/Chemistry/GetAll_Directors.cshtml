@@ -7,9 +7,6 @@
 
 <h1>GetAll_Directors</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -45,6 +42,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SchoolId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademyRank)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Experience)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Role_ID)
@@ -89,12 +92,16 @@
                 @Html.DisplayFor(modelItem => item.SchoolId)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.AcademyRank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Experience)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Role_ID)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Details", "Details_Directors", new { email = item.Email }) |
             </td>
         </tr>
 }

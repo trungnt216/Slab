@@ -103,7 +103,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (userLogin.Email == equipment.CreateBy)
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(equipment);
             }
@@ -248,7 +248,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Chemistry");
             }
 
-            if (userLogin.Email == equipment.CreateBy)
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -398,7 +398,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (userLogin.Email == equipment.CreateBy)
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(equipment);
             }
@@ -475,7 +475,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_ToolChemistry");
             }
 
-            if (userLogin.Email == equipment.CreateBy)
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -626,7 +626,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (userLogin.Email == equipment.CreateBy)
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(equipment);
             }
@@ -703,7 +703,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_EquipmentChemistry");
             }
 
-            if (userLogin.Email == equipment.CreateBy)
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -856,7 +856,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (userLogin.Email == document.CreateBy)
+            if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -934,7 +934,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Experiment");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -1084,7 +1084,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -1161,7 +1161,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Conspectus");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -1325,7 +1325,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (userLogin.Email == document.CreateBy)
+            if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -1402,7 +1402,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -1552,7 +1552,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -1629,7 +1629,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Inorganic");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -1780,7 +1780,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (userLogin.Email == document.CreateBy)
+            if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -1857,7 +1857,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Organic");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -2008,7 +2008,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -2085,7 +2085,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Biological");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -2236,7 +2236,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -2313,7 +2313,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Vocabulary");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -2464,7 +2464,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -2541,7 +2541,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Exam");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -2692,7 +2692,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return Ok();
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -2769,7 +2769,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Examenglish");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -2920,7 +2920,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Department_level");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -2997,7 +2997,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Department_level");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -3147,7 +3147,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Provincial_level");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -3224,7 +3224,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Provincial_level");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -3375,7 +3375,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_National_level");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -3452,7 +3452,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_National_level");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -3602,7 +3602,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -3679,7 +3679,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -3830,7 +3830,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 return View(document);
             }
@@ -3907,7 +3907,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
-            if (document.CreateBy == userLogin.Email)
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -3957,12 +3957,28 @@ namespace SaRLAB.UserWeb.Controllers
         {
             List<User> users = new List<User>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllAdminUser/" + userLogin.SchoolId).Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
                 users = JsonConvert.DeserializeObject<List<User>>(data);
+            }
+
+            return View(users);
+        }
+
+        [HttpGet]
+        public IActionResult Details_Directors(string email)
+        {
+            User users = new User();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + email).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                users = JsonConvert.DeserializeObject<User>(data);
             }
 
             return View(users);
@@ -3974,12 +3990,28 @@ namespace SaRLAB.UserWeb.Controllers
         {
             List<User> users = new List<User>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTeacherUser/" + userLogin.SchoolId + "/1").Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
                 users = JsonConvert.DeserializeObject<List<User>>(data);
+            }
+
+            return View(users);
+        }
+
+        [HttpGet]
+        public IActionResult Details_Teacher(string email)
+        {
+            User users = new User();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + email).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                users = JsonConvert.DeserializeObject<User>(data);
             }
 
             return View(users);
@@ -3991,12 +4023,28 @@ namespace SaRLAB.UserWeb.Controllers
         {
             List<User> users = new List<User>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTechnicalUser/" + userLogin.SchoolId + "/1").Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
                 users = JsonConvert.DeserializeObject<List<User>>(data);
+            }
+
+            return View(users);
+        }
+
+        [HttpGet]
+        public IActionResult Details_Technical(string email)
+        {
+            User users = new User();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + email).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                users = JsonConvert.DeserializeObject<User>(data);
             }
 
             return View(users);
