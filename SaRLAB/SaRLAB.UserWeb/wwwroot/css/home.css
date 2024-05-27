@@ -1187,6 +1187,71 @@ Banner Style
     padding-left: 25px;
 }
 
+/*user*/
+.detail-container .divider-user hr {
+    margin: 0;
+}
+
+.detail-container .divider-user p{
+    font-weight: 600;
+    color: #bc9773;
+}
+
+.detail-container .divider-user-other {
+    margin-top: 40px;
+}
+
+.detail-container .divider-user-other hr {
+    margin: 0;
+}
+
+.detail-container .divider-user-other p {
+    font-weight: 600;
+    color: #bc9773;
+}
+
+.detail-container .detail-item-user-left {
+    text-align: center;
+}
+
+.detail-container .detail-item-user-left .avatar-user {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 170px;
+}
+
+.detail-container .detail-item-user-left .role-user {
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: -3px;
+    color: #6482af;
+}
+
+.detail-container .detail-item-user-left .name-user {
+    font-weight: 600;
+    color: #294a7b;
+}
+
+.detail-container .detail-item-user {
+    margin-top: 10px;
+}
+
+.detail-container .detail-item-user .title {
+    font-weight: 600;
+    color: #294a7b;
+    align-items: center;
+}
+
+.detail-container .detail-item-user .title p {
+    font-weight: 600;
+    color: #294a7b;
+}
+
+.detail-container .detail-item-user .title i {
+   margin-right: 8px;
+}
+
 /*edit container*/
 .edit-container {
     background: white;
