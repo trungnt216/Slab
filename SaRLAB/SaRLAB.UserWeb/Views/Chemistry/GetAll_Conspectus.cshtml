@@ -7,37 +7,13 @@
     int counter = 1;
 }
 
-<style>
-    #popupNotification {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 1000;
-        max-width: 300px;
-        border: 2px solid #b1787d;
-        font-weight: 500;
-        font-style: italic;
-        opacity: 0;
-        transition: all 0.2s ease-in-out;
-    }
-
-    #popupNotification.show {
-        right: 20px;
-        opacity: 1;
-    }
-
-    #popupNotification.hide {
-        right: -300px;
-        opacity: 0;
-    }
-</style>
-
 <div id="sub-content">
     <div class="container">
         <div class="row">
             <div class="col-12 table-container">
+                <partial name="_TitleCustom">
                 <div class="table-action d-flex justify-content-between">
-                    <partial name="_TitleCustom">
+                    <partial name="_SearchBox" />
                     <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_Conspectus">
                         <i class="fa-solid fa-plus"></i>
                         Thêm mới
@@ -46,7 +22,7 @@
                 <div id="popupNotification" class="alert alert-danger">
                     @TempData["notice"]
                 </div>
-                <table class="table">
+                <table id="table" class="table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -55,6 +31,7 @@
                             </th>
                             <th>
                                 Tên
+                                <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                             </th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.Path)
@@ -67,6 +44,9 @@
                             </th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.Type)
+                            </th>
+                            <th class="d-none">
+                                Nhận xét
                             </th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.SchoolId)
@@ -82,9 +62,7 @@
                             </th>
                             <th>
                                 Thời gian cập nhật
-                            </th>
-                            <th class="d-none">
-                                Nhận xét
+                                <i class="fa fa-sort" onclick="sortTable('table', 12, true)"></i>
                             </th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.SubjectId)
@@ -93,63 +71,64 @@
                         </tr>
                     </thead>
                     <tbody>
-                @foreach (var item in Model) {
-                        <tr>
-                            <td>
-                                @counter
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.ID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.Path)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.PageFlag)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.Type)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SchoolId)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.CreateBy)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.CreateTime)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.UpdateBy)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UpdateTime)
-                            </td>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @counter
+                                </td>
                                 <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.Remark)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SubjectId)
-                            </td>
-                            <td>
-                                <a class="btn-custom-view-detail" asp-action="Details_Conspectus" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a class="btn-custom-edit" asp-action="Edit_Conspectus" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a class="btn-custom-delete" asp-action="Delete_Conspectus" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        counter++;
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Path)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.PageFlag)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Type)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Remark)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.SchoolId)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.CreateBy)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.CreateTime)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.UpdateBy)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UpdateTime)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.SubjectId)
+                                </td>
+                                <td>
+                                    <a class="btn-custom-view-detail" asp-action="Details_Conspectus" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a class="btn-custom-edit" asp-action="Edit_Conspectus" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a class="btn-custom-delete" asp-action="Delete_Conspectus" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            counter++;
                         }
                     </tbody>
                 </table>
@@ -163,22 +142,5 @@
 </div>
 
 @section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var popupNotification = document.getElementById('popupNotification');
-            if (popupNotification.textContent.trim() !== "") {
-                popupNotification.classList.add('show');
-
-                setTimeout(function () {
-                    popupNotification.classList.remove('show');
-                    popupNotification.classList.add('hide');
-                    popupNotification.addEventListener('transitionend', function () {
-                        popupNotification.style.display = 'none';
-                        popupNotification.classList.remove('hide');
-                    }, { once: true });
-                }, 1000);
-            }
-        });
-    </script>
+    <script src="~/js/table.js"></script>
 }
-

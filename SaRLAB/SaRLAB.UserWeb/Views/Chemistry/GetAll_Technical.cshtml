@@ -1,9 +1,9 @@
-﻿@model IEnumerable<SaRLAB.Models.Entity.Document>
+﻿@model IEnumerable<SaRLAB.Models.Entity.User>
 
 @{
-    ViewData["Title"] = "GetAll_Experiment";
-    ViewBag.TitleCustom = "Danh sách thực nghiệm";
+    ViewData["Title"] = "GetAll_Technical";
     Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
+    ViewBag.TitleCustom = "Danh sách tổ kỹ thuật";
     int counter = 1;
 }
 
@@ -14,13 +14,16 @@
                 <partial name="_TitleCustom">
                 <div class="table-action d-flex justify-content-between">
                     <partial name="_SearchBox" />
-                    <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_Experiment">
+                    <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_Technical">
                         <i class="fa-solid fa-plus"></i>
                         Thêm mới
                     </a>
                 </div>
                 <div id="popupNotification" class="alert alert-danger">
                     @TempData["notice"]
+                </div>
+                <div id="popupNotification" class="alert alert-danger">
+                    @TempData["errorMessage"]
                 </div>
                 <table id="table" class="table">
                     <thead>
@@ -34,43 +37,40 @@
                                 <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.Path)
+                                @Html.DisplayNameFor(model => model.Password)
                             </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.SpecializedEnglishFlag)
+                            <th>
+                                Email
+                                <i class="fa fa-sort" onclick="sortTable('table', 4)"></i>
                             </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.PageFlag)
+                            <th>
+                                Số điện thoại
                             </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.Type)
-                            </th>
-                            <th class="d-none">
-                                Nhận xét
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.SchoolId)
+                            <th>
+                                Ngày sinh
                             </th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.CreateBy)
                             </th>
                             <th class="d-none">
+                                @Html.DisplayNameFor(model => model.UpdateBy)
+                            </th>
+                            <th class="d-none">
                                 @Html.DisplayNameFor(model => model.CreateTime)
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.UpdateBy)
-                            </th>
-                            <th>
-                                Thời gian cập nhật
-                                <i class="fa fa-sort" onclick="sortTable('table', 12, true)"></i>
+                                @Html.DisplayNameFor(model => model.AvtPath)
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.SubjectId)
+                                @Html.DisplayNameFor(model => model.SchoolId)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.Role_ID)
                             </th>
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tableBody">
                         @foreach (var item in Model)
                         {
                             <tr>
@@ -84,46 +84,46 @@
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
                                 <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.Path)
+                                    @Html.DisplayFor(modelItem => item.Password)
                                 </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
                                 </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.PageFlag)
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Phone)
                                 </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.Type)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.Remark)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.SchoolId)
+                                @{
+                                    var formattedDateOfBirth = item.DateOfBirth.ToString("dd/MM/yyyy");
+                                }
+                                <td>
+                                    @formattedDateOfBirth
                                 </td>
                                 <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.CreateBy)
                                 </td>
                                 <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.UpdateBy)
+                                </td>
+                                <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.CreateTime)
                                 </td>
                                 <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.UpdateBy)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UpdateTime)
+                                    @Html.DisplayFor(modelItem => item.AvtPath)
                                 </td>
                                 <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.SubjectId)
+                                    @Html.DisplayFor(modelItem => item.SchoolId)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Role_ID)
                                 </td>
                                 <td>
-                                    <a class="btn-custom-view-detail" asp-action="Details_Experiment" asp-route-id="@item.ID">
+                                    <a class="btn-custom-view-detail" asp-action="Details_Technical" asp-route-id="@item.ID">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a class="btn-custom-edit" asp-action="Edit_Experiment" asp-route-id="@item.ID">
+                                    <a class="btn-custom-edit" asp-action="Edit_Technical" asp-route-id="@item.ID">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a class="btn-custom-delete" asp-action="Delete_Experiment" asp-route-id="@item.ID">
+                                    <a class="btn-custom-delete" asp-action="Delete_Technical" asp-route-id="@item.ID">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>
@@ -143,4 +143,4 @@
 
 @section Scripts {
     <script src="~/js/table.js"></script>
-}                          
+}

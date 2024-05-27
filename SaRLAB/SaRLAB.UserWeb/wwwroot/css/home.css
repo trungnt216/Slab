@@ -1081,7 +1081,9 @@ Banner Style
 }
 
 .table-container .table .fa-sort {
-    margin-left: 8px;
+    margin-left: 3px;
+    font-size: 14px;
+    color: #858585;
 }
 
 /*custom button*/

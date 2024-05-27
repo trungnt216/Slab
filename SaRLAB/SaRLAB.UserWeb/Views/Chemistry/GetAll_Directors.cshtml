@@ -3,100 +3,143 @@
 @{
     ViewData["Title"] = "GetAll_Directors";
     Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
+    ViewBag.TitleCustom = "Danh sách ban chủ nhiệm";
+    int counter = 1;
 }
 
-<h1>GetAll_Directors</h1>
+<div id="sub-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 table-container">
+                <partial name="_TitleCustom">
+                <div class="table-action d-flex justify-content-between">
+                    <partial name="_SearchBox" />
+                    <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_Directors">
+                        <i class="fa-solid fa-plus"></i>
+                        Thêm mới
+                    </a>
+                </div>
+                <div id="popupNotification" class="alert alert-danger">
+                    @TempData["notice"]
+                </div>
+                <div id="popupNotification" class="alert alert-danger">
+                    @TempData["errorMessage"]
+                </div>
+                <table id="table" class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.ID)
+                            </th>
+                            <th>
+                               Tên
+                               <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.Password)
+                            </th>
+                            <th>
+                                Email
+                                <i class="fa fa-sort" onclick="sortTable('table', 4)"></i>
+                            </th>
+                            <th>
+                                Số điện thoại
+                            </th>
+                            <th>
+                                Ngày sinh
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.CreateBy)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.UpdateBy)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.CreateTime)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.AvtPath)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.SchoolId)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.Role_ID)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        @foreach (var item in Model) {
+                            <tr>
+                                <td>
+                                    @counter
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Password)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Phone)
+                                </td>
+                                @{
+                                    var formattedDateOfBirth = item.DateOfBirth.ToString("dd/MM/yyyy");
+                                }
+                                <td>
+                                    @formattedDateOfBirth
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.CreateBy)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.UpdateBy)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.CreateTime)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.AvtPath)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.SchoolId)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Role_ID)
+                                </td>
+                                <td>
+                                    <a class="btn-custom-view-detail" asp-action="Details_Directors" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a class="btn-custom-edit" asp-action="Edit_Directors" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a class="btn-custom-delete" asp-action="Delete_Directors" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                             counter++;
+                        }
+                    </tbody>
+                </table>
+                @if (Model == null || !Model.Any())
+                {
+                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
+                }
+             </div>
+        </div>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdateBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AvtPath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SchoolId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Role_ID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdateBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AvtPath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SchoolId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role_ID)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+@section Scripts {
+    <script src="~/js/table.js"></script>
+}      

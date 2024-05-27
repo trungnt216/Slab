@@ -22,7 +22,7 @@
                 <div id="popupNotification" class="alert alert-danger">
                     @TempData["notice"]
                 </div>
-                <table class="table">
+                <table id="table" class="table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -31,6 +31,7 @@
                             </th>
                             <th>
                                 Tên
+                                <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                             </th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.CreateBy)
@@ -42,12 +43,12 @@
                                 @Html.DisplayNameFor(model => model.UpdateBy)
                             </th>
                             <th>
-                                Thời gian cập nhật
-                                <i class="fa fa-sort" onclick="sortTable('UpdateTime')"></i>
+                                 Thời gian cập nhật
+                                <i class="fa fa-sort" onclick="sortTable('table', 6, true)"></i>
                             </th>
                             <th>
                                 Thời gian hết hạn
-                                <i class="fa fa-sort" onclick="sortTable('ExpiredTime')"></i>
+                                <i class="fa fa-sort" onclick="sortTable('table', 7, true)"></i>
                             </th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.Type)
@@ -66,12 +67,13 @@
                             </th>
                             <th>
                                 Số lượng
-                            </th>
-                            <th>
-                                Đặc tính
+                                <i class="fa fa-sort" onclick="sortTable('table', 13)"></i>
                             </th>
                             <th>
                                 Xuất xứ
+                            </th>
+                            <th>
+                                Đặc tính
                             </th>
                             <th></th>
                         </tr>
@@ -129,19 +131,19 @@
                                         @Html.DisplayFor(modelItem => item.EquipmentQuantity)
                                     </td>
                                     <td>
-                                        <p style="
-                                            margin: 0;
-                                            background: @backgroundColor;
-                                            text-align: center;
-                                            border-radius: 15px;
-                                            color: white;
-                                            font-size: 14px;
-                                            line-height: 25px;">
-                                            @props
-                                        </p>
+                                        @Html.DisplayFor(modelItem => item.From)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.From)
+                                        <p style="
+                                        margin: 0;
+                                        background: @backgroundColor;
+                                        text-align: center;
+                                        border-radius: 15px;
+                                        color: white;
+                                        font-size: 14px;
+                                        line-height: 25px;">
+                                            @props
+                                        </p>
                                     </td>
                                     <td>
                                         <a class="btn-custom-view-detail" asp-action="Details_Chemistry" asp-route-id="@item.ID">
@@ -172,4 +174,3 @@
 @section Scripts {
     <script src="~/js/table.js"></script>
 }
-

@@ -21,6 +21,8 @@ function searchTable() {
     table = document.querySelector(".table tbody");
     tr = table.getElementsByTagName("tr");
 
+    var visibleRowCount = 0; // Counter for visible rows
+
     for (i = 0; i < tr.length; i++) {
         tr[i].style.display = "none";
         td = tr[i].getElementsByTagName("td");
@@ -29,6 +31,9 @@ function searchTable() {
                 txtValue = td[j].textContent || td[j].innerText;
                 if (txtValue.toLowerCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
+                    visibleRowCount++;
+                    // Update the index cell with the new order
+                    tr[i].getElementsByTagName("td")[0].innerText = visibleRowCount;
                     break;
                 }
             }
@@ -36,21 +41,41 @@ function searchTable() {
     }
 }
 
-function sortTable(column) {
-    var table = document.getElementById("tableBody");
-    var rows = Array.from(table.rows);
-    var isAsc = table.getAttribute('data-sort') === 'asc';
-    var columnIndex = column === 'UpdateTime' ? 6 : 7;
+function sortTable(tableId, columnIndex, isDate = false) {
+    var table = document.getElementById(tableId);
+    var tableBody = table.querySelector("tbody");
+    var rows = Array.from(tableBody.rows);
+    var isAsc = tableBody.getAttribute('data-sort') === 'asc';
 
     rows.sort(function (a, b) {
-        var x = new Date(a.cells[columnIndex].innerText);
-        var y = new Date(b.cells[columnIndex].innerText);
-        return isAsc ? x - y : y - x;
+        var x = a.cells[columnIndex].innerText.trim();
+        var y = b.cells[columnIndex].innerText.trim();
+
+        if (isDate) {
+            x = new Date(x);
+            y = new Date(y);
+            return isAsc ? x - y : y - x;
+        } else if (!isNaN(x) && !isNaN(y)) {
+            // Compare numbers
+            x = parseFloat(x);
+            y = parseFloat(y);
+            return isAsc ? x - y : y - x;
+        } else {
+            // Compare text
+            x = x.toLowerCase();
+            y = y.toLowerCase();
+            if (x < y) return isAsc ? -1 : 1;
+            if (x > y) return isAsc ? 1 : -1;
+            return 0;
+        }
     });
 
-    rows.forEach(function (row) {
-        table.appendChild(row);
+    // Append sorted rows back to the table
+    rows.forEach(function (row, index) {
+        // Update the index cell to the new order
+        row.cells[0].innerText = index + 1;
+        tableBody.appendChild(row);
     });
 
-    table.setAttribute('data-sort', isAsc ? 'desc' : 'asc');
+    tableBody.setAttribute('data-sort', isAsc ? 'desc' : 'asc');
 }
