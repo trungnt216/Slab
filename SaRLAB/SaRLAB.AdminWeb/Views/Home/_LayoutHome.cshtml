@@ -61,6 +61,25 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left">
+                            <i class="fas fa-user-tie icon"></i>
+                            <a class="title" data-bs-toggle="collapse" href="#collapseUser" role="button"
+                               aria-expanded="true" aria-controls="collapseUser">
+                                Quản lý trường học
+                            </a>
+                        </span>
+                        <i class="fas fa-caret-down right"></i>
+                    </p>
+                    <ul class="collapse list-unstyled" id="collapseUser">
+                        <li>
+                            <a class="item" asp-area="" asp-controller="School" asp-action="GetAllSchool">
+                                Quản lý trường học
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
