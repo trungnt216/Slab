@@ -18,3 +18,24 @@ document.addEventListener('click', function (e) {
         });
     }
 });
+
+var deleteUrl = '';
+function openDeleteModal(element) {
+    deleteUrl = element.getAttribute("data-url");
+    document.getElementById('deleteModal').style.display = 'block';
+}
+
+function closeDeleteModal() {
+    document.getElementById('deleteModal').style.display = 'none';
+}
+
+document.getElementById('confirmDeleteButton').onclick = function () {
+    window.location.href = deleteUrl;
+};
+
+window.onclick = function (event) {
+    var modal = document.getElementById('deleteModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}

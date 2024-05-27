@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+﻿document.addEventListener('DOMContentLoaded', function () {
     var popupNotification = document.getElementById('popupNotification');
     if (popupNotification.textContent.trim() !== "") {
         popupNotification.classList.add('show');
@@ -79,3 +79,37 @@ function sortTable(tableId, columnIndex, isDate = false) {
 
     tableBody.setAttribute('data-sort', isAsc ? 'desc' : 'asc');
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    var deleteBtns = document.querySelectorAll('.btn-custom-delete');
+    var confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+    var deleteId;
+
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            deleteId = this.getAttribute('data-id');
+        });
+    });
+
+   /* confirmDeleteBtn.addEventListener('click', function () {
+        if (deleteId) {
+            // Thực hiện hành động xóa (ví dụ: gửi yêu cầu đến server)
+            // Dưới đây là một ví dụ với AJAX:
+            $.ajax({
+                url: `/YourController/Delete/${deleteId}`,
+                type: 'POST',
+                success: function (result) {
+                    // Nếu xóa thành công, bạn có thể làm mới trang hoặc cập nhật giao diện
+                    location.reload(); // Làm mới trang để cập nhật bảng
+                },
+                error: function (err) {
+                    // Xử lý lỗi nếu có
+                    console.error('Error deleting item:', err);
+                }
+            });
+
+            // Ẩn modal sau khi xác nhận
+            $('#confirmDeleteModal').modal('hide');
+        }
+    });*/
+});
