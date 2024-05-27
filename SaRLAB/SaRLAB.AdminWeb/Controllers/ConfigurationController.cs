@@ -157,19 +157,13 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpPost]
         public IActionResult Edit(User user)
         {
-            var _user = new User();
-            _user.Email = user.Email;
-            _user.Password = user.Password;
-            _user.Name = user.Name;
-            _user.DateOfBirth = user.DateOfBirth;
-            _user.CreateBy = user.CreateBy;
-            _user.CreateTime = user.CreateTime;
-            _user.UpdateBy = userLogin.Email;
-            _user.Role_ID = user.Role_ID;
-            _user.AvtPath = user.AvtPath;
+            user.CreateBy = userLogin.Email;
+            user.CreateTime = DateTime.Now;
+            user.UpdateBy = userLogin.Email;
+
             try
             {
-                string data = JsonConvert.SerializeObject(_user);
+                string data = JsonConvert.SerializeObject(user);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/update", content).Result;
