@@ -82,6 +82,9 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "chemistry";
             return View(equipment);
         }
 
@@ -100,16 +103,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy dữ liệu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return Ok();
             }
 
             if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return View(equipment);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return RedirectToAction("GetAll_Chemistry");
             }
         }
@@ -150,12 +162,18 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = "chemistry";
                     return RedirectToAction("GetAll_Chemistry");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return View();
             }
             return View();
@@ -166,11 +184,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return RedirectToAction("GetAll_Chemistry");
             }
         }
@@ -217,14 +241,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = "chemistry";
                     return RedirectToAction("GetAll_Chemistry");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "chemistry";
             return View();
         }
 
@@ -245,6 +278,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy dữ liệu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return RedirectToAction("GetAll_Chemistry");
             }
 
@@ -257,19 +293,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "dutru";
+                        ViewBag.ActiveSubMenuLv2 = "chemistry";
                         return RedirectToAction("GetAll_Chemistry");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = "chemistry";
                     return RedirectToAction("GetAll_Chemistry");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return RedirectToAction("GetAll_Chemistry");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return RedirectToAction("GetAll_Chemistry");
             }
 
@@ -289,6 +337,9 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "chemistry";
             return View(equipment);
         }
 
@@ -306,6 +357,9 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
             return View(equipment);
         }
 
@@ -315,10 +369,16 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return View();
             }
             else
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
                 return RedirectToAction("GetAll_ToolChemistry");
             }
@@ -366,14 +426,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                     return RedirectToAction("GetAll_ToolChemistry");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
             return View();
         }
 
@@ -395,16 +464,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy thiết bị";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return Ok();
             }
 
             if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return View(equipment);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return RedirectToAction("GetAll_ToolChemistry");
             }
         }
@@ -445,14 +523,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                     return RedirectToAction("GetAll_ToolChemistry");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
             return View();
         }
 
@@ -472,6 +559,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return RedirectToAction("GetAll_ToolChemistry");
             }
 
@@ -484,19 +574,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "dutru";
+                        ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                         return RedirectToAction("GetAll_ToolChemistry");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                     return RedirectToAction("GetAll_ToolChemistry");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return RedirectToAction("GetAll_ToolChemistry");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return RedirectToAction("GetAll_ToolChemistry");
             }
         }
@@ -516,6 +618,9 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
             return View(equipment);
         }
 
@@ -534,6 +639,9 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
             return View(equipment);
         }
 
@@ -543,11 +651,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return RedirectToAction("GetAll_EquipmentChemistry");
             }
         }
@@ -594,14 +708,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                     return RedirectToAction("GetAll_EquipmentChemistry");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
             return View();
         }
 
@@ -617,22 +740,34 @@ namespace SaRLAB.UserWeb.Controllers
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return Ok();
             }
 
             if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return View(equipment);
             }
             else
             {
-                TempData["notice"] = "bạn khoong cos quyeefn chirnh suwar";
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return Ok();
             }
         }
@@ -673,14 +808,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                     return RedirectToAction("GetAll_EquipmentChemistry");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
             return View();
         }
 
@@ -700,6 +844,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return RedirectToAction("GetAll_EquipmentChemistry");
             }
 
@@ -712,19 +859,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "dutru";
+                        ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                         return RedirectToAction("GetAll_EquipmentChemistry");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                     return RedirectToAction("GetAll_EquipmentChemistry");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return RedirectToAction("GetAll_EquipmentChemistry");
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeefn chirnh suwar";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_EquipmentChemistry");
             }
         }
@@ -744,6 +903,9 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
             return View(equipment);
         }
 
@@ -764,7 +926,9 @@ namespace SaRLAB.UserWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "experience";
             return View(documents);
         }
 
@@ -774,11 +938,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "experience";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -825,14 +995,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "experience";
                     return RedirectToAction("GetAll_Experiment");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "experience";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "experience";
             return View();
         }
 
@@ -853,16 +1032,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "experience";
                 return Ok();
             }
 
             if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "experience";
                 return View(document);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -903,14 +1091,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "experience";
                     return RedirectToAction("GetAll_Experiment");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "experience";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "experience";
             return View();
         }
 
@@ -931,6 +1128,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
 
@@ -943,19 +1143,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenuLv2 = "experience";
                         return RedirectToAction("GetAll_Experiment");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "experience";
                     return RedirectToAction("GetAll_Experiment");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -975,6 +1187,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "experience";
             return View(document);
         }
 
@@ -993,6 +1208,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "conspectus";
             return View(documents);
         }
 
@@ -1002,11 +1220,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -1053,14 +1277,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "conspectus";
                     return RedirectToAction("GetAll_Conspectus");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "conspectus";
             return View();
         }
 
@@ -1081,16 +1314,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return Ok();
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return View(document);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -1131,14 +1373,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "conspectus";
                     return RedirectToAction("GetAll_Conspectus");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "conspectus";
             return View();
         }
 
@@ -1158,6 +1409,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
 
@@ -1170,19 +1424,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenuLv2 = "conspectus";
                         return RedirectToAction("GetAll_Conspectus");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "conspectus";
                     return RedirectToAction("GetAll_Conspectus");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -1201,7 +1467,9 @@ namespace SaRLAB.UserWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "conspectus";
             return View(document);
         }
 
@@ -1235,6 +1503,9 @@ namespace SaRLAB.UserWeb.Controllers
             documents.AddRange(document1);
             documents.AddRange(document2);
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
             return View(documents);
         }
 
@@ -1244,11 +1515,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
         }
@@ -1294,14 +1571,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                     return RedirectToAction("GetAll_Inorganic_Organic");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
             return View();
         }
 
@@ -1327,11 +1613,17 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return View(document);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
         }
@@ -1372,14 +1664,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                     return RedirectToAction("GetAll_Inorganic_Organic");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
             return View();
         }
 
@@ -1399,6 +1700,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
 
@@ -1411,19 +1715,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                         return RedirectToAction("GetAll_Inorganic_Organic");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                     return RedirectToAction("GetAll_Inorganic_Organic");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
         }
@@ -1443,6 +1759,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
             return View(document);
         }
 
@@ -1461,6 +1780,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLv2 = "inorganic";
             return View(documents);
         }
 
@@ -1470,11 +1792,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "inorganic";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "inorganic";
                 return RedirectToAction("GetAll_Inorganic");
             }
         }
@@ -1521,14 +1849,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLv2 = "inorganic";
                     return RedirectToAction("GetAll_Inorganic");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "inorganic";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLv2 = "inorganic";
             return View();
         }
 
@@ -1549,16 +1886,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "inorganic";
                 return Ok();
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "inorganic";
                 return View(document);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "inorganic";
                 return RedirectToAction("GetAll_Inorganic");
             }
         }
@@ -1599,14 +1945,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLv2 = "inorganic";
                     return RedirectToAction("GetAll_Inorganic");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "inorganic";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLv2 = "inorganic";
             return View();
         }
 
@@ -1626,6 +1981,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "inorganic";
                 return RedirectToAction("GetAll_Inorganic");
             }
 
@@ -1638,19 +1996,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "giaotrinh";
+                        ViewBag.ActiveSubMenuLv2 = "inorganic";
                         return RedirectToAction("GetAll_Inorganic");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLv2 = "inorganic";
                     return RedirectToAction("GetAll_Inorganic");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "inorganic";
                 return RedirectToAction("GetAll_Inorganic");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "inorganic";
                 return RedirectToAction("GetAll_Inorganic");
             }
         }
@@ -1670,6 +2040,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLv2 = "inorganic";
             return View(document);
         }
 
@@ -1689,6 +2062,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLv2 = "organic";
             return View(documents);
         }
 
@@ -1698,11 +2074,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "organic";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "organic";
                 return RedirectToAction("GetAll_Organic");
             }
         }
@@ -1749,14 +2131,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLv2 = "organic";
                     return RedirectToAction("GetAll_Organic");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "organic";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLv2 = "organic";
             return View();
         }
 
@@ -1777,16 +2168,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "organic";
                 return Ok();
             }
 
             if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "organic";
                 return View(document);
             }
             else
             {
-                TempData["notice"] = "Bạn không có quyền chỉnh s!";
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "organic";
                 return RedirectToAction("GetAll_Organic");
             }
         }
@@ -1827,14 +2227,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLv2 = "organic";
                     return RedirectToAction("GetAll_Organic");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "organic";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLv2 = "organic";
             return View();
         }
 
@@ -1866,18 +2275,30 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "giaotrinh";
+                        ViewBag.ActiveSubMenuLv2 = "organic";
                         return RedirectToAction("GetAll_Organic");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLv2 = "organic";
                     return RedirectToAction("GetAll_Organic");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "organic";
                 return RedirectToAction("GetAll_Organic");
             }
             else
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLv2 = "organic";
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Organic");
             }
@@ -1898,6 +2319,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLv2 = "organic";
             return View(document);
         }
 
@@ -1917,6 +2341,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "biological";
             return View(documents);
         }
 
@@ -1931,6 +2358,9 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
         }
@@ -1977,14 +2407,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "biological";
                     return RedirectToAction("GetAll_Biological");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "biological";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "biological";
             return View();
         }
 
@@ -2005,16 +2444,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "biological";
                 return Ok();
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "biological";
                 return View(document);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
         }
@@ -2055,14 +2503,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "biological";
                     return RedirectToAction("GetAll_Biological");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "biological";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "biological";
             return View();
         }
 
@@ -2094,19 +2551,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenuLv2 = "biological";
                         return RedirectToAction("GetAll_Biological");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLv2 = "biological";
                     return RedirectToAction("GetAll_Biological");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
         }
@@ -2126,6 +2595,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLv2 = "biological";
             return View(document);
         }
 
@@ -2145,6 +2617,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "vocabulary";
             return View(documents);
         }
 
@@ -2154,11 +2629,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "vocabulary";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "vocabulary";
                 return RedirectToAction("GetAll_Vocabulary");
             }
         }
@@ -2205,14 +2686,24 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "tienganh";
+                    ViewBag.ActiveSubMenuLv2 = "vocabulary";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "vocabulary";
                 return View();
             }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "vocabulary";
             return View();
         }
 
@@ -2233,16 +2724,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "vocabulary";
                 return Ok();
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "vocabulary";
                 return View(document);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "vocabulary";
                 return RedirectToAction("GetAll_Vocabulary");
             }
         }
@@ -2283,14 +2783,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "tienganh";
+                    ViewBag.ActiveSubMenuLv2 = "vocabulary";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "vocabulary";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "vocabulary";
             return View();
         }
 
@@ -2322,19 +2831,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "tienganh";
+                        ViewBag.ActiveSubMenuLv2 = "vocabulary";
                         return RedirectToAction("GetAll_Vocabulary");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "tienganh";
+                    ViewBag.ActiveSubMenuLv2 = "vocabulary";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "vocabulary";
                 return RedirectToAction("GetAll_Vocabulary");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "vocabulary";
                 return RedirectToAction("GetAll_Vocabulary");
             }
         }
@@ -2354,6 +2875,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "vocabulary";
             return View(document);
         }
 
@@ -2373,6 +2897,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "exam";
             return View(documents);
         }
 
@@ -2382,11 +2909,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "exam";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "exam";
                 return RedirectToAction("GetAll_Exam");
             }
         }
@@ -2433,14 +2966,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "tienganh";
+                    ViewBag.ActiveSubMenuLv2 = "exam";
                     return RedirectToAction("GetAll_Exam");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "exam";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "exam";
             return View();
         }
 
@@ -2461,16 +3003,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "exam";
                 return Ok();
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "exam";
                 return View(document);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "exam";
                 return RedirectToAction("GetAll_Exam");
             }
         }
@@ -2511,14 +3062,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "tienganh";
+                    ViewBag.ActiveSubMenuLv2 = "exam";
                     return RedirectToAction("GetAll_Exam");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "exam";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "exam";
             return View();
         }
 
@@ -2538,6 +3098,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "exam";
                 return RedirectToAction("GetAll_Exam");
             }
 
@@ -2550,19 +3113,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "tienganh";
+                        ViewBag.ActiveSubMenuLv2 = "exam";
                         return RedirectToAction("GetAll_Exam");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "tienganh";
+                    ViewBag.ActiveSubMenuLv2 = "exam";
                     return RedirectToAction("GetAll_Exam");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "exam";
                 return RedirectToAction("GetAll_Exam");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "exam";
                 return RedirectToAction("GetAll_Exam");
             }
         }
@@ -2582,6 +3157,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "exam";
             return View(document);
         }
 
@@ -2601,6 +3179,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "examenglish";
             return View(documents);
         }
 
@@ -2610,11 +3191,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "examenglish";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "examenglish";
                 return RedirectToAction("GetAll_Examenglish");
             }
         }
@@ -2661,14 +3248,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "tienganh";
+                    ViewBag.ActiveSubMenuLv2 = "examenglish";
                     return RedirectToAction("GetAll_Examenglish");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "examenglish";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "examenglish";
             return View();
         }
 
@@ -2689,16 +3285,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "examenglish";
                 return Ok();
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "examenglish";
                 return View(document);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "examenglish";
                 return RedirectToAction("GetAll_Examenglish");
             }
         }
@@ -2739,14 +3344,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "tienganh";
+                    ViewBag.ActiveSubMenuLv2 = "examenglish";
                     return RedirectToAction("GetAll_Examenglish");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "examenglish";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "examenglish";
             return View();
         }
 
@@ -2766,6 +3380,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "examenglish";
                 return RedirectToAction("GetAll_Examenglish");
             }
 
@@ -2778,12 +3395,18 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "tienganh";
+                        ViewBag.ActiveSubMenuLv2 = "examenglish";
                         return RedirectToAction("GetAll_Examenglish");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "tienganh";
+                    ViewBag.ActiveSubMenuLv2 = "examenglish";
                     return RedirectToAction("GetAll_Examenglish");
                 }
                 return RedirectToAction("GetAll_Examenglish");
@@ -2791,6 +3414,9 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "tienganh";
+                ViewBag.ActiveSubMenuLv2 = "examenglish";
                 return RedirectToAction("GetAll_Examenglish");
             }
         }
@@ -2810,6 +3436,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "tienganh";
+            ViewBag.ActiveSubMenuLv2 = "examenglish";
             return View(document);
         }
 
@@ -2829,6 +3458,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "departmentLevel";
             return View(documents);
         }
 
@@ -2838,11 +3470,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                 return View();
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                TempData["notice"] = "Bạn không có quyền thêm mới";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                 return RedirectToAction("GetAll_Department_level");
             }
         }
@@ -2889,14 +3527,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                     return RedirectToAction("GetAll_Department_level");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "departmentLevel";
             return View();
         }
 
@@ -2917,16 +3564,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                 return RedirectToAction("GetAll_Department_level");
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                 return View(document);
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
+                TempData["notice"] = "Bạn không có quyền chinh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                 return RedirectToAction("GetAll_Department_level");
             }
         }
@@ -2967,14 +3623,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                     return RedirectToAction("GetAll_Department_level");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "departmentLevel";
             return View();
         }
 
@@ -2994,6 +3659,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                 return RedirectToAction("GetAll_Department_level");
             }
 
@@ -3006,19 +3674,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "nghiencuu";
+                        ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                         return RedirectToAction("GetAll_Department_level");
                     }
                 }
                 catch (Exception ex)
                 {
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Department_level");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                 return RedirectToAction("GetAll_Department_level");
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                 return RedirectToAction("GetAll_Department_level");
             }
         }
@@ -3038,6 +3718,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "departmentLevel";
             return View(document);
         }
 
@@ -3056,6 +3739,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "provincialLevel";
             return View(documents);
         }
 
@@ -3065,11 +3751,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                 return View();
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                 return RedirectToAction("GetAll_Provincial_level");
             }
         }
@@ -3116,14 +3808,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "provincialLevel";
             return View();
         }
 
@@ -3144,6 +3845,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                 return RedirectToAction("GetAll_Provincial_level");
             }
 
@@ -3153,7 +3857,10 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                 return RedirectToAction("GetAll_Provincial_level");
             }
         }
@@ -3194,14 +3901,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "provincialLevel";
             return View();
         }
 
@@ -3221,6 +3937,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                 return RedirectToAction("GetAll_Provincial_level");
             }
 
@@ -3233,19 +3952,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "nghiencuu";
+                        ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                         return RedirectToAction("GetAll_Provincial_level");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                 return RedirectToAction("GetAll_Provincial_level");
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Provincial_level");
             }
         }
@@ -3265,6 +3996,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "provincialLevel";
             return View(document);
         }
 
@@ -3284,6 +4018,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "nationalLevel";
             return View(documents);
         }
 
@@ -3293,11 +4030,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                 return View();
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
                 return RedirectToAction("GetAll_National_level");
             }
         }
@@ -3344,14 +4087,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                     return RedirectToAction("GetAll_National_level");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "nationalLevel";
             return View();
         }
 
@@ -3372,16 +4124,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                 return RedirectToAction("GetAll_National_level");
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                 return View(document);
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                 return RedirectToAction("GetAll_National_level");
             }
         }
@@ -3422,14 +4183,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                     return RedirectToAction("GetAll_National_level");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "nationalLevel";
             return View();
         }
 
@@ -3449,6 +4219,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                 return RedirectToAction("GetAll_National_level");
             }
 
@@ -3461,19 +4234,28 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "nghiencuu";
+                        ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                         return RedirectToAction("GetAll_National_level");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "nationalLevel";
                     return RedirectToAction("GetAll_National_level");
                 }
                 return RedirectToAction("GetAll_National_level");
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_National_level");
             }
         }
@@ -3493,6 +4275,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "nationalLevel";
             return View(document);
         }
 
@@ -3511,6 +4296,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
             return View(documents);
         }
 
@@ -3520,11 +4308,17 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                 return View();
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
         }
@@ -3571,14 +4365,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
             return View();
         }
 
@@ -3599,16 +4402,25 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                 return View(document);
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
         }
@@ -3649,14 +4461,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
             return View();
         }
 
@@ -3676,6 +4497,9 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
@@ -3688,19 +4512,31 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "thuchanh";
+                        ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                         return RedirectToAction("GetAll_Preparation_questions");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
         }
@@ -3720,6 +4556,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
             return View(document);
         }
 
@@ -3739,6 +4578,9 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practiceReport";
             return View(documents);
         }
 
@@ -3753,7 +4595,10 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "banj khoong cos quyeen them mowi";
-                return RedirectToAction("GetAll_Preparation_questions");
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return RedirectToAction("GetAll_Practice_report");
             }
         }
         [HttpPost]
@@ -3799,14 +4644,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    return RedirectToAction("GetAll_Preparation_questions");
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                    return RedirectToAction("GetAll_Practice_report");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practiceReport";
             return View();
         }
 
@@ -3827,17 +4681,26 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Preparation_questions");
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return RedirectToAction("GetAll_Practice_report");
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
                 return View(document);
             }
             else
             {
-                TempData["notice"] = "ban khong co quyen chinh sua";
-                return RedirectToAction("GetAll_Preparation_questions");
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return RedirectToAction("GetAll_Practice_report");
             }
         }
         [HttpPost]
@@ -3877,14 +4740,23 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    return RedirectToAction("GetAll_Preparation_questions");
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                    return RedirectToAction("GetAll_Practice_report");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
                 return View();
             }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practiceReport";
             return View();
         }
 
@@ -3903,8 +4775,11 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (document == null)
             {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
                 TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Preparation_questions");
+                return RedirectToAction("GetAll_Practice_report");
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
@@ -3916,20 +4791,32 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("GetAll_Preparation_questions");
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "thuchanh";
+                        ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                        return RedirectToAction("GetAll_Practice_report");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
-                    return RedirectToAction("GetAll_Preparation_questions");
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                    return RedirectToAction("GetAll_Practice_report");
                 }
-                return RedirectToAction("GetAll_Preparation_questions");
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return RedirectToAction("GetAll_Practice_report");
             }
             else
             {
-                TempData["notice"] = "bạn không có quyền chỉnh sửa";
-                return RedirectToAction("GetAll_Preparation_questions");
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return RedirectToAction("GetAll_Practice_report");
             }
         }
 
@@ -3948,6 +4835,9 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practiceReport";
             return View(document);
         }
 
@@ -3965,6 +4855,9 @@ namespace SaRLAB.UserWeb.Controllers
                 users = JsonConvert.DeserializeObject<List<User>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nhansu";
+            ViewBag.ActiveSubMenuLv2 = "directors";
             return View(users);
         }
 
@@ -3981,6 +4874,9 @@ namespace SaRLAB.UserWeb.Controllers
                 users = JsonConvert.DeserializeObject<User>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nhansu";
+            ViewBag.ActiveSubMenuLv2 = "directors";
             return View(users);
         }
 
@@ -3998,6 +4894,9 @@ namespace SaRLAB.UserWeb.Controllers
                 users = JsonConvert.DeserializeObject<List<User>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nhansu";
+            ViewBag.ActiveSubMenuLv2 = "teacher";
             return View(users);
         }
 
@@ -4014,6 +4913,9 @@ namespace SaRLAB.UserWeb.Controllers
                 users = JsonConvert.DeserializeObject<User>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nhansu";
+            ViewBag.ActiveSubMenuLv2 = "teacher";
             return View(users);
         }
 
@@ -4031,6 +4933,9 @@ namespace SaRLAB.UserWeb.Controllers
                 users = JsonConvert.DeserializeObject<List<User>>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nhansu";
+            ViewBag.ActiveSubMenuLv2 = "technical";
             return View(users);
         }
 
@@ -4047,6 +4952,9 @@ namespace SaRLAB.UserWeb.Controllers
                 users = JsonConvert.DeserializeObject<User>(data);
             }
 
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nhansu";
+            ViewBag.ActiveSubMenuLv2 = "technical";
             return View(users);
         }
 

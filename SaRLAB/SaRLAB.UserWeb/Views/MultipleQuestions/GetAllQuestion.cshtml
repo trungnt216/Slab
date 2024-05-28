@@ -5,9 +5,145 @@
     Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
 }
 
-<h1>GetAllQuestion</h1>
+<style>
+    .quiz-container {
+        background: #ffffffd9;
+        padding: 30px;
+        border-radius: 10px;
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
 
-<p>
+    .question {
+        margin-bottom: 20px;
+    }
+
+    .quiz-note {
+        font-weight: 500;
+        color: #c61f2f;
+        font-style: italic;
+    }
+
+    h6 {
+        font-weight: 600;
+        margin-top: 5px;
+    }
+
+    #message {
+        margin-top: 5px;
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .modal-content .modal-img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+        background: #ffe4e4;
+        border-radius: 30px;
+        padding: 8px;
+    }
+
+    .modal-action {
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0px
+    }
+
+    .modal-action .btn-secondary {
+        margin-right: 10px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .pagination-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .pagination-container button {
+        padding: 5px 14px;
+        margin: 5px;
+        background-color: #f1f1f1;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+    }
+
+    .pagination-container button.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .pagination-container button:hover {
+        background-color: #ddd;
+    }
+</style>
+
+<div id="sub-content">
+    <div class="container">
+        <div class="quiz-container">
+            <p class="quiz-note"><em>*Lưu ý: </em>Bạn cần làm đúng hết bài trắc nghiệm để được truy cập vào lab Hóa học!</p>
+            <form id="quiz-form">
+                <div id="questions-container"></div>
+                <div id="pagination-container" class="pagination-container"></div>
+                <button type="submit" class="btn btn-primary">Nộp bài</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="resultModal" class="modal">
+    <div class="modal-content">
+        @* <img id="modal-img" class="modal-img" src="@Url.Content("~/images/ic_warning.png")" alt="Warning"> *@
+        <h6>Thông báo</h6>
+        <div id="message"></div>
+        <div id="modal-action" class="d-flex modal-action"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/quiz.js"></script>
+}
+@* <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
@@ -112,3 +248,4 @@
 }
     </tbody>
 </table>
+ *@

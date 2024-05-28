@@ -212,7 +212,7 @@ html, body {
 
 .main-red-button a {
   display: inline-block;
-  background-color: #f77a86;
+  background-color: #e9c288;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
@@ -220,6 +220,18 @@ html, body {
   padding: 12px 25px;
   border-radius: 23px;
   letter-spacing: 0.25px;
+}
+
+.main-red-button a:hover {
+    display: inline-block;
+    background-color: #ceab76;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    text-transform: capitalize;
+    padding: 12px 25px;
+    border-radius: 23px;
+    letter-spacing: 0.25px;
 }
 
 .main-white-button a {
@@ -341,7 +353,7 @@ header
 }
 
 .header-area .main-nav .nav li.menu {
-    padding-left: 20px;
+    padding-left: 10px;
     padding-right: 20px;
     position: relative;
     display: inline-block;
@@ -349,7 +361,7 @@ header
 
 .header-area .main-nav .nav li.logout:last-child {
     padding-right: 0px;
-    padding-left: 40px;
+    padding-left: 20px;
 }
 
 .header-area .main-nav .nav li.logout:last-child a ,
@@ -412,7 +424,12 @@ header
 .header-area .main-nav .nav li a.active {
     color: #e9c290 !important;
     border-bottom: none;
-    border-bottom: 1px solid;
+}
+
+.header-area .main-nav .nav li.info-group:hover a.menu,
+.header-area .main-nav .nav li a.active {
+    color: #e9c290 !important;
+    border-bottom: none;
 }
 
 .background-header .main-nav .nav li:hover a.menu,
