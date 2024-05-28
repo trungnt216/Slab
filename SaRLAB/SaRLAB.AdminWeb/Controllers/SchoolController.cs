@@ -90,7 +90,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 ViewBag.ActiveMenu = "school";
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa";
-                return RedirectToAction("GetAllSchool");
+                return RedirectToAction("GetAllSchool", "School");
             }
         }
         [HttpPost]
@@ -108,7 +108,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     ViewBag.ActiveMenu = "school";
                     TempData["successMessage"] = "create success";
-                    return RedirectToAction("GetAllSchool");
+                    return RedirectToAction("GetAllSchool", "School");
                 }
             }
             catch (Exception ex)
@@ -148,7 +148,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 ViewBag.ActiveMenu = "school";
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
-                return RedirectToAction("GetAllSchool");
+                return RedirectToAction("GetAllSchool", "School");
             }
         }
 
@@ -167,7 +167,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     ViewBag.ActiveMenu = "school";
                     TempData["successMessage"] = "create success";
-                    return RedirectToAction("GetAllSchool");
+                    return RedirectToAction("GetAllSchool", "School");
                 }
             }
             catch (Exception ex)
@@ -188,26 +188,26 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id).Result;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "School/Delete/" + id).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenu = "school";
-                        return RedirectToAction("GetAllSchool");
+                        return RedirectToAction("GetAllSchool", "School");
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
-                    return RedirectToAction("GetAllSchool");
+                    return RedirectToAction("GetAllSchool", "School");
                 }
                 ViewBag.ActiveMenu = "school";
-                return RedirectToAction("GetAllSchool");
+                return RedirectToAction("GetAllSchool", "School");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
-                return RedirectToAction("GetAll_Chemistry");
+                return RedirectToAction("GetAllSchool", "School");
             }
         }
 

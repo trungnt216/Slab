@@ -49,7 +49,7 @@ namespace SaRLAB.Application.Controllers
             }
             else
             {
-                return Ok(_schoolService.InsertSchool);
+                return Ok(_schoolService.InsertSchool(school));
             }
         }
 
