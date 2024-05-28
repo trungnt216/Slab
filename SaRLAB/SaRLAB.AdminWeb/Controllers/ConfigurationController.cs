@@ -165,6 +165,7 @@ namespace SaRLAB.AdminWeb.Controllers
             user.CreateBy = userLogin.Email;
             user.CreateTime = DateTime.Now;
             user.UpdateBy = userLogin.Email;
+            user.AvtPath = userLogin.AvtPath;
 
             try
             {

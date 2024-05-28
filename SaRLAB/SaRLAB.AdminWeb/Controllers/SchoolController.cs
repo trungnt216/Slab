@@ -212,9 +212,34 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
 
+        [HttpPost]
+        public IActionResult DeleteMultipleSchools([FromBody] DeleteMultipleRequest request)
+        {
+            try
+            {
+                foreach (var id in request.Ids)
+                {
+                    HttpResponseMessage response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "School/Delete/" + id).Result;
 
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine($"Failed to delete school with ID {id}");
+                    }
+                }
+                ViewBag.ActiveMenu = "school";
+                return RedirectToAction("GetAllSchool");
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "school";
+                return View();
+            }
+        }
 
-
-
+        public class DeleteMultipleRequest
+        {
+            public List<int> Ids { get; set; }
+        }
     }
 }
