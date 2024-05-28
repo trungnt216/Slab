@@ -21,7 +21,6 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        [Authorize(Roles = "Admin")]
         public IActionResult GetAll()
         {
             return Ok(_loginDto.GetAll());
