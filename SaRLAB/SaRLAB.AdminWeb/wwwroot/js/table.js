@@ -1,113 +1,83 @@
-﻿/*$(document).ready(function () {
-    let selectedIds = [];
-    checkEmptyTable();
-    updateDeleteButtonState();
-    console.log(selectedIds);
+﻿document.addEventListener('DOMContentLoaded', function () {
+    var popupNotification = document.getElementById('popupNotification');
+    if (popupNotification.textContent.trim() !== "") {
+        popupNotification.classList.add('show');
 
-    // handle click delete item
-    $('.delete').on('click', function () {
-        let id = $(this).data('id');
-        selectedIds.push(id);
+        setTimeout(function () {
+            popupNotification.classList.remove('show');
+            popupNotification.classList.add('hide');
+            popupNotification.addEventListener('transitionend', function () {
+                popupNotification.style.display = 'none';
+                popupNotification.classList.remove('hide');
+            }, { once: true });
+        }, 1000);
+    }
+});
 
-        checkEmptyTable();
-    })
-    
-    $('.btn-custom-delete-cancel').on('click', function () {
-        selectedIds = [];
+var deleteUrl = '';
+var selectedIds = [];
 
-        checkEmptyTable();
-    })
+document.getElementById('selectAll').addEventListener('change', function () {
+    var checkboxes = document.querySelectorAll('.selectRow');
+    for (var checkbox of checkboxes) {
+        checkbox.checked = this.checked;
+    }
+});
 
-    // handle row checkbox change
-    $('.selectRow').on('change', function () {
-        let id = $(this).data('id');
-        if ($(this).is(':checked')) {
-            if (!selectedIds.includes(id)) {
-                selectedIds.push(id);
+document.getElementById('deleteSelected').addEventListener('click', function () {
+    selectedIds = [];
+    var checkboxes = document.querySelectorAll('.selectRow:checked');
+    for (var checkbox of checkboxes) {
+        selectedIds.push(checkbox.getAttribute('data-id'));
+    }
+
+    if (selectedIds.length > 0) {
+        document.getElementById('deleteModal').style.display = 'block';
+    } else {
+        alert("Vui lòng chọn ít nhất một mục để xóa.");
+    }
+});
+
+
+// Mở modal xóa cho từng item
+function openDeleteModal(element) {
+    deleteUrl = element.getAttribute("data-url");
+    selectedIds = [];
+    document.getElementById('deleteModal').style.display = 'block';
+}
+
+
+function closeDeleteModal() {
+    document.getElementById('deleteModal').style.display = 'none';
+}
+
+// Xác nhận xóa
+document.getElementById('confirmDeleteButton').onclick = function () {
+    if (selectedIds.length > 0) {
+        // Gửi yêu cầu xóa nhiều mục
+        fetch('@Url.Action("DeleteMultipleBanners", "Configuration")', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ Ids: selectedIds })
+        }).then(response => {
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                alert("Có lỗi xảy ra khi xóa các mục.");
             }
-        } else {
-            selectedIds = selectedIds.filter(item => item !== id);
-        }
-        updateDeleteButtonState();
-        checkEmptyTable();
-    });
-
-    // handle select all checkbox change
-    $('#selectAll').on('change', function () {
-        selectedIds = [];
-        if ($(this).is(':checked')) {
-            $('.selectRow').each(function () {
-                $(this).prop('checked', true);
-                selectedIds.push($(this).data('id'));
-            });
-        } else {
-            $('.selectRow').prop('checked', false);
-        }
-        updateDeleteButtonState();
-    });
-
-    // handle delete confirmation in modal
-    $('.btn-custom-delete').on('click', function () {
-        if (selectedIds.length > 0) {
-            let url = $(this).attr("href");
-            $.ajax({
-                url: url,
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify({ ids: selectedIds }),
-                success: function () {
-                    loadContent(window.location.pathname);
-                },
-                error: function (xhr, status, error) {
-                    console.error('Deletion failed:', error);
-                }
-            });
-            updateDeleteButtonState();
-        } else {
-            alert('Please select at least one banner to delete.');
-        }
-    });
-
-    function loadContent(url) {
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function (data) {
-                var subContent = $(data).find("#sub-content").html();
-                $("#content .home-container").html(subContent);
-                history.pushState(null, "", url);
-
-                $(data).filter("script").each(function () {
-                    var scriptContent = $(this).html();
-                    var scriptElement = document.createElement('script');
-                    scriptElement.text = scriptContent;
-                    document.head.appendChild(scriptElement);
-                    document.head.removeChild(scriptElement);
-                });
-            },
-            error: function (xhr, status, error) {
-                console.log("Đã xảy ra lỗi: " + error);
-            },
         });
+    } else if (deleteUrl) {
+        // Gửi yêu cầu xóa một mục
+        window.location.href = deleteUrl;
     }
+};
 
-    // check empty table
-    function checkEmptyTable() {
-        var rowCount = $(".table tbody tr").length;
 
-        if (rowCount === 0) {
-            $(".table").after("<p class='noti-table'>Không có dữ liệu!</p>");
-        } else {
-            $(".table").next("p").remove();
-        }
+window.onclick = function (event) {
+    var modal = document.getElementById('deleteModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
     }
-
-    // update state btn delete
-    function updateDeleteButtonState() {
-        if (selectedIds.length > 0) {
-            $('#deleteSelected').prop('disabled', false);
-        } else {
-            $('#deleteSelected').prop('disabled', true);
-        }
-    }
-});*/
+}

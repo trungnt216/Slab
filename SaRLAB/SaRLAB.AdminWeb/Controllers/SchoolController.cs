@@ -74,7 +74,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 schools = JsonConvert.DeserializeObject<List<School>>(data);
             }
-
+            ViewBag.ActiveMenu = "school";
             return View(schools);
         }
 
@@ -83,10 +83,12 @@ namespace SaRLAB.AdminWeb.Controllers
         {
             if (userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "school";
                 return View();
             }
             else
             {
+                ViewBag.ActiveMenu = "school";
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa";
                 return RedirectToAction("GetAllSchool");
             }
@@ -104,6 +106,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
+                    ViewBag.ActiveMenu = "school";
                     TempData["successMessage"] = "create success";
                     return RedirectToAction("GetAllSchool");
                 }
@@ -113,6 +116,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
+            ViewBag.ActiveMenu = "school";
             return View();
         }
 
@@ -131,15 +135,18 @@ namespace SaRLAB.AdminWeb.Controllers
             if (school == null)
             {
                 TempData["notice"] = "không tìm thấy dữ liệu";
+                ViewBag.ActiveMenu = "school";
                 return Ok();
             }
 
             if (userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "school";
                 return View(school);
             }
             else
             {
+                ViewBag.ActiveMenu = "school";
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
                 return RedirectToAction("GetAllSchool");
             }
@@ -158,6 +165,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
+                    ViewBag.ActiveMenu = "school";
                     TempData["successMessage"] = "create success";
                     return RedirectToAction("GetAllSchool");
                 }
@@ -167,6 +175,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
+            ViewBag.ActiveMenu = "school";
             return View();
         }
 
@@ -183,6 +192,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "school";
                         return RedirectToAction("GetAllSchool");
                     }
                 }
@@ -191,6 +201,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAllSchool");
                 }
+                ViewBag.ActiveMenu = "school";
                 return RedirectToAction("GetAllSchool");
             }
             else
