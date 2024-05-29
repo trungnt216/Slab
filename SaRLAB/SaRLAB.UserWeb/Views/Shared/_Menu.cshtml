@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "_menu";
-    string url = TempData["AvtPath"].ToString();
+    //string url = TempData["AvtPath"].ToString();
 }
 
 <style>
@@ -148,7 +148,7 @@
     <li class="scroll-to-section menu"><a class="menu" href="#math">Toán học</a></li>
     <li class="scroll-to-section info-group d-flex">
         <a class="menu d-flex" asp-controller="HomePage" asp-action="Information">
-            <img src="@Url.Content(url)" />
+            <img src="@Url.Content(TempData["AvtPath"].ToString())" />
             <div class="info-user">
                 <p class="name">@TempData["name"]</p>
                 <p class="role">@TempData["role"]</p>

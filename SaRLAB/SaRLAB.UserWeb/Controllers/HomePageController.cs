@@ -49,33 +49,41 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     userLogin.RoleName = claim.Value;
                 }
+                else if (claim.Type == "SchoolId")
+                {
+                    userLogin.SchoolId = int.Parse(claim.Value);
+                }
+                else if (claim.Type == "Name")
+                {
+                    userLogin.Name = claim.Value;
+                }
+                else if (claim.Type == "avt")
+                {
+                    userLogin.AvtPath = claim.Value;
+                }
             }
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+
         }
 
 
         public ActionResult Index()
         {
             ViewBag.ActiveMenu = "homePage";
-            User users = new User();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + userLogin.Email).Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                users = JsonConvert.DeserializeObject<User>(data);
-            }
-
-            TempData["name"] = users.Name;
+            TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = users .AvtPath;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             return View();
         }
 
         [HttpGet]
         public ActionResult Information()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             User users = new User();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + userLogin.Email).Result;
@@ -93,6 +101,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Information(string email)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             User users = new User();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + userLogin.Email).Result;
@@ -109,6 +120,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Information(User user, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/User");

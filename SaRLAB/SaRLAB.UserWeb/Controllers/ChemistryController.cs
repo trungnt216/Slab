@@ -51,17 +51,27 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     userLogin.RoleName = claim.Value;
                 }
-                if (claim.Type == "SchoolId")
+                else if (claim.Type == "SchoolId")
                 {
                     userLogin.SchoolId = int.Parse(claim.Value);
                 }
+                else if (claim.Type == "Name")
+                {
+                    userLogin.Name = claim.Value;
+                }
+                else if (claim.Type == "avt")
+                {
+                    userLogin.AvtPath = claim.Value;
+                }
             }
+
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
             if (userLogin.RoleName == ("Admin"))
             {
                 checkRole = 1;
             }
+
         }
 
         //----------------------------------------------------------------------------------------------
@@ -72,6 +82,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Chemistry()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<Equipment> equipment = new List<Equipment>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/CHEMISTRYE").Result;
@@ -92,6 +106,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Chemistry(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Equipment equipment = new Equipment();
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
             if (response.IsSuccessStatusCode)
@@ -128,6 +146,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Chemistry(Equipment equipment, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
@@ -182,6 +204,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Chemistry()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -201,6 +227,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Chemistry(Equipment equipment, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
@@ -264,6 +294,7 @@ namespace SaRLAB.UserWeb.Controllers
 
         public ActionResult Delete_Chemistry(int id)
         {
+
             Equipment equipment = new Equipment();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
@@ -327,6 +358,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Chemistry(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Equipment equipment = new Equipment();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
@@ -347,6 +382,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_ToolChemistry()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<Equipment> equipment = new List<Equipment>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/TOOLCHEMISTRY").Result;
@@ -367,6 +406,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_ToolChemistry()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -386,6 +429,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_ToolChemistry(Equipment equipment, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
@@ -450,6 +497,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_ToolChemistry(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Equipment equipment = new Equipment();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
@@ -489,6 +540,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_ToolChemistry(Equipment equipment, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
@@ -545,6 +600,7 @@ namespace SaRLAB.UserWeb.Controllers
 
         public ActionResult Delete_ToolChemistry(int id)
         {
+
             Equipment equipment = new Equipment();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
@@ -607,6 +663,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_ToolChemistry(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Equipment equipment = new Equipment();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
@@ -629,6 +689,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_EquipmentChemistry()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<Equipment> equipment = new List<Equipment>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/EQUIPMENTCHEMISTRY").Result;
@@ -668,6 +732,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_EquipmentChemistry(Equipment equipment, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
@@ -732,6 +800,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_EquipmentChemistry(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Equipment equipment = new Equipment();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
@@ -774,6 +846,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_EquipmentChemistry(Equipment equipment, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
@@ -892,6 +968,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_EquipmentChemistry(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Equipment equipment = new Equipment();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
@@ -917,6 +997,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Experiment()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/EXPERIMENT").Result;
@@ -936,6 +1020,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Experiment()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -955,6 +1043,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Experiment(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -1018,6 +1110,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Experiment(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1057,6 +1153,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Experiment(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -1176,6 +1276,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Experiment(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1198,6 +1302,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Conspectus()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/CONSPECTUS").Result;
@@ -1218,6 +1326,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Conspectus()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -1237,6 +1349,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Conspectus(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -1300,6 +1416,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Conspectus(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1339,6 +1459,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Conspectus(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -1457,6 +1581,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Conspectus(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1478,6 +1606,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Inorganic_Organic()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<Document> document1 = new List<Document>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/INORGANIC").Result;
@@ -1513,6 +1645,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Inorganic_Organic()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -1532,6 +1668,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Inorganic_Organic(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -1594,6 +1734,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Inorganic_Organic(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1630,6 +1774,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Inorganic_Organic(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -1748,6 +1896,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Inorganic_Organic(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1770,6 +1922,10 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Inorganic()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/INORGANIC").Result;
@@ -1790,6 +1946,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Inorganic()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -1809,6 +1968,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Inorganic(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -1872,6 +2034,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Inorganic(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1911,6 +2076,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Inorganic(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2029,6 +2197,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Inorganic(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2051,6 +2222,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Organic()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
 
             List<Document> documents = new List<Document>();
 
@@ -2072,6 +2246,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Organic()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -2091,6 +2268,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Organic(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2154,6 +2334,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Organic(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2193,6 +2376,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Organic(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2308,6 +2494,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Organic(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2330,6 +2519,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Biological()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
 
             List<Document> documents = new List<Document>();
 
@@ -2351,6 +2543,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Biological()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 return View();
@@ -2367,6 +2562,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Biological(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2430,6 +2628,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Biological(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2469,6 +2670,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Biological(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2584,6 +2788,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Biological(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2606,7 +2813,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Vocabulary()
         {
-
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/VOCABULARY").Result;
@@ -2627,6 +2836,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Vocabulary()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -2646,6 +2858,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Vocabulary(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2710,6 +2925,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Vocabulary(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2749,6 +2967,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Vocabulary(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2864,6 +3085,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Vocabulary(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2886,6 +3110,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Exam()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
 
             List<Document> documents = new List<Document>();
 
@@ -2907,6 +3134,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Exam()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -2926,6 +3156,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Exam(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2989,6 +3222,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Exam(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3028,6 +3264,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Exam(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3146,6 +3385,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Exam(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3168,7 +3410,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Examenglish()
         {
-
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/EXAMENG").Result;
@@ -3189,6 +3433,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Examenglish()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -3208,6 +3455,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Examenglish(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3271,6 +3521,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Examenglish(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3310,6 +3563,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Examenglish(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3425,6 +3681,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Examenglish(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3447,6 +3706,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Department_level()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
 
             List<Document> documents = new List<Document>();
 
@@ -3468,6 +3730,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Department_level()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -3487,6 +3752,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Department_level(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3550,6 +3818,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Department_level(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3589,6 +3860,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Department_level(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3707,6 +3981,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Department_level(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3729,6 +4006,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Provincial_level()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/PROVONCIALLEVEL").Result;
@@ -3749,6 +4029,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Provincial_level()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -3768,6 +4051,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Provincial_level(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3831,6 +4117,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Provincial_level(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3867,6 +4156,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Provincial_level(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3985,6 +4277,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Provincial_level(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4008,6 +4303,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_National_level()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/NATIONALLEVER").Result;
@@ -4028,6 +4326,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_National_level()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -4047,6 +4348,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_National_level(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4110,6 +4414,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_National_level(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4149,6 +4456,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_National_level(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4264,6 +4574,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_National_level(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4286,6 +4599,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Preparation_questions()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/PREPARATIONQUESTION").Result;
@@ -4306,6 +4622,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Preparation_questions()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -4325,6 +4644,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Preparation_questions(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4388,6 +4710,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Preparation_questions(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4427,6 +4752,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Preparation_questions(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4545,6 +4873,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Preparation_questions(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4568,6 +4899,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Practice_report()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/1/NATIONALLEVER").Result;
@@ -4588,6 +4922,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Practice_report()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 return View();
@@ -4604,6 +4941,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Practice_report(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4667,6 +5007,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Practice_report(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4706,6 +5049,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Practice_report(Document document, IFormFile File)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4824,6 +5170,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Practice_report(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4845,6 +5194,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Directors()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             List<User> users = new List<User>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllAdminUser/" + userLogin.SchoolId).Result;
@@ -4864,6 +5216,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult Details_Directors(string email)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             User users = new User();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + email).Result;
@@ -4884,6 +5239,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Teacher()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             List<User> users = new List<User>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTeacherUser/" + userLogin.SchoolId + "/1").Result;
@@ -4903,6 +5261,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult Details_Teacher(string email)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             User users = new User();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + email).Result;
@@ -4923,6 +5284,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Technical()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             List<User> users = new List<User>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTechnicalUser/" + userLogin.SchoolId + "/1").Result;
@@ -4942,6 +5306,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult Details_Technical(string email)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             User users = new User();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + email).Result;

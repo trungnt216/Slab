@@ -47,6 +47,8 @@ namespace SaRLAB.Application.Controllers
                 new Claim(ClaimTypes.Name , user.Email),
                 new Claim(ClaimTypes.Role, userRole),
                 new Claim("SchoolId", schoolId),
+                new Claim("Name", user.Name),
+                new Claim("avt", user.AvtPath),
                 new Claim("JWTID",Guid.NewGuid().ToString()),
 
             };

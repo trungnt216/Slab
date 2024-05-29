@@ -45,6 +45,7 @@ namespace SaRLAB.DataAccess.Dto.LoginService
                     Name = user.Name,
                     RoleName = user.RoleManages.RoleName,
                     SchoolId = user.SchoolId,
+                    AvtPath = user.AvtPath,
                 };
 
                 return userlogin;
