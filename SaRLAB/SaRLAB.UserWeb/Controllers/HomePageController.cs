@@ -12,7 +12,7 @@ namespace SaRLAB.UserWeb.Controllers
 {
     public class HomePageController : Controller
     {
-        string pathFolderSave = "https://localhost:7135//uploads/";
+        string pathFolderSave = null;
 
         Uri baseAddress = new Uri("http://localhost:5200/api/");
 
@@ -32,6 +32,8 @@ namespace SaRLAB.UserWeb.Controllers
             _configuration = configuration;
 
             string jwtToken = _configuration["JwtToken:Value"];
+
+            pathFolderSave = _configuration["PathFolder:Value"];
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -55,6 +57,19 @@ namespace SaRLAB.UserWeb.Controllers
         public ActionResult Index()
         {
             ViewBag.ActiveMenu = "homePage";
+            User users = new User();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + userLogin.Email).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                users = JsonConvert.DeserializeObject<User>(data);
+            }
+
+            TempData["name"] = users.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = users .AvtPath;
             return View();
         }
 
@@ -96,7 +111,7 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (File != null)
             {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/User");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
