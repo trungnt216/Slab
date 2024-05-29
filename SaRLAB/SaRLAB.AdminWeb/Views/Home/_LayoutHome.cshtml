@@ -62,10 +62,10 @@
                     <i class="fa-regular fa-moon icon-right"></i>
                 </div>
                 <div class="info-user d-flex">
-                    <img src="@Url.Content("~/images/ic_user.png")" class="icon" alt="" />
+                    <img src="@Url.Content(TempData["AvtPath"].ToString())" class="icon" alt="" />
                     <div class="info">
-                        <p class="name">John Doe</p>
-                        <p class="role">Admin</p>
+                        <p class="name">@TempData["name"]</p>
+                        <p class="role">@TempData["role"]</p>
                     </div>
                     <div class="dropdown">
                         <i class="fa-solid fa-ellipsis-vertical" id="ellipsis-icon" data-bs-toggle="dropdown"></i>

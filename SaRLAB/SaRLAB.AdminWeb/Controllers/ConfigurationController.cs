@@ -27,7 +27,7 @@ namespace SaRLAB.AdminWeb.Controllers
         private readonly IWebHostEnvironment _env;
 
 
-        User userLogin = new User();
+        UserDto userLogin = new UserDto();
 
         public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -44,19 +44,31 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 var token = tokenHandler.ReadJwtToken(jwtToken);
 
-                foreach (Claim claim in token.Claims)
+            foreach (Claim claim in token.Claims)
+            {
+                if (claim.Type == ClaimTypes.Name)
                 {
-                    if (claim.Type == ClaimTypes.Name)
-                    {
-                        userLogin.Email = claim.Value;
-                    }
-                    else if (claim.Type == ClaimTypes.Role)
-                    {
-
-                    }
+                    userLogin.Email = claim.Value;
                 }
+                else if (claim.Type == ClaimTypes.Role)
+                {
+                    userLogin.RoleName = claim.Value;
+                }
+                else if (claim.Type == "SchoolId")
+                {
+                    userLogin.SchoolId = int.Parse(claim.Value);
+                }
+                else if (claim.Type == "Name")
+                {
+                    userLogin.Name = claim.Value;
+                }
+                else if (claim.Type == "avt")
+                {
+                    userLogin.AvtPath = claim.Value;
+                }
+            }
 
-                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
             
         }
 
@@ -68,6 +80,10 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult GetAllBanner()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<Banner> banner = new List<Banner>();
 
             HttpResponseMessage response;
@@ -85,6 +101,10 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult GetAllUser()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<UserDto> users = new List<UserDto>();
 
             HttpResponseMessage response;
@@ -105,6 +125,10 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult InsertUser()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<School> schools = new List<School>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetAllSchool").Result;
@@ -169,6 +193,10 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult Edit(string email)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             User user = new User();
 
             HttpResponseMessage response;
@@ -249,6 +277,10 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult InsertBanner()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             ViewBag.ActiveMenu = "banner";
             return View();
         }
@@ -315,13 +347,16 @@ namespace SaRLAB.AdminWeb.Controllers
         public IActionResult EditBanner(int id)
         {
 
-/*            string substringToRemove = "/undefined";
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            /*            string substringToRemove = "/undefined";
 
-            if (id.EndsWith(substringToRemove))
-            {
-                // Remove the undesired substring
-                id = id.Remove(id.Length - substringToRemove.Length);
-            }*/
+                        if (id.EndsWith(substringToRemove))
+                        {
+                            // Remove the undesired substring
+                            id = id.Remove(id.Length - substringToRemove.Length);
+                        }*/
 
             Banner banner = new Banner();
 
@@ -428,6 +463,11 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpPost]
         public IActionResult DeleteMultipleBanners([FromBody] DeleteMultipleRequest request)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+
             try
             {
                 foreach (var id in request.Ids)
@@ -460,6 +500,10 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult Fix_Information()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             User user = new User();
 
             HttpResponseMessage response;

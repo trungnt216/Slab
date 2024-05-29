@@ -34,7 +34,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             var token = tokenHandler.ReadJwtToken(jwtToken);
 
-            foreach (Claim claim in token.Claims)
+            foreach(Claim claim in token.Claims)
             {
                 if (claim.Type == ClaimTypes.Name)
                 {
@@ -44,7 +44,20 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     userLogin.RoleName = claim.Value;
                 }
+                else if (claim.Type == "SchoolId")
+                {
+                    userLogin.SchoolId = int.Parse(claim.Value);
+                }
+                else if (claim.Type == "Name")
+                {
+                    userLogin.Name = claim.Value;
+                }
+                else if (claim.Type == "avt")
+                {
+                    userLogin.AvtPath = claim.Value;
+                }
             }
+
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
         }
 

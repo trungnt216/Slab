@@ -49,9 +49,17 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     userLogin.RoleName = claim.Value;
                 }
-                if (claim.Type == "SchoolId")
+                else if (claim.Type == "SchoolId")
                 {
                     userLogin.SchoolId = int.Parse(claim.Value);
+                }
+                else if (claim.Type == "Name")
+                {
+                    userLogin.Name = claim.Value;
+                }
+                else if (claim.Type == "avt")
+                {
+                    userLogin.AvtPath = claim.Value;
                 }
             }
 
@@ -64,6 +72,10 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult GetAllSchool()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             List<School> schools = new List<School>();
 
             HttpResponseMessage response;
@@ -81,6 +93,10 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public ActionResult CreateSchool()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (userLogin.RoleName == "Owner")
             {
                 ViewBag.ActiveMenu = "school";
@@ -124,6 +140,10 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public ActionResult EditSchool(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             School school = new School();
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetByID/" + id).Result;
             if (response.IsSuccessStatusCode)

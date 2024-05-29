@@ -23,6 +23,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
         private readonly IWebHostEnvironment _env;
 
+        UserDto userLogin = new UserDto();
+
         public LoginController(IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
@@ -51,11 +53,23 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 if (claim.Type == ClaimTypes.Name)
                 {
-                    Console.WriteLine($"Email: {claim.Value}");
+                    userLogin.Email = claim.Value;
                 }
                 else if (claim.Type == ClaimTypes.Role)
                 {
-                    Console.WriteLine($"Role: {claim.Value}");
+                    userLogin.RoleName = claim.Value;
+                }
+                else if (claim.Type == "SchoolId")
+                {
+                    userLogin.SchoolId = int.Parse(claim.Value);
+                }
+                else if (claim.Type == "Name")
+                {
+                    userLogin.Name = claim.Value;
+                }
+                else if (claim.Type == "avt")
+                {
+                    userLogin.AvtPath = claim.Value;
                 }
             }
         }
