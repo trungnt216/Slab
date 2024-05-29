@@ -43,9 +43,17 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     userLogin.RoleName = claim.Value;
                 }
-                else if (claim.Type == ClaimTypes.Role)
+                else if (claim.Type == "SchoolId")
                 {
-                    userLogin.RoleName = claim.Value;
+                    userLogin.SchoolId = int.Parse(claim.Value);
+                }
+                else if (claim.Type == "Name")
+                {
+                    userLogin.Name = claim.Value;
+                }
+                else if (claim.Type == "avt")
+                {
+                    userLogin.AvtPath = claim.Value;
                 }
             }
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
@@ -61,6 +69,9 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/CHEMISTRYE").Result;

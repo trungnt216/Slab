@@ -158,7 +158,7 @@ namespace SaRLAB.DataAccess.Service.UserService
             };
 
             _context.Users.Add(newUser);
-            _context.SaveChanges();
+             _context.SaveChanges();
 
             return newUser;
         }
