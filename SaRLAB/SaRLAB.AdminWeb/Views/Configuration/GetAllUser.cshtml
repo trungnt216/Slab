@@ -93,6 +93,9 @@
                 </a>
             </div>
         </div>
+        <div id="popupNotification" class="alert alert-danger">
+            @TempData["notice"]
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -199,12 +202,12 @@
                                 </p>
                             </td>
                         <td>
-                        <a class="btn-custom-edit-by-email" asp-action="Edit" asp-route-email="@item.Email">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                        <a class="delete" href="#" data-url="@Url.Action("Delete", "Configuration", new { id = item.ID })" onclick="openDeleteModal(this)">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
+                            <a class="btn-custom-edit-by-email" asp-action="Edit" asp-route-email="@item.Email">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                                <a class="delete" href="#" data-url="@Url.Action("Delete", "Configuration", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
                         </td>
                     </tr>
                     counter++;
@@ -262,19 +265,65 @@
 
     <script type="text/javascript">
         var deleteUrl = '';
+        var selectedIds = [];
 
+        document.getElementById('selectAll').addEventListener('change', function () {
+            var checkboxes = document.querySelectorAll('.selectRow');
+            for (var checkbox of checkboxes) {
+                checkbox.checked = this.checked;
+            }
+        });
+
+        document.getElementById('deleteSelected').addEventListener('click', function () {
+            selectedIds = [];
+            var checkboxes = document.querySelectorAll('.selectRow:checked');
+            for (var checkbox of checkboxes) {
+                selectedIds.push(checkbox.getAttribute('data-id'));
+            }
+
+            if (selectedIds.length > 0) {
+                document.getElementById('deleteModal').style.display = 'block';
+            } else {
+                alert("Vui lòng chọn ít nhất một mục để xóa.");
+            }
+        });
+
+
+        // Mở modal xóa cho từng item
         function openDeleteModal(element) {
             deleteUrl = element.getAttribute("data-url");
+            selectedIds = [];
             document.getElementById('deleteModal').style.display = 'block';
         }
+
 
         function closeDeleteModal() {
             document.getElementById('deleteModal').style.display = 'none';
         }
 
+        // Xác nhận xóa
         document.getElementById('confirmDeleteButton').onclick = function () {
-            window.location.href = deleteUrl;
+            if (selectedIds.length > 0) {
+                // Gửi yêu cầu xóa nhiều mục
+                fetch('@Url.Action("DeleteMultipleUsers", "Configuration")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ Ids: selectedIds })
+                }).then(response => {
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        alert("Có lỗi xảy ra khi xóa các mục.");
+                    }
+                });
+            } else if (deleteUrl) {
+                // Gửi yêu cầu xóa một mục
+                window.location.href = deleteUrl;
+            }
         };
+
 
         window.onclick = function (event) {
             var modal = document.getElementById('deleteModal');
