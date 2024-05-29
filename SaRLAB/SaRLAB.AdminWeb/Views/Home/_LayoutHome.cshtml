@@ -62,7 +62,12 @@
                     <i class="fa-regular fa-moon icon-right"></i>
                 </div>
                 <div class="info-user d-flex">
-                    <img src="@Url.Content(TempData["AvtPath"].ToString())" class="icon" alt="" />
+                    @{
+                        string avatarPath = TempData["AvtPath"]?.ToString();
+                        string defaultAvatarPath = Url.Content("~/images/defaultAvatar.jpg"); 
+                        string displayAvatarPath = !string.IsNullOrEmpty(avatarPath) ? Url.Content(avatarPath) : defaultAvatarPath;
+                    }
+                    <img src="@displayAvatarPath" class="icon" alt="User Avatar" />
                     <div class="info">
                         <p class="name">@TempData["name"]</p>
                         <p class="role">@TempData["role"]</p>

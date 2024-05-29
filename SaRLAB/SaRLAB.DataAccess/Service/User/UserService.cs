@@ -151,14 +151,13 @@ namespace SaRLAB.DataAccess.Service.UserService
                 CreateBy = user.CreateBy,
                 UpdateBy = user.UpdateBy,
                 CreateTime = DateTime.Now,
-                Role_ID = 1,
+                Role_ID = 5,
                 AvtPath = user.AvtPath,
                 SchoolId = user.SchoolId
-
             };
 
             _context.Users.Add(newUser);
-             _context.SaveChanges();
+            _context.SaveChanges();
 
             return newUser;
         }
@@ -234,14 +233,14 @@ namespace SaRLAB.DataAccess.Service.UserService
 
         public List<User> GetUsersByRole(int role, int schoolId, int? subjectId)
         {
-             IQueryable<User> query = _context.Users.Where(u => u.Role_ID == role && u.SchoolId == schoolId);
+            IQueryable<User> query = _context.Users.Where(u => u.Role_ID == role && u.SchoolId == schoolId);
 
-             if (subjectId.HasValue && subjectId != 0)
-                   {
-                         query = query.Where(u => u.SubjectId == subjectId);
-                   }
+            if (subjectId.HasValue && subjectId != 0)
+            {
+                query = query.Where(u => u.SubjectId == subjectId);
+            }
 
-              return query.ToList();
+            return query.ToList();
         }
     }
 }

@@ -116,33 +116,33 @@
                 </tr>
             </thead>
             <tbody>
-        @foreach (var item in Model) {
-                <tr>
-                    <td>
-                        <input type="checkbox" class="selectRow" data-id="@item.ID" />
-                    </td>
-                    <td>
-                        @counter
-                    </td>
-                    <td class="d-none">
-                        @Html.DisplayFor(modelItem => item.ID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Address)
-                    </td>
-                    <td>
-                        <a class="btn-custom-edit-by-email" asp-action="EditSchool" asp-route-id="@item.ID">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                        <a class="delete" href="#" data-url="@Url.Action("DeleteSchool", "School", new { id = item.ID })" onclick="openDeleteModal(this)">
-                            <i class="fa-solid fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-                counter++;
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="selectRow" data-id="@item.ID" />
+                        </td>
+                        <td>
+                            @counter
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            <a class="btn-custom-edit-by-email" asp-action="EditSchool" asp-route-id="@item.ID">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a class="delete" href="#" data-url="@Url.Action("DeleteSchool", "School", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    counter++;
                 }
             </tbody>
         </table>

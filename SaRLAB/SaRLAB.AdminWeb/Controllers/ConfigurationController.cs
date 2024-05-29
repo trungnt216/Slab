@@ -74,6 +74,9 @@ namespace SaRLAB.AdminWeb.Controllers
 
         public IActionResult Index()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             return View();
         }
 
@@ -274,13 +277,34 @@ namespace SaRLAB.AdminWeb.Controllers
             return RedirectToAction("GetAllUser");
         }
 
+        public IActionResult DeleteMultipleUsers([FromBody] DeleteMultipleRequest request)
+        {
+            try
+            {
+                foreach (var id in request.Ids)
+                {
+                    HttpResponseMessage response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "User/DeleteById/" + id).Result;
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine($"Failed to delete user with ID {id}");
+                    }
+                }
+                ViewBag.ActiveMenu = "user";
+                return RedirectToAction("GetAllUser");
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "user";
+                return View();
+            }
+        }
+
+
         [HttpGet]
         public IActionResult InsertBanner()
         {
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-
             ViewBag.ActiveMenu = "banner";
             return View();
         }
@@ -346,10 +370,6 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult EditBanner(int id)
         {
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
             /*            string substringToRemove = "/undefined";
 
                         if (id.EndsWith(substringToRemove))
@@ -515,6 +535,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 user = JsonConvert.DeserializeObject<User>(data);
             }
+            ViewBag.ActiveMenu = "user";
             return View(user);
         }
         [HttpPost]
@@ -529,6 +550,7 @@ namespace SaRLAB.AdminWeb.Controllers
             _user.CreateTime = user.CreateTime;
             _user.UpdateBy = userLogin.Email;
             _user.Role_ID = user.Role_ID;
+            _user.AvtPath = user.AvtPath;
 
             if (FileImage != null)
             {
