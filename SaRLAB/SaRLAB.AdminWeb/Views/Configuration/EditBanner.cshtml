@@ -2,9 +2,7 @@
 
 @{
     ViewData["Title"] = "EditBanner";
-
     ViewBag.TitleCustom = "Chỉnh sửa banner";
-
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
@@ -27,7 +25,7 @@
                 <span asp-validation-for="ID" class="text-danger"></span>
             </div>
             <div class="form-group row">
-                <label for="FileImage" class="col-3 form-label">Chọn file</label>
+                <label for="FileImage" class="col-3 form-label">Chọn ảnh banner</label>
                 <div class="col">
                     <input id="FileImage" accept="image/*" name="FileImage" class="form-control" type="file" />
                 </div>
@@ -46,12 +44,13 @@
                             url = Model.PathImage;
                         }
                     }
-                    <img id="previewImage" src="@Url.Content(url)" style="width: 300px;
-                                height: 200px;
-                                margin-top: -15px;
-                                border: 3px solid #eeeeee;
-                                border-radius: 15px;
-                                object-fit: cover" />
+                    <img id="previewImage" src="@Url.Content(url)"
+                         style="width: 100%;
+                            height: 300px;
+                            margin-top: -15px;
+                            border: 3px solid #eeeeee;
+                            border-radius: 15px;
+                            object-fit: cover;" />
                 </div>
             </div>
             <div class="form-group d-none">

@@ -54,6 +54,7 @@ namespace SaRLAB.UserWeb.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.ActiveMenu = "homePage";
             return View();
         }
 
@@ -70,6 +71,7 @@ namespace SaRLAB.UserWeb.Controllers
                 users = JsonConvert.DeserializeObject<User>(data);
             }
 
+            ViewBag.ActiveMenu = "homePage";
             return View(users);
         }
 
@@ -86,6 +88,7 @@ namespace SaRLAB.UserWeb.Controllers
                 users = JsonConvert.DeserializeObject<User>(data);
             }
 
+            ViewBag.ActiveMenu = "homePage";
             return View(users);
         }
         [HttpPost]
@@ -124,14 +127,17 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "homePage";
                     return RedirectToAction("Information");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "homePage";
                 return View();
             }
+            ViewBag.ActiveMenu = "homePage";
             return View();
         }
 

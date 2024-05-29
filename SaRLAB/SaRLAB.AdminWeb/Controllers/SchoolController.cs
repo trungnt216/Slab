@@ -74,7 +74,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 schools = JsonConvert.DeserializeObject<List<School>>(data);
             }
-
+            ViewBag.ActiveMenu = "school";
             return View(schools);
         }
 
@@ -83,12 +83,14 @@ namespace SaRLAB.AdminWeb.Controllers
         {
             if (userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "school";
                 return View();
             }
             else
             {
+                ViewBag.ActiveMenu = "school";
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa";
-                return RedirectToAction("GetAllSchool","School");
+                return RedirectToAction("GetAllSchool", "School");
             }
         }
         [HttpPost]
@@ -104,6 +106,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
+                    ViewBag.ActiveMenu = "school";
                     TempData["successMessage"] = "create success";
                     return RedirectToAction("GetAllSchool", "School");
                 }
@@ -113,6 +116,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
+            ViewBag.ActiveMenu = "school";
             return View();
         }
 
@@ -131,15 +135,18 @@ namespace SaRLAB.AdminWeb.Controllers
             if (school == null)
             {
                 TempData["notice"] = "không tìm thấy dữ liệu";
+                ViewBag.ActiveMenu = "school";
                 return Ok();
             }
 
             if (userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenu = "school";
                 return View(school);
             }
             else
             {
+                ViewBag.ActiveMenu = "school";
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
                 return RedirectToAction("GetAllSchool", "School");
             }
@@ -158,6 +165,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
+                    ViewBag.ActiveMenu = "school";
                     TempData["successMessage"] = "create success";
                     return RedirectToAction("GetAllSchool", "School");
                 }
@@ -167,6 +175,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
+            ViewBag.ActiveMenu = "school";
             return View();
         }
 
@@ -183,6 +192,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenu = "school";
                         return RedirectToAction("GetAllSchool", "School");
                     }
                 }
@@ -191,19 +201,45 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAllSchool", "School");
                 }
+                ViewBag.ActiveMenu = "school";
                 return RedirectToAction("GetAllSchool", "School");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
-                return RedirectToAction("GetAllSchool","School");
+                return RedirectToAction("GetAllSchool", "School");
             }
         }
 
 
+        [HttpPost]
+        public IActionResult DeleteMultipleSchools([FromBody] DeleteMultipleRequest request)
+        {
+            try
+            {
+                foreach (var id in request.Ids)
+                {
+                    HttpResponseMessage response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "School/Delete/" + id).Result;
 
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine($"Failed to delete school with ID {id}");
+                    }
+                }
+                ViewBag.ActiveMenu = "school";
+                return RedirectToAction("GetAllSchool");
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "school";
+                return View();
+            }
+        }
 
-
-
+        public class DeleteMultipleRequest
+        {
+            public List<int> Ids { get; set; }
+        }
     }
 }

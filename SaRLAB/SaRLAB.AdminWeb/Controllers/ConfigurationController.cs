@@ -77,7 +77,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 banner = JsonConvert.DeserializeObject<List<Banner>>(data);
             }
-
+            ViewBag.ActiveMenu = "banner";
             return View(banner);
         }
 
@@ -96,7 +96,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 users = JsonConvert.DeserializeObject<List<UserDto>>(data);
             }
-
+            ViewBag.ActiveMenu = "user";
             return View(users);
 
         }
@@ -104,12 +104,14 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult InsertUser()
         {
+            ViewBag.ActiveMenu = "user";
             return View();
         }
         [HttpPost]
         public IActionResult InsertUser(User user) {
             if(user == null) 
-            { 
+            {
+                ViewBag.ActiveMenu = "user";
                 return View();
             }
 
@@ -125,6 +127,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 if(response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "User create success";
+                    ViewBag.ActiveMenu = "user";
                     return RedirectToAction("GetAllUser");
                 }
 
@@ -134,6 +137,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
+            ViewBag.ActiveMenu = "user";
             return View();
         }
 
@@ -152,6 +156,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 user = JsonConvert.DeserializeObject<User>(data);
             }
+            ViewBag.ActiveMenu = "user";
             return View(user);
         }
         [HttpPost]
@@ -160,6 +165,7 @@ namespace SaRLAB.AdminWeb.Controllers
             user.CreateBy = userLogin.Email;
             user.CreateTime = DateTime.Now;
             user.UpdateBy = userLogin.Email;
+            user.AvtPath = userLogin.AvtPath;
 
             try
             {
@@ -171,6 +177,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "User create success";
+                    ViewBag.ActiveMenu = "user";
                     return RedirectToAction("GetAllUser");
                 }
 
@@ -180,6 +187,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
+            ViewBag.ActiveMenu = "user";
             return View();
         }
 
@@ -201,6 +209,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
+                    ViewBag.ActiveMenu = "user";
                     return RedirectToAction("GetAllUser");
                 }
             }
@@ -209,12 +218,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
+            ViewBag.ActiveMenu = "user";
             return RedirectToAction("GetAllUser");
         }
 
         [HttpGet]
         public IActionResult InsertBanner()
         {
+            ViewBag.ActiveMenu = "banner";
             return View();
         }
         [HttpPost]
@@ -257,6 +268,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         TempData["Status"] = "insert success";
+                        ViewBag.ActiveMenu = "banner";
                         return RedirectToAction("GetAllBanner");
                     }
                 }
@@ -268,9 +280,10 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             else
             {
+                ViewBag.ActiveMenu = "banner";
                 return View();
             }
-
+            ViewBag.ActiveMenu = "banner";
             return View();
         }
 
@@ -298,8 +311,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 banner = JsonConvert.DeserializeObject<Banner>(data);
             }
 
-/*            banner.ID = Convert.ToInt32(id);*/
-
+            /*            banner.ID = Convert.ToInt32(id);*/
+            ViewBag.ActiveMenu = "banner";
             return View(banner);
         }
         [HttpPost]
@@ -348,6 +361,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "Banner update success";
+                    ViewBag.ActiveMenu = "banner";
                     return RedirectToAction("GetAllBanner");
                 }
 
@@ -357,6 +371,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
+            ViewBag.ActiveMenu = "banner";
             return View();
         }
 
@@ -372,14 +387,17 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
+                    ViewBag.ActiveMenu = "banner";
                     return RedirectToAction("GetAllBanner");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "banner";
                 return View();
             }
+            ViewBag.ActiveMenu = "banner";
             return RedirectToAction("GetAllBanner");
         }
 
@@ -397,11 +415,13 @@ namespace SaRLAB.AdminWeb.Controllers
                         Console.WriteLine($"Failed to delete banner with ID {id}");
                     }
                 }
+                ViewBag.ActiveMenu = "banner";
                 return RedirectToAction("GetAllBanner");
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "banner";
                 return View();
             }
         }
@@ -474,6 +494,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "User create success";
+                    ViewBag.ActiveMenu = "user";
                     return RedirectToAction("GetAllUser");
                 }
 
@@ -481,8 +502,10 @@ namespace SaRLAB.AdminWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "user";
                 return View();
             }
+            ViewBag.ActiveMenu = "user";
             return View();
         }
     }

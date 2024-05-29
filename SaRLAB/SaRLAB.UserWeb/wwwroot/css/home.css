@@ -212,7 +212,7 @@ html, body {
 
 .main-red-button a {
   display: inline-block;
-  background-color: #f77a86;
+  background-color: #e9c288;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
@@ -220,6 +220,18 @@ html, body {
   padding: 12px 25px;
   border-radius: 23px;
   letter-spacing: 0.25px;
+}
+
+.main-red-button a:hover {
+    display: inline-block;
+    background-color: #ceab76;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    text-transform: capitalize;
+    padding: 12px 25px;
+    border-radius: 23px;
+    letter-spacing: 0.25px;
 }
 
 .main-white-button a {
@@ -341,7 +353,7 @@ header
 }
 
 .header-area .main-nav .nav li.menu {
-    padding-left: 20px;
+    padding-left: 10px;
     padding-right: 20px;
     position: relative;
     display: inline-block;
@@ -349,7 +361,7 @@ header
 
 .header-area .main-nav .nav li.logout:last-child {
     padding-right: 0px;
-    padding-left: 40px;
+    padding-left: 20px;
 }
 
 .header-area .main-nav .nav li.logout:last-child a ,
@@ -412,7 +424,12 @@ header
 .header-area .main-nav .nav li a.active {
     color: #e9c290 !important;
     border-bottom: none;
-    border-bottom: 1px solid;
+}
+
+.header-area .main-nav .nav li.info-group:hover a.menu,
+.header-area .main-nav .nav li a.active {
+    color: #e9c290 !important;
+    border-bottom: none;
 }
 
 .background-header .main-nav .nav li:hover a.menu,
@@ -1017,11 +1034,17 @@ Banner Style
 #sub-content {
     margin-top: 120px;
 }
+
  /* table-container */
 .table-container {
     background: #ffffffd9;
     padding: 35px 50px;
     border-radius: 15px;
+}
+
+.table-container .table-action {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .table-container .table thead th {
@@ -1073,6 +1096,12 @@ Banner Style
     font-size: var(--text-xs);
     color: #df6b76;
     cursor: pointer;
+}
+
+.table-container .table .fa-sort {
+    margin-left: 3px;
+    font-size: 14px;
+    color: #858585;
 }
 
 /*custom button*/
@@ -1175,6 +1204,71 @@ Banner Style
     padding-left: 25px;
 }
 
+/*user*/
+.detail-container .divider-user hr {
+    margin: 0;
+}
+
+.detail-container .divider-user p{
+    font-weight: 600;
+    color: #bc9773;
+}
+
+.detail-container .divider-user-other {
+    margin-top: 40px;
+}
+
+.detail-container .divider-user-other hr {
+    margin: 0;
+}
+
+.detail-container .divider-user-other p {
+    font-weight: 600;
+    color: #bc9773;
+}
+
+.detail-container .detail-item-user-left {
+    text-align: center;
+}
+
+.detail-container .detail-item-user-left .avatar-user {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 170px;
+}
+
+.detail-container .detail-item-user-left .role-user {
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: -3px;
+    color: #6482af;
+}
+
+.detail-container .detail-item-user-left .name-user {
+    font-weight: 600;
+    color: #294a7b;
+}
+
+.detail-container .detail-item-user {
+    margin-top: 10px;
+}
+
+.detail-container .detail-item-user .title {
+    font-weight: 600;
+    color: #294a7b;
+    align-items: center;
+}
+
+.detail-container .detail-item-user .title p {
+    font-weight: 600;
+    color: #294a7b;
+}
+
+.detail-container .detail-item-user .title i {
+   margin-right: 8px;
+}
+
 /*edit container*/
 .edit-container {
     background: white;
@@ -1239,3 +1333,50 @@ Banner Style
 .text-danger {
     font-style: italic !important;
 }
+
+.search-box {
+    position: relative;
+    float: left;
+    width: 400px;
+}
+
+.search-box input {
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 35px;
+    border-color: #ddd;
+    box-shadow: none;
+}
+
+.search-box i {
+    color: #a0a5b1;
+    position: absolute;
+    font-size: 16px;
+    top: 12px;
+    left: 10px;
+}
+
+/*popup*/
+#popupNotification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 300px;
+    border: 2px solid #b1787d;
+    font-weight: 500;
+    font-style: italic;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+#popupNotification.show {
+    right: 20px;
+    opacity: 1;
+}
+
+#popupNotification.hide {
+    right: -300px;
+    opacity: 0;
+}
+

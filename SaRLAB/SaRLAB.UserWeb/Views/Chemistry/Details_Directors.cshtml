@@ -3,106 +3,115 @@
 @{
     ViewData["Title"] = "Details_Directors";
     Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
+    ViewBag.TitleCustom = "Chi tiết ban chủ nhiệm";
 }
 
-<h1>Details_Directors</h1>
-
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreateBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreateBy)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdateBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdateBy)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreateTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SubjectId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SubjectId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AcademyRank)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AcademyRank)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Experience)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Experience)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AvtPath)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AvtPath)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SchoolId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SchoolId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Role_ID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Role_ID)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="GetAll_Directors">Back to List</a>
+<div id="sub-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 detail-container">
+                <dl class="row">
+                    <div class="col-4">
+                        <div class="detail-item-user-left">
+                            <img class="avatar-user" src="@Url.Content(Model.AvtPath)" />
+                            <p class="role-user">Ban chủ nhiệm</p>
+                            <h3 class="name-user">@Html.DisplayFor(model => model.Name)</h3>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="divider-user">
+                            <p>Thông tin cá nhân</p>
+                            <hr class="solid">
+                        </div>
+                        <div class="detail-item-user d-flex row">
+                            <div class="title d-flex col-3">
+                                <i class="fa-solid fa-envelope"></i>
+                                <p>Email:</p>
+                            </div>
+                            <p class="detail col">@Html.DisplayFor(model => model.Email)</p>
+                        </div>
+                        <div class="detail-item-user d-flex row">
+                            <div class="title d-flex col-3">
+                                <i class="fa-solid fa-phone"></i>
+                                <p>Số điện thoại:</p>
+                            </div>
+                            <p class="detail col">@Html.DisplayFor(model => model.Phone)</p>
+                        </div>
+                        @{
+                            var formattedDateOfBirth = Model.DateOfBirth.ToString("dd/MM/yyyy");
+                        }
+                        <div class="detail-item-user d-flex row">
+                            <div class="title d-flex col-3">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <p>Ngày sinh:</p>
+                            </div>
+                            <p class="detail col">@formattedDateOfBirth</p>
+                        </div>
+                        <div class="divider-user-other">
+                            <p>Thông tin khác</p>
+                            <hr class="solid">
+                        </div>
+                        <div class="detail-item-user d-flex row">
+                            <div class="title d-flex col-3">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Người tạo:</p>
+                            </div>
+                            <p class="detail col">@Html.DisplayFor(model => model.CreateBy)</p>
+                        </div>
+                        <div class="detail-item-user d-flex row">
+                            <div class="title d-flex col-3">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <p>Thời gian tạo:</p>
+                            </div>
+                            <p class="detail col">@Html.DisplayFor(model => model.CreateTime)</p>
+                        </div>
+                        <div class="detail-item-user d-flex row">
+                            <div class="title d-flex col-3">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Người cập nhật:</p>
+                            </div>
+                            <p class="detail col">@Html.DisplayFor(model => model.UpdateBy)</p>
+                        </div>
+                    </div>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.ID)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.ID)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.Password)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.Password)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.SubjectId)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.SubjectId)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.SchoolId)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.SchoolId)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.Role_ID)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.Role_ID)
+                    </dd>
+                </dl>
+                <div style="float: right">
+                    <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Directors" class="btn-custom-return" type="button"
+                       style="float: right;">
+                        <i class="fa-solid fa-angles-left"></i>
+                        Trở về
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

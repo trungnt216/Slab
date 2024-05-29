@@ -8,27 +8,62 @@
 }
 
 <style>
-    #popupNotification {
+    .modal {
+        display: none;
         position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 1000;
-        max-width: 300px;
-        border: 2px solid #b1787d;
-        font-weight: 500;
-        font-style: italic;
-        opacity: 0;
-        transition: all 0.2s ease-in-out;
+        z-index: 1;
+        padding-top: 250px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
     }
 
-    #popupNotification.show {
-        right: 20px;
-        opacity: 1;
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        align-items: center;
     }
 
-    #popupNotification.hide {
-        right: -300px;
-        opacity: 0;
+    .modal-content .modal-img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+        background: #ffe4e4;
+        border-radius: 30px;
+        padding: 8px;
+    }
+
+    .modal-action {
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0px
+    }
+
+    .modal-action .btn-secondary {
+        margin-right: 10px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
     }
 </style>
 
@@ -36,17 +71,18 @@
     <div class="container">
         <div class="row">
             <div class="col-12 table-container">
+                <partial name="_TitleCustom">
                 <div class="table-action d-flex justify-content-between">
-                    <partial name="_TitleCustom">
-                        <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_Chemistry">
-                            <i class="fa-solid fa-plus"></i>
-                            Thêm mới
-                        </a>
+                    <partial name="_SearchBox"/>
+                    <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_Chemistry">
+                        <i class="fa-solid fa-plus"></i>
+                        Thêm mới
+                    </a>
                 </div>
                 <div id="popupNotification" class="alert alert-danger">
                     @TempData["notice"]
                 </div>
-                <table class="table">
+                <table id="table" class="table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -55,6 +91,7 @@
                             </th>
                             <th>
                                 Tên
+                                <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                             </th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.CreateBy)
@@ -66,10 +103,12 @@
                                 @Html.DisplayNameFor(model => model.UpdateBy)
                             </th>
                             <th>
-                                Thời gian cập nhật
+                                 Thời gian cập nhật
+                                <i class="fa fa-sort" onclick="sortTable('table', 6, true)"></i>
                             </th>
                             <th>
                                 Thời gian hết hạn
+                                <i class="fa fa-sort" onclick="sortTable('table', 7, true)"></i>
                             </th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.Type)
@@ -88,99 +127,98 @@
                             </th>
                             <th>
                                 Số lượng
-                            </th>
-                            <th>
-                                Đặc tính
+                                <i class="fa fa-sort" onclick="sortTable('table', 13)"></i>
                             </th>
                             <th>
                                 Xuất xứ
                             </th>
+                            <th>
+                                Đặc tính
+                            </th>
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
-                @foreach (var item in Model) {
-                        <tr>
-                            <td>
-                                @counter
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.ID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.CreateBy)
-                            </td>
-                            <td class="d-none"> 
-                                @Html.DisplayFor(modelItem => item.CreateTime)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.UpdateBy)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UpdateTime)
-                            </td>
-                            @{
+                    <tbody id="tableBody">
+                        @foreach (var item in Model)
+                        {
+                            {
                                 var currentTime = DateTime.Now;
                                 var style = item.ExpiredTime <= currentTime ? "color: #cf656f; font-weight: 500" : "";
-                            }
-                            <td>
-                                <p style="@style">
-                                    @item.ExpiredTime
-                                </p>
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.Type)
-                            </td>
-                                <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.Remark)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.ImagePath)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SubjectId)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SchoolId)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EquipmentQuantity)
-                            </td>
-                            @{
-                                var props = item.Property == "poison" ? "Độc" : "Không độc";
+
+                                var props = item.Property == "poison" ? "Độc" : "An toàn";
                                 var backgroundColor = item.Property == "poison" ? "#a8424c" : "#32a771";
+                                <tr style="@style">
+                                    <td>
+                                        @counter
+                                    </td>
+                                    <td class="d-none">
+                                        @Html.DisplayFor(modelItem => item.ID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td class="d-none">
+                                        @Html.DisplayFor(modelItem => item.CreateBy)
+                                    </td>
+                                    <td class="d-none">
+                                        @Html.DisplayFor(modelItem => item.CreateTime)
+                                    </td>
+                                    <td class="d-none">
+                                        @Html.DisplayFor(modelItem => item.UpdateBy)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UpdateTime)
+                                    </td>
+                                    <td>
+                                        @item.ExpiredTime
+                                    </td>
+                                    <td class="d-none">
+                                        @Html.DisplayFor(modelItem => item.Type)
+                                    </td>
+                                    <td class="d-none">
+                                        @Html.DisplayFor(modelItem => item.Remark)
+                                    </td>
+                                    <td class="d-none">
+                                        @Html.DisplayFor(modelItem => item.ImagePath)
+                                    </td>
+                                    <td class="d-none">
+                                        @Html.DisplayFor(modelItem => item.SubjectId)
+                                    </td>
+                                    <td class="d-none">
+                                        @Html.DisplayFor(modelItem => item.SchoolId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EquipmentQuantity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.From)
+                                    </td>
+                                    <td>
+                                        <p style="
+                                        margin: 0;
+                                        background: @backgroundColor;
+                                        text-align: center;
+                                        border-radius: 15px;
+                                        color: white;
+                                        font-size: 14px;
+                                        line-height: 25px;">
+                                            @props
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <a class="btn-custom-view-detail" asp-action="Details_Chemistry" asp-route-id="@item.ID">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <a class="btn-custom-edit" asp-action="Edit_Chemistry" asp-route-id="@item.ID">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_Chemistry", "Chemistry", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            counter++;
                             }
-                            <td>
-                                <p style="
-                                margin: 0;
-                                background: @backgroundColor;
-                                text-align: center;
-                                border-radius: 15px;
-                                color: white;
-                                font-size: 14px;
-                                line-height: 25px;">
-                                    @props
-                                </p>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.From)
-                            </td>
-                            <td>
-                                <a class="btn-custom-view-detail" asp-action="Details_Chemistry" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a class="btn-custom-edit" asp-action="Edit_Chemistry" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a class="btn-custom-delete" asp-action="Delete_Chemistry" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        counter++;
                         }
                     </tbody>
                 </table>
@@ -193,23 +231,42 @@
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var popupNotification = document.getElementById('popupNotification');
-            if (popupNotification.textContent.trim() !== "") {
-                popupNotification.classList.add('show');
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-img" src="@Url.Content("~/images/ic_warning.png")" />
+        <h6>Xác nhận xóa</h6>
+        <p>Bạn có chắc chắn muốn xóa mục này?</p>
+        <div class="d-flex modal-action">
+            <button class="btn btn-secondary" onclick="closeDeleteModal()">Hủy</button>
+            <button id="confirmDeleteButton" class="btn btn-danger">Xóa</button>
+        </div>
+    </div>
+</div>
 
-                setTimeout(function () {
-                    popupNotification.classList.remove('show');
-                    popupNotification.classList.add('hide');
-                    popupNotification.addEventListener('transitionend', function () {
-                        popupNotification.style.display = 'none';
-                        popupNotification.classList.remove('hide');
-                    }, { once: true });
-                }, 1000);
+@section Scripts {
+    <script src="~/js/table.js"></script>
+    <script type="text/javascript">
+        var deleteUrl = '';
+
+        function openDeleteModal(element) {
+            deleteUrl = element.getAttribute("data-url");
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+
+        document.getElementById('confirmDeleteButton').onclick = function () {
+            window.location.href = deleteUrl;
+        };
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function (event) {
+            var modal = document.getElementById('deleteModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
             }
-        });
+        }
     </script>
 }
-

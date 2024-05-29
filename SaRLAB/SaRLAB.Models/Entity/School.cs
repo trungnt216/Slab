@@ -13,7 +13,9 @@ namespace SaRLAB.Models.Entity
     {
         [Key]
         public int? ID { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập tên trường!")]
         public string? Name { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập địa chỉ!")]
         public string? Address { get; set; }
 
     }
