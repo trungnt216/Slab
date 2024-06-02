@@ -59,6 +59,7 @@
 <ul class="nav">
     <li class="scroll-to-section menu"><a class="menu @((ViewBag.ActiveMenu == "homePage") ? "active" : "")" data-toggle="dropdown" asp-controller="HomePage" asp-action="Index">Trang chủ</a></li>
     <li class="scroll-to-section dropdown menu">
+        <a asp-controller="Library" asp-action="GetAll_Library">Thư viện</a>
         <a class="@((ViewBag.ActiveMenu == "chem") ? "active" : "")" data-toggle="dropdown" asp-controller="MultipleQuestions" asp-action="GetAllQuestion">Hóa học</a>
         <ul class="dropdown-menu">
             <li class="scroll-to-section">

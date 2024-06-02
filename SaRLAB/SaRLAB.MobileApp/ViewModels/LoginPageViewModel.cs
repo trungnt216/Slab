@@ -31,6 +31,9 @@ public partial class LoginPageViewModel : ObservableObject
             {
                 if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password))
                 {
+
+                    Console.WriteLine(Email);
+                    Console.WriteLine(Password);
                     User user = await _userDto.Login(Email, Password);
                     if (user == null)
                     {
