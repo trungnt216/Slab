@@ -1047,7 +1047,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
 
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -1158,7 +1158,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
 
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -1183,6 +1183,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -1354,7 +1355,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
 
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -1465,7 +1466,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
 
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -1490,6 +1491,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -1674,7 +1676,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
 
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -1781,7 +1783,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
 
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -1806,6 +1808,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -1974,7 +1977,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -2083,7 +2086,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -2108,6 +2111,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -2275,7 +2279,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -2384,7 +2388,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -2409,6 +2413,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -2570,7 +2575,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -2679,7 +2684,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -2704,6 +2709,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -2867,7 +2873,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -2977,7 +2983,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -3002,6 +3008,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -3166,7 +3173,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -3275,7 +3282,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -3300,6 +3307,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -3466,7 +3474,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -3575,7 +3583,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -3600,6 +3608,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -3764,7 +3773,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -3873,7 +3882,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -3898,6 +3907,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -4064,7 +4074,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -4170,7 +4180,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -4195,6 +4205,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -4362,7 +4373,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -4471,7 +4482,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -4496,6 +4507,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -4659,7 +4671,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -4768,7 +4780,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -4793,6 +4805,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -4957,7 +4970,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -5066,7 +5079,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null)
+            if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
@@ -5091,6 +5104,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
