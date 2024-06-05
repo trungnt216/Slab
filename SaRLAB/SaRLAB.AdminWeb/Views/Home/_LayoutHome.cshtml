@@ -25,7 +25,8 @@
                     <p class="d-flex justify-content-between">
                         <span class="left row">
                             <i class="fa-solid fa-image col-2"></i>
-                            <a class="title col-6" asp-controller="Configuration" asp-action="GetAllBanner">Quản lý banner</a>
+                            <a class="title col-6" asp-controller="Configuration" asp-action="GetAllBanner">Quản lý
+                                banner</a>
                         </span>
                     </p>
                 </li>
@@ -33,7 +34,8 @@
                     <p class="d-flex justify-content-between">
                         <span class="left row">
                             <i class="fas fa-user-tie icon col-2"></i>
-                            <a class="title col-6" asp-controller="Configuration" asp-action="GetAllUser">Quản lý người dùng</a>
+                            <a class="title col-6" asp-controller="Configuration" asp-action="GetAllUser">Quản lý người
+                                dùng</a>
                         </span>
                     </p>
                 </li>
@@ -41,8 +43,85 @@
                     <p class="d-flex justify-content-between">
                         <span class="left row">
                             <i class="fa-solid fa-school col-2"></i>
-                            <a class="title col-6" asp-controller="School" asp-action="GetAllSchool">Quản lý trường học</a>
+                            <a class="title col-6" asp-controller="School" asp-action="GetAllSchool">Quản lý trường
+                                học</a>
                         </span>
+                    </p>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <a class="title col-6">Quản lý Môn học</a>
+                        </span>
+                    </p>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <a class="title col-6">Hoá Học</a>
+                        </span>
+                    </p>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <a class="title col-6">Virtual Lab</a>
+                        </span>
+                    <ul>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Experiment">Thực nghiệm</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Conspectus">Đại cương</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Inorganic_Organic">Vô cơ - Hữu cơ</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Biological">Hoạt tính sinh học</a></li>
+                    </ul>
+                    </p>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <a class="title col-6">Giáo trình</a>
+                        </span>
+                    <ul>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Conspectus">Đại cương</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Inorganic">Hoá học vô cơ</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Organic">Hóa học hữu cơ</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Experiment">Thực nghiệm</a></li>
+                    </ul>
+                    </p>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <a class="title col-6">Thực hành</a>
+                        </span>
+                    <ul>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Preparation_questions">Câu hỏi chuẩn bị</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Practice_report">Báo cáo thực hành</a></li>
+                    </ul>
+                    </p>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <a class="title col-6">Nghiên cứu</a>
+                        </span>
+                    <ul>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Department_level">Đề tài cấp sở</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Provincial_level">Đề tài cấp tỉnh</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_National_level">Đề tài cấp quốc gia</a>
+                        </li>
+                    </ul>
+                    </p>
+                </li>
+                <li>
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <a class="title col-6">Tiếng anh chuyên ngành</a>
+                        </span>
+                    <ul>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Vocabulary">Từ vựng</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Examenglish">Bài giảng song ngữ</a></li>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Exam">Bài tập</a></li>
+                    </ul>
                     </p>
                 </li>
             </ul>
@@ -64,8 +143,9 @@
                 <div class="info-user d-flex">
                     @{
                         string avatarPath = TempData["AvtPath"]?.ToString();
-                        string defaultAvatarPath = Url.Content("~/images/defaultAvatar.jpg"); 
-                        string displayAvatarPath = !string.IsNullOrEmpty(avatarPath) ? Url.Content(avatarPath) : defaultAvatarPath;
+                        string defaultAvatarPath = Url.Content("~/images/defaultAvatar.jpg");
+                        string displayAvatarPath = !string.IsNullOrEmpty(avatarPath) ? Url.Content(avatarPath) :
+                        defaultAvatarPath;
                     }
                     <img src="@displayAvatarPath" class="icon" alt="User Avatar" />
                     <div class="info">
@@ -98,4 +178,5 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 </body>
+
 </html>

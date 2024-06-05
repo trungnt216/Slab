@@ -41,6 +41,13 @@ namespace SaRLAB.DataAccess.Service.DocumentService
             }
         }
 
+        public List<Document> GetDocumentsBySchool(int schoolId)
+        {
+            return _context.Documents
+                   .Where(d => d.SchoolId == schoolId)
+                  .ToList();
+        }
+
         public List<Document> GetDocumentsBySubjectId(int subjectId)
         {
             return _context.Documents.Where(e => e.SubjectId == subjectId).ToList();
@@ -49,7 +56,14 @@ namespace SaRLAB.DataAccess.Service.DocumentService
         public List<Document> GetDocumentsByType(int schoolId, int subjectId, string type)
         {
                 return _context.Documents
-                    .Where(d => d.SchoolId == schoolId && d.SubjectId == subjectId && d.Type == type)
+                    .Where(d => d.SchoolId == schoolId && d.SubjectId == subjectId && d.Type == type  && d.PageFlag == true)
+                   .ToList();
+        }
+
+        public List<Document> GetDocumentsByTypeToAccept(int schoolId, int subjectId, string type)
+        {
+            return _context.Documents
+                    .Where(d => d.SchoolId == schoolId && d.SubjectId == subjectId && d.Type == type && d.PageFlag == false)
                    .ToList();
         }
 

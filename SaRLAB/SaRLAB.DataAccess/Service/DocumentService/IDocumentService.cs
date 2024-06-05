@@ -20,5 +20,7 @@ namespace SaRLAB.DataAccess.Service.DocumentService
         List<Document> getPageDocument();
         List<Document> getSpecializedEnglishDocument();
         List<Document> GetDocumentsByType(int schoolId, int subjectId, string type);
+        List<Document> GetDocumentsByTypeToAccept(int schoolId, int subjectId, string type);
+        List<Document> GetDocumentsBySchool(int schoolId);
     }
 }

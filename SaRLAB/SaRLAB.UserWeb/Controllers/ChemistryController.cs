@@ -1078,6 +1078,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.Type = "EXPERIMENT";
                 document.SchoolId = userLogin.SchoolId;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -1384,6 +1385,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.Type = "CONSPECTUS";
                 document.SchoolId = userLogin.SchoolId;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -1702,6 +1704,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SchoolId = userLogin.SchoolId;
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -2002,6 +2005,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "INORGANIC";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -2302,6 +2306,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "ORGANIC";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -2596,6 +2601,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "BIOLOGICAL";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -2892,6 +2898,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "VOCABULARY";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -3190,6 +3197,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "EXAM";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -3489,6 +3497,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "EXAMENG";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -3786,6 +3795,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "DEPARTMENTLEVEL";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -4085,6 +4095,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "PROVONCIALLEVEL";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -4382,6 +4393,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "NATIONALLEVER";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -4678,6 +4690,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "PREPARATIONQUESTION";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -4975,6 +4988,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.SubjectId = 1;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "NATIONALLEVER";
+                document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");

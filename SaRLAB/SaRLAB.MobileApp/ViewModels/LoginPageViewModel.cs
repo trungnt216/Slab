@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
-using SaRLAB.MobileApp.Dto;
-using SaRLAB.MobileApp.Models;
+using SaRLAB.Models.Dto;
+using SaRLAB.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +15,10 @@ public partial class LoginPageViewModel : ObservableObject
 {
     [ObservableProperty]
     private string _email;
-
-    [ObservableProperty]
+        [ObservableProperty]
     private string _password;
 
-    readonly IUserDto _userDto = new UserDto();
+    readonly User _userDto = new User();
 
 
     [RelayCommand]
@@ -31,10 +30,7 @@ public partial class LoginPageViewModel : ObservableObject
             {
                 if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password))
                 {
-
-                    Console.WriteLine(Email);
-                    Console.WriteLine(Password);
-                    User user = await _userDto.Login(Email, Password);
+/*                    User user = await _userDto.Login(Email, Password);
                     if (user == null)
                     {
                         await Shell.Current.DisplayAlert("Error", "Username/Password is incorrect", "Ok");
@@ -46,8 +42,8 @@ public partial class LoginPageViewModel : ObservableObject
                     }
                     string userDetails = JsonConvert.SerializeObject(user);
                     Preferences.Set(nameof(App.user), userDetails);
-                    App.user = user;
-                    await Shell.Current.DisplayAlert("OKE", user.Role.ToString(), "Ok");
+                    App.user = user;*/
+                    /*await Shell.Current.DisplayAlert("OKE", user.Role.ToString(), "Ok");*/
                 }
                 else
                 {

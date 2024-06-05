@@ -1,15 +1,12 @@
 ﻿@model IEnumerable<SaRLAB.Models.Entity.Document>
 
 @{
-    ViewData["Title"] = "GetAll_References";
+    ViewData["Title"] = "GetAll_Practice_report";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
-<h1>GetAll_References</h1>
+<h1>GetAll_Practice_report</h1>
 
-<p>
-    <a asp-controller="Chemistry" asp-action="Create_References">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -27,6 +24,15 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PageFlag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SchoolId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreateBy)
@@ -65,6 +71,15 @@
                 @Html.DisplayFor(modelItem => item.PageFlag)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.CreateBy)
             </td>
             <td>
@@ -80,9 +95,9 @@
                 @Html.DisplayFor(modelItem => item.SubjectId)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Accept_Practice_report", "Accept_Practice_report", new { id = item.ID }) |
+                    @Html.ActionLink("Details_Practice_report", "Details_Practice_report", new { id = item.ID }) |
+                    @Html.ActionLink("Delete_Practice_report", "Delete_Practice_report", new { id = item.ID })
             </td>
         </tr>
 }

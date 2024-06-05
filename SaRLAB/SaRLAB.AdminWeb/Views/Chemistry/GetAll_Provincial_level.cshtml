@@ -1,15 +1,12 @@
 ﻿@model IEnumerable<SaRLAB.Models.Entity.Document>
 
 @{
-    ViewData["Title"] = "GetAll_SubjectSyllabus";
+    ViewData["Title"] = "GetAll_Provincial_level";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
-<h1>GetAll_SubjectSyllabus</h1>
+<h1>GetAll_Provincial_level</h1>
 
-<p>
-    <a asp-controller="Chemistry" asp-action="Create_SubjectSyllabus">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -27,6 +24,15 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PageFlag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SchoolId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreateBy)
@@ -65,6 +71,15 @@
                 @Html.DisplayFor(modelItem => item.PageFlag)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.CreateBy)
             </td>
             <td>
@@ -80,8 +95,9 @@
                 @Html.DisplayFor(modelItem => item.SubjectId)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit_SubjectSyllabus", new { id=item.ID }) |
-                    @Html.ActionLink("Delete", "Delete_SubjectSyllabus", new { id=item.ID })
+                    @Html.ActionLink("Accept_Provincial_level", "Accept_Provincial_level", new { id = item.ID }) |
+                    @Html.ActionLink("Details_Provincial_level", "Details_Provincial_level", new { id = item.ID }) |
+                    @Html.ActionLink("Delete_Provincial_level", "Delete_Provincial_level", new { id = item.ID })
             </td>
         </tr>
 }

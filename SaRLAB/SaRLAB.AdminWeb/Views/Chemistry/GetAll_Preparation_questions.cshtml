@@ -1,15 +1,12 @@
 ﻿@model IEnumerable<SaRLAB.Models.Entity.Document>
 
 @{
-    ViewData["Title"] = "GetAll_TechnicalEnglish";
+    ViewData["Title"] = "GetAll_Preparation_questions";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
-<h1>GetAll_TechnicalEnglish</h1>
+<h1>GetAll_Preparation_questions</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -27,6 +24,15 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PageFlag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SchoolId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreateBy)
@@ -65,6 +71,15 @@
                 @Html.DisplayFor(modelItem => item.PageFlag)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.CreateBy)
             </td>
             <td>
@@ -80,9 +95,9 @@
                 @Html.DisplayFor(modelItem => item.SubjectId)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Accept_Preparation_questions", "Accept_Preparation_questions", new { id = item.ID }) |
+                    @Html.ActionLink("Details_Preparation_questions", "Details_Preparation_questions", new { id = item.ID }) |
+                    @Html.ActionLink("Delete_Preparation_questions", "Delete_Preparation_questions", new { id = item.ID })
             </td>
         </tr>
 }

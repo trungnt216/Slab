@@ -102,13 +102,20 @@ namespace SaRLAB.Application.Controllers
             return Ok(_documentService.GetDocumentsByType(schoolId, subjectId, type));
         }
 
+        [HttpGet]
+        [Route("GetAllByTypeToAccept/{schoolId}/{subjectId}/{type}")]
+        public IActionResult GetAllByTypeToAccept(int schoolId, int subjectId, string type)
+        {
+            return Ok(_documentService.GetDocumentsByTypeToAccept(schoolId, subjectId, type));
+        }
+
 
         //get all document in the school id and check the flag if the document is admin accept to display
         [HttpGet]
         [Route("GetAllDocumentBySchoolId/{schoolId}")]
         public IActionResult GetAllByType(int schoolId)
         {
-            return Ok();
+            return Ok(_documentService.GetDocumentsBySchool(schoolId));
         }
     }
 }
