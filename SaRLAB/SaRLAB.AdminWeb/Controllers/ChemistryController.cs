@@ -13,6 +13,9 @@ namespace SaRLAB.AdminWeb.Controllers
     {
         string pathFolderSave = "https://localhost:7135//uploads/";
 
+        private readonly IWebHostEnvironment _env;
+
+
         Uri baseAddress = new Uri("http://localhost:5200/api/");
         private readonly HttpClient _httpClient;
 
@@ -20,13 +23,14 @@ namespace SaRLAB.AdminWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
-        public ChemistryController(ILogger<HomeController> logger, IConfiguration configuration)
+        public ChemistryController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
+            _env = env;
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
 
-            string jwtToken = _configuration["JwtToken:Value"];
+            string jwtToken = Program.jwtToken;
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -2490,5 +2494,275 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(document);
         }
 
+
+        //--------------------- mutiple choice - ---------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Question()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/CHEMISTRYE").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public ActionResult Create_Question()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return RedirectToAction("GetAll_Practice_report");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Question(Document document, IFormFile File)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 1;
+                document.SchoolId = userLogin.SchoolId;
+                document.Type = "NATIONALLEVER";
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                    return RedirectToAction("GetAll_Practice_report");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practiceReport";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Question(int id)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return RedirectToAction("GetAll_Practice_report");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return RedirectToAction("GetAll_Practice_report");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Question(Document document, IFormFile File)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                    return RedirectToAction("GetAll_Practice_report");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practiceReport";
+            return View();
+        }
+
+        public ActionResult Delete_Question(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Practice_report");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "thuchanh";
+                        ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                        return RedirectToAction("GetAll_Practice_report");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                    return RedirectToAction("GetAll_Practice_report");
+                }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return RedirectToAction("GetAll_Practice_report");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                return RedirectToAction("GetAll_Practice_report");
+            }
+        }
     }
 }

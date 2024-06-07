@@ -103,13 +103,8 @@ namespace SaRLAB.UserWeb.Controllers
             {
 
                 string jwtToken = response.Content.ReadAsStringAsync().Result;
-                Console.WriteLine(jwtToken);
 
-                Console.WriteLine(_configuration["jwtToken:Value"]);
-
-                _configuration["JwtToken:Value"] = jwtToken;
-
-                Console.WriteLine(_configuration["jwtToken:Value"]);
+                Program.jwtToken = jwtToken;
 
                 DecodeJwtToken(jwtToken);
 

@@ -37,12 +37,12 @@ namespace SaRLAB.AdminWeb.Controllers
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
 
-            string jwtToken = _configuration["JwtToken:Value"];
+            string jwtToken = Program.jwtToken;
 
 
-                var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenHandler = new JwtSecurityTokenHandler();
 
-                var token = tokenHandler.ReadJwtToken(jwtToken);
+            var token = tokenHandler.ReadJwtToken(jwtToken);
 
             foreach (Claim claim in token.Claims)
             {
@@ -160,7 +160,10 @@ namespace SaRLAB.AdminWeb.Controllers
         }
         [HttpPost]
         public IActionResult InsertUser(User user) {
-            if(user == null) 
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (user == null) 
             {
                 ViewBag.ActiveMenu = "user";
                 return View();
@@ -170,6 +173,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 user.CreateBy = userLogin.Email;
                 user.UpdateBy = userLogin.Email;
+                user.Role_ID = 5;
                 string data = JsonConvert.SerializeObject(user);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
@@ -211,6 +215,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 user = JsonConvert.DeserializeObject<User>(data);
             }
+
+            if (user.Role_ID == 2)
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAllUser");
+            }
+
             ViewBag.ActiveMenu = "user";
             return View(user);
         }
@@ -246,19 +257,30 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
-/*        [HttpGet]
-        public IActionResult Delete()
-        {
-            return View();
-        }
-        [HttpDelete]*/
         public IActionResult Delete(int id)
         {
+            User user = new User();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID_ID/" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                user = JsonConvert.DeserializeObject<User>(data);
+            }
+
+
+            if (user.Role_ID == 2)
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa";
+                return RedirectToAction("GetAllUser");
+            }
+
             try
             {
                 Console.WriteLine(id.ToString());
-                HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "User/DeleteById/" + id).Result;
+                HttpResponseMessage response1 = _httpClient.DeleteAsync(_httpClient.BaseAddress + "User/DeleteById/" + id).Result;
 
                 Console.WriteLine(response);
 
@@ -305,6 +327,11 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult InsertBanner()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+
             ViewBag.ActiveMenu = "banner";
             return View();
         }
@@ -370,6 +397,9 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpGet]
         public IActionResult EditBanner(int id)
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             /*            string substringToRemove = "/undefined";
 
                         if (id.EndsWith(substringToRemove))

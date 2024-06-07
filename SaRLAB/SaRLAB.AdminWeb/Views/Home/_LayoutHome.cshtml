@@ -65,6 +65,15 @@
                 <li>
                     <p class="d-flex justify-content-between">
                         <span class="left row">
+                            <a class="title col-6">Câu hỏi an toàn</a>
+                        </span>
+                    <ul>
+                        <li><a asp-controller="Chemistry" asp-action="GetAll_Question">Câu hỏi an toàn phòng thí
+                                nghiệm</a></li>
+                    </ul>
+                    </p>
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
                             <a class="title col-6">Virtual Lab</a>
                         </span>
                     <ul>
@@ -162,7 +171,7 @@
                             </li>
                             <li class="d-flex">
                                 <i class="fa-solid fa-door-open"></i>
-                                <a class="dropdown-item" href="#">Đăng xuất</a>
+                                <a class="dropdown-item" asp-controller="Login" asp-action="Logout">Đăng xuất</a>
                             </li>
                         </ul>
                     </div>

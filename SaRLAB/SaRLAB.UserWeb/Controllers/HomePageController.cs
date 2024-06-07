@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using NuGet.Protocol.Plugins;
 using SaRLAB.Models.Dto;
 using SaRLAB.Models.Entity;
 using System.Configuration;
@@ -31,7 +32,7 @@ namespace SaRLAB.UserWeb.Controllers
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
 
-            string jwtToken = _configuration["JwtToken:Value"];
+            string jwtToken = Program.jwtToken;
 
             pathFolderSave = _configuration["PathFolder:Value"];
 
@@ -170,5 +171,11 @@ namespace SaRLAB.UserWeb.Controllers
             return View();
         }
 
+
+        public IActionResult Logout()
+        {
+            Program.jwtToken = null;
+            return RedirectToAction("Login", "Login");
+        }
     }
 }
