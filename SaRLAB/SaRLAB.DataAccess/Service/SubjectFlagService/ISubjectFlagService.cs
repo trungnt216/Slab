@@ -10,8 +10,8 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
     public  interface ISubjectFlagService
     {
 
-        SubjectFlag getSubjectFlagByUserId(int userId);
-        int InsertSubjectFlag(SubjectFlag subjectFlag);
-        int updateSubjectFlag(int userId, SubjectFlag subjectFlag);
+        SubjectFlag getSubjectFlagByUserEmail(String userEmail);
+        int InsertSubjectFlag(String userEmail);
+        int updateSubjectFlag(String userEmail, SubjectFlag subjectFlag);
     }
 }

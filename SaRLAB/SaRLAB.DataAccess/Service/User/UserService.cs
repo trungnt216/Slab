@@ -242,5 +242,19 @@ namespace SaRLAB.DataAccess.Service.UserService
 
             return query.ToList();
         }
+
+        public int DeleteBySchoolId(int schoolId)
+        {
+            var usersToDelete = _context.Users.Where(u => u.SchoolId == schoolId).ToList();
+
+            if (usersToDelete.Any())
+            {
+                _context.Users.RemoveRange(usersToDelete);
+                _context.SaveChanges();
+                return usersToDelete.Count;
+            }
+
+            return 1;
+        }
     }
 }

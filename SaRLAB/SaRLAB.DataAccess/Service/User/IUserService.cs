@@ -23,6 +23,8 @@ namespace SaRLAB.DataAccess.Service.UserService
 
         void DeleteById(int userId);
         void DeleteByIds(string userIds);
+
+        int DeleteBySchoolId(int schoolId);
         List<User> SearchUsers(string name, string email, int? roleId);
 
 
