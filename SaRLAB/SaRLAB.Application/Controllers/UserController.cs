@@ -5,6 +5,7 @@ using SaRLAB.Models.Entity;
 using SaRLAB.Models.Dto;
 using SaRLAB.DataAccess.Service.UserService;
 using Microsoft.AspNetCore.Authorization;
+using SaRLAB.DataAccess.Service.SubjectFlagService;
 
 namespace SaRLAB.Application.Controllers
 {
@@ -13,10 +14,12 @@ namespace SaRLAB.Application.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _loginDto;
+        private readonly ISubjectFlagService _subjectFlag;
 
-        public UserController(IUserService loginDto)
+        public UserController(IUserService loginDto, ISubjectFlagService subjectFlag)
         {
             _loginDto = loginDto;
+            _subjectFlag = subjectFlag;
         }
 
         [HttpGet]
@@ -102,7 +105,7 @@ namespace SaRLAB.Application.Controllers
             }
 
             var result = _loginDto.Register(newUser);
-
+            var resultParam = _subjectFlag.InsertSubjectFlag(newUser.Email);
             if (result != null)
             {
                 // Return a successful response with the new user object
