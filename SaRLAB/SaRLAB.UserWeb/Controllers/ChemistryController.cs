@@ -31,7 +31,7 @@ namespace SaRLAB.UserWeb.Controllers
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
 
-            string jwtToken = _configuration["JwtToken:Value"];
+            string jwtToken = Program.jwtToken;
 
             pathFolderSave = _configuration["PathFolder:Value"];
 
@@ -4957,7 +4957,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             else
             {
-                TempData["notice"] = "banj khoong cos quyeen them mowi";
+                TempData["notice"] = "Bạn không có quyền thêm mới";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceReport";

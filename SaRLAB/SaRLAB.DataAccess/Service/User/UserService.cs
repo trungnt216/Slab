@@ -242,5 +242,19 @@ namespace SaRLAB.DataAccess.Service.UserService
 
             return query.ToList();
         }
+
+        public User GetByID_ID(int id)
+        {
+            var user = _context.Users.SingleOrDefault(item => (item.ID == id));
+
+            if (user == null)
+            {
+                return null;
+            }
+            else
+            {
+                return user;
+            }
+        }
     }
 }

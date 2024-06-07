@@ -4,6 +4,8 @@ namespace SaRLAB.AdminWeb
 {
     public class Program
     {
+        public static string jwtToken = null;
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);

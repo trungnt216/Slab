@@ -100,11 +100,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string jwtToken = response.Content.ReadAsStringAsync().Result;
                 Console.WriteLine(jwtToken);
 
-                Console.WriteLine(_configuration["jwtToken:Value"]);
-
-                _configuration["JwtToken:Value"] = jwtToken;
-
-                Console.WriteLine(_configuration["jwtToken:Value"]);
+                Program.jwtToken = jwtToken;
 
                 DecodeJwtToken(jwtToken);
 
@@ -135,7 +131,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public IActionResult GetAll()
         {
             List<User> users = new List<User>();
@@ -153,7 +149,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             return View(users);
 
-        }
+        }*/
 
 
         //create the action register
@@ -214,6 +210,12 @@ namespace SaRLAB.AdminWeb.Controllers
                 return View();
             }
             return View();
+        }
+
+        public IActionResult Logout()
+        {
+            Program.jwtToken = null;
+            return RedirectToAction("Index");
         }
     }
 }

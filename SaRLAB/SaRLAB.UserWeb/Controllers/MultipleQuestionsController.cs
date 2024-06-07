@@ -27,7 +27,7 @@ namespace SaRLAB.UserWeb.Controllers
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
 
-            string jwtToken = _configuration["JwtToken:Value"];
+            string jwtToken = Program.jwtToken;
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -84,5 +84,6 @@ namespace SaRLAB.UserWeb.Controllers
 
             return View(equipment);
         }
+
     }
 }
