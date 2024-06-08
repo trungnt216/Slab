@@ -83,7 +83,10 @@
                                     <i class="fa-solid fa-lock"></i>
                                     <label asp-for="Password" class="control-label">Mật khẩu</label>
                                 </div>
-                                <input type="password" asp-for="Password" class="form-control" />
+                                <div class="password-input-wrapper">
+                                    <input id="passwordInput" type="text" asp-for="Password" class="form-control" />
+                                    <i id="togglePasswordVisibility" class="fas fa-eye-slash"></i>
+                                </div>
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -173,6 +176,20 @@
                 reader.readAsDataURL(file);
             }
         });
+
+        document.getElementById('togglePasswordVisibility').addEventListener('click', function () {
+            var passwordInput = document.getElementById('passwordInput');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            }
+        });
+
     </script>
 
     @{
