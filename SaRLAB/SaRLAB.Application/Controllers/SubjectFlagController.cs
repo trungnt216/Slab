@@ -21,7 +21,7 @@ namespace SaRLAB.Application.Controllers
             var subjectFlag = _subjectFlagService.getSubjectFlagByUserEmail(email);
             if (subjectFlag == null)
             {
-                return BadRequest("cannot find the subject");
+                return BadRequest("cannot find the subjectFlag");
             }
             else
             {

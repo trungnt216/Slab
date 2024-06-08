@@ -41,7 +41,7 @@ namespace SaRLAB.DataAccess.Service.QuizService
 
         public Quiz GetQuizById(int id)
         {    
-            return _context.Quizzes.Find(id);
+            return  _context.Quizzes.Find(id);
         }
 
         public List<Quiz> GetQuizzesAccordingSchoolAndSubject(int schoolId, int subjectId)

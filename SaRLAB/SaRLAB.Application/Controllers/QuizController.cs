@@ -33,7 +33,7 @@ namespace SaRLAB.Application.Controllers
         [Route("GetQuizById")]
         public IActionResult GetQuizzById(int id)
         {
-            return Ok(_quizService.GetQuizById(id));
+              return Ok(_quizService.GetQuizById(id));
         }
 
 
