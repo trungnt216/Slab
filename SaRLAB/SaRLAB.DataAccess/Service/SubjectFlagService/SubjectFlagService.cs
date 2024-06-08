@@ -44,9 +44,9 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
             }
         }
 
-        public int InsertSubjectFlag(SubjectFlag subjectFlag)
+        public int InsertSubjectFlag(int userId)
         {
-            var checkSubjectFlag = _context.SubjectFlags.SingleOrDefault(item => (item.UserId == subjectFlag.UserId));
+            var checkSubjectFlag = _context.SubjectFlags.SingleOrDefault(item => (item.UserId == userId));
 
             if (checkSubjectFlag != null)
             {
@@ -55,15 +55,15 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
 
             var newSubjectFlag = new SubjectFlag
             {
-                UserId = subjectFlag.UserId,
-                MathPermissionFlag = subjectFlag.MathPermissionFlag,
-                MathMarkFlag = subjectFlag.MathMarkFlag,
-                PhysicPermissionFlag = subjectFlag.PhysicPermissionFlag,
-                PhysicMarkFlag = subjectFlag.PhysicMarkFlag,
-                BiologyPermissionFlag = subjectFlag.BiologyPermissionFlag,
-                BiologyMarkFlag = subjectFlag.BiologyMarkFlag,
-                ChemistryPermissionFlag = subjectFlag.ChemistryPermissionFlag,
-                ChemistryMarkFlag = subjectFlag.ChemistryMarkFlag,
+                UserId = userId,
+                MathPermissionFlag = false,
+                MathMarkFlag = false,
+                PhysicPermissionFlag = false,
+                PhysicMarkFlag = false,
+                BiologyPermissionFlag = false,
+                BiologyMarkFlag = false,
+                ChemistryPermissionFlag = false,
+                ChemistryMarkFlag = false,
             };
 
             _context.SubjectFlags.Add(newSubjectFlag);
@@ -90,8 +90,6 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
                 _subjectFlag.ChemistryMarkFlag = subjectFlag.ChemistryMarkFlag ?? _subjectFlag.ChemistryMarkFlag;
                 _context.SaveChanges();
             }
-
-
             return 1;
         }
     }

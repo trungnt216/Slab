@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.SchoolService;
+using SaRLAB.DataAccess.Service.UserService;
 using SaRLAB.Models.Dto;
 using SaRLAB.Models.Entity;
 
@@ -10,6 +11,7 @@ namespace SaRLAB.Application.Controllers
     public class SchoolController : Controller
     {
         private readonly ISchoolService _schoolService;
+        private readonly IUserService _userService;
 
         public SchoolController(ISchoolService schoolService)
         {
@@ -63,7 +65,10 @@ namespace SaRLAB.Application.Controllers
             }
             else
             {
-                return Ok(_schoolService.DeleteSchoolById(id));
+                var result = _schoolService.DeleteSchoolById(id);
+                var resultParam = _userService.DeleteBySchoolId(id);
+
+                return Ok(result);
             }
         }
 
