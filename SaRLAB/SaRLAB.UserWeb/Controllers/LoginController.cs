@@ -116,7 +116,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     if (claim.Type == ClaimTypes.Role)
                     {
-                        return RedirectToAction("Index", "HomePage");
+                        return RedirectToAction("Home", "HomePage");
                     }
                 }
                 return View();

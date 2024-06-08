@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit_Information";
-    Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
+    Layout = "~/Views/Chemistry/_LayoutChem.cshtml";
     ViewBag.TitleCustom = "Chỉnh sửa thông tin cá nhân";
 }
 
@@ -83,7 +83,7 @@
                                     <i class="fa-solid fa-lock"></i>
                                     <label asp-for="Password" class="control-label">Mật khẩu</label>
                                 </div>
-                                <input asp-for="Password" class="form-control" />
+                                <input type="password" asp-for="Password" class="form-control" />
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                             <div class="form-group">

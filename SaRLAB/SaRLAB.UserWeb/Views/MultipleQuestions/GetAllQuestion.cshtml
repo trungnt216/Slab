@@ -2,250 +2,163 @@
 
 @{
     ViewData["Title"] = "GetAllQuestion";
-    Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
 }
 
-<style>
-    .quiz-container {
-        background: #ffffffd9;
-        padding: 30px;
-        border-radius: 10px;
-        width: 70%;
-        margin: 0 auto;
-        margin-bottom: 30px;
-    }
+<head>
+    <link rel="stylesheet" href="~/css/quiz.css" asp-append-version="true" />
+</head>
 
-    .question {
-        margin-bottom: 20px;
-    }
+<div class="quiz">
+    <div id="sub-content">
+        <div class="container">
+            <div class="quiz-container">
+                <h2 class="header-title">BÀI TRẮC NGHIỆM HÓA HỌC</h2>
+                <p class="quiz-note"><b>*Lưu ý: </b>Bạn cần làm đúng hết bài trắc nghiệm để được truy cập vào lab Hóa học!</p>
+                <form id="quiz-form">
+                    <div id="questions-container">
+                        @{
+                            int questionNumber = 1;
+                            int pageNumber = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            if ((questionNumber - 1) % 10 == 0)
+                            {
+                                if (questionNumber > 1)
+                                {
+                                    pageNumber++;
+                                }
+                            }
+                            <div class="quiz-question page-@pageNumber" @(pageNumber > 1 ? "style=\"display:none;\"" : "")>
+                                <p><b>Câu @questionNumber: </b>@Html.DisplayFor(modelItem => item.Question)</p>
+                                @if (!string.IsNullOrEmpty(item.QuestionImage))
+                                {
+                                    <img class="question-img" src="@Url.Content(item.QuestionImage)" alt="Question Image" />
+                                }
 
-    .quiz-note {
-        font-weight: 500;
-        color: #c61f2f;
-        font-style: italic;
-    }
-
-    h6 {
-        font-weight: 600;
-        margin-top: 5px;
-    }
-
-    #message {
-        margin-top: 5px;
-        font-size: 16px;
-        margin-bottom: 5px;
-    }
-
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 400px;
-        text-align: center;
-        align-items: center;
-    }
-
-    .modal-content .modal-img {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 15px;
-        background: #ffe4e4;
-        border-radius: 30px;
-        padding: 8px;
-    }
-
-    .modal-action {
-        justify-content: center;
-        align-items: center;
-        margin: 10px 0px
-    }
-
-    .modal-action .btn-secondary {
-        margin-right: 10px;
-    }
-
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .pagination-container {
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    .pagination-container button {
-        padding: 5px 14px;
-        margin: 5px;
-        background-color: #f1f1f1;
-        border: none;
-        cursor: pointer;
-        border-radius: 20px;
-    }
-
-    .pagination-container button.active {
-        background-color: #4CAF50;
-        color: white;
-    }
-
-    .pagination-container button:hover {
-        background-color: #ddd;
-    }
-</style>
-
-<div id="sub-content">
-    <div class="container">
-        <div class="quiz-container">
-            <p class="quiz-note"><em>*Lưu ý: </em>Bạn cần làm đúng hết bài trắc nghiệm để được truy cập vào lab Hóa học!</p>
-            <form id="quiz-form">
-                <div id="questions-container"></div>
-                <div id="pagination-container" class="pagination-container"></div>
-                <button type="submit" class="btn btn-primary">Nộp bài</button>
-            </form>
+                                <div class="quiz-options">
+                                    <div class="answer-item">
+                                        <input type="radio" id="optionA-@item.ID" name="question-@item.ID" value="A" />
+                                        <label for="optionA-@item.ID">@Html.DisplayFor(modelItem => item.OptionA)</label>
+                                        @if (!string.IsNullOrEmpty(item.OptionAImage))
+                                        {
+                                            <img src="@Url.Content(item.OptionAImage)" alt="Option A Image" />
+                                        }
+                                    </div>
+                                    <div class="answer-item">
+                                        <input type="radio" id="optionB-@item.ID" name="question-@item.ID" value="B" />
+                                        <label for="optionB-@item.ID">@Html.DisplayFor(modelItem => item.OptionB)</label>
+                                        @if (!string.IsNullOrEmpty(item.OptionBImage))
+                                        {
+                                            <img src="@Url.Content(item.OptionBImage)" alt="Option B Image" />
+                                        }
+                                    </div>
+                                    <div class="answer-item">
+                                        <input type="radio" id="optionC-@item.ID" name="question-@item.ID" value="C" />
+                                        <label for="optionC-@item.ID">@Html.DisplayFor(modelItem => item.OptionC)</label>
+                                        @if (!string.IsNullOrEmpty(item.OptionCImage))
+                                        {
+                                            <img src="@Url.Content(item.OptionCImage)" alt="Option C Image" />
+                                        }
+                                    </div>
+                                    <div class="answer-item">
+                                        <input type="radio" id="optionD-@item.ID" name="question-@item.ID" value="D" />
+                                        <label for="optionD-@item.ID">@Html.DisplayFor(modelItem => item.OptionD)</label>
+                                        @if (!string.IsNullOrEmpty(item.OptionDImage))
+                                        {
+                                            <img src="@Url.Content(item.OptionDImage)" alt="Option D Image" />
+                                        }
+                                    </div>
+                                </div>
+                                <input type="hidden" id="correct-answer-@item.ID" value="@item.CorrectAnswer" />
+                            </div>
+                            questionNumber++;
+                        }
+                    </div>
+                    <div id="pagination-container" class="pagination-container"></div>
+                    <div class="d-flex" style="justify-content: center; align-items: center;">
+                        <a type="button" class="btn btn-success" style="margin-right: 10px" asp-controller="HomePage" asp-action="Home">Trở về</a>
+                        <button type="submit" class="btn btn-primary">Nộp bài</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
-<div id="resultModal" class="modal">
-    <div class="modal-content">
-        @* <img id="modal-img" class="modal-img" src="@Url.Content("~/images/ic_warning.png")" alt="Warning"> *@
-        <h6>Thông báo</h6>
-        <div id="message"></div>
-        <div id="modal-action" class="d-flex modal-action"></div>
+<div id="resultModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p id="message"></p>
+            </div>
+            <div class="modal-footer" id="modal-action"></div>
+        </div>
     </div>
 </div>
 
 @section Scripts {
-    <script src="~/js/quiz.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const totalQuestions = @Model.Count();
+            const questionsPerPage = 10;
+            const totalPages = Math.ceil(totalQuestions / questionsPerPage);
+
+            function showPage(page) {
+                $('.quiz-question').hide();
+                $(`.page-${page}`).show();
+                $('.page-btn').removeClass('active');
+                $(`#page-btn-${page}`).addClass('active');
+            }
+
+            function renderPagination() {
+                if (totalQuestions <= questionsPerPage) {
+                    return;
+                }
+
+                let paginationHtml = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHtml += `<button type="button" class="btn btn-secondary page-btn" id="page-btn-${i}" data-page="${i}">${i}</button>`;
+                }
+                $('#pagination-container').html(paginationHtml);
+
+                $('.page-btn').on('click', function () {
+                    const page = $(this).data('page');
+                    showPage(page);
+                });
+            }
+
+            renderPagination();
+            showPage(1);
+
+            $('#quiz-form').on('submit', function (event) {
+                event.preventDefault();
+
+                let correctCount = 0;
+                const questions = document.querySelectorAll('.quiz-question');
+
+                questions.forEach(question => {
+                    const questionId = question.querySelector('input[type="radio"]').name.split('-')[1];
+                    const selectedAnswer = question.querySelector('input[type="radio"]:checked');
+                    const correctAnswer = question.querySelector(`#correct-answer-${questionId}`).value;
+
+                    if (selectedAnswer && selectedAnswer.value === correctAnswer) {
+                        correctCount++;
+                    }
+                });
+
+                let message = `Bạn đã trả lời đúng ${correctCount}/${totalQuestions} câu hỏi. Vui lòng làm lại!`;
+                let modalAction = '<a class="btn btn-danger" href="/MultipleQuestions/GetAllQuestion">Làm lại</a>';
+
+                if (correctCount === totalQuestions) {
+                    message = 'Bạn đã trả lời đúng tất cả các câu hỏi!';
+                    modalAction = '<a class="btn btn-success" href="/Chemistry/index">Truy cập</a>';
+                }
+
+                $('#message').html(message);
+                $('#modal-action').html(modalAction);
+                $('#resultModal').modal('show');
+            });
+        });
+    </script>
 }
-@* <p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Question)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QuestionImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionAImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionB)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionBImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionCImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionD)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OptionDImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CorrectAnswer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SchoolId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SubjectId)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Question)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuestionImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionA)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionAImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionB)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionBImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionCImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionD)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OptionDImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CorrectAnswer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SchoolId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubjectId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
- *@
