@@ -13,7 +13,7 @@ namespace SaRLAB.Models.Entity
     {
         [Key]
         public int? ID { get; set; }
-        public int? UserId { get; set; }
+        public string? UserEmail { get; set; }
         public Boolean? MathPermissionFlag { get; set; }
         public Boolean? MathMarkFlag { get; set; }
         public Boolean? PhysicPermissionFlag { get; set; }
