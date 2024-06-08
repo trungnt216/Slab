@@ -22,5 +22,6 @@ namespace SaRLAB.DataAccess
         public DbSet<PlanDetail>  PlanDetails { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<SubjectFlag> SubjectFlags { get; set; }
     }
 }
