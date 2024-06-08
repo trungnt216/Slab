@@ -26,6 +26,13 @@
             <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
         </div>
     }
+    @if (TempData["Success"] != null)
+
+    {
+        <div>
+            <span class="text-warning"><b>Success!</b> - @TempData["Success"] </span>
+        </div>
+    }
 </form>
 
 <form asp-action="Register" class="sign-up-form">

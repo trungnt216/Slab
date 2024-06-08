@@ -24,6 +24,8 @@ namespace SaRLAB.UserWeb.Controllers
 
         int checkRole = 0;
 
+        private readonly bool _hasError = false;
+
         public LibraryController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
@@ -32,6 +34,11 @@ namespace SaRLAB.UserWeb.Controllers
             _configuration = configuration;
 
             string jwtToken = Program.jwtToken;
+
+            if(jwtToken == null){
+                _hasError = true;
+                return;
+            }
 
             pathFolderSave = _configuration["PathFolder:Value"];
 
@@ -79,6 +86,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Library()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -102,6 +114,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Library(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
