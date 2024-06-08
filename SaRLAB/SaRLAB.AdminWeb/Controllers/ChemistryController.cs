@@ -2504,7 +2504,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/1/CHEMISTRYE").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetQuizzes/" + userLogin.SchoolId + "/1").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -2529,21 +2529,18 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                return RedirectToAction("GetAll_Practice_report");
+                return RedirectToAction("GetAll_Question");
             }
         }
         [HttpPost]
-        public ActionResult Create_Question(Document document, IFormFile File)
+        public ActionResult Create_Question(Quiz quiz, IFormFile QuestionFile, IFormFile OptionAFile, IFormFile OptionBFile, IFormFile OptionCFile, IFormFile OptionDFile)
         {
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null && document.Path == null)
+            if (QuestionFile != null && quiz.QuestionImage == null)
             {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -2551,54 +2548,122 @@ namespace SaRLAB.AdminWeb.Controllers
                     Directory.CreateDirectory(uploadsFolder);
                 }
 
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(QuestionFile.FileName);
 
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    File.CopyTo(stream);
+                    QuestionFile.CopyTo(stream);
                 }
-                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                quiz.QuestionImage = pathFolderSave + "FileFolder/Quizz/" + uniqueFileName;
+            }
+
+            if (OptionAFile != null && quiz.OptionAImage == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(OptionAFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    OptionAFile.CopyTo(stream);
+                }
+                quiz.OptionAImage = pathFolderSave + "FileFolder/Quizz/" + uniqueFileName;
+            }
+
+            if (OptionBFile != null && quiz.OptionBImage == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(OptionBFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    OptionBFile.CopyTo(stream);
+                }
+                quiz.OptionBImage = pathFolderSave + "FileFolder/Quizz/" + uniqueFileName;
+            }
+
+            if (OptionCFile != null && quiz.OptionCImage == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(OptionCFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    OptionCFile.CopyTo(stream);
+                }
+                quiz.OptionCImage = pathFolderSave + "FileFolder/Quizz/" + uniqueFileName;
+            }
+
+            if (OptionDFile != null && quiz.OptionDImage == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(OptionDFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    OptionDFile.CopyTo(stream);
+                }
+                quiz.OptionDImage = pathFolderSave + "FileFolder/Quizz/" + uniqueFileName;
             }
 
             try
             {
-                document.CreateTime = DateTime.Now;
-                document.CreateBy = userLogin.Email;
-                document.UpdateTime = DateTime.Now;
-                document.UpdateBy = userLogin.Email;
-                document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
-                document.SchoolId = userLogin.SchoolId;
-                document.Type = "NATIONALLEVER";
-                document.PageFlag = false;
+                quiz.SchoolId = userLogin.SchoolId;
+                quiz.SubjectId = 1;
 
-                string data = JsonConvert.SerializeObject(document);
+                string data = JsonConvert.SerializeObject(quiz);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Quiz/Insert/", content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                    return RedirectToAction("GetAll_Practice_report");
+                    TempData["notice"] = "Thêm câu hỏi thành công";
+                    return RedirectToAction("GetAll_Question");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "practiceReport";
             return View();
         }
 
@@ -2608,51 +2673,42 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            Document document = new Document();
+            Quiz quiz = new Quiz();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetQuizById/" + id).Result;
 
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
+                quiz = JsonConvert.DeserializeObject<Quiz>(data);
             }
 
-            if (document == null)
+            if (quiz == null)
             {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                return RedirectToAction("GetAll_Practice_report");
+                TempData["notice"] = "Không tìm thấy dữ liệu";
+                return RedirectToAction("GetAll_Question");
             }
 
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                return View(document);
+                return View(quiz);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                return RedirectToAction("GetAll_Practice_report");
+                return RedirectToAction("GetAll_Question");
             }
         }
         [HttpPost]
-        public ActionResult Edit_Question(Document document, IFormFile File)
+        public ActionResult Edit_Question(Quiz quiz, IFormFile QuestionFile, IFormFile OptionAFile, IFormFile OptionBFile, IFormFile OptionCFile, IFormFile OptionDFile)
         {
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            if (File != null && document.Path == null)
+            if (QuestionFile != null && quiz.QuestionImage == null)
             {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -2660,109 +2716,140 @@ namespace SaRLAB.AdminWeb.Controllers
                     Directory.CreateDirectory(uploadsFolder);
                 }
 
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(QuestionFile.FileName);
 
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    File.CopyTo(stream);
+                    QuestionFile.CopyTo(stream);
                 }
-                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                quiz.QuestionImage = pathFolderSave + "FileFolder/Quizz/" + uniqueFileName;
+            }
+
+            if (OptionAFile != null && quiz.OptionAImage == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(OptionAFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    OptionAFile.CopyTo(stream);
+                }
+                quiz.OptionAImage = pathFolderSave + "FileFolder/Quizz/" + uniqueFileName;
+            }
+
+            if (OptionBFile != null && quiz.OptionBImage == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(OptionBFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    OptionBFile.CopyTo(stream);
+                }
+                quiz.OptionBImage = pathFolderSave + "FileFolder/Quizz/" + uniqueFileName;
+            }
+
+            if (OptionCFile != null && quiz.OptionCImage == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(OptionCFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    OptionCFile.CopyTo(stream);
+                }
+                quiz.OptionCImage = pathFolderSave + "FileFolder/Quizz/" + uniqueFileName;
+            }
+
+            if (OptionDFile != null && quiz.OptionDImage == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(OptionDFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    OptionDFile.CopyTo(stream);
+                }
+                quiz.OptionDImage = pathFolderSave + "FileFolder/Quizz/" + uniqueFileName;
             }
 
             try
             {
-                document.UpdateTime = DateTime.Now;
-                document.UpdateBy = userLogin.Email;
-                document.PageFlag = false;
+                quiz.SchoolId = userLogin.SchoolId;
+                quiz.SubjectId = 1;
 
-                string data = JsonConvert.SerializeObject(document);
+                string data = JsonConvert.SerializeObject(quiz);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Quiz/Update/" + quiz.ID, content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                    return RedirectToAction("GetAll_Practice_report");
+                    return RedirectToAction("GetAll_Question");
                 }
             }
             catch (Exception ex)
             {
-                TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "practiceReport";
             return View();
         }
 
         public ActionResult Delete_Question(int id)
         {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
+            try
             {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
+                HttpResponseMessage response;
+                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Quiz/Delete/" + id).Result;
 
-            if (document == null)
-            {
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Practice_report");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
+                if (response.IsSuccessStatusCode)
                 {
-                    HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "thuchanh";
-                        ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                        return RedirectToAction("GetAll_Practice_report");
-                    }
+                    return RedirectToAction("GetAll_Question");
                 }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                    return RedirectToAction("GetAll_Practice_report");
-                }
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                return RedirectToAction("GetAll_Practice_report");
             }
-            else
+            catch (Exception ex)
             {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                return RedirectToAction("GetAll_Practice_report");
+                return RedirectToAction("GetAll_Question");
             }
+            return RedirectToAction("GetAll_Question");
         }
     }
 }

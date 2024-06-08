@@ -15,16 +15,18 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
         {
             _context = context;
         }
-        public SubjectFlag getSubjectFlagByUserId(int userId)
+
+
+        public SubjectFlag getSubjectFlagByUserEmail(String userEmail)
         {
-            var subjectFlag = _context.SubjectFlags.SingleOrDefault(item => item.UserId == userId);
+            var subjectFlag = _context.SubjectFlags.SingleOrDefault(item => item.UserEmail == userEmail);
 
             if (subjectFlag != null)
             {
                 SubjectFlag _subjectFlag = new SubjectFlag
                 {
                     ID = subjectFlag.ID,
-                    UserId = subjectFlag.UserId,
+                    UserEmail = subjectFlag.UserEmail,
                     MathPermissionFlag = subjectFlag.MathPermissionFlag,
                     MathMarkFlag = subjectFlag.MathMarkFlag,
                     PhysicPermissionFlag = subjectFlag.PhysicPermissionFlag,
@@ -44,9 +46,9 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
             }
         }
 
-        public int InsertSubjectFlag(int userId)
+        public int InsertSubjectFlag(String userEmail)
         {
-            var checkSubjectFlag = _context.SubjectFlags.SingleOrDefault(item => (item.UserId == userId));
+            var checkSubjectFlag = _context.SubjectFlags.SingleOrDefault(item => (item.UserEmail == userEmail));
 
             if (checkSubjectFlag != null)
             {
@@ -55,7 +57,7 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
 
             var newSubjectFlag = new SubjectFlag
             {
-                UserId = userId,
+                UserEmail = userEmail,
                 MathPermissionFlag = false,
                 MathMarkFlag = false,
                 PhysicPermissionFlag = false,
@@ -72,13 +74,13 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
             return 1;
         }
 
-        public int updateSubjectFlag(int userId, SubjectFlag subjectFlag)
+        public int updateSubjectFlag(String userEmail, SubjectFlag subjectFlag)
         {
-            var _subjectFlag = _context.SubjectFlags.SingleOrDefault(item => (item.UserId == subjectFlag.UserId));
+            var _subjectFlag = _context.SubjectFlags.SingleOrDefault(item => (item.UserEmail == subjectFlag.UserEmail));
 
             if (_subjectFlag != null)
             {
-                _subjectFlag.UserId = subjectFlag.UserId;
+                _subjectFlag.UserEmail = subjectFlag.UserEmail;
                 _subjectFlag.MathPermissionFlag = subjectFlag.MathPermissionFlag ?? _subjectFlag.MathPermissionFlag;
                 _subjectFlag.MathMarkFlag = subjectFlag.MathMarkFlag ?? _subjectFlag.MathMarkFlag;
                 _subjectFlag.PhysicPermissionFlag = subjectFlag.PhysicPermissionFlag ?? _subjectFlag.PhysicPermissionFlag;
@@ -90,7 +92,6 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
                 _subjectFlag.ChemistryMarkFlag = subjectFlag.ChemistryMarkFlag ?? _subjectFlag.ChemistryMarkFlag;
                 _context.SaveChanges();
             }
-
             return 1;
         }
     }

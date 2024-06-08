@@ -23,17 +23,17 @@ namespace SaRLAB.Application.Controllers
         }
 
         [HttpGet]
-        [Route("GetQuizzes")]
+        [Route("GetQuizzes/{schoolId}/{subjectId}")]
         public IActionResult GetQuizzes(int schoolId, int subjectId)
         {
             return Ok(_quizService.GetQuizzesAccordingSchoolAndSubject(schoolId,subjectId));
         }
 
         [HttpGet]
-        [Route("GetQuizById")]
-        public IActionResult GetQuizzById(int id)
+        [Route("GetQuizById/{id}")]
+        public IActionResult GetQuizById(int id)
         {
-              return Ok(_quizService.GetQuizById(id));
+            return Ok(_quizService.GetQuizById(id));
         }
 
 
