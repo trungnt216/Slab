@@ -104,7 +104,7 @@ header, nav, section, article, aside, footer, hgroup {
 
 html, body {
     font-family: Montserrat, sans-serif !important;
-    background-color: #c4daff;
+    background-color: v#fff5d6;
     -ms-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -276,7 +276,6 @@ header
 }
 
 .header-area {
-    background: linear-gradient(to top, #3a69af, #000000);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -287,6 +286,11 @@ header
     -moz-transition: all .5s ease 0s;
     -o-transition: all .5s ease 0s;
     transition: all .5s ease 0s;
+}
+
+
+.header-area-chem {
+    background: linear-gradient(to top, #a17d10, #7f5f00);
 }
 
 .header-area .main-nav {
@@ -354,14 +358,14 @@ header
 
 .header-area .main-nav .nav li.menu {
     padding-left: 10px;
-    padding-right: 20px;
+    padding-right: 30px;
     position: relative;
     display: inline-block;
 }
 
 .header-area .main-nav .nav li.logout:last-child {
     padding-right: 0px;
-    padding-left: 20px;
+    padding-left: 30px;
 }
 
 .header-area .main-nav .nav li.logout:last-child a ,
@@ -900,6 +904,17 @@ Banner Style
     z-index: 1;
 }
 
+.hero-chem {
+    background-image: url('../images/bannerChem.png');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
 .bg-overlay {
     background: #000000ed;
     position: absolute;
@@ -1380,3 +1395,170 @@ Banner Style
     opacity: 0;
 }
 
+/* subject group */
+#services {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../images/banner.jpg') center;
+    background-size: cover;
+}
+
+#services .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 1;
+    background: black;
+}
+
+.services-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+.services .section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.services .section-heading h2{
+    color: #ffffff;
+}
+
+.services .section-heading p {
+    color: #e2e2e2;
+}
+
+a.service-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.service-item {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    border-top-right-radius: 50px;
+    transition: all .3s;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.service-item .icon {
+    margin-left: 0px;
+    margin-bottom: 30px;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    transition: all .3s;
+}
+
+.service-item h4 {
+    transition: all .3s;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.service-item p {
+    transition: all .3s;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.first-service {
+    color: #ffffff;
+    background: #ad8200;
+}
+
+.first-service:hover {
+    background: #6d5201;
+}
+
+.second-service {
+    color: #ffffff;
+    background: #0d4291;
+}
+
+.second-service:hover {
+    background:#002760;
+}
+
+.third-service {
+    color: #ffffff;
+    background: #075a33;
+}
+
+.third-service:hover {
+    background: #01331c;
+}
+
+.fourth-service {
+    color: #ffffff;
+    background: #951515;
+}
+
+.fourth-service:hover {
+    background: #640808;
+}
+
+.fifth-service {
+    color: #ffffff;
+    background: #402302;
+}
+
+.fifth-service:hover {
+    background: #281500;
+}
+
+.services .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.services .flex-item {
+    flex: 1 1 20%;
+    max-width: 20%;
+    box-sizing: border-box;
+}
+
+.service-item img {
+    width: 50px;
+}
+
+@media (max-width: 992px) {
+    .services .flex-item {
+        flex: 1 1 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .services {
+        overflow-y: auto;
+    }
+
+    .services .section-heading{
+        margin-top: 30px;
+    }
+
+    .services .services-content {
+        padding: 50px;
+    } 
+
+    .services .flex-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}

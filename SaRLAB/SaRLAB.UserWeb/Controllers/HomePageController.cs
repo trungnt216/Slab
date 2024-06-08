@@ -79,6 +79,11 @@ namespace SaRLAB.UserWeb.Controllers
             return View();
         }
 
+        public ActionResult Home()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Information()
         {

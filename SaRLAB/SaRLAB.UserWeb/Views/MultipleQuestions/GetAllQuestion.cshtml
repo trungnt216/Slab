@@ -2,10 +2,14 @@
 
 @{
     ViewData["Title"] = "GetAllQuestion";
-    Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
 }
 
 <style>
+    .quiz {
+        background: linear-gradient(to top left, black, #1a50a1);
+        padding: 50px;
+    }
+
     .quiz-container {
         background: #ffffffd9;
         padding: 30px;
@@ -118,27 +122,30 @@
     }
 </style>
 
-<div id="sub-content">
-    <div class="container">
-        <div class="quiz-container">
-            <p class="quiz-note"><em>*Lưu ý: </em>Bạn cần làm đúng hết bài trắc nghiệm để được truy cập vào lab Hóa học!</p>
-            <form id="quiz-form">
-                <div id="questions-container"></div>
-                <div id="pagination-container" class="pagination-container"></div>
-                <button type="submit" class="btn btn-primary">Nộp bài</button>
-            </form>
+<div class="quiz">
+    <div id="sub-content">
+        <div class="container">
+            <div class="quiz-container">
+                <p class="quiz-note"><em>*Lưu ý: </em>Bạn cần làm đúng hết bài trắc nghiệm để được truy cập vào lab Hóa học!</p>
+                <form id="quiz-form">
+                    <div id="questions-container"></div>
+                    <div id="pagination-container" class="pagination-container"></div>
+                    <button type="submit" class="btn btn-primary">Nộp bài</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            @* <img id="modal-img" class="modal-img" src="@Url.Content("~/images/ic_warning.png")" alt="Warning"> *@
+            <h6>Thông báo</h6>
+            <div id="message"></div>
+            <div id="modal-action" class="d-flex modal-action"></div>
         </div>
     </div>
 </div>
 
-<div id="resultModal" class="modal">
-    <div class="modal-content">
-        @* <img id="modal-img" class="modal-img" src="@Url.Content("~/images/ic_warning.png")" alt="Warning"> *@
-        <h6>Thông báo</h6>
-        <div id="message"></div>
-        <div id="modal-action" class="d-flex modal-action"></div>
-    </div>
-</div>
 
 @section Scripts {
     <script src="~/js/quiz.js"></script>

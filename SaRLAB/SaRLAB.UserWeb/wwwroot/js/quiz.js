@@ -112,12 +112,12 @@ const results = [
         answer: "area",
     },
     {
-        quiz_id: 3,
-        answer: "reach",
-    },
-    {
         quiz_id: 2,
         answer: "guide",
+    },
+    {
+        quiz_id: 3,
+        answer: "reach",
     },
     {
         quiz_id: 4,
@@ -248,12 +248,13 @@ $(document).ready(function () {
 
         let message = `Bạn đã trả lời đúng ${correctAnswers}/${totalQuestions} câu hỏi.`;
         /*let modalImgSrc = "~/images/ic_warning.png";*/
-        let modalAction = '<a class="btn btn-danger" href="/MultipleQuestions/GetAllQuestion">Làm lại</a>';
+        /*let modalAction = '<a class="btn btn-danger" href="/MultipleQuestions/GetAllQuestion">Làm lại</a>';*/
+        let modalAction = '<a class="btn btn-danger" href="/HomePage/index">Làm lại</a>';
 
         if (correctAnswers === totalQuestions) {
             message = 'Bạn đã trả lời đúng tất cả các câu hỏi!';
            /* modalImgSrc = "~/images/ic_success.png";*/
-            modalAction = '<a class="btn btn-success" href="/HomePage/index">Truy cập</a>';
+            modalAction = '<a class="btn btn-success" href="/Chemistry/index">Truy cập</a>';
         }
 
         $('#message').html(message);
