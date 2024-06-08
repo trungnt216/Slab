@@ -293,6 +293,10 @@ header
     background: linear-gradient(to top, #a17d10, #7f5f00);
 }
 
+.header-area-library {
+    background: linear-gradient(to top, #5d3407, #7d600a);
+}
+
 .header-area .main-nav {
     min-height: 80px;
     background: transparent;
@@ -1560,5 +1564,17 @@ a.service-link {
     .services .flex-item {
         flex: 1 1 100%;
         max-width: 100%;
+    }
+
+    .quiz {
+        padding: 50px 0px;
+    }
+
+    .quiz-container {
+        width: 90%;
+    }
+
+    .quiz-question img {
+        max-width: 250px;
     }
 }

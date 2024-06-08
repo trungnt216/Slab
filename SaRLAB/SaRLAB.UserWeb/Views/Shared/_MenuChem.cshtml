@@ -57,6 +57,7 @@
 </style>
 
 <ul class="nav">
+    <li class="scroll-to-section menu"><a data-toggle="dropdown" asp-controller="HomePage" asp-action="Home">Chung</a></li>
     <li class="scroll-to-section menu"><a class="menu @((ViewBag.ActiveMenu == "homePage") ? "active" : "")" data-toggle="dropdown" asp-controller="Chemistry" asp-action="Index">Trang chủ</a></li>
     <li class="scroll-to-section dropdown menu">
         <a class="@((ViewBag.ActiveMenu == "chem") ? "active" : "")" data-toggle="dropdown">Hóa học</a>
@@ -145,7 +146,7 @@
     </li>
     <li class="scroll-to-section info-group d-flex">
         <a class="menu d-flex" asp-controller="HomePage" asp-action="Information">
-            @* <img src="@Url.Content(TempData["AvtPath"].ToString())" /> *@
+            <img src="@Url.Content(TempData["AvtPath"].ToString())" />
             <div class="info-user">
                 <p class="name">@TempData["name"]</p>
                 <p class="role">@TempData["role"]</p>
