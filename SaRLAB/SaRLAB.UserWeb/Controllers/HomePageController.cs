@@ -25,6 +25,8 @@ namespace SaRLAB.UserWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
+        private readonly bool _hasError = false;
+
         public HomePageController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
@@ -39,6 +41,12 @@ namespace SaRLAB.UserWeb.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
 
             var token = tokenHandler.ReadJwtToken(jwtToken);
+
+            if (jwtToken == null)
+            {
+                _hasError = true;
+                return; // Early exit from constructor
+            }
 
             foreach (Claim claim in token.Claims)
             {
@@ -72,6 +80,11 @@ namespace SaRLAB.UserWeb.Controllers
         {
             ViewBag.ActiveMenu = "homePage";
 
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -87,6 +100,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Information()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -107,6 +125,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Information(string email)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -126,6 +149,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Information(User user, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;

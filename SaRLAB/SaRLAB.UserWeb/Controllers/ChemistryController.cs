@@ -24,6 +24,8 @@ namespace SaRLAB.UserWeb.Controllers
 
         int checkRole = 0;
 
+        private readonly bool _hasError = false;
+
         public ChemistryController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
@@ -32,6 +34,12 @@ namespace SaRLAB.UserWeb.Controllers
             _configuration = configuration;
 
             string jwtToken = Program.jwtToken;
+
+            if(jwtToken == null)
+            {
+                _hasError = true;
+                return; // Early exit from constructor
+            }
 
             pathFolderSave = _configuration["PathFolder:Value"];
 
@@ -71,9 +79,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 checkRole = 1;
             }
-
         }
-
         //----------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
         //-------------------------------hoá học--------------------------------------------------------
@@ -87,6 +93,12 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Chemistry()
         {
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -111,6 +123,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Chemistry(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -151,6 +168,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Chemistry(Equipment equipment, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -209,6 +231,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Chemistry()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -232,6 +259,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Chemistry(Equipment equipment, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -363,6 +395,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Chemistry(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -387,6 +424,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_ToolChemistry()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -411,6 +453,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_ToolChemistry()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -434,6 +481,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_ToolChemistry(Equipment equipment, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -502,6 +554,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_ToolChemistry(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -545,6 +602,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_ToolChemistry(Equipment equipment, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -668,6 +730,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_ToolChemistry(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -694,6 +761,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_EquipmentChemistry()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -737,6 +809,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_EquipmentChemistry(Equipment equipment, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -805,6 +882,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_EquipmentChemistry(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -851,6 +933,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_EquipmentChemistry(Equipment equipment, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -973,6 +1060,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_EquipmentChemistry(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1002,6 +1094,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Experiment()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1025,6 +1122,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Experiment()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1048,6 +1150,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Experiment(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1116,6 +1223,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Experiment(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1159,6 +1271,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Experiment(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1283,6 +1400,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Experiment(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1309,6 +1431,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Conspectus()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1333,6 +1460,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Conspectus()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1356,6 +1488,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Conspectus(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1424,6 +1561,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Conspectus(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1467,6 +1609,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Conspectus(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1590,6 +1737,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Conspectus(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1615,6 +1767,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Inorganic_Organic()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1654,6 +1811,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Inorganic_Organic()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1677,6 +1839,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Inorganic_Organic(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1744,6 +1911,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Inorganic_Organic(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1784,6 +1956,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Inorganic_Organic(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1907,6 +2084,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Inorganic_Organic(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1933,6 +2115,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Inorganic()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1957,6 +2144,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Inorganic()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -1979,6 +2171,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Inorganic(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2046,6 +2243,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Inorganic(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2088,6 +2290,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Inorganic(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2210,6 +2417,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Inorganic(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2235,6 +2447,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Organic()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2259,6 +2476,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Organic()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2281,6 +2503,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Organic(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2348,6 +2575,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Organic(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2390,6 +2622,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Organic(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2509,6 +2746,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Organic(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2534,6 +2776,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Biological()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2558,6 +2805,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Biological()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2577,6 +2829,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Biological(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2644,6 +2901,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Biological(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2686,6 +2948,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Biological(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2805,6 +3072,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Biological(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2830,6 +3102,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Vocabulary()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2853,6 +3130,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Vocabulary()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2875,6 +3157,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Vocabulary(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2943,6 +3230,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Vocabulary(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -2985,6 +3277,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Vocabulary(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3104,6 +3401,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Vocabulary(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3129,6 +3431,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Exam()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3153,6 +3460,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Exam()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3175,6 +3487,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Exam(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3242,6 +3559,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Exam(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3284,6 +3606,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Exam(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3406,6 +3733,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Exam(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3431,6 +3763,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Examenglish()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3454,6 +3791,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Examenglish()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3476,6 +3818,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Examenglish(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3543,6 +3890,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Examenglish(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3585,6 +3937,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Examenglish(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3704,6 +4061,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Examenglish(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3729,6 +4091,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Department_level()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3753,6 +4120,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Department_level()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3775,6 +4147,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Department_level(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3842,6 +4219,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Department_level(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -3884,6 +4266,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Department_level(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4006,6 +4393,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Department_level(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4031,6 +4423,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Provincial_level()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4054,6 +4451,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Provincial_level()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4076,6 +4478,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Provincial_level(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4143,6 +4550,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Provincial_level(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4182,6 +4594,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Provincial_level(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4304,6 +4721,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Provincial_level(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4330,6 +4752,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_National_level()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4353,6 +4780,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_National_level()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4375,6 +4807,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_National_level(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4442,6 +4879,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_National_level(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4484,6 +4926,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_National_level(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4603,6 +5050,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_National_level(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4628,6 +5080,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Preparation_questions()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4651,6 +5108,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Preparation_questions()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4673,6 +5135,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Preparation_questions(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4740,6 +5207,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Preparation_questions(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4782,6 +5254,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Preparation_questions(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4904,6 +5381,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Preparation_questions(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4930,6 +5412,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Practice_report()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4953,6 +5440,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Create_Practice_report()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -4972,6 +5464,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Create_Practice_report(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -5039,6 +5536,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Edit_Practice_report(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -5081,6 +5583,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpPost]
         public ActionResult Edit_Practice_report(Document document, IFormFile File)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -5203,6 +5710,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public ActionResult Details_Practice_report(int id)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -5227,6 +5739,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Directors()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -5249,6 +5766,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult Details_Directors(string email)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -5272,6 +5794,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Teacher()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -5294,6 +5821,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult Details_Teacher(string email)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -5317,6 +5849,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Technical()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -5339,6 +5876,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult Details_Technical(string email)
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;

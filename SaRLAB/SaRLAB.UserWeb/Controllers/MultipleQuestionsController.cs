@@ -21,6 +21,8 @@ namespace SaRLAB.UserWeb.Controllers
 
         int checkRole = 0;
 
+        private readonly bool _hasError = false;
+
         public MultipleQuestionsController(ILogger<HomePageController> logger, IConfiguration configuration)
         {
             _httpClient = new HttpClient();
@@ -28,6 +30,12 @@ namespace SaRLAB.UserWeb.Controllers
             _configuration = configuration;
 
             string jwtToken = Program.jwtToken;
+
+            if (jwtToken == null)
+            {
+                _hasError = true;
+                return;
+            }
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -69,6 +77,11 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;

@@ -143,14 +143,14 @@ namespace SaRLAB.UserWeb.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["successMessage"] = "User create success";
+                    TempData["Success"] = "User create success";
                     return RedirectToAction("Login");
                 }
 
             }
             catch (Exception ex)
             {
-                TempData["errorMessage"] = ex.Message;
+                TempData["Error"] = ex.Message;
                 return RedirectToAction("Login");
             }
             return RedirectToAction("Login");
