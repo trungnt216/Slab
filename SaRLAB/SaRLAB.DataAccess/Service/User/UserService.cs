@@ -243,6 +243,7 @@ namespace SaRLAB.DataAccess.Service.UserService
             return query.ToList();
         }
 
+
         public int DeleteBySchoolId(int schoolId)
         {
             var usersToDelete = _context.Users.Where(u => u.SchoolId == schoolId).ToList();
@@ -255,6 +256,21 @@ namespace SaRLAB.DataAccess.Service.UserService
             }
 
             return 1;
+        }
+
+        public User GetByID_ID(int id)
+        {
+            var user = _context.Users.SingleOrDefault(item => (item.ID == id));
+
+            if (user == null)
+            {
+                return null;
+            }
+            else
+            {
+                return user;
+            }
+
         }
     }
 }

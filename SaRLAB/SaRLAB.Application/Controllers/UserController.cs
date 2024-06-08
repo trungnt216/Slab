@@ -139,6 +139,23 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetByID_ID/{id}")]
+        public IActionResult GetByID_ID(int id)
+        {
+
+            var user = _loginDto.GetByID_ID(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(user);
+            }
+        }
+
         [HttpDelete]
         [Route("DeleteById/{id}")]
         public IActionResult DeleteById(int id)
