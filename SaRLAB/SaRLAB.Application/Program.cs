@@ -19,6 +19,7 @@ using SaRLAB.DataAccess.Service.PlanDetailService;
 using SaRLAB.DataAccess.Service.PracticePlanService;
 using SaRLAB.DataAccess.Service.SchoolService;
 using SaRLAB.DataAccess.Service.QuizService;
+using SaRLAB.DataAccess.Service.SubjectFlagService;
 
 namespace SaRLAB.Application
 {
@@ -52,6 +53,7 @@ namespace SaRLAB.Application
             builder.Services.AddScoped<IPracticePlanService, PracticePlanService>();
             builder.Services.AddScoped<ISchoolService, SchoolService>();
             builder.Services.AddScoped<IQuizService, QuizService>();
+            builder.Services.AddScoped<ISubjectFlagService, SubjectFlagService>();
 
 
             //Add Authentication and JwtBearer
