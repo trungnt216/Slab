@@ -40,8 +40,8 @@ namespace SaRLAB.DataAccess.Service.QuizService
     
 
         public Quiz GetQuizById(int id)
-        {
-            throw new NotImplementedException();
+        {    
+            return _context.Quizzes.Find(id);
         }
 
         public List<Quiz> GetQuizzesAccordingSchoolAndSubject(int schoolId, int subjectId)
