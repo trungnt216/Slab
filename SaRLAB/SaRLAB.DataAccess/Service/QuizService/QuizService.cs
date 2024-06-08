@@ -17,13 +17,13 @@ namespace SaRLAB.DataAccess.Service.QuizService
         }
         public int DeleteQuizById(int id)
         {
-        var quiz = _context.Quizzes.Find(id);
-        if (quiz != null)
-        {
-            _context.Quizzes.Remove(quiz);
-            return _context.SaveChanges();
-        }
-        return 0;
+            var quiz = _context.Quizzes.Find(id);
+            if (quiz != null)
+            {
+                _context.Quizzes.Remove(quiz);
+                return _context.SaveChanges();
+            }
+            return 0;
         }
 
         public int DeleteQuizByIds(string ids)
@@ -37,17 +37,17 @@ namespace SaRLAB.DataAccess.Service.QuizService
             // Lưu thay đổi vào cơ sở dữ liệu và trả về số lượng bản ghi bị ảnh hưởng
             return _context.SaveChanges();
         }
-    
+
 
         public Quiz GetQuizById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Quizzes.Find(id);
         }
 
         public List<Quiz> GetQuizzesAccordingSchoolAndSubject(int schoolId, int subjectId)
         {
-        return _context.Quizzes.Where(q => q.SchoolId == schoolId && q.SubjectId == subjectId).ToList();
-    }
+            return _context.Quizzes.Where(q => q.SchoolId == schoolId && q.SubjectId == subjectId).ToList();
+        }
 
         public int InsertQuiz(Quiz quiz)
         {

@@ -29,6 +29,13 @@ namespace SaRLAB.Application.Controllers
             return Ok(_quizService.GetQuizzesAccordingSchoolAndSubject(schoolId,subjectId));
         }
 
+        [HttpGet]
+        [Route("GetQuizById/{id}")]
+        public IActionResult GetQuizById(int id)
+        {
+            return Ok(_quizService.GetQuizById(id));
+        }
+
 
         [HttpPost]
         [Route("Insert")]

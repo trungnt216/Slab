@@ -2529,9 +2529,6 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
                 return RedirectToAction("GetAll_Question");
             }
         }
@@ -2659,23 +2656,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["notice"] = "Thêm câu hỏi thành công";
-                    ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
                     return RedirectToAction("GetAll_Question");
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "practiceReport";
             return View();
         }
 
@@ -2685,40 +2673,31 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            Document document = new Document();
+            Quiz quiz = new Quiz();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetQuizById/" + id).Result;
 
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
+                quiz = JsonConvert.DeserializeObject<Quiz>(data);
             }
 
-            if (document == null)
+            if (quiz == null)
             {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                return RedirectToAction("GetAll_Practice_report");
+                TempData["notice"] = "Không tìm thấy dữ liệu";
+                return RedirectToAction("GetAll_Question");
             }
 
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                return View(document);
+                return View(quiz);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                return RedirectToAction("GetAll_Practice_report");
+                return RedirectToAction("GetAll_Question");
             }
         }
         [HttpPost]
@@ -2844,31 +2823,18 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
-                    return RedirectToAction("GetAll_Practice_report");
+                    return RedirectToAction("GetAll_Question");
                 }
             }
             catch (Exception ex)
             {
-                TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "practiceReport";
             return View();
         }
 
         public ActionResult Delete_Question(int id)
         {
-
-
             try
             {
                 HttpResponseMessage response;
@@ -2884,8 +2850,6 @@ namespace SaRLAB.AdminWeb.Controllers
                 return RedirectToAction("GetAll_Question");
             }
             return RedirectToAction("GetAll_Question");
-
-
         }
     }
 }
