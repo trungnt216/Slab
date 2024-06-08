@@ -13,9 +13,10 @@ namespace SaRLAB.Application.Controllers
         private readonly ISchoolService _schoolService;
         private readonly IUserService _userService;
 
-        public SchoolController(ISchoolService schoolService)
+        public SchoolController(ISchoolService schoolService, IUserService userService)
         {
             _schoolService = schoolService;
+            _userService = userService;
         }
 
 
