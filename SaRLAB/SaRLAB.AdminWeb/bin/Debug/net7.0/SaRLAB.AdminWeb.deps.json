@@ -10,16 +10,29 @@
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.2.2",
           "EntityFramework": "6.4.4",
+          "FontAwesome.MVC": "1.0.0",
+          "JWT": "10.1.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.4",
           "Microsoft.EntityFrameworkCore": "7.0.17",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.17",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.12",
           "MongoDB.Bson": "2.25.0",
-          "SaRLAB.Models": "1.0.0"
+          "React.AspNet": "5.2.12",
+          "SaRLAB.Models": "1.0.0",
+          "toastr": "2.1.1"
         },
         "runtime": {
           "SaRLAB.AdminWeb.dll": {}
+        }
+      },
+      "AdvancedStringBuilder/0.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/AdvancedStringBuilder.dll": {
+            "assemblyVersion": "0.1.0.0",
+            "fileVersion": "0.1.0.0"
+          }
         }
       },
       "Azure.Core/1.35.0": {
@@ -29,7 +42,7 @@
           "System.Memory.Data": "1.0.2",
           "System.Numerics.Vectors": "4.5.0",
           "System.Text.Encodings.Web": "6.0.0",
-          "System.Text.Json": "6.0.0",
+          "System.Text.Json": "6.0.7",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "runtime": {
@@ -46,7 +59,7 @@
           "Microsoft.Identity.Client.Extensions.Msal": "4.56.0",
           "System.Memory": "4.5.5",
           "System.Security.Cryptography.ProtectedData": "6.0.0",
-          "System.Text.Json": "6.0.0",
+          "System.Text.Json": "6.0.7",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "runtime": {
@@ -81,6 +94,15 @@
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.400.420.21404"
           }
+        }
+      },
+      "FontAwesome/4.0.3": {},
+      "FontAwesome.MVC/1.0.0": {
+        "dependencies": {
+          "FontAwesome": "4.0.3",
+          "Microsoft.AspNet.Mvc": "3.0.20105.1",
+          "Microsoft.AspNet.Web.Optimization": "1.0.0",
+          "WebActivatorEx": "2.0.0"
         }
       },
       "Humanizer/2.14.1": {
@@ -623,6 +645,113 @@
           }
         }
       },
+      "JavaScriptEngineSwitcher.Core/3.1.0": {
+        "dependencies": {
+          "AdvancedStringBuilder": "0.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/JavaScriptEngineSwitcher.Core.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        },
+        "resources": {
+          "lib/netstandard2.0/ru-ru/JavaScriptEngineSwitcher.Core.resources.dll": {
+            "locale": "ru-RU"
+          }
+        }
+      },
+      "jQuery/1.6.3": {},
+      "JSPool/4.0.0": {
+        "dependencies": {
+          "JavaScriptEngineSwitcher.Core": "3.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/JSPool.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "JWT/10.1.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.2",
+          "System.Text.Json": "6.0.7"
+        },
+        "runtime": {
+          "lib/net6.0/JWT.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.0.0"
+          }
+        }
+      },
+      "Microsoft.AspNet.Mvc/3.0.20105.1": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "1.0.20105.408",
+          "Microsoft.AspNet.WebPages": "1.0.20105.408"
+        },
+        "runtime": {
+          "lib/net40/System.Web.Mvc.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.20105.0"
+          }
+        }
+      },
+      "Microsoft.AspNet.Razor/1.0.20105.408": {
+        "runtime": {
+          "lib/net40/System.Web.Razor.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.20105.407"
+          }
+        }
+      },
+      "Microsoft.AspNet.Web.Optimization/1.0.0": {
+        "dependencies": {
+          "Microsoft.Web.Infrastructure": "1.0.0",
+          "WebGrease": "1.1.0"
+        },
+        "runtime": {
+          "lib/net40/System.Web.Optimization.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.AspNet.WebPages/1.0.20105.408": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "1.0.20105.408",
+          "Microsoft.Web.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "lib/net40/System.Web.Helpers.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.20105.407"
+          },
+          "lib/net40/System.Web.WebPages.Deployment.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.20105.407"
+          },
+          "lib/net40/System.Web.WebPages.Razor.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.20105.407"
+          },
+          "lib/net40/System.Web.WebPages.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.20105.407"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.4": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.35.0"
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "assemblyVersion": "7.0.4.0",
+            "fileVersion": "7.0.423.11903"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Razor.Language/6.0.11": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {
@@ -649,7 +778,7 @@
           "System.Reflection.MetadataLoadContext": "6.0.0",
           "System.Security.Principal.Windows": "5.0.0",
           "System.Text.Encoding.CodePages": "6.0.0",
-          "System.Text.Json": "6.0.0",
+          "System.Text.Json": "6.0.7",
           "System.Threading.Tasks.Dataflow": "6.0.0"
         },
         "runtime": {
@@ -921,7 +1050,7 @@
           "Microsoft.CodeAnalysis.Scripting.Common": "4.4.0",
           "Microsoft.CodeAnalysis.Workspaces.Common": "4.4.0",
           "Microsoft.DiaSymReader": "1.4.0",
-          "System.Text.Json": "6.0.0",
+          "System.Text.Json": "6.0.7",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "runtime": {
@@ -1166,11 +1295,29 @@
           }
         }
       },
+      "Microsoft.DotNet.PlatformAbstractions/2.1.0": {
+        "dependencies": {
+          "System.AppContext": "4.3.0",
+          "System.Collections": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.IO.FileSystem": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.DotNet.PlatformAbstractions.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
+          }
+        }
+      },
       "Microsoft.DotNet.Scaffolding.Shared/7.0.12": {
         "dependencies": {
           "Humanizer": "2.14.1",
           "Microsoft.CodeAnalysis.CSharp.Features": "4.4.0",
-          "Newtonsoft.Json": "13.0.1",
+          "Newtonsoft.Json": "13.0.2",
           "NuGet.ProjectModel": "6.6.1"
         },
         "runtime": {
@@ -1259,6 +1406,21 @@
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/7.0.0": {},
+      "Microsoft.Extensions.DependencyModel/2.1.0": {
+        "dependencies": {
+          "Microsoft.DotNet.PlatformAbstractions": "2.1.0",
+          "Newtonsoft.Json": "13.0.2",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Linq": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
+          }
+        }
+      },
       "Microsoft.Extensions.Logging/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
@@ -1312,7 +1474,7 @@
           "Microsoft.IdentityModel.Tokens": "6.35.0",
           "System.Text.Encoding": "4.3.0",
           "System.Text.Encodings.Web": "6.0.0",
-          "System.Text.Json": "6.0.0"
+          "System.Text.Json": "6.0.7"
         },
         "runtime": {
           "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
@@ -1415,7 +1577,7 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Templating": "7.0.12",
-          "Newtonsoft.Json": "13.0.1"
+          "Newtonsoft.Json": "13.0.2"
         },
         "runtime": {
           "lib/net7.0/Microsoft.VisualStudio.Web.CodeGeneration.Core.dll": {
@@ -1467,7 +1629,7 @@
           "Microsoft.Build": "17.3.2",
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.4.0",
           "Microsoft.DotNet.Scaffolding.Shared": "7.0.12",
-          "Newtonsoft.Json": "13.0.1"
+          "Newtonsoft.Json": "13.0.2"
         },
         "runtime": {
           "lib/net7.0/Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll": {
@@ -1485,6 +1647,14 @@
           "lib/net7.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {
             "assemblyVersion": "7.0.12.0",
             "fileVersion": "7.0.1224.11208"
+          }
+        }
+      },
+      "Microsoft.Web.Infrastructure/1.0.0": {
+        "runtime": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.20105.407"
           }
         }
       },
@@ -1577,11 +1747,11 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/13.0.1": {
+      "Newtonsoft.Json/13.0.2": {
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
             "assemblyVersion": "13.0.0.0",
-            "fileVersion": "13.0.1.25517"
+            "fileVersion": "13.0.2.27524"
           }
         }
       },
@@ -1643,7 +1813,7 @@
       },
       "NuGet.Packaging/6.6.1": {
         "dependencies": {
-          "Newtonsoft.Json": "13.0.1",
+          "Newtonsoft.Json": "13.0.2",
           "NuGet.Configuration": "6.6.1",
           "NuGet.Versioning": "6.6.1",
           "System.Security.Cryptography.Cng": "5.0.0",
@@ -1683,6 +1853,43 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {
             "assemblyVersion": "6.6.1.2",
             "fileVersion": "6.6.1.2"
+          }
+        }
+      },
+      "React.AspNet/5.2.12": {
+        "dependencies": {
+          "React.AspNet.Middleware": "5.2.12",
+          "React.Core": "5.2.12"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/React.AspNet.dll": {
+            "assemblyVersion": "5.2.0.0",
+            "fileVersion": "5.2.12.29"
+          }
+        }
+      },
+      "React.AspNet.Middleware/5.2.12": {
+        "dependencies": {
+          "React.Core": "5.2.12"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/React.AspNet.Middleware.dll": {
+            "assemblyVersion": "5.2.0.0",
+            "fileVersion": "5.2.12.29"
+          }
+        }
+      },
+      "React.Core/5.2.12": {
+        "dependencies": {
+          "JSPool": "4.0.0",
+          "JavaScriptEngineSwitcher.Core": "3.1.0",
+          "Microsoft.Extensions.DependencyModel": "2.1.0",
+          "Newtonsoft.Json": "13.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/React.Core.dll": {
+            "assemblyVersion": "5.2.0.0",
+            "fileVersion": "5.2.12.29"
           }
         }
       },
@@ -2007,6 +2214,25 @@
           }
         }
       },
+      "System.Dynamic.Runtime/4.0.11": {
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Linq.Expressions": "4.3.0",
+          "System.ObjectModel": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Threading": "4.3.0"
+        }
+      },
       "System.Formats.Asn1/5.0.0": {},
       "System.Globalization/4.3.0": {
         "dependencies": {
@@ -2144,7 +2370,7 @@
       "System.Memory.Data/1.0.2": {
         "dependencies": {
           "System.Text.Encodings.Web": "6.0.0",
-          "System.Text.Json": "6.0.0"
+          "System.Text.Json": "6.0.7"
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.Data.dll": {
@@ -2534,7 +2760,7 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         }
       },
-      "System.Text.Json/6.0.0": {
+      "System.Text.Json/6.0.7": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
           "System.Text.Encodings.Web": "6.0.0"
@@ -2621,10 +2847,39 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "toastr/2.1.1": {
+        "dependencies": {
+          "jQuery": "1.6.3"
+        }
+      },
+      "WebActivatorEx/2.0.0": {
+        "dependencies": {
+          "Microsoft.Web.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "lib/net40/WebActivatorEx.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "WebGrease/1.1.0": {
+        "runtime": {
+          "lib/Antlr3.Runtime.dll": {
+            "assemblyVersion": "3.3.1.7705",
+            "fileVersion": "3.3.1.7705"
+          },
+          "lib/WebGrease.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "SaRLAB.Models/1.0.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.2.2",
           "EntityFramework": "6.4.4",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.4",
           "Microsoft.EntityFrameworkCore": "7.0.17",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.17",
           "Microsoft.Extensions.Configuration": "7.0.0",
@@ -2645,6 +2900,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AdvancedStringBuilder/0.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IbN3r5whlJvi8MhCDPVpIb+NVScyUcKSdcJZrnoXFDyzPDISl3AbWouNBYIHRdZdfGuzqCQEhM1vkxbIKqQVaQ==",
+      "path": "advancedstringbuilder/0.1.0",
+      "hashPath": "advancedstringbuilder.0.1.0.nupkg.sha512"
     },
     "Azure.Core/1.35.0": {
       "type": "package",
@@ -2673,6 +2935,20 @@
       "sha512": "sha512-yj1+/4tci7Panu3jKDHYizxwVm0Jvm7b7m057b5h4u8NUHGCR8WIWirBTw+8EptRffwftIWPBeIRGNKD1ewEMQ==",
       "path": "entityframework/6.4.4",
       "hashPath": "entityframework.6.4.4.nupkg.sha512"
+    },
+    "FontAwesome/4.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JxIu3EimBbzoYWBbD5IDnXaQCRMsFGpFpy22QjIH3vSueCDgUDMsUk2sbLwnSj/KKWx7aXTCmg1o+GkXwMjPWA==",
+      "path": "fontawesome/4.0.3",
+      "hashPath": "fontawesome.4.0.3.nupkg.sha512"
+    },
+    "FontAwesome.MVC/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LCPon1MUBWEGIdflToR7R8RkuAPKOOb1MEDesA1flFuRRry81OQ9A0aCVNnuBTMG38+RYDxCLNi347+q+m900w==",
+      "path": "fontawesome.mvc/1.0.0",
+      "hashPath": "fontawesome.mvc.1.0.0.nupkg.sha512"
     },
     "Humanizer/2.14.1": {
       "type": "package",
@@ -3024,6 +3300,69 @@
       "path": "humanizer.core.zh-hant/2.14.1",
       "hashPath": "humanizer.core.zh-hant.2.14.1.nupkg.sha512"
     },
+    "JavaScriptEngineSwitcher.Core/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UbyvwC+aSYwV76FDEa/C59lVzgBVdAuP/F4YpNfv+Ev+HllqLBgEhj8Hzo0pAk7uUGQwUxVnQBAtsINMy29ysQ==",
+      "path": "javascriptengineswitcher.core/3.1.0",
+      "hashPath": "javascriptengineswitcher.core.3.1.0.nupkg.sha512"
+    },
+    "jQuery/1.6.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vb0p7+eRmc2evBCT9W7PCUupqWiDMi9/ofBHN99LraRzLY5jPKMeFzFYBoMgwA8TiwRoFDke5hiDDLsvae7qMg==",
+      "path": "jquery/1.6.3",
+      "hashPath": "jquery.1.6.3.nupkg.sha512"
+    },
+    "JSPool/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-r+AeQ9R50HxU+HLqASYvZz6Mvg7RmZwEnCVhQ+xGYVexFjYYqlkW6by9HaflGaHjy+/28YLbb3qxDLRJ3AbZGQ==",
+      "path": "jspool/4.0.0",
+      "hashPath": "jspool.4.0.0.nupkg.sha512"
+    },
+    "JWT/10.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OJ7Vr6Rf539Ty8iw1FDcfM2Adp7BVT0tOEld5NZnxcVguzczFfv2dsdUKGWf9FVc4VCcVRXv0KZ7Q3/zs+b0Iw==",
+      "path": "jwt/10.1.1",
+      "hashPath": "jwt.10.1.1.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Mvc/3.0.20105.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CjEb1ExBqe3DceDCg4EhdimdoDTMuBOmA490lRKgl3EN8L4G8+lBRHDF7Ho8QkFsY7C5Y4pTfqhD7Zl8VPOtWQ==",
+      "path": "microsoft.aspnet.mvc/3.0.20105.1",
+      "hashPath": "microsoft.aspnet.mvc.3.0.20105.1.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Razor/1.0.20105.408": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vRmwL/G31Xc9DusVQUJXmDpTYEVB7xUoIjKqCyuOHrCyG9kzM66MadNjdPLzplSsDoWqiae35US8XiiI3e6SBw==",
+      "path": "microsoft.aspnet.razor/1.0.20105.408",
+      "hashPath": "microsoft.aspnet.razor.1.0.20105.408.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Web.Optimization/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4pMO9b/F9A2iQHcom3ruqNxK023iynMTA621M7Hr0TWMxSxqM2g8Soc0FRRETTEhVVcKlOMPhA6yNtSXh+xikQ==",
+      "path": "microsoft.aspnet.web.optimization/1.0.0",
+      "hashPath": "microsoft.aspnet.web.optimization.1.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebPages/1.0.20105.408": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-da1//kx0b6GXJG6V8vGl7PmvhPJE/aNs2mK0QJ9bojgy059BDdYhmAwpTT1ucDgbImbFDdmNGi/XJj2SU0QJeA==",
+      "path": "microsoft.aspnet.webpages/1.0.20105.408",
+      "hashPath": "microsoft.aspnet.webpages.1.0.20105.408.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yMCO9yU1kNQ5MomCnGDNsjPyIvnxHu4U7AfRkLmzZuzCeOGGA5XiehmpfzzqlyIs8wbSR/c6jbuLexedfKgjgA==",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/7.0.4",
+      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.7.0.4.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Razor.Language/6.0.11": {
       "type": "package",
       "serviceable": true,
@@ -3157,6 +3496,13 @@
       "path": "microsoft.diasymreader/1.4.0",
       "hashPath": "microsoft.diasymreader.1.4.0.nupkg.sha512"
     },
+    "Microsoft.DotNet.PlatformAbstractions/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9KPDwvb/hLEVXYruVHVZ8BkebC8j17DmPb56LnqRF74HqSPLjCkrlFUjOtFpQPA2DeADBRTI/e69aCfRBfrhxw==",
+      "path": "microsoft.dotnet.platformabstractions/2.1.0",
+      "hashPath": "microsoft.dotnet.platformabstractions.2.1.0.nupkg.sha512"
+    },
     "Microsoft.DotNet.Scaffolding.Shared/7.0.12": {
       "type": "package",
       "serviceable": true,
@@ -3240,6 +3586,13 @@
       "sha512": "sha512-h3j/QfmFN4S0w4C2A6X7arXij/M/OVw3uQHSOFxnND4DyAzO1F9eMX7Eti7lU/OkSthEE0WzRsfT/Dmx86jzCw==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/7.0.0",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyModel/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nS2XKqi+1A1umnYNLX2Fbm/XnzCxs5i+zXVJ3VC6r9t2z0NZr9FLnJN4VQpKigdcWH/iFTbMuX6M6WQJcTjVIg==",
+      "path": "microsoft.extensions.dependencymodel/2.1.0",
+      "hashPath": "microsoft.extensions.dependencymodel.2.1.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/7.0.0": {
       "type": "package",
@@ -3409,6 +3762,13 @@
       "path": "microsoft.visualstudio.web.codegenerators.mvc/7.0.12",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.7.0.12.nupkg.sha512"
     },
+    "Microsoft.Web.Infrastructure/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
+      "path": "microsoft.web.infrastructure/1.0.0",
+      "hashPath": "microsoft.web.infrastructure.1.0.0.nupkg.sha512"
+    },
     "Microsoft.Win32.Primitives/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -3444,12 +3804,12 @@
       "path": "netstandard.library/1.6.1",
       "hashPath": "netstandard.library.1.6.1.nupkg.sha512"
     },
-    "Newtonsoft.Json/13.0.1": {
+    "Newtonsoft.Json/13.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
-      "path": "newtonsoft.json/13.0.1",
-      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
+      "sha512": "sha512-R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+      "path": "newtonsoft.json/13.0.2",
+      "hashPath": "newtonsoft.json.13.0.2.nupkg.sha512"
     },
     "NuGet.Common/6.6.1": {
       "type": "package",
@@ -3513,6 +3873,27 @@
       "sha512": "sha512-Wm/AOFICTIrCgbVxv9dNWusraTzcggbo5W4ao7hD8NNVq911an9TGwW+uNuYc8I5PkpTeMuSXneV2u6hbi1P4w==",
       "path": "nuget.versioning/6.6.1",
       "hashPath": "nuget.versioning.6.6.1.nupkg.sha512"
+    },
+    "React.AspNet/5.2.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-98zc2aIyA4gef24O+NbdODnpXTSq9VPYgT53JxFC0U5iptW5tmct2OghbXyJyMZrh7J68V9pxhdo1y7lWmMGsQ==",
+      "path": "react.aspnet/5.2.12",
+      "hashPath": "react.aspnet.5.2.12.nupkg.sha512"
+    },
+    "React.AspNet.Middleware/5.2.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pY6Ux6Xy8/y5kP4apskU7sMf4ZjBoMipSsIwH/k0XYleBjCPGi+MjSMrE2T1CGHr2eKqRG5ahWPmC6VPKzwKJQ==",
+      "path": "react.aspnet.middleware/5.2.12",
+      "hashPath": "react.aspnet.middleware.5.2.12.nupkg.sha512"
+    },
+    "React.Core/5.2.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UqaxnMqVhQDLLNkIR4cNwJAR0lxdT8IwYl6iqXvw9+60uEcOXtbZIlD5TIHVsrenBaovNNsqJwE1ZqB/vEo+lg==",
+      "path": "react.core/5.2.12",
+      "hashPath": "react.core.5.2.12.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
@@ -3828,6 +4209,13 @@
       "sha512": "sha512-NfuoKUiP2nUWwKZN6twGqXioIe1zVD0RIj2t976A+czLHr2nY454RwwXs6JU9Htc6mwqL6Dn/nEL3dpVf2jOhg==",
       "path": "system.drawing.common/6.0.0",
       "hashPath": "system.drawing.common.6.0.0.nupkg.sha512"
+    },
+    "System.Dynamic.Runtime/4.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-db34f6LHYM0U0JpE+sOmjar27BnqTVkbLJhgfwMpTdgTigG/Hna3m2MYVwnFzGGKnEJk2UXFuoVTr8WUbU91/A==",
+      "path": "system.dynamic.runtime/4.0.11",
+      "hashPath": "system.dynamic.runtime.4.0.11.nupkg.sha512"
     },
     "System.Formats.Asn1/5.0.0": {
       "type": "package",
@@ -4214,12 +4602,12 @@
       "path": "system.text.encodings.web/6.0.0",
       "hashPath": "system.text.encodings.web.6.0.0.nupkg.sha512"
     },
-    "System.Text.Json/6.0.0": {
+    "System.Text.Json/6.0.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zaJsHfESQvJ11vbXnNlkrR46IaMULk/gHxYsJphzSF+07kTjPHv+Oc14w6QEOfo3Q4hqLJgStUaYB9DBl0TmWg==",
-      "path": "system.text.json/6.0.0",
-      "hashPath": "system.text.json.6.0.0.nupkg.sha512"
+      "sha512": "sha512-/Tf/9XjprpHolbcDOrxsKVYy/mUG/FS7aGd9YUgBVEiHeQH4kAE0T1sMbde7q6B5xcrNUsJ5iW7D1RvHudQNqA==",
+      "path": "system.text.json/6.0.7",
+      "hashPath": "system.text.json.6.0.7.nupkg.sha512"
     },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",
@@ -4283,6 +4671,27 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "toastr/2.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-h/688XvzYk1xVYn213ryU+HCElE4n/drYzAHJkAi9LsSUPS3EbI6wGlvCglBUt7i4h5iESgAVarYaigjQmVpqg==",
+      "path": "toastr/2.1.1",
+      "hashPath": "toastr.2.1.1.nupkg.sha512"
+    },
+    "WebActivatorEx/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-B3ZbOEaGCqa7BLjZZw6wqprOJJMvP39h7Lr5ADkJOCPKHppAaCre34kR63/gfgpM4htzTfgm/pEw7r7qqqMgIA==",
+      "path": "webactivatorex/2.0.0",
+      "hashPath": "webactivatorex.2.0.0.nupkg.sha512"
+    },
+    "WebGrease/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Pg2FRRKLgcv6TjTJh/zJTLNICDdw638Z05eKEC/pBejBcvTDsUDB2dWjiXF4DWwfS5K7t2T2gbqO1/UNpMHsug==",
+      "path": "webgrease/1.1.0",
+      "hashPath": "webgrease.1.1.0.nupkg.sha512"
     },
     "SaRLAB.Models/1.0.0": {
       "type": "project",
