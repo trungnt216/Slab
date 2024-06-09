@@ -222,7 +222,7 @@ namespace SaRLAB.Application.Controllers
         [Route("GetAllUserInSchoolRoleUser/{schoolId}")]
         public IActionResult GetAllUserInSchoolRoleUser(int schoolId)
         {
-            return Ok(_loginDto.GetUsersByRole(5,schoolId,0));
+            return Ok(_loginDto.GetAllUserInSchoolRoleUser(schoolId));
         }
     }
 }

@@ -278,26 +278,45 @@ namespace SaRLAB.DataAccess.Service.UserService
         public List<UserDto> GetAllUserInSchool(int schoolId)
         {
             var users = _context.Users
-        .Where(user => user.SchoolId == schoolId) // Filter users by schoolId
-        .Select(value => new UserDto
-        {
-            ID = value.ID,
-            Phone = value.Phone,
-            Email = value.Email,
-            Name = value.Name,
-            CreateBy = value.CreateBy,
-            UpdateBy = value.UpdateBy,
-            CreateTime = value.CreateTime,
-            RoleName = value.RoleManages.RoleName,
-            AvtPath = value.AvtPath,
-            DateOfBirth = value.DateOfBirth,
-        });
+            .Where(user => user.SchoolId == schoolId) // Filter users by schoolId
+            .Select(value => new UserDto
+            {
+                ID = value.ID,
+                Phone = value.Phone,
+                Email = value.Email,
+                Name = value.Name,
+                CreateBy = value.CreateBy,
+                UpdateBy = value.UpdateBy,
+                CreateTime = value.CreateTime,
+                RoleName = value.RoleManages.RoleName,
+                AvtPath = value.AvtPath,
+                DateOfBirth = value.DateOfBirth,
+                SchoolId = value.SchoolId,
+            });
+
             return users.ToList();
         }
 
         public List<UserDto> GetAllUserInSchoolRoleUser(int school)
         {
-            throw new NotImplementedException();
+            var users = _context.Users
+            .Where(user => user.SchoolId == school && user.Role_ID == 5)
+            .Select(value => new UserDto
+            {
+                ID = value.ID,
+                Phone = value.Phone,
+                Email = value.Email,
+                Name = value.Name,
+                CreateBy = value.CreateBy,
+                UpdateBy = value.UpdateBy,
+                CreateTime = value.CreateTime,
+                RoleName = value.RoleManages.RoleName,
+                AvtPath = value.AvtPath,
+                DateOfBirth = value.DateOfBirth,
+                SchoolId = value.SchoolId,
+            });
+
+            return users.ToList();
         }
     }
 }
