@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using NuGet.Protocol.Plugins;
 using SaRLAB.Models.Dto;
@@ -109,6 +110,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
             User users = new User();
+            School school = new School();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + userLogin.Email).Result;
 
@@ -116,7 +118,18 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 string data = response.Content.ReadAsStringAsync().Result;
                 users = JsonConvert.DeserializeObject<User>(data);
+
+
+                HttpResponseMessage response_school = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetByID/" + users.SchoolId).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string data_school = response_school.Content.ReadAsStringAsync().Result;
+                    school = JsonConvert.DeserializeObject<School>(data_school);
+                }
             }
+
+            TempData["school"] = school.Name;
 
             ViewBag.ActiveMenu = "homePage";
             return View(users);
@@ -142,6 +155,18 @@ namespace SaRLAB.UserWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 users = JsonConvert.DeserializeObject<User>(data);
             }
+
+            School schools = new School();
+
+            HttpResponseMessage response1 = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetAllSchool").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                schools = JsonConvert.DeserializeObject<School>(data);
+            }
+
+            TempData["School"] = schools.Name;
 
             ViewBag.ActiveMenu = "homePage";
             return View(users);

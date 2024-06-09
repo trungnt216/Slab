@@ -111,9 +111,7 @@ namespace SaRLAB.AdminWeb.Controllers
             List<UserDto> users = new List<UserDto>();
 
             HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
-
-            Console.WriteLine(_httpClient.BaseAddress + "User/GetAll");
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllUserInSchool/" + userLogin.SchoolId).Result;
 
             if (response.IsSuccessStatusCode)
             {

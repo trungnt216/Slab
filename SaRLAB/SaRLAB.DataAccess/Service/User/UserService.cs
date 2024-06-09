@@ -272,5 +272,25 @@ namespace SaRLAB.DataAccess.Service.UserService
             }
 
         }
+
+        public List<UserDto> GetAllUserInSchool(int schoolId)
+        {
+            var users = _context.Users
+        .Where(user => user.SchoolId == schoolId) // Filter users by schoolId
+        .Select(value => new UserDto
+        {
+            ID = value.ID,
+            Phone = value.Phone,
+            Email = value.Email,
+            Name = value.Name,
+            CreateBy = value.CreateBy,
+            UpdateBy = value.UpdateBy,
+            CreateTime = value.CreateTime,
+            RoleName = value.RoleManages.RoleName,
+            AvtPath = value.AvtPath,
+            DateOfBirth = value.DateOfBirth,
+        });
+            return users.ToList();
+        }
     }
 }

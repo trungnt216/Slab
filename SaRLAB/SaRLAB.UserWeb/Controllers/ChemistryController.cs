@@ -85,6 +85,15 @@ namespace SaRLAB.UserWeb.Controllers
         //-------------------------------hoá học--------------------------------------------------------
         public ActionResult Index()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             ViewBag.ActiveMenu = "homePage";
             return View();
         }
