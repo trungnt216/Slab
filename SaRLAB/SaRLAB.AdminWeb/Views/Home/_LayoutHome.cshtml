@@ -38,6 +38,14 @@
         a:hover {
             text-decoration: none;
         }
+
+        .menu-item .active {
+            color: #a4c9ff;
+        }
+
+        .sub-menu-title .active {
+            color: #a4c9ff;
+        }
     </style>
 </head>
 
@@ -64,7 +72,7 @@
                         </span>
                     </p>
                 </li>
-                <li class="@((ViewBag.ActiveMenu == "user") ? "active" : "")">
+                <li class="@((ViewBag.ActiveMenu == "student") ? "active" : "")">
                     <p class="d-flex justify-content-between">
                         <span class="left row">
                             <i class="fas fa-user-tie icon col-2"></i>
@@ -81,14 +89,14 @@
                         </span>
                     </p>
                 </li>
-                <li>
+                <li class="@((ViewBag.ActiveMenuMain == "subject") ? "active" : "")">
                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('manage-subjects')">
                         <span class="left row">
                             <i class="fa-solid fa-address-book col-2"></i>
                             <a class="title col-6">Quản lý môn học</a>
                         </span>
                     </p>
-                    <ul id="manage-subjects" class="nested">
+                    <ul id="manage-subjects" class="nested @((ViewBag.ActiveMenu == "chem") ? "active" : "")">
                         <li>
                             <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('chemistry')">
                                 <span class="left row">
@@ -101,7 +109,7 @@
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('cauhoiantoan')">
                                         <span class="left d-flex" style="align-items: center;">
                                             <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                                            <a class="sub-menu-title">Câu hỏi an toàn</a>
+                                            <a>Câu hỏi an toàn</a>
                                         </span>
                                     </p>
                                     <ul id="cauhoiantoan" class="nested">
@@ -110,13 +118,13 @@
                                 </li>
                                 <li>
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('virtuallab')">
-                                        <span class="left d-flex" style="align-items: center;">
+                                        <span class="left d-flex sub-menu-title" style="align-items: center;">
                                             <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                                            <a class="sub-menu-title">Virtual Lab</a>
+                                            <a class="@((ViewBag.ActiveSubMenu == "virtualLab") ? "active" : "")">Virtual Lab</a>
                                         </span>
                                     </p>
-                                    <ul id="virtuallab" class="nested">
-                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Experiment">Thực nghiệm</a></li>
+                                    <ul id="virtuallab" class="nested @((ViewBag.ActiveSubMenu == "virtualLab") ? "active" : "")">
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Experiment" class="@((ViewBag.ActiveSubMenuLv2 == "experience") ? "active" : "")">Thực nghiệm</a></li>
                                         <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Conspectus">Đại cương</a></li>
                                         <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Inorganic_Organic">Vô cơ - Hữu cơ</a></li>
                                         <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Biological">Hoạt tính sinh học</a></li>
@@ -126,7 +134,7 @@
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('giaotrinh')">
                                         <span class="left d-flex" style="align-items: center;">
                                             <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                                            <a class="sub-menu-title">Giáo trình</a>
+                                            <a>Giáo trình</a>
                                         </span>
                                     </p>
                                     <ul id="giaotrinh" class="nested">
@@ -140,7 +148,7 @@
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('thuchanh')">
                                         <span class="left d-flex" style="align-items: center;">
                                             <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                                            <a class="sub-menu-title">Thực hành</a>
+                                            <a>Thực hành</a>
                                         </span>
                                     </p>
                                     <ul id="thuchanh" class="nested">
@@ -152,7 +160,7 @@
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('nghiencuu')">
                                         <span class="left d-flex" style="align-items: center;">
                                             <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                                            <a class="sub-menu-title">Nghiên cứu</a>
+                                            <a>Nghiên cứu</a>
                                         </span>
                                     </p>
                                     <ul id="nghiencuu" class="nested">
@@ -165,7 +173,7 @@
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('tienganhchuyennganh')">
                                         <span class="left d-flex" style="align-items: center;">
                                             <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                                            <a class="sub-menu-title">Tiếng anh chuyên ngành</a>
+                                            <a>Tiếng anh chuyên ngành</a>
                                         </span>
                                     </p>
                                     <ul id="tienganhchuyennganh" class="nested">

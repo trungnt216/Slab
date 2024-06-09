@@ -5,27 +5,35 @@
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
-<h1>Edit_User</h1>
-
-<h4>SubjectFlag</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div id="sub-content">
+    <div class="d-flex justify-content-between">
+        <partial name="TitleCustom">
+            <a asp-area="" asp-controller="Configuration" asp-action="GetAllUser" class="btn-custom-return" type="button">
+                <i class="fa-solid fa-angles-left"></i>
+                Trở về
+            </a>
+    </div>
+    <div class="form-container">
         <form asp-action="Edit_User">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label asp-for="ID" class="control-label"></label>
                 <input asp-for="ID" class="form-control" />
                 <span asp-validation-for="ID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="UserEmail" class="control-label"></label>
-                <input asp-for="UserEmail" class="form-control" />
-                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="UserEmail" class="col-4 form-label">Email người dùng</label>
+                <div class="col">
+                    <input asp-for="UserEmail" class="form-control" placeholder="Nhập email" />
+                    <span asp-validation-for="UserEmail" class="text-danger form-text"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="MathPermissionFlag" class="control-label"></label>
-                <input asp-for="MathPermissionFlag" class="form-control" />
+            <div class="form-group row">
+                <label asp-for="MathPermissionFlag" class="col-4 control-label">Quyền truy cập môn Toán</label>
+                <select asp-for="MathPermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
                 <span asp-validation-for="MathPermissionFlag" class="text-danger"></span>
             </div>
             <div class="form-group d-none">
@@ -33,9 +41,12 @@
                 <input asp-for="MathMarkFlag" class="form-control" />
                 <span asp-validation-for="MathMarkFlag" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PhysicPermissionFlag" class="control-label"></label>
-                <input asp-for="PhysicPermissionFlag" class="form-control" />
+            <div class="form-group row">
+                <label asp-for="PhysicPermissionFlag" class="col-4 control-label">Quyền truy cập môn Vật Lý</label>
+                <select asp-for="PhysicPermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
                 <span asp-validation-for="PhysicPermissionFlag" class="text-danger"></span>
             </div>
             <div class="form-group d-none">
@@ -43,9 +54,12 @@
                 <input asp-for="PhysicMarkFlag" class="form-control" />
                 <span asp-validation-for="PhysicMarkFlag" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ChemistryPermissionFlag" class="control-label"></label>
-                <input asp-for="ChemistryPermissionFlag" class="form-control" />
+            <div class="form-group row">
+                <label asp-for="ChemistryPermissionFlag" class="col-4 control-label">Quyền truy cập môn Hóa Học</label>
+                <select asp-for="ChemistryPermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
                 <span asp-validation-for="ChemistryPermissionFlag" class="text-danger"></span>
             </div>
             <div class="form-group d-none">
@@ -53,9 +67,12 @@
                 <input asp-for="ChemistryMarkFlag" class="form-control" />
                 <span asp-validation-for="ChemistryMarkFlag" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="BiologyPermissionFlag" class="control-label"></label>
-                <input asp-for="BiologyPermissionFlag" class="form-control" />
+            <div class="form-group row">
+                <label asp-for="BiologyPermissionFlag" class="col-4 control-label">Quyền truy cập môn Sinh Học</label>
+                <select asp-for="BiologyPermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
                 <span asp-validation-for="BiologyPermissionFlag" class="text-danger"></span>
             </div>
             <div class="form-group d-none">
@@ -64,14 +81,10 @@
                 <span asp-validation-for="BiologyMarkFlag" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Cập nhật" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="GetAll_User">Back to List</a>
 </div>
 
 @section Scripts {
