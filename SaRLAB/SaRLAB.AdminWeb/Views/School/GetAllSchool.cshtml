@@ -1,0 +1,267 @@
+﻿@model IEnumerable<SaRLAB.Models.Entity.School>
+
+@{
+    ViewData["Title"] = "GetAllSchool";
+    Layout = "~/Views/Home/_LayoutHome.cshtml";
+    ViewBag.TitleCustom = "Danh sách trường học";
+    int counter = 1;
+}
+
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 200px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .modal-content h6 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .modal-content .modal-img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+        background: #ffe4e4;
+        border-radius: 30px;
+        padding: 8px;
+    }
+
+    .modal-action {
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0px
+    }
+
+    .modal-action .btn-secondary {
+        margin-right: 10px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
+<div id="sub-content">
+    <partial name="TitleCustom">
+    <div class="table-container">
+        <div class="table-action row">
+            <div class="col-9">
+                <div class="search-box" style="width: 300px;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" onkeyup="searchTable()" class="form-control" placeholder="Tìm kiếm&hellip;">
+                </div>
+            </div>
+            <div class="col-3">
+                <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Xóa
+                </button>
+                <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="CreateSchool" asp-controller="School">
+                    <i class="fa-solid fa-plus"></i>
+                    Thêm mới
+                </a>
+            </div>
+        </div>
+        <div id="popupNotification" class="alert alert-danger">
+            @TempData["notice"]
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="selectAll" />
+                    </th>
+                    <th>#</th>
+                    <th class="d-none">
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        Tên trường
+                    </th>
+                    <th>
+                        Địa chỉ
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="selectRow" data-id="@item.ID" />
+                        </td>
+                        <td>
+                            @counter
+                        </td>
+                        <td class="d-none">
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            <a class="btn-custom-edit-by-email" asp-action="EditSchool" asp-route-id="@item.ID">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a class="delete" href="#" data-url="@Url.Action("DeleteSchool", "School", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+        @if (Model == null || !Model.Any())
+        {
+            <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
+        }
+    </div>
+</div>
+
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-img" src="@Url.Content("~/images/ic_warning.png")" />
+        <h6>Xác nhận xóa</h6>
+        <p>Bạn có chắc chắn muốn xóa mục này?</p>
+        <div class="d-flex modal-action">
+            <button class="btn btn-secondary" onclick="closeDeleteModal()">Hủy</button>
+            <button id="confirmDeleteButton" class="btn btn-danger">Xóa</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toLowerCase();
+            table = document.querySelector(".table tbody");
+            tr = table.getElementsByTagName("tr");
+
+            var visibleRowCount = 0; // Counter for visible rows
+
+            for (i = 0; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td");
+                for (j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            visibleRowCount++;
+                            // Update the index cell with the new order
+                            tr[i].getElementsByTagName("td")[1].innerText = visibleRowCount;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        var deleteUrl = '';
+        var selectedIds = [];
+
+        document.getElementById('selectAll').addEventListener('change', function () {
+            var checkboxes = document.querySelectorAll('.selectRow');
+            for (var checkbox of checkboxes) {
+                checkbox.checked = this.checked;
+            }
+        });
+
+        document.getElementById('deleteSelected').addEventListener('click', function () {
+            selectedIds = [];
+            var checkboxes = document.querySelectorAll('.selectRow:checked');
+            for (var checkbox of checkboxes) {
+                selectedIds.push(checkbox.getAttribute('data-id'));
+            }
+
+            if (selectedIds.length > 0) {
+                document.getElementById('deleteModal').style.display = 'block';
+            } else {
+                alert("Vui lòng chọn ít nhất một mục để xóa.");
+            }
+        });
+
+
+        // Mở modal xóa cho từng item
+        function openDeleteModal(element) {
+            deleteUrl = element.getAttribute("data-url");
+            selectedIds = [];
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+
+        // Xác nhận xóa
+        document.getElementById('confirmDeleteButton').onclick = function () {
+            if (selectedIds.length > 0) {
+                // Gửi yêu cầu xóa nhiều mục
+                fetch('@Url.Action("DeleteMultipleSchools", "School")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ Ids: selectedIds })
+                }).then(response => {
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        alert("Có lỗi xảy ra khi xóa các mục.");
+                    }
+                });
+            } else if (deleteUrl) {
+                // Gửi yêu cầu xóa một mục
+                window.location.href = deleteUrl;
+            }
+        };
+
+
+        window.onclick = function (event) {
+            var modal = document.getElementById('deleteModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+}

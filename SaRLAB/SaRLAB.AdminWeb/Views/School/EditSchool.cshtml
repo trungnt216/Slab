@@ -1,0 +1,50 @@
+﻿@model SaRLAB.Models.Entity.School
+
+@{
+    ViewData["Title"] = "EditSchool";
+    Layout = "~/Views/Home/_LayoutHome.cshtml";
+    ViewBag.TitleCustom = "Chỉnh sửa trường học";
+}
+
+<div id="sub-content">
+    <div class="d-flex justify-content-between">
+        <partial name="TitleCustom">
+            <a asp-area="" asp-controller="School" asp-action="GetAllSchool" class="btn-custom-return" type="button">
+                <i class="fa-solid fa-angles-left"></i>
+                Trở về
+            </a>
+    </div>
+    <div class="form-container">
+        <form asp-action="EditSchool" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group d-none">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Name" class="col-3 form-label">Tên trường</label>
+                <div class="col">
+                    <input asp-for="Name" class="form-control" placeholder="Nhập tên" />
+                    <span asp-validation-for="Name" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Address" class="col-3 form-label">Địa chỉ</label>
+                <div class="col">
+                    <input asp-for="Address" class="form-control" placeholder="Nhập địa chỉ" />
+                    <span asp-validation-for="Address" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cập nhật" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

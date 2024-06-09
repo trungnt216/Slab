@@ -1,0 +1,92 @@
+﻿@model SaRLAB.Models.Entity.User
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Login/_LayoutHome.cshtml";
+}
+<form asp-action="Login" class="sign-in-form">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <h2 class="title">Đăng Nhập</h2>
+    <div class="input-field">
+        <i class="fa-solid fa-user"></i>
+        <input asp-for="Email" type="text" placeholder="Email" />
+    </div>
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <div class="input-field">
+        <i class="fa-solid fa-lock"></i>
+        <input asp-for="Password" type="password" placeholder="Mật khẩu" />
+    </div>
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <input type="submit" value="Đăng nhập" class="btn solid" />
+
+    @if (TempData["Error"] != null)
+
+    {
+        <div>
+            <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
+        </div>
+    }
+    @if (TempData["Success"] != null)
+
+    {
+        <div>
+            <span class="text-warning"><b>Success!</b> - @TempData["Success"] </span>
+        </div>
+    }
+</form>
+
+<form asp-action="Register" class="sign-up-form">
+    <h2 class="title">Đăng Ký</h2>
+    <div class="input-field">
+        <i class="fa-solid fa-user"></i>
+        <input asp-for="Name" type="text" placeholder="Họ và tên" />
+    </div>
+    <span asp-validation-for="Name" class="text-danger"></span>
+    <div class="input-field">
+        <i class="fa-solid fa-envelope"></i>
+        <input asp-for="Email" type="email" placeholder="Email" />
+    </div>
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <div class="input-field">
+        <i class="fa-solid fa-lock"></i>
+        <input asp-for="Password" type="password" placeholder="Mật khẩu" />
+    </div>
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <div class="input-field">
+        <i class="fa-solid fa-phone"></i>
+        <input asp-for="Phone" type="text" placeholder="Số điện thoại" />
+    </div>
+    <span asp-validation-for="Phone" class="text-danger"></span>
+
+    <!-- Combobox sử dụng dữ liệu từ ViewBag.Schools -->
+    <div class="input-field">
+        <i class="fas fa-school"></i>
+        <select asp-for="SchoolId" class="form-control">
+            @if (ViewBag.Schools != null)
+            {
+                @foreach (var schoolItem in ViewBag.Schools as List<SelectListItem>)
+                {
+                    <option value="@schoolItem.Value">@schoolItem.Text</option>
+                }
+            }
+        </select>
+    </div>
+    <span asp-validation-for="SchoolId" class="text-danger"></span>
+    <input type="submit" class="btn" value="Đăng ký" />
+
+    @if (TempData["Error"] != null)
+    {
+        <div>
+            <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
+        </div>
+    }
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

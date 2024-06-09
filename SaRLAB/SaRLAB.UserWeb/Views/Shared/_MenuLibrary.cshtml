@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "_menu";
+}
+
+<style>
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        background: linear-gradient(to top, #a17d10, #ceab44);
+        box-shadow: 0 8px 16px rgb(0 0 0 / 6%);
+        z-index: 1;
+        border: none;
+        min-width: 9rem;
+    }
+
+    .dropdown-menu > li {
+        position: relative;
+    }
+
+    .dropdown-menu a {
+        padding: 10px;
+        white-space: nowrap;
+    }
+
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu .dropdown-menu {
+        top: 0;
+        left: 100%;
+    }
+
+    .dropdown-menu > li:hover > .dropdown-menu {
+        display: block;
+    }
+
+    a.submenu {
+        align-content: center;
+        padding-left: 15px;
+        line-height: 0px !important;
+    }
+
+    a.submenu:hover {
+       color: #e9c290 !important;
+    }
+
+    a.submenu i {
+        margin-right: 3px;
+    }
+</style>
+
+<ul class="nav">
+    <li class="scroll-to-section menu"><a data-toggle="dropdown" asp-controller="HomePage" asp-action="Home">Chung</a></li>
+    <li class="scroll-to-section logout menu"><div class="main-red-button"><a asp-controller="HomePage" asp-action="Logout">Đăng xuất</a></div></li>
+</ul>
+<a class='menu-trigger'>
+    <span>Menu</span>
+</a>
+
+@section Scripts {
+    <script src="~/js/home.js"></script>
+}      

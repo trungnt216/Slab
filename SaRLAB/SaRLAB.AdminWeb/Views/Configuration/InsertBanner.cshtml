@@ -1,0 +1,61 @@
+﻿@model SaRLAB.Models.Entity.Banner
+
+@{
+    ViewBag.TitleCustom = "Thêm mới banner";
+    Layout = "~/Views/Home/_LayoutHome.cshtml";
+}
+
+<div id="sub-content">
+    <div class="d-flex justify-content-between">
+        <partial name="TitleCustom">
+        <a asp-area="" asp-controller="Configuration" asp-action="GetAllBanner" class="btn-custom-return" type="button">
+            <i class="fa-solid fa-angles-left"></i>
+            Trở về
+        </a>
+    </div>
+    <div class="form-container">
+        <form asp-action="InsertBanner" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <label for="FileImage" class="col-3 form-label">Chọn ảnh banner</label>
+                <div class="col">
+                    <input id="FileImage" accept="image/*" name="FileImage" class="form-control" type="file" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 form-label"></label>
+                <div class="col">
+                    <img id="previewImage" src="@Url.Content("~/images/placehold.png")"
+                         style="width: 100%;
+                            height: 300px;
+                            margin-top: -15px;
+                            border: 3px solid #eeeeee;
+                            border-radius: 15px;
+                            object-fit: cover;" />
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm mới" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.getElementById('FileImage').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}

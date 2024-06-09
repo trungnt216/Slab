@@ -1,0 +1,164 @@
+﻿@model IEnumerable<SaRLAB.Models.Entity.Quiz>
+
+@{
+    ViewData["Title"] = "GetAllQuestion";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/quiz.css" asp-append-version="true" />
+</head>
+
+<div class="quiz">
+    <div id="sub-content">
+        <div class="container">
+            <div class="quiz-container">
+                <h2 class="header-title">BÀI TRẮC NGHIỆM HÓA HỌC</h2>
+                <p class="quiz-note"><b>*Lưu ý: </b>Bạn cần làm đúng hết bài trắc nghiệm để được truy cập vào lab Hóa học!</p>
+                <form id="quiz-form">
+                    <div id="questions-container">
+                        @{
+                            int questionNumber = 1;
+                            int pageNumber = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            if ((questionNumber - 1) % 10 == 0)
+                            {
+                                if (questionNumber > 1)
+                                {
+                                    pageNumber++;
+                                }
+                            }
+                            <div class="quiz-question page-@pageNumber" @(pageNumber > 1 ? "style=\"display:none;\"" : "")>
+                                <p><b>Câu @questionNumber: </b>@Html.DisplayFor(modelItem => item.Question)</p>
+                                @if (!string.IsNullOrEmpty(item.QuestionImage))
+                                {
+                                    <img class="question-img" src="@Url.Content(item.QuestionImage)" alt="Question Image" />
+                                }
+
+                                <div class="quiz-options">
+                                    <div class="answer-item">
+                                        <input type="radio" id="optionA-@item.ID" name="question-@item.ID" value="A" />
+                                        <label for="optionA-@item.ID">@Html.DisplayFor(modelItem => item.OptionA)</label>
+                                        @if (!string.IsNullOrEmpty(item.OptionAImage))
+                                        {
+                                            <img src="@Url.Content(item.OptionAImage)" alt="Option A Image" />
+                                        }
+                                    </div>
+                                    <div class="answer-item">
+                                        <input type="radio" id="optionB-@item.ID" name="question-@item.ID" value="B" />
+                                        <label for="optionB-@item.ID">@Html.DisplayFor(modelItem => item.OptionB)</label>
+                                        @if (!string.IsNullOrEmpty(item.OptionBImage))
+                                        {
+                                            <img src="@Url.Content(item.OptionBImage)" alt="Option B Image" />
+                                        }
+                                    </div>
+                                    <div class="answer-item">
+                                        <input type="radio" id="optionC-@item.ID" name="question-@item.ID" value="C" />
+                                        <label for="optionC-@item.ID">@Html.DisplayFor(modelItem => item.OptionC)</label>
+                                        @if (!string.IsNullOrEmpty(item.OptionCImage))
+                                        {
+                                            <img src="@Url.Content(item.OptionCImage)" alt="Option C Image" />
+                                        }
+                                    </div>
+                                    <div class="answer-item">
+                                        <input type="radio" id="optionD-@item.ID" name="question-@item.ID" value="D" />
+                                        <label for="optionD-@item.ID">@Html.DisplayFor(modelItem => item.OptionD)</label>
+                                        @if (!string.IsNullOrEmpty(item.OptionDImage))
+                                        {
+                                            <img src="@Url.Content(item.OptionDImage)" alt="Option D Image" />
+                                        }
+                                    </div>
+                                </div>
+                                <input type="hidden" id="correct-answer-@item.ID" value="@item.CorrectAnswer" />
+                            </div>
+                            questionNumber++;
+                        }
+                    </div>
+                    <div id="pagination-container" class="pagination-container"></div>
+                    <div class="d-flex" style="justify-content: center; align-items: center;">
+                        <a type="button" class="btn btn-success" style="margin-right: 10px" asp-controller="HomePage" asp-action="Home">Trở về</a>
+                        <button type="submit" class="btn btn-primary">Nộp bài</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="resultModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p id="message"></p>
+            </div>
+            <div class="modal-footer" id="modal-action"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const totalQuestions = @Model.Count();
+            const questionsPerPage = 10;
+            const totalPages = Math.ceil(totalQuestions / questionsPerPage);
+
+            function showPage(page) {
+                $('.quiz-question').hide();
+                $(`.page-${page}`).show();
+                $('.page-btn').removeClass('active');
+                $(`#page-btn-${page}`).addClass('active');
+            }
+
+            function renderPagination() {
+                if (totalQuestions <= questionsPerPage) {
+                    return;
+                }
+
+                let paginationHtml = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHtml += `<button type="button" class="btn btn-secondary page-btn" id="page-btn-${i}" data-page="${i}">${i}</button>`;
+                }
+                $('#pagination-container').html(paginationHtml);
+
+                $('.page-btn').on('click', function () {
+                    const page = $(this).data('page');
+                    showPage(page);
+                });
+            }
+
+            renderPagination();
+            showPage(1);
+
+            $('#quiz-form').on('submit', function (event) {
+                event.preventDefault();
+
+                let correctCount = 0;
+                const questions = document.querySelectorAll('.quiz-question');
+
+                questions.forEach(question => {
+                    const questionId = question.querySelector('input[type="radio"]').name.split('-')[1];
+                    const selectedAnswer = question.querySelector('input[type="radio"]:checked');
+                    const correctAnswer = question.querySelector(`#correct-answer-${questionId}`).value;
+
+                    if (selectedAnswer && selectedAnswer.value === correctAnswer) {
+                        correctCount++;
+                    }
+                });
+
+                let message = `Bạn đã trả lời đúng ${correctCount}/${totalQuestions} câu hỏi. Vui lòng làm lại!`;
+                let modalAction = '<a class="btn btn-danger" href="/MultipleQuestions/GetAllQuestion">Làm lại</a>';
+
+                if (correctCount === totalQuestions) {
+                    message = 'Bạn đã trả lời đúng tất cả các câu hỏi!';
+                    modalAction = '<a class="btn btn-success" href="/Chemistry/index">Truy cập</a>';
+                }
+
+                $('#message').html(message);
+                $('#modal-action').html(modalAction);
+                $('#resultModal').modal('show');
+            });
+        });
+    </script>
+}
