@@ -14,6 +14,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        ul {
+            list-style-type: none;
+        }
+        .nested {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,89 +74,109 @@
                     </p>
                 </li>
                 <li>
-                    <p class="d-flex justify-content-between">
+                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('manage-subjects')">
                         <span class="left row">
-                            <a class="title col-6">Quản lý Môn học</a>
+                            <i class="fa-solid fa-address-book col-2"></i>
+                            <a class="title col-6">Quản lý môn học</a>
                         </span>
                     </p>
-                </li>
-                <li>
-                    <p class="d-flex justify-content-between">
-                        <span class="left row">
-                            <a class="title col-6">Hoá Học</a>
-                        </span>
-                    </p>
-                </li>
-                <li>
-                    <p class="d-flex justify-content-between">
-                        <span class="left row">
-                            <a class="title col-6">Câu hỏi an toàn</a>
-                        </span>
-                    <ul>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Question">Câu hỏi an toàn phòng thí
-                                nghiệm</a></li>
-                    </ul>
-                    </p>
-                    <p class="d-flex justify-content-between">
-                        <span class="left row">
-                            <a class="title col-6">Virtual Lab</a>
-                        </span>
-                    <ul>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Experiment">Thực nghiệm</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Conspectus">Đại cương</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Inorganic_Organic">Vô cơ - Hữu cơ</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Biological">Hoạt tính sinh học</a></li>
-                    </ul>
-                    </p>
-                </li>
-                <li>
-                    <p class="d-flex justify-content-between">
-                        <span class="left row">
-                            <a class="title col-6">Giáo trình</a>
-                        </span>
-                    <ul>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Conspectus">Đại cương</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Inorganic">Hoá học vô cơ</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Organic">Hóa học hữu cơ</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Experiment">Thực nghiệm</a></li>
-                    </ul>
-                    </p>
-                </li>
-                <li>
-                    <p class="d-flex justify-content-between">
-                        <span class="left row">
-                            <a class="title col-6">Thực hành</a>
-                        </span>
-                    <ul>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Preparation_questions">Câu hỏi chuẩn bị</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Practice_report">Báo cáo thực hành</a></li>
-                    </ul>
-                    </p>
-                </li>
-                <li>
-                    <p class="d-flex justify-content-between">
-                        <span class="left row">
-                            <a class="title col-6">Nghiên cứu</a>
-                        </span>
-                    <ul>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Department_level">Đề tài cấp sở</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Provincial_level">Đề tài cấp tỉnh</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_National_level">Đề tài cấp quốc gia</a>
+                    <ul id="manage-subjects" class="nested">
+                        <li>
+                            <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('chemistry')">
+                                <span class="left row">
+                                    <i class="fa-solid fa-flask col-2"></i>
+                                    <a class="title col-6">Hoá Học</a>
+                                </span>
+                            </p>
+                            <ul id="chemistry" class="nested">
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('cauhoiantoan')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a class="sub-menu-title">Câu hỏi an toàn</a>
+                                        </span>
+                                    </p>
+                                    <ul id="cauhoiantoan" class="nested">
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Question">Câu hỏi an toàn phòng thí nghiệm</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('virtuallab')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a class="sub-menu-title">Virtual Lab</a>
+                                        </span>
+                                    </p>
+                                    <ul id="virtuallab" class="nested">
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Experiment">Thực nghiệm</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Conspectus">Đại cương</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Inorganic_Organic">Vô cơ - Hữu cơ</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Biological">Hoạt tính sinh học</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('giaotrinh')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a class="sub-menu-title">Giáo trình</a>
+                                        </span>
+                                    </p>
+                                    <ul id="giaotrinh" class="nested">
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Conspectus">Đại cương</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Inorganic">Hoá học vô cơ</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Organic">Hóa học hữu cơ</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Experiment">Thực nghiệm</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('thuchanh')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a class="sub-menu-title">Thực hành</a>
+                                        </span>
+                                    </p>
+                                    <ul id="thuchanh" class="nested">
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Preparation_questions">Câu hỏi chuẩn bị</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Practice_report">Báo cáo thực hành</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('nghiencuu')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a class="sub-menu-title">Nghiên cứu</a>
+                                        </span>
+                                    </p>
+                                    <ul id="nghiencuu" class="nested">
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Department_level">Đề tài cấp sở</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Provincial_level">Đề tài cấp tỉnh</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_National_level">Đề tài cấp quốc gia</a>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('tienganhchuyennganh')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a class="sub-menu-title">Tiếng anh chuyên ngành</a>
+                                        </span>
+                                    </p>
+                                    <ul id="tienganhchuyennganh" class="nested">
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Vocabulary">Từ vựng</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Examenglish">Bài giảng song ngữ</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Exam">Bài tập</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('bio')">
+                                <span class="left row">
+                                    <i class="fa-solid fa-dna col-2"></i>
+                                    <a class="title col-6">Sinh học</a>
+                                </span>
+                            </p>
                         </li>
                     </ul>
-                    </p>
-                </li>
-                <li>
-                    <p class="d-flex justify-content-between">
-                        <span class="left row">
-                            <a class="title col-6">Tiếng anh chuyên ngành</a>
-                        </span>
-                    <ul>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Vocabulary">Từ vựng</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Examenglish">Bài giảng song ngữ</a></li>
-                        <li><a asp-controller="Chemistry" asp-action="GetAll_Exam">Bài tập</a></li>
-                    </ul>
-                    </p>
                 </li>
             </ul>
         </div>
@@ -186,6 +231,14 @@
     @await RenderSectionAsync("Scripts", required: false)
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        function toggleMenu(id) {
+            var element = document.getElementById(id);
+            if (element) {
+                element.classList.toggle('active');
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -27,7 +27,7 @@ Table of contents
 ---------------------------------------------
 font & reset css
 --------------------------------------------- 
-*/
+*/ 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 /* 
 ---------------------------------------------
@@ -531,16 +531,16 @@ header
 }
 
 .header-area .main-nav .menu-trigger {
-  cursor: pointer;
-  display: block;
-  position: absolute;
-  top: 33px;
-  width: 32px;
-  height: 40px;
-  text-indent: -9999em;
-  z-index: 99;
-  right: 40px;
-  display: none;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 33px;
+    width: 32px;
+    height: 40px;
+    text-indent: -9999em;
+    z-index: 99;
+    right: 40px;
+    display: none;
 }
 
 .background-header .main-nav .menu-trigger {
@@ -1121,6 +1121,24 @@ Banner Style
     margin-left: 3px;
     font-size: 14px;
     color: #858585;
+}
+
+.group-expired {
+    justify-content: center;
+    float: right;
+    align-items: center;
+}
+
+.group-expired i {
+    color: #a8424c;
+    margin-right: 5px;
+}
+
+.group-expired .text-expired {
+    float: right;
+    font-weight: 500;
+    color: #a8424c;
+    font-style: italic;
 }
 
 /*custom button*/

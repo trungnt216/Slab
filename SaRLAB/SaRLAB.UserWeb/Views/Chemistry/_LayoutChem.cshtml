@@ -48,5 +48,19 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            document.querySelector('a.menu-trigger').addEventListener('click', function () {
+                alert("heheh");
+                var nav = document.querySelector('.nav');
+                if (nav.style.display === 'none' || nav.style.display === '') {
+                    nav.style.display = 'block';
+                } else {
+                    nav.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
