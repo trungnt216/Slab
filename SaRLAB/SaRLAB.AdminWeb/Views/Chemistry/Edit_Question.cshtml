@@ -2,98 +2,374 @@
 
 @{
     ViewData["Title"] = "Edit_Question";
+    ViewBag.TitleCustom = "Chỉnh sửa câu hỏi";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
-<h1>Edit_Question</h1>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 
-<h4>Quiz</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+@{
+    bool isOptionAText = !string.IsNullOrEmpty(Model.OptionA);
+    bool isOptionBText = !string.IsNullOrEmpty(Model.OptionB);
+    bool isOptionCText = !string.IsNullOrEmpty(Model.OptionC);
+    bool isOptionDText = !string.IsNullOrEmpty(Model.OptionD);
+}
+
+<div id="sub-content">
+    <div class="d-flex justify-content-between">
+        <partial name="TitleCustom">
+            <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Question" class="btn-custom-return" type="button">
+                <i class="fa-solid fa-angles-left"></i>
+                Trở về
+            </a>
+    </div>
+    <div class="form-container">
         <form asp-action="Edit_Question">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label asp-for="ID" class="control-label"></label>
                 <input asp-for="ID" class="form-control" />
                 <span asp-validation-for="ID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Question" class="control-label"></label>
-                <input asp-for="Question" class="form-control" />
-                <span asp-validation-for="Question" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="Question" class="col-6 form-label">Nội dung câu hỏi</label>
+                <div class="col-6">
+                    <input asp-for="Question" class="form-control" placeholder="Nhập câu hỏi" />
+                    <span asp-validation-for="Question" class="text-danger form-text"></span>
+                </div>
             </div>
-            <div class="form-group">
+            <div class="form-group row">
+                <label for="File" class="col-6 form-label"> Chọn hỉnh ảnh cho câu hỏi (Nếu có)</label>
+                <div class="col-6">
+                    <input type="file" id="QuestionFile" name="QuestionFile" class="form-control-file" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-6 form-label"></label>
+                <div class="col-6">
+                    @{
+                        string url = "";
+                        if (string.IsNullOrEmpty(Model.QuestionImage))
+                        {
+                            url = "~/images/placehold.png";
+                        }
+                        else
+                        {
+                            url = Model.QuestionImage;
+                        }
+                    }
+                    <img id="previewImage" src="@Url.Content(url)"
+                         style="width: 300px;
+                            height: 200px;
+                            margin-top: -15px;
+                            border: 3px solid #eeeeee;
+                            border-radius: 15px;
+                            object-fit: contain;" />
+                </div>
+            </div>
+            <div class="form-group d-none">
                 <label asp-for="QuestionImage" class="control-label"></label>
                 <input asp-for="QuestionImage" class="form-control" />
                 <span asp-validation-for="QuestionImage" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="OptionA" class="control-label"></label>
-                <input asp-for="OptionA" class="form-control" />
-                <span asp-validation-for="OptionA" class="text-danger"></span>
+            @* Đáp án A *@
+            <div class="form-group row">
+                <label class="col-6 form-label">Chọn loại đáp án (A)</label>
+                <div class="col">
+                    <div>
+                        <input type="radio" id="textA" name="optionTypeA" value="text" onclick="toggleOptionInput('text', 'A')" @(isOptionAText ? "checked" : "")>
+                        <label for="textA">Text</label>
+                        <input type="radio" id="imageA" name="optionTypeA" value="image" onclick="toggleOptionInput('image', 'A')" @(!isOptionAText ? "checked" : "")>
+                        <label for="imageA">Hình ảnh</label>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
+            <div id="textOptionA" class="form-group row @(isOptionAText ? "" : "hidden")">
+                <label asp-for="OptionA" class="col-6 form-label">Đáp án A</label>
+                <div class="col">
+                    <input asp-for="OptionA" id="textOptionInputA" class="form-control" placeholder="Nhập đáp án" />
+                    <span asp-validation-for="OptionA" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group d-none">
                 <label asp-for="OptionAImage" class="control-label"></label>
                 <input asp-for="OptionAImage" class="form-control" />
                 <span asp-validation-for="OptionAImage" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="OptionB" class="control-label"></label>
-                <input asp-for="OptionB" class="form-control" />
-                <span asp-validation-for="OptionB" class="text-danger"></span>
+            <div id="imageOptionA" class="form-group row @(!isOptionAText ? "" : "hidden")">
+                <div class="form-group row">
+                    <label for="File" class="col-6 form-label"> Chọn hình ảnh cho đáp án A</label>
+                    <div class="col-6">
+                        <input type="file" id="OptionAFile" name="OptionAFile" class="form-control-file" accept="image/*" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-6 form-label"></label>
+                    <div class="col-6">
+                        @{
+                            string urlA = "";
+                            if (string.IsNullOrEmpty(Model.OptionAImage))
+                            {
+                                urlA = "~/images/placehold.png";
+                            }
+                            else
+                            {
+                                urlA = Model.OptionAImage;
+                            }
+                        }
+                        <img id="previewImageA" src="@Url.Content(urlA)"
+                             style="width: 300px;
+                            height: 200px;
+                            margin-top: -15px;
+                            border: 3px solid #eeeeee;
+                            border-radius: 15px;
+                            object-fit: contain;" />
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="OptionBImage" class="control-label"></label>
-                <input asp-for="OptionBImage" class="form-control" />
-                <span asp-validation-for="OptionBImage" class="text-danger"></span>
+
+            @* Đáp án B *@
+            <div class="form-group row">
+                <label class="col-6 form-label">Chọn loại đáp án (B)</label>
+                <div class="col">
+                    <div>
+                        <input type="radio" id="textB" name="optionTypeB" value="text" onclick="toggleOptionInput('text','B')" @(isOptionBText ? "checked" : "")>
+                        <label for="textB">Text</label>
+                        <input type="radio" id="imageB" name="optionTypeB" value="image" onclick="toggleOptionInput('image', 'B')" @(!isOptionBText ? "checked" : "")>
+                        <label for="imageB">Hình ảnh</label>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="OptionC" class="control-label"></label>
-                <input asp-for="OptionC" class="form-control" />
-                <span asp-validation-for="OptionC" class="text-danger"></span>
+            <div id="textOptionB" class="form-group row @(isOptionBText ? "" : "hidden")">
+                <label asp-for="OptionB" class="col-6 form-label">Đáp án B</label>
+                <div class="col">
+                    <input asp-for="OptionB" id="textOptionInputB" class="form-control" placeholder="Nhập đáp án" />
+                    <span asp-validation-for="OptionB" class="text-danger form-text"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="OptionCImage" class="control-label"></label>
-                <input asp-for="OptionCImage" class="form-control" />
-                <span asp-validation-for="OptionCImage" class="text-danger"></span>
+            <div id="imageOptionB" class="form-group row @(!isOptionBText ? "" : "hidden")">
+                <div class="form-group row">
+                    <label for="File" class="col-6 form-label"> Chọn hình ảnh cho đáp án B</label>
+                    <div class="col-6">
+                        <input type="file" id="OptionBFile" name="OptionBFile" class="form-control-file" accept="image/*" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-6 form-label"></label>
+                    <div class="col-6">
+                        @{
+                            string urlB = "";
+                            if (string.IsNullOrEmpty(Model.OptionBImage))
+                            {
+                                urlB = "~/images/placehold.png";
+                            }
+                            else
+                            {
+                                urlB = Model.OptionBImage;
+                            }
+                        }
+                        <img id="previewImageB" src="@Url.Content(urlB)"
+                             style="width: 300px;
+                            height: 200px;
+                            margin-top: -15px;
+                            border: 3px solid #eeeeee;
+                            border-radius: 15px;
+                            object-fit: contain;" />
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="OptionD" class="control-label"></label>
-                <input asp-for="OptionD" class="form-control" />
-                <span asp-validation-for="OptionD" class="text-danger"></span>
+
+            @* Đáp án C *@
+            <div class="form-group row">
+                <label class="col-6 form-label">Chọn loại đáp án (C)</label>
+                <div class="col">
+                    <div>
+                        <input type="radio" id="textC" name="optionTypeC" value="text" onclick="toggleOptionInput('text', 'C')" @(isOptionCText ? "checked" : "")>
+                        <label for="textC">Text</label>
+                        <input type="radio" id="imageC" name="optionTypeC" value="image" onclick="toggleOptionInput('image', 'C')" @(!isOptionCText ? "checked" : "")>
+                        <label for="imageC">Hình ảnh</label>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="OptionDImage" class="control-label"></label>
-                <input asp-for="OptionDImage" class="form-control" />
-                <span asp-validation-for="OptionDImage" class="text-danger"></span>
+            <div id="textOptionC" class="form-group row @(isOptionCText ? "" : "hidden")">
+                <label asp-for="OptionC" class="col-6 form-label">Đáp án C</label>
+                <div class="col">
+                    <input asp-for="OptionC" id="textOptionInputC" class="form-control" placeholder="Nhập đáp án" />
+                    <span asp-validation-for="OptionC" class="text-danger form-text"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="CorrectAnswer" class="control-label"></label>
-                <input asp-for="CorrectAnswer" class="form-control" />
-                <span asp-validation-for="CorrectAnswer" class="text-danger"></span>
+            <div id="imageOptionC" class="form-group row @(!isOptionCText ? "" : "hidden")">
+                <div class="form-group row">
+                    <label for="File" class="col-6 form-label"> Chọn hình ảnh cho đáp án C</label>
+                    <div class="col-6">
+                        <input type="file" id="OptionCFile" name="OptionCFile" class="form-control-file" accept="image/*" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-6 form-label"></label>
+                    <div class="col-6">
+                        @{
+                            string urlC = "";
+                            if (string.IsNullOrEmpty(Model.OptionCImage))
+                            {
+                                urlC = "~/images/placehold.png";
+                            }
+                            else
+                            {
+                                urlC = Model.OptionCImage;
+                            }
+                        }
+                        <img id="previewImageC" src="@Url.Content(urlC)"
+                             style="width: 300px;
+                            height: 200px;
+                            margin-top: -15px;
+                            border: 3px solid #eeeeee;
+                            border-radius: 15px;
+                            object-fit: contain;" />
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
+
+            @* Đáp án D *@
+            <div class="form-group row">
+                <label class="col-6 form-label">Chọn loại đáp án (D)</label>
+                <div class="col">
+                    <div>
+                        <input type="radio" id="textD" name="optionTypeD" value="text" onclick="toggleOptionInput('text', 'D')" @(isOptionDText ? "checked" : "")>
+                        <label for="textD">Text</label>
+                        <input type="radio" id="imageD" name="optionTypeD" value="image" onclick="toggleOptionInput('image', 'D')" @(!isOptionDText ? "checked" : "")>
+                        <label for="imageD">Hình ảnh</label>
+                    </div>
+                </div>
+            </div>
+            <div id="textOptionD" class="form-group row @(isOptionDText ? "" : "hidden")">
+                <label asp-for="OptionD" class="col-6 form-label">Đáp án D</label>
+                <div class="col">
+                    <input asp-for="OptionD" id="textOptionInputD" class="form-control" placeholder="Nhập đáp án" />
+                    <span asp-validation-for="OptionD" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div id="imageOptionD" class="form-group row @(!isOptionDText ? "" : "hidden")">
+                <div class="form-group row">
+                    <label for="File" class="col-6 form-label"> Chọn hình ảnh cho đáp án D</label>
+                    <div class="col-6">
+                        <input type="file" id="OptionDFile" name="OptionDFile" class="form-control-file" accept="image/*" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-6 form-label"></label>
+                    <div class="col-6">
+                        @{
+                            string urlD = "";
+                            if (string.IsNullOrEmpty(Model.OptionDImage))
+                            {
+                                urlD = "~/images/placehold.png";
+                            }
+                            else
+                            {
+                                urlD = Model.OptionDImage;
+                            }
+                        }
+                        <img id="previewImageD" src="@Url.Content(urlD)"
+                             style="width: 300px;
+                            height: 200px;
+                            margin-top: -15px;
+                            border: 3px solid #eeeeee;
+                            border-radius: 15px;
+                            object-fit: contain;" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="CorrectAnswer" class="col-6 form-label">Chọn đáp án đúng</label>
+                <div class="col">
+                    <select asp-for="CorrectAnswer" class="form-control">
+                        <option value="">Chọn đáp án</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                    <span asp-validation-for="CorrectAnswer" class="text-danger form-text"></span>
+                </div>
+            </div>
+
+            <div class="form-group d-none">
                 <label asp-for="SchoolId" class="control-label"></label>
                 <input asp-for="SchoolId" class="form-control" />
                 <span asp-validation-for="SchoolId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label asp-for="SubjectId" class="control-label"></label>
                 <input asp-for="SubjectId" class="form-control" />
                 <span asp-validation-for="SubjectId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="GetAll_Question">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.getElementById('QuestionFile').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function addFileChangeListener(option, previewId) {
+            document.getElementById(option).addEventListener('change', function (event) {
+                var file = event.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        document.getElementById(previewId).src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        addFileChangeListener('OptionAFile', 'previewImageA');
+        addFileChangeListener('OptionBFile', 'previewImageB');
+        addFileChangeListener('OptionCFile', 'previewImageC');
+        addFileChangeListener('OptionDFile', 'previewImageD');
+
+    </script>
+    <script>
+        function toggleOptionInput(option, answer) {
+            var textOption = document.getElementById('textOption' + answer);
+            var imageOption = document.getElementById('imageOption' + answer);
+            var textInput = document.getElementById('textOptionInput' + answer);
+            var imageInput = document.getElementById('Option' + answer + 'File');
+            var imagePreview = document.getElementById('previewImage' + answer);
+
+            if (option === 'text') {
+                textOption.classList.remove('hidden');
+                imageOption.classList.add('hidden');
+                imageInput.value = "";
+                imagePreview.src = "@Url.Content("~/images/placehold.png")";
+            } else if (option === 'image') {
+                textOption.classList.add('hidden');
+                imageOption.classList.remove('hidden');
+                textInput.value = "";
+            }
+        }
+    </script>
 }
