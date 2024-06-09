@@ -294,5 +294,10 @@ namespace SaRLAB.DataAccess.Service.UserService
         });
             return users.ToList();
         }
+
+        public List<UserDto> GetAllUserInSchoolRoleUser(int school)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
