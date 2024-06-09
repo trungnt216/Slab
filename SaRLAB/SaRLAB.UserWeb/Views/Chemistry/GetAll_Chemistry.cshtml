@@ -5,8 +5,8 @@
     Layout = "~/Views/Chemistry/_LayoutChem.cshtml";
     ViewBag.TitleCustom = "Danh sách dự trù hóa chất";
     int counter = 1;
+    int expiredItemCount = 0;
 }
-
 <style>
     .modal {
         display: none;
@@ -147,6 +147,12 @@
 
                                 var props = item.Property == "poison" ? "Độc" : "An toàn";
                                 var backgroundColor = item.Property == "poison" ? "#a8424c" : "#32a771";
+
+                                if (item.ExpiredTime <= currentTime)
+                                {
+                                    expiredItemCount++;
+                                }
+
                                 <tr style="@style">
                                     <td>
                                         @counter
@@ -222,6 +228,10 @@
                         }
                     </tbody>
                 </table>
+                <div class="d-flex group-expired" style="float: right";>
+                    <i class="fa-solid fa-face-dizzy"></i>
+                    <p class="text-expired">@expiredItemCount hóa chất đã hết hạn</p>
+                </div>
                 @if (Model == null || !Model.Any())
                 {
                     <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>

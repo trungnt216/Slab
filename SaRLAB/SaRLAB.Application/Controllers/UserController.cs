@@ -190,7 +190,7 @@ namespace SaRLAB.Application.Controllers
         [Route("GetAllAdminUser/{schoolId}")]
         public IActionResult GetAllAdminUser(int schoolId)
         {
-            return Ok(_loginDto.GetUsersByRole(1, schoolId,0));
+            return Ok(_loginDto.GetUsersByRole(1, schoolId, 0));
         }
 
         //lấy toàn bộ user có schoolID, subjectID được nhập vào và có role là Teacher
@@ -198,7 +198,7 @@ namespace SaRLAB.Application.Controllers
         [Route("GetAllTeacherUser/{schoolId}/{subjectId}")]
         public IActionResult GetAllTeacherUser(int schoolId, int subjectId)
         {
-            return Ok(_loginDto.GetUsersByRole(3,schoolId,subjectId));
+            return Ok(_loginDto.GetUsersByRole(3, schoolId, subjectId));
         }
 
         //lấy toàn bộ user có schoolID, subjectID được nhập vào và có role là Technical
@@ -222,7 +222,7 @@ namespace SaRLAB.Application.Controllers
         [Route("GetAllUserInSchoolRoleUser/{schoolId}")]
         public IActionResult GetAllUserInSchoolRoleUser(int schoolId)
         {
-            return Ok(_loginDto.GetUsersByRole(5,schoolId,0));
+            return Ok(_loginDto.GetUsersByRole(5, schoolId, 0));
         }
     }
 }

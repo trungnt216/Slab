@@ -80,6 +80,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "virtualLab";
             ViewBag.ActiveSubMenuLv2 = "experience";
@@ -102,6 +103,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
@@ -123,6 +125,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "virtualLab";
                         ViewBag.ActiveSubMenuLv2 = "experience";
@@ -132,11 +135,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "virtualLab";
                     ViewBag.ActiveSubMenuLv2 = "experience";
                     return RedirectToAction("GetAll_Experiment");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
@@ -145,6 +150,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
@@ -169,6 +175,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
@@ -184,6 +191,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveSubMenu = "virtualLab";
                         ViewBag.ActiveSubMenuLv2 = "experience";
                         return RedirectToAction("GetAll_Experiment");
@@ -192,11 +200,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "virtualLab";
                     ViewBag.ActiveSubMenuLv2 = "experience";
                     return RedirectToAction("GetAll_Experiment");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
@@ -205,6 +215,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
@@ -231,6 +242,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "virtualLab";
             ViewBag.ActiveSubMenuLv2 = "experience";
@@ -256,6 +268,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "virtualLab";
             ViewBag.ActiveSubMenuLv2 = "conspectus";
@@ -278,6 +291,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
@@ -298,6 +312,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "virtualLab";
                         ViewBag.ActiveSubMenuLv2 = "conspectus";
@@ -307,11 +322,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "virtualLab";
                     ViewBag.ActiveSubMenuLv2 = "conspectus";
                     return RedirectToAction("GetAll_Conspectus");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
@@ -320,6 +337,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
@@ -343,6 +361,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
@@ -358,6 +377,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "virtualLab";
                         ViewBag.ActiveSubMenuLv2 = "conspectus";
@@ -367,11 +387,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "virtualLab";
                     ViewBag.ActiveSubMenuLv2 = "conspectus";
                     return RedirectToAction("GetAll_Conspectus");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
@@ -380,6 +402,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
@@ -405,6 +428,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "virtualLab";
             ViewBag.ActiveSubMenuLv2 = "conspectus";
@@ -445,6 +469,7 @@ namespace SaRLAB.AdminWeb.Controllers
             documents.AddRange(document1);
             documents.AddRange(document2);
 
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "virtualLab";
             ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
@@ -468,6 +493,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
@@ -488,6 +514,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "virtualLab";
                         ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
@@ -497,11 +524,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "virtualLab";
                     ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                     return RedirectToAction("GetAll_Inorganic_Organic");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
@@ -510,6 +539,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
@@ -533,6 +563,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
@@ -548,6 +579,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "virtualLab";
                         ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
@@ -557,11 +589,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "virtualLab";
                     ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                     return RedirectToAction("GetAll_Inorganic_Organic");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
@@ -570,6 +604,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
@@ -596,6 +631,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "virtualLab";
             ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
@@ -621,6 +657,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "giaotrinh";
             ViewBag.ActiveSubMenuLv2 = "inorganic";
@@ -644,6 +681,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "giaotrinh";
                 ViewBag.ActiveSubMenuLv2 = "inorganic";
@@ -664,6 +702,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "giaotrinh";
                         ViewBag.ActiveSubMenuLv2 = "inorganic";
@@ -673,11 +712,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "giaotrinh";
                     ViewBag.ActiveSubMenuLv2 = "inorganic";
                     return RedirectToAction("GetAll_Inorganic");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "giaotrinh";
                 ViewBag.ActiveSubMenuLv2 = "inorganic";
@@ -686,6 +727,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "giaotrinh";
                 ViewBag.ActiveSubMenuLv2 = "inorganic";
@@ -709,6 +751,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "giaotrinh";
                 ViewBag.ActiveSubMenuLv2 = "inorganic";
@@ -724,6 +767,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "giaotrinh";
                         ViewBag.ActiveSubMenuLv2 = "inorganic";
@@ -733,11 +777,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "giaotrinh";
                     ViewBag.ActiveSubMenuLv2 = "inorganic";
                     return RedirectToAction("GetAll_Inorganic");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "giaotrinh";
                 ViewBag.ActiveSubMenuLv2 = "inorganic";
@@ -746,6 +792,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "giaotrinh";
                 ViewBag.ActiveSubMenuLv2 = "inorganic";
@@ -770,7 +817,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "giaotrinh";
             ViewBag.ActiveSubMenuLv2 = "inorganic";
@@ -795,7 +842,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = responses.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "giaotrinh";
             ViewBag.ActiveSubMenuLv2 = "organic";
@@ -836,6 +883,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "giaotrinh";
                         ViewBag.ActiveSubMenuLv2 = "organic";
@@ -845,11 +893,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "giaotrinh";
                     ViewBag.ActiveSubMenuLv2 = "organic";
                     return RedirectToAction("GetAll_Organic");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "giaotrinh";
                 ViewBag.ActiveSubMenuLv2 = "organic";
@@ -857,6 +907,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             else
             {
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "giaotrinh";
                 ViewBag.ActiveSubMenuLv2 = "organic";
@@ -893,6 +944,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "giaotrinh";
                         ViewBag.ActiveSubMenuLv2 = "organic";
@@ -902,11 +954,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "giaotrinh";
                     ViewBag.ActiveSubMenuLv2 = "organic";
                     return RedirectToAction("GetAll_Organic");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "giaotrinh";
                 ViewBag.ActiveSubMenuLv2 = "organic";
@@ -914,6 +968,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             else
             {
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "giaotrinh";
                 ViewBag.ActiveSubMenuLv2 = "organic";
@@ -939,7 +994,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "giaotrinh";
             ViewBag.ActiveSubMenuLv2 = "organic";
@@ -964,7 +1019,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = responses.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "virtualLab";
             ViewBag.ActiveSubMenuLv2 = "biological";
@@ -1005,6 +1060,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "virtualLab";
                         ViewBag.ActiveSubMenuLv2 = "biological";
@@ -1014,11 +1070,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "virtualLab";
                     ViewBag.ActiveSubMenuLv2 = "biological";
                     return RedirectToAction("GetAll_Biological");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
@@ -1027,6 +1085,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
@@ -1062,6 +1121,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "virtualLab";
                         ViewBag.ActiveSubMenuLv2 = "biological";
@@ -1071,11 +1131,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "virtualLab";
                     ViewBag.ActiveSubMenuLv2 = "biological";
                     return RedirectToAction("GetAll_Biological");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
@@ -1084,6 +1146,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "virtualLab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
@@ -1108,7 +1171,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "virtualLab";
             ViewBag.ActiveSubMenuLv2 = "biological";
@@ -1132,7 +1195,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = responses.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "tienganh";
             ViewBag.ActiveSubMenuLv2 = "vocabulary";
@@ -1173,6 +1236,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "tienganh";
                         ViewBag.ActiveSubMenuLv2 = "vocabulary";
@@ -1182,11 +1246,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "tienganh";
                     ViewBag.ActiveSubMenuLv2 = "vocabulary";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "vocabulary";
@@ -1195,6 +1261,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "vocabulary";
@@ -1231,6 +1298,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "tienganh";
                         ViewBag.ActiveSubMenuLv2 = "vocabulary";
@@ -1240,11 +1308,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "tienganh";
                     ViewBag.ActiveSubMenuLv2 = "vocabulary";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "vocabulary";
@@ -1253,6 +1323,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "vocabulary";
@@ -1277,7 +1348,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "tienganh";
             ViewBag.ActiveSubMenuLv2 = "vocabulary";
@@ -1302,7 +1373,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = responses.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "tienganh";
             ViewBag.ActiveSubMenuLv2 = "exam";
@@ -1326,6 +1397,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "exam";
@@ -1346,6 +1418,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "tienganh";
                         ViewBag.ActiveSubMenuLv2 = "exam";
@@ -1355,11 +1428,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "tienganh";
                     ViewBag.ActiveSubMenuLv2 = "exam";
                     return RedirectToAction("GetAll_Exam");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "exam";
@@ -1368,6 +1443,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "exam";
@@ -1391,6 +1467,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "exam";
@@ -1406,6 +1483,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "tienganh";
                         ViewBag.ActiveSubMenuLv2 = "exam";
@@ -1415,11 +1493,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "tienganh";
                     ViewBag.ActiveSubMenuLv2 = "exam";
                     return RedirectToAction("GetAll_Exam");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "exam";
@@ -1428,6 +1508,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "exam";
@@ -1452,7 +1533,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "tienganh";
             ViewBag.ActiveSubMenuLv2 = "exam";
@@ -1476,7 +1557,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = responses.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "tienganh";
             ViewBag.ActiveSubMenuLv2 = "examenglish";
@@ -1500,6 +1581,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "examenglish";
@@ -1520,6 +1602,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "tienganh";
                         ViewBag.ActiveSubMenuLv2 = "examenglish";
@@ -1529,6 +1612,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "tienganh";
                     ViewBag.ActiveSubMenuLv2 = "examenglish";
@@ -1539,6 +1623,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "examenglish";
@@ -1562,6 +1647,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "examenglish";
@@ -1577,6 +1663,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "tienganh";
                         ViewBag.ActiveSubMenuLv2 = "examenglish";
@@ -1586,6 +1673,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "tienganh";
                     ViewBag.ActiveSubMenuLv2 = "examenglish";
@@ -1596,6 +1684,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "tienganh";
                 ViewBag.ActiveSubMenuLv2 = "examenglish";
@@ -1620,7 +1709,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "tienganh";
             ViewBag.ActiveSubMenuLv2 = "examenglish";
@@ -1645,7 +1734,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = responses.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "nghiencuu";
             ViewBag.ActiveSubMenuLv2 = "departmentLevel";
@@ -1669,6 +1758,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "departmentLevel";
@@ -1689,6 +1779,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "nghiencuu";
                         ViewBag.ActiveSubMenuLv2 = "departmentLevel";
@@ -1697,12 +1788,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 }
                 catch (Exception ex)
                 {
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "nghiencuu";
                     ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Department_level");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "departmentLevel";
@@ -1711,6 +1804,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "departmentLevel";
@@ -1734,6 +1828,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "departmentLevel";
@@ -1749,6 +1844,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "nghiencuu";
                         ViewBag.ActiveSubMenuLv2 = "departmentLevel";
@@ -1757,12 +1853,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 }
                 catch (Exception ex)
                 {
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "nghiencuu";
                     ViewBag.ActiveSubMenuLv2 = "departmentLevel";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Department_level");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "departmentLevel";
@@ -1771,6 +1869,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "departmentLevel";
@@ -1795,7 +1894,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "nghiencuu";
             ViewBag.ActiveSubMenuLv2 = "departmentLevel";
@@ -1819,7 +1918,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = responses.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "nghiencuu";
             ViewBag.ActiveSubMenuLv2 = "provincialLevel";
@@ -1843,6 +1942,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "provincialLevel";
@@ -1863,6 +1963,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "nghiencuu";
                         ViewBag.ActiveSubMenuLv2 = "provincialLevel";
@@ -1872,11 +1973,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "nghiencuu";
                     ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "provincialLevel";
@@ -1885,6 +1988,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                 TempData["notice"] = "Bạn không có quyền duyệt!";
@@ -1908,6 +2012,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "provincialLevel";
@@ -1923,6 +2028,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "nghiencuu";
                         ViewBag.ActiveSubMenuLv2 = "provincialLevel";
@@ -1932,11 +2038,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "nghiencuu";
                     ViewBag.ActiveSubMenuLv2 = "provincialLevel";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "provincialLevel";
@@ -1944,6 +2052,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             else
             {
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "provincialLevel";
@@ -1969,7 +2078,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "nghiencuu";
             ViewBag.ActiveSubMenuLv2 = "provincialLevel";
@@ -1994,7 +2103,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = responses.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "nghiencuu";
             ViewBag.ActiveSubMenuLv2 = "nationalLevel";
@@ -2018,6 +2127,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "nationalLevel";
@@ -2038,6 +2148,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "nghiencuu";
                         ViewBag.ActiveSubMenuLv2 = "nationalLevel";
@@ -2047,6 +2158,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "nghiencuu";
                     ViewBag.ActiveSubMenuLv2 = "nationalLevel";
@@ -2056,6 +2168,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             else
             {
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "nationalLevel";
@@ -2080,6 +2193,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "nationalLevel";
@@ -2095,6 +2209,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "nghiencuu";
                         ViewBag.ActiveSubMenuLv2 = "nationalLevel";
@@ -2104,6 +2219,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "nghiencuu";
                     ViewBag.ActiveSubMenuLv2 = "nationalLevel";
@@ -2113,6 +2229,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             else
             {
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "nationalLevel";
@@ -2138,7 +2255,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "nghiencuu";
             ViewBag.ActiveSubMenuLv2 = "nationalLevel";
@@ -2162,7 +2279,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = responses.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
@@ -2186,6 +2303,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
@@ -2206,6 +2324,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "thuchanh";
                         ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
@@ -2215,11 +2334,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "thuchanh";
                     ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
@@ -2228,6 +2349,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
@@ -2251,6 +2373,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
@@ -2266,6 +2389,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "thuchanh";
                         ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
@@ -2275,11 +2399,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "thuchanh";
                     ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
@@ -2288,6 +2414,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
@@ -2312,7 +2439,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
@@ -2337,7 +2464,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = responses.Content.ReadAsStringAsync().Result;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practiceReport";
@@ -2360,6 +2487,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (document == null)
             {
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceReport";
@@ -2381,6 +2509,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "thuchanh";
                         ViewBag.ActiveSubMenuLv2 = "practiceReport";
@@ -2390,11 +2519,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "thuchanh";
                     ViewBag.ActiveSubMenuLv2 = "practiceReport";
                     return RedirectToAction("GetAll_Practice_report");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceReport";
@@ -2403,6 +2534,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceReport";
@@ -2425,6 +2557,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (document == null)
             {
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceReport";
@@ -2441,6 +2574,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveSubMenu = "thuchanh";
                         ViewBag.ActiveSubMenuLv2 = "practiceReport";
@@ -2450,11 +2584,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
                     ViewBag.ActiveSubMenu = "thuchanh";
                     ViewBag.ActiveSubMenuLv2 = "practiceReport";
                     return RedirectToAction("GetAll_Practice_report");
                 }
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceReport";
@@ -2463,6 +2599,7 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceReport";
@@ -2487,7 +2624,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practiceReport";

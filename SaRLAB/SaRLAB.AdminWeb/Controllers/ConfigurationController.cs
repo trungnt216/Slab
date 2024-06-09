@@ -111,7 +111,9 @@ namespace SaRLAB.AdminWeb.Controllers
             List<UserDto> users = new List<UserDto>();
 
             HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllUserInSchool/" + userLogin.SchoolId).Result;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
+
+            Console.WriteLine(_httpClient.BaseAddress + "User/GetAll");
 
             if (response.IsSuccessStatusCode)
             {
@@ -656,7 +658,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 users = JsonConvert.DeserializeObject<List<UserDto>>(data);
             }
 
-            ViewBag.ActiveMenu = "user";
+            ViewBag.ActiveMenu = "student";
             return View(users);
 
         }
@@ -681,7 +683,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 user = JsonConvert.DeserializeObject<SubjectFlag>(data);
             }
 
-            ViewBag.ActiveMenu = "user";
+            ViewBag.ActiveMenu = "student";
             return View(user);
         }
         [HttpPost]
@@ -698,7 +700,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "User create success";
-                    ViewBag.ActiveMenu = "user";
+                    ViewBag.ActiveMenu = "student";
                     return RedirectToAction("GetAllUser");
                 }
 
@@ -708,7 +710,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
-            ViewBag.ActiveMenu = "user";
+            ViewBag.ActiveMenu = "student";
             return View();
         }
     }
