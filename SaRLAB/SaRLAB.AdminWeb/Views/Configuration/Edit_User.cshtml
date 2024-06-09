@@ -1,0 +1,79 @@
+﻿@model SaRLAB.Models.Entity.SubjectFlag
+
+@{
+    ViewData["Title"] = "Edit_User";
+    Layout = "~/Views/Home/_LayoutHome.cshtml";
+}
+
+<h1>Edit_User</h1>
+
+<h4>SubjectFlag</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit_User">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MathPermissionFlag" class="control-label"></label>
+                <input asp-for="MathPermissionFlag" class="form-control" />
+                <span asp-validation-for="MathPermissionFlag" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="MathMarkFlag" class="control-label"></label>
+                <input asp-for="MathMarkFlag" class="form-control" />
+                <span asp-validation-for="MathMarkFlag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhysicPermissionFlag" class="control-label"></label>
+                <input asp-for="PhysicPermissionFlag" class="form-control" />
+                <span asp-validation-for="PhysicPermissionFlag" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="PhysicMarkFlag" class="control-label"></label>
+                <input asp-for="PhysicMarkFlag" class="form-control" />
+                <span asp-validation-for="PhysicMarkFlag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChemistryPermissionFlag" class="control-label"></label>
+                <input asp-for="ChemistryPermissionFlag" class="form-control" />
+                <span asp-validation-for="ChemistryPermissionFlag" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="ChemistryMarkFlag" class="control-label"></label>
+                <input asp-for="ChemistryMarkFlag" class="form-control" />
+                <span asp-validation-for="ChemistryMarkFlag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BiologyPermissionFlag" class="control-label"></label>
+                <input asp-for="BiologyPermissionFlag" class="form-control" />
+                <span asp-validation-for="BiologyPermissionFlag" class="text-danger"></span>
+            </div>
+            <div class="form-group d-none">
+                <label asp-for="BiologyMarkFlag" class="control-label"></label>
+                <input asp-for="BiologyMarkFlag" class="form-control" />
+                <span asp-validation-for="BiologyMarkFlag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetAll_User">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

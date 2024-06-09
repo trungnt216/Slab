@@ -636,5 +636,80 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             return View();
         }
+
+        //----------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_User()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            List<UserDto> users = new List<UserDto>();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllUserInSchoolRoleUser/" + userLogin.SchoolId).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                users = JsonConvert.DeserializeObject<List<UserDto>>(data);
+            }
+
+            ViewBag.ActiveMenu = "user";
+            return View(users);
+
+        }
+
+
+        [HttpGet]
+        public IActionResult Edit_User(string email)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            SubjectFlag user = new SubjectFlag();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "SubjectFlag/GetByID/" + email).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                user = JsonConvert.DeserializeObject<SubjectFlag>(data);
+            }
+
+            ViewBag.ActiveMenu = "user";
+            return View(user);
+        }
+        [HttpPost]
+        public IActionResult Edit_User(SubjectFlag sub)
+        {
+
+            try
+            {
+                string data = JsonConvert.SerializeObject(sub);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "SubjectFlag/Update/" + sub.UserEmail, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "User create success";
+                    ViewBag.ActiveMenu = "user";
+                    return RedirectToAction("GetAllUser");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+            ViewBag.ActiveMenu = "user";
+            return View();
+        }
     }
 }

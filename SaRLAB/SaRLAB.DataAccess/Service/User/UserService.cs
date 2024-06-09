@@ -96,6 +96,8 @@ namespace SaRLAB.DataAccess.Service.UserService
                 _user.CreateTime = DateTime.Now;
                 _user.Role_ID = user.Role_ID;
                 _user.AvtPath = user.AvtPath;
+                _user.Experience = user.Experience;
+                _user.AcademyRank = user.AcademyRank;
                 _context.SaveChanges();
             }
 
@@ -291,6 +293,11 @@ namespace SaRLAB.DataAccess.Service.UserService
             DateOfBirth = value.DateOfBirth,
         });
             return users.ToList();
+        }
+
+        public List<UserDto> GetAllUserInSchoolRoleUser(int school)
+        {
+            throw new NotImplementedException();
         }
     }
 }
