@@ -54,9 +54,22 @@
                                 <i class="fa-solid fa-hotel"></i>
                                 <p>Trường học:</p>
                             </div>
-                            <p class="detail col">Trường Đại học Bách Khoa</p>
+                            <p class="detail col">@TempData["School"]</p>
                         </div>
-
+                        <div class="detail-item-user d-flex row">
+                            <div class="title d-flex col-3">
+                                <i class="fa-solid fa-envelope"></i>
+                                <p>Kinh nghiệm:</p>
+                            </div>
+                            <p class="detail col">@Html.DisplayFor(model => model.Experience)</p>
+                        </div>
+                        <div class="detail-item-user d-flex row">
+                            <div class="title d-flex col-3">
+                                <i class="fa-solid fa-envelope"></i>
+                                <p>Học vị:</p>
+                            </div>
+                            <p class="detail col">@Html.DisplayFor(model => model.AcademyRank)</p>
+                        </div>
                         <div class="divider-user-other">
                             <p>Thông tin khác</p>
                             <hr class="solid">

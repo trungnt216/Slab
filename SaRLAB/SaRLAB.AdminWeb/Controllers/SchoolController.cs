@@ -31,7 +31,7 @@ namespace SaRLAB.AdminWeb.Controllers
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
-
+            
             string jwtToken = Program.jwtToken;
 
 

@@ -209,5 +209,20 @@ namespace SaRLAB.Application.Controllers
             return Ok(_loginDto.GetUsersByRole(4, schoolId, subjectId));
         }
 
+        //lấy toàn bộ user có schoolID được nhập vào
+        [HttpGet]
+        [Route("GetAllUserInSchool/{schoolId}")]
+        public IActionResult GetAllUserInSchool(int schoolId)
+        {
+            return Ok(_loginDto.GetAllUserInSchool(schoolId));
+        }
+
+        //lấy toàn bộ user có schoolID được nhập vào có role = 5
+        [HttpGet]
+        [Route("GetAllUserInSchoolRoleUser/{schoolId}")]
+        public IActionResult GetAllUserInSchoolRoleUser(int schoolId)
+        {
+            return Ok(_loginDto.GetUsersByRole(5,schoolId,0));
+        }
     }
 }

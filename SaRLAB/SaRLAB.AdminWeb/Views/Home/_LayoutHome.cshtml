@@ -64,6 +64,14 @@
                         </span>
                     </p>
                 </li>
+                <li class="@((ViewBag.ActiveMenu == "user") ? "active" : "")">
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <i class="fas fa-user-tie icon col-2"></i>
+                            <a class="title col-6" asp-controller="Configuration" asp-action="GetAll_User">Quản lý học sinh</a>
+                        </span>
+                    </p>
+                </li>
                 <li class="@((ViewBag.ActiveMenu == "school") ? "active" : "")">
                     <p class="d-flex justify-content-between">
                         <span class="left row">

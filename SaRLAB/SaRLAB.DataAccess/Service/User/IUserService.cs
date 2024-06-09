@@ -9,6 +9,9 @@ namespace SaRLAB.DataAccess.Service.UserService
 
         List<User> GetAllUser();
         List<User> GetUsersByRole(int role, int schoolId, int? subjectId);
+        List<UserDto> GetAllUserInSchool(int schoolId);
+
+        List<UserDto> GetAllUserInSchoolRoleUser(int school);
         User GetByID(string email);
         User GetByID_ID(int id);
 
