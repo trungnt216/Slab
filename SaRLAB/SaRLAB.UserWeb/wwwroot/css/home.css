@@ -27,7 +27,7 @@ Table of contents
 ---------------------------------------------
 font & reset css
 --------------------------------------------- 
-*/
+*/ 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 /* 
 ---------------------------------------------
@@ -531,16 +531,16 @@ header
 }
 
 .header-area .main-nav .menu-trigger {
-  cursor: pointer;
-  display: block;
-  position: absolute;
-  top: 33px;
-  width: 32px;
-  height: 40px;
-  text-indent: -9999em;
-  z-index: 99;
-  right: 40px;
-  display: none;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 33px;
+    width: 32px;
+    height: 40px;
+    text-indent: -9999em;
+    z-index: 99;
+    right: 40px;
+    display: none;
 }
 
 .background-header .main-nav .menu-trigger {
@@ -1123,6 +1123,24 @@ Banner Style
     color: #858585;
 }
 
+.group-expired {
+    justify-content: center;
+    float: right;
+    align-items: center;
+}
+
+.group-expired i {
+    color: #a8424c;
+    margin-right: 5px;
+}
+
+.group-expired .text-expired {
+    float: right;
+    font-weight: 500;
+    color: #a8424c;
+    font-style: italic;
+}
+
 /*custom button*/
 .btn-custom-create {
     background: #04af60;
@@ -1374,6 +1392,23 @@ Banner Style
     top: 12px;
     left: 10px;
 }
+
+.password-input-wrapper {
+    position: relative;
+}
+
+#passwordInput {
+    padding-right: 30px;
+}
+
+#togglePasswordVisibility {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
 
 /*popup*/
 #popupNotification {

@@ -43,10 +43,24 @@
     <script src="~/js/owl-carousel.js"></script>
     <script src="~/js/animation.js"></script>
     <script src="~/js/imagesloaded.js"></script>
-    <script src="~/js/templatemo-custom.js"></script>
+    <script src="~/js/custom.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            document.querySelector('a.menu-trigger').addEventListener('click', function () {
+                alert("heheh");
+                var nav = document.querySelector('.nav');
+                if (nav.style.display === 'none' || nav.style.display === '') {
+                    nav.style.display = 'block';
+                } else {
+                    nav.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
