@@ -158,9 +158,7 @@ namespace SaRLAB.AdminWeb.Controllers
         }
         [HttpPost]
         public IActionResult InsertUser(User user) {
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
+
             if (user == null) 
             {
                 ViewBag.ActiveMenu = "user";
@@ -224,12 +222,34 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(user);
         }
         [HttpPost]
-        public IActionResult Edit(User user)
+        public IActionResult Edit(User user, IFormFile FileImage)
         {
             user.CreateBy = userLogin.Email;
             user.CreateTime = DateTime.Now;
             user.UpdateBy = userLogin.Email;
             user.AvtPath = userLogin.AvtPath;
+
+            if (FileImage != null)
+            {
+                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
+
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileImage.CopyTo(stream);
+                }
+                user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName; ;
+            }
 
             try
             {
@@ -569,16 +589,9 @@ namespace SaRLAB.AdminWeb.Controllers
         [HttpPost]
         public IActionResult Fix_Information(User user, IFormFile FileImage)
         {
-            var _user = new User();
-            _user.Email = user.Email;
-            _user.Password = user.Password;
-            _user.Name = user.Name;
-            _user.DateOfBirth = user.DateOfBirth;
-            _user.CreateBy = user.CreateBy;
-            _user.CreateTime = user.CreateTime;
-            _user.UpdateBy = userLogin.Email;
-            _user.Role_ID = user.Role_ID;
-            _user.AvtPath = user.AvtPath;
+            user.CreateBy = user.CreateBy;
+            user.CreateTime = user.CreateTime;
+            user.UpdateBy = userLogin.Email;
 
             if (FileImage != null)
             {
@@ -599,12 +612,12 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     FileImage.CopyTo(stream);
                 }
-                _user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName; ;
+                user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName; ;
             }
 
             try
             {
-                string data = JsonConvert.SerializeObject(_user);
+                string data = JsonConvert.SerializeObject(user);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/update", content).Result;
@@ -612,18 +625,15 @@ namespace SaRLAB.AdminWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "User create success";
-                    ViewBag.ActiveMenu = "user";
-                    return RedirectToAction("GetAllUser");
+                    return RedirectToAction("Fix_Information");
                 }
 
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "user";
                 return View();
             }
-            ViewBag.ActiveMenu = "user";
             return View();
         }
     }
