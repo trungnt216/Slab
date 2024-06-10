@@ -318,5 +318,18 @@ namespace SaRLAB.DataAccess.Service.UserService
 
             return users.ToList();
         }
+
+        public List<User> GetUsersByIds(string userIds)
+        {
+            // Split the string into individual IDs
+            var ids = userIds.Split(',');
+
+            // Convert string IDs to integers
+            var userIdIntegers = ids.Select(id => int.Parse(id)).ToList();
+
+            // Find and delete users with the specified IDs
+            var usersToList = _context.Users.Where(u => userIdIntegers.Contains(u.ID)).ToList();
+            return usersToList;
+        }
     }
 }
