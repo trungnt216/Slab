@@ -257,7 +257,7 @@ namespace SaRLAB.DataAccess.Service.UserService
                 return usersToDelete.Count;
             }
 
-            return 1;
+            return 0;
         }
 
         public User GetByID_ID(int id)
@@ -298,6 +298,19 @@ namespace SaRLAB.DataAccess.Service.UserService
         public List<UserDto> GetAllUserInSchoolRoleUser(int school)
         {
             throw new NotImplementedException();
+        }
+
+        public List<User> GetUsersByIds(string userIds)
+        {
+            // Split the string into individual IDs
+            var ids = userIds.Split(',');
+
+            // Convert string IDs to integers
+            var userIdIntegers = ids.Select(id => int.Parse(id)).ToList();
+
+            // Find and delete users with the specified IDs
+            var usersToList = _context.Users.Where(u => userIdIntegers.Contains(u.ID)).ToList();
+            return usersToList;
         }
     }
 }
