@@ -76,7 +76,7 @@
                     <p class="d-flex justify-content-between">
                         <span class="left row">
                             <i class="fas fa-user-tie icon col-2"></i>
-                            <a class="title col-6" asp-controller="Configuration" asp-action="GetAll_User">Quản lý học sinh</a>
+                            <a class="title col-6" asp-controller="Configuration" asp-action="GetAll_User">Quản lý truy cập</a>
                         </span>
                     </p>
                 </li>
@@ -191,6 +191,298 @@
                                     <a class="title col-6">Sinh học</a>
                                 </span>
                             </p>
+                            <ul id="bio" class="nested">
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('cauhoiantoan_sinh')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Câu hỏi an toàn</a>
+                                        </span>
+                                    </p>
+                                    <ul id="cauhoiantoan_sinh" class="nested">
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Question">Câu hỏi an toàn phòng thí nghiệm</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('virtuallab_sinh')">
+                                        <span class="left d-flex sub-menu-title" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a class="@((ViewBag.ActiveSubMenu == "virtuallab_sinh") ? "active" : "")">Virtual
+                                                Lab</a>
+                                        </span>
+                                    </p>
+                                    <ul id="virtuallab_sinh"
+                                        class="nested @((ViewBag.ActiveSubMenu == "virtuallab_sinh") ? "active" : "")">
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Experiment" class="@((ViewBag.ActiveSubMenuLv2 == "experience") ? "active" : "")">Thực nghiệm</a></li>
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Conspectus">Đại cương</a></li>
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Biological">Hoạt tính sinh học</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('giaotrinh_sinh')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Giáo trình</a>
+                                        </span>
+                                    </p>
+                                    <ul id="giaotrinh_sinh" class="nested">
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Conspectus">Đại cương</a></li>
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Experiment">Thực nghiệm</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('thuchanh_sinh')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Thực hành</a>
+                                        </span>
+                                    </p>
+                                    <ul id="thuchanh_sinh" class="nested">
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Preparation_questions">Câu hỏi chuẩn bị</a></li>
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Practice_report">Báo cáo thực hành</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('nghiencuu_sinh')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Nghiên cứu</a>
+                                        </span>
+                                    </p>
+                                    <ul id="nghiencuu_sinh" class="nested">
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Department_level">Đề tài cấp sở</a></li>
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Provincial_level">Đề tài cấp tỉnh</a></li>
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_National_level">Đề tài cấp quốc gia</a>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('tienganhchuyennganh_sinh')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Tiếng anh chuyên ngành</a>
+                                        </span>
+                                    </p>
+                                    <ul id="tienganhchuyennganh_sinh" class="nested">
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Vocabulary">Từ vựng</a></li>
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Examenglish">Bài giảng song ngữ</a></li>
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Exam">Bài tập</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('physic')">
+                                <span class="left row">
+                                    <i class="fa-solid fa-atom col-2"></i>
+                                    <a class="title col-6">Vật lý</a>
+                                </span>
+                            </p>
+                            <ul id="physic" class="nested">
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('cauhoiantoan_vatly')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Câu hỏi an toàn</a>
+                                        </span>
+                                    </p>
+                                    <ul id="cauhoiantoan_vatly" class="nested">
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Question">Câu hỏi an toàn phòng thí nghiệm</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('virtuallab_vatly')">
+                                        <span class="left d-flex sub-menu-title" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a class="@((ViewBag.ActiveSubMenu == "virtuallab_vatly") ? "active" : "")">Virtual
+                                                Lab</a>
+                                        </span>
+                                    </p>
+                                    <ul id="virtuallab_vatly"
+                                        class="nested @((ViewBag.ActiveSubMenu == "virtuallab_vatly") ? "active" : "")">
+                                        <li class="menu-item"><a asp-controller="Physics" asp-action="GetAll_Experiment"
+                                                class="@((ViewBag.ActiveSubMenuLv2 == "experience") ? "active" : "")">Thực
+                                                nghiệm</a></li>
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Conspectus">Đại cương</a></li>
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Biological">Hoạt tính sinh học</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('giaotrinh_vatly')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Giáo trình</a>
+                                        </span>
+                                    </p>
+                                    <ul id="giaotrinh_vatly" class="nested">
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Conspectus">Đại cương</a></li>
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Experiment">Thực nghiệm</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('thuchanh_vatly')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Thực hành</a>
+                                        </span>
+                                    </p>
+                                    <ul id="thuchanh_vatly" class="nested">
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Preparation_questions">Câu hỏi chuẩn bị</a></li>
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Practice_report">Báo cáo thực hành</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('nghiencuu_vatly')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Nghiên cứu</a>
+                                        </span>
+                                    </p>
+                                    <ul id="nghiencuu_vatly" class="nested">
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Department_level">Đề tài cấp sở</a></li>
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Provincial_level">Đề tài cấp tỉnh</a></li>
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_National_level">Đề tài cấp quốc gia</a>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('tienganhchuyennganh_vatly')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Tiếng anh chuyên ngành</a>
+                                        </span>
+                                    </p>
+                                    <ul id="tienganhchuyennganh_vatly" class="nested">
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Vocabulary">Từ vựng</a></li>
+                                        <li class="menu-item"><a asp-controller="Physics"
+                                                asp-action="GetAll_Examenglish">Bài giảng song ngữ</a></li>
+                                        <li class="menu-item"><a asp-controller="Physics" asp-action="GetAll_Exam">Bài
+                                                tập</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('math')">
+                                <span class="left row">
+                                    <i class="fa-solid fa-square-root-alt col-2"></i>
+                                    <a class="title col-6">Toán</a>
+                                </span>
+                            </p>
+                            <ul id="math" class="nested">
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('cauhoiantoan_toan')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Câu hỏi an toàn</a>
+                                        </span>
+                                    </p>
+                                    <ul id="cauhoiantoan_toan" class="nested">
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Question">Câu hỏi an toàn phòng thí nghiệm</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('virtuallab_toan')">
+                                        <span class="left d-flex sub-menu-title" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a class="@((ViewBag.ActiveSubMenu == "virtuallab_toan") ? "active" : "")">Virtual
+                                                Lab</a>
+                                        </span>
+                                    </p>
+                                    <ul id="virtuallab_toan"
+                                        class="nested @((ViewBag.ActiveSubMenu == "virtuallab_toan") ? "active" : "")">
+                                        <li class="menu-item"><a asp-controller="Math" asp-action="GetAll_Experiment"
+                                                class="@((ViewBag.ActiveSubMenuLv2 == "experience") ? "active" : "")">Thực
+                                                nghiệm</a></li>
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Conspectus">Đại cương</a></li>
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Biological">Hoạt tính sinh học</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('giaotrinh_toan')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Giáo trình</a>
+                                        </span>
+                                    </p>
+                                    <ul id="giaotrinh_toan" class="nested">
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Conspectus">Đại cương</a></li>
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Experiment">Thực nghiệm</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('thuchanh_toan')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Thực hành</a>
+                                        </span>
+                                    </p>
+                                    <ul id="thuchanh_toan" class="nested">
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Preparation_questions">Câu hỏi chuẩn bị</a></li>
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Practice_report">Báo cáo thực hành</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('nghiencuu_toan')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Nghiên cứu</a>
+                                        </span>
+                                    </p>
+                                    <ul id="nghiencuu_toan" class="nested">
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Department_level">Đề tài cấp sở</a></li>
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Provincial_level">Đề tài cấp tỉnh</a></li>
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_National_level">Đề tài cấp quốc gia</a>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                        onclick="toggleMenu('tienganhchuyennganh_toan')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Tiếng anh chuyên ngành</a>
+                                        </span>
+                                    </p>
+                                    <ul id="tienganhchuyennganh_toan" class="nested">
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Vocabulary">Từ vựng</a></li>
+                                        <li class="menu-item"><a asp-controller="Math"
+                                                asp-action="GetAll_Examenglish">Bài giảng song ngữ</a></li>
+                                        <li class="menu-item"><a asp-controller="Math" asp-action="GetAll_Exam">Bài
+                                                tập</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>

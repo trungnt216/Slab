@@ -2641,7 +2641,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetQuizzes/" + userLogin.SchoolId + "/1").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/1").Result;
 
             if (response.IsSuccessStatusCode)
             {

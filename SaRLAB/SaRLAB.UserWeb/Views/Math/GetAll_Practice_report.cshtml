@@ -74,7 +74,8 @@
                 <partial name="_TitleCustom">
                     <div class="table-action d-flex justify-content-between">
                         <partial name="_SearchBox" />
-                        <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_Practice_report">
+                        <a class="btn-custom-create" type="button" asp-controller="Math"
+                            asp-action="Create_Practice_report">
                             <i class="fa-solid fa-plus"></i>
                             Thêm mới
                         </a>
@@ -183,7 +184,9 @@
                                         <a class="btn-custom-edit" asp-action="Edit_Practice_report" asp-route-id="@item.ID">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_Practice_report", "Chemistry", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                        <a class="btn-custom-delete" href="#"
+                                            data-url="@Url.Action("Delete_Practice_report", "Math", new { id = item.ID })"
+                                            onclick="openDeleteModal(this)">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </td>

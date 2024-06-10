@@ -310,7 +310,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.UpdateTime = DateTime.Now;
                 equipment.UpdateBy = userLogin.Email;
                 equipment.SchoolId = userLogin.SchoolId;
-                equipment.SubjectId = 1;
+                equipment.SubjectId = 3;
                 equipment.Type = "CHEMISTRYE";
                 equipment.SchoolId = userLogin.SchoolId;
 
@@ -532,7 +532,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.UpdateTime = DateTime.Now;
                 equipment.UpdateBy = userLogin.Email;
                 equipment.SchoolId = userLogin.SchoolId;
-                equipment.SubjectId = 1;
+                equipment.SubjectId = 3;
                 equipment.Type = "TOOLCHEMISTRY";
                 equipment.SchoolId = userLogin.SchoolId;
 
@@ -860,7 +860,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.UpdateTime = DateTime.Now;
                 equipment.UpdateBy = userLogin.Email;
                 equipment.SchoolId = userLogin.SchoolId;
-                equipment.SubjectId = 1;
+                equipment.SubjectId = 3;
                 equipment.Type = "EQUIPMENTCHEMISTRY";
                 equipment.SchoolId = userLogin.SchoolId;
 
@@ -1201,7 +1201,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.Type = "EXPERIMENT";
                 document.SchoolId = userLogin.SchoolId;
                 document.PageFlag = false;
@@ -1539,7 +1539,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.Type = "CONSPECTUS";
                 document.SchoolId = userLogin.SchoolId;
                 document.PageFlag = false;
@@ -1871,7 +1871,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "BIOLOGICAL";
                 document.PageFlag = false;
@@ -2199,7 +2199,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "VOCABULARY";
                 document.PageFlag = false;
@@ -2529,7 +2529,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "EXAM";
                 document.PageFlag = false;
@@ -2860,7 +2860,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "EXAMENG";
                 document.PageFlag = false;
@@ -3189,7 +3189,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "DEPARTMENTLEVEL";
                 document.PageFlag = false;
@@ -3520,7 +3520,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "PROVONCIALLEVEL";
                 document.PageFlag = false;
@@ -3849,7 +3849,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "NATIONALLEVER";
                 document.PageFlag = false;
@@ -4177,7 +4177,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "PREPARATIONQUESTION";
                 document.PageFlag = false;
@@ -4506,7 +4506,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document.UpdateTime = DateTime.Now;
                 document.UpdateBy = userLogin.Email;
                 document.SchoolId = userLogin.SchoolId;
-                document.SubjectId = 1;
+                document.SubjectId = 3;
                 document.SchoolId = userLogin.SchoolId;
                 document.Type = "NATIONALLEVER";
                 document.PageFlag = false;

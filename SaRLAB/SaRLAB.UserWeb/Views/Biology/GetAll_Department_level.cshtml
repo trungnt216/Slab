@@ -74,7 +74,7 @@
                 <partial name="_TitleCustom">
                 <div class="table-action d-flex justify-content-between">
                     <partial name="_SearchBox" />
-                    <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_Department_level">
+                    <a class="btn-custom-create" type="button" asp-controller="Biology" asp-action="Create_Department_level">
                         <i class="fa-solid fa-plus"></i>
                         Thêm mới
                     </a>
@@ -183,7 +183,7 @@
                                     <a class="btn-custom-edit" asp-action="Edit_Department_level" asp-route-id="@item.ID">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                     <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_Department_level", "Chemistry", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                     <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_Department_level", "Biology", new { id = item.ID })" onclick="openDeleteModal(this)">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>

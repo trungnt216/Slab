@@ -154,6 +154,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["Error"] = ex.Message;
                 return RedirectToAction("Login");
             }
+            TempData["Error"] = "Email hoặc số điện thoại đã tồn tại";
             return RedirectToAction("Login");
         }
     }

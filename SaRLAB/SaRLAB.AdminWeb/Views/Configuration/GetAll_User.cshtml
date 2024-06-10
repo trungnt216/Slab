@@ -124,6 +124,9 @@
                     <th class="d-none">
                         @Html.DisplayNameFor(model => model.CreateTime)
                     </th>
+                      <th>
+                        Vai trò
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -162,6 +165,43 @@
                         <td class="d-none">
                             @Html.DisplayFor(modelItem => item.CreateTime)
                         </td>
+                       
+                            @{
+                                string backgroundColor = "";
+
+                                if (item.RoleName == "Admin")
+                                {
+                                    backgroundColor = "#115b9a";
+                                }
+                                else if (item.RoleName == "Owner")
+                                {
+                                    backgroundColor = "#9d2d38";
+                                }
+                                else if (item.RoleName == "Teacher")
+                                {
+                                    backgroundColor = "#7badd9";
+                                }
+                                else if (item.RoleName == "Technical")
+                                {
+                                    backgroundColor = "#c76871";
+                                }
+                                else if (item.RoleName == "User")
+                                {
+                                    backgroundColor = "#efd37d";
+                                }
+                            }
+                            <td>
+                                <p style="
+                                    margin: 0;
+                                    background: @backgroundColor;
+                                    padding: 2px;
+                                    text-align: center;
+                                    border-radius: 15px;
+                                    color: white;
+                                    font-size: 12px">
+                                    @Html.DisplayFor(modelItem => item.RoleName)
+                                </p>
+                            </td>
                         <td>
                                 <a class="btn-custom-edit-by-email" asp-action="Edit_User" asp-route-email="@item.Email">
                                 <i class="fa-solid fa-pen-to-square"></i>
