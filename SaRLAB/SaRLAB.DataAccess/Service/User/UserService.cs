@@ -300,7 +300,7 @@ namespace SaRLAB.DataAccess.Service.UserService
         public List<UserDto> GetAllUserInSchoolRoleUser(int school)
         {
             var users = _context.Users
-            .Where(user => user.SchoolId == school && user.Role_ID == 5)
+            .Where(user => user.SchoolId == school && (user.Role_ID == 5 || user.Role_ID == 4 || user.Role_ID == 3))
             .Select(value => new UserDto
             {
                 ID = value.ID,

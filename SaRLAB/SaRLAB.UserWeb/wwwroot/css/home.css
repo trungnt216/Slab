@@ -293,6 +293,10 @@ header
     background: linear-gradient(to top, #a17d10, #7f5f00);
 }
 
+.header-area-bio {
+  background: linear-gradient(to top, #96b4e0, #0d4291);
+}
+
 .header-area-library {
     background: linear-gradient(to top, #5d3407, #7d600a);
 }
