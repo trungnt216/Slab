@@ -13,5 +13,7 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
         SubjectFlag getSubjectFlagByUserEmail(String userEmail);
         int InsertSubjectFlag(String userEmail);
         int updateSubjectFlag(String userEmail, SubjectFlag subjectFlag);
+        int DeleteByUserEmail(String userEmail);
+        void DeleteByUserEmails(String userEmails);
     }
 }

@@ -16,6 +16,31 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
             _context = context;
         }
 
+        public int DeleteByUserEmail(string userEmail)
+        {
+            var flagsToDelete = _context.SubjectFlags.Where(u => u.UserEmail == userEmail).ToList();
+
+            if (flagsToDelete.Any())
+            {
+                _context.SubjectFlags.RemoveRange(flagsToDelete);
+                _context.SaveChanges();
+                return flagsToDelete.Count;
+            }
+
+            return 0;
+        }
+
+        public void DeleteByUserEmails(string userEmails)
+        {
+            var emails = userEmails.Split(',');
+            var flagsToDelete = _context.SubjectFlags.Where(u => emails.Contains(u.UserEmail)).ToList();
+
+            if (flagsToDelete.Any())
+            {
+                _context.SubjectFlags.RemoveRange(flagsToDelete);
+                _context.SaveChanges();
+            }
+        }
 
         public SubjectFlag getSubjectFlagByUserEmail(String userEmail)
         {
