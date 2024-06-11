@@ -160,7 +160,9 @@ namespace SaRLAB.Application.Controllers
         [Route("DeleteById/{id}")]
         public IActionResult DeleteById(int id)
         {
+            var user = _loginDto.GetByID_ID(id);
             _loginDto.DeleteById(id);
+            _subjectFlag.DeleteByUserEmail(user.Email);
             return Ok("User deleted successfully.");
         }
 
@@ -172,7 +174,9 @@ namespace SaRLAB.Application.Controllers
             {
                 return BadRequest("User IDs are required.");
             }
-
+            List<User> listUsers = _loginDto.GetUsersByIds(userIds);
+            string emails = string.Join(",", listUsers.Select(u => u.Email));
+            _subjectFlag.DeleteByUserEmails(emails);
             _loginDto.DeleteByIds(userIds);
             return Ok("Users deleted successfully.");
         }
