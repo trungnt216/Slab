@@ -11,7 +11,7 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
-        background: linear-gradient(to top, #a17d10, #ceab44);
+        background: linear-gradient(to top, #5d3407, #7d600a);
         box-shadow: 0 8px 16px rgb(0 0 0 / 6%);
         z-index: 1;
         border: none;
@@ -47,7 +47,7 @@
     }
 
     a.submenu:hover {
-       color: #e9c290 !important;
+        color: #e9c290 !important;
     }
 
     a.submenu i {
@@ -56,8 +56,14 @@
 </style>
 
 <ul class="nav">
-    <li class="scroll-to-section menu"><a data-toggle="dropdown" asp-controller="HomePage" asp-action="Home">Chung</a></li>
-    <li class="scroll-to-section logout menu"><div class="main-red-button"><a asp-controller="HomePage" asp-action="Logout">Đăng xuất</a></div></li>
+    <li class="scroll-to-section menu"><a class="menu" data-toggle="dropdown" asp-controller="HomePage" asp-action="Home">Chung</a></li>
+    <li class="scroll-to-section logout menu">
+        <div class="main-red-button"><a asp-controller="HomePage" asp-action="Logout">Đăng xuất</a></div>
+    </li>
+    <li class="scroll-to-section logout-trigger menu">
+        <a class="menu" asp-controller=" HomePage"
+           asp-action="Logout">Đăng xuất</a>
+    </li>
 </ul>
 <a class='menu-trigger'>
     <span>Menu</span>

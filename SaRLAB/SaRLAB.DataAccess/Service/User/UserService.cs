@@ -257,7 +257,7 @@ namespace SaRLAB.DataAccess.Service.UserService
                 return usersToDelete.Count;
             }
 
-            return 1;
+            return 0;
         }
 
         public User GetByID_ID(int id)

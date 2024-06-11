@@ -1,7 +1,24 @@
 ﻿.quiz {
-    background: linear-gradient(to top left, #ffc107, #b39538);
     padding: 50px;
+    min-height: 100vh;
 }
+
+.quiz-chem {
+    background: linear-gradient(to top left, #ffc107, #b39538);
+}
+
+.quiz-bio {
+    background: linear-gradient(to top left, #001c46, #5292f2);
+}
+
+.quiz-math {
+    background: linear-gradient(to top left, #760712, #d63f4e);
+}
+
+.quiz-phys {
+    background: linear-gradient(to top left, #0f5132, #35b77b);
+}
+
 
 .header-title {
     text-align: center;
@@ -10,8 +27,24 @@
     color: #c49e2c;
 }
 
+.header-chem {
+    color: #c49e2c;
+}
+
+.header-bio {
+    color: #084298;
+}
+
+.header-math {
+    color: #971824;
+}
+
+.header-phys {
+    color: #16784a;
+}
+
 .quiz-container {
-    background: #fffae9;
+    background: #ffffffe8;
     padding: 30px;
     border-radius: 10px;
     width: 70%;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SaRLAB.DataAccess.Service.SubjectFlagService
 {
-    public  interface ISubjectFlagService
+    public interface ISubjectFlagService
     {
 
         SubjectFlag getSubjectFlagByUserEmail(String userEmail);
