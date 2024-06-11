@@ -14,7 +14,7 @@ namespace SaRLAB.UserWeb.Controllers
 {
     public class LoginController : Controller
     {
-        Uri baseAddress = new Uri("http://localhost:5200/api/");
+        Uri baseAddress = new Uri("http://api.sarlabeducation.com/api/");
         private readonly HttpClient _httpClient;
 
         private readonly IConfiguration _configuration;
@@ -28,7 +28,7 @@ namespace SaRLAB.UserWeb.Controllers
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
-            _configuration["PathFolder:Value"] = "https://localhost:7050//";
+            _configuration["PathFolder:Value"] = "https://user.sarlabeducation.com//";
         }
 
         public void DecodeJwtToken(string jwtToken)

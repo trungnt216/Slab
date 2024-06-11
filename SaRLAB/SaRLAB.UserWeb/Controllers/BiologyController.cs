@@ -15,7 +15,7 @@ namespace SaRLAB.UserWeb.Controllers
 
         private readonly IWebHostEnvironment _env;
 
-        Uri baseAddress = new Uri("http://localhost:5200/api/");
+        Uri baseAddress = new Uri("http://api.sarlabeducation.com/api/"); 
         private readonly HttpClient _httpClient;
 
         private readonly IConfiguration _configuration;

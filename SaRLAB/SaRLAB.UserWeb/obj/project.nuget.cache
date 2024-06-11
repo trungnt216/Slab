@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rmyq+kQac/l7yWWprmEf+Zqc7x8ZGCVM1bgzFN1DYPOjdrUZ6ua+ock6Z8p95Am3J4PXUjcc2jYYY4baMFT41g==",
+  "dgSpecHash": "nl/9bwF2x34ARleNdCurPRKLoF1nIbihVVb9Rfr9YS0Ui8pjcblI6YiXdgGVRpxQRnfBpDArboTuCE7IL4zaCw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\This PC\\Desktop\\Sarlabne\\Slab\\SaRLAB\\SaRLAB.UserWeb\\SaRLAB.UserWeb.csproj",
+  "projectFilePath": "C:\\Users\\This PC\\Desktop\\sala\\Slab\\SaRLAB\\SaRLAB.UserWeb\\SaRLAB.UserWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\This PC\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\This PC\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
