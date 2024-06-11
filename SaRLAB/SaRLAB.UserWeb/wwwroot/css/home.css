@@ -104,10 +104,34 @@ header, nav, section, article, aside, footer, hgroup {
 
 html, body {
     font-family: Montserrat, sans-serif !important;
-    background-color: #ebd2b0;
     -ms-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/*chem*/
+#bg-chem {
+    background-color: #ebd2b0;
+}
+
+/*bio*/
+#bg-bio {
+    background-color: #c1daff;
+}
+
+/*math*/
+#bg-math {
+    background-color: #fce2e5;
+}
+
+/*phys*/
+#bg-phys {
+    background-color: #caefde;
+}
+
+/*library*/
+#bg-library {
+    background-color: #dbc9ab;
 }
 
 a {
@@ -213,9 +237,9 @@ html, body {
     letter-spacing: 0.25px;
 }
 
-.main-red-button a {
+
+.header-area .main-red-button a {
     display: inline-block;
-    background-color: #e9c288;
     font-size: 15px;
     font-weight: 400;
     color: #fff;
@@ -225,17 +249,52 @@ html, body {
     letter-spacing: 0.25px;
 }
 
-    .main-red-button a:hover {
-        display: inline-block;
-        background-color: #ceab76;
-        font-size: 15px;
-        font-weight: 400;
-        color: #fff;
-        text-transform: capitalize;
-        padding: 12px 25px;
-        border-radius: 23px;
-        letter-spacing: 0.25px;
-    }
+/*chem*/
+.header-area-chem .main-red-button a {
+    background-color: #e9c288;
+}
+
+.header-area-chem .main-red-button a:hover {
+    background-color: #ceab76;
+}
+
+/*bio*/
+.header-area-bio .main-red-button a {
+    background-color: #82b0f3;
+}
+
+.header-area-bio .main-red-button a:hover {
+    background-color: #5fa5e3;
+}
+
+
+/*math*/
+.header-area-math .main-red-button a {
+    background-color: #cc6e77;
+}
+
+.header-area-math .main-red-button a:hover {
+    background-color: #bd5c65;
+}
+
+/*phys*/
+.header-area-phys .main-red-button a {
+    background-color: #52bf8c;
+}
+
+.header-area-phys .main-red-button a:hover {
+    background-color: #2ba36b;
+}
+
+
+/*lib*/
+.header-area-library .main-red-button a {
+    background-color: #ddab6b;
+}
+
+.header-area-library .main-red-button a:hover {
+    background-color: #cf974f;
+}
 
 .main-white-button a {
     display: inline-block;
@@ -274,7 +333,15 @@ header
 }
 
 .header-area-bio {
-  background: linear-gradient(to top, #96b4e0, #0d4291);
+    background: linear-gradient(to top, #597caf, #0d4291);
+}
+
+.header-area-phys {
+    background: linear-gradient(to top, #538d72, #117245);
+}
+
+.header-area-math {
+    background: linear-gradient(to top, #a8414b, #58070e);
 }
 
 .header-area-library {
@@ -415,40 +482,112 @@ header
 
         .header-area .main-nav .nav li.menu-info-group a .info-user p.role {
             font-size: 12px;
+        }
+
+        /*chem*/
+        .header-area-chem .main-nav .nav li.menu-info-group a .info-user p.role {
             color: antiquewhite;
+        }
+
+        /*bio*/
+        .header-area-bio .main-nav .nav li.menu-info-group a .info-user p.role {
+            color: #c1daff;
+        }
+
+        /*math*/
+        .header-area-math .main-nav .nav li.menu-info-group a .info-user p.role {
+            color: #f77a86;
+        }
+
+        /*phys*/
+        .header-area-phys .main-nav .nav li.menu-info-group a .info-user p.role {
+            color: #9cebc6;
         }
 
     .header-area .main-nav .nav li:hover a.menu,
     .header-area .main-nav .nav li a.active {
-        color: #e9c290 !important;
         border-bottom: 1px solid;
     }
 
     .header-area .main-nav .nav li:last-child:hover a.menu,
     .header-area .main-nav .nav li a.active {
-        color: #e9c290 !important;
         border-bottom: none;
     }
 
     .header-area .main-nav .nav li.menu-info-group:hover a.menu,
     .header-area .main-nav .nav li a.active {
-        color: #e9c290 !important;
         border-bottom: none;
     }
 
-.background-header .main-nav .nav li:hover a.menu,
-.background-header .main-nav .nav li a.active {
-    color: #e9c290 !important;
-    opacity: 1;
-}
+    /*chem*/
+    .header-area-chem .main-nav .nav li:hover a.menu,
+    .header-area-chem .main-nav .nav li a.active {
+        color: #e9c290 !important;
+    }
 
-.header-area .main-nav .nav li.menu-info-group:last-child,
-.background-header .main-nav .nav li.menu-info-group:last-child {
+    .header-area-chem .main-nav .nav li:last-child:hover a.menu,
+    .header-area-chem .main-nav .nav li a.active {
+        color: #e9c290 !important;
+    }
+
+    .header-area-chem .main-nav .nav li.menu-info-group:hover a.menu,
+    .header-area-chem .main-nav .nav li a.active {
+        color: #e9c290 !important;
+    }
+
+    /*bio*/
+    .header-area-bio .main-nav .nav li:hover a.menu,
+    .header-area-bio .main-nav .nav li a.active {
+        color: #bad6ff !important;
+    }
+
+    .header-area-bio .main-nav .nav li:last-child:hover a.menu,
+    .header-area-bio .main-nav .nav li a.active {
+        color: #bad6ff !important;
+    }
+
+    .header-area-bio .main-nav .nav li.menu-info-group:hover a.menu,
+    .header-area-bio .main-nav .nav li a.active {
+        color: #bad6ff !important;
+    }
+
+    /*math*/
+    .header-area-math .main-nav .nav li:hover a.menu,
+    .header-area-math .main-nav .nav li a.active {
+        color: #ffafb6 !important
+    }
+
+    .header-area-math .main-nav .nav li:last-child:hover a.menu,
+    .header-area-math .main-nav .nav li a.active {
+        color: #ffafb6 !important
+    }
+
+    .header-area-math .main-nav .nav li.menu-info-group:hover a.menu,
+    .header-area-math .main-nav .nav li a.active {
+        color: #ffafb6 !important
+    }
+
+    /*phys*/
+    .header-area-phys .main-nav .nav li:hover a.menu,
+    .header-area-phys .main-nav .nav li a.active {
+        color: #9cebc6 !important;
+    }
+
+    .header-area-phys .main-nav .nav li:last-child:hover a.menu,
+    .header-area-phys .main-nav .nav li a.active {
+        color: #9cebc6 !important;
+    }
+
+    .header-area-phys .main-nav .nav li.menu-info-group:hover a.menu,
+    .header-area-phys .main-nav .nav li a.active {
+        color: #9cebc6 !important;
+    }
+
+.header-area .main-nav .nav li.menu-info-group:last-child {
     margin-left: 12px;
 }
 
-    .header-area .main-nav .nav li.menu-info-group:last-child a:hover,
-    .background-header .main-nav .nav li.menu-info-group:last-child a:hover {
+    .header-area .main-nav .nav li.menu-info-group:last-child a:hover {
         border: none;
     }
 
@@ -461,10 +600,29 @@ header
         font-family: FontAwesome;
         content: "\f107";
         font-size: 12px; 
-        color: #2a2a2a;
         position: absolute;
         right: 18px;
         top: 12px;
+    }
+
+    /*chem*/
+    .header-area-chem .main-nav .nav li.submenu:after {
+        color: #2a2a2a;
+    }
+
+    /*bio*/
+    .header-area-bio .main-nav .nav li.submenu:after {
+        color: #2a2a2a;
+    }
+
+    /*math*/
+    .header-area-math .main-nav .nav li.submenu:after {
+        color: #2a2a2a;
+    }
+
+    /*phys*/
+    .header-area-phys .main-nav .nav li.submenu:after {
+        color: #2a2a2a;
     }
 
 .background-header .main-nav .nav li.submenu:after {
@@ -729,8 +887,24 @@ header
                     width: 100%;
                 }
 
-                .header-area .main-nav .nav .dropdown-menu-item a:hover{
+                /*chem*/
+                .header-area-chem .main-nav .nav .dropdown-menu-item a:hover{
                     color: #e9c290; 
+                }
+
+                /*bio*/
+                .header-area-bio .main-nav .nav .dropdown-menu-item a:hover {
+                    color: #e9c290;
+                }
+
+                /*math*/
+                .header-area-math .main-nav .nav .dropdown-menu-item a:hover {
+                    color: #e9c290;
+                }
+
+                /*phys*/
+                .header-area-phys .main-nav .nav .dropdown-menu-item a:hover {
+                    color: #e9c290;
                 }
 
                 .header-area .main-nav .nav li:first-child {
@@ -755,15 +929,53 @@ header
                     }
 
                     .header-area .main-nav .nav li a.submenu {
-                        background: #fff0dc !important;
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
                     }
 
-                    .header-area .main-nav .nav li a:hover {
+                    /*chem*/
+                    .header-area-chem .main-nav .nav li a.submenu {
+                        background: #fff0dc !important;
+                    }
+
+                    /*bio*/
+                    .header-area-bio .main-nav .nav li a.submenu {
+                        background: #d2dff3 !important;
+                    }
+
+                    /*math*/
+                    .header-area-math .main-nav .nav li a.submenu {
+                        background: #f7e4e6 !important;
+                    }
+
+                    /*phys*/
+                    .header-area-phys .main-nav .nav li a.submenu {
+                        background: #d4ffeb !important;
+                    }
+
+                    /*chem*/
+                    .header-area-chem .main-nav .nav li a:hover {
                         color: #e9c290 !important;
                         background: #fff5e8;
+                    }
+
+                    /*bio*/
+                    .header-area-bio .main-nav .nav li a:hover {
+                        color: #315e9f !important;
+                        background: #eefaff;
+                    }
+
+                    /*math*/
+                    .header-area-math .main-nav .nav li a:hover {
+                        color: #8d1723 !important;
+                        background: #ffeef0;
+                    }
+
+                    /*phys*/
+                    .header-area-phys .main-nav .nav li a:hover {
+                        color: #09482b !important;
+                        background: #f2fff9;
                     }
 
                     .header-area .main-nav .nav li.submenu ul li a {
@@ -780,10 +992,29 @@ header
                     }
 
                     .header-area .main-nav .nav li.submenu:after {
-                        color: #3B566E;
                         right: 25px;
                         font-size: 14px;
                         top: 15px;
+                    }
+
+                     /*chem*/
+                    .header-area-chem .main-nav .nav li.submenu:after {
+                        color: #3B566E;
+                    }
+
+                    /*bio*/
+                    .header-area-bio .main-nav .nav li.submenu:after {
+                        color: #3B566E;
+                    }
+
+                    /*math*/
+                    .header-area-math .main-nav .nav li.submenu:after {
+                        color: #3B566E;
+                    }
+
+                    /*phys*/
+                    .header-area-phys .main-nav .nav li.submenu:after {
+                        color: #3B566E;
                     }
 
                     .header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul {
@@ -894,7 +1125,6 @@ Banner Style
 */
 
 .hero {
-    background-image: url('../images/banner.jpg');
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -905,14 +1135,19 @@ Banner Style
 }
 
 .hero-chem {
-    background-image: url('../images/bannerChem.png');
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    vertical-align: middle;
-    min-height: 100vh;
-    position: relative;
-    z-index: 1;
+    background-image: url('../images/banner.jpg');
+}
+
+.hero-bio {
+    background-image: url('../images/banner_bio.jpg');
+}
+
+.hero-math {
+    background-image: url('../images/banner_math.jpg');
+}
+
+.hero-phys {
+    background-image: url('../images/banner_phys.jpg');
 }
 
 .bg-overlay {
@@ -1584,18 +1819,18 @@ a.service-link {
         overflow-y: auto;
     }
 
-        .services .section-heading {
-            margin-top: 30px;
-        }
+    .services .section-heading {
+        margin-top: 30px;
+    }
 
-        .services .services-content {
-            padding: 50px;
-        }
+    .services .services-content {
+        padding: 50px;
+    }
 
-        .services .flex-item {
-            flex: 1 1 100%;
-            max-width: 100%;
-        }
+    .services .flex-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
 
     .quiz {
         padding: 50px 0px;

@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="~/css/animated.css">
     <link rel="stylesheet" href="~/css/owl.css">
 </head>
-<body>
+<body id="bg-phys">
     @* header *@
-    <header class="header-area header-area-bio header-sticky">
+    <header class="header-area header-area-phys header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -53,7 +53,6 @@
     <script>
         $(document).ready(function () {
             document.querySelector('a.menu-trigger').addEventListener('click', function () {
-                alert("heheh");
                 var nav = document.querySelector('.nav');
                 if (nav.style.display === 'none' || nav.style.display === '') {
                     nav.style.display = 'block';
