@@ -136,6 +136,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 user.CreateBy = user.Email;
                 user.UpdateBy = user.Email;
+                user.AvtPath = "~/images/defaultAvatar.jpg";
                 string data = JsonConvert.SerializeObject(user);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
@@ -153,6 +154,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["Error"] = ex.Message;
                 return RedirectToAction("Login");
             }
+            TempData["Error"] = "Email hoặc số điện thoại đã tồn tại";
             return RedirectToAction("Login");
         }
     }

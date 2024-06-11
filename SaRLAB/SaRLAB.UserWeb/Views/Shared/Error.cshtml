@@ -1,48 +1,47 @@
 ﻿@model ErrorViewModel
 @{
-    ViewData["Title"] = "Error";
-    Layout = "_Layout"; // Ensure this matches the name of your layout file
+    ViewData["Title"] = "Không có quyền truy cập";
+    Layout = "_Layout"; // Đảm bảo điều này khớp với tên của tệp bố cục của bạn
 }
 
 <style>
-    .four_zero_four_bg {
-        max-width: 50%;
-        height: auto;
-        background-position: center;
+    .error-container {
+        margin-top: 50px;
     }
 
-    .page-error {
-        text-align: center;
+    .error-icon {
+        font-size: 5rem;
+        color: #dc3545; /* Màu nguy hiểm của Bootstrap */
     }
 
-    .page-error .title {
-        margin-top: 20px;
-        color: #1e64af;
+    .btn-custom {
+        background-color: #007bff; /* Màu chính của Bootstrap */
+        color: #fff;
     }
 
-    .page-error .description {
-        font-size: 16px;
-    }
-
-    .page-error a.btn-return {
-        font-size: 16px;
-        border-radius: 20px;
-        padding: 5px 30px;
-        background: #2268b3;
-        color: #ffffff;
-    }
+        .btn-custom:hover {
+            background-color: #0056b3; /* Màu đậm hơn khi hover */
+        }
 </style>
 
-<div class="container mt-5">
-    <div class="row justify-content-center page-error">
-        <div class="col-md-8">
-            <div class="text-center">
-                <img src="https://www.indiaherald.com/images/hp-images/error-mobile-500.png" alt="Nature" class="four_zero_four_bg" width="500" height="500">
-                <h2 class="title">Oops, 403 Forbidden</h2>
-                <p class="description">Bạn không có quyền truy cập trang này!</p>
+<div class="container error-container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="mb-4">
+                <i class="fas fa-exclamation-triangle error-icon"></i>
+            </div>
+            <h1 class="display-4 text-danger">Không có quyền truy cập</h1>
+            <h2 class="mb-4">Bạn không có quyền truy cập tài nguyên này.</h2>
+            <p class="lead">Nếu bạn tin rằng đây là một lỗi, vui lòng liên hệ với quản trị hệ thống hoặc thử lại sau.</p>
+
+            <div class="alert alert-danger mt-4">
+                <h4>Thông tin thêm</h4>
+                <p>
+                    Nếu bạn là người dùng có đầy đủ quyền truy cập, hãy đảm bảo rằng bạn đã đăng nhập và có quyền truy cập cần thiết để truy cập trang này.
+                </p>
             </div>
 
-            <a type="button" href="javascript:history.back()" class="btn-return mt-3">Trở về</a>
+            <a href="javascript:history.back()" class="btn btn-custom mt-3">Quay lại</a>
         </div>
     </div>
 </div>

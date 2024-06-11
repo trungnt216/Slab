@@ -75,9 +75,23 @@ namespace SaRLAB.UserWeb.Controllers
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
-            if (userLogin.RoleName == ("Admin"))
+            SubjectFlag subjectFlag = new SubjectFlag();
+
+            HttpResponseMessage response_sub = _httpClient.GetAsync(_httpClient.BaseAddress + "SubjectFlag/GetByID/" + userLogin.Email).Result;
+
+            if (response_sub.IsSuccessStatusCode)
             {
-                checkRole = 1;
+                string data = response_sub.Content.ReadAsStringAsync().Result;
+                subjectFlag = JsonConvert.DeserializeObject<SubjectFlag>(data);
+            }
+
+            else
+            {
+                if (subjectFlag.ChemistryMarkFlag == false)
+                {
+                    _hasError = true;
+                    return; // Early exit from constructor
+                }
             }
         }
         //----------------------------------------------------------------------------------------------

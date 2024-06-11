@@ -172,6 +172,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 user.CreateBy = userLogin.Email;
                 user.UpdateBy = userLogin.Email;
                 user.Role_ID = 5;
+                user.AvtPath = "~/images/defaultAvatar.jpg";
                 string data = JsonConvert.SerializeObject(user);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
