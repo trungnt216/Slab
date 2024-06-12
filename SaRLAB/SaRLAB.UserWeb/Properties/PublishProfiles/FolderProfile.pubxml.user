@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\This PC\Downloads\user</_PublishTargetUrl>
-    <History>False|2024-06-11T19:14:10.0665562Z;False|2024-06-12T01:59:13.1347157+07:00;False|2024-06-12T01:57:54.7747924+07:00;False|2024-06-12T01:56:33.5813284+07:00;False|2024-06-12T01:54:33.2148811+07:00;</History>
+    <_PublishTargetUrl>H:\sarlab2\user</_PublishTargetUrl>
+    <History>True|2024-06-12T07:10:20.6747268Z;True|2024-06-12T03:11:27.4297973+07:00;True|2024-06-12T02:57:01.3289890+07:00;True|2024-06-12T02:48:09.9861923+07:00;False|2024-06-12T02:14:10.0665562+07:00;False|2024-06-12T01:59:13.1347157+07:00;False|2024-06-12T01:57:54.7747924+07:00;False|2024-06-12T01:56:33.5813284+07:00;False|2024-06-12T01:54:33.2148811+07:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

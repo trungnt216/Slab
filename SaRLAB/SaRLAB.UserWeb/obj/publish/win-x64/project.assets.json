@@ -16798,23 +16798,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\This PC\\.nuget\\packages\\": {},
+    "C:\\Users\\ACER\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\This PC\\Desktop\\sala\\Slab\\SaRLAB\\SaRLAB.UserWeb\\SaRLAB.UserWeb.csproj",
+      "projectUniqueName": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\SaRLAB.UserWeb.csproj",
       "projectName": "SaRLAB.UserWeb",
-      "projectPath": "C:\\Users\\This PC\\Desktop\\sala\\Slab\\SaRLAB\\SaRLAB.UserWeb\\SaRLAB.UserWeb.csproj",
-      "packagesPath": "C:\\Users\\This PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\This PC\\Desktop\\sala\\Slab\\SaRLAB\\SaRLAB.UserWeb\\obj\\publish\\win-x64\\",
+      "projectPath": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\SaRLAB.UserWeb.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\obj\\publish\\win-x64\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\This PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -16830,8 +16830,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\This PC\\Desktop\\sala\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {
-              "projectPath": "C:\\Users\\This PC\\Desktop\\sala\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj"
+            "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj": {
+              "projectPath": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.Models\\SaRLAB.Models.csproj"
             }
           }
         }
@@ -16878,15 +16878,15 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[7.0.18, 7.0.18]"
+            "version": "[7.0.17, 7.0.17]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[7.0.18, 7.0.18]"
+            "version": "[7.0.17, 7.0.17]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[7.0.18, 7.0.18]"
+            "version": "[7.0.17, 7.0.17]"
           }
         ],
         "frameworkReferences": {
@@ -16897,7 +16897,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
