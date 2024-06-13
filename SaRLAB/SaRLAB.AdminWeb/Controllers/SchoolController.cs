@@ -208,7 +208,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "School/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "School/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -239,7 +240,8 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 foreach (var id in request.Ids)
                 {
-                    HttpResponseMessage response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "School/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "School/Delete/" + id,content).Result;
 
                     if (!response.IsSuccessStatusCode)
                     {

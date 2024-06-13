@@ -111,7 +111,7 @@ namespace SaRLAB.AdminWeb.Controllers
             List<UserDto> users = new List<UserDto>();
 
             HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllUserInSchool/" + userLogin.SchoolId).Result;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
 
             Console.WriteLine(_httpClient.BaseAddress + "User/GetAll");
 
@@ -301,7 +301,8 @@ namespace SaRLAB.AdminWeb.Controllers
             try
             {
                 Console.WriteLine(id.ToString());
-                HttpResponseMessage response1 = _httpClient.DeleteAsync(_httpClient.BaseAddress + "User/DeleteById/" + id).Result;
+                StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                HttpResponseMessage response1 = _httpClient.PostAsync(_httpClient.BaseAddress + "User/DeleteById/" + id,content).Result;
 
                 Console.WriteLine(response);
 
@@ -326,7 +327,8 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 foreach (var id in request.Ids)
                 {
-                    HttpResponseMessage response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "User/DeleteById/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/DeleteById/" + id,content).Result;
 
                     if (!response.IsSuccessStatusCode)
                     {
@@ -511,7 +513,8 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 Console.WriteLine(id.ToString());
                 HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id).Result;
+                StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                response = _httpClient.PostAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id,content).Result;
 
                 Console.WriteLine(response);
 
@@ -543,7 +546,8 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 foreach (var id in request.Ids)
                 {
-                    HttpResponseMessage response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id,content).Result;
 
                     if (!response.IsSuccessStatusCode)
                     {
@@ -590,15 +594,14 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(user);
         }
         [HttpPost]
-        public IActionResult Fix_Information(User user, IFormFile FileImage)
+        public IActionResult Fix_Information(User user, IFormFile File)
         {
             user.CreateBy = user.CreateBy;
             user.CreateTime = user.CreateTime;
             user.UpdateBy = userLogin.Email;
 
-            if (FileImage != null)
+            if (File != null)
             {
-                //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
 
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
 
@@ -607,13 +610,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     Directory.CreateDirectory(uploadsFolder);
                 }
 
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileImage.FileName);
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
 
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    FileImage.CopyTo(stream);
+                    File.CopyTo(stream);
                 }
                 user.AvtPath = pathFolderSave + "image/avatar_user/" + uniqueFileName; ;
             }

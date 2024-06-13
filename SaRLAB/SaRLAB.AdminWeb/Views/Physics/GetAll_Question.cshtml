@@ -1,3 +1,4 @@
+
 ﻿@model IEnumerable<SaRLAB.Models.Entity.Quiz>
 
 @{
@@ -241,7 +242,7 @@
                                     <a class="btn-custom-edit-by-email" asp-action="Edit_Question" asp-route-id="@item.ID">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a class="delete" href="#" data-url="@Url.Action("Delete_Question", "Chemistry", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                    <a class="delete" href="#" data-url="@Url.Action("Delete_Question", "Physics", new { id = item.ID })" onclick="openDeleteModal(this)">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>

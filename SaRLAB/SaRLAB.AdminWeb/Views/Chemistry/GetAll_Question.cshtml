@@ -100,11 +100,13 @@
                         data-target="#deleteModal">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
-                    <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="Create_Question" asp-controller="Chemistry">
+                    <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button"
+                        asp-action="Create_Question" asp-controller="Chemistry">
                         <i class="fa-solid fa-plus"></i>
                         Thêm mới
                     </a>
-                    <a asp-area="" class="btn-custom-create btn-custom-create-trigger" style="margin-left: 10px" type="button" asp-action="Create_Question" asp-controller="Chemistry">
+                    <a asp-area="" class="btn-custom-create btn-custom-create-trigger" style="margin-left: 10px"
+                        type="button" asp-action="Create_Question" asp-controller="Chemistry">
                         <i class="fa-solid fa-plus"></i>
                     </a>
                 </div>
@@ -240,7 +242,7 @@
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                     <a class="delete" href="#"
-                                        data-url="@Url.Action("Delete_Question", "Biology", new { id = item.ID })"
+                                       data-url="@Url.Action("Delete_Question", "Chemistry", new { id = item.ID })"
                                         onclick="openDeleteModal(this)">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>

@@ -186,7 +186,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -373,7 +374,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -551,7 +553,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -728,7 +731,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -913,7 +917,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1093,7 +1098,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1274,7 +1280,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1458,7 +1465,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1639,7 +1647,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1819,7 +1828,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -2004,7 +2014,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 try
                 {
                     HttpResponseMessage response;
-                    response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Document/Delete/" + id).Result;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -2217,7 +2228,7 @@ namespace SaRLAB.AdminWeb.Controllers
             try
             {
                 quiz.SchoolId = userLogin.SchoolId;
-                quiz.SubjectId = 1;
+                quiz.SubjectId = 2;
 
                 string data = JsonConvert.SerializeObject(quiz);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -2385,7 +2396,7 @@ namespace SaRLAB.AdminWeb.Controllers
             try
             {
                 quiz.SchoolId = userLogin.SchoolId;
-                quiz.SubjectId = 1;
+                quiz.SubjectId = 2;
 
                 string data = JsonConvert.SerializeObject(quiz);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -2409,7 +2420,8 @@ namespace SaRLAB.AdminWeb.Controllers
             try
             {
                 HttpResponseMessage response;
-                response = _httpClient.DeleteAsync(_httpClient.BaseAddress + "Quiz/Delete/" + id).Result;
+                StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                response = _httpClient.PostAsync(_httpClient.BaseAddress + "Quiz/Delete/" + id,content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
