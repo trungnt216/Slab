@@ -11,12 +11,12 @@ namespace SaRLAB.AdminWeb.Controllers
 {
     public class ChemistryController : Controller
     {
-        string pathFolderSave = "https://localhost:7135//uploads/";
+        string pathFolderSave = "https://admin.sarlabeducation.com//uploads/";
 
         private readonly IWebHostEnvironment _env;
 
 
-        Uri baseAddress = new Uri("http://localhost:5200/api/");
+        Uri baseAddress = new Uri("http://api.sarlabeducation.com/api/");
         private readonly HttpClient _httpClient;
 
         private readonly IConfiguration _configuration;
