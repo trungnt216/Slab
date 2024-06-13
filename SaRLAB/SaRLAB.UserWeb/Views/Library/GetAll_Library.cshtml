@@ -78,7 +78,8 @@
                 <div id="popupNotification" class="alert alert-danger">
                     @TempData["notice"]
                 </div>
-                <table id="table" class="table">
+                <div class="table-responsive">
+                    <table id="table" class="table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -183,8 +184,9 @@
                 </table>
                 @if (Model == null || !Model.Any())
                 {
-                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
+                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500; clear: right">Không có dữ liệu!</p>
                 }
+                </div>
             </div>
         </div>
     </div>

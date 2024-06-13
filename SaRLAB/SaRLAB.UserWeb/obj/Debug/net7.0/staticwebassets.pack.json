@@ -1,6 +1,7 @@
 {
   "Files": [
     {
+<<<<<<< HEAD
       "Id": "H:\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\05758484-0a14-4213-952f-992e9e729ca3_400eeed32d01d7f71b9322c9939898b6.jpg",
       "PackagePath": "staticwebassets\\FileFolder\\Document\\05758484-0a14-4213-952f-992e9e729ca3_400eeed32d01d7f71b9322c9939898b6.jpg"
     },
@@ -862,6 +863,869 @@
     },
     {
       "Id": "H:\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+=======
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\05758484-0a14-4213-952f-992e9e729ca3_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\05758484-0a14-4213-952f-992e9e729ca3_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\0982b7f5-3293-48ad-a370-a5ceb1fa5c39_trac-nghiem-bai-26-clo.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\0982b7f5-3293-48ad-a370-a5ceb1fa5c39_trac-nghiem-bai-26-clo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\1202b866-98b9-459c-940e-43ca2eb1c21a_316425503_590977649700079_8278750770178466967_n.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\1202b866-98b9-459c-940e-43ca2eb1c21a_316425503_590977649700079_8278750770178466967_n.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\1994f505-d431-4e54-bf6d-f5c3e4347f55_trac-nghiem-bai-26-clo.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\1994f505-d431-4e54-bf6d-f5c3e4347f55_trac-nghiem-bai-26-clo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\1edadaee-4f10-4c73-8745-22991ba12d0f_thietkekhongten1_800x450.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\1edadaee-4f10-4c73-8745-22991ba12d0f_thietkekhongten1_800x450.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\26dfe480-6291-4ebe-b2cc-3f90ba4ff5d9_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\26dfe480-6291-4ebe-b2cc-3f90ba4ff5d9_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\26e52681-1b39-4c75-b91c-271d5c1ec042_756fde0cedff89c1744813cb0db8228d.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\26e52681-1b39-4c75-b91c-271d5c1ec042_756fde0cedff89c1744813cb0db8228d.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\2823cd6e-82dd-4f00-82c7-bd6e0fb07115_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\2823cd6e-82dd-4f00-82c7-bd6e0fb07115_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\297446ac-2e8f-4190-b41d-5c3fe9cb2408_Geothermal_energy.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\297446ac-2e8f-4190-b41d-5c3fe9cb2408_Geothermal_energy.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\2bfbc751-6c72-454d-8779-5f7e92260f6d_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\2bfbc751-6c72-454d-8779-5f7e92260f6d_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\2c8a6f1e-afb3-43f5-a8f5-817f2765809d_trac-nghiem-bai-26-clo.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\2c8a6f1e-afb3-43f5-a8f5-817f2765809d_trac-nghiem-bai-26-clo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\2eea3cbc-904b-45e2-b912-dd80b81cc424_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\2eea3cbc-904b-45e2-b912-dd80b81cc424_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\3969a71e-a6ae-4ede-9e02-8d41e52cd03f_Geothermal_energy.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\3969a71e-a6ae-4ede-9e02-8d41e52cd03f_Geothermal_energy.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\3e6c3c7c-adc4-44ce-852a-a3752dd38c9e_thietkekhongten1_800x450.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\3e6c3c7c-adc4-44ce-852a-a3752dd38c9e_thietkekhongten1_800x450.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\3ea85068-c68c-4d85-b294-59095d50c1e8_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\3ea85068-c68c-4d85-b294-59095d50c1e8_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\4138ce7c-ad10-439f-bb2c-25fd01720d0b_CV Nguyễn Tiến Mạnh - CV_TTSEMBEDDED.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\4138ce7c-ad10-439f-bb2c-25fd01720d0b_CV Nguyễn Tiến Mạnh - CV_TTSEMBEDDED.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\44d2ad44-f89d-4f77-a335-c6a9d4206599_Bang-chu-cai-tieng-nhat-katakana.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\44d2ad44-f89d-4f77-a335-c6a9d4206599_Bang-chu-cai-tieng-nhat-katakana.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\45c65c8c-a4f8-4f6c-a494-32aab1f662df_trac-nghiem-bai-26-clo.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\45c65c8c-a4f8-4f6c-a494-32aab1f662df_trac-nghiem-bai-26-clo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\4938f413-3963-4f4b-8e02-3367e0db283f_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\4938f413-3963-4f4b-8e02-3367e0db283f_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\4a5bb150-2f9a-474c-a369-97b763f8b49c_trac-nghiem-bai-26-clo.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\4a5bb150-2f9a-474c-a369-97b763f8b49c_trac-nghiem-bai-26-clo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\50138f74-107b-429c-9067-4c3035896f45_thietkekhongten1_800x450.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\50138f74-107b-429c-9067-4c3035896f45_thietkekhongten1_800x450.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\5686b917-42b2-46db-b275-5a742c47ec10_Fondation engagement.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\5686b917-42b2-46db-b275-5a742c47ec10_Fondation engagement.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\57edf524-e5f2-4e10-b70b-267ac060d8d8_dtcs.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\57edf524-e5f2-4e10-b70b-267ac060d8d8_dtcs.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\59653afa-12e1-47b0-9d6d-ebd84bc54515_trac-nghiem-bai-26-clo.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\59653afa-12e1-47b0-9d6d-ebd84bc54515_trac-nghiem-bai-26-clo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\597bb0af-bc6b-4a3b-ab47-c2ca4d5d79a7_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\597bb0af-bc6b-4a3b-ab47-c2ca4d5d79a7_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\5ce013df-c69f-499e-9087-e640e0a1c892_c1feec9a694bc915905a.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\5ce013df-c69f-499e-9087-e640e0a1c892_c1feec9a694bc915905a.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\6346c347-746c-459f-a931-4fdd2a5cd983_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\6346c347-746c-459f-a931-4fdd2a5cd983_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\644d235a-d08a-4d75-9bd4-3c4bda0508d0_Bang-chu-cai-tieng-nhat-katakana.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\644d235a-d08a-4d75-9bd4-3c4bda0508d0_Bang-chu-cai-tieng-nhat-katakana.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\66a6b2e6-cac1-4d80-9e21-403f837d297e_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\66a6b2e6-cac1-4d80-9e21-403f837d297e_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\696729eb-be21-479f-b506-3110750e4526_trac-nghiem-bai-26-clo.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\696729eb-be21-479f-b506-3110750e4526_trac-nghiem-bai-26-clo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\6d1a3a28-c458-40a3-a8f1-dd0488e4e549_Bang-chu-cai-tieng-nhat-katakana.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\6d1a3a28-c458-40a3-a8f1-dd0488e4e549_Bang-chu-cai-tieng-nhat-katakana.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\70d4d95f-af22-492c-88f1-91a148a4d864_giaonx,+P-Bai+13_4149-21527-1-CE_Mac_Thi_Thoaupdate (1).pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\70d4d95f-af22-492c-88f1-91a148a4d864_giaonx,+P-Bai+13_4149-21527-1-CE_Mac_Thi_Thoaupdate (1).pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\70d76819-9ab0-42fd-9bd4-d4473a0a3475_000069400010.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\70d76819-9ab0-42fd-9bd4-d4473a0a3475_000069400010.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\7c4af22a-35f4-460a-bc13-6ace9e7d323f_8252822933354034136.mp4",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\7c4af22a-35f4-460a-bc13-6ace9e7d323f_8252822933354034136.mp4"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\7ce1cbbf-d930-4153-bbee-63ebe69ace07_image_2024_05_30T16_19_39_080Z.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\7ce1cbbf-d930-4153-bbee-63ebe69ace07_image_2024_05_30T16_19_39_080Z.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\7d5ccb03-099e-4b6a-b755-f061a8ac894d_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\7d5ccb03-099e-4b6a-b755-f061a8ac894d_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\7e6b8b14-0506-44d7-b0d2-efc1f9da7bcf_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\7e6b8b14-0506-44d7-b0d2-efc1f9da7bcf_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\7f4c46a8-bad5-4c94-9059-2882aaea4f02_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\7f4c46a8-bad5-4c94-9059-2882aaea4f02_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\813e6dff-43f6-4e0d-bef7-601ec1069fb4_thietkekhongten1_800x450.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\813e6dff-43f6-4e0d-bef7-601ec1069fb4_thietkekhongten1_800x450.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\8dce1180-69d0-4d3e-adb9-ce21e30d83d5_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\8dce1180-69d0-4d3e-adb9-ce21e30d83d5_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\90750600-7476-4d49-8f1b-214942e48702_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\90750600-7476-4d49-8f1b-214942e48702_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\9e4a36da-59de-49bf-b552-6bd2030e44e1_8252822933354034136.mp4",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\9e4a36da-59de-49bf-b552-6bd2030e44e1_8252822933354034136.mp4"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\a3911a38-b230-449c-8bca-9a3b9585d623_000069400010.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\a3911a38-b230-449c-8bca-9a3b9585d623_000069400010.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\a57f08cb-7849-4e01-8a2a-4bda0edbce0c_CV Nguyễn Tiến Mạnh - CV_TTSEMBEDDED.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\a57f08cb-7849-4e01-8a2a-4bda0edbce0c_CV Nguyễn Tiến Mạnh - CV_TTSEMBEDDED.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\a907f1a7-00bf-4b4b-8ff7-0e18f16fa71c_thietkekhongten1_800x450.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\a907f1a7-00bf-4b4b-8ff7-0e18f16fa71c_thietkekhongten1_800x450.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\aa49fc1e-ea96-4ca2-86ff-5c59beef7c10_Fondation engagement.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\aa49fc1e-ea96-4ca2-86ff-5c59beef7c10_Fondation engagement.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\afa0d75c-1780-4b1e-8802-8b5a2fd1ddbe_CV Nguyễn Tiến Mạnh - CV_TTSEMBEDDED.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\afa0d75c-1780-4b1e-8802-8b5a2fd1ddbe_CV Nguyễn Tiến Mạnh - CV_TTSEMBEDDED.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\b336a97f-cf18-467a-9167-f3619a7861b9_[dichthuatso1.com]_hiragana_writing.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\b336a97f-cf18-467a-9167-f3619a7861b9_[dichthuatso1.com]_hiragana_writing.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\bbe19dc1-313f-4325-b1f9-4ea3831d46fc_756fde0cedff89c1744813cb0db8228d.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\bbe19dc1-313f-4325-b1f9-4ea3831d46fc_756fde0cedff89c1744813cb0db8228d.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\cc6134e2-3a0c-4287-9ea4-b9c699266ef4_Bai_tap_nhom.docx",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\cc6134e2-3a0c-4287-9ea4-b9c699266ef4_Bai_tap_nhom.docx"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\d2450ac1-fa2f-4cde-8e8a-cf168d7cf1a5_[dichthuatso1.com]_vo-tap-viet-katakana.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\d2450ac1-fa2f-4cde-8e8a-cf168d7cf1a5_[dichthuatso1.com]_vo-tap-viet-katakana.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\d48db078-84b8-4e0d-8cdb-03f29b8ffb1d_giaonx,+P-Bai+13_4149-21527-1-CE_Mac_Thi_Thoaupdate.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\d48db078-84b8-4e0d-8cdb-03f29b8ffb1d_giaonx,+P-Bai+13_4149-21527-1-CE_Mac_Thi_Thoaupdate.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\e0eb9a8a-e06f-4f52-9f95-cc888fcd3504_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\e0eb9a8a-e06f-4f52-9f95-cc888fcd3504_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\e236c7b7-1210-44fe-ad2c-19a2ac6246a7_Geothermal_energy.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\e236c7b7-1210-44fe-ad2c-19a2ac6246a7_Geothermal_energy.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\e2f38b27-5602-49c0-a7c8-8c1b0718c2dd_405011478_1155623248750921_4068768991685860419_n.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\e2f38b27-5602-49c0-a7c8-8c1b0718c2dd_405011478_1155623248750921_4068768991685860419_n.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\ecd1280e-094c-442f-b181-d8316ff2676e_320919738_905342563965665_8059887628251617902_n.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\ecd1280e-094c-442f-b181-d8316ff2676e_320919738_905342563965665_8059887628251617902_n.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\ef0c9a9c-19bf-4aa4-8210-07abb4577abf_8252822933354034136.mp4",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\ef0c9a9c-19bf-4aa4-8210-07abb4577abf_8252822933354034136.mp4"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\fb80fc3a-1cfb-4bd0-b594-df6288f2a40b_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\fb80fc3a-1cfb-4bd0-b594-df6288f2a40b_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Document\\ffa4f89b-aa9b-40f8-a67c-d0674ce619d4_thietkekhongten1_800x450.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Document\\ffa4f89b-aa9b-40f8-a67c-d0674ce619d4_thietkekhongten1_800x450.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\0fb182b6-5b1d-4962-8cc1-e59116e8c0e2_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\0fb182b6-5b1d-4962-8cc1-e59116e8c0e2_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\13ab3756-4700-48b3-abe0-130d52b53745_trac-nghiem-bai-26-clo.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\13ab3756-4700-48b3-abe0-130d52b53745_trac-nghiem-bai-26-clo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\29a1d83d-2e21-4c6f-802d-af4291676bc3_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\29a1d83d-2e21-4c6f-802d-af4291676bc3_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\2a1cea09-657a-4855-871e-e68cfbf3c2fa_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\2a1cea09-657a-4855-871e-e68cfbf3c2fa_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\351e2e09-1145-4961-a4c5-7c11fa4a1d1b_thietkekhongten1_800x450.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\351e2e09-1145-4961-a4c5-7c11fa4a1d1b_thietkekhongten1_800x450.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\45141193-d2d1-497f-a771-8053dabd4330_thietkekhongten1_800x450.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\45141193-d2d1-497f-a771-8053dabd4330_thietkekhongten1_800x450.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\56122dae-e111-44bd-b841-bc52fb2f0109_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\56122dae-e111-44bd-b841-bc52fb2f0109_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\59589b5b-ef34-4968-8e3d-6d5c78a070dd_geothermal-energy-in-power-systems.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\59589b5b-ef34-4968-8e3d-6d5c78a070dd_geothermal-energy-in-power-systems.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\752aff51-d74f-451a-badf-62190725c32b_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\752aff51-d74f-451a-badf-62190725c32b_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\85529a69-4dba-4156-8422-8f9b6cd35120_e-ticket-2.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\85529a69-4dba-4156-8422-8f9b6cd35120_e-ticket-2.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\a85ab30d-0aed-4d4d-b045-7e1b42127819_756fde0cedff89c1744813cb0db8228d.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\a85ab30d-0aed-4d4d-b045-7e1b42127819_756fde0cedff89c1744813cb0db8228d.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\d1507b61-03d0-42d3-b8e1-3b68767e54df_trac-nghiem-bai-26-clo.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\d1507b61-03d0-42d3-b8e1-3b68767e54df_trac-nghiem-bai-26-clo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\edcb49bd-43a9-4d72-9fde-a118e3b37ccc_um3166-stm32l4-and-stm32l4-series-ulcsaiec-607301603351-selftest-library-user-guide-stmicroelectronics.pdf",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\edcb49bd-43a9-4d72-9fde-a118e3b37ccc_um3166-stm32l4-and-stm32l4-series-ulcsaiec-607301603351-selftest-library-user-guide-stmicroelectronics.pdf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\f37361be-46af-4331-bd95-1cbc4b1e22be_756fde0cedff89c1744813cb0db8228d.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\f37361be-46af-4331-bd95-1cbc4b1e22be_756fde0cedff89c1744813cb0db8228d.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\Equipment\\fc1690ad-d15a-43d3-b649-3e910c0debdc_trac-nghiem-bai-26-clo.png",
+      "PackagePath": "staticwebassets\\FileFolder\\Equipment\\fc1690ad-d15a-43d3-b649-3e910c0debdc_trac-nghiem-bai-26-clo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\User\\2ce50807-bc79-40e5-913a-0b329a2c154d_b0df7b7063a770a0423c7051bd17b800.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\User\\2ce50807-bc79-40e5-913a-0b329a2c154d_b0df7b7063a770a0423c7051bd17b800.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\User\\4894598f-ad99-4407-80d6-6a375b4ebef3_400eeed32d01d7f71b9322c9939898b6.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\User\\4894598f-ad99-4407-80d6-6a375b4ebef3_400eeed32d01d7f71b9322c9939898b6.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\User\\7375f19d-aa23-4259-a73e-370df22371e7_e99867f4b42999aa8baa8ec436cdd620.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\User\\7375f19d-aa23-4259-a73e-370df22371e7_e99867f4b42999aa8baa8ec436cdd620.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\FileFolder\\User\\7d7249e2-fd98-4afd-a83f-47267c0b38e4_756fde0cedff89c1744813cb0db8228d.jpg",
+      "PackagePath": "staticwebassets\\FileFolder\\User\\7d7249e2-fd98-4afd-a83f-47267c0b38e4_756fde0cedff89c1744813cb0db8228d.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\css\\animated.css",
+      "PackagePath": "staticwebassets\\css\\animated.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\css\\fontawesome.css",
+      "PackagePath": "staticwebassets\\css\\fontawesome.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\css\\owl.css",
+      "PackagePath": "staticwebassets\\css\\owl.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\css\\quiz.css",
+      "PackagePath": "staticwebassets\\css\\quiz.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\all.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\all.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\all.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\brands.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\brands.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\brands.min.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\brands.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\fontawesome.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\fontawesome.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\fontawesome.min.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\fontawesome.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\regular.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\regular.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\regular.min.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\regular.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\solid.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\solid.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\solid.min.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\solid.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\svg-with-js.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\svg-with-js.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\svg-with-js.min.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\svg-with-js.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\v4-font-face.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\v4-font-face.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\v4-font-face.min.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\v4-font-face.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\v4-shims.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\v4-shims.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\v4-shims.min.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\v4-shims.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\v5-font-face.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\v5-font-face.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\css\\v5-font-face.min.css",
+      "PackagePath": "staticwebassets\\font-awesome\\css\\v5-font-face.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\all.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\all.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\all.min.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\all.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\brands.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\brands.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\brands.min.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\brands.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\conflict-detection.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\conflict-detection.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\conflict-detection.min.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\conflict-detection.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\fontawesome.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\fontawesome.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\fontawesome.min.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\fontawesome.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\regular.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\regular.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\regular.min.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\regular.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\solid.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\solid.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\solid.min.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\solid.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\v4-shims.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\v4-shims.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\js\\v4-shims.min.js",
+      "PackagePath": "staticwebassets\\font-awesome\\js\\v4-shims.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\sprites\\brands.svg",
+      "PackagePath": "staticwebassets\\font-awesome\\sprites\\brands.svg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\sprites\\regular.svg",
+      "PackagePath": "staticwebassets\\font-awesome\\sprites\\regular.svg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\sprites\\solid.svg",
+      "PackagePath": "staticwebassets\\font-awesome\\sprites\\solid.svg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\font-awesome\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\font-awesome\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\font-awesome\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\font-awesome\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\font-awesome\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\font-awesome\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\webfonts\\fa-v4compatibility.ttf",
+      "PackagePath": "staticwebassets\\font-awesome\\webfonts\\fa-v4compatibility.ttf"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\font-awesome\\webfonts\\fa-v4compatibility.woff2",
+      "PackagePath": "staticwebassets\\font-awesome\\webfonts\\fa-v4compatibility.woff2"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\banner.jpg",
+      "PackagePath": "staticwebassets\\images\\banner.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\bannerChem.png",
+      "PackagePath": "staticwebassets\\images\\bannerChem.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\bannerDecLeft.png",
+      "PackagePath": "staticwebassets\\images\\bannerDecLeft.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\bannerDecRight.png",
+      "PackagePath": "staticwebassets\\images\\bannerDecRight.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\bannerRightImage.svg",
+      "PackagePath": "staticwebassets\\images\\bannerRightImage.svg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\banner_bio.jpg",
+      "PackagePath": "staticwebassets\\images\\banner_bio.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\banner_math.jpg",
+      "PackagePath": "staticwebassets\\images\\banner_math.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\banner_phys.jpg",
+      "PackagePath": "staticwebassets\\images\\banner_phys.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\bio.png",
+      "PackagePath": "staticwebassets\\images\\bio.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\chem.png",
+      "PackagePath": "staticwebassets\\images\\chem.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\defaultAvatar.jpg",
+      "PackagePath": "staticwebassets\\images\\defaultAvatar.jpg"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\downArrow.png",
+      "PackagePath": "staticwebassets\\images\\downArrow.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\favicon.ico",
+      "PackagePath": "staticwebassets\\images\\favicon.ico"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\ic_success.png",
+      "PackagePath": "staticwebassets\\images\\ic_success.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\ic_user.png",
+      "PackagePath": "staticwebassets\\images\\ic_user.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\ic_warning.png",
+      "PackagePath": "staticwebassets\\images\\ic_warning.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\library.png",
+      "PackagePath": "staticwebassets\\images\\library.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\math.png",
+      "PackagePath": "staticwebassets\\images\\math.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\physics.png",
+      "PackagePath": "staticwebassets\\images\\physics.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\placehold.png",
+      "PackagePath": "staticwebassets\\images\\placehold.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\servicesLeftDec.png",
+      "PackagePath": "staticwebassets\\images\\servicesLeftDec.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\images\\servicesRightDec.png",
+      "PackagePath": "staticwebassets\\images\\servicesRightDec.png"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\js\\animation.js",
+      "PackagePath": "staticwebassets\\js\\animation.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\js\\custom.js",
+      "PackagePath": "staticwebassets\\js\\custom.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\js\\home.js",
+      "PackagePath": "staticwebassets\\js\\home.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\js\\imagesloaded.js",
+      "PackagePath": "staticwebassets\\js\\imagesloaded.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\js\\isotope.js",
+      "PackagePath": "staticwebassets\\js\\isotope.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\js\\owl-carousel.js",
+      "PackagePath": "staticwebassets\\js\\owl-carousel.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\js\\table.js",
+      "PackagePath": "staticwebassets\\js\\table.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\js\\tabs.js",
+      "PackagePath": "staticwebassets\\js\\tabs.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "H:\\sarlab2\\Slab\\SaRLAB\\SaRLAB.UserWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+>>>>>>> e449c1ed1e7d4a24eac3a2c786e104ca39fc8863
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
