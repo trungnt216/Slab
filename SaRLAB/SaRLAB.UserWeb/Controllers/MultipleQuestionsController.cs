@@ -10,9 +10,9 @@ namespace SaRLAB.UserWeb.Controllers
 {
     public class MultipleQuestionsController : Controller
     {
-        string pathFolderSave = "https://localhost:7135//uploads/";
+        string pathFolderSave = "https://admin.sarlabeducation.com//uploads/";
 
-        Uri baseAddress = new Uri("http://localhost:5200/api/");
+        Uri baseAddress = new Uri("http://api.sarlabeducation.com/api/");
         private readonly HttpClient _httpClient;
 
         private readonly IConfiguration _configuration;
