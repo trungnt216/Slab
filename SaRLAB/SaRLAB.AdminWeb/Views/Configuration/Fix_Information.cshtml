@@ -15,6 +15,9 @@
                     <i class="fa-solid fa-angles-left"></i>
                     Trở về
                 </a>
+                <a asp-area="" asp-controller="HomePage" asp-action="Information" class="btn-custom-return btn-custom-return-trigger" type="button">
+                    <i class="fa-solid fa-angles-left"></i>
+                </a>
             </div>
             <form asp-action="Fix_Information" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -25,7 +28,7 @@
                                 <i class="fa-solid fa-file"></i>
                                 <label for="File">Ảnh đại diện</label>
                             </div>
-                            <input type="file" id="File" name="File" class="form-control-file" />
+                            <input type="file" id="File" name="File" class="form-control-file" style="width: 100%" />
                         </div>
                         <div class="file-detail">
                             <div class="file-detail">
@@ -41,12 +44,11 @@
                                     }
                                 }
                                 <img id="previewImage" src="@Url.Content(url)"
-                                        style="width: 100%;
-                                    height: 300px;
-                                    margin-top: 10px;
-                                    border: 3px solid #eeeeee;
-                                    border-radius: 20px;
-                                    object-fit: cover;" />
+                                        style="
+                                            margin-top: 10px;
+                                            border: 3px solid #eeeeee;
+                                            border-radius: 20px;
+                                            object-fit: cover;" />
                             </div>
                         </div>
                         <div class="form-group d-none">
