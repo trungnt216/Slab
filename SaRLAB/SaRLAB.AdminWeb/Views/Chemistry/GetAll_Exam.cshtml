@@ -20,8 +20,8 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .modal-content {
@@ -78,10 +78,11 @@
     <partial name="TitleCustom">
         <div class="table-container">
             <div class="table-action row">
-                <div class="col-8">
+                <div class="col-9">
                     <div class="search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" id="searchInput" onkeyup="searchTable()" class="form-control" placeholder="Tìm kiếm&hellip;">
+                        <input type="text" id="searchInput" onkeyup="searchTable()" class="form-control"
+                            placeholder="Tìm kiếm&hellip;">
                     </div>
                 </div>
                 <div class="col-3 d-flex">
@@ -89,7 +90,8 @@
                         <i class="fa-solid fa-trash-can"></i>
                         Xóa
                     </button>
-                    <button id="deleteSelectedTrigger" class="btn btn-danger btn-danger-trigger" data-toggle="modal" data-target="#deleteModal">
+                    <button id="deleteSelectedTrigger" class="btn btn-danger btn-danger-trigger" data-toggle="modal"
+                        data-target="#deleteModal">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
@@ -150,6 +152,12 @@
                     <tbody>
                         @foreach (var item in Model)
 
+
+
+
+
+
+
                         {
                             <tr>
                                 <td>
@@ -204,19 +212,31 @@
                                     <a class="btn-custom-view-detail" asp-action="Details_Exam" asp-route-id="@item.ID">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a class="delete" href="#" data-url="@Url.Action("Delete_Exam", "Chemistry", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                    <a class="delete" href="#"
+                                        data-url="@Url.Action("Delete_Exam", "Chemistry", new { id = item.ID })"
+                                        onclick="openDeleteModal(this)">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>
                             </tr>
                             counter++;
 
+
+
+
+
+
+
                         }
                     </tbody>
                 </table>
                 @if (Model == null || !Model.Any())
+
+
+
                 {
-                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
+                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ
+                        liệu!</p>
                 }
             </div>
         </div>
@@ -235,31 +255,31 @@
 </div>
 
 @section Scripts {
-        <script src="~/js/table.js"></script>
-        <script type="text/javascript">
-            var deleteUrl = '';
-            var selectedIds = [];
+    <script src="~/js/table.js"></script>
+    <script type="text/javascript">
+        var deleteUrl = '';
+        var selectedIds = [];
 
-            document.getElementById('selectAll').addEventListener('change', function () {
-                var checkboxes = document.querySelectorAll('.selectRow');
-                for (var checkbox of checkboxes) {
-                    checkbox.checked = this.checked;
-                }
-            });
+        document.getElementById('selectAll').addEventListener('change', function () {
+            var checkboxes = document.querySelectorAll('.selectRow');
+            for (var checkbox of checkboxes) {
+                checkbox.checked = this.checked;
+            }
+        });
 
-            document.getElementById('deleteSelected').addEventListener('click', function () {
-                selectedIds = [];
-                var checkboxes = document.querySelectorAll('.selectRow:checked');
-                for (var checkbox of checkboxes) {
-                    selectedIds.push(checkbox.getAttribute('data-id'));
-                }
+        document.getElementById('deleteSelected').addEventListener('click', function () {
+            selectedIds = [];
+            var checkboxes = document.querySelectorAll('.selectRow:checked');
+            for (var checkbox of checkboxes) {
+                selectedIds.push(checkbox.getAttribute('data-id'));
+            }
 
-                if (selectedIds.length > 0) {
-                    document.getElementById('deleteModal').style.display = 'block';
-                } else {
-                    alert("Vui lòng chọn ít nhất một mục để xóa.");
-                }
-            });
+            if (selectedIds.length > 0) {
+                document.getElementById('deleteModal').style.display = 'block';
+            } else {
+                alert("Vui lòng chọn ít nhất một mục để xóa.");
+            }
+        });
 
         document.getElementById('deleteSelectedTrigger').addEventListener('click', function () {
             selectedIds = [];
@@ -276,47 +296,47 @@
         });
 
 
-            // Mở modal xóa cho từng item
-            function openDeleteModal(element) {
-                deleteUrl = element.getAttribute("data-url");
-                selectedIds = [];
-                document.getElementById('deleteModal').style.display = 'block';
+        // Mở modal xóa cho từng item
+        function openDeleteModal(element) {
+            deleteUrl = element.getAttribute("data-url");
+            selectedIds = [];
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+
+        // Xác nhận xóa
+        document.getElementById('confirmDeleteButton').onclick = function () {
+            if (selectedIds.length > 0) {
+                // Gửi yêu cầu xóa nhiều mục
+                fetch('@Url.Action("DeleteMultipleBanners", "Configuration")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ Ids: selectedIds })
+                }).then(response => {
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        alert("Có lỗi xảy ra khi xóa các mục.");
+                    }
+                });
+            } else if (deleteUrl) {
+                // Gửi yêu cầu xóa một mục
+                window.location.href = deleteUrl;
             }
+        };
 
 
-            function closeDeleteModal() {
-                document.getElementById('deleteModal').style.display = 'none';
+        window.onclick = function (event) {
+            var modal = document.getElementById('deleteModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
             }
-
-            // Xác nhận xóa
-            document.getElementById('confirmDeleteButton').onclick = function () {
-                if (selectedIds.length > 0) {
-                    // Gửi yêu cầu xóa nhiều mục
-                    fetch('@Url.Action("DeleteMultipleBanners", "Configuration")', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ Ids: selectedIds })
-                    }).then(response => {
-                        if (response.ok) {
-                            window.location.reload();
-                        } else {
-                            alert("Có lỗi xảy ra khi xóa các mục.");
-                        }
-                    });
-                } else if (deleteUrl) {
-                    // Gửi yêu cầu xóa một mục
-                    window.location.href = deleteUrl;
-                }
-            };
-
-
-            window.onclick = function (event) {
-                var modal = document.getElementById('deleteModal');
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            }
-        </script>
+        }
+    </script>
 }

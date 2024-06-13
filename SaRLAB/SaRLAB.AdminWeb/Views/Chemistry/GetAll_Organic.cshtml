@@ -3,9 +3,15 @@
 @{
     ViewData["Title"] = "GetAll_Organic";
 
+
+
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 
+
+
     ViewBag.TitleCustom = "Danh sách giáo trình hóa học hữu cơ";
+
+
 
     int counter = 1;
 }
@@ -79,7 +85,7 @@
     <partial name="TitleCustom">
         <div class="table-container">
             <div class="table-action row">
-                <div class="col-8">
+                <div class="col-9">
                     <div class="search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <input type="text" id="searchInput" onkeyup="searchTable()" class="form-control" placeholder="Tìm kiếm&hellip;">
@@ -151,73 +157,78 @@
                     <tbody>
                         @foreach (var item in Model)
 
+
+
                         {
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="selectRow" data-id="@item.ID" />
-                                </td>
-                                <td>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="selectRow" data-id="@item.ID" />
+                                    </td>
+                                    <td>
                                     @counter
-                                </td>
-                                <td class="d-none">
+                                    </td>
+                                    <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.ID)
-                                </td>
-                                <td>
+                                    </td>
+                                    <td>
                                     @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td class="d-none">
+                                    </td>
+                                    <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.Path)
-                                </td>
-                                <td class="d-none">
+                                    </td>
+                                    <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
-                                </td>
-                                <td class="d-none">
+                                    </td>
+                                    <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.PageFlag)
-                                </td>
-                                <td class="d-none">
+                                    </td>
+                                    <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.Type)
-                                </td>
-                                <td class="d-none">
+                                    </td>
+                                    <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.Remark)
-                                </td>
-                                <td class="d-none">
+                                    </td>
+                                    <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.SchoolId)
-                                </td>
-                                <td>
+                                    </td>
+                                    <td>
                                     @Html.DisplayFor(modelItem => item.CreateBy)
-                                </td>
-                                <td class="d-none">
+                                    </td>
+                                    <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.CreateTime)
-                                </td>
-                                <td class="d-none">
+                                    </td>
+                                    <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.UpdateBy)
-                                </td>
-                                <td>
+                                    </td>
+                                    <td>
                                     @Html.DisplayFor(modelItem => item.UpdateTime)
-                                </td>
-                                <td class="d-none">
+                                    </td>
+                                    <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.SubjectId)
-                                </td>
-                                <td>
-                                    <a class="btn-custom-check" asp-action="Accept_Organic" asp-route-id="@item.ID">
-                                        <i class="fa-solid fa-circle-check"></i>
-                                    </a>
-                                    <a class="btn-custom-view-detail" asp-action="Details_Organic" asp-route-id="@item.ID">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
-                                    <a class="delete" href="#" data-url="@Url.Action("Delete_Organic", "Chemistry", new { id = item.ID })" onclick="openDeleteModal(this)">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        <a class="btn-custom-check" asp-action="Accept_Organic" asp-route-id="@item.ID">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                        </a>
+                                        <a class="btn-custom-view-detail" asp-action="Details_Organic" asp-route-id="@item.ID">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <a class="delete" href="#" data-url="@Url.Action("Delete_Organic", "Chemistry", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
                             counter++;
+
+
 
                         }
                     </tbody>
                 </table>
                 @if (Model == null || !Model.Any())
+
                 {
-                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
+                        <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
                 }
             </div>
         </div>
@@ -236,19 +247,33 @@
 </div>
 
 @section Scripts {
-        <script src="~/js/table.js"></script>
-        <script type="text/javascript">
-            var deleteUrl = '';
-            var selectedIds = [];
+            <script src="~/js/table.js"></script>
+            <script type="text/javascript">
+                var deleteUrl = '';
+                var selectedIds = [];
 
-            document.getElementById('selectAll').addEventListener('change', function () {
-                var checkboxes = document.querySelectorAll('.selectRow');
-                for (var checkbox of checkboxes) {
-                    checkbox.checked = this.checked;
-                }
-            });
+                document.getElementById('selectAll').addEventListener('change', function () {
+                    var checkboxes = document.querySelectorAll('.selectRow');
+                    for (var checkbox of checkboxes) {
+                        checkbox.checked = this.checked;
+                    }
+                });
 
-            document.getElementById('deleteSelected').addEventListener('click', function () {
+                document.getElementById('deleteSelected').addEventListener('click', function () {
+                    selectedIds = [];
+                    var checkboxes = document.querySelectorAll('.selectRow:checked');
+                    for (var checkbox of checkboxes) {
+                        selectedIds.push(checkbox.getAttribute('data-id'));
+                    }
+
+                    if (selectedIds.length > 0) {
+                        document.getElementById('deleteModal').style.display = 'block';
+                    } else {
+                        alert("Vui lòng chọn ít nhất một mục để xóa.");
+                    }
+                });
+
+            document.getElementById('deleteSelectedTrigger').addEventListener('click', function () {
                 selectedIds = [];
                 var checkboxes = document.querySelectorAll('.selectRow:checked');
                 for (var checkbox of checkboxes) {
@@ -262,62 +287,48 @@
                 }
             });
 
-        document.getElementById('deleteSelectedTrigger').addEventListener('click', function () {
-            selectedIds = [];
-            var checkboxes = document.querySelectorAll('.selectRow:checked');
-            for (var checkbox of checkboxes) {
-                selectedIds.push(checkbox.getAttribute('data-id'));
-            }
 
-            if (selectedIds.length > 0) {
-                document.getElementById('deleteModal').style.display = 'block';
-            } else {
-                alert("Vui lòng chọn ít nhất một mục để xóa.");
-            }
-        });
-
-
-            // Mở modal xóa cho từng item
-            function openDeleteModal(element) {
-                deleteUrl = element.getAttribute("data-url");
-                selectedIds = [];
-                document.getElementById('deleteModal').style.display = 'block';
-            }
-
-
-            function closeDeleteModal() {
-                document.getElementById('deleteModal').style.display = 'none';
-            }
-
-            // Xác nhận xóa
-            document.getElementById('confirmDeleteButton').onclick = function () {
-                if (selectedIds.length > 0) {
-                    // Gửi yêu cầu xóa nhiều mục
-                    fetch('@Url.Action("DeleteMultipleBanners", "Configuration")', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ Ids: selectedIds })
-                    }).then(response => {
-                        if (response.ok) {
-                            window.location.reload();
-                        } else {
-                            alert("Có lỗi xảy ra khi xóa các mục.");
-                        }
-                    });
-                } else if (deleteUrl) {
-                    // Gửi yêu cầu xóa một mục
-                    window.location.href = deleteUrl;
+                // Mở modal xóa cho từng item
+                function openDeleteModal(element) {
+                    deleteUrl = element.getAttribute("data-url");
+                    selectedIds = [];
+                    document.getElementById('deleteModal').style.display = 'block';
                 }
-            };
 
 
-            window.onclick = function (event) {
-                var modal = document.getElementById('deleteModal');
-                if (event.target == modal) {
-                    modal.style.display = 'none';
+                function closeDeleteModal() {
+                    document.getElementById('deleteModal').style.display = 'none';
                 }
-            }
-        </script>
+
+                // Xác nhận xóa
+                document.getElementById('confirmDeleteButton').onclick = function () {
+                    if (selectedIds.length > 0) {
+                        // Gửi yêu cầu xóa nhiều mục
+                        fetch('@Url.Action("DeleteMultipleBanners", "Configuration")', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ Ids: selectedIds })
+                        }).then(response => {
+                            if (response.ok) {
+                                window.location.reload();
+                            } else {
+                                alert("Có lỗi xảy ra khi xóa các mục.");
+                            }
+                        });
+                    } else if (deleteUrl) {
+                        // Gửi yêu cầu xóa một mục
+                        window.location.href = deleteUrl;
+                    }
+                };
+
+
+                window.onclick = function (event) {
+                    var modal = document.getElementById('deleteModal');
+                    if (event.target == modal) {
+                        modal.style.display = 'none';
+                    }
+                }
+            </script>
 }
