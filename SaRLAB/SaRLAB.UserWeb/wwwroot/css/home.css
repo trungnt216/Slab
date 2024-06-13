@@ -1285,6 +1285,13 @@ Banner Style
     margin-top: 120px;
 }
 
+@media (max-width: 768px) {
+    #sub-content {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+}
+
 /* table-container */
 .table-container {
     background: #ffffffd9;
@@ -1354,6 +1361,57 @@ Banner Style
         color: #858585;
     }
 
+@media (max-width: 768px) {
+    .table-container{
+        padding: 25px;
+    } 
+
+    .table-container .table-action {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .table-container .table-action .btn-custom-create {
+        margin-top: 10px;
+        width: fit-content;
+        text-align: center;
+        white-space: nowrap;
+    } 
+
+    /*detail*/
+    .detail-container .d-flex {
+        flex-direction: column;
+    }
+
+    .detail-container-user .d-flex {
+        flex-direction: row;
+    }
+
+    .detail-container .detail-action {
+        margin: 10px 0px;
+    }
+
+    .detail-container .detail-item-user-left {
+        margin-bottom: 20px;
+    }
+
+    /*edit*/
+    .edit-container .edit-action {
+        flex-direction: column;
+    }
+
+    .edit-container .btn-custom-return {
+        margin-top: 10px;
+        width: fit-content;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .edit-container-user .d-flex {
+        flex-direction: row;
+    }
+}
+ 
 .group-expired {
     justify-content: center;
     float: right;
@@ -1605,7 +1663,6 @@ Banner Style
 .search-box {
     position: relative;
     float: left;
-    width: 400px;
 }
 
     .search-box input {
@@ -1843,4 +1900,8 @@ a.service-link {
     .quiz-question img {
         max-width: 250px;
     }
+}
+
+.form-control-file {
+    width: 100%;
 }
