@@ -2,8 +2,11 @@
 
 @{
     ViewData["Title"] = "GetAll_Vocabulary";
+
     Layout = "~/Views/Home/_LayoutHome.cshtml";
+
     ViewBag.TitleCustom = "Danh sách từ vựng tiếng Anh chuyên ngành";
+
     int counter = 1;
 }
 
@@ -33,19 +36,19 @@
         align-items: center;
     }
 
-    .modal-content h6 {
-        font-size: 16px;
-        margin-bottom: 5px;
-    }
+        .modal-content h6 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
 
-    .modal-content .modal-img {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 15px;
-        background: #ffe4e4;
-        border-radius: 30px;
-        padding: 8px;
-    }
+        .modal-content .modal-img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            background: #ffe4e4;
+            border-radius: 30px;
+            padding: 8px;
+        }
 
     .modal-action {
         justify-content: center;
@@ -53,9 +56,9 @@
         margin: 10px 0px
     }
 
-    .modal-action .btn-secondary {
-        margin-right: 10px;
-    }
+        .modal-action .btn-secondary {
+            margin-right: 10px;
+        }
 
     .close {
         color: #aaa;
@@ -64,12 +67,12 @@
         font-weight: bold;
     }
 
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
 </style>
 
 <div id="sub-content">
@@ -77,139 +80,161 @@
         <div class="table-container">
             <div class="table-action row">
                 <div class="col-9">
-                    <div class="search-box" style="width: 300px;">
+                    <div class="search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <input type="text" id="searchInput" onkeyup="searchTable()" class="form-control" placeholder="Tìm kiếm&hellip;">
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-3 d-flex">
                     <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
                         <i class="fa-solid fa-trash-can"></i>
                         Xóa
+                    </button>
+                    <button id="deleteSelectedTrigger" class="btn btn-danger btn-danger-trigger" data-toggle="modal" data-target="#deleteModal">
+                        <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
             </div>
             <div id="popupNotification" class="alert alert-danger">
                 @TempData["notice"]
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            <input type="checkbox" id="selectAll" />
-                        </th>
-                        <th>#</th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.ID)
-                        </th>
-                        <th>
-                            Tên
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.Path)
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.SpecializedEnglishFlag)
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.PageFlag)
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.Type)
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.Remark)
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.SchoolId)
-                        </th>
-                        <th>
-                            Người tạo
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.CreateTime)
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.UpdateBy)
-                        </th>
-                        <th>
-                            Thời gian cập nhật
-                        </th>
-                        <th class="d-none">
-                            @Html.DisplayNameFor(model => model.SubjectId)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>
-                                <input type="checkbox" class="selectRow" data-id="@item.ID" />
-                            </td>
-                            <td>
-                                @counter
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.ID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.Path)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.PageFlag)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.Type)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.Remark)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SchoolId)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CreateBy)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.CreateTime)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.UpdateBy)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UpdateTime)
-                            </td>
-                            <td class="d-none">
-                                @Html.DisplayFor(modelItem => item.SubjectId)
-                            </td>
-                            <td>
-                                <a class="btn-custom-check" asp-action="Accept_Vocabulary" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-circle-check"></i>
-                                </a>
-                                <a class="btn-custom-view-detail" asp-action="Details_Vocabulary" asp-route-id="@item.ID">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a class="delete" href="#" data-url="@Url.Action("Delete_Vocabulary", "Chemistry", new { id = item.ID })" onclick="openDeleteModal(this)">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </td>
+                            <th>
+                                <input type="checkbox" id="selectAll" />
+                            </th>
+                            <th>#</th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.ID)
+                            </th>
+                            <th>
+                                Tên
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.Path)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.SpecializedEnglishFlag)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.PageFlag)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.Type)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.Remark)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.SchoolId)
+                            </th>
+                            <th>
+                                Người tạo
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.CreateTime)
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.UpdateBy)
+                            </th>
+                            <th>
+                                Thời gian cập nhật
+                            </th>
+                            <th class="d-none">
+                                @Html.DisplayNameFor(model => model.SubjectId)
+                            </th>
+                            <th></th>
                         </tr>
-                        counter++;
-                    }
-                </tbody>
-            </table>
-            @if (Model == null || !Model.Any())
-            {
-                <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
-            }
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+
+
+
+
+
+
+
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="selectRow" data-id="@item.ID" />
+                                </td>
+                                <td>
+                                    @counter
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Path)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.PageFlag)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Type)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.Remark)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.SchoolId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreateBy)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.CreateTime)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.UpdateBy)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UpdateTime)
+                                </td>
+                                <td class="d-none">
+                                    @Html.DisplayFor(modelItem => item.SubjectId)
+                                </td>
+                                <td>
+                                    <a class="btn-custom-check" asp-action="Accept_Vocabulary" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </a>
+                                    <a class="btn-custom-view-detail" asp-action="Details_Vocabulary" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a class="delete" href="#" data-url="@Url.Action("Delete_Vocabulary", "Physics", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            counter++;
+
+
+
+
+
+
+
+                        }
+                    </tbody>
+                </table>
+                @if (Model == null || !Model.Any())
+
+
+
+                {
+                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
+                }
+            </div>
         </div>
 </div>
 
@@ -239,6 +264,20 @@
         });
 
         document.getElementById('deleteSelected').addEventListener('click', function () {
+            selectedIds = [];
+            var checkboxes = document.querySelectorAll('.selectRow:checked');
+            for (var checkbox of checkboxes) {
+                selectedIds.push(checkbox.getAttribute('data-id'));
+            }
+
+            if (selectedIds.length > 0) {
+                document.getElementById('deleteModal').style.display = 'block';
+            } else {
+                alert("Vui lòng chọn ít nhất một mục để xóa.");
+            }
+        });
+
+        document.getElementById('deleteSelectedTrigger').addEventListener('click', function () {
             selectedIds = [];
             var checkboxes = document.querySelectorAll('.selectRow:checked');
             for (var checkbox of checkboxes) {

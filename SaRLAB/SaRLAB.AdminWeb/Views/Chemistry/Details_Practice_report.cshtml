@@ -81,6 +81,9 @@
                             <i class="fa-solid fa-circle-check"></i>
                             Duyệt
                         </a>
+                        <a asp-area="" asp-controller="Chemistry" asp-action="Accept_Practice_report" asp-route-id="@Model.ID" class="btn-custom-accept btn-custom-accept-trigger" type="button">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </a>
                         @* <a asp-area="" data-url="@Url.Action("Delete_Experiment", "Chemistry", new { id = @Model.ID })" onclick="openDeleteModal(this)" class="btn-custom-delete" type="button">
                         <i class="fa-solid fa-trash"></i>
                         Xóa
@@ -93,10 +96,13 @@
                             <i class="fa-solid fa-angles-left"></i>
                             Trở về
                         </a>
+                        <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Practice_report" class="btn-custom-return btn-custom-return-trigger" type="button">
+                            <i class="fa-solid fa-angles-left"></i>
+                        </a>
                     </div>
             </div>
             <dl class="row">
-                <div class="col-4">
+                <div class="col-12 col-md-4">
                     <div class="detail-item">
                         <div class="title">
                             <i class="fa-solid fa-file-signature"></i>
@@ -140,7 +146,7 @@
                         <p class="detail">@Html.DisplayFor(model => model.Remark)</p>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-12 col-md-8">
                     <div class="detail-item">
                         <div class="title">
                             <i class="fa-regular fa-file"></i>

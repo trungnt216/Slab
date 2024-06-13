@@ -29,6 +29,10 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    background: #f9fafd;
+}
+
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

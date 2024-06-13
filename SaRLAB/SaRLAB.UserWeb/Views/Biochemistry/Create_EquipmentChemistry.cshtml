@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 edit-container">
-                <div class="d-flex justify-content-between">
+                <div class="edit-action d-flex justify-content-between">
                     <partial name="_TitleCustom">
                         <a asp-area="" asp-controller="Math" asp-action="GetAll_EquipmentChemistry"
                             class="btn-custom-return" type="button">
@@ -21,7 +21,7 @@
                 <form asp-action="Create_EquipmentChemistry" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-12 col-md-4">col-md-4">
                             <div class="form-group d-none">
                                 <label asp-for="ID" class="control-label"></label>
                                 <input asp-for="ID" class="form-control" />
@@ -119,7 +119,7 @@
                                 <span asp-validation-for="Remark" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="col-8">
+                        <div class="col-12 col-md-8">
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-file"></i>
