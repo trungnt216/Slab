@@ -87,7 +87,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             else
             {
-                if (subjectFlag.ChemistryMarkFlag == false)
+                if (subjectFlag.MathPermissionFlag == false)
                 {
                     _hasError = true;
                     return; // Early exit from constructor
@@ -97,7 +97,7 @@ namespace SaRLAB.UserWeb.Controllers
         //----------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
         //-------------------------------hoá học--------------------------------------------------------
-        public ActionResult Index()
+        public IActionResult Index()
         {
             ViewBag.ActiveMenu = "homePage";
             return View();
