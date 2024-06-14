@@ -15,12 +15,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\login.css" />
-    <None Include="wwwroot\images\login.svg" />
-    <None Include="wwwroot\images\register.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="FontAwesome.MVC" Version="1.0.0" />
@@ -38,10 +32,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SaRLAB.Models\SaRLAB.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

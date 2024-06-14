@@ -182,11 +182,28 @@
                                 </td>
                                 <td>
                                     @if (!string.IsNullOrEmpty(@item.QuestionImage))
+
+
+
+
+
+
+
                                     {
                                         <img src="@Url.Content(@item.QuestionImage)"
                                             style="width: 80px; height: 80px; object-fit: cover; max-width: 80px;" />
                                     }
+
+
+
                                     else
+
+
+
+
+
+
+
                                     {
                                         <p>Không có</p>
                                     }
@@ -236,10 +253,24 @@
                                 </td>
                             </tr>
                             counter++;
+
+
+
+
+
+
+
                         }
                     </tbody>
                 </table>
                 @if (Model == null || !Model.Any())
+
+
+
+
+
+
+
                 {
                     <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ
                         liệu!</p>
@@ -373,5 +404,4 @@
             }
         }
     </script>
->>>>>>> 41df5aa885553d902750234fed8554adc34e3664
 }
