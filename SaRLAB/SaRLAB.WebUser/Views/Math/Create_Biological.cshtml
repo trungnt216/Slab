@@ -1,0 +1,210 @@
+﻿@model SaRLAB.Models.Entity.Document
+
+@{
+    ViewData["Title"] = "Create_Biological";
+    Layout = "~/Views/Math/_Layout.cshtml";
+    ViewBag.TitleCustom = "Thêm mới hoạt tính sinh học";
+}
+
+<div id="sub-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 edit-container">
+                <div class="edit-action d-flex justify-content-between">
+                    <partial name="_TitleCustom">
+                        <a asp-area="" asp-controller="Math" asp-action="GetAll_Biological" class="btn-custom-return"
+                            class="btn-custom-return" type="button">
+                            <i class="fa-solid fa-angles-left"></i>
+                            Trở về
+                        </a>
+                </div>
+                <form asp-action="Create_Biological" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="form-group d-none">
+                                <label asp-for="ID" class="control-label"></label>
+                                <input asp-for="ID" class="form-control" />
+                                <span asp-validation-for="ID" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <label asp-for="Name" class="control-label">Tên</label>
+                                </div>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-route"></i>
+                                    <label asp-for="Path" class="control-label">Đường dẫn</label>
+                                </div>
+                                <input asp-for="Path" class="form-control" />
+                                <span id="errorPath" class="text-danger"></span>
+                                <span asp-validation-for="Path" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="SpecializedEnglishFlag" class="control-label"></label>
+                                <input asp-for="SpecializedEnglishFlag" class="form-control" />
+                                <span asp-validation-for="SpecializedEnglishFlag" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="PageFlag" class="control-label"></label>
+                                <input asp-for="PageFlag" class="form-control" />
+                                <span asp-validation-for="PageFlag" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="CreateBy" class="control-label"></label>
+                                <input asp-for="CreateBy" class="form-control" />
+                                <span asp-validation-for="CreateBy" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="CreateTime" class="control-label"></label>
+                                <input asp-for="CreateTime" class="form-control" />
+                                <span asp-validation-for="CreateTime" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="UpdateBy" class="control-label"></label>
+                                <input asp-for="UpdateBy" class="form-control" />
+                                <span asp-validation-for="UpdateBy" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="UpdateTime" class="control-label"></label>
+                                <input asp-for="UpdateTime" class="form-control" />
+                                <span asp-validation-for="UpdateTime" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="SubjectId" class="control-label"></label>
+                                <input asp-for="SubjectId" class="form-control" />
+                                <span asp-validation-for="SubjectId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="Type" class="control-label"></label>
+                                <input asp-for="Type" class="form-control" />
+                                <span asp-validation-for="Type" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-comment"></i>
+                                    <label asp-for="Remark" class="control-label">Nhận xét</label>
+                                </div>
+                                <textarea asp-for="Remark" class="form-control" rows="8" cols="50"></textarea>
+                                <span asp-validation-for="Remark" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="SchoolId" class="control-label"></label>
+                                <input asp-for="SchoolId" class="form-control" />
+                                <span asp-validation-for="SchoolId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-file"></i>
+                                    <label for="File"> Chọn file</label>
+                                </div>
+                                <input type="file" id="File" name="File" class="form-control-file" />
+                            </div>
+                            <div class="file-detail">
+                                <span id="fileDisplay" style="color: #5d6975; font-style: italic;">
+                                    Không có sẵn file nào!
+                                </span>
+                                <div>
+                                    <span id="errorFile" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Thêm mới" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        document.getElementById('File').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            var fileDisplay = document.getElementById('fileDisplay');
+            var fileURL = URL.createObjectURL(file);
+            var extension = file.name.split('.').pop().toLowerCase();
+
+            fileDisplay.innerHTML = '';
+
+            if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
+                var img = document.createElement('img');
+                img.src = fileURL;
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                fileDisplay.appendChild(img);
+                document.getElementById('errorFile').innerText = "";
+            } else if (['mp4', 'webm', 'ogg'].includes(extension)) {
+                var video = document.createElement('video');
+                video.src = fileURL;
+                video.style.maxWidth = '100%';
+                video.style.height = 'auto';
+                video.controls = true;
+                fileDisplay.appendChild(video);
+                document.getElementById('errorFile').innerText = "";
+            } else if (extension === 'pdf') {
+                var object = document.createElement('object');
+                object.data = fileURL;
+                object.width = '100%';
+                object.height = '800px';
+                fileDisplay.appendChild(object);
+                document.getElementById('errorFile').innerText = "";
+            } else {
+                document.getElementById('errorFile').innerText = "Vui lòng chọn một file hợp lệ!";
+            }
+        });
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+            var fileInput = document.getElementById('File');
+            var pathInput = document.getElementById('Path');
+            var file = fileInput.files[0];
+            var path = pathInput.value.trim();
+
+            var errorFile = document.getElementById('errorFile');
+            var errorPath = document.getElementById('errorPath');
+            var valid = true;
+
+            // Kiểm tra nếu cả file và path đều trống
+            if (!file && !path) {
+                errorFile.innerText = "Vui lòng chọn một file hoặc nhập đường dẫn!";
+                errorPath.innerText = "Vui lòng chọn một file hoặc nhập đường dẫn!";
+                valid = false;
+            } else {
+                errorFile.innerText = "";
+                errorPath.innerText = "";
+            }
+
+            // Nếu có file, kiểm tra phần mở rộng của file
+            if (file) {
+                var extension = file.name.split('.').pop().toLowerCase();
+                var supportedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webm', 'ogg', 'pdf'];
+                if (!supportedExtensions.includes(extension)) {
+                    errorFile.innerText = "Vui lòng chọn một file hợp lệ!";
+                    valid = false;
+                } else {
+                    errorFile.innerText = "";
+                }
+            }
+
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+
+    </script>
+}

@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
+        <title>Home</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+        <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/animated.css">
+    </head>
+
+    <body style="overflow: hidden">
+        <div id="services" class="services section">
+            <div class="overlay"></div>
+            <div class="services-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <div class="section-heading wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+                                <h2>Welcome to Salab app</h2>
+                                <p>Ứng dụng quản lý phòng thí nghiệm tiện ích. SaR LAB hứa hẹn tối ưu hóa công việc và tạo điều kiện cho sáng tạo trong nghiên cứu!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="d-flex flex-wrap">
+                        <div class="flex-item p-2">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion" class="service-link">
+                                <div class="service-item first-service">
+                                    <img src="@Url.Content("~/images/chem.png")" class="image" alt="" />
+                                    <h4>Hóa học</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="flex-item p-2">
+                        <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Bio" class="service-link">
+                                <div class="service-item second-service">
+                                <img src="@Url.Content("~/images/bio.png")" class="image" alt="" />
+                                    <h4>Sinh học</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="flex-item p-2">
+                        <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Physics" class="service-link">
+                                <div class="service-item third-service">
+                                    <img src="@Url.Content("~/images/physics.png")" class="image" alt="" />
+                                    <h4>Vật lý</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="flex-item p-2">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Math" class="service-link">
+                                <div class="service-item fourth-service">
+                                    <img src="@Url.Content("~/images/math.png")" class="image" alt="" />
+                                    <h4>Hoá Sinh</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="flex-item p-2">
+                            <a asp-controller="Library" asp-action="GetAll_Library" class="service-link">
+                                <div class="service-item fifth-service">
+                                    <img src="@Url.Content("~/images/library.png")" class="image" alt="" />
+                                    <h4>Thư viện</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    </body>
+</html>

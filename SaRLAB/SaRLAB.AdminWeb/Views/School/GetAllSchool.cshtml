@@ -77,22 +77,27 @@
     <div class="table-container">
         <div class="table-action row">
             <div class="col-9">
-                <div class="search-box" style="width: 300px;">
+                <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" id="searchInput" onkeyup="searchTable()" class="form-control" placeholder="Tìm kiếm&hellip;">
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-3 d-flex">
                 <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
                     <i class="fa-solid fa-trash-can"></i>
                     Xóa
                 </button>
-                <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="CreateSchool" asp-controller="School">
+                <button id="deleteSelectedTrigger" class="btn btn-danger btn-danger-trigger" data-toggle="modal" data-target="#deleteModal">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+                    <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button" asp-action="CreateSchool" asp-controller="School">
                     <i class="fa-solid fa-plus"></i>
                     Thêm mới
                 </a>
+                    <a asp-area="" class="btn-custom-create btn-custom-create-trigger" style="margin-left: 10px" type="button" asp-action="CreateSchool" asp-controller="School">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
             </div>
-        </div>
         <div id="popupNotification" class="alert alert-danger">
             @TempData["notice"]
         </div>

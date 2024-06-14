@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animated.css">
+    <link rel="stylesheet" href="~/css/owl.css">
+</head>
+<body>
+    @* header *@
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a asp-controller="HomePage" asp-action="Index" class="logo">
+                            <img src="@Url.Content("~/images/logo.png")"/>
+                            <h4>SaR<span> LAB</span></h4>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <partial name="_Menu" />
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="~/js/owl-carousel.js"></script>
+    <script src="~/js/animation.js"></script>
+    <script src="~/js/imagesloaded.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

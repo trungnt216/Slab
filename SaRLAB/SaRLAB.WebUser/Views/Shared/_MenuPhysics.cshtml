@@ -1,0 +1,244 @@
+﻿@{
+    ViewData["Title"] = "_menu";
+
+
+
+
+
+
+
+    string url = TempData["AvtPath"]?.ToString();
+}
+
+<style>
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        background: linear-gradient(to top, #538d72, #117245);
+        box-shadow: 0 8px 16px rgb(0 0 0 / 6%);
+        z-index: 1;
+        border: none;
+        min-width: 9rem;
+    }
+
+    .dropdown-menu>li {
+        position: relative;
+    }
+
+    .dropdown-menu a {
+        padding: 10px;
+        white-space: nowrap;
+    }
+
+    .dropdown:hover>.dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu .dropdown-menu {
+        top: 0;
+        left: 100%;
+    }
+
+    .dropdown-menu>li:hover>.dropdown-menu {
+        display: block;
+    }
+
+    a.submenu {
+        align-content: center;
+        padding-left: 15px;
+        line-height: 0px !important;
+    }
+
+    a.submenu:hover {
+        color: #9cebc6 !important;
+    }
+
+    a.submenu i {
+        margin-right: 3px;
+    }
+</style>
+
+<ul class="nav">
+    <li class="scroll-to-section menu">
+        <a class="menu" data-toggle=" dropdown" asp-controller="HomePage" asp-action="Home">Chung</a>
+    </li>
+    <li class="scroll-to-section menu">
+        <a class="menu @((ViewBag.ActiveMenu == "homePage") ? "active" : "")" data-toggle="dropdown"
+            asp-controller="Physics" asp-action="Index">Trang chủ</a>
+    </li>
+    <li class="scroll-to-section dropdown menu">
+        <a class="menu subject @((ViewBag.ActiveMenu == "physics") ? "active" : "")" data-toggle="dropdown">Vật lý</a>
+        <a class="menu subject-trigger @((ViewBag.ActiveMenu == "physics") ? "active" : "")" data-toggle="dropdown">
+            <label style="margin-right: 10px; cursor: pointer;">Vật lý</label>
+            <i class="fa-solid fa-angles-right"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-title">
+            <li class="scroll-to-section">
+                <a class="submenu @((ViewBag.ActiveSubMenu == "virtualLab") ? "active" : "")" href="#virtual-lab">
+                    <i class="fa-solid fa-angle-right"></i>
+                    Virtual Lab
+                </a>
+                <ul class="dropdown-menu dropdown-menu-item">
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "experience") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Experiment">Thực nghiệm</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "conspectus") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Conspectus">Đại cương</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="scroll-to-section">
+                <a class="submenu @((ViewBag.ActiveSubMenu == "dutru") ? "active" : "")" href="#du-tru">
+                    <i class="fa-solid fa-angle-right"></i>
+                    Dự trù
+                </a>
+                <ul class="dropdown-menu dropdown-menu-item">
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistry") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Chemistry">Hóa chất</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "toolChemistry") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_ToolChemistry">Dụng cụ</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "equipmentChemistry") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_EquipmentChemistry">Thiết bị</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="scroll-to-section">
+                <a class="submenu @((ViewBag.ActiveSubMenu == "giaotrinh") ? "active" : "")" href="#du-tru">
+                    <i class="fa-solid fa-angle-right"></i>
+                    Giáo trình
+                </a>
+                <ul class="dropdown-menu dropdown-menu-item">
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "conspectus") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Conspectus">Đại cương</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "experiment") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Experiment">Thực nghiệm</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="scroll-to-section">
+                <a class="submenu @((ViewBag.ActiveSubMenu == "thuchanh") ? "active" : "")" href="#du-tru">
+                    <i class="fa-solid fa-angle-right"></i>
+                    Thực hành
+                </a>
+                <ul class="dropdown-menu dropdown-menu-item">
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "preparationQuestions") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Preparation_questions">Câu hỏi chuẩn bị</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "practiceReport") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Practice_report">Báo cáo thực hành</a>
+                    </li>
+                    <li class="scroll-to-section"><a class="submenu" href="#vo-co">Điểm thực hành</a></li>
+                </ul>
+            </li>
+            <li class="scroll-to-section">
+                <a class="submenu @((ViewBag.ActiveSubMenu == "nhansu") ? "active" : "")" href="#du-tru">
+                    <i class="fa-solid fa-angle-right"></i>
+                    Nhân sự
+                </a>
+                <ul class="dropdown-menu dropdown-menu-item">
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "directors") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Directors">Ban chủ nhiệm</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "teacher") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Teacher">Giảng viên</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "technical") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Technical">Tổ kỹ thuật</a>
+                    </li>
+                    @* <li class="scroll-to-section"><a class="submenu" href="#vo-co">Lịch công tác</a></li> *@
+                </ul>
+            </li>
+            <li class="scroll-to-section">
+                <a class="submenu @((ViewBag.ActiveSubMenu == "nghiencuu") ? "active" : "")" href="#du-tru">
+                    <i class="fa-solid fa-angle-right"></i>
+                    Nghiên cứu
+                </a>
+                <ul class="dropdown-menu dropdown-menu-item">
+                    <li class="scroll-to-section">
+                        <a class="submenu  @((ViewBag.ActiveSubMenuLv2 == "departmentLevel") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Department_level">Đề tài cấp sở</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu  @((ViewBag.ActiveSubMenuLv2 == "provincialLevel") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Provincial_level">Đề tài cấp thành phố, cấp tỉnh</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu  @((ViewBag.ActiveSubMenuLv2 == "nationalLevel") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_National_level">Đề tài cấp bộ, cấp quốc gia</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="scroll-to-section">
+                <a class="submenu @((ViewBag.ActiveSubMenu == "tienganh") ? "active" : "")" href="#du-tru">
+                    <i class="fa-solid fa-angle-right"></i>
+                    Tiếng anh chuyên ngành
+                </a>
+                <ul class="dropdown-menu dropdown-menu-item">
+                    <li class="scroll-to-section">
+                        <a class="submenu  @((ViewBag.ActiveSubMenuLv2 == "vocabulary") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Vocabulary">Từ vựng</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu  @((ViewBag.ActiveSubMenuLv2 == "examenglish") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Examenglish">Bài giảng song ngữ</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu  @((ViewBag.ActiveSubMenuLv2 == "exam") ? "active" : "")"
+                            asp-controller="Physics" asp-action="GetAll_Exam">Bài tập</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    @* info group *@
+    <li class="scroll-to-section menu-info-group">
+        <a class="menu d-flex" asp-controller="HomePage" asp-action="Information">
+            @if (TempData["AvtPath"] != null)
+            {
+                <img src="@Url.Content(TempData["AvtPath"].ToString())" />
+            }
+            <div class="info-user">
+                <p class="name">@TempData["name"]</p>
+                <p class="role">@TempData["role"]</p>
+            </div>
+        </a>
+    </li>
+    <li class="scroll-to-section menu menu-info-group-trigger">
+        <a class="menu @((ViewBag.ActiveMenu == "user") ? "active" : "")" data-toggle="dropdown"
+            asp-controller="HomePage" asp-action="Information">Thông tin người dùng</a>
+    </li>
+    @* logout *@
+    <li class="scroll-to-section logout menu">
+        <div class="main-red-button"><a asp-controller="HomePage" asp-action="Logout">Đăng xuất</a></div>
+    </li>
+    <li class="scroll-to-section logout-trigger menu">
+        <a class="menu" asp-controller=" HomePage" asp-action="Logout">Đăng xuất</a>
+    </li>
+</ul>
+<a class="menu-trigger">
+    <span>Menu</span>
+</a>
+
+@section Scripts {
+    <script src="~/js/home.js"></script>
+}

@@ -52,7 +52,7 @@
 
 <body>
     @* sidebar *@
-    <div class="sidebar">
+    <div class="sidebar sidebar_close">
         <div class="subject-content">
             <ul id="collapseConfig" class="list-unstyled components">
                 <li class="@((ViewBag.ActiveMenu == "banner") ? "active" : "")">
@@ -76,7 +76,7 @@
                 <li class="@((ViewBag.ActiveMenu == "student") ? "active" : "")">
                     <p class="d-flex justify-content-between">
                         <span class="left row">
-                            <i class="fas fa-user-tie icon col-2"></i>
+                            <i class="fa-solid fa-universal-access col-2"></i>
                             <a class="title col-6" asp-controller="Configuration" asp-action="GetAll_User">Quản lý truy cập</a>
                         </span>
                     </p>
@@ -381,8 +381,8 @@
                         <li>
                             <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('math')">
                                 <span class="left row">
-                                    <i class="fa-solid fa-square-root-alt col-2"></i>
-                                    <a class="title col-6">Toán</a>
+                                    <i class="fa-solid fa-bacterium col-2"></i>
+                                    <a class="title col-6">Sinh Hoá</a>
                                 </span>
                             </p>
                             <ul id="math" class="nested">
@@ -492,10 +492,11 @@
     </div>
 
     @* page content *@
-    <div id="content">
+    <div id="content" class="with-sidebar">
         <div class="header d-flex justify-content-between">
             <div class="left">
-                <p class="title">Dashboard</p>
+                <i class="icon-menu fa-solid fa-bars"></i>
+                <p class="title">SaRLAB</p>
             </div>
             <div class="right d-flex">
                 <div class="icon-group d-flex">
@@ -547,6 +548,44 @@
                 element.classList.toggle('active');
             }
         }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebarToggle = document.querySelector(".fa-bars");
+            const sidebar = document.querySelector(".sidebar");
+            const content = document.getElementById("content");
+            const overlay = document.createElement('div');
+            overlay.classList.add('overlay');
+            document.body.appendChild(overlay);
+
+            function toggleSidebar() {
+                if (sidebar.classList.contains("menu-active")) {
+                    sidebar.classList.remove("menu-active");
+                    content.classList.remove("with-sidebar", "blur");
+                    content.classList.add("full-width");
+                    overlay.classList.remove("menu-active");
+                } else {
+                    sidebar.classList.add("menu-active");
+                    content.classList.add("with-sidebar", "blur");
+                    content.classList.remove("full-width");
+                    overlay.classList.add("menu-active");
+                }
+            }
+
+            sidebarToggle.addEventListener("click", toggleSidebar);
+
+            overlay.addEventListener("click", toggleSidebar);
+
+            window.addEventListener("resize", function () {
+                if (window.innerWidth > 768) {
+                    sidebar.classList.remove("menu-active");
+                    content.classList.remove("full-width");
+                    content.classList.add("with-sidebar");
+                }
+            });
+        });
+
     </script>
 </body>
 
