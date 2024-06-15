@@ -4,19 +4,19 @@
 }
 
 .quiz-chem {
-    background: linear-gradient(to top left, #ffc107, #b39538);
+    background: #ebd2b0;
 }
 
 .quiz-bio {
-    background: linear-gradient(to top left, #001c46, #5292f2);
+    background: #c1daff;
 }
 
 .quiz-math {
-    background: linear-gradient(to top left, #760712, #d63f4e);
+    background: #fce2e5;
 }
 
 .quiz-phys {
-    background: linear-gradient(to top left, #0f5132, #35b77b);
+    background: #caefde;
 }
 
 

@@ -83,15 +83,18 @@
                             <p class="detail">@Html.DisplayFor(model => model.UpdateTime)</p>
                         </div>
                         @{
-                            var props = Model.Property == "poison" ? "Độc" : "Không độc";
-                            var backgroundColor = Model.Property == "poison" ? "#a8424c" : "#32a771";
+                            var props = Model.Property == "dangerous" ? "Nguy hiểm" :
+                            Model.Property == "notDangerous" ? "Không nguy hiểm" : "Ít nguy hiểm";
+                            var backgroundColor = Model.Property == "dangerous" ? "#a8424c" :
+                            Model.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
                         }
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-tag"></i>
                                 <p>Đặc tính</p>
                             </div>
-                            <p style="
+                            <p style="padding: 0px 10px;
+                                white-space: nowrap;
                                 margin-left: 20px;
                                 margin-top: 5px;
                                 background: @backgroundColor;
@@ -100,7 +103,7 @@
                                 color: white;
                                 font-size: 14px;
                                 line-height: 25px;
-                                width: 100px;
+                                width: fit-content;
                                 font-style: italic;">
                                 @props
                             </p>
@@ -115,7 +118,7 @@
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-comment"></i>
-                                <p>Nhận xét</p>
+                                <p>Ghi chú</p>
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.Remark)</p>
                         </div>

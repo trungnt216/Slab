@@ -97,8 +97,9 @@
                                     <label asp-for="Property" class="control-label">Đặc tính</label>
                                 </div>
                                 <select asp-for="Property" class="select">
-                                    <option value="poison">Độc</option>
-                                    <option value="nonpoison">Không độc</option>
+                                    <option value="dangerous">Nguy hiểm</option>
+                                    <option value="notDangerous">Không nguy hiểm</option>
+                                    <option value="slightlyDangerous">Ít nguy hiểm</option>
                                 </select>
                                 <span asp-validation-for="Property" class="text-danger"></span>
                             </div>
@@ -113,7 +114,7 @@
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-comment"></i>
-                                    <label asp-for="Remark" class="control-label">Nhận xét</label>
+                                    <label asp-for="Remark" class="control-label">Ghi chú</label>
                                 </div>
                                 <textarea asp-for="Remark" class="form-control" rows="8" cols="50"></textarea>
                                 <span asp-validation-for="Remark" class="text-danger"></span>

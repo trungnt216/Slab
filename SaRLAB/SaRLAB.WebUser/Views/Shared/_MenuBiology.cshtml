@@ -12,7 +12,7 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
-        background: linear-gradient(to top, #82abe7, #5482c7);
+        background: #c8dcf9;
         box-shadow: 0 8px 16px rgb(0 0 0 / 6%);
         z-index: 1;
         border: none;
@@ -42,13 +42,14 @@
     }
 
     a.submenu {
+        color: #1d68aa !important;
         align-content: center;
         padding-left: 15px;
         line-height: 0px !important;
     }
 
     a.submenu:hover {
-        color: #acdbff !important;
+        color: #78a8ef;
     }
 
     a.submenu i {
@@ -182,6 +183,22 @@
             </li>
         </ul>
     </li>
+    @* noti *@
+    <li class="scroll-to-section menu noti-group" id="expiredItemsMenu" style="display: none; margin-right: 10px;">
+        <a class="menu" href="#">
+            <i class="fa fa-bell"></i>
+            <div class="expiredItems">
+                <span id="expiredItemsCount"></span>
+            </div>
+        </a>
+        <div class="noti-tooltip" id="expiredItemsTooltip">
+            <span id="expiredItemsTooltipText"></span>
+        </div>
+    </li>
+    <li class="scroll-to-section menu noti-group-text" id="expiredItemsMenuText" style="display: none;">
+        <a class="menu" href="#" id="expiredItemsCountText"></a>
+    </li>
+
     @* info group *@
     <li class="scroll-to-section menu-info-group">
         <a class="menu d-flex" asp-controller="HomePage" asp-action="Information">
