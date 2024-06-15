@@ -1974,7 +1974,7 @@ a.service-link {
 
 .services .flex-item {
     flex: 1 1 20%;
-    max-width: 20%;
+    max-width: 25%;
     box-sizing: border-box;
 }
 

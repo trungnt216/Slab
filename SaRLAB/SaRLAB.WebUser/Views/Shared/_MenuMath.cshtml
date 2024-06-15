@@ -67,7 +67,7 @@
             asp-controller="Math" asp-action="Index">Trang chủ</a>
     </li>
     <li class="scroll-to-section dropdown menu">
-        <a class="menu subject @((ViewBag.ActiveMenu == "math") ? "active" : "")" data-toggle="dropdown">Sinh Hoá</a>
+        <a class="menu subject @((ViewBag.ActiveMenu == "math") ? "active" : "")" data-toggle="dropdown">Hóa Sinh</a>
         <a class="menu subject-trigger @((ViewBag.ActiveMenu == "math") ? "active" : "")" data-toggle="dropdown">
             <label style="margin-right: 10px; cursor: pointer;">Hoá học</label>
             <i class="fa-solid fa-angles-right"></i>
@@ -205,6 +205,8 @@
             </li>
         </ul>
     </li>
+    <li class="scroll-to-section menu"><a class="menu" data-toggle=" dropdown" asp-controller="Math" asp-action="GetAll_Library">Thư viện</a></li>
+
     @* noti *@
     <li class="scroll-to-section menu noti-group" id="expiredItemsMenu" style="display: none; margin-right: 10px;">
         <a class="menu" href="#">
