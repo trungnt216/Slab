@@ -54,9 +54,12 @@ namespace SaRLAB.DataAccess.Service.SchoolService
             if (school != null)
             {
                 // Update properties of the existing school with the properties of the updated school
-                school.Name = updatedSchool.Name;
-                school.Address = updatedSchool.Address;
-
+                school.Name =  updatedSchool.Name ?? school.Name;
+                school.Address = updatedSchool.Address ?? school.Address;
+                school.ChemLogo = updatedSchool.ChemLogo ?? school.ChemLogo;
+                school.PhysLogo = updatedSchool.PhysLogo ?? school.PhysLogo;
+                school.BioLogo = updatedSchool.BioLogo ?? school.BioLogo;
+                school.BiochemLogo = updatedSchool.BiochemLogo ?? school.BiochemLogo;
                 return _context.SaveChanges(); // Returns the number of entities updated
             }
             return 0; // School with given ID not found

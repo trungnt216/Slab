@@ -17,6 +17,12 @@ namespace SaRLAB.Models.Entity
         public string? Name { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập địa chỉ!")]
         public string? Address { get; set; }
+        public string? ChemLogo { get; set; }
+        public string? BioLogo { get; set; }
+        public string? PhysLogo { get; set; }
+        public string? BiochemLogo { get; set; }
+        public string? Banner { get; set; }
+
 
     }
 }
