@@ -39,7 +39,7 @@ namespace SaRLAB.DataAccess.Service.SchoolService
 
         public School GetSchoolById(int id)
         {
-            return _context.Schools.FirstOrDefault(s => s.ID == id);
+            return _context.Schools.SingleOrDefault(s => s.ID == id);
         }
 
         public int InsertSchool(School school)
@@ -61,7 +61,7 @@ namespace SaRLAB.DataAccess.Service.SchoolService
                 school.BioLogo = updatedSchool.BioLogo ?? school.BioLogo;
                 school.BiochemLogo = updatedSchool.BiochemLogo ?? school.BiochemLogo;
                 school.Banner = updatedSchool.Banner ?? school.Banner;
-                school.LogoSchool = updatedSchool.LogoSchool ?? school.LogoSchool;
+                school.SchoolLogo = updatedSchool.SchoolLogo ?? school.SchoolLogo;
                 return _context.SaveChanges(); // Returns the number of entities updated
             }
             return 0; // School with given ID not found
