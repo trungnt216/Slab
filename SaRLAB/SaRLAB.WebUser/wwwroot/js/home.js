@@ -1,4 +1,4 @@
-document.querySelectorAll('.dropdown > a').forEach(menu => {
+﻿document.querySelectorAll('.dropdown > a').forEach(menu => {
     menu.addEventListener('click', function (e) {
         e.preventDefault();
         let submenu = this.nextElementSibling;

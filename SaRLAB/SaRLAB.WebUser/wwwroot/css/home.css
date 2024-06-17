@@ -116,7 +116,7 @@ html, body {
 
 /*bio*/
 #bg-bio {
-    background-color: #c1daff;
+    background-color: #c8dcf9;
 }
 
 /*math*/
@@ -409,6 +409,7 @@ header
     transition: all 0.3s ease 0s;
     position: relative;
     z-index: 999;
+    display: flex;
 }
 
     .header-area .main-nav .nav li.menu {
@@ -496,7 +497,7 @@ header
 
         /*math*/
         .header-area-math .main-nav .nav li.menu-info-group a .info-user p.role {
-            color: #f77a86;
+            color: #f4c2c6;
         }
 
         /*phys*/
@@ -522,65 +523,91 @@ header
     /*chem*/
     .header-area-chem .main-nav .nav li:hover a.menu,
     .header-area-chem .main-nav .nav li a.active {
-        color: #e9c290 !important;
+        color: #e9c290;
     }
 
     .header-area-chem .main-nav .nav li:last-child:hover a.menu,
     .header-area-chem .main-nav .nav li a.active {
-        color: #e9c290 !important;
+        color: #e9c290;
+    }
+
+    .header-area-chem .main-nav .nav .dropdown-menu-title li a.active {
+        color: #bf8944 !important;
+    }
+
+    .header-area-chem .main-nav .nav .dropdown-menu-title li a:hover {
+        color: #bf8944 !important;
     }
 
     .header-area-chem .main-nav .nav li.menu-info-group:hover a.menu,
     .header-area-chem .main-nav .nav li a.active {
-        color: #e9c290 !important;
+        color: #e9c290;
     }
 
     /*bio*/
-    .header-area-bio .main-nav .nav li:hover a.menu,
-    .header-area-bio .main-nav .nav li a.active {
-        color: #bad6ff !important;
+    .header-area-bio .main-nav .nav li:hover a.menu {
+        color: #aeccf9;
     }
 
     .header-area-bio .main-nav .nav li:last-child:hover a.menu,
     .header-area-bio .main-nav .nav li a.active {
-        color: #bad6ff !important;
+        color: #a0c2f5;
     }
 
-    .header-area-bio .main-nav .nav li.menu-info-group:hover a.menu,
-    .header-area-bio .main-nav .nav li a.active {
-        color: #bad6ff !important;
+    .header-area-bio .main-nav .nav .dropdown-menu-title li a.active {
+        color: #78a8ef !important;
+    }
+
+    .header-area-bio .main-nav .nav .dropdown-menu-title li a:hover {
+        color: #78a8ef !important;
     }
 
     /*math*/
     .header-area-math .main-nav .nav li:hover a.menu,
     .header-area-math .main-nav .nav li a.active {
-        color: #ffafb6 !important
+        color: #ffafb6;
     }
 
     .header-area-math .main-nav .nav li:last-child:hover a.menu,
     .header-area-math .main-nav .nav li a.active {
-        color: #ffafb6 !important
+        color: #ffafb6;
+    }
+
+    .header-area-math .main-nav .nav .dropdown-menu-title li a.active {
+        color: #ffafb6 !important;
+    }
+
+    .header-area-math .main-nav .nav .dropdown-menu-title li a:hover {
+        color: #ffafb6 !important;
     }
 
     .header-area-math .main-nav .nav li.menu-info-group:hover a.menu,
     .header-area-math .main-nav .nav li a.active {
-        color: #ffafb6 !important
+        color: #ffafb6;
     }
 
     /*phys*/
     .header-area-phys .main-nav .nav li:hover a.menu,
     .header-area-phys .main-nav .nav li a.active {
-        color: #9cebc6 !important;
+        color: #9cebc6;
     }
 
     .header-area-phys .main-nav .nav li:last-child:hover a.menu,
     .header-area-phys .main-nav .nav li a.active {
-        color: #9cebc6 !important;
+        color: #9cebc6;
+    }
+
+    .header-area-phys .main-nav .nav .dropdown-menu-title li a.active {
+        color: #38c080 !important;
+    }
+
+    .header-area-phys .main-nav .nav .dropdown-menu-title li a:hover {
+        color: #38c080 !important;
     }
 
     .header-area-phys .main-nav .nav li.menu-info-group:hover a.menu,
     .header-area-phys .main-nav .nav li a.active {
-        color: #9cebc6 !important;
+        color: #9cebc6;
     }
 
 .header-area .main-nav .nav li.menu-info-group:last-child {
@@ -692,9 +719,88 @@ header
     width: 32px;
     height: 40px;
     text-indent: -9999em;
-    z-index: 99;
+    z-index: 1000;
     right: 40px;
     display: none;
+}
+
+/*noti*/
+.header-area-chem #expiredItemsMenu {
+    margin-right: 10px;
+}
+
+.header-area #expiredItemsMenu .fa-bell {
+    font-size: 20px;
+}
+
+.header-area-chem #expiredItemsMenu .fa-bell {
+    color: #edcb97;
+}
+
+.header-area-bio #expiredItemsMenu .fa-bell {
+    color: #b0cffd;
+}
+
+.header-area-phys #expiredItemsMenu .fa-bell {
+    color: #76ddad;
+}
+
+.header-area-math #expiredItemsMenu .fa-bell {
+    color: #ffd3d7;
+}
+
+.header-area #expiredItemsMenu .expiredItems {
+    position: absolute;
+    top: -13px;
+    right: 16px;
+}
+
+.header-area #expiredItemsMenu #expiredItemsCount {
+    background: #dc3545;
+    color: white;
+    padding: 0;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    line-height: 1;
+}
+
+.header-area .noti-group .noti-tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    z-index: 1;
+    top: 92%;
+    left: 32%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    transition: opacity 0.3s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+    .header-area .noti-group .noti-tooltip::after {
+        content: "";
+        position: absolute;
+        bottom: 100%; /* Đặt hình tam giác phía dưới tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #333 transparent; 
+    }
+
+.header-area .noti-group:hover .noti-tooltip,
+.header-area .noti-group:focus .noti-tooltip {
+    visibility: visible;
+    opacity: 1; 
 }
 
 .background-header .main-nav .menu-trigger {
@@ -756,7 +862,7 @@ header
         -webkit-transform-origin: 33% 100%;
         transform-origin: 33% 100%;
         top: -10px;
-        z-index: 10;
+        z-index: 1000;
     }
 
     .header-area .main-nav .menu-trigger span:after {
@@ -924,8 +1030,23 @@ header
                         line-height: 50px !important;
                         padding: 0px 15px;
                         border: none !important;
-                        background: #f7f7f7;
                         color: #191a20;
+                    }
+
+                    .header-area-chem .main-nav .nav li a {
+                        background: #ffefda;
+                    }
+
+                    .header-area-math .main-nav .nav li a {
+                        background: #fff0f1;
+                    }
+
+                    .header-area-phys .main-nav .nav li a {
+                        background: #e3faef;
+                    }
+
+                    .header-area-bio .main-nav .nav li a {
+                        background: #e5f0ff;
                     }
 
                     .header-area .main-nav .nav li a.submenu {
@@ -1031,9 +1152,10 @@ header
                     }
                      
                     /*logout*/
-                    .header-area .main-nav .nav li.logout-trigger { 
+                    .header-area .main-nav .nav li.logout-trigger {
                         height: inherit;
                         display: block;
+                        background: transparent;
                     }  
 
                     .header-area .main-nav .nav li.logout {
@@ -1050,12 +1172,6 @@ header
                         justify-content: center;
                         align-items: center;
                     }
-}
-
-@media (min-width: 767px) {
-    .header-area .main-nav .nav {
-        display: flex !important;
-    }
 }
 
 /* 
@@ -1172,7 +1288,7 @@ Banner Style
         font-weight: 500;
         color: #dee2e6f0;
         line-height: 25px;
-        margin-top: 15px;
+        margin-top: 25px;
     }
 
 .main-banner {
@@ -1858,7 +1974,7 @@ a.service-link {
 
 .services .flex-item {
     flex: 1 1 20%;
-    max-width: 20%;
+    max-width: 25%;
     box-sizing: border-box;
 }
 

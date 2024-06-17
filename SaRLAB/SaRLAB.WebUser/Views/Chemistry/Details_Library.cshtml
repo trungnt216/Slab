@@ -1,9 +1,9 @@
-﻿@model SaRLAB.Models.Entity.Equipment
+﻿@model SaRLAB.Models.Entity.Document
 
 @{
-    ViewData["Title"] = "Details_ToolChemistry";
-    Layout = "~/Views/Math/_Layout.cshtml";;
-    ViewBag.TitleCustom = "Chi tiết dụng cụ";
+    ViewData["Title"] = "Details_Library";
+    Layout = "~/Views/Chemistry/_LayoutChem.cshtml";
+    ViewBag.TitleCustom = "Chi tiết tài liệu";
 }
 
 <div id="sub-content">
@@ -13,13 +13,7 @@
                 <div class="d-flex justify-content-between">
                     <partial name="_TitleCustom">
                     <div class="detail-action">
-                            <a asp-area="" asp-controller="Math" asp-action="Edit_ToolChemistry"
-                                asp-route-id="@Model.ID" class="btn-edit" type="button">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                            Chỉnh sửa
-                        </a>
-                            <a asp-area="" asp-controller="Math" asp-action="GetAll_ToolChemistry"
-                                class="btn-custom-return" type="button">
+                        <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Library" class="btn-custom-return" type="button">
                             <i class="fa-solid fa-angles-left"></i>
                             Trở về
                         </a>
@@ -30,29 +24,9 @@
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-file-signature"></i>
-                                <p>Tên</p>
+                                <p>Tên thực nghiệm</p>
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.Name)</p>
-                        </div>
-                        <div class="detail-item">
-                            <div class="title">
-                                <i class="fa-solid fa-inbox"></i>
-                                <p>Số lượng</p>
-                            </div>
-                            <p class="detail">@Html.DisplayFor(model => model.EquipmentQuantity)</p>
-                        </div>
-                        @{
-                            var currentTime = DateTime.Now;
-                            var style = Model.ExpiredTime <= currentTime ? "color: #cf656f; font-weight: 500" : "";
-                            var isExpired = Model.ExpiredTime <= currentTime ? "(Đã hết hạn)" : "";
-                        }
-                        <div class="detail-item">
-                            <div class="title">
-                                <i class="fa-solid fa-clock"></i>
-                                <p>Thời gian hết hạn</p>
-                            </div>
-                            <p class="detail" style="@style">@Html.DisplayFor(model => model.ExpiredTime)</p>
-                            <p class="detail" style="color: #cf656f; font-weight: 600">@isExpired</p>
                         </div>
                         <div class="detail-item">
                             <div class="title">
@@ -82,43 +56,10 @@
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.UpdateTime)</p>
                         </div>
-                        @{
-                            var props = Model.Property == "dangerous" ? "Nguy hiểm" :
-                            Model.Property == "notDangerous" ? "Không nguy hiểm" : "Ít nguy hiểm";
-                            var backgroundColor = Model.Property == "dangerous" ? "#a8424c" :
-                            Model.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
-                        }
-                        <div class="detail-item">
-                            <div class="title">
-                                <i class="fa-solid fa-tag"></i>
-                                <p>Đặc tính</p>
-                            </div>
-                            <p style="padding: 0px 10px;
-                                white-space: nowrap;
-                                margin-left: 20px;
-                                margin-top: 5px;
-                                background: @backgroundColor;
-                                text-align: center;
-                                border-radius: 15px;
-                                color: white;
-                                font-size: 14px;
-                                line-height: 25px;
-                                width: fit-content;
-                                font-style: italic;">
-                                @props
-                            </p>
-                        </div>
-                        <div class="detail-item">
-                            <div class="title">
-                                <i class="fa-solid fa-barcode"></i>
-                                <p>Xuất xứ</p>
-                            </div>
-                            <p class="detail">@Html.DisplayFor(model => model.From)</p>
-                        </div>
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-comment"></i>
-                                <p>Ghi chú</p>
+                                <p>Nhận xét</p>
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.Remark)</p>
                         </div>
@@ -130,13 +71,13 @@
                                 <p>Chi tiết file</p>
                             </div>
                         </div>
-                        @if (string.IsNullOrEmpty(Model.ImagePath))
+                        @if (string.IsNullOrEmpty(Model.Path))
                         {
                             <span style="color: #5d6975; font-style: italic; padding-left: 25px;">Không có sẵn file nào!</span>
                         }
                         else
                         {
-                            string path = Model.ImagePath;
+                            string path = Model.Path;
                             string extension = System.IO.Path.GetExtension(path).ToLower();
 
                             if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
@@ -171,22 +112,34 @@
                         @Html.DisplayFor(model => model.ID)
                     </dd>
                     <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.SpecializedEnglishFlag)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.SpecializedEnglishFlag)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.PageFlag)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.PageFlag)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
                         @Html.DisplayNameFor(model => model.Type)
                     </dt>
                     <dd class="col-sm-10 d-none">
                         @Html.DisplayFor(model => model.Type)
                     </dd>
                     <dt class="col-sm-2 d-none">
-                        @Html.DisplayNameFor(model => model.SubjectId)
-                    </dt>
-                    <dd class="col-sm-10 d-none">
-                        @Html.DisplayFor(model => model.SubjectId)
-                    </dd>
-                    <dt class="col-sm-2 d-none">
                         @Html.DisplayNameFor(model => model.SchoolId)
                     </dt>
                     <dd class="col-sm-10 d-none">
                         @Html.DisplayFor(model => model.SchoolId)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.SubjectId)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.SubjectId)
                     </dd>
                 </dl>
             </div>

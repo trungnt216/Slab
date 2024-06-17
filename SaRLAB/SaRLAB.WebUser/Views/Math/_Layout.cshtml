@@ -52,14 +52,141 @@
 
     <script>
         $(document).ready(function () {
-            document.querySelector('a.menu-trigger').addEventListener('click', function () {
-                var nav = document.querySelector('.nav');
-                if (nav.style.display === 'none' || nav.style.display === '') {
-                    nav.style.display = 'block';
+            // handle menu
+            const menuTrigger = document.querySelector('a.menu-trigger');
+            const nav = document.querySelector('.nav');
+
+            menuTrigger.addEventListener('click', function () {
+                if (window.innerWidth <= 768) {
+                    if (nav.style.display === 'none' || nav.style.display === '') {
+                        nav.style.display = 'block';
+                    } else {
+                        nav.style.display = 'none';
+                    }
+                }
+            });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) {
+                    nav.style.display = 'flex';
                 } else {
                     nav.style.display = 'none';
                 }
             });
+
+            // handle noti
+            const currentUrl = window.location.href;
+
+            function checkUrl(paths) {
+                return paths.some(path => currentUrl.includes(path));
+            }
+
+            function updateExpiredItemsDisplay(type, count) {
+                const expiredItemsMenu = document.getElementById('expiredItemsMenu');
+                const expiredItemsCount = document.getElementById('expiredItemsCount');
+                const expiredItemsTooltip = document.getElementById('expiredItemsTooltip');
+                const expiredItemsTooltipText = document.getElementById('expiredItemsTooltipText');
+                const expiredItemsMenuText = document.getElementById('expiredItemsMenuText');
+                const expiredItemsCountText = document.getElementById('expiredItemsCountText');
+
+                expiredItemsMenu.style.display = 'block';
+                expiredItemsMenuText.style.display = "none";
+                expiredItemsCount.innerText = count > 0 ? count : "0";
+                expiredItemsTooltipText.innerText = count > 0 ? count + ` ${type} đã hết hạn` : `Không có ${type} nào hết hạn`;
+
+                // Sự kiện hover
+                expiredItemsMenu.addEventListener('mouseover', function () {
+                    expiredItemsTooltip.style.visibility = 'visible';
+                    expiredItemsTooltip.style.opacity = '1';
+                });
+
+                expiredItemsMenu.addEventListener('mouseout', function () {
+                    expiredItemsTooltip.style.visibility = 'hidden';
+                    expiredItemsTooltip.style.opacity = '0';
+                });
+
+                // Sự kiện click
+                expiredItemsMenu.addEventListener('click', function () {
+                    if (expiredItemsTooltip.style.visibility === 'visible') {
+                        expiredItemsTooltip.style.visibility = 'hidden';
+                        expiredItemsTooltip.style.opacity = '0';
+                    } else {
+                        expiredItemsTooltip.style.visibility = 'visible';
+                        expiredItemsTooltip.style.opacity = '1';
+                    }
+                });
+
+                window.addEventListener("resize", function () {
+                    if (window.innerWidth <= 993) {
+                        expiredItemsMenu.style.display = 'none';
+                        expiredItemsMenuText.style.display = "block";
+                        expiredItemsCountText.innerText = count > 0 ? count + ` ${type} đã hết hạn` : `Không có ${type} nào hết hạn`;
+                    } else {
+                        expiredItemsMenu.style.display = 'block';
+                        expiredItemsMenuText.style.display = "none";
+                        expiredItemsCount.innerText = count > 0 ? count : "0";
+                        expiredItemsTooltipText.innerText = count > 0 ? count + ` ${type} đã hết hạn` : `Không có ${type} nào hết hạn`;
+
+                        // Sự kiện hover
+                        expiredItemsMenu.addEventListener('mouseover', function () {
+                            expiredItemsTooltip.style.visibility = 'visible';
+                            expiredItemsTooltip.style.opacity = '1';
+                        });
+
+                        expiredItemsMenu.addEventListener('mouseout', function () {
+                            expiredItemsTooltip.style.visibility = 'hidden';
+                            expiredItemsTooltip.style.opacity = '0';
+                        });
+
+                        // Sự kiện click
+                        expiredItemsMenu.addEventListener('click', function () {
+                            if (expiredItemsTooltip.style.visibility === 'visible') {
+                                expiredItemsTooltip.style.visibility = 'hidden';
+                                expiredItemsTooltip.style.opacity = '0';
+                            } else {
+                                expiredItemsTooltip.style.visibility = 'visible';
+                                expiredItemsTooltip.style.opacity = '1';
+                            }
+                        });
+                    }
+                });
+            }
+
+            const chemistryPaths = [
+                'Math/GetAll_Chemistry',
+                'Math/Create_Chemistry',
+                'Math/Edit_Chemistry',
+                'Math/Details_Chemistry',
+            ];
+            const toolChemistryPaths = [
+                'Math/GetAll_ToolChemistry',
+                'Math/Create_ToolChemistry',
+                'Math/Edit_ToolChemistry',
+                'Math/Details_ToolChemistry',
+            ];
+            const equipmentChemistryPaths = [
+                'Math/GetAll_EquipmentChemistry',
+                'Math/Create_EquipmentChemistry',
+                'Math/Edit_EquipmentChemistry',
+                'Math/Details_EquipmentChemistry',
+            ];
+
+            switch (true) {
+                case checkUrl(chemistryPaths):
+                    const expiredItems = JSON.parse(localStorage.getItem('expiredItems')) || 0;
+                    updateExpiredItemsDisplay('hóa chất', expiredItems);
+                    break;
+                case checkUrl(toolChemistryPaths):
+                    const expiredTools = JSON.parse(localStorage.getItem('expiredTools')) || 0;
+                    updateExpiredItemsDisplay('dụng cụ', expiredTools);
+                    break;
+                case checkUrl(equipmentChemistryPaths):
+                    const expiredEquipments = JSON.parse(localStorage.getItem('expiredEquipments')) || 0;
+                    updateExpiredItemsDisplay('thiết bị', expiredEquipments);
+                    break;
+                default:
+                    break;
+            }
         });
     </script>
 </body>

@@ -13,7 +13,7 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
-        background: linear-gradient(to top, #af5f59, #770909);
+        background: #fce2e5;
         box-shadow: 0 8px 16px rgb(0 0 0 / 6%);
         z-index: 1;
         border: none;
@@ -43,13 +43,14 @@
     }
 
     a.submenu {
+        color: #a21313 !important;
         align-content: center;
         padding-left: 15px;
         line-height: 0px !important;
     }
 
     a.submenu:hover {
-        color: #ffafb6 !important;
+        color: #ffafb6;
     }
 
     a.submenu i {
@@ -66,7 +67,7 @@
             asp-controller="Math" asp-action="Index">Trang chủ</a>
     </li>
     <li class="scroll-to-section dropdown menu">
-        <a class="menu subject @((ViewBag.ActiveMenu == "math") ? "active" : "")" data-toggle="dropdown">Sinh Hoá</a>
+        <a class="menu subject @((ViewBag.ActiveMenu == "math") ? "active" : "")" data-toggle="dropdown">Hóa Sinh</a>
         <a class="menu subject-trigger @((ViewBag.ActiveMenu == "math") ? "active" : "")" data-toggle="dropdown">
             <label style="margin-right: 10px; cursor: pointer;">Hoá học</label>
             <i class="fa-solid fa-angles-right"></i>
@@ -204,6 +205,24 @@
             </li>
         </ul>
     </li>
+    <li class="scroll-to-section menu"><a class="menu" data-toggle=" dropdown" asp-controller="Math" asp-action="GetAll_Library">Thư viện</a></li>
+
+    @* noti *@
+    <li class="scroll-to-section menu noti-group" id="expiredItemsMenu" style="display: none; margin-right: 10px;">
+        <a class="menu" href="#">
+            <i class="fa fa-bell"></i>
+            <div class="expiredItems">
+                <span id="expiredItemsCount"></span>
+            </div>
+        </a>
+        <div class="noti-tooltip" id="expiredItemsTooltip">
+            <span id="expiredItemsTooltipText"></span>
+        </div>
+    </li>
+    <li class="scroll-to-section menu noti-group-text" id="expiredItemsMenuText" style="display: none;">
+        <a class="menu" href="#" id="expiredItemsCountText"></a>
+    </li>
+
     @* info group *@
     <li class="scroll-to-section menu-info-group">
         <a class="menu d-flex" asp-controller="HomePage" asp-action="Information">

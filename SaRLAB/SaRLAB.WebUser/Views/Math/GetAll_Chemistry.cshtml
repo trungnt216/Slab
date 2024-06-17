@@ -146,8 +146,10 @@
                                 var currentTime = DateTime.Now;
                                 var style = item.ExpiredTime <= currentTime ? "color: #cf656f; font-weight: 500" : "";
 
-                                var props = item.Property == "poison" ? "Độc" : "An toàn";
-                                var backgroundColor = item.Property == "poison" ? "#a8424c" : "#32a771";
+                                var props = item.Property == "dangerous" ? "Nguy hiểm" :
+                                item.Property == "notDangerous" ? "Không nguy hiểm" : "Ít nguy hiểm";
+                                var backgroundColor = item.Property == "dangerous" ? "#a8424c" :
+                                item.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
 
                                 if (item.ExpiredTime <= currentTime)
                                 {
@@ -202,6 +204,8 @@
                                     </td>
                                     <td>
                                         <p style="
+                                        padding: 0px 10px;
+                                        white-space: nowrap;
                                         margin: 0;
                                         background: @backgroundColor;
                                         text-align: center;
@@ -231,13 +235,9 @@
                         }
                     </tbody>
                 </table>
-                <div class="d-flex group-expired" style="float: right";>
-                    <i class="fa-solid fa-face-dizzy"></i>
-                    <p class="text-expired">@expiredItemCount hóa chất đã hết hạn</p>
-                </div>
                 @if (Model == null || !Model.Any())
                 {
-                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500; clear: right">Không có dữ liệu!</p>
+                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
                 }
                 </div>
             </div>
@@ -282,5 +282,9 @@
                 modal.style.display = 'none';
             }
         }
+    </script>
+
+    <script type="text/javascript">
+        localStorage.setItem('expiredItems', @expiredItemCount);
     </script>
 }
