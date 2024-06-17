@@ -22,6 +22,7 @@ namespace SaRLAB.Models.Entity
         public string? PhysLogo { get; set; }
         public string? BiochemLogo { get; set; }
         public string? Banner { get; set; }
+        public string? LogoSchool { get; set; }
 
 
     }
