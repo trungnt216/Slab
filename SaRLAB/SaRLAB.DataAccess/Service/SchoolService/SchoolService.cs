@@ -60,6 +60,8 @@ namespace SaRLAB.DataAccess.Service.SchoolService
                 school.PhysLogo = updatedSchool.PhysLogo ?? school.PhysLogo;
                 school.BioLogo = updatedSchool.BioLogo ?? school.BioLogo;
                 school.BiochemLogo = updatedSchool.BiochemLogo ?? school.BiochemLogo;
+                school.Banner = updatedSchool.Banner ?? school.Banner;
+                school.LogoSchool = updatedSchool.LogoSchool ?? school.LogoSchool;
                 return _context.SaveChanges(); // Returns the number of entities updated
             }
             return 0; // School with given ID not found

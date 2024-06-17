@@ -123,6 +123,40 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetQuestionRepeat(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Chemistry");
+            }
+
+            if (subjectFlag.ChemistryPermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/1/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
         public IActionResult GetAllQuestion_Bio()
         {
             if (_queFlag)
@@ -146,6 +180,40 @@ namespace SaRLAB.UserWeb.Controllers
             List<Quiz> equipment = new List<Quiz>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/3").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Bio(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Biology");
+            }
+
+            if (subjectFlag.BiologyPermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/3/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -191,6 +259,40 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetQuestionRepeat_Physics(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Physics");
+            }
+
+            if (subjectFlag.PhysicPermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/5/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
         public IActionResult GetAllQuestion_Math()
         {
             if (_queFlag)
@@ -214,6 +316,40 @@ namespace SaRLAB.UserWeb.Controllers
             List<Quiz> equipment = new List<Quiz>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/2").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Math(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Math");
+            }
+
+            if (subjectFlag.MathPermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/2/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
