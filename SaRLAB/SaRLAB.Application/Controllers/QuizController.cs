@@ -30,6 +30,13 @@ namespace SaRLAB.Application.Controllers
         }
 
         [HttpGet]
+        [Route("GetRandomQuizzesAfterDone/{schoolId}/{subjectId}/{count}")]
+        public IActionResult GetQuizzesAfterDone(int count,int schoolId, int subjectId)
+        {
+            return Ok(_quizService.GetRandomQuizzesAfter(count, schoolId, subjectId));
+        }
+
+        [HttpGet]
         [Route("GetQuizById/{id}")]
         public IActionResult GetQuizById(int id)
         {

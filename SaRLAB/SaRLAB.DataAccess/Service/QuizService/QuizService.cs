@@ -62,6 +62,13 @@ namespace SaRLAB.DataAccess.Service.QuizService
 
             return shuffledQuizzes;
         }
+        public List<Quiz> GetRandomQuizzesAfter(int count, int schoolId, int subjectId)
+        {
+            var quizzes = _context.Quizzes.Where(q => q.SchoolId == schoolId && q.SubjectId == subjectId).ToList();
+            Random rand = new Random();
+            var shuffledQuizzes = quizzes.OrderBy(q => rand.Next()).ToList();
+            return shuffledQuizzes.OrderBy(q => rand.Next()).Take(count).ToList();
+        }
 
         public int InsertQuiz(Quiz quiz)
         {
