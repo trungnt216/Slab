@@ -1,280 +1,75 @@
-@model IEnumerable<SaRLAB.Models.Entity.Banner>
+﻿@model SaRLAB.Models.Entity.School
 
 @{
     ViewData["Title"] = "GetAllBanner";
-    ViewBag.TitleCustom = "Danh sách banners";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
-    int counter = 1;
 }
 
-<style>
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        padding-top: 200px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-    }
+<h1>GetAllBanner</h1>
 
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 400px;
-        text-align: center;
-        align-items: center;
-    }
-
-    .modal-content h6 {
-        font-size: 16px;
-        margin-bottom: 5px;
-    }
-
-    .modal-content .modal-img {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 15px;
-        background: #ffe4e4;
-        border-radius: 30px;
-        padding: 8px;
-    }
-
-    .modal-action {
-        justify-content: center;
-        align-items: center;
-        margin: 10px 0px
-    }
-
-    .modal-action .btn-secondary {
-        margin-right: 10px;
-    }
-
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
-
-<div id="sub-content">
-    <partial name="TitleCustom">
-        <div class="table-container">
-            <div class="table-action d-flex" style="float: right">
-                <button id="deleteSelected" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-                    <i class="fa-solid fa-trash-can"></i>
-                    Xóa
-                </button>
-                <button id="deleteSelectedTrigger" class="btn btn-danger btn-danger-trigger" data-toggle="modal"
-                    data-target="#deleteModal">
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
-                <a asp-area="" class="btn-custom-create" style="margin-left: 10px" type="button"
-                    asp-action="InsertBanner" asp-controller="Configuration">
-                    <i class="fa-solid fa-plus"></i>
-                    Thêm mới
-                </a>
-                <a asp-area="" class="btn-custom-create btn-custom-create-trigger" style="margin-left: 10px"
-                    type="button" asp-action="InsertBanner" asp-controller="Configuration">
-                    <i class="fa-solid fa-plus"></i>
-                </a>
+<h4>School</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GetAllBanner" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group d-none">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
             </div>
-            <div id="popupNotification" class="alert alert-danger">
-                @TempData["notice"]
+            <div class="form-group d-none">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="table-responsive" style="clear: right;">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                <input type="checkbox" id="selectAll" />
-                            </th>
-                            <th>#</th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.ID)
-                            </th>
-                            <th>
-                                Hình ảnh
-                            </th>
-                            <th>
-                                Người tạo
-                            </th>
-                            <th>
-                                Thời gian tạo
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.UpdateBy)
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.UpdateTime)
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="selectRow" data-id="@item.ID" />
-                                </td>
-                                <td>
-                                    @counter
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.ID)
-                                </td>
-                                <td>
-                                    <img src="@Url.Content(@item.PathImage)"
-                                        style="width: 80px; height: 80px; object-fit: contain;" />
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CreateBy)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CreateTime)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.UpdateBy)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.UpdateTime)
-                                </td>
-                                <td>
-                                    <a class="btn-custom-edit" asp-controller="Configuration" asp-action="EditBanner"
-                                        asp-route-id="@item.ID">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a class="delete" href="#"
-                                        data-url="@Url.Action("DeleteBanner", "Configuration", new { id = item.ID })"
-                                        onclick="openDeleteModal(this)">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            counter++;
-                        }
-                    </tbody>
-                </table>
+            <div class="form-group d-none">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
             </div>
-            @if (Model == null || !Model.Any())
-            {
-                <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!
-                </p>
-            }
-        </div>
-</div>
-
-<div id="deleteModal" class="modal">
-    <div class="modal-content">
-        <img class="modal-img" src="@Url.Content("~/images/ic_warning.png")" />
-        <h6>Xác nhận xóa</h6>
-        <p>Bạn có chắc chắn muốn xóa mục này?</p>
-        <div class="d-flex modal-action">
-            <button class="btn btn-secondary" onclick="closeDeleteModal()">Hủy</button>
-            <button id="confirmDeleteButton" class="btn btn-danger">Xóa</button>
-        </div>
+            <div class="form-group d-none">
+                <label asp-for="ChemLogo" class="control-label"></label>
+                <input asp-for="ChemLogo" class="form-control" />
+                <span asp-validation-for="ChemLogo" class="text-danger"></span>
+            </div>
+            <input type="file" id="FileChemLogo" name="FileChemLogo" class="form-control-file" />
+            <div class="form-group d-none">
+                <label asp-for="BioLogo" class="control-label"></label>
+                <input asp-for="BioLogo" class="form-control" />
+                <span asp-validation-for="BioLogo" class="text-danger"></span>
+            </div>
+            <input type="file" id="FileBioLogo" name="FileBioLogo" class="form-control-file" />
+            <div class="form-group d-none">
+                <label asp-for="PhysLogo" class="control-label"></label>
+                <input asp-for="PhysLogo" class="form-control" />
+                <span asp-validation-for="PhysLogo" class="text-danger"></span>
+            </div>
+            <input type="file" id="FilePhysLogo" name="FilePhysLogo" class="form-control-file" />
+            <div class="form-group d-none">
+                <label asp-for="BiochemLogo" class="control-label"></label>
+                <input asp-for="BiochemLogo" class="form-control" />
+                <span asp-validation-for="BiochemLogo" class="text-danger"></span>
+            </div>
+            <input type="file" id="FileBiochemLogo" name="FileBiochemLogo" class="form-control-file" />
+            <div class="form-group d-none">
+                <label asp-for="Banner" class="control-label"></label>
+                <input asp-for="Banner" class="form-control" />
+                <span asp-validation-for="Banner" class="text-danger"></span>
+            </div>
+            <input type="file" id="FileBanner" name="FileBanner" class="form-control-file" />
+            <div class="form-group d-none">
+                <label asp-for="LogoSchool" class="control-label"></label>
+                <input asp-for="LogoSchool" class="form-control" />
+                <span asp-validation-for="LogoSchool" class="text-danger"></span>
+            </div>
+            <input type="file" id="FileLogoSchool" name="FileLogoSchool" class="form-control-file" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
 </div>
-
 @section Scripts {
-    <script src="~/js/table.js"></script>
-    <script type="text/javascript">
-        var deleteUrl = '';
-        var selectedIds = [];
-
-        document.getElementById('selectAll').addEventListener('change', function () {
-            var checkboxes = document.querySelectorAll('.selectRow');
-            for (var checkbox of checkboxes) {
-                checkbox.checked = this.checked;
-            }
-        });
-
-        document.getElementById('deleteSelected').addEventListener('click', function () {
-            selectedIds = [];
-            var checkboxes = document.querySelectorAll('.selectRow:checked');
-            for (var checkbox of checkboxes) {
-                selectedIds.push(checkbox.getAttribute('data-id'));
-            }
-
-            if (selectedIds.length > 0) {
-                document.getElementById('deleteModal').style.display = 'block';
-            } else {
-                alert("Vui lòng chọn ít nhất một mục để xóa.");
-            }
-        });
-
-        document.getElementById('deleteSelectedTrigger').addEventListener('click', function () {
-            selectedIds = [];
-            var checkboxes = document.querySelectorAll('.selectRow:checked');
-            for (var checkbox of checkboxes) {
-                selectedIds.push(checkbox.getAttribute('data-id'));
-            }
-
-            if (selectedIds.length > 0) {
-                document.getElementById('deleteModal').style.display = 'block';
-            } else {
-                alert("Vui lòng chọn ít nhất một mục để xóa.");
-            }
-        });
-
-
-        // Mở modal xóa cho từng item
-        function openDeleteModal(element) {
-            deleteUrl = element.getAttribute("data-url");
-            selectedIds = [];
-            document.getElementById('deleteModal').style.display = 'block';
-        }
-
-
-        function closeDeleteModal() {
-            document.getElementById('deleteModal').style.display = 'none';
-        }
-
-        // Xác nhận xóa
-        document.getElementById('confirmDeleteButton').onclick = function () {
-            if (selectedIds.length > 0) {
-                // Gửi yêu cầu xóa nhiều mục
-                fetch('@Url.Action("DeleteMultipleBanners", "Configuration")', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ Ids: selectedIds })
-                }).then(response => {
-                    if (response.ok) {
-                        window.location.reload();
-                    } else {
-                        alert("Có lỗi xảy ra khi xóa các mục.");
-                    }
-                });
-            } else if (deleteUrl) {
-                // Gửi yêu cầu xóa một mục
-                window.location.href = deleteUrl;
-            }
-        };
-
-
-        window.onclick = function (event) {
-            var modal = document.getElementById('deleteModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

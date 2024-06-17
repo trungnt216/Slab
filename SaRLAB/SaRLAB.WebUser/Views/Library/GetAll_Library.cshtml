@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "GetAll_Library";
     ViewBag.TitleCustom = "Danh sách tài liệu";
-    Layout = "~/Views/Library/_LayoutLibrary.cshtml";
+    Layout = ViewData["layout"].ToString();
     int counter = 1;
 }
 
@@ -74,6 +74,10 @@
                 <partial name="_TitleCustom">
                 <div class="table-action d-flex justify-content-between">
                     <partial name="_SearchBox"/>
+                        <a class="btn-custom-create" type="button" asp-controller="Library" asp-action="Create_Library" asp-route-subjectID=@ViewData["subject"]>
+                            <i class="fa-solid fa-plus"></i>
+                            Thêm mới
+                        </a>
                 </div>
                 <div id="popupNotification" class="alert alert-danger">
                     @TempData["notice"]
@@ -175,6 +179,12 @@
                                 <td>
                                     <a class="btn-custom-view-detail" asp-action="Details_Library" asp-route-id="@item.ID">
                                         <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                            <a class="btn-custom-edit" asp-action="Edit_Library" asp-route-id="@item.ID" asp-route-subjectID=@ViewData["subject"]>
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                            <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_Library", "Library", new { id = item.ID, subjectID= item.SubjectId })" onclick="openDeleteModal(this)">
+                                        <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>
                             </tr>

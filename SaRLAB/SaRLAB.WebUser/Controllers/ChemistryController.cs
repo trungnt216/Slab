@@ -87,7 +87,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             else
             {
-                if (subjectFlag.ChemistryMarkFlag == false)
+                if (subjectFlag.ChemistryPermissionFlag == false)
                 {
                     _hasError = true;
                     return; // Early exit from constructor

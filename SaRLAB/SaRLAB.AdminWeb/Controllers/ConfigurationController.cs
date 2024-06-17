@@ -80,6 +80,8 @@ namespace SaRLAB.AdminWeb.Controllers
             return View();
         }
 
+
+        //----------------------------------------------------------------------------------------------------------------------
         [HttpGet]
         public IActionResult GetAllBanner()
         {
@@ -87,19 +89,170 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
 
-            List<Banner> banner = new List<Banner>();
+            School school = new School();
 
             HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "Banner/GetAll").Result;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetByID/" + userLogin.SchoolId).Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
-                banner = JsonConvert.DeserializeObject<List<Banner>>(data);
+                school = JsonConvert.DeserializeObject<School>(data);
             }
             ViewBag.ActiveMenu = "banner";
-            return View(banner);
+            return View(school);
         }
+        [HttpPost]
+        public ActionResult GetAllBanner(School school,IFormFile FileChemLogo, IFormFile FileBioLogo, IFormFile FilePhysLogo, IFormFile FileBiochemLogo, IFormFile FileBanner, IFormFile FileLogoSchool)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (FileChemLogo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileChemLogo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileChemLogo.CopyTo(stream);
+                }
+                school.ChemLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FileBioLogo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBioLogo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBioLogo.CopyTo(stream);
+                }
+                school.BioLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FilePhysLogo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FilePhysLogo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FilePhysLogo.CopyTo(stream);
+                }
+                school.PhysLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FileBiochemLogo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBiochemLogo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBiochemLogo.CopyTo(stream);
+                }
+                school.BiochemLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FilePhysLogo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBanner.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBanner.CopyTo(stream);
+                }
+                school.Banner = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FileLogoSchool != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileLogoSchool.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileLogoSchool.CopyTo(stream);
+                }
+                school.LogoSchool = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            try
+            {
+                string data = JsonConvert.SerializeObject(school);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "School/Update/" + school.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+            return View();
+        }
+        //-------------------------------------------------------------------------------------------------------------------------------------
 
         [HttpGet]
         public IActionResult GetAllUser()

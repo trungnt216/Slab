@@ -17,6 +17,7 @@
     </head>
 
     <body style="overflow: hidden">
+
         <div id="services" class="services section">
             <div class="overlay"></div>
             <div class="services-content">
@@ -26,7 +27,7 @@
                             <div class="section-heading wow fadeInDown">
                             <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px;">Welcome to the Lab App</h1>
                                 <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s" style="margin-top: 10px;">
-                                    Ứng dụng quản lý phòng thí nghiệm tiện ích. SaR LAB hứa hẹn tối ưu hóa công việc và tạo điều kiện cho sáng tạo trong nghiên cứu!
+                                    Room management utility application. SaR LAB promises optimal work and facilitates creativity in research!
                                 </p>
                             </div>
                         </div>
@@ -34,7 +35,7 @@
                 </div>
                 <div class="container">
                 <div class="d-flex flex-wrap justify-content-center align-items-center">
-                    @if (ViewBag.SubjectFlag.ChemistryMarkFlag == true)
+                    @if (ViewBag.SubjectFlag.ChemistryPermissionFlag == true)
                     {
                         <div class="flex-item p-2" @ViewBag.c>
                             <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion" class="service-link">

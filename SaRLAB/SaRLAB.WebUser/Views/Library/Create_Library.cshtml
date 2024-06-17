@@ -1,9 +1,9 @@
-﻿@model SaRLAB.Models.Entity.Equipment
+﻿@model SaRLAB.Models.Entity.Document
 
 @{
-    ViewData["Title"] = "Create_Chemistry";
-    Layout = "~/Views/Physics/_Layout.cshtml";
-    ViewBag.TitleCustom = "Thêm mới hóa chất";
+    ViewData["Title"] = "Create_Library";
+    Layout = "~/Views/Library/_LayoutLibrary.cshtml";
+    ViewBag.TitleCustom = "Thêm mới tài liệu";
 }
 
 <div id="sub-content">
@@ -12,13 +12,13 @@
             <div class="col-12 edit-container">
                 <div class="edit-action d-flex justify-content-between">
                     <partial name="_TitleCustom">
-                        <a asp-area="" asp-controller="Physics" asp-action="GetAll_Chemistry" class="btn-custom-return"
+                        <a asp-area="" asp-controller="Library" asp-action="GetAll_Library" asp-route-subjectID=@ViewData["subject"] class="btn-custom-return"
                             type="button">
-                        <i class="fa-solid fa-angles-left"></i>
-                        Trở về
-                    </a>
+                            <i class="fa-solid fa-angles-left"></i>
+                            Trở về
+                        </a>
                 </div>
-                <form asp-action="Create_Chemistry" method="post" enctype="multipart/form-data">
+                <form asp-action="Create_Library" asp-route-subjectID=@ViewData["subject"] method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row">
                         <div class="col-12 col-md-4">
@@ -34,6 +34,25 @@
                                 </div>
                                 <input asp-for="Name" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-route"></i>
+                                    <label asp-for="Path" class="control-label">Đường dẫn</label>
+                                </div>
+                                <input asp-for="Path" class="form-control" />
+                                <span id="errorPath" class="text-danger"></span>
+                                <span asp-validation-for="Path" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="SpecializedEnglishFlag" class="control-label"></label>
+                                <input asp-for="SpecializedEnglishFlag" class="form-control" />
+                                <span asp-validation-for="SpecializedEnglishFlag" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="PageFlag" class="control-label"></label>
+                                <input asp-for="PageFlag" class="form-control" />
+                                <span asp-validation-for="PageFlag" class="text-danger"></span>
                             </div>
                             <div class="form-group d-none">
                                 <label asp-for="CreateBy" class="control-label"></label>
@@ -55,69 +74,28 @@
                                 <input asp-for="UpdateTime" class="form-control" />
                                 <span asp-validation-for="UpdateTime" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
-                                <div class="title d-flex">
-                                    <i class="fa-solid fa-clock"></i>
-                                    <label asp-for="ExpiredTime" class="control-label">Thời gian hết hạn</label>
-                                </div>
-                                <input asp-for="ExpiredTime" class="form-control" />
-                                <span asp-validation-for="ExpiredTime" class="text-danger"></span>
-                            </div>
-                            <div class="form-group d-none">
-                                <label asp-for="Type" class="control-label"></label>
-                                <input asp-for="Type" class="form-control" />
-                                <span asp-validation-for="Type" class="text-danger"></span>
-                            </div>
-                            <div class="form-group d-none">
-                                <label asp-for="ImagePath" class="control-label"></label>
-                                <input asp-for="ImagePath" class="form-control" />
-                                <span asp-validation-for="ImagePath" class="text-danger"></span>
-                            </div>
                             <div class="form-group d-none">
                                 <label asp-for="SubjectId" class="control-label"></label>
                                 <input asp-for="SubjectId" class="form-control" />
                                 <span asp-validation-for="SubjectId" class="text-danger"></span>
                             </div>
                             <div class="form-group d-none">
-                                <label asp-for="SchoolId" class="control-label"></label>
-                                <input asp-for="SchoolId" class="form-control" />
-                                <span asp-validation-for="SchoolId" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="title d-flex">
-                                    <i class="fa-solid fa-inbox"></i>
-                                    <label asp-for="EquipmentQuantity" class="control-label">Số lượng</label>
-                                </div>
-                                <input asp-for="EquipmentQuantity" class="form-control" type="number" min="0" value="0"/>
-                                <span asp-validation-for="EquipmentQuantity" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="title d-flex">
-                                    <i class="fa-solid fa-tag"></i>
-                                    <label asp-for="Property" class="control-label">Đặc tính</label>
-                                </div>
-                                <select asp-for="Property" class="select">
-                                    <option value="dangerous">Nguy hiểm</option>
-                                    <option value="notDangerous">Không nguy hiểm</option>
-                                    <option value="slightlyDangerous">Ít nguy hiểm</option>
-                                </select>
-                                <span asp-validation-for="Property" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="title d-flex">
-                                    <i class="fa-solid fa-barcode"></i>
-                                    <label asp-for="From" class="control-label">Xuất xứ</label>
-                                </div>
-                                <input asp-for="From" class="form-control" />
-                                <span asp-validation-for="From" class="text-danger"></span>
+                                <label asp-for="Type" class="control-label"></label>
+                                <input asp-for="Type" class="form-control" />
+                                <span asp-validation-for="Type" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-comment"></i>
-                                    <label asp-for="Remark" class="control-label">Ghi chú</label>
+                                    <label asp-for="Remark" class="control-label">Nhận xét</label>
                                 </div>
                                 <textarea asp-for="Remark" class="form-control" rows="8" cols="50"></textarea>
                                 <span asp-validation-for="Remark" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="SchoolId" class="control-label"></label>
+                                <input asp-for="SchoolId" class="form-control" />
+                                <span asp-validation-for="SchoolId" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-12 col-md-8">
@@ -148,7 +126,9 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
@@ -191,20 +171,38 @@
 
         document.querySelector("form").addEventListener("submit", function (event) {
             var fileInput = document.getElementById('File');
+            var pathInput = document.getElementById('Path');
             var file = fileInput.files[0];
-            if (!file) {
-                document.getElementById('errorFile').innerText = "Vui lòng chọn một file!";
-                fileDisplay.innerText = "";
-                event.preventDefault();
+            var path = pathInput.value.trim();
+
+            var errorFile = document.getElementById('errorFile');
+            var errorPath = document.getElementById('errorPath');
+            var valid = true;
+
+            // Kiểm tra nếu cả file và path đều trống
+            if (!file && !path) {
+                errorFile.innerText = "Vui lòng chọn một file hoặc nhập đường dẫn!";
+                errorPath.innerText = "Vui lòng chọn một file hoặc nhập đường dẫn!";
+                valid = false;
             } else {
+                errorFile.innerText = "";
+                errorPath.innerText = "";
+            }
+
+            // Nếu có file, kiểm tra phần mở rộng của file
+            if (file) {
                 var extension = file.name.split('.').pop().toLowerCase();
-                var supportedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'ogg', 'pdf'];
+                var supportedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webm', 'ogg', 'pdf'];
                 if (!supportedExtensions.includes(extension)) {
-                    document.getElementById('errorFile').innerText = "Vui lòng chọn một file hợp lệ!";
-                    event.preventDefault();
+                    errorFile.innerText = "Vui lòng chọn một file hợp lệ!";
+                    valid = false;
                 } else {
-                    document.getElementById('errorFile').innerText = "";
+                    errorFile.innerText = "";
                 }
+            }
+
+            if (!valid) {
+                event.preventDefault();
             }
         });
     </script>
