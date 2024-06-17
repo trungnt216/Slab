@@ -86,7 +86,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             else
             {
-                if (subjectFlag.MathPermissionFlag == false)
+                if (subjectFlag.PhysicPermissionFlag == false)
                 {
                     _hasError = true;
                     return; // Early exit from constructor
@@ -98,6 +98,9 @@ namespace SaRLAB.UserWeb.Controllers
         //-------------------------------hoá học--------------------------------------------------------
         public ActionResult Index()
         {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
             ViewBag.ActiveMenu = "homePage";
             return View();
         }

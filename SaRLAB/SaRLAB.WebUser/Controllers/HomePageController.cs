@@ -94,6 +94,16 @@ namespace SaRLAB.UserWeb.Controllers
 
         public ActionResult Home()
         {
+            SubjectFlag subjectFlag = new SubjectFlag();
+            HttpResponseMessage response_sub = _httpClient.GetAsync(_httpClient.BaseAddress + "SubjectFlag/GetByID/" + userLogin.Email).Result;
+            if (response_sub.IsSuccessStatusCode)
+            {
+                string data = response_sub.Content.ReadAsStringAsync().Result;
+                subjectFlag = JsonConvert.DeserializeObject<SubjectFlag>(data);
+            }
+
+            ViewBag.SubjectFlag = subjectFlag;
+
             return View();
         }
 
