@@ -327,7 +327,7 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllQuestion_Math(int count)
+        public IActionResult GetQuestionRepeat_Math(int count)
         {
             if (_queFlag)
             {
