@@ -231,7 +231,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     FileLogoSchool.CopyTo(stream);
                 }
-                school.LogoSchool = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+                school.SchoolLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
             }
 
             try
@@ -239,7 +239,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = JsonConvert.SerializeObject(school);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "School/Update/" + school.ID, content).Result;
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "School/Update/" + userLogin.SchoolId, content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {

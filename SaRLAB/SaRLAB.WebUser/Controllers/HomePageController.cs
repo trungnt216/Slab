@@ -104,6 +104,19 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.SubjectFlag = subjectFlag;
 
+            School school = new School();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetByID/" + userLogin.SchoolId).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                school = JsonConvert.DeserializeObject<School>(data);
+            }
+
+            ViewBag.school = school;
+
             return View();
         }
 
