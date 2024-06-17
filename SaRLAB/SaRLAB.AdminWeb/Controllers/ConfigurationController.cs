@@ -705,7 +705,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["successMessage"] = "User create success";
                     ViewBag.ActiveMenu = "student";
-                    return RedirectToAction("GetAllUser");
+                    return RedirectToAction("GetAll_User");
                 }
 
             }

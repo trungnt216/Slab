@@ -30,8 +30,10 @@
                     </div>
                 </div>
                 <div class="container">
-                    <div class="d-flex flex-wrap">
-                        <div class="flex-item p-2">
+                <div class="d-flex flex-wrap justify-content-center align-items-center">
+                    @if (ViewBag.SubjectFlag.ChemistryMarkFlag == true)
+                    {
+                        <div class="flex-item p-2" @ViewBag.c>
                             <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion" class="service-link">
                                 <div class="service-item first-service">
                                     <img src="@Url.Content("~/images/chem.png")" class="image" alt="" />
@@ -39,22 +41,31 @@
                                 </div>
                             </a>
                         </div>
+                    }
+                    @if (ViewBag.SubjectFlag.BiologyPermissionFlag == true)
+                    {
                         <div class="flex-item p-2">
-                        <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Bio" class="service-link">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Bio" class="service-link">
                                 <div class="service-item second-service">
                                 <img src="@Url.Content("~/images/bio.png")" class="image" alt="" />
                                     <h4>Sinh học</h4>
                                 </div>
                             </a>
                         </div>
+                    }
+                    @if (ViewBag.SubjectFlag.PhysicPermissionFlag == true)
+                    {
                         <div class="flex-item p-2">
-                        <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Physics" class="service-link">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Physics" class="service-link">
                                 <div class="service-item third-service">
                                     <img src="@Url.Content("~/images/physics.png")" class="image" alt="" />
                                     <h4>Vật lý</h4>
                                 </div>
                             </a>
                         </div>
+                    }
+                    @if (ViewBag.SubjectFlag.MathPermissionFlag == true)
+                    {
                         <div class="flex-item p-2">
                             <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Math" class="service-link">
                                 <div class="service-item fourth-service">
@@ -63,14 +74,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="flex-item p-2">
-                            <a asp-controller="Library" asp-action="GetAll_Library" class="service-link">
-                                <div class="service-item fifth-service">
-                                    <img src="@Url.Content("~/images/library.png")" class="image" alt="" />
-                                    <h4>Thư viện</h4>
-                                </div>
-                            </a>
-                        </div>
+                    }
                     </div>
                 </div>
             </div>
