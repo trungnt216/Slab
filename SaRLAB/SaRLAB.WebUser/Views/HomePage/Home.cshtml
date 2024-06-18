@@ -1,5 +1,9 @@
 ﻿<!DOCTYPE html>
-
+@{
+    var bannerUrl = ViewBag.school.Banner != null
+        ? Url.Content(ViewBag.school.Banner)
+        : Url.Content("~/images/banner.jpg");
+}
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
@@ -18,7 +22,7 @@
 
     <body style="overflow: hidden">
         <div id="services" class="services section"
-            style="background: url('@(ViewBag.school?.Banner ?? Url.Content("~/images/banner.jpg"))') center;">
+         style="background: url('@bannerUrl') center;">
             <div class="overlay"></div>
             <div class="services-content">
                 <div class="container">
@@ -49,7 +53,7 @@
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.ChemLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(ViewBag.school.ChemLogo)" class="image" alt="" />
                                     }
                                     <h4>Hóa học</h4>
                                 </div>
@@ -67,7 +71,7 @@
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.BioLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(ViewBag.school.BioLogo)" class="image" alt="" />
                                     }
                                     <h4>Sinh học</h4>
                                 </div>
@@ -85,7 +89,7 @@
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.PhysLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(ViewBag.school.PhysLogo)" class="image" alt="" />
                                     }
                                     <h4>Vật lý</h4>
                                 </div>
@@ -103,7 +107,7 @@
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.BiochemLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(ViewBag.school.BiochemLogo)" class="image" alt="" />
                                     }
                                     <h4>Hoá Sinh</h4>
                                 </div>

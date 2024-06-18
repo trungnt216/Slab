@@ -192,7 +192,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 school.BiochemLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
             }
 
-            if (FilePhysLogo != null)
+            if (FileBanner != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
 
