@@ -3,14 +3,23 @@
 @{
     ViewData["Title"] = "GetAllBanner";
     Layout = "~/Views/Home/_LayoutHome.cshtml";
+    ViewBag.TitleCustom = "Danh sách banner";
 }
 
-<h1>GetAllBanner</h1>
-
-<h4>School</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div id="sub-content">
+    <div class="d-flex justify-content-between">
+        <partial name="TitleCustom">
+            <a asp-area="" asp-controller="Configuration" asp-action="GetAllBanner" class="btn-custom-return"
+               type="button">
+                <i class="fa-solid fa-angles-left"></i>
+                Trở về
+            </a>
+            <a asp-area="" asp-controller="Configuration" asp-action="GetAllBanner" class="btn-custom-return btn-custom-return-trigger"
+               type="button">
+                <i class="fa-solid fa-angles-left"></i>
+            </a>
+    </div>
+    <div class="form-container">
         <form asp-action="GetAllBanner" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group d-none">
@@ -28,44 +37,51 @@
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
-            <div class="form-group d-none">
-                <label asp-for="ChemLogo" class="control-label"></label>
-                <input asp-for="ChemLogo" class="form-control" />
-                <span asp-validation-for="ChemLogo" class="text-danger"></span>
+
+            <div class="form-group row">
+                <label asp-for="ChemLogo" class="col-3 form-label">Chọn ảnh môn Hóa học</label>
+                <div class="col">
+                    <input id="FileChemLogo" accept="image/*" name="FileChemLogo" class="form-control" type="file" />
+                    <span asp-validation-for="ChemLogo" class="text-danger"></span>
+                </div>
             </div>
-            <input type="file" id="FileChemLogo" name="FileChemLogo" class="form-control-file" />
-            <div class="form-group d-none">
-                <label asp-for="BioLogo" class="control-label"></label>
-                <input asp-for="BioLogo" class="form-control" />
-                <span asp-validation-for="BioLogo" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="BioLogo" class="col-3 form-label">Chọn ảnh môn Sinh học</label>
+                <div class="col">
+                    <input id="FileBioLogo" accept="image/*" name="FileBioLogo" class="form-control" type="file" />
+                    <span asp-validation-for="BioLogo" class="text-danger"></span>
+                </div>
             </div>
-            <input type="file" id="FileBioLogo" name="FileBioLogo" class="form-control-file" />
-            <div class="form-group d-none">
-                <label asp-for="PhysLogo" class="control-label"></label>
-                <input asp-for="PhysLogo" class="form-control" />
-                <span asp-validation-for="PhysLogo" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="PhysLogo" class="col-3 form-label">Chọn ảnh môn Vật lý</label>
+                <div class="col">
+                    <input id="FilePhysLogo" accept="image/*" name="FilePhysLogo" class="form-control" type="file" />
+                    <span asp-validation-for="PhysLogo" class="text-danger"></span>
+                </div>
             </div>
-            <input type="file" id="FilePhysLogo" name="FilePhysLogo" class="form-control-file" />
-            <div class="form-group d-none">
-                <label asp-for="BiochemLogo" class="control-label"></label>
-                <input asp-for="BiochemLogo" class="form-control" />
-                <span asp-validation-for="BiochemLogo" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="BiochemLogo" class="col-3 form-label">Chọn ảnh môn Hóa sinh</label>
+                <div class="col">
+                    <input id="FileBiochemLogo" accept="image/*" name="FileBiochemLogo" class="form-control" type="file" />
+                    <span asp-validation-for="BiochemLogo" class="text-danger"></span>
+                </div>
             </div>
-            <input type="file" id="FileBiochemLogo" name="FileBiochemLogo" class="form-control-file" />
-            <div class="form-group d-none">
-                <label asp-for="Banner" class="control-label"></label>
-                <input asp-for="Banner" class="form-control" />
-                <span asp-validation-for="Banner" class="text-danger"></span>
+            <div class="form-group row">
+                <label asp-for="Banner" class="col-3 form-label">Chọn ảnh banner</label>
+                <div class="col">
+                    <input id="FileBanner" accept="image/*" name="FileBanner" class="form-control" type="file" />
+                    <span asp-validation-for="Banner" class="text-danger"></span>
+                </div>
             </div>
-            <input type="file" id="FileBanner" name="FileBanner" class="form-control-file" />
-            <div class="form-group d-none">
-                <label asp-for="SchoolLogo" class="control-label"></label>
-                <input asp-for="SchoolLogo" class="form-control" />
-                <span asp-validation-for="SchoolLogo" class="text-danger"></span>
-            </div>
-            <input type="file" id="FileLogoSchool" name="FileLogoSchool" class="form-control-file" />
+            <div class="form-group row">
+                <label asp-for="SchoolLogo" class="col-3 form-label">Chọn ảnh trường học</label>
+                <div class="col">
+                    <input id="FileLogoSchool" accept="image/*" name="FileLogoSchool" class="form-control" type="file" />
+                    <span asp-validation-for="SchoolLogo" class="text-danger"></span>
+                </div>
+            </div>                                                                                                        
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
         </form>
     </div>

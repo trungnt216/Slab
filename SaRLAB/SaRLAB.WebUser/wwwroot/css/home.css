@@ -1240,6 +1240,13 @@ Banner Style
 --------------------------------------------- 
 */
 
+.divider-custom {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.867);
+    margin: auto;
+    width: 30%;
+}
+
 .hero {
     background-size: cover;
     background-position: top;
@@ -1847,7 +1854,7 @@ Banner Style
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../images/banner.jpg') center;
+    /* background: url('../images/banner.jpg') center; */
     background-size: cover;
 }
 
