@@ -331,7 +331,7 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (_queFlag)
             {
-                return RedirectToAction("index", "Math");
+                return RedirectToAction("index",  "Math");
             }
 
             if (subjectFlag.MathPermissionFlag == false)
