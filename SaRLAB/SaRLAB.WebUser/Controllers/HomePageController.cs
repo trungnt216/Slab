@@ -139,13 +139,25 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-            User users = new User();
+            School school = new School();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + userLogin.Email).Result;
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetByID/" + userLogin.SchoolId).Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
+                school = JsonConvert.DeserializeObject<School>(data);
+            }
+
+            TempData["School"] = school.Name;
+            User users = new User();
+
+            HttpResponseMessage response1 = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + userLogin.Email).Result;
+
+            if (response1.IsSuccessStatusCode)
+            {
+                string data = response1.Content.ReadAsStringAsync().Result;
                 users = JsonConvert.DeserializeObject<User>(data);
             }
 
