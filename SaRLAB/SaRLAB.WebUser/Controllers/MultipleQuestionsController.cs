@@ -145,7 +145,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/1/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/1/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -213,7 +213,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/3/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/3/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -281,7 +281,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/5/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/5/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -349,7 +349,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/2/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/2/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
