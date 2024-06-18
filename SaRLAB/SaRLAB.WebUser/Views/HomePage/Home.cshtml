@@ -29,9 +29,16 @@
                     <div class="row justify-content-center">
                         <div class="col">
                             <div class="section-heading wow fadeInDown">
-                            <img src=@ViewBag.school.SchoolLogo />
-                            <h5 class="text-white wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" style="margin-bottom: 15px;">@ViewBag.school.Name</h5>
-                            <div class="divider-custom"></div>
+
+                            <div style="margin-bottom: 111px;">
+                                <!-- Adjust the margin-bottom value as needed -->
+                                <img src="@ViewBag.school.SchoolLogo" style="width: 128px; height: 128px; margin-bottom: 15px;" />
+                                <h5 class="text-white wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" style="margin-bottom: 15px;">
+                                    @ViewBag.school.Name
+                                </h5>
+                                <div class="divider-custom"></div>
+                            </div>
+
                             <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px; margin-top: 30px;">Welcome to the Lab App</h1>
                                 <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
                                     Room management utility application. SaR LAB promises optimal work and facilitates creativity in research!
@@ -103,7 +110,7 @@
                                 <div class="service-item fourth-service">
                                     @if (@ViewBag.school.BiochemLogo == null)
                                     {
-                                        <img src="@Url.Content("~/images/math.png")" class="image" alt="" />
+                                        <img src="@Url.Content("~/images/biochem.png")" class="image" alt="" />
                                     }
                                     else
                                     {
