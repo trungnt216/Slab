@@ -418,7 +418,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
 
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "image/avatar_user");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -547,7 +547,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
 
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/banner");
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "image/banner");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -645,7 +645,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 //string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "BannerImage");
 
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/banner");
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "image/banner");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -785,7 +785,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (File != null)
             {
 
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "uploads/image/avatar_user");
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "image/avatar_user");
 
                 if (!Directory.Exists(uploadsFolder))
                 {
