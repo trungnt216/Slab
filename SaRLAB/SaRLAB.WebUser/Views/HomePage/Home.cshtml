@@ -17,20 +17,19 @@
     </head>
 
     <body style="overflow: hidden">
-
-        <div id="services" class="services section">
+        <div id="services" class="services section"
+            style="background: url('@(ViewBag.school?.Banner ?? Url.Content("~/images/banner.jpg"))') center;">
             <div class="overlay"></div>
             <div class="services-content">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 offset-lg-2">
+                    <div class="row justify-content-center">
+                        <div class="col">
                             <div class="section-heading wow fadeInDown">
                             <img src=@ViewBag.school.SchoolLogo />
-                            <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px;">@ViewBag.school.Name</h1>
-
-
-                            <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px;">Welcome to the Lab App</h1>
-                                <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s" style="margin-top: 10px;">
+                            <h5 class="text-white wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" style="margin-bottom: 15px;">@ViewBag.school.Name</h5>
+                            <div class="divider-custom"></div>
+                            <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px; margin-top: 30px;">Welcome to the Lab App</h1>
+                                <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
                                     Room management utility application. SaR LAB promises optimal work and facilitates creativity in research!
                                 </p>
                             </div>
@@ -62,13 +61,13 @@
                         <div class="flex-item p-2">
                             <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Bio" class="service-link">
                                 <div class="service-item second-service">
-                                    @if (@ViewBag.school.ChemLogo == null)
+                                    @if (@ViewBag.school.BioLogo == null)
                                     {
                                         <img src="@Url.Content("~/images/bio.png")" class="image" alt="" />
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.ChemLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(@ViewBag.school.BioLogo)" class="image" alt="" />
                                     }
                                     <h4>Sinh học</h4>
                                 </div>
@@ -80,13 +79,13 @@
                         <div class="flex-item p-2">
                             <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Physics" class="service-link">
                                 <div class="service-item third-service">
-                                    @if (@ViewBag.school.ChemLogo == null)
+                                    @if (@ViewBag.school.PhysLogo == null)
                                     {
                                         <img src="@Url.Content("~/images/physics.png")" class="image" alt="" />
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.ChemLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(@ViewBag.school.PhysLogo)" class="image" alt="" />
                                     }
                                     <h4>Vật lý</h4>
                                 </div>
@@ -98,13 +97,13 @@
                         <div class="flex-item p-2">
                             <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Math" class="service-link">
                                 <div class="service-item fourth-service">
-                                    @if (@ViewBag.school.ChemLogo == null)
+                                    @if (@ViewBag.school.BiochemLogo == null)
                                     {
                                         <img src="@Url.Content("~/images/math.png")" class="image" alt="" />
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.ChemLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(@ViewBag.school.BiochemLogo)" class="image" alt="" />
                                     }
                                     <h4>Hoá Sinh</h4>
                                 </div>
