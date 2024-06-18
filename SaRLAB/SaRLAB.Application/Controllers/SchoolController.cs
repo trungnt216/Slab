@@ -56,7 +56,7 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("Delete/{id}")]
         public ActionResult Delete(int id)
         {
@@ -84,6 +84,21 @@ namespace SaRLAB.Application.Controllers
             else
             {
                 return Ok(_schoolService.UpdateSchoolById(id, school));
+            }
+        }
+
+
+        [HttpPost]
+        [Route("RecoverSchool/{id}")]
+        public IActionResult RecoverSchool(int id)
+        {
+            if (id == 0)
+            {
+                return BadRequest("not have id");
+            }
+            else
+            {
+                return Ok(_schoolService.RecoverSchool(id));
             }
         }
     }

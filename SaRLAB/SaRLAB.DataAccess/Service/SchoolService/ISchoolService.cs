@@ -14,5 +14,6 @@ namespace SaRLAB.DataAccess.Service.SchoolService
         int DeleteSchoolById(int id);
         int UpdateSchoolById(int id, School school);
         int InsertSchool(School school);
+        int RecoverSchool(int id);
     }
 }

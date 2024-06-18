@@ -48,6 +48,23 @@ namespace SaRLAB.DataAccess.Service.SchoolService
             return _context.SaveChanges();
         }
 
+        public int RecoverSchool(int id)
+        {
+            var school = _context.Schools.FirstOrDefault(s => s.ID == id);
+            if (school != null)
+            {
+                // Update properties of the existing school with the properties of the updated school
+                school.ChemLogo = null;
+                school.PhysLogo = null;
+                school.BioLogo = null;
+                school.BiochemLogo = null;
+                school.Banner = null;
+                school.SchoolLogo = null;
+                return _context.SaveChanges(); // Returns the number of entities updated
+            }
+            return 0; // School with given ID not found
+        }
+
         public int UpdateSchoolById(int id, School updatedSchool)
         {
             var school = _context.Schools.FirstOrDefault(s => s.ID == id);

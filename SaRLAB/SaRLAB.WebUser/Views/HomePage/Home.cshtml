@@ -1,5 +1,9 @@
 ﻿<!DOCTYPE html>
-
+@{
+    var bannerUrl = ViewBag.school.Banner != null
+        ? Url.Content(ViewBag.school.Banner)
+        : Url.Content("~/images/banner.jpg");
+}
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
@@ -18,16 +22,23 @@
 
     <body style="overflow: hidden">
         <div id="services" class="services section"
-            style="background: url('@(ViewBag.school?.Banner ?? Url.Content("~/images/banner.jpg"))') center;">
+         style="background: url('@bannerUrl') center;">
             <div class="overlay"></div>
             <div class="services-content">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col">
                             <div class="section-heading wow fadeInDown">
-                            <img src=@ViewBag.school.SchoolLogo />
-                            <h5 class="text-white wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" style="margin-bottom: 15px;">@ViewBag.school.Name</h5>
-                            <div class="divider-custom"></div>
+
+                            <div style="margin-bottom: 111px;">
+                                <!-- Adjust the margin-bottom value as needed -->
+                                <img src="@ViewBag.school.SchoolLogo" style="width: 128px; height: 128px; margin-bottom: 15px;" />
+                                <h5 class="text-white wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" style="margin-bottom: 15px;">
+                                    @ViewBag.school.Name
+                                </h5>
+                                <div class="divider-custom"></div>
+                            </div>
+
                             <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px; margin-top: 30px;">Welcome to the Lab App</h1>
                                 <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
                                     Room management utility application. SaR LAB promises optimal work and facilitates creativity in research!
@@ -49,7 +60,7 @@
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.ChemLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(ViewBag.school.ChemLogo)" class="image" alt="" />
                                     }
                                     <h4>Hóa học</h4>
                                 </div>
@@ -67,7 +78,7 @@
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.BioLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(ViewBag.school.BioLogo)" class="image" alt="" />
                                     }
                                     <h4>Sinh học</h4>
                                 </div>
@@ -85,7 +96,7 @@
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.PhysLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(ViewBag.school.PhysLogo)" class="image" alt="" />
                                     }
                                     <h4>Vật lý</h4>
                                 </div>
@@ -99,11 +110,11 @@
                                 <div class="service-item fourth-service">
                                     @if (@ViewBag.school.BiochemLogo == null)
                                     {
-                                        <img src="@Url.Content("~/images/math.png")" class="image" alt="" />
+                                        <img src="@Url.Content("~/images/biochem.png")" class="image" alt="" />
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(@ViewBag.school.BiochemLogo)" class="image" alt="" />
+                                        <img src="@Url.Content(ViewBag.school.BiochemLogo)" class="image" alt="" />
                                     }
                                     <h4>Hoá Sinh</h4>
                                 </div>

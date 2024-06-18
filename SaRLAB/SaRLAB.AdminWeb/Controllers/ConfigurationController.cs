@@ -82,6 +82,35 @@ namespace SaRLAB.AdminWeb.Controllers
 
 
         //----------------------------------------------------------------------------------------------------------------------
+        public ActionResult Recover_Banner()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            School school = new School();
+
+            ViewBag.ActiveMenu = "banner";
+
+            try
+            {
+
+                string data = JsonConvert.SerializeObject(school);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage responses = _httpClient.PostAsync(_httpClient.BaseAddress + "School/RecoverSchool/" + userLogin.SchoolId, content).Result;
+
+                if (responses.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("GetAllBanner");
+                }
+            }
+            catch (Exception ex)
+            {
+                RedirectToAction("GetAllBanner");
+            }
+            return RedirectToAction("GetAllBanner");
+        }
         [HttpGet]
         public IActionResult GetAllBanner()
         {
@@ -192,7 +221,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 school.BiochemLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
             }
 
-            if (FilePhysLogo != null)
+            if (FileBanner != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
 
