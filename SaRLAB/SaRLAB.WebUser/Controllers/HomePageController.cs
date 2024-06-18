@@ -102,6 +102,14 @@ namespace SaRLAB.UserWeb.Controllers
                 subjectFlag = JsonConvert.DeserializeObject<SubjectFlag>(data);
             }
 
+            if(userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                subjectFlag.BiologyPermissionFlag = true;
+                subjectFlag.ChemistryPermissionFlag = true;
+                subjectFlag.PhysicPermissionFlag = true;
+                subjectFlag.MathPermissionFlag = true;
+            }
+
             ViewBag.SubjectFlag = subjectFlag;
 
             School school = new School();
