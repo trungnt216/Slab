@@ -15,7 +15,7 @@ namespace SaRLAB.UserWeb.Controllers
     {
         string pathFolderSave = null;
 
-        Uri baseAddress = new Uri("http://api.sarlabeducation.com/api/");
+        Uri baseAddress = new Uri(Program.api);
 
         private readonly IWebHostEnvironment _env;
 

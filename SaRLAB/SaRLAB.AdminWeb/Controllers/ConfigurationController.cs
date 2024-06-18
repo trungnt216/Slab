@@ -16,9 +16,9 @@ namespace SaRLAB.AdminWeb.Controllers
 {
     public class ConfigurationController : Controller
     {
-        string pathFolderSave = "https://admin.sarlabeducation.com//uploads/";
+        string pathFolderSave = Program.FilePath;
 
-        Uri baseAddress = new Uri("http://api.sarlabeducation.com/api/");
+        Uri baseAddress = new Uri(Program.api);
 
         private readonly HttpClient _httpClient;
 

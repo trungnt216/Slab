@@ -3,7 +3,15 @@ namespace SaRLAB.UserWeb
     public class Program
     {
         public static string jwtToken = null;
+#if true
+        public static string api = "http://localhost:5200/api/";
+        public static string FilePath = "https://localhost:7116//uploads/";
+#endif
 
+#if false
+        public static string api = "http://api.sarlabeducation.com/api/";
+        public static string FilePath = "https://user.sarlabeducation.com//uploads/";
+#endif
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);

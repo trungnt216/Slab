@@ -16,7 +16,8 @@ namespace SaRLAB.AdminWeb.Controllers
 {
     public class LoginController : Controller
     {
-        Uri baseAddress = new Uri("http://api.sarlabeducation.com/api/");
+        Uri baseAddress = new Uri(Program.api);
+
         private readonly HttpClient _httpClient;
 
         private readonly IConfiguration _configuration;
