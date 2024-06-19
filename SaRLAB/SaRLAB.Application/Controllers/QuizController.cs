@@ -72,7 +72,7 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("Delete/{ids}")]
         public ActionResult Delete(String ids)
         {

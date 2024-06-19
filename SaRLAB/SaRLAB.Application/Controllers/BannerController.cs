@@ -69,7 +69,7 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteById/{id}")]
         public IActionResult DeleteById(int id)
         {
@@ -77,7 +77,7 @@ namespace SaRLAB.Application.Controllers
             return Ok("Banner deleted successfully.");
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteByIds")]
         public IActionResult DeleteByIds([FromBody] string bannerIds)
         {

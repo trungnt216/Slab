@@ -9,9 +9,7 @@ namespace SaRLAB.AdminWeb
 #if true
         public static string api = "http://localhost:5200/api/";
         public static string FilePath = "https://localhost:7135//";
-#endif
-
-#if false
+#else
         public static string api = "http://api.sarlabeducation.com/api/";
         public static string FilePath = "https://admin.sarlabeducation.com//";
 #endif

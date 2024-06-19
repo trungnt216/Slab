@@ -64,7 +64,7 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("Delete/{id}")]
         public IActionResult DeleteBySubject(int id)
         {

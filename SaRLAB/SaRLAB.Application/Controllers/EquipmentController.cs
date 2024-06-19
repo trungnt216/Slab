@@ -16,7 +16,7 @@ namespace SaRLAB.Application.Controllers
             _equipmentService = equipmentService;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("Delete/{id}")]
         public ActionResult Delete(int id) 
         {

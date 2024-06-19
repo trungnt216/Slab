@@ -6,9 +6,7 @@ namespace SaRLAB.UserWeb
 #if true
         public static string api = "http://localhost:5200/api/";
         public static string FilePath = "https://localhost:7116//";
-#endif
-
-#if false
+#else
         public static string api = "http://api.sarlabeducation.com/api/";
         public static string FilePath = "https://user.sarlabeducation.com//";
 #endif

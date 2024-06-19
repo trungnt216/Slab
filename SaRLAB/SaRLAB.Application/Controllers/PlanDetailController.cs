@@ -55,7 +55,7 @@ namespace SaRLAB.Application.Controllers
             return Ok(_planDetailService.InsertlanDetail(planDetail));
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("Delete/{id}")]
         public IActionResult DeletePlanDetailById(int id)
         {

@@ -60,7 +60,7 @@ namespace SaRLAB.Application.Controllers
             return Ok(_practicePlanService.InsertPracticePlan(practicePlan));
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("Delete/{id}")]
         public IActionResult DeletePracticePlanById(int id)
         {

@@ -17,7 +17,7 @@ namespace SaRLAB.Application.Controllers
             _documentService = documentService;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("Delete/{id}")]
         public ActionResult Delete(int id)
         {

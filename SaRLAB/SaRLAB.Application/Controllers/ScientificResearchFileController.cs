@@ -15,7 +15,7 @@ namespace SaRLAB.Application.Controllers
             _scientificResearchFileService = scientificResearchFileService;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("Delete/{id}")]
         public ActionResult Delete(int id)
         {
