@@ -83,7 +83,7 @@ namespace SaRLAB.AdminWeb.Controllers
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
             ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveSubMenuLv2 = "experiment";
             return View(documents);
         }
 
@@ -2663,6 +2663,10 @@ namespace SaRLAB.AdminWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
             }
 
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "cauhoiantoan";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
             return View(equipment);
         }
 
@@ -2813,8 +2817,16 @@ namespace SaRLAB.AdminWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "cauhoiantoan";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
                 return View();
             }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "cauhoiantoan";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
             return View();
         }
 
@@ -2843,6 +2855,10 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "cauhoiantoan";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
                 return View(quiz);
             }
             else
@@ -2979,8 +2995,16 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             catch (Exception ex)
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "cauhoiantoan";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
                 return View();
             }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "cauhoiantoan";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
             return View();
         }
 

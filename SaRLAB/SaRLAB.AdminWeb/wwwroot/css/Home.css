@@ -21,7 +21,7 @@
     .sidebar::-webkit-scrollbar-thumb {
         background-color: #649bfa;
     }
-
+     
     .sidebar .subject-content ul li {
         font-size: var(--text-xss);
     }
@@ -87,12 +87,42 @@
         font-weight: 500;
     }
 
-.sidebar .subject-content ul .active p {
+.sidebar .subject-content ul .active i.icon {
     color: #a4c9ff;
 }
 
-.sidebar .subject-content ul .active a.title {
+.sidebar .subject-content ul .active a.title-menu {
     color: #a4c9ff;
+}
+
+/*menu subject custom*/
+.sidebar .subject-content ul .subject-menu-active .nested {
+    display: block;
+}
+
+.sidebar .subject-content ul .subject-menu-active i.icon {
+    color: #a4c9ff !important;
+}
+.sidebar .subject-content ul .subject-menu-active a.title-menu {
+    color: #a4c9ff !important;
+}
+
+.sidebar .subject-content ul .subject-menu-item-active i.icon-subject {
+    color: #a4c9ff;
+}
+
+.sidebar .subject-content ul .subject-menu-item-active a.title-subject {
+    color: #a4c9ff;
+}
+
+
+.sidebar .subject-content ul .menu-item-active a,
+.sidebar .subject-content ul .menu-item-active i {
+    color: #a4c9ff;
+}
+
+.sidebar .subject-content ul .submenu-item-active a {
+    color: #a4c9ff !important;
 }
 
 .icon-menu {
