@@ -3,7 +3,7 @@ namespace SaRLAB.UserWeb
     public class Program
     {
         public static string jwtToken = null;
-#if true
+#if false
         public static string api = "http://localhost:5200/api/";
         public static string FilePath = "https://localhost:7116//";
 #else

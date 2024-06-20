@@ -2076,6 +2076,190 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(document);
         }
 
+        //------------------------------- đề tài cấp quốc tế ----- International_level------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_International_level()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/3/INTERNATIONAL").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+            return View(documents);
+        }
+
+
+        public ActionResult Accept_International_level(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_International_level");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    document.UpdateTime = DateTime.Now;
+                    document.PageFlag = true;
+
+                    string data = JsonConvert.SerializeObject(document);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "nghiencuu";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                        return RedirectToAction("GetAll_International_level");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                    return RedirectToAction("GetAll_International_level");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return RedirectToAction("GetAll_International_level");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return RedirectToAction("GetAll_International_level");
+            }
+        }
+
+        public ActionResult Delete_International_level(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_International_level");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "nghiencuu";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                        return RedirectToAction("GetAll_International_level");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                    return RedirectToAction("GetAll_International_level");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return RedirectToAction("GetAll_International_level");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return RedirectToAction("GetAll_International_level");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_International_level(int id)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+            return View(document);
+        }
 
         //--------------------- mutiple choice - ---------------------------------
         [HttpGet]

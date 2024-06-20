@@ -111,7 +111,7 @@ namespace SaRLAB.UserWeb.Controllers
         public IActionResult GetAll_Chemistry()
         {
 
-            if (_hasError)
+            if (_hasError || userLogin.RoleName == "User")
             {
                 return View("Error");
             }
@@ -441,7 +441,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_ToolChemistry()
         {
-            if (_hasError)
+            if (_hasError || userLogin.RoleName == "User")
             {
                 return View("Error");
             }
@@ -779,7 +779,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_EquipmentChemistry()
         {
-            if (_hasError)
+            if (_hasError || userLogin.RoleName == "User")
             {
                 return View("Error");
             }
@@ -4761,7 +4761,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Directors()
         {
-            if (_hasError)
+            if (_hasError || userLogin.RoleName == "User")
             {
                 return View("Error");
             }
@@ -4816,7 +4816,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Teacher()
         {
-            if (_hasError)
+            if (_hasError || userLogin.RoleName == "User")
             {
                 return View("Error");
             }
@@ -4871,7 +4871,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAll_Technical()
         {
-            if (_hasError)
+            if (_hasError || userLogin.RoleName == "User")
             {
                 return View("Error");
             }
@@ -4922,5 +4922,2004 @@ namespace SaRLAB.UserWeb.Controllers
             return View(users);
         }
 
+        //-------------------------------Đề tài cấp quốc tế----- International_level topic ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_International_level()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/3/INTERNATIONAL").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_International_level()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return RedirectToAction("GetAll_International_level");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_International_level(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 3;
+                document.SchoolId = userLogin.SchoolId;
+                document.Type = "INTERNATIONAL";
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                    return RedirectToAction("GetAll_International_level");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_International_level(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return RedirectToAction("GetAll_International_level");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chinh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return RedirectToAction("GetAll_International_level");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_International_level(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                    return RedirectToAction("GetAll_International_level");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+            return View();
+        }
+
+        public ActionResult Delete_International_level(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return RedirectToAction("GetAll_International_level");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "nghiencuu";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                        return RedirectToAction("GetAll_International_level");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "nghiencuu";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_International_level");
+                }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return RedirectToAction("GetAll_International_level");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "nghiencuu";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                return RedirectToAction("GetAll_International_level");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_International_level(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "nghiencuu";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+            return View(document);
+        }
+
+        //----------------------------hóa chất kho------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_ChemistryStorage()
+        {
+
+            if (_hasError || userLogin.RoleName == "User")
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            List<Equipment> equipment = new List<Equipment>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/3/CHEMISTRYESTORE").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "chemistry";
+            return View(equipment);
+        }
+
+
+        [HttpGet]
+        public ActionResult Edit_ChemistryStorage(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            Equipment equipment = new Equipment();
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy dữ liệu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                return Ok();
+            }
+
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                return View(equipment);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                return RedirectToAction("GetAll_ChemistryStorage");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_ChemistryStorage(Equipment equipment, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            try
+            {
+                equipment.UpdateTime = DateTime.Now;
+                equipment.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Update/" + equipment.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "kho";
+                    ViewBag.ActiveSubMenuLv2 = "chemistry";
+                    return RedirectToAction("GetAll_ChemistryStorage");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                return View();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Create_ChemistryStorage()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                return RedirectToAction("GetAll_ChemistryStorage");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_ChemistryStorage(Equipment equipment, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            try
+            {
+                equipment.CreateTime = DateTime.Now;
+                equipment.CreateBy = userLogin.Email;
+                equipment.UpdateTime = DateTime.Now;
+                equipment.UpdateBy = userLogin.Email;
+                equipment.SchoolId = userLogin.SchoolId;
+                equipment.SubjectId = 3;
+                equipment.Type = "CHEMISTRYESTORE";
+                equipment.SchoolId = userLogin.SchoolId;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "kho";
+                    ViewBag.ActiveSubMenuLv2 = "chemistry";
+                    return RedirectToAction("GetAll_ChemistryStorage");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "chemistry";
+            return View();
+        }
+
+
+        public ActionResult Delete_ChemistryStorage(int id)
+        {
+
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy dữ liệu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                return RedirectToAction("GetAll_ChemistryStorage");
+            }
+
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "kho";
+                        ViewBag.ActiveSubMenuLv2 = "chemistry";
+                        return RedirectToAction("GetAll_ChemistryStorage");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "kho";
+                    ViewBag.ActiveSubMenuLv2 = "chemistry";
+                    return RedirectToAction("GetAll_ChemistryStorage");
+                }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                return RedirectToAction("GetAll_ChemistryStorage");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                return RedirectToAction("GetAll_ChemistryStorage");
+            }
+
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_ChemistryStorage(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "chemistry";
+            return View(equipment);
+        }
+
+        //----------------------------dụng cụ kho-----------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_ToolChemistryStorage()
+        {
+            if (_hasError || userLogin.RoleName == "User")
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            List<Equipment> equipment = new List<Equipment>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/3/TOOLCHEMISTRYSTORE").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+            return View(equipment);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_ToolChemistryStorage()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                return View();
+            }
+            else
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_ToolChemistryStorage");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_ToolChemistryStorage(Equipment equipment, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            try
+            {
+                equipment.CreateTime = DateTime.Now;
+                equipment.CreateBy = userLogin.Email;
+                equipment.UpdateTime = DateTime.Now;
+                equipment.UpdateBy = userLogin.Email;
+                equipment.SchoolId = userLogin.SchoolId;
+                equipment.SubjectId = 3;
+                equipment.Type = "TOOLCHEMISTRYSTORE";
+                equipment.SchoolId = userLogin.SchoolId;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "kho";
+                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                    return RedirectToAction("GetAll_ToolChemistryStorage");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult Edit_ToolChemistryStorage(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy thiết bị";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                return Ok();
+            }
+
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                return View(equipment);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                return RedirectToAction("GetAll_ToolChemistryStorage");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_ToolChemistryStorage(Equipment equipment, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            try
+            {
+                equipment.UpdateTime = DateTime.Now;
+                equipment.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Update/" + equipment.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "kho";
+                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                    return RedirectToAction("GetAll_ToolChemistryStorage");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+            return View();
+        }
+
+        public ActionResult Delete_ToolChemistryStorage(int id)
+        {
+
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                return RedirectToAction("GetAll_ToolChemistryStorage");
+            }
+
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "kho";
+                        ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                        return RedirectToAction("GetAll_ToolChemistryStorage");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "kho";
+                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                    return RedirectToAction("GetAll_ToolChemistryStorage");
+                }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                return RedirectToAction("GetAll_ToolChemistryStorage");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                return RedirectToAction("GetAll_ToolChemistryStorage");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_ToolChemistryStorage(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+            return View(equipment);
+        }
+
+
+        //------------------------Thiết bị kho----------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_EquipmentChemistryStorage()
+        {
+            if (_hasError || userLogin.RoleName == "User")
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            List<Equipment> equipment = new List<Equipment>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/3/EQUIPMENTCHEMISTRYSTORE").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+            return View(equipment);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_EquipmentChemistryStorage()
+        {
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                return RedirectToAction("GetAll_EquipmentChemistryStorage");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_EquipmentChemistryStorage(Equipment equipment, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            try
+            {
+                equipment.CreateTime = DateTime.Now;
+                equipment.CreateBy = userLogin.Email;
+                equipment.UpdateTime = DateTime.Now;
+                equipment.UpdateBy = userLogin.Email;
+                equipment.SchoolId = userLogin.SchoolId;
+                equipment.SubjectId = 3;
+                equipment.Type = "EQUIPMENTCHEMISTRYSTORE";
+                equipment.SchoolId = userLogin.SchoolId;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "kho";
+                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                    return RedirectToAction("GetAll_EquipmentChemistryStorage");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult Edit_EquipmentChemistryStorage(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                return Ok();
+            }
+
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                return View(equipment);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                return Ok();
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_EquipmentChemistryStorage(Equipment equipment, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            try
+            {
+                equipment.UpdateTime = DateTime.Now;
+                equipment.UpdateBy = userLogin.Email;
+
+                string data = JsonConvert.SerializeObject(equipment);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Update/" + equipment.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "kho";
+                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                    return RedirectToAction("GetAll_EquipmentChemistryStorage");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+            return View();
+        }
+
+        public ActionResult Delete_EquipmentChemistryStorage(int id)
+        {
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            if (equipment == null)
+            {
+                TempData["notice"] = "không tìm thấy";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                return RedirectToAction("GetAll_EquipmentChemistryStorage");
+            }
+
+            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "kho";
+                        ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                        return RedirectToAction("GetAll_EquipmentChemistryStorage");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "kho";
+                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                    return RedirectToAction("GetAll_EquipmentChemistryStorage");
+                }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                return RedirectToAction("GetAll_EquipmentChemistryStorage");
+            }
+            else
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "kho";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                return RedirectToAction("GetAll_EquipmentChemistryStorage");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_EquipmentChemistryStorage(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            Equipment equipment = new Equipment();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<Equipment>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "kho";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+            return View(equipment);
+        }
+
+
+        //-------------------------------lịch thực hành----- Practice_Schedule topic practiceschedule------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Practice_Schedule()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/3/PRACTICASCHEDULE").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Practice_Schedule()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                return RedirectToAction("GetAll_Practice_Schedule");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Practice_Schedule(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 3;
+                document.SchoolId = userLogin.SchoolId;
+                document.Type = "PRACTICASCHEDULE";
+                document.PageFlag = true;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                    return RedirectToAction("GetAll_Practice_Schedule");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Practice_Schedule(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                return RedirectToAction("GetAll_Practice_Schedule");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chinh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                return RedirectToAction("GetAll_Practice_Schedule");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Practice_Schedule(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = true;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                    return RedirectToAction("GetAll_Practice_Schedule");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+            return View();
+        }
+
+        public ActionResult Delete_Practice_Schedule(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                return RedirectToAction("GetAll_Practice_Schedule");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "thuchanh";
+                        ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                        return RedirectToAction("GetAll_Practice_Schedule");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Practice_Schedule");
+                }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                return RedirectToAction("GetAll_Practice_Schedule");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+                return RedirectToAction("GetAll_Practice_Schedule");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Practice_Schedule(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practiceschedule";
+            return View(document);
+        }
+
+        //-------------------------------điểm thực hành----- Practice_Point topic practicepoint------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Practice_Point()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/3/PRACTICEPOINT").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practicepoint";
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Practice_Point()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                return RedirectToAction("GetAll_Practice_Point");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Practice_Point(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 3;
+                document.SchoolId = userLogin.SchoolId;
+                document.Type = "PRACTICEPOINT";
+                document.PageFlag = true;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                    return RedirectToAction("GetAll_Practice_Point");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practicepoint";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Practice_Point(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                return RedirectToAction("GetAll_Practice_Point");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chinh sửa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                return RedirectToAction("GetAll_Practice_Point");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Practice_Point(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = true;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                    return RedirectToAction("GetAll_Practice_Point");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                return View();
+            }
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practicepoint";
+            return View();
+        }
+
+        public ActionResult Delete_Practice_Point(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                return RedirectToAction("GetAll_Practice_Point");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveSubMenu = "thuchanh";
+                        ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                        return RedirectToAction("GetAll_Practice_Point");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveSubMenu = "thuchanh";
+                    ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                    TempData["errorMessage"] = ex.Message;
+                    return RedirectToAction("GetAll_Practice_Point");
+                }
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                return RedirectToAction("GetAll_Practice_Point");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "thuchanh";
+                ViewBag.ActiveSubMenuLv2 = "practicepoint";
+                return RedirectToAction("GetAll_Practice_Point");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Practice_Point(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "thuchanh";
+            ViewBag.ActiveSubMenuLv2 = "practicepoint";
+            return View(document);
+        }
     }
 }
