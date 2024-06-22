@@ -81,13 +81,6 @@
                         <i class="fa-solid fa-circle-check"></i>
                         Duyệt
                     </a>
-                    <a asp-area="" asp-controller="Chemistry" asp-action="Accept_Organic" asp-route-id="@Model.ID" class="btn-custom-accept btn-custom-accept-trigger" type="button">
-                        <i class="fa-solid fa-circle-check"></i>
-                    </a>
-                    @* <a asp-area="" data-url="@Url.Action("Delete_Experiment", "Chemistry", new { id = @Model.ID })" onclick="openDeleteModal(this)" class="btn-custom-delete" type="button">
-                    <i class="fa-solid fa-trash"></i>
-                    Xóa
-                    </a> *@
                     <a asp-area="" asp-controller="Chemistry" asp-action="Delete_Organic" asp-route-id="@Model.ID" class="btn-custom-delete" type="button">
                         <i class="fa-solid fa-trash"></i>
                         Xóa
@@ -95,9 +88,6 @@
                     <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Organic" class="btn-custom-return" type="button">
                         <i class="fa-solid fa-angles-left"></i>
                         Trở về
-                    </a>
-                    <a asp-area="" asp-controller="Chemistry" asp-action="GetAll_Organic" class="btn-custom-return btn-custom-return-trigger" type="button">
-                        <i class="fa-solid fa-angles-left"></i>
                     </a>
                 </div>
             </div>

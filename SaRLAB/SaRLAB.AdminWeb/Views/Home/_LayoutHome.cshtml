@@ -163,13 +163,14 @@
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('nghiencuu')">
                                         <span class="left d-flex" style="align-items: center;">
                                             <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                                            <a>Nghiên cứu</a>
+                                            <a>Nghiên cứu khoa học</a>
                                         </span>
                                     </p>
                                     <ul id="nghiencuu" class="nested">
-                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Department_level">Đề tài cấp sở</a></li>
-                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Provincial_level">Đề tài cấp tỉnh</a></li>
-                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_National_level">Đề tài cấp quốc gia</a>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Department_level">Đề tài nghiên cứu cấp sở</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_Provincial_level">Đề tài nghiên cứu cấp tỉnh</a></li>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_National_level">Đề tài nghiên cứu cấp quốc gia</a>
+                                        <li class="menu-item"><a asp-controller="Chemistry" asp-action="GetAll_International_level">Đề tài nghiên cứu cấp quốc tế</a>
                                     </ul>
                                 </li>
                                 <li>
@@ -218,7 +219,6 @@
                                         class="nested @((ViewBag.ActiveSubMenu == "virtuallab_sinh") ? "active" : "")">
                                         <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Experiment" class="@((ViewBag.ActiveSubMenuLv2 == "experience") ? "active" : "")">Thực nghiệm</a></li>
                                         <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Conspectus">Đại cương</a></li>
-                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Biological">Hoạt tính sinh học</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -249,13 +249,14 @@
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('nghiencuu_sinh')">
                                         <span class="left d-flex" style="align-items: center;">
                                             <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                                            <a>Nghiên cứu</a>
+                                            <a>Nghiên cứu khoa học</a>
                                         </span>
                                     </p>
                                     <ul id="nghiencuu_sinh" class="nested">
                                         <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Department_level">Đề tài cấp sở</a></li>
                                         <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_Provincial_level">Đề tài cấp tỉnh</a></li>
                                         <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_National_level">Đề tài cấp quốc gia</a>
+                                        <li class="menu-item"><a asp-controller="Biology" asp-action="GetAll_International_level">Đề tài nghiên cứu cấp quốc tế</a>
                                     </ul>
                                 </li>
                                 <li>
@@ -310,8 +311,6 @@
                                                 nghiệm</a></li>
                                         <li class="menu-item"><a asp-controller="Physics"
                                                 asp-action="GetAll_Conspectus">Đại cương</a></li>
-                                        <li class="menu-item"><a asp-controller="Physics"
-                                                asp-action="GetAll_Biological">Hoạt tính sinh học</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -358,7 +357,8 @@
                                         <li class="menu-item"><a asp-controller="Physics"
                                                 asp-action="GetAll_Provincial_level">Đề tài cấp tỉnh</a></li>
                                         <li class="menu-item"><a asp-controller="Physics"
-                                                asp-action="GetAll_National_level">Đề tài cấp quốc gia</a>
+                                                asp-action="GetAll_National_level">Đề tài cấp quốc gia</a></li>
+                                        <li class="menu-item"><a asp-controller="Physics" asp-action="GetAll_International_level">Đề tài nghiên cứu cấp quốc tế</a>
                                     </ul>
                                 </li>
                                 <li>
@@ -417,8 +417,6 @@
                                                 nghiệm</a></li>
                                         <li class="menu-item"><a asp-controller="Math"
                                                 asp-action="GetAll_Conspectus">Đại cương</a></li>
-                                        <li class="menu-item"><a asp-controller="Math"
-                                                asp-action="GetAll_Biological">Hoạt tính sinh học</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -456,7 +454,7 @@
                                         onclick="toggleMenu('nghiencuu_toan')">
                                         <span class="left d-flex" style="align-items: center;">
                                             <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                                            <a>Nghiên cứu</a>
+                                            <a>Nghiên cứu khoa học</a>
                                         </span>
                                     </p>
                                     <ul id="nghiencuu_toan" class="nested">
@@ -465,7 +463,8 @@
                                         <li class="menu-item"><a asp-controller="Math"
                                                 asp-action="GetAll_Provincial_level">Đề tài cấp tỉnh</a></li>
                                         <li class="menu-item"><a asp-controller="Math"
-                                                asp-action="GetAll_National_level">Đề tài cấp quốc gia</a>
+                                                asp-action="GetAll_National_level">Đề tài cấp quốc gia</a></li>
+                                        <li class="menu-item"><a asp-controller="Math" asp-action="GetAll_International_level">Đề tài nghiên cứu cấp quốc tế</a>
                                     </ul>
                                 </li>
                                 <li>

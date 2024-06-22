@@ -155,7 +155,7 @@
                 if (correctCount === totalQuestions) {
                     message = 'Bạn đã trả lời đúng tất cả các câu hỏi!';
                     modalAction = '<a class="btn btn-success" href="/Chemistry/index">Truy cập</a>';
-                } else if (correctCount > 2) {
+                } else if (correctCount > 30) {
                     message = `Bạn đã trả lời đúng ${correctCount}/${totalQuestions} câu hỏi. Đang tải lại các câu hỏi sai...`;
                     modalAction = `<a class="btn btn-warning" href="/MultipleQuestions/GetQuestionRepeat?count=${incorrectCount}">Làm lại câu sai</a>`;
                 }

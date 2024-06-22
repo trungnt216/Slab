@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>H:\SARLAB RELEASE\API</_PublishTargetUrl>
+    <History>True|2024-06-18T16:44:00.4776724Z;True|2024-06-18T22:33:01.6937307+07:00;True|2024-06-18T22:32:10.6506761+07:00;True|2024-06-18T22:30:03.5409633+07:00;True|2024-06-18T01:52:25.5835569+07:00;True|2024-06-18T01:51:41.2540601+07:00;True|2024-06-18T01:23:47.8031456+07:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

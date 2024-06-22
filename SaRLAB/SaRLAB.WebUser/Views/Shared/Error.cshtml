@@ -1,54 +1,67 @@
 ﻿@model ErrorViewModel
 @{
     ViewData["Title"] = "Error";
+    Layout = null; // Không sử dụng layout
 }
 
-<style>
-    .four_zero_four_bg {
-        max-width: 50%;
-        height: auto;
-        background-position: center;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Your Application Name</title>
+    <link rel="stylesheet" href="~/SaRLAB.UserWeb.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        .four_zero_four_bg {
+            max-width: 50%;
+            height: auto;
+            background-position: center;
+        }
 
-    .page-error {
-        text-align: center;
-    }
+        .page-error {
+            text-align: center;
+        }
 
-    .page-error .title {
-        margin-top: 20px;
-        color: #1e64af;
-    }
+            .page-error .title {
+                margin-top: 20px;
+                color: #1e64af;
+            }
 
-    .page-error .description {
-        font-size: 16px;
-    }
+            .page-error .description {
+                font-size: 16px;
+            }
 
-    .page-error a.btn-return {
-        font-size: 16px;
-        border-radius: 20px;
-        padding: 5px 30px;
-        background: #2268b3;
-        color: #ffffff;
-        text-decoration: none;
-    }
+            .page-error a.btn-return {
+                font-size: 16px;
+                border-radius: 20px;
+                padding: 5px 30px;
+                background: #2268b3;
+                color: #ffffff;
+                text-decoration: none;
+            }
 
+                .page-error a.btn-return:hover {
+                    background: #0a3665;
+                }
+    </style>
+</head>
+<body>
+    <div class="container mt-5" style="background-color: white;">
+        <div class="row justify-content-center page-error">
+            <div class="col-md-8">
+                <div class="text-center">
+                    <img src="https://www.indiaherald.com/images/hp-images/error-mobile-500.png" alt="Nature" class="four_zero_four_bg" width="500" height="500">
+                    <h2 class="title">Oops, 403 Forbidden</h2>
+                    <p class="description">Bạn không có quyền truy cập trang này!</p>
+                </div>
 
-    .page-error a.btn-return:hover {
-            background: #0a3665;
-    }
-</style>
-
-
-<div class="container mt-5">
-    <div class="row justify-content-center page-error">
-        <div class="col-md-8">
-            <div class="text-center">
-                <img src="https://www.indiaherald.com/images/hp-images/error-mobile-500.png" alt="Nature" class="four_zero_four_bg" width="500" height="500">
-                <h2 class="title">Oops, 403 Forbidden</h2>
-                <p class="description">Bạn không có quyền truy cập trang này!</p>
+                <a type="button" href="javascript:history.back()" class="btn-return mt-3">Trở về</a>
             </div>
-
-            <a type="button" href="javascript:history.back()" class="btn-return mt-3">Trở về</a>
         </div>
     </div>
-</div>
+</body>
+</html>
