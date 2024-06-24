@@ -82,8 +82,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveSubMenu = "virtuallabphys";
+            ViewBag.ActiveSubMenuLv2 = "experimentphys";
             return View(documents);
         }
 
@@ -105,8 +105,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "experimentphys";
                 return RedirectToAction("GetAll_Experiment");
             }
 
@@ -127,8 +127,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "experience";
+                        ViewBag.ActiveSubMenu = "virtuallabphys";
+                        ViewBag.ActiveSubMenuLv2 = "experimentphys";
                         return RedirectToAction("GetAll_Experiment");
                     }
                 }
@@ -137,14 +137,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "experience";
+                    ViewBag.ActiveSubMenu = "virtuallabphys";
+                    ViewBag.ActiveSubMenuLv2 = "experimentphys";
                     return RedirectToAction("GetAll_Experiment");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "experimentphys";
                 return RedirectToAction("GetAll_Experiment");
             }
             else
@@ -152,8 +152,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "experimentphys";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -176,8 +176,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenu = "physics";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "experimentphys";
                 return RedirectToAction("GetAll_Experiment");
             }
 
@@ -193,8 +193,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenu = "physics";
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "experience";
+                        ViewBag.ActiveSubMenu = "virtuallabphys";
+                        ViewBag.ActiveSubMenuLv2 = "experimentphys";
                         return RedirectToAction("GetAll_Experiment");
                     }
                 }
@@ -203,14 +203,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "experience";
+                    ViewBag.ActiveSubMenu = "virtuallabphys";
+                    ViewBag.ActiveSubMenuLv2 = "experimentphys";
                     return RedirectToAction("GetAll_Experiment");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "experimentphys";
                 return RedirectToAction("GetAll_Experiment");
             }
             else
@@ -218,8 +218,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "experimentphys";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -245,8 +245,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveSubMenu = "virtuallabphys";
+            ViewBag.ActiveSubMenuLv2 = "experimentphys";
             return View(document);
         }
 
@@ -271,8 +271,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "conspectus";
+            ViewBag.ActiveSubMenu = "virtuallabphys";
+            ViewBag.ActiveSubMenuLv2 = "conspectusphys";
             return View(documents);
         }
 
@@ -294,8 +294,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "conspectusphys";
                 return RedirectToAction("GetAll_Conspectus");
             }
 
@@ -315,8 +315,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "conspectus";
+                        ViewBag.ActiveSubMenu = "virtuallabphys";
+                        ViewBag.ActiveSubMenuLv2 = "conspectusphys";
                         return RedirectToAction("GetAll_Conspectus");
                     }
                 }
@@ -325,14 +325,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "conspectus";
+                    ViewBag.ActiveSubMenu = "virtuallabphys";
+                    ViewBag.ActiveSubMenuLv2 = "conspectusphys";
                     return RedirectToAction("GetAll_Conspectus");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "conspectusphys";
                 return RedirectToAction("GetAll_Conspectus");
             }
             else
@@ -340,8 +340,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "conspectusphys";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -364,8 +364,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "conspectusphys";
                 return RedirectToAction("GetAll_Conspectus");
             }
 
@@ -381,8 +381,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "conspectus";
+                        ViewBag.ActiveSubMenu = "virtuallabphys";
+                        ViewBag.ActiveSubMenuLv2 = "conspectusphys";
                         return RedirectToAction("GetAll_Conspectus");
                     }
                 }
@@ -391,14 +391,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "conspectus";
+                    ViewBag.ActiveSubMenu = "virtuallabphys";
+                    ViewBag.ActiveSubMenuLv2 = "conspectusphys";
                     return RedirectToAction("GetAll_Conspectus");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "conspectusphys";
                 return RedirectToAction("GetAll_Conspectus");
             }
             else
@@ -406,8 +406,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "conspectusphys";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -432,15 +432,15 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "conspectus";
+            ViewBag.ActiveSubMenu = "virtuallabphys";
+            ViewBag.ActiveSubMenuLv2 = "conspectusphys";
             return View(document);
         }
 
-        //--------------------------------hoạt tính sinh học---- biological ------------------------------------
+        //--------------------------------hoạt tính sinh học---- biologicalphys ------------------------------------
 
         [HttpGet]
-        public IActionResult GetAll_Biological()
+        public IActionResult GetAll_biologicalphys()
         {
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
@@ -448,7 +448,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             List<Document> documents = new List<Document>();
 
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/5/BIOLOGICAL").Result;
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/5/biologicalphys").Result;
 
             if (responses.IsSuccessStatusCode)
             {
@@ -457,13 +457,13 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "biological";
+            ViewBag.ActiveSubMenu = "virtuallabphys";
+            ViewBag.ActiveSubMenuLv2 = "biologicalphys";
             return View(documents);
         }
 
 
-       public ActionResult Accept_Biological(int id)
+       public ActionResult Accept_biologicalphys(int id)
         {
             Document document = new Document();
 
@@ -479,7 +479,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Biological");
+                return RedirectToAction("GetAll_biologicalphys");
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
@@ -498,9 +498,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "biological";
-                        return RedirectToAction("GetAll_Biological");
+                        ViewBag.ActiveSubMenu = "virtuallabphys";
+                        ViewBag.ActiveSubMenuLv2 = "biologicalphys";
+                        return RedirectToAction("GetAll_biologicalphys");
                     }
                 }
                 catch (Exception ex)
@@ -508,28 +508,28 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "biological";
-                    return RedirectToAction("GetAll_Biological");
+                    ViewBag.ActiveSubMenu = "virtuallabphys";
+                    ViewBag.ActiveSubMenuLv2 = "biologicalphys";
+                    return RedirectToAction("GetAll_biologicalphys");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "biological";
-                return RedirectToAction("GetAll_Biological");
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "biologicalphys";
+                return RedirectToAction("GetAll_biologicalphys");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "biological";
-                return RedirectToAction("GetAll_Biological");
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "biologicalphys";
+                return RedirectToAction("GetAll_biologicalphys");
             }
         }
 
-        public ActionResult Delete_Biological(int id)
+        public ActionResult Delete_biologicalphys(int id)
         {
             Document document = new Document();
 
@@ -545,7 +545,7 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Biological");
+                return RedirectToAction("GetAll_biologicalphys");
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
@@ -560,9 +560,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "biological";
-                        return RedirectToAction("GetAll_Biological");
+                        ViewBag.ActiveSubMenu = "virtuallabphys";
+                        ViewBag.ActiveSubMenuLv2 = "biologicalphys";
+                        return RedirectToAction("GetAll_biologicalphys");
                     }
                 }
                 catch (Exception ex)
@@ -570,30 +570,30 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "biological";
-                    return RedirectToAction("GetAll_Biological");
+                    ViewBag.ActiveSubMenu = "virtuallabphys";
+                    ViewBag.ActiveSubMenuLv2 = "biologicalphys";
+                    return RedirectToAction("GetAll_biologicalphys");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "biological";
-                return RedirectToAction("GetAll_Biological");
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "biologicalphys";
+                return RedirectToAction("GetAll_biologicalphys");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "biological";
-                return RedirectToAction("GetAll_Biological");
+                ViewBag.ActiveSubMenu = "virtuallabphys";
+                ViewBag.ActiveSubMenuLv2 = "biologicalphys";
+                return RedirectToAction("GetAll_biologicalphys");
             }
         }
 
 
         [HttpGet]
-        public ActionResult Details_Biological(int id)
+        public ActionResult Details_biologicalphys(int id)
         {
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
@@ -610,8 +610,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "biological";
+            ViewBag.ActiveSubMenu = "virtuallabphys";
+            ViewBag.ActiveSubMenuLv2 = "biologicalphys";
             return View(document);
         }
 
@@ -634,8 +634,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "vocabulary";
+            ViewBag.ActiveSubMenu = "tienganhphys";
+            ViewBag.ActiveSubMenuLv2 = "vocabularyphys";
             return View(documents);
         }
 
@@ -675,8 +675,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                        ViewBag.ActiveSubMenu = "tienganhphys";
+                        ViewBag.ActiveSubMenuLv2 = "vocabularyphys";
                         return RedirectToAction("GetAll_Vocabulary");
                     }
                 }
@@ -685,14 +685,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                    ViewBag.ActiveSubMenu = "tienganhphys";
+                    ViewBag.ActiveSubMenuLv2 = "vocabularyphys";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "vocabularyphys";
                 return RedirectToAction("GetAll_Vocabulary");
             }
             else
@@ -700,8 +700,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "vocabularyphys";
                 return RedirectToAction("GetAll_Vocabulary");
             }
         }
@@ -738,8 +738,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                        ViewBag.ActiveSubMenu = "tienganhphys";
+                        ViewBag.ActiveSubMenuLv2 = "vocabularyphys";
                         return RedirectToAction("GetAll_Vocabulary");
                     }
                 }
@@ -748,14 +748,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                    ViewBag.ActiveSubMenu = "tienganhphys";
+                    ViewBag.ActiveSubMenuLv2 = "vocabularyphys";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "vocabularyphys";
                 return RedirectToAction("GetAll_Vocabulary");
             }
             else
@@ -763,8 +763,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "vocabularyphys";
                 return RedirectToAction("GetAll_Vocabulary");
             }
         }
@@ -788,8 +788,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "vocabulary";
+            ViewBag.ActiveSubMenu = "tienganhphys";
+            ViewBag.ActiveSubMenuLv2 = "vocabularyphys";
             return View(document);
         }
 
@@ -813,8 +813,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "exam";
+            ViewBag.ActiveSubMenu = "tienganhphys";
+            ViewBag.ActiveSubMenuLv2 = "examphys";
             return View(documents);
         }
 
@@ -837,8 +837,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "examphys";
                 return RedirectToAction("GetAll_Exam");
             }
 
@@ -858,8 +858,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "exam";
+                        ViewBag.ActiveSubMenu = "tienganhphys";
+                        ViewBag.ActiveSubMenuLv2 = "examphys";
                         return RedirectToAction("GetAll_Exam");
                     }
                 }
@@ -868,14 +868,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "exam";
+                    ViewBag.ActiveSubMenu = "tienganhphys";
+                    ViewBag.ActiveSubMenuLv2 = "examphys";
                     return RedirectToAction("GetAll_Exam");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "examphys";
                 return RedirectToAction("GetAll_Exam");
             }
             else
@@ -883,8 +883,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "examphys";
                 return RedirectToAction("GetAll_Exam");
             }
         }
@@ -907,8 +907,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "examphys";
                 return RedirectToAction("GetAll_Exam");
             }
 
@@ -924,8 +924,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "exam";
+                        ViewBag.ActiveSubMenu = "tienganhphys";
+                        ViewBag.ActiveSubMenuLv2 = "examphys";
                         return RedirectToAction("GetAll_Exam");
                     }
                 }
@@ -934,14 +934,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "exam";
+                    ViewBag.ActiveSubMenu = "tienganhphys";
+                    ViewBag.ActiveSubMenuLv2 = "examphys";
                     return RedirectToAction("GetAll_Exam");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "examphys";
                 return RedirectToAction("GetAll_Exam");
             }
             else
@@ -949,8 +949,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "examphys";
                 return RedirectToAction("GetAll_Exam");
             }
         }
@@ -974,8 +974,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "exam";
+            ViewBag.ActiveSubMenu = "tienganhphys";
+            ViewBag.ActiveSubMenuLv2 = "examphys";
             return View(document);
         }
 
@@ -998,8 +998,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "examenglish";
+            ViewBag.ActiveSubMenu = "tienganhphys";
+            ViewBag.ActiveSubMenuLv2 = "examenglishphys";
             return View(documents);
         }
 
@@ -1022,8 +1022,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "examenglish";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "examenglishphys";
                 return RedirectToAction("GetAll_Examenglish");
             }
 
@@ -1043,8 +1043,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "examenglish";
+                        ViewBag.ActiveSubMenu = "tienganhphys";
+                        ViewBag.ActiveSubMenuLv2 = "examenglishphys";
                         return RedirectToAction("GetAll_Examenglish");
                     }
                 }
@@ -1053,8 +1053,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "examenglish";
+                    ViewBag.ActiveSubMenu = "tienganhphys";
+                    ViewBag.ActiveSubMenuLv2 = "examenglishphys";
                     return RedirectToAction("GetAll_Examenglish");
                 }
                 return RedirectToAction("GetAll_Examenglish");
@@ -1064,8 +1064,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "examenglish";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "examenglishphys";
                 return RedirectToAction("GetAll_Examenglish");
             }
         }
@@ -1088,8 +1088,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "examenglish";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "examenglishphys";
                 return RedirectToAction("GetAll_Examenglish");
             }
 
@@ -1105,8 +1105,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "examenglish";
+                        ViewBag.ActiveSubMenu = "tienganhphys";
+                        ViewBag.ActiveSubMenuLv2 = "examenglishphys";
                         return RedirectToAction("GetAll_Examenglish");
                     }
                 }
@@ -1115,8 +1115,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "examenglish";
+                    ViewBag.ActiveSubMenu = "tienganhphys";
+                    ViewBag.ActiveSubMenuLv2 = "examenglishphys";
                     return RedirectToAction("GetAll_Examenglish");
                 }
                 return RedirectToAction("GetAll_Examenglish");
@@ -1126,8 +1126,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "examenglish";
+                ViewBag.ActiveSubMenu = "tienganhphys";
+                ViewBag.ActiveSubMenuLv2 = "examenglishphys";
                 return RedirectToAction("GetAll_Examenglish");
             }
         }
@@ -1151,8 +1151,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "examenglish";
+            ViewBag.ActiveSubMenu = "tienganhphys";
+            ViewBag.ActiveSubMenuLv2 = "examenglishphys";
             return View(document);
         }
 
@@ -1176,8 +1176,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+            ViewBag.ActiveSubMenu = "nghiencuuphys";
+            ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
             return View(documents);
         }
 
@@ -1200,8 +1200,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
                 return RedirectToAction("GetAll_Department_level");
             }
 
@@ -1221,8 +1221,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                        ViewBag.ActiveSubMenu = "nghiencuuphys";
+                        ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
                         return RedirectToAction("GetAll_Department_level");
                     }
                 }
@@ -1230,15 +1230,15 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                    ViewBag.ActiveSubMenu = "nghiencuuphys";
+                    ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Department_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
                 return RedirectToAction("GetAll_Department_level");
             }
             else
@@ -1246,8 +1246,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
                 return RedirectToAction("GetAll_Department_level");
             }
         }
@@ -1270,8 +1270,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
                 return RedirectToAction("GetAll_Department_level");
             }
 
@@ -1287,8 +1287,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                        ViewBag.ActiveSubMenu = "nghiencuuphys";
+                        ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
                         return RedirectToAction("GetAll_Department_level");
                     }
                 }
@@ -1296,15 +1296,15 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                    ViewBag.ActiveSubMenu = "nghiencuuphys";
+                    ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Department_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
                 return RedirectToAction("GetAll_Department_level");
             }
             else
@@ -1312,8 +1312,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
                 return RedirectToAction("GetAll_Department_level");
             }
         }
@@ -1337,8 +1337,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+            ViewBag.ActiveSubMenu = "nghiencuuphys";
+            ViewBag.ActiveSubMenuLv2 = "departmentLevelPhys";
             return View(document);
         }
 
@@ -1361,8 +1361,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+            ViewBag.ActiveSubMenu = "nghiencuuphys";
+            ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
             return View(documents);
         }
 
@@ -1385,8 +1385,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
                 return RedirectToAction("GetAll_Provincial_level");
             }
 
@@ -1406,8 +1406,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                        ViewBag.ActiveSubMenu = "nghiencuuphys";
+                        ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
                         return RedirectToAction("GetAll_Provincial_level");
                     }
                 }
@@ -1416,22 +1416,22 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                    ViewBag.ActiveSubMenu = "nghiencuuphys";
+                    ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
                 return RedirectToAction("GetAll_Provincial_level");
             }
             else
             {
                 ViewBag.ActiveMenu = "physics";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 return RedirectToAction("GetAll_Provincial_level");
             }
@@ -1455,8 +1455,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
                 return RedirectToAction("GetAll_Provincial_level");
             }
 
@@ -1472,8 +1472,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                        ViewBag.ActiveSubMenu = "nghiencuuphys";
+                        ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
                         return RedirectToAction("GetAll_Provincial_level");
                     }
                 }
@@ -1482,22 +1482,22 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                    ViewBag.ActiveSubMenu = "nghiencuuphys";
+                    ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
                 return RedirectToAction("GetAll_Provincial_level");
             }
             else
             {
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Provincial_level");
             }
@@ -1522,8 +1522,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+            ViewBag.ActiveSubMenu = "nghiencuuphys";
+            ViewBag.ActiveSubMenuLv2 = "provincialLevelPhys";
             return View(document);
         }
 
@@ -1547,8 +1547,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+            ViewBag.ActiveSubMenu = "nghiencuuphys";
+            ViewBag.ActiveSubMenuLv2 = "nationalLevelPhys";
             return View(documents);
         }
 
@@ -1571,8 +1571,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelPhys";
                 return RedirectToAction("GetAll_National_level");
             }
 
@@ -1592,8 +1592,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                        ViewBag.ActiveSubMenu = "nghiencuuphys";
+                        ViewBag.ActiveSubMenuLv2 = "nationalLevelPhys";
                         return RedirectToAction("GetAll_National_level");
                     }
                 }
@@ -1602,8 +1602,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                    ViewBag.ActiveSubMenu = "nghiencuuphys";
+                    ViewBag.ActiveSubMenuLv2 = "nationalLevelPhys";
                     return RedirectToAction("GetAll_National_level");
                 }
                 return RedirectToAction("GetAll_National_level");
@@ -1612,8 +1612,8 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelPhys";
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 return RedirectToAction("GetAll_National_level");
             }
@@ -1637,8 +1637,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelPhys";
                 return RedirectToAction("GetAll_National_level");
             }
 
@@ -1654,8 +1654,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                        ViewBag.ActiveSubMenu = "nghiencuuphys";
+                        ViewBag.ActiveSubMenuLv2 = "nationalLevelPhys";
                         return RedirectToAction("GetAll_National_level");
                     }
                 }
@@ -1664,8 +1664,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                    ViewBag.ActiveSubMenu = "nghiencuuphys";
+                    ViewBag.ActiveSubMenuLv2 = "nationalLevelPhys";
                     return RedirectToAction("GetAll_National_level");
                 }
                 return RedirectToAction("GetAll_National_level");
@@ -1674,8 +1674,8 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelPhys";
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_National_level");
             }
@@ -1700,8 +1700,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+            ViewBag.ActiveSubMenu = "nghiencuuphys";
+            ViewBag.ActiveSubMenuLv2 = "nationalLevelPhys";
             return View(document);
         }
 
@@ -1724,8 +1724,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+            ViewBag.ActiveSubMenu = "thuchanhphys";
+            ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
             return View(documents);
         }
 
@@ -1748,8 +1748,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
@@ -1769,8 +1769,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "thuchanh";
-                        ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                        ViewBag.ActiveSubMenu = "thuchanhphys";
+                        ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
                         return RedirectToAction("GetAll_Preparation_questions");
                     }
                 }
@@ -1779,14 +1779,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                    ViewBag.ActiveSubMenu = "thuchanhphys";
+                    ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
             else
@@ -1794,8 +1794,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
         }
@@ -1818,8 +1818,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
@@ -1835,8 +1835,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "thuchanh";
-                        ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                        ViewBag.ActiveSubMenu = "thuchanhphys";
+                        ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
                         return RedirectToAction("GetAll_Preparation_questions");
                     }
                 }
@@ -1845,14 +1845,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                    ViewBag.ActiveSubMenu = "thuchanhphys";
+                    ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
             else
@@ -1860,8 +1860,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
         }
@@ -1885,8 +1885,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+            ViewBag.ActiveSubMenu = "thuchanhphys";
+            ViewBag.ActiveSubMenuLv2 = "preparationQuestionsPhys";
             return View(document);
         }
 
@@ -1910,8 +1910,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "practiceReport";
+            ViewBag.ActiveSubMenu = "thuchanhphys";
+            ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
             return View(documents);
         }
 
@@ -1933,8 +1933,8 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Practice_report");
             }
@@ -1955,8 +1955,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "thuchanh";
-                        ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                        ViewBag.ActiveSubMenu = "thuchanhphys";
+                        ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
                         return RedirectToAction("GetAll_Practice_report");
                     }
                 }
@@ -1965,14 +1965,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                    ViewBag.ActiveSubMenu = "thuchanhphys";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
                     return RedirectToAction("GetAll_Practice_report");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
                 return RedirectToAction("GetAll_Practice_report");
             }
             else
@@ -1980,8 +1980,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
                 return RedirectToAction("GetAll_Practice_report");
             }
         }
@@ -2003,8 +2003,8 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Practice_report");
             }
@@ -2021,8 +2021,8 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "thuchanh";
-                        ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                        ViewBag.ActiveSubMenu = "thuchanhphys";
+                        ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
                         return RedirectToAction("GetAll_Practice_report");
                     }
                 }
@@ -2031,14 +2031,14 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                    ViewBag.ActiveSubMenu = "thuchanhphys";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
                     return RedirectToAction("GetAll_Practice_report");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
                 return RedirectToAction("GetAll_Practice_report");
             }
             else
@@ -2046,8 +2046,8 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveSubMenu = "thuchanhphys";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
                 return RedirectToAction("GetAll_Practice_report");
             }
         }
@@ -2071,8 +2071,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "practiceReport";
+            ViewBag.ActiveSubMenu = "thuchanhphys";
+            ViewBag.ActiveSubMenuLv2 = "practiceReportPhys";
             return View(document);
         }
 
@@ -2094,9 +2094,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+            ViewBag.ActiveMenu = "physics";
+            ViewBag.ActiveSubMenu = "nghiencuuphys";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
             return View(documents);
         }
 
@@ -2117,9 +2117,9 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "physics";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_International_level");
             }
@@ -2139,9 +2139,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                        ViewBag.ActiveMenu = "physics";
+                        ViewBag.ActiveSubMenu = "nghiencuuphys";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
                         return RedirectToAction("GetAll_International_level");
                     }
                 }
@@ -2149,24 +2149,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                    ViewBag.ActiveMenu = "physics";
+                    ViewBag.ActiveSubMenu = "nghiencuuphys";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
                     return RedirectToAction("GetAll_International_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "physics";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
                 return RedirectToAction("GetAll_International_level");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "physics";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
                 return RedirectToAction("GetAll_International_level");
             }
         }
@@ -2187,9 +2187,9 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "physics";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_International_level");
             }
@@ -2205,9 +2205,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                        ViewBag.ActiveMenu = "physics";
+                        ViewBag.ActiveSubMenu = "nghiencuuphys";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
                         return RedirectToAction("GetAll_International_level");
                     }
                 }
@@ -2215,24 +2215,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                    ViewBag.ActiveMenu = "physics";
+                    ViewBag.ActiveSubMenu = "nghiencuuphys";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
                     return RedirectToAction("GetAll_International_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "physics";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
                 return RedirectToAction("GetAll_International_level");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "physics";
+                ViewBag.ActiveSubMenu = "nghiencuuphys";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
                 return RedirectToAction("GetAll_International_level");
             }
         }
@@ -2255,9 +2255,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+            ViewBag.ActiveMenu = "physics";
+            ViewBag.ActiveSubMenu = "nghiencuuphys";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevelPhys";
             return View(document);
         }
 
@@ -2279,6 +2279,10 @@ namespace SaRLAB.AdminWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
             }
 
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "phys";
+            ViewBag.ActiveSubMenu = "cauhoiantoanphys";
+            ViewBag.ActiveSubMenuLv2 = "cauhoivatly";
             return View(equipment);
         }
 
@@ -2291,6 +2295,10 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "phys";
+                ViewBag.ActiveSubMenu = "cauhoiantoanphys";
+                ViewBag.ActiveSubMenuLv2 = "cauhoivatly";
                 return View();
             }
             else
@@ -2429,8 +2437,16 @@ namespace SaRLAB.AdminWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "phys";
+                ViewBag.ActiveSubMenu = "cauhoiantoanphys";
+                ViewBag.ActiveSubMenuLv2 = "cauhoivatly";
                 return View();
             }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "phys";
+            ViewBag.ActiveSubMenu = "cauhoiantoanphys";
+            ViewBag.ActiveSubMenuLv2 = "cauhoivatly";
             return View();
         }
 
@@ -2459,6 +2475,10 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "phys";
+                ViewBag.ActiveSubMenu = "cauhoiantoanphys";
+                ViewBag.ActiveSubMenuLv2 = "cauhoivatly";
                 return View(quiz);
             }
             else
@@ -2595,8 +2615,16 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             catch (Exception ex)
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "phys";
+                ViewBag.ActiveSubMenu = "cauhoiantoanphys";
+                ViewBag.ActiveSubMenuLv2 = "cauhoivatly";
                 return View();
             }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "phys";
+            ViewBag.ActiveSubMenu = "cauhoiantoanphys";
+            ViewBag.ActiveSubMenuLv2 = "cauhoivatly";
             return View();
         }
 

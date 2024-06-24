@@ -21,7 +21,7 @@
     .sidebar::-webkit-scrollbar-thumb {
         background-color: #649bfa;
     }
-
+     
     .sidebar .subject-content ul li {
         font-size: var(--text-xss);
     }
@@ -72,7 +72,7 @@
 }
 
     .sidebar .subject-content ul li a:hover {
-        color: #a4c9ff;
+        color: #91beff;
         font-weight: 600;
     }
 
@@ -83,16 +83,42 @@
 }
 
     .sidebar .subject-content ul li.menu-item a:hover {
-        color: #a4c9ff;
+        color: #91beff;
         font-weight: 500;
     }
 
-.sidebar .subject-content ul .active p {
-    color: #a4c9ff;
+.sidebar .subject-content ul .active i.icon {
+    color: #91beff;
 }
 
-.sidebar .subject-content ul .active a.title {
-    color: #a4c9ff;
+.sidebar .subject-content ul .active a.title-menu {
+    color: #91beff;
+}
+
+/*menu subject custom*/
+.sidebar .subject-content ul .subject-menu-active i.icon {
+    color: #91beff !important;
+}
+.sidebar .subject-content ul .subject-menu-active a.title-menu {
+    color: #91beff !important;
+}
+
+.sidebar .subject-content ul .subject-menu-item-active i.icon-subject {
+    color: #91beff;
+}
+
+.sidebar .subject-content ul .subject-menu-item-active a.title-subject {
+    color: #91beff;
+}
+
+
+.sidebar .subject-content ul .menu-item-active a,
+.sidebar .subject-content ul .menu-item-active i {
+    color: #91beff;
+}
+
+.sidebar .subject-content ul .submenu-item-active a {
+    color: #91beff !important;
 }
 
 .icon-menu {
