@@ -82,8 +82,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveSubMenu = "virtuallab";
+            ViewBag.ActiveSubMenuLv2 = "experiment";
             return View(documents);
         }
 
@@ -105,7 +105,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -127,7 +127,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "experience";
                         return RedirectToAction("GetAll_Experiment");
                     }
@@ -137,13 +137,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "experience";
                     return RedirectToAction("GetAll_Experiment");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -152,7 +152,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -176,7 +176,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -193,7 +193,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "experience";
                         return RedirectToAction("GetAll_Experiment");
                     }
@@ -203,13 +203,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "experience";
                     return RedirectToAction("GetAll_Experiment");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -218,7 +218,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -245,7 +245,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "experience";
             return View(document);
         }
@@ -271,7 +271,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "conspectus";
             return View(documents);
         }
@@ -294,7 +294,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -315,7 +315,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "conspectus";
                         return RedirectToAction("GetAll_Conspectus");
                     }
@@ -325,13 +325,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "conspectus";
                     return RedirectToAction("GetAll_Conspectus");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -340,7 +340,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -364,7 +364,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -381,7 +381,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "conspectus";
                         return RedirectToAction("GetAll_Conspectus");
                     }
@@ -391,13 +391,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "conspectus";
                     return RedirectToAction("GetAll_Conspectus");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -406,7 +406,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -432,7 +432,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "conspectus";
             return View(document);
         }
@@ -473,7 +473,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
             return View(documents);
         }
@@ -497,7 +497,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -518,7 +518,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                         return RedirectToAction("GetAll_Inorganic_Organic");
                     }
@@ -528,13 +528,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                     return RedirectToAction("GetAll_Inorganic_Organic");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -543,7 +543,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -567,7 +567,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -584,7 +584,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                         return RedirectToAction("GetAll_Inorganic_Organic");
                     }
@@ -594,13 +594,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                     return RedirectToAction("GetAll_Inorganic_Organic");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -609,7 +609,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -636,7 +636,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
             return View(document);
         }
@@ -1026,7 +1026,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "biological";
             return View(documents);
         }
@@ -1067,7 +1067,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "biological";
                         return RedirectToAction("GetAll_Biological");
                     }
@@ -1077,13 +1077,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "biological";
                     return RedirectToAction("GetAll_Biological");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
@@ -1092,7 +1092,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
@@ -1129,7 +1129,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "biological";
                         return RedirectToAction("GetAll_Biological");
                     }
@@ -1139,13 +1139,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "biological";
                     return RedirectToAction("GetAll_Biological");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
@@ -1154,7 +1154,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
@@ -1179,7 +1179,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "biological";
             return View(document);
         }
@@ -2848,6 +2848,10 @@ namespace SaRLAB.AdminWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
             }
 
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "cauhoiantoan";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
             return View(equipment);
         }
 
@@ -2998,8 +3002,16 @@ namespace SaRLAB.AdminWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "cauhoiantoan";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
                 return View();
             }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "cauhoiantoan";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
             return View();
         }
 
@@ -3028,6 +3040,10 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "cauhoiantoan";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
                 return View(quiz);
             }
             else
@@ -3164,8 +3180,16 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             catch (Exception ex)
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "cauhoiantoan";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
                 return View();
             }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "cauhoiantoan";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
             return View();
         }
 

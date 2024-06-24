@@ -254,18 +254,18 @@ html, body {
     background-color: #e9c288;
 }
 
-.header-area-chem .main-red-button a:hover {
-    background-color: #ceab76;
-}
+    .header-area-chem .main-red-button a:hover {
+        background-color: #ceab76;
+    }
 
 /*bio*/
 .header-area-bio .main-red-button a {
     background-color: #82b0f3;
 }
 
-.header-area-bio .main-red-button a:hover {
-    background-color: #5fa5e3;
-}
+    .header-area-bio .main-red-button a:hover {
+        background-color: #5fa5e3;
+    }
 
 
 /*math*/
@@ -273,18 +273,18 @@ html, body {
     background-color: #cc6e77;
 }
 
-.header-area-math .main-red-button a:hover {
-    background-color: #bd5c65;
-}
+    .header-area-math .main-red-button a:hover {
+        background-color: #bd5c65;
+    }
 
 /*phys*/
 .header-area-phys .main-red-button a {
     background-color: #52bf8c;
 }
 
-.header-area-phys .main-red-button a:hover {
-    background-color: #2ba36b;
-}
+    .header-area-phys .main-red-button a:hover {
+        background-color: #2ba36b;
+    }
 
 
 /*lib*/
@@ -292,9 +292,9 @@ html, body {
     background-color: #ddab6b;
 }
 
-.header-area-library .main-red-button a:hover {
-    background-color: #cf974f;
-}
+    .header-area-library .main-red-button a:hover {
+        background-color: #cf974f;
+    }
 
 .main-white-button a {
     display: inline-block;
@@ -303,9 +303,9 @@ html, body {
     font-weight: 400;
     color: #f77a86;
     text-transform: capitalize;
-    padding: 12px 25px; 
+    padding: 12px 25px;
     border-radius: 23px;
-    letter-spacing: 0.25px; 
+    letter-spacing: 0.25px;
 }
 
 /* 
@@ -467,148 +467,148 @@ header
         display: block;
     }
 
-    .header-area .main-nav .nav li.menu-info-group a img {
-        width: 40px;
-        height: 40px;
-        background: white;
-        border-radius: 25px;
-        padding: 3px;
-        margin-right: 10px
-    }
-
-    .header-area .main-nav .nav li.menu-info-group a .info-user p {
-        color: white;
-        line-height: 20px;
-    }
-
-        .header-area .main-nav .nav li.menu-info-group a .info-user p.role {
-            font-size: 12px;
+        .header-area .main-nav .nav li.menu-info-group a img {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 25px;
+            padding: 3px;
+            margin-right: 10px
         }
 
-        /*chem*/
-        .header-area-chem .main-nav .nav li.menu-info-group a .info-user p.role {
-            color: antiquewhite;
+        .header-area .main-nav .nav li.menu-info-group a .info-user p {
+            color: white;
+            line-height: 20px;
         }
 
-        /*bio*/
-        .header-area-bio .main-nav .nav li.menu-info-group a .info-user p.role {
-            color: #c1daff;
-        }
+            .header-area .main-nav .nav li.menu-info-group a .info-user p.role {
+                font-size: 12px;
+            }
 
-        /*math*/
-        .header-area-math .main-nav .nav li.menu-info-group a .info-user p.role {
-            color: #f4c2c6;
-        }
+/*chem*/
+.header-area-chem .main-nav .nav li.menu-info-group a .info-user p.role {
+    color: antiquewhite;
+}
 
-        /*phys*/
-        .header-area-phys .main-nav .nav li.menu-info-group a .info-user p.role {
-            color: #9cebc6;
-        }
+/*bio*/
+.header-area-bio .main-nav .nav li.menu-info-group a .info-user p.role {
+    color: #c1daff;
+}
 
-    .header-area .main-nav .nav li:hover a.menu,
-    .header-area .main-nav .nav li a.active {
-        border-bottom: 1px solid;
-    }
+/*math*/
+.header-area-math .main-nav .nav li.menu-info-group a .info-user p.role {
+    color: #f4c2c6;
+}
 
-    .header-area .main-nav .nav li:last-child:hover a.menu,
-    .header-area .main-nav .nav li a.active {
-        border-bottom: none;
-    }
+/*phys*/
+.header-area-phys .main-nav .nav li.menu-info-group a .info-user p.role {
+    color: #9cebc6;
+}
 
-    .header-area .main-nav .nav li.menu-info-group:hover a.menu,
-    .header-area .main-nav .nav li a.active {
-        border-bottom: none;
-    }
+.header-area .main-nav .nav li:hover a.menu,
+.header-area .main-nav .nav li a.active {
+    border-bottom: 1px solid;
+}
 
-    /*chem*/
-    .header-area-chem .main-nav .nav li:hover a.menu,
-    .header-area-chem .main-nav .nav li a.active {
-        color: #e9c290;
-    }
+.header-area .main-nav .nav li:last-child:hover a.menu,
+.header-area .main-nav .nav li a.active {
+    border-bottom: none;
+}
 
-    .header-area-chem .main-nav .nav li:last-child:hover a.menu,
-    .header-area-chem .main-nav .nav li a.active {
-        color: #e9c290;
-    }
+.header-area .main-nav .nav li.menu-info-group:hover a.menu,
+.header-area .main-nav .nav li a.active {
+    border-bottom: none;
+}
 
-    .header-area-chem .main-nav .nav .dropdown-menu-title li a.active {
-        color: #bf8944 !important;
-    }
+/*chem*/
+.header-area-chem .main-nav .nav li:hover a.menu,
+.header-area-chem .main-nav .nav li a.active {
+    color: #e9c290;
+}
 
-    .header-area-chem .main-nav .nav .dropdown-menu-title li a:hover {
-        color: #bf8944 !important;
-    }
+.header-area-chem .main-nav .nav li:last-child:hover a.menu,
+.header-area-chem .main-nav .nav li a.active {
+    color: #e9c290;
+}
 
-    .header-area-chem .main-nav .nav li.menu-info-group:hover a.menu,
-    .header-area-chem .main-nav .nav li a.active {
-        color: #e9c290;
-    }
+.header-area-chem .main-nav .nav .dropdown-menu-title li a.active {
+    color: #bf8944 !important;
+}
 
-    /*bio*/
-    .header-area-bio .main-nav .nav li:hover a.menu {
-        color: #aeccf9;
-    }
+.header-area-chem .main-nav .nav .dropdown-menu-title li a:hover {
+    color: #bf8944 !important;
+}
 
-    .header-area-bio .main-nav .nav li:last-child:hover a.menu,
-    .header-area-bio .main-nav .nav li a.active {
-        color: #a0c2f5;
-    }
+.header-area-chem .main-nav .nav li.menu-info-group:hover a.menu,
+.header-area-chem .main-nav .nav li a.active {
+    color: #e9c290;
+}
 
-    .header-area-bio .main-nav .nav .dropdown-menu-title li a.active {
-        color: #78a8ef !important;
-    }
+/*bio*/
+.header-area-bio .main-nav .nav li:hover a.menu {
+    color: #aeccf9;
+}
 
-    .header-area-bio .main-nav .nav .dropdown-menu-title li a:hover {
-        color: #78a8ef !important;
-    }
+.header-area-bio .main-nav .nav li:last-child:hover a.menu,
+.header-area-bio .main-nav .nav li a.active {
+    color: #a0c2f5;
+}
 
-    /*math*/
-    .header-area-math .main-nav .nav li:hover a.menu,
-    .header-area-math .main-nav .nav li a.active {
-        color: #ffafb6;
-    }
+.header-area-bio .main-nav .nav .dropdown-menu-title li a.active {
+    color: #78a8ef !important;
+}
 
-    .header-area-math .main-nav .nav li:last-child:hover a.menu,
-    .header-area-math .main-nav .nav li a.active {
-        color: #ffafb6;
-    }
+.header-area-bio .main-nav .nav .dropdown-menu-title li a:hover {
+    color: #78a8ef !important;
+}
 
-    .header-area-math .main-nav .nav .dropdown-menu-title li a.active {
-        color: #ffafb6 !important;
-    }
+/*math*/
+.header-area-math .main-nav .nav li:hover a.menu,
+.header-area-math .main-nav .nav li a.active {
+    color: #ffafb6;
+}
 
-    .header-area-math .main-nav .nav .dropdown-menu-title li a:hover {
-        color: #ffafb6 !important;
-    }
+.header-area-math .main-nav .nav li:last-child:hover a.menu,
+.header-area-math .main-nav .nav li a.active {
+    color: #ffafb6;
+}
 
-    .header-area-math .main-nav .nav li.menu-info-group:hover a.menu,
-    .header-area-math .main-nav .nav li a.active {
-        color: #ffafb6;
-    }
+.header-area-math .main-nav .nav .dropdown-menu-title li a.active {
+    color: #ffafb6 !important;
+}
 
-    /*phys*/
-    .header-area-phys .main-nav .nav li:hover a.menu,
-    .header-area-phys .main-nav .nav li a.active {
-        color: #9cebc6;
-    }
+.header-area-math .main-nav .nav .dropdown-menu-title li a:hover {
+    color: #ffafb6 !important;
+}
 
-    .header-area-phys .main-nav .nav li:last-child:hover a.menu,
-    .header-area-phys .main-nav .nav li a.active {
-        color: #9cebc6;
-    }
+.header-area-math .main-nav .nav li.menu-info-group:hover a.menu,
+.header-area-math .main-nav .nav li a.active {
+    color: #ffafb6;
+}
 
-    .header-area-phys .main-nav .nav .dropdown-menu-title li a.active {
-        color: #38c080 !important;
-    }
+/*phys*/
+.header-area-phys .main-nav .nav li:hover a.menu,
+.header-area-phys .main-nav .nav li a.active {
+    color: #9cebc6;
+}
 
-    .header-area-phys .main-nav .nav .dropdown-menu-title li a:hover {
-        color: #38c080 !important;
-    }
+.header-area-phys .main-nav .nav li:last-child:hover a.menu,
+.header-area-phys .main-nav .nav li a.active {
+    color: #9cebc6;
+}
 
-    .header-area-phys .main-nav .nav li.menu-info-group:hover a.menu,
-    .header-area-phys .main-nav .nav li a.active {
-        color: #9cebc6;
-    }
+.header-area-phys .main-nav .nav .dropdown-menu-title li a.active {
+    color: #38c080 !important;
+}
+
+.header-area-phys .main-nav .nav .dropdown-menu-title li a:hover {
+    color: #38c080 !important;
+}
+
+.header-area-phys .main-nav .nav li.menu-info-group:hover a.menu,
+.header-area-phys .main-nav .nav li a.active {
+    color: #9cebc6;
+}
 
 .header-area .main-nav .nav li.menu-info-group:last-child {
     margin-left: 12px;
@@ -626,31 +626,31 @@ header
     .header-area .main-nav .nav li.submenu:after {
         font-family: FontAwesome;
         content: "\f107";
-        font-size: 12px; 
+        font-size: 12px;
         position: absolute;
         right: 18px;
         top: 12px;
     }
 
-    /*chem*/
-    .header-area-chem .main-nav .nav li.submenu:after {
-        color: #2a2a2a;
-    }
+/*chem*/
+.header-area-chem .main-nav .nav li.submenu:after {
+    color: #2a2a2a;
+}
 
-    /*bio*/
-    .header-area-bio .main-nav .nav li.submenu:after {
-        color: #2a2a2a;
-    }
+/*bio*/
+.header-area-bio .main-nav .nav li.submenu:after {
+    color: #2a2a2a;
+}
 
-    /*math*/
-    .header-area-math .main-nav .nav li.submenu:after {
-        color: #2a2a2a;
-    }
+/*math*/
+.header-area-math .main-nav .nav li.submenu:after {
+    color: #2a2a2a;
+}
 
-    /*phys*/
-    .header-area-phys .main-nav .nav li.submenu:after {
-        color: #2a2a2a;
-    }
+/*phys*/
+.header-area-phys .main-nav .nav li.submenu:after {
+    color: #2a2a2a;
+}
 
 .background-header .main-nav .nav li.submenu:after {
     color: white;
@@ -794,13 +794,13 @@ header
         margin-left: -5px;
         border-width: 5px;
         border-style: solid;
-        border-color: transparent transparent #333 transparent; 
+        border-color: transparent transparent #333 transparent;
     }
 
 .header-area .noti-group:hover .noti-tooltip,
 .header-area .noti-group:focus .noti-tooltip {
     visibility: visible;
-    opacity: 1; 
+    opacity: 1;
 }
 
 .background-header .main-nav .menu-trigger {
@@ -933,7 +933,7 @@ header
     display: none;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .header-area .main-nav .nav li {
         padding-left: 12px;
         padding-right: 12px;
@@ -944,15 +944,19 @@ header
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
     .header-area .main-nav .logo h4 {
         font-size: 14px;
     }
+}
+
+@media (max-width: 1400px) {
     .header-area .main-nav .logo img {
         width: 40px;
         height: 40px;
         margin-right: 5px;
     }
+
     .background-header .main-nav .nav {
         margin-top: 80px !important;
     }
@@ -992,8 +996,8 @@ header
                 transition: all 0s ease 0s;
                 margin-left: 0px;
             }
+
                 .header-area .main-nav .nav .dropdown-menu {
-                    background: #f7f7f7;
                     width: 50%;
                 }
 
@@ -1001,185 +1005,212 @@ header
                     width: 100%;
                 }
 
-                /*chem*/
-                .header-area-chem .main-nav .nav .dropdown-menu-item a:hover{
-                    color: #e9c290; 
-                }
+    /*chem*/
+    .header-area-chem .main-nav .nav .dropdown-menu-item a:hover {
+        color: #e9c290;
+    }
 
-                /*bio*/
-                .header-area-bio .main-nav .nav .dropdown-menu-item a:hover {
-                    color: #e9c290;
-                }
+    /*bio*/
+    .header-area-bio .main-nav .nav .dropdown-menu-item a:hover {
+        color: #e9c290;
+    }
 
-                /*math*/
-                .header-area-math .main-nav .nav .dropdown-menu-item a:hover {
-                    color: #e9c290;
-                }
+    /*math*/
+    .header-area-math .main-nav .nav .dropdown-menu-item a:hover {
+        color: #e9c290;
+    }
 
-                /*phys*/
-                .header-area-phys .main-nav .nav .dropdown-menu-item a:hover {
-                    color: #e9c290;
-                }
+    /*phys*/
+    .header-area-phys .main-nav .nav .dropdown-menu-item a:hover {
+        color: #e9c290;
+    }
 
-                .header-area .main-nav .nav li:first-child {
-                    border-top: 1px solid #eee;
-                }
+    .header-area .main-nav .nav li:first-child {
+        border-top: 1px solid #eee;
+    }
 
-                .header-area .main-nav .nav li {
-                    width: 100%;
-                    background: #fff;
-                    border-bottom: 1px solid #e7e7e7;
-                    padding-left: 0px !important;
-                    padding-right: 0px !important;
-                }
+    .header-area .main-nav .nav li {
+        width: 100%;
+        background: #fff;
+        border-bottom: 1px solid #e7e7e7;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
 
-                    .header-area .main-nav .nav li a {
-                        height: 50px !important;
-                        line-height: 50px !important;
-                        padding: 0px 15px;
-                        border: none !important;
-                        color: #191a20;
-                    }
+        .header-area .main-nav .nav li a {
+            height: 50px !important;
+            line-height: 50px !important;
+            padding: 0px 15px;
+            border: none !important;
+            color: #191a20;
+        }
 
-                    .header-area-chem .main-nav .nav li a {
-                        background: #ffefda;
-                    }
+    .header-area-chem .main-nav .nav li a {
+        background: #ffefda;
+    }
 
-                    .header-area-math .main-nav .nav li a {
-                        background: #fff0f1;
-                    }
+    .header-area-math .main-nav .nav li a {
+        background: #ffe5e7;
+    }
 
-                    .header-area-phys .main-nav .nav li a {
-                        background: #e3faef;
-                    }
+    .header-area-phys .main-nav .nav li a {
+        background: #e3faef;
+    }
 
-                    .header-area-bio .main-nav .nav li a {
-                        background: #e5f0ff;
-                    }
+    .header-area-bio .main-nav .nav li a {
+        background: #e5f0ff;
+    }
 
-                    .header-area .main-nav .nav li a.submenu {
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
+    .header-area .main-nav .nav li a.submenu {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-                    /*chem*/
-                    .header-area-chem .main-nav .nav li a.submenu {
-                        background: #fff0dc !important;
-                    }
+    /*chem*/
+    .header-area-chem .main-nav .nav li a.submenu {
+        background: #fff0dc;
+    }
+    .header-area-chem .main-nav .nav .dropdown-menu li a.submenu {
+        background: #fff5e7 !important;
+    }
+    .header-area-chem .main-nav .nav .dropdown-menu-item li a.submenu {
+        background: #fff9f2 !important;
+    }
 
-                    /*bio*/
-                    .header-area-bio .main-nav .nav li a.submenu {
-                        background: #d2dff3 !important;
-                    }
+    /*bio*/
+    .header-area-bio .main-nav .nav li a.submenu {
+        background: #d2dff3;
+    }
+    .header-area-bio .main-nav .nav .dropdown-menu li a.submenu {
+        background: #f0f7ff !important;
+    }
 
-                    /*math*/
-                    .header-area-math .main-nav .nav li a.submenu {
-                        background: #f7e4e6 !important;
-                    }
+    .header-area-bio .main-nav .nav .dropdown-menu-item li a.submenu {
+        background: #fefeff !important;
+    }
 
-                    /*phys*/
-                    .header-area-phys .main-nav .nav li a.submenu {
-                        background: #d4ffeb !important;
-                    }
+    /*math*/
+    .header-area-math .main-nav .nav li a.submenu {
+        background: #ffe5e7;
+    }
+    .header-area-math .main-nav .nav .dropdown-menu li a.submenu {
+        background: #fff0f1 !important;
+    }
 
-                    /*chem*/
-                    .header-area-chem .main-nav .nav li a:hover {
-                        color: #e9c290 !important;
-                        background: #fff5e8;
-                    }
+    .header-area-math .main-nav .nav .dropdown-menu-item li a.submenu {
+        background: #fff4f5 !important;
+    }
 
-                    /*bio*/
-                    .header-area-bio .main-nav .nav li a:hover {
-                        color: #315e9f !important;
-                        background: #eefaff;
-                    }
+    /*phys*/
+    .header-area-phys .main-nav .nav li a.submenu {
+        background: #e3fdf2;
+    }
+    .header-area-phys .main-nav .nav .dropdown-menu li a.submenu {
+        background: #f5fffb !important;
+    }
 
-                    /*math*/
-                    .header-area-math .main-nav .nav li a:hover {
-                        color: #8d1723 !important;
-                        background: #ffeef0;
-                    }
+    .header-area-phys .main-nav .nav .dropdown-menu-item li a.submenu {
+        background: #fafafa !important;
+    }
 
-                    /*phys*/
-                    .header-area-phys .main-nav .nav li a:hover {
-                        color: #09482b !important;
-                        background: #f2fff9;
-                    }
+    /*chem*/
+    .header-area-chem .main-nav .nav li a:hover {
+        color: #e9c290 !important;
+        background: #fff5e8;
+    }
 
-                    .header-area .main-nav .nav li.submenu ul li a {
-                        font-size: 12px;
-                        font-weight: 400;
-                    }
+    /*bio*/
+    .header-area-bio .main-nav .nav li a:hover {
+        color: #315e9f !important;
+        background: #eefaff;
+    }
 
-                        .header-area .main-nav .nav li.submenu ul li a:hover:before {
-                            width: 0px;
-                        }
+    /*math*/
+    .header-area-math .main-nav .nav li a:hover {
+        color: #8d1723 !important;
+        background: #ffeef0;
+    }
 
-                    .header-area .main-nav .nav li.submenu ul.active {
-                        height: auto !important;
-                    }
+    /*phys*/
+    .header-area-phys .main-nav .nav li a:hover {
+        color: #09482b !important;
+        background: #f2fff9;
+    }
 
-                    .header-area .main-nav .nav li.submenu:after {
-                        right: 25px;
-                        font-size: 14px;
-                        top: 15px;
-                    }
+    .header-area .main-nav .nav li.submenu ul li a {
+        font-size: 12px;
+        font-weight: 400;
+    }
 
-                     /*chem*/
-                    .header-area-chem .main-nav .nav li.submenu:after {
-                        color: #3B566E;
-                    }
+        .header-area .main-nav .nav li.submenu ul li a:hover:before {
+            width: 0px;
+        }
 
-                    /*bio*/
-                    .header-area-bio .main-nav .nav li.submenu:after {
-                        color: #3B566E;
-                    }
+    .header-area .main-nav .nav li.submenu ul.active {
+        height: auto !important;
+    }
 
-                    /*math*/
-                    .header-area-math .main-nav .nav li.submenu:after {
-                        color: #3B566E;
-                    }
+    .header-area .main-nav .nav li.submenu:after {
+        right: 25px;
+        font-size: 14px;
+        top: 15px;
+    }
 
-                    /*phys*/
-                    .header-area-phys .main-nav .nav li.submenu:after {
-                        color: #3B566E;
-                    }
+    /*chem*/
+    .header-area-chem .main-nav .nav li.submenu:after {
+        color: #3B566E;
+    }
 
-                    .header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul {
-                        height: 0px;
-                    }
-                     
-                    /*info group*/
-                    .header-area .main-nav .nav li.menu-info-group {
-                        display: none !important;
-                    }
+    /*bio*/
+    .header-area-bio .main-nav .nav li.submenu:after {
+        color: #3B566E;
+    }
 
-                    .header-area .main-nav .nav li.menu-info-group-trigger {
-                        display: block;
-                    }
-                     
-                    /*logout*/
-                    .header-area .main-nav .nav li.logout-trigger {
-                        height: inherit;
-                        display: block;
-                        background: transparent;
-                    }  
+    /*math*/
+    .header-area-math .main-nav .nav li.submenu:after {
+        color: #3B566E;
+    }
 
-                    .header-area .main-nav .nav li.logout {
-                        display: none;
-                    }
+    /*phys*/
+    .header-area-phys .main-nav .nav li.submenu:after {
+        color: #3B566E;
+    }
 
-                    /*subject*/
-                    .header-area .main-nav .nav li a.subject {
-                        display: none;
-                    }
+    .header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul {
+        height: 0px;
+    }
 
-                    .header-area .main-nav .nav li a.subject-trigger {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
+    /*info group*/
+    .header-area .main-nav .nav li.menu-info-group {
+        display: none !important;
+    }
+
+    .header-area .main-nav .nav li.menu-info-group-trigger {
+        display: block;
+    }
+
+    /*logout*/
+    .header-area .main-nav .nav li.logout-trigger {
+        height: inherit;
+        display: block;
+        background: transparent;
+    }
+
+    .header-area .main-nav .nav li.logout {
+        display: none;
+    }
+
+    /*subject*/
+    .header-area .main-nav .nav li a.subject {
+        display: none;
+    }
+
+    .header-area .main-nav .nav li a.subject-trigger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 /* 
@@ -1299,12 +1330,22 @@ Banner Style
     z-index: 3;
 }
 
+    .hero-text h1 {
+        font-size: 65px !important;
+    }
+
     .hero-text p {
         font-weight: 500;
         color: #dee2e6f0;
         line-height: 25px;
         margin-top: 25px;
     }
+
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 35px !important;
+    }
+}
 
 .main-banner {
     background-repeat: no-repeat;
@@ -1493,21 +1534,21 @@ Banner Style
     }
 
 @media (max-width: 768px) {
-    .table-container{
+    .table-container {
         padding: 25px;
-    } 
-
-    .table-container .table-action {
-        display: flex;
-        flex-direction: column;
     }
 
-    .table-container .table-action .btn-custom-create {
-        margin-top: 10px;
-        width: fit-content;
-        text-align: center;
-        white-space: nowrap;
-    } 
+        .table-container .table-action {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .table-container .table-action .btn-custom-create {
+                margin-top: 10px;
+                width: fit-content;
+                text-align: center;
+                white-space: nowrap;
+            }
 
     /*detail*/
     .detail-container .d-flex {
@@ -1544,7 +1585,7 @@ Banner Style
         flex-wrap: wrap;
     }
 }
- 
+
 .group-expired {
     justify-content: center;
     float: right;
@@ -1727,6 +1768,15 @@ Banner Style
             .detail-container .detail-item-user .title i {
                 margin-right: 8px;
             }
+
+@media (max-width: 768px) {
+    .detail-container {
+        padding: 20px 30px;
+    }
+    .detail-container .btn-custom-return {
+        margin-top: 10px;
+    }
+}
 
 /*edit container*/
 .edit-container {
@@ -2009,18 +2059,18 @@ a.service-link {
         overflow-y: auto;
     }
 
-    .services .section-heading {
-        margin-top: 30px;
-    }
+        .services .section-heading {
+            margin-top: 30px;
+        }
 
-    .services .services-content {
-        padding: 50px;
-    }
+        .services .services-content {
+            padding: 50px;
+        }
 
-    .services .flex-item {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
+        .services .flex-item {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
 
     .quiz {
         padding: 50px 0px;
