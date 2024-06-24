@@ -11,3 +11,47 @@
 /SaRLAB/SaRLAB.AdminWeb/obj
 /SaRLAB/SaRLAB.AdminWeb/bin
 /SaRLAB/SaRLAB.AdminWeb/obj
+
+# Binaries for .NET, otherwise generated
+bin/
+obj/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Styles
+*.csproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.swp
+*~ 
+._*
+.DS_Store
+.vscode/
+.idea/
+.vscode/*
+.vs/
+
+# Node modules (if using npm or yarn)
+node_modules/
+
+# Build directories
+build/
+dist/
+
+# Secrets
+secrets.json
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
