@@ -60,6 +60,18 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
                     BiologyMarkFlag = subjectFlag.BiologyMarkFlag,
                     ChemistryPermissionFlag = subjectFlag.ChemistryPermissionFlag,
                     ChemistryMarkFlag = subjectFlag.ChemistryMarkFlag,
+                    BackupSubject1MarkFlag = subjectFlag.BackupSubject1MarkFlag,
+                    BackupSubject2MarkFlag = subjectFlag.BackupSubject2MarkFlag,
+                    BackupSubject3MarkFlag = subjectFlag.BackupSubject3MarkFlag,
+                    BackupSubject4MarkFlag = subjectFlag.BackupSubject4MarkFlag,
+                    BackupSubject5MarkFlag = subjectFlag.BackupSubject5MarkFlag,
+                    BackupSubject6MarkFlag = subjectFlag.BackupSubject6MarkFlag,
+                    BackupSubject1PermissionFlag = subjectFlag.BackupSubject1PermissionFlag,
+                    BackupSubject2PermissionFlag = subjectFlag.BackupSubject2PermissionFlag,
+                    BackupSubject3PermissionFlag = subjectFlag.BackupSubject3PermissionFlag,
+                    BackupSubject4PermissionFlag = subjectFlag.BackupSubject4PermissionFlag,
+                    BackupSubject5PermissionFlag = subjectFlag.BackupSubject5PermissionFlag,
+                    BackupSubject6PermissionFlag = subjectFlag.BackupSubject6PermissionFlag,
 
                 };
 
@@ -91,6 +103,19 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
                 BiologyMarkFlag = false,
                 ChemistryPermissionFlag = false,
                 ChemistryMarkFlag = false,
+                BackupSubject1MarkFlag = false,
+                BackupSubject2MarkFlag = false,
+                BackupSubject3MarkFlag = false,
+                BackupSubject4MarkFlag = false,
+                BackupSubject5MarkFlag = false,
+                BackupSubject6MarkFlag = false,
+                BackupSubject1PermissionFlag = false,
+                BackupSubject2PermissionFlag = false,
+                BackupSubject3PermissionFlag = false,
+                BackupSubject4PermissionFlag = false,
+                BackupSubject5PermissionFlag = false,
+                BackupSubject6PermissionFlag = false,
+
             };
 
             _context.SubjectFlags.Add(newSubjectFlag);
