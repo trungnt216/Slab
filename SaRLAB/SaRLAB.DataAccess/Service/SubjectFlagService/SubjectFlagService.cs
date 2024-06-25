@@ -140,6 +140,11 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
                 _subjectFlag.BiologyPermissionFlag = subjectFlag.BiologyPermissionFlag ?? _subjectFlag.BiologyPermissionFlag;
                 _subjectFlag.ChemistryPermissionFlag = subjectFlag.ChemistryPermissionFlag ?? _subjectFlag.ChemistryPermissionFlag;
                 _subjectFlag.ChemistryMarkFlag = subjectFlag.ChemistryMarkFlag ?? _subjectFlag.ChemistryMarkFlag;
+                _subjectFlag.BackupSubject1PermissionFlag = subjectFlag.BackupSubject1PermissionFlag ?? _subjectFlag.BackupSubject1PermissionFlag;
+                _subjectFlag.BackupSubject2PermissionFlag = subjectFlag.BackupSubject2PermissionFlag ?? _subjectFlag.BackupSubject2PermissionFlag;
+                _subjectFlag.BackupSubject3PermissionFlag = subjectFlag.BackupSubject3PermissionFlag ?? _subjectFlag.BackupSubject3PermissionFlag;
+                _subjectFlag.BackupSubject4PermissionFlag = subjectFlag.BackupSubject4PermissionFlag ?? _subjectFlag.BackupSubject4PermissionFlag;
+                _subjectFlag.BackupSubject6PermissionFlag = subjectFlag.BackupSubject6PermissionFlag ?? _subjectFlag.BackupSubject6PermissionFlag;
                 _context.SaveChanges();
             }
             return 1;

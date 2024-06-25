@@ -23,6 +23,13 @@ namespace SaRLAB.AdminWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
+        Subject subject1 = new Subject();
+        Subject subject2 = new Subject();
+        Subject subject3 = new Subject();
+        Subject subject4 = new Subject();
+        Subject subject5 = new Subject();
+        Subject subject6 = new Subject();
+
         public MathController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
@@ -36,7 +43,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             var token = tokenHandler.ReadJwtToken(jwtToken);
 
-            foreach(Claim claim in token.Claims)
+            foreach (Claim claim in token.Claims)
             {
                 if (claim.Type == ClaimTypes.Name)
                 {
@@ -61,6 +68,43 @@ namespace SaRLAB.AdminWeb.Controllers
             }
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub2 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/7").Result;
+            if (response_sub2.IsSuccessStatusCode)
+            {
+                string data = response_sub2.Content.ReadAsStringAsync().Result;
+                subject2 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/8").Result;
+            if (response_sub3.IsSuccessStatusCode)
+            {
+                string data = response_sub3.Content.ReadAsStringAsync().Result;
+                subject3 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub4 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
+            if (response_sub4.IsSuccessStatusCode)
+            {
+                string data = response_sub4.Content.ReadAsStringAsync().Result;
+                subject4 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub5 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/10").Result;
+            if (response_sub5.IsSuccessStatusCode)
+            {
+                string data = response_sub5.Content.ReadAsStringAsync().Result;
+                subject5 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub6 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
+            if (response_sub6.IsSuccessStatusCode)
+            {
+                string data = response_sub6.Content.ReadAsStringAsync().Result;
+                subject6 = JsonConvert.DeserializeObject<Subject>(data);
+            }
         }
 
         //------------------------- thực nghiệm -------------------------------------------------------------------
@@ -70,6 +114,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -187,7 +237,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -231,6 +281,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             Document document = new Document();
 
@@ -258,6 +314,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -375,7 +437,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -419,6 +481,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             Document document = new Document();
 
@@ -445,6 +513,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -463,7 +537,7 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
 
-       public ActionResult Accept_Biological(int id)
+        public ActionResult Accept_Biological(int id)
         {
             Document document = new Document();
 
@@ -554,7 +628,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -598,6 +672,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -623,6 +703,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/VOCABULARY").Result;
@@ -732,7 +818,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -776,6 +862,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -801,6 +893,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -918,7 +1016,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -962,6 +1060,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -987,6 +1091,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/EXAMENG").Result;
@@ -1099,7 +1209,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1139,6 +1249,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1164,6 +1280,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -1281,7 +1403,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1325,6 +1447,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1350,6 +1478,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/PROVONCIALLEVEL").Result;
@@ -1466,7 +1600,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1510,6 +1644,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1536,6 +1676,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/NATIONALLEVER").Result;
@@ -1648,7 +1794,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1688,6 +1834,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1713,6 +1865,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/PREPARATIONQUESTION").Result;
@@ -1829,7 +1987,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1873,6 +2031,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1899,6 +2063,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/NATIONALLEVER").Result;
@@ -2015,7 +2185,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -2059,6 +2229,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2084,6 +2260,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/3/INTERNATIONAL").Result;
@@ -2244,6 +2426,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2268,6 +2456,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Quiz> equipment = new List<Quiz>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/2").Result;
@@ -2290,6 +2484,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
@@ -2311,6 +2511,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
@@ -2450,6 +2656,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Quiz quiz = new Quiz();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetQuizById/" + id).Result;
@@ -2487,6 +2699,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
@@ -2628,7 +2846,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 HttpResponseMessage response;
                 StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                response = _httpClient.PostAsync(_httpClient.BaseAddress + "Quiz/Delete/" + id,content).Result;
+                response = _httpClient.PostAsync(_httpClient.BaseAddress + "Quiz/Delete/" + id, content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {

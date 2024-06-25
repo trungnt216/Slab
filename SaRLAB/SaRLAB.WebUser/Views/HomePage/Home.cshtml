@@ -124,6 +124,121 @@
                             </a>
                         </div>
                     }
+
+                    @if (ViewBag.SubjectFlag.BackupSubject1PermissionFlag == true)
+                    {
+                        <div class="flex-item p-2">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject1" class="service-link">
+                                <div class="service-item fourth-service">
+                                    @if (@ViewBag.school.BackupSubject1Logo == null)
+                                    {
+                                        <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(ViewBag.school.BackupSubject1Logo)" class="image" alt="" />
+                                    }
+                                    <h4>@TempData["subject_1"]</h4>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+                    @if (ViewBag.SubjectFlag.BackupSubject2PermissionFlag == true)
+                    {
+                        <div class="flex-item p-2">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject2" class="service-link">
+                                <div class="service-item fourth-service">
+                                    @if (@ViewBag.school.BackupSubject2Logo == null)
+                                    {
+                                        <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(ViewBag.school.BackupSubject2Logo)" class="image" alt="" />
+                                    }
+                                    <h4>@TempData["subject_2"]</h4>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+                    @if (ViewBag.SubjectFlag.BackupSubject3PermissionFlag == true)
+                    {
+                        <div class="flex-item p-2">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject3" class="service-link">
+                                <div class="service-item fourth-service">
+                                    @if (@ViewBag.school.BackupSubject3Logo == null)
+                                    {
+                                        <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(ViewBag.school.BackupSubject3Logo)" class="image" alt="" />
+                                    }
+                                    <h4>@TempData["subject_3"]</h4>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+                    @if (ViewBag.SubjectFlag.BackupSubject4PermissionFlag == true)
+                    {
+                        <div class="flex-item p-2">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject4" class="service-link">
+                                <div class="service-item fourth-service">
+                                    @if (@ViewBag.school.BackupSubject4Logo == null)
+                                    {
+                                        <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(ViewBag.school.BackupSubject4Logo)" class="image" alt="" />
+                                    }
+                                    <h4>@TempData["subject_4"]</h4>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+                    @if (ViewBag.SubjectFlag.BackupSubject5PermissionFlag == true)
+                    {
+                        <div class="flex-item p-2">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject5" class="service-link">
+                                <div class="service-item fourth-service">
+                                    @if (@ViewBag.school.BackupSubject5Logo == null)
+                                    {
+                                        <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(ViewBag.school.BackupSubject5Logo)" class="image" alt="" />
+                                    }
+                                    <h4>@TempData["subject_5"]</h4>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+                    @if (ViewBag.SubjectFlag.BackupSubject6PermissionFlag == true)
+                    {
+                        <div class="flex-item p-2">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject6" class="service-link">
+                                <div class="service-item fourth-service">
+                                    @if (@ViewBag.school.BackupSubject6Logo == null)
+                                    {
+                                        <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(ViewBag.school.BackupSubject6Logo)" class="image" alt="" />
+                                    }
+                                    <h4>@TempData["subject_6"]</h4>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
                     </div>
                 </div>
             </div>
