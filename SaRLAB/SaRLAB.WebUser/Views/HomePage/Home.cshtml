@@ -18,11 +18,13 @@
         <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/animated.css">
         <link rel="stylesheet" href="~/css/owl.css">
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     </head>
 
     <body style="overflow: hidden">
-        <div id="services" class="services section"
-         style="background: url('@bannerUrl') center;">
+        <div id="services" class="services section" style="background: url('@bannerUrl') center;">
             <div class="overlay"></div>
             <div class="services-content">
                 <div class="container">
@@ -30,7 +32,7 @@
                         <div class="col">
                             <div class="section-heading wow fadeInDown">
 
-                            <div style="margin-bottom: 111px;">
+                                <div style="margin-bottom: 80px;">
                                 <!-- Adjust the margin-bottom value as needed -->
                                 @if (ViewBag.school.SchoolLogo != null)
                                 {
@@ -42,7 +44,7 @@
                                 <div class="divider-custom"></div>
                             </div>
 
-                            <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px; margin-top: 30px;">Welcome to SaRLAB</h1>
+                                <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px; margin-top: 30px;">Welcome to SaRLAB</h1>
                                 <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
                                     Room management utility application. SaR LAB promises optimal work and facilitates creativity in research!
                                 </p>
@@ -50,86 +52,247 @@
                         </div>
                     </div>
                 </div>
-                <div class="container">
-                <div class="d-flex flex-wrap justify-content-center align-items-center">
-                    @if (ViewBag.SubjectFlag.ChemistryPermissionFlag == true)
-                    {
-                        <div class="flex-item p-2" @ViewBag.c>
-                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion" class="service-link">
-                                <div class="service-item first-service">
-                                    @if (@ViewBag.school.ChemLogo == null)
-                                    {
-                                        <img src="@Url.Content("~/images/chem.png")" class="image" alt="" />
-                                    }
-                                    else
-                                    {
-                                        <img src="@Url.Content(ViewBag.school.ChemLogo)" class="image" alt="" />
-                                    }
-                                        <h4>Chemistry </h4>
-                                </div>
-                            </a>
-                        </div>
-                    }
-                    @if (ViewBag.SubjectFlag.BiologyPermissionFlag == true)
-                    {
-                        <div class="flex-item p-2">
-                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Bio" class="service-link">
-                                <div class="service-item second-service">
-                                    @if (@ViewBag.school.BioLogo == null)
-                                    {
-                                        <img src="@Url.Content("~/images/bio.png")" class="image" alt="" />
-                                    }
-                                    else
-                                    {
-                                        <img src="@Url.Content(ViewBag.school.BioLogo)" class="image" alt="" />
-                                    }
-                                        <h4>Biology </h4>
-                                </div>
-                            </a>
-                        </div>
-                    }
-                    @if (ViewBag.SubjectFlag.PhysicPermissionFlag == true)
-                    {
-                        <div class="flex-item p-2">
-                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Physics" class="service-link">
-                                <div class="service-item third-service">
-                                    @if (@ViewBag.school.PhysLogo == null)
-                                    {
-                                        <img src="@Url.Content("~/images/physics.png")" class="image" alt="" />
-                                    }
-                                    else
-                                    {
-                                        <img src="@Url.Content(ViewBag.school.PhysLogo)" class="image" alt="" />
-                                    }
-                                        <h4>Physics</h4>
-                                </div>
-                            </a>
-                        </div>
-                    }
-                    @if (ViewBag.SubjectFlag.MathPermissionFlag == true)
-                    {
-                        <div class="flex-item p-2">
-                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Math" class="service-link">
-                                <div class="service-item fourth-service">
-                                    @if (@ViewBag.school.BiochemLogo == null)
-                                    {
-                                        <img src="@Url.Content("~/images/biochem.png")" class="image" alt="" />
-                                    }
-                                    else
-                                    {
-                                        <img src="@Url.Content(ViewBag.school.BiochemLogo)" class="image" alt="" />
-                                    }
-                                    <h4>Biochemistry</h4>
-                                </div>
-                            </a>
-                        </div>
-                    }
+                <div class="container" style="margin-bottom: 80px">
+                    <div class="service-carousel">
+                        @if (ViewBag.SubjectFlag.ChemistryPermissionFlag == true)
+                        {
+                            <div class="flex-item p-2">
+                                <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion" class="service-link">
+                                    <div class="service-item first-service">
+                                        @if (@ViewBag.school.ChemLogo == null)
+                                        {
+                                            <img src="@Url.Content("~/images/chem.png")" class="image" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(ViewBag.school.ChemLogo)" class="image" alt="" />
+                                        }
+                                            <h4>Chemistry </h4>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                        @if (ViewBag.SubjectFlag.BiologyPermissionFlag == true)
+                        {
+                            <div class="flex-item p-2">
+                                <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Bio" class="service-link">
+                                    <div class="service-item second-service">
+                                        @if (@ViewBag.school.BioLogo == null)
+                                        {
+                                            <img src="@Url.Content("~/images/bio.png")" class="image" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(ViewBag.school.BioLogo)" class="image" alt="" />
+                                        }
+                                            <h4>Biology </h4>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                        @if (ViewBag.SubjectFlag.PhysicPermissionFlag == true)
+                        {
+                            <div class="flex-item p-2">
+                                <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Physics" class="service-link">
+                                    <div class="service-item third-service">
+                                        @if (@ViewBag.school.PhysLogo == null)
+                                        {
+                                            <img src="@Url.Content("~/images/physics.png")" class="image" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(ViewBag.school.PhysLogo)" class="image" alt="" />
+                                        }
+                                            <h4>Physics</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                        @if (ViewBag.SubjectFlag.MathPermissionFlag == true)
+                        {
+                            <div class="flex-item p-2">
+                                <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Math" class="service-link">
+                                    <div class="service-item fourth-service">
+                                        @if (@ViewBag.school.BiochemLogo == null)
+                                        {
+                                            <img src="@Url.Content("~/images/biochem.png")" class="image" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(ViewBag.school.BiochemLogo)" class="image" alt="" />
+                                        }
+                                        <h4>Biochemistry</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                        @if (ViewBag.SubjectFlag.BackupSubject1PermissionFlag == true)
+                        {
+                            <div class="flex-item p-2">
+                                <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject1" class="service-link">
+                                    <div class="service-item fourth-service">
+                                        @if (@ViewBag.school.BackupSubject1Logo == null)
+                                        {
+                                            <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(ViewBag.school.BackupSubject1Logo)" class="image" alt="" />
+                                        }
+                                        <h4>@TempData["subject_1"]</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                        @if (ViewBag.SubjectFlag.BackupSubject2PermissionFlag == true)
+                        {
+                            <div class="flex-item p-2">
+                                <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject2" class="service-link">
+                                    <div class="service-item fourth-service">
+                                        @if (@ViewBag.school.BackupSubject2Logo == null)
+                                        {
+                                            <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(ViewBag.school.BackupSubject2Logo)" class="image" alt="" />
+                                        }
+                                        <h4>@TempData["subject_2"]</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                        @if (ViewBag.SubjectFlag.BackupSubject3PermissionFlag == true)
+                        {
+                            <div class="flex-item p-2">
+                                <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject3" class="service-link">
+                                    <div class="service-item fourth-service">
+                                        @if (@ViewBag.school.BackupSubject3Logo == null)
+                                        {
+                                            <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(ViewBag.school.BackupSubject3Logo)" class="image" alt="" />
+                                        }
+                                        <h4>@TempData["subject_3"]</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                        @if (ViewBag.SubjectFlag.BackupSubject4PermissionFlag == true)
+                        {
+                            <div class="flex-item p-2">
+                                <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject4" class="service-link">
+                                    <div class="service-item fourth-service">
+                                        @if (@ViewBag.school.BackupSubject4Logo == null)
+                                        {
+                                            <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(ViewBag.school.BackupSubject4Logo)" class="image" alt="" />
+                                        }
+                                        <h4>@TempData["subject_4"]</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                        @if (ViewBag.SubjectFlag.BackupSubject5PermissionFlag == true)
+                        {
+                            <div class="flex-item p-2">
+                                <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject5" class="service-link">
+                                    <div class="service-item fourth-service">
+                                        @if (@ViewBag.school.BackupSubject5Logo == null)
+                                        {
+                                            <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(ViewBag.school.BackupSubject5Logo)" class="image" alt="" />
+                                        }
+                                        <h4>@TempData["subject_5"]</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                        @if (ViewBag.SubjectFlag.BackupSubject6PermissionFlag == true)
+                        {
+                            <div class="flex-item p-2">
+                                <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject6" class="service-link">
+                                    <div class="service-item fourth-service">
+                                        @if (@ViewBag.school.BackupSubject6Logo == null)
+                                        {
+                                            <img src="@Url.Content("~/images/book.png")" class="image" alt="" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(ViewBag.school.BackupSubject6Logo)" class="image" alt="" />
+                                        }
+                                        <h4>@TempData["subject_6"]</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
                     </div>
+
                 </div>
             </div>
         </div>
 
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.service-carousel').slick({
+                    infinite: true,
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                    dots: true,
+                    arrows: true,
+                    responsive: [
+                        {
+                            breakpoint: 1200,  // desktop
+                            settings: {
+                                slidesToShow: 4,
+                                slidesToScroll: 4,
+                            }
+                        },
+                        {
+                            breakpoint: 992,  // tablet landscape
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 768,  // tablet portrait
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                            }
+                        },
+                        {
+                            breakpoint: 576,  // mobile
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                centerMode: true,
+                                // centerPadding: '30px' 
+                            }
+                        }
+                    ]
+                });
+            });
+        </script>
     </body>
 </html>

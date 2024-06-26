@@ -23,6 +23,13 @@ namespace SaRLAB.AdminWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
+        Subject subject1 = new Subject();
+        Subject subject2 = new Subject();
+        Subject subject3 = new Subject();
+        Subject subject4 = new Subject();
+        Subject subject5 = new Subject();
+        Subject subject6 = new Subject();
+
         public ChemistryController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
@@ -36,7 +43,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             var token = tokenHandler.ReadJwtToken(jwtToken);
 
-            foreach(Claim claim in token.Claims)
+            foreach (Claim claim in token.Claims)
             {
                 if (claim.Type == ClaimTypes.Name)
                 {
@@ -61,6 +68,43 @@ namespace SaRLAB.AdminWeb.Controllers
             }
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub2 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/7").Result;
+            if (response_sub2.IsSuccessStatusCode)
+            {
+                string data = response_sub2.Content.ReadAsStringAsync().Result;
+                subject2 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/8").Result;
+            if (response_sub3.IsSuccessStatusCode)
+            {
+                string data = response_sub3.Content.ReadAsStringAsync().Result;
+                subject3 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub4 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
+            if (response_sub4.IsSuccessStatusCode)
+            {
+                string data = response_sub4.Content.ReadAsStringAsync().Result;
+                subject4 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub5 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/10").Result;
+            if (response_sub5.IsSuccessStatusCode)
+            {
+                string data = response_sub5.Content.ReadAsStringAsync().Result;
+                subject5 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub6 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
+            if (response_sub6.IsSuccessStatusCode)
+            {
+                string data = response_sub6.Content.ReadAsStringAsync().Result;
+                subject6 = JsonConvert.DeserializeObject<Subject>(data);
+            }
         }
 
         //------------------------- thực nghiệm -------------------------------------------------------------------
@@ -70,6 +114,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -82,8 +132,8 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveSubMenu = "virtuallab";
+            ViewBag.ActiveSubMenuLv2 = "experiment";
             return View(documents);
         }
 
@@ -105,7 +155,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -127,7 +177,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "experience";
                         return RedirectToAction("GetAll_Experiment");
                     }
@@ -137,13 +187,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "experience";
                     return RedirectToAction("GetAll_Experiment");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -152,7 +202,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -176,7 +226,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenu = "chem";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -193,7 +243,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenu = "chem";
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "experience";
                         return RedirectToAction("GetAll_Experiment");
                     }
@@ -203,13 +253,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "experience";
                     return RedirectToAction("GetAll_Experiment");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -218,7 +268,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Experiment");
             }
@@ -231,6 +281,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             Document document = new Document();
 
@@ -245,7 +301,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "experience";
             return View(document);
         }
@@ -258,6 +314,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -271,7 +333,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "conspectus";
             return View(documents);
         }
@@ -294,7 +356,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -315,7 +377,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "conspectus";
                         return RedirectToAction("GetAll_Conspectus");
                     }
@@ -325,13 +387,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "conspectus";
                     return RedirectToAction("GetAll_Conspectus");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -340,7 +402,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -364,7 +426,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -381,7 +443,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "conspectus";
                         return RedirectToAction("GetAll_Conspectus");
                     }
@@ -391,13 +453,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "conspectus";
                     return RedirectToAction("GetAll_Conspectus");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -406,7 +468,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "conspectus";
                 return RedirectToAction("GetAll_Conspectus");
             }
@@ -419,6 +481,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             Document document = new Document();
 
@@ -432,7 +500,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "conspectus";
             return View(document);
         }
@@ -445,6 +513,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> document1 = new List<Document>();
 
@@ -473,7 +547,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
             return View(documents);
         }
@@ -497,7 +571,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -518,7 +592,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                         return RedirectToAction("GetAll_Inorganic_Organic");
                     }
@@ -528,13 +602,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                     return RedirectToAction("GetAll_Inorganic_Organic");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -543,7 +617,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -567,7 +641,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -584,7 +658,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                         return RedirectToAction("GetAll_Inorganic_Organic");
                     }
@@ -594,13 +668,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                     return RedirectToAction("GetAll_Inorganic_Organic");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -609,7 +683,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
                 return RedirectToAction("GetAll_Inorganic_Organic");
             }
@@ -622,6 +696,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             Document document = new Document();
 
@@ -636,7 +716,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "inorganicOrganic";
             return View(document);
         }
@@ -649,6 +729,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -811,6 +897,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -836,6 +928,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -989,6 +1087,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1014,6 +1118,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -1026,13 +1136,13 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "biological";
             return View(documents);
         }
 
 
-       public ActionResult Accept_Biological(int id)
+        public ActionResult Accept_Biological(int id)
         {
             Document document = new Document();
 
@@ -1067,7 +1177,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "biological";
                         return RedirectToAction("GetAll_Biological");
                     }
@@ -1077,13 +1187,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "biological";
                     return RedirectToAction("GetAll_Biological");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
@@ -1092,7 +1202,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
@@ -1129,7 +1239,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     {
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenu = "virtuallab";
                         ViewBag.ActiveSubMenuLv2 = "biological";
                         return RedirectToAction("GetAll_Biological");
                     }
@@ -1139,13 +1249,13 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenu = "virtuallab";
                     ViewBag.ActiveSubMenuLv2 = "biological";
                     return RedirectToAction("GetAll_Biological");
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
@@ -1154,7 +1264,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenu = "virtuallab";
                 ViewBag.ActiveSubMenuLv2 = "biological";
                 return RedirectToAction("GetAll_Biological");
             }
@@ -1167,6 +1277,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1179,7 +1295,7 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenu = "virtuallab";
             ViewBag.ActiveSubMenuLv2 = "biological";
             return View(document);
         }
@@ -1192,6 +1308,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/1/VOCABULARY").Result;
@@ -1345,6 +1467,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1370,6 +1498,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -1531,6 +1665,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1556,6 +1696,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/1/EXAMENG").Result;
@@ -1708,6 +1854,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1733,6 +1885,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             List<Document> documents = new List<Document>();
 
@@ -1894,6 +2052,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1919,6 +2083,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/1/PROVONCIALLEVEL").Result;
@@ -2079,6 +2249,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2105,6 +2281,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/1/NATIONALLEVER").Result;
@@ -2257,6 +2439,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2282,6 +2470,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/1/PREPARATIONQUESTION").Result;
@@ -2442,6 +2636,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2468,6 +2668,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/1/NATIONALLEVER").Result;
@@ -2628,6 +2834,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2653,6 +2865,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/1/INTERNATIONAL").Result;
@@ -2813,6 +3031,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2838,6 +3062,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             List<Quiz> equipment = new List<Quiz>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/1").Result;
@@ -2848,6 +3078,10 @@ namespace SaRLAB.AdminWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
             }
 
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "cauhoiantoan";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
             return View(equipment);
         }
 
@@ -2857,6 +3091,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
@@ -2874,6 +3114,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
@@ -2998,8 +3244,16 @@ namespace SaRLAB.AdminWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "cauhoiantoan";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
                 return View();
             }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "cauhoiantoan";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
             return View();
         }
 
@@ -3009,6 +3263,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             Quiz quiz = new Quiz();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetQuizById/" + id).Result;
@@ -3028,6 +3288,10 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "cauhoiantoan";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
                 return View(quiz);
             }
             else
@@ -3042,6 +3306,12 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
@@ -3164,8 +3434,16 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             catch (Exception ex)
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveSubMenu = "cauhoiantoan";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
                 return View();
             }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveSubMenu = "cauhoiantoan";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoahoc";
             return View();
         }
 

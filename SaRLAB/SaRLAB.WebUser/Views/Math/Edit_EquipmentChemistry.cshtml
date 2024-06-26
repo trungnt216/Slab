@@ -141,12 +141,12 @@
 
                                         if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
                                         {
-                                            <img src="@path" alt="Image" style="max-width: 100%; height: auto;" />
+                                            <img src="@Url.Content(path)" alt="Image" style="max-width: 100%; height: auto;" />
                                         }
                                         else if (extension == ".mp4" || extension == ".webm" || extension == ".ogg")
                                         {
                                             <video width="100%" height="auto" controls>
-                                                <source src="@path" type="video/@extension.Substring(1)">
+                                                <source src="@Url.Content(path)" type="video/@extension.Substring(1)">
                                                 Your browser does not support the video tag.
                                             </video>
                                         }

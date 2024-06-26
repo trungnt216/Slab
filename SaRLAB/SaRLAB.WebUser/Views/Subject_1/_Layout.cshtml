@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animated.css">
+    <link rel="stylesheet" href="~/css/owl.css">
+</head>
+<body id="bg-math">
+    @* header *@
+    <header class="header-area header-area-bio header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a asp-controller="Subject_1" asp-action="Index" class="logo">
+                            <img src="@Url.Content("~/images/logo.png")" />
+                            <h4>SaR<span>LAB - @TempData["subject_1"]</span></h4>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <partial name="_MenuSubject_1" />
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+
+
+    <script src="~/js/home.js"></script>
+    <script src="~/js/owl-carousel.js"></script>
+    <script src="~/js/animation.js"></script>
+    <script src="~/js/imagesloaded.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            // handle menu
+            const menuTrigger = document.querySelector('a.menu-trigger');
+            const nav = document.querySelector('.nav');
+
+            menuTrigger.addEventListener('click', function () {
+                if (window.innerWidth <= 1400) {
+                    if (nav.style.display === 'none' || nav.style.display === '') {
+                        nav.style.display = 'flex';
+                    } else {
+                        nav.style.display = 'none';
+                    }
+                }
+            });
+
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 1400) {
+                    nav.style.display = 'flex';
+                } else {
+                    nav.style.display = 'none';
+                }
+            });
+
+
+            // handle noti
+            const currentUrl = window.location.href;
+
+            function checkUrl(paths) {
+                return paths.some(path => currentUrl.includes(path));
+            }
+
+            function updateExpiredItemsDisplay(type, count) {
+                const expiredItemsMenu = document.getElementById('expiredItemsMenu');
+                const expiredItemsCount = document.getElementById('expiredItemsCount');
+                const expiredItemsTooltip = document.getElementById('expiredItemsTooltip');
+                const expiredItemsTooltipText = document.getElementById('expiredItemsTooltipText');
+                const expiredItemsMenuText = document.getElementById('expiredItemsMenuText');
+                const expiredItemsCountText = document.getElementById('expiredItemsCountText');
+
+                expiredItemsMenu.style.display = 'block';
+                expiredItemsMenuText.style.display = "none";
+                expiredItemsCount.innerText = count > 0 ? count : "0";
+                expiredItemsTooltipText.innerText = count > 0 ? count + ` ${type} đã hết hạn` : `Không có ${type} nào hết hạn`;
+
+                // Sự kiện hover
+                expiredItemsMenu.addEventListener('mouseover', function () {
+                    expiredItemsTooltip.style.visibility = 'visible';
+                    expiredItemsTooltip.style.opacity = '1';
+                });
+
+                expiredItemsMenu.addEventListener('mouseout', function () {
+                    expiredItemsTooltip.style.visibility = 'hidden';
+                    expiredItemsTooltip.style.opacity = '0';
+                });
+
+                // Sự kiện click
+                expiredItemsMenu.addEventListener('click', function () {
+                    if (expiredItemsTooltip.style.visibility === 'visible') {
+                        expiredItemsTooltip.style.visibility = 'hidden';
+                        expiredItemsTooltip.style.opacity = '0';
+                    } else {
+                        expiredItemsTooltip.style.visibility = 'visible';
+                        expiredItemsTooltip.style.opacity = '1';
+                    }
+                });
+
+                function updateExpiredItemsDisplay() {
+                    if (window.innerWidth <= 1400) {
+                        expiredItemsMenu.style.display = 'none';
+                        expiredItemsMenuText.style.display = "block";
+                        expiredItemsCountText.innerText = count > 0 ? count + ` ${type} đã hết hạn` : `Không có ${type} nào hết hạn`;
+                    } else {
+                        expiredItemsMenu.style.display = 'block';
+                        expiredItemsMenuText.style.display = "none";
+                        expiredItemsCount.innerText = count > 0 ? count : "0";
+                        expiredItemsTooltipText.innerText = count > 0 ? count + ` ${type} đã hết hạn` : `Không có ${type} nào hết hạn`;
+
+                        // Remove existing event listeners to prevent duplicates
+                        expiredItemsMenu.removeEventListener('mouseover', showTooltip);
+                        expiredItemsMenu.removeEventListener('mouseout', hideTooltip);
+                        expiredItemsMenu.removeEventListener('click', toggleTooltip);
+
+                        // Define event listeners
+                        function showTooltip() {
+                            expiredItemsTooltip.style.visibility = 'visible';
+                            expiredItemsTooltip.style.opacity = '1';
+                        }
+
+                        function hideTooltip() {
+                            expiredItemsTooltip.style.visibility = 'hidden';
+                            expiredItemsTooltip.style.opacity = '0';
+                        }
+
+                        function toggleTooltip() {
+                            if (expiredItemsTooltip.style.visibility === 'visible') {
+                                expiredItemsTooltip.style.visibility = 'hidden';
+                                expiredItemsTooltip.style.opacity = '0';
+                            } else {
+                                expiredItemsTooltip.style.visibility = 'visible';
+                                expiredItemsTooltip.style.opacity = '1';
+                            }
+                        }
+
+                        // Add event listeners
+                        expiredItemsMenu.addEventListener('mouseover', showTooltip);
+                        expiredItemsMenu.addEventListener('mouseout', hideTooltip);
+                        expiredItemsMenu.addEventListener('click', toggleTooltip);
+                    }
+                }
+
+                // Call the function on page load
+                updateExpiredItemsDisplay();
+
+                // Add event listener for window resize
+                window.addEventListener('resize', updateExpiredItemsDisplay);
+            }
+
+            const chemistryPaths = [
+                'Chemistry/GetAll_Chemistry',
+                'Chemistry/Create_Chemistry',
+                'Chemistry/Edit_Chemistry',
+                'Chemistry/Details_Chemistry',
+            ];
+            const toolChemistryPaths = [
+                'Chemistry/GetAll_ToolChemistry',
+                'Chemistry/Create_ToolChemistry',
+                'Chemistry/Edit_ToolChemistry',
+                'Chemistry/Details_ToolChemistry',
+            ];
+            const equipmentChemistryPaths = [
+                'Chemistry/GetAll_EquipmentChemistry',
+                'Chemistry/Create_EquipmentChemistry',
+                'Chemistry/Edit_EquipmentChemistry',
+                'Chemistry/Details_EquipmentChemistry',
+            ];
+
+            switch (true) {
+                case checkUrl(chemistryPaths):
+                    const expiredItems = JSON.parse(localStorage.getItem('expiredItems')) || 0;
+                    updateExpiredItemsDisplay('hóa chất', expiredItems);
+                    break;
+                case checkUrl(toolChemistryPaths):
+                    const expiredTools = JSON.parse(localStorage.getItem('expiredTools')) || 0;
+                    updateExpiredItemsDisplay('dụng cụ', expiredTools);
+                    break;
+                case checkUrl(equipmentChemistryPaths):
+                    const expiredEquipments = JSON.parse(localStorage.getItem('expiredEquipments')) || 0;
+                    updateExpiredItemsDisplay('thiết bị', expiredEquipments);
+                    break;
+                default:
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
