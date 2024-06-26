@@ -57,7 +57,7 @@
             const nav = document.querySelector('.nav');
 
             menuTrigger.addEventListener('click', function () {
-                if (window.innerWidth <= 1200) {
+                if (window.innerWidth <= 1400) {
                     if (nav.style.display === 'none' || nav.style.display === '') {
                         nav.style.display = 'flex';
                     } else {
@@ -65,6 +65,15 @@
                     }
                 }
             });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 1400) {
+                    nav.style.display = 'flex';
+                } else {
+                    nav.style.display = 'none';
+                }
+            });
+
 
             // handle noti
             const currentUrl = window.location.href;
@@ -109,7 +118,7 @@
                 });
 
                 function updateExpiredItemsDisplay() {
-                    if (window.innerWidth <= 1200) {
+                    if (window.innerWidth <= 1400) {
                         expiredItemsMenu.style.display = 'none';
                         expiredItemsMenuText.style.display = "block";
                         expiredItemsCountText.innerText = count > 0 ? count + ` ${type} đã hết hạn` : `Không có ${type} nào hết hạn`;

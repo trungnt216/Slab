@@ -1937,6 +1937,7 @@ Banner Style
 .services .section-heading {
     text-align: center;
     margin-bottom: 40px;
+    margin-top: 80px;
 }
 
     .services .section-heading h2 {
@@ -1955,7 +1956,7 @@ a.service-link {
 .service-item {
     position: relative;
     z-index: 1;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
     background-color: #fff;
     border-radius: 10px;
@@ -1976,9 +1977,12 @@ a.service-link {
 
     .service-item h4 {
         transition: all .3s;
-        font-size: 20px;
+        font-size: 17px;
         font-weight: 700;
         margin-top: 20px;
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
     }
 
     .service-item p {
@@ -2032,46 +2036,62 @@ a.service-link {
         background: #281500;
     }
 
-.services .flex-row {
+/*.services .flex-row {
     display: flex;
     flex-wrap: wrap;
 }
 
 .services .flex-item {
-    flex: 1 1 20%;
-    max-width: 25%;
+    flex: 1 1 22%;
+    max-width: 220px;
     box-sizing: border-box;
 }
 
 .service-item img {
     width: 50px;
+}*/
+
+.service-carousel .flex-item {
+    width: 220px;
 }
 
-@media (max-width: 992px) {
-    .services .flex-item {
-        flex: 1 1 50%;
-        max-width: 50%;
+.service-carousel .service-item img {
+    width: 50px;
+}
+
+.service-carousel {
+    white-space: nowrap; 
+}
+
+    .service-carousel .flex-item {
+        display: inline-block; 
+        vertical-align: top; 
+        white-space: normal; 
+        width: auto; 
+        margin-right: 10px; 
+        max-width: 100%; 
+    }
+
+.slick-dots li button:before {
+    color: white !important; 
+}
+
+.slick-dots li.slick-active button:before {
+    color: white !important;
+}
+
+
+@media (max-width: 576px) {
+    .services-content {
+        overflow-x: hidden; 
+    }
+    .service-carousel .flex-item {
+        width: 100%;
+        margin-right: 0;
     }
 }
 
 @media (max-width: 768px) {
-    .services {
-        overflow-y: auto;
-    }
-
-        .services .section-heading {
-            margin-top: 30px;
-        }
-
-        .services .services-content {
-            padding: 50px;
-        }
-
-        .services .flex-item {
-            flex: 1 1 100%;
-            max-width: 100%;
-        }
-
     .quiz {
         padding: 50px 0px;
     }
