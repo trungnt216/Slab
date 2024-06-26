@@ -1,0 +1,181 @@
+﻿@model SaRLAB.Models.Entity.User
+
+@{
+    ViewData["Title"] = "Edit_Information";
+    Layout = "~/Views/Subject_4/_Layout.cshtml";
+    ViewBag.TitleCustom = "Chỉnh sửa thông tin cá nhân";
+}
+
+<div id="sub-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 edit-container edit-container-user">
+                <div class="edit-action d-flex justify-content-between">
+                    <partial name="_TitleCustom">
+                        <a asp-area="" asp-action="Information" class="btn-custom-return" type="button">
+                            <i class="fa-solid fa-angles-left"></i>
+                            Trở về
+                        </a>
+                </div>
+                <form asp-action="Edit_Information" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-file"></i>
+                                    <label for="File">Ảnh đại diện</label>
+                                </div>
+                                <input type="file" id="File" name="File" class="form-control-file" />
+                            </div>
+                            <div class="file-detail">
+                                <div class="file-detail">
+                                    @{
+                                        string url = "";
+                                        if (string.IsNullOrEmpty(Model.AvtPath))
+                                        {
+                                            url = "~/images/defaultAvatar.jpg";
+                                        }
+                                        else
+                                        {
+                                            url = Model.AvtPath;
+                                        }
+                                    }
+                                    <img id="previewImage" src="@Url.Content(url)"
+                                         style="width: 100%;
+                                        height: 300px;
+                                        margin-top: 10px;
+                                        border: 3px solid #eeeeee;
+                                        border-radius: 20px;
+                                        object-fit: cover;" />
+                                </div>
+                            </div>
+                            <div class="form-group d-none">
+                                <label asp-for="AvtPath" class="control-label"></label>
+                                <input asp-for="AvtPath" class="form-control" />
+                                <span asp-validation-for="AvtPath" class="text-danger"></span>
+                            </div> 
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <div class="form-group d-none">
+                                <label asp-for="ID" class="control-label"></label>
+                                <input asp-for="ID" class="form-control" />
+                                <span asp-validation-for="ID" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <label asp-for="Name" class="control-label">Tên</label>
+                                </div>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <label asp-for="Email" class="control-label">Email</label>
+                                </div>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <label asp-for="Password" class="control-label">Mật khẩu</label>
+                                </div>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <label asp-for="Phone" class="control-label">Số điện thoại</label>
+                                </div>
+                                <input asp-for="Phone" class="form-control" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <label asp-for="DateOfBirth" class="control-label">Ngày sinh</label>
+                                </div>
+                                <input type="date" asp-for="DateOfBirth" class="form-control" />
+                                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <label asp-for="AcademyRank" class="control-label">Học vị</label>
+                                </div>
+                                <input asp-for="AcademyRank" class="form-control" />
+                                <span asp-validation-for="AcademyRank" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <label asp-for="Experience" class="control-label">Kinh nghiệm</label>
+                                </div>
+                                <input type="number" asp-for="Experience" class="form-control" />
+                                <span asp-validation-for="Experience" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-none">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <label asp-for="SchoolId" class="control-label">Trường học</label>
+                                </div>
+                                <select asp-for="SchoolId" class="form-control">
+                                    @if (ViewBag.Schools != null)
+                                    {
+                                        @foreach (var schoolItem in ViewBag.Schools as List<SelectListItem>)
+                                        {
+                                            <option value="@schoolItem.Value">@schoolItem.Text</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="SchoolId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group d-none">
+                        <label asp-for="SubjectId" class="control-label"></label>
+                        <input asp-for="SubjectId" class="form-control" />
+                        <span asp-validation-for="SubjectId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-none">
+                        <label asp-for="AvtPath" class="control-label"></label>
+                        <input asp-for="AvtPath" class="form-control" />
+                        <span asp-validation-for="AvtPath" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-none">
+                        <label asp-for="Role_ID" class="control-label"></label>
+                        <input asp-for="Role_ID" class="form-control" />
+                        <span asp-validation-for="Role_ID" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('File').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            console.log(file);
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

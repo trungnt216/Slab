@@ -25,7 +25,16 @@ namespace SaRLAB.UserWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
+        Subject subject = new Subject();
+
         private readonly bool _hasError = false;
+
+        Subject subject1 = new Subject();
+        Subject subject2 = new Subject();
+        Subject subject3 = new Subject();
+        Subject subject4 = new Subject();
+        Subject subject5 = new Subject();
+        Subject subject6 = new Subject();
 
         public HomePageController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -72,6 +81,8 @@ namespace SaRLAB.UserWeb.Controllers
                 }
             }
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+
+
 
         }
 
@@ -124,6 +135,49 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             ViewBag.school = school;
+
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub2 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/7").Result;
+            if (response_sub2.IsSuccessStatusCode)
+            {
+                string data = response_sub2.Content.ReadAsStringAsync().Result;
+                subject2 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/8").Result;
+            if (response_sub3.IsSuccessStatusCode)
+            {
+                string data = response_sub3.Content.ReadAsStringAsync().Result;
+                subject3 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub4 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
+            if (response_sub4.IsSuccessStatusCode)
+            {
+                string data = response_sub4.Content.ReadAsStringAsync().Result;
+                subject4 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub5 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/10").Result;
+            if (response_sub5.IsSuccessStatusCode)
+            {
+                string data = response_sub5.Content.ReadAsStringAsync().Result;
+                subject5 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub6 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
+            if (response_sub6.IsSuccessStatusCode)
+            {
+                string data = response_sub6.Content.ReadAsStringAsync().Result;
+                subject6 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 
             return View();
         }

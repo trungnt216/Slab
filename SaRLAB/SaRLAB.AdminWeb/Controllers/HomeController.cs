@@ -15,6 +15,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
         private readonly IConfiguration _configuration;
 
+        Subject subject1 = new Subject();
+
         public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _httpClient = new HttpClient();
@@ -24,6 +26,13 @@ namespace SaRLAB.AdminWeb.Controllers
             string jwtToken = Program.jwtToken;
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
         }
 
         [HttpGet]
@@ -42,6 +51,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 subjects = JsonConvert.DeserializeObject<List<Subject>>(data);
             }
 
+            TempData["subject_1"] = subject1.SubjectName;
 
             return View(subjects);
         }
