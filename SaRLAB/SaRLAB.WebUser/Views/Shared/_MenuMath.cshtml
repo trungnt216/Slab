@@ -242,7 +242,7 @@
 
     @* info group *@
     <li class="scroll-to-section menu-info-group">
-        <a class="menu d-flex" asp-controller="HomePage" asp-action="Information">
+        <a class="menu d-flex" asp-controller="HomePage" asp-action="Information" asp-route-subjectID="2">
             @if (TempData["AvtPath"] != null)
             {
                 <img src="@Url.Content(TempData["AvtPath"].ToString())" />

@@ -238,7 +238,7 @@
 
     @* info group *@
     <li class="scroll-to-section menu-info-group">
-        <a class="menu d-flex" asp-controller="HomePage" asp-action="Information">
+        <a class="menu d-flex" asp-controller="HomePage" asp-action="Information" asp-route-subjectID="3">
             @if (TempData["AvtPath"] != null)
             {
                     <img src="@Url.Content(TempData["AvtPath"].ToString())" />
@@ -251,7 +251,8 @@
     </li>
     <li class="scroll-to-section menu menu-info-group-trigger"><a
             class="menu @((ViewBag.ActiveMenu == "user") ? "active" : "")" data-toggle="dropdown"
-            asp-controller="HomePage" asp-action="Information">Thông tin người dùng</a></li>
+           asp-controller="HomePage" asp-action="Information" asp-route-subjectID="3">Thông tin người dùng</a>
+    </li>
     @* logout *@
     <li class="scroll-to-section logout menu">
         <div class="main-red-button"><a asp-controller="HomePage" asp-action="Logout">Đăng xuất</a></div>

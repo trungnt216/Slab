@@ -144,6 +144,7 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
                 _subjectFlag.BackupSubject2PermissionFlag = subjectFlag.BackupSubject2PermissionFlag ?? _subjectFlag.BackupSubject2PermissionFlag;
                 _subjectFlag.BackupSubject3PermissionFlag = subjectFlag.BackupSubject3PermissionFlag ?? _subjectFlag.BackupSubject3PermissionFlag;
                 _subjectFlag.BackupSubject4PermissionFlag = subjectFlag.BackupSubject4PermissionFlag ?? _subjectFlag.BackupSubject4PermissionFlag;
+                _subjectFlag.BackupSubject5PermissionFlag = subjectFlag.BackupSubject5PermissionFlag ?? _subjectFlag.BackupSubject5PermissionFlag;
                 _subjectFlag.BackupSubject6PermissionFlag = subjectFlag.BackupSubject6PermissionFlag ?? _subjectFlag.BackupSubject6PermissionFlag;
                 _context.SaveChanges();
             }

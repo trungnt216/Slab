@@ -83,7 +83,42 @@ namespace SaRLAB.UserWeb.Controllers
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
 
-
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub2 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/7").Result;
+            if (response_sub2.IsSuccessStatusCode)
+            {
+                string data = response_sub2.Content.ReadAsStringAsync().Result;
+                subject2 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/8").Result;
+            if (response_sub3.IsSuccessStatusCode)
+            {
+                string data = response_sub3.Content.ReadAsStringAsync().Result;
+                subject3 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub4 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
+            if (response_sub4.IsSuccessStatusCode)
+            {
+                string data = response_sub4.Content.ReadAsStringAsync().Result;
+                subject4 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub5 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/10").Result;
+            if (response_sub5.IsSuccessStatusCode)
+            {
+                string data = response_sub5.Content.ReadAsStringAsync().Result;
+                subject5 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub6 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
+            if (response_sub6.IsSuccessStatusCode)
+            {
+                string data = response_sub6.Content.ReadAsStringAsync().Result;
+                subject6 = JsonConvert.DeserializeObject<Subject>(data);
+            }
         }
 
 
@@ -183,11 +218,62 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
         [HttpGet]
-        public ActionResult Information()
+        public ActionResult Information(int subjectID)
         {
             if (_hasError)
             {
                 return View("Error");
+            }
+
+            if (subjectID == 1)
+            {
+
+                ViewData["layout"] = "~/Views/Chemistry/_LayoutChem.cshtml";
+            }
+            else if (subjectID == 3)
+            {
+
+                ViewData["layout"] = "~/Views/Biology/_Layout.cshtml";
+            }
+            else if (subjectID == 5)
+            {
+
+                ViewData["layout"] = "~/Views/Physics/_Layout.cshtml";
+            }
+            else if (subjectID == 2)
+            {
+
+                ViewData["layout"] = "~/Views/Math/_Layout.cshtml";
+            }
+            else if (subjectID == 6)
+            {
+                TempData["subject_1"] = subject1.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_1/_Layout.cshtml";
+            }
+            else if (subjectID == 7)
+            {
+                TempData["subject_1"] = subject2.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_2/_Layout.cshtml";
+            }
+            else if (subjectID == 8)
+            {
+                TempData["subject_1"] = subject3.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_3/_Layout.cshtml";
+            }
+            else if (subjectID == 9)
+            {
+                TempData["subject_1"] = subject4.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_4/_Layout.cshtml";
+            }
+            else if (subjectID == 10)
+            {
+                TempData["subject_1"] = subject5.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_5/_Layout.cshtml";
+            }
+            else if (subjectID == 11)
+            {
+                TempData["subject_1"] = subject6.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_6/_Layout.cshtml";
             }
 
             TempData["name"] = userLogin.Name;
