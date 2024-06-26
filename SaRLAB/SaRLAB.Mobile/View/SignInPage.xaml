@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaRLAB.Mobile.View.SignInPage"
+             Shell.NavBarIsVisible="false">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30" >
+            <!-- Registration Prompt -->
+            <VerticalStackLayout VerticalOptions="CenterAndExpand">
+                <Image Source="img_signin"
+                       WidthRequest="250"
+                       HeightRequest="250"></Image>
+            </VerticalStackLayout>
+
+            <!-- Login Form -->
+            <VerticalStackLayout Spacing="20" Padding="0">
+                <Label Text="Đăng Nhập" 
+                       FontSize="Large" 
+                       TextColor="#4285f4" 
+                       HorizontalOptions="Center" 
+                       FontAttributes="Bold" />
+
+                <!-- Email Entry -->
+                <Entry Placeholder="john@example.com" 
+                       Keyboard="Email" 
+                       PlaceholderColor="Gray" 
+                       TextColor="Black" 
+                       BackgroundColor="#efefef" 
+                       HeightRequest="40"/>
+
+                <!-- Password Entry -->
+                <Entry Placeholder="Password" 
+                       IsPassword="True" 
+                       PlaceholderColor="Gray" 
+                       TextColor="Black" 
+                       BackgroundColor="#efefef" 
+                       HeightRequest="40" />
+
+                <!-- Login Button -->
+                <Button Text="ĐĂNG NHẬP" 
+                        BackgroundColor="#4285f4" 
+                        TextColor="White" 
+                        HeightRequest="40" 
+                        CornerRadius="20" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
