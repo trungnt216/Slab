@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit_Information";
-    Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
+    Layout = ViewData["layout"].ToString();
     ViewBag.TitleCustom = "Chỉnh sửa thông tin cá nhân";
 }
 
@@ -17,7 +17,7 @@
                             Trở về
                         </a>
                 </div>
-                <form asp-action="Edit_Information" method="post" enctype="multipart/form-data">
+                <form asp-action="Edit_Information" asp-route-subjectID="@ViewData["subjectID"]" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row">
                         <div class="col-12 col-md-5">

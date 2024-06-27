@@ -276,6 +276,7 @@ namespace SaRLAB.UserWeb.Controllers
                 ViewData["layout"] = "~/Views/Subject_6/_Layout.cshtml";
             }
 
+            ViewData["subjectID"] = subjectID;
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
@@ -306,7 +307,7 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit_Information(string email)
+        public ActionResult Edit_Information(string email, int subjectID)
         {
             if (_hasError)
             {
@@ -316,6 +317,59 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            ViewData["subjectID"] = subjectID;
+
+            if (subjectID == 1)
+            {
+
+                ViewData["layout"] = "~/Views/Chemistry/_LayoutChem.cshtml";
+            }
+            else if (subjectID == 3)
+            {
+
+                ViewData["layout"] = "~/Views/Biology/_Layout.cshtml";
+            }
+            else if (subjectID == 5)
+            {
+
+                ViewData["layout"] = "~/Views/Physics/_Layout.cshtml";
+            }
+            else if (subjectID == 2)
+            {
+
+                ViewData["layout"] = "~/Views/Math/_Layout.cshtml";
+            }
+            else if (subjectID == 6)
+            {
+                TempData["subject_1"] = subject1.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_1/_Layout.cshtml";
+            }
+            else if (subjectID == 7)
+            {
+                TempData["subject_1"] = subject2.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_2/_Layout.cshtml";
+            }
+            else if (subjectID == 8)
+            {
+                TempData["subject_1"] = subject3.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_3/_Layout.cshtml";
+            }
+            else if (subjectID == 9)
+            {
+                TempData["subject_1"] = subject4.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_4/_Layout.cshtml";
+            }
+            else if (subjectID == 10)
+            {
+                TempData["subject_1"] = subject5.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_5/_Layout.cshtml";
+            }
+            else if (subjectID == 11)
+            {
+                TempData["subject_1"] = subject6.SubjectName;
+                ViewData["layout"] = "~/Views/Subject_6/_Layout.cshtml";
+            }
+
             User users = new User();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + userLogin.Email).Result;
@@ -329,8 +383,10 @@ namespace SaRLAB.UserWeb.Controllers
             ViewBag.ActiveMenu = "homePage";
             return View(users);
         }
+
+
         [HttpPost]
-        public ActionResult Edit_Information(User user, IFormFile File)
+        public ActionResult Edit_Information(User user, IFormFile File, int subjectID)
         {
             if (_hasError)
             {
@@ -374,7 +430,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "homePage";
-                    return RedirectToAction("Information");
+                    return RedirectToAction("Information", new { subjectID = subjectID });
                 }
             }
             catch (Exception ex)

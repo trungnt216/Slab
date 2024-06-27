@@ -498,19 +498,35 @@ namespace SaRLAB.AdminWeb.Controllers
 
             List<UserDto> users = new List<UserDto>();
 
-            HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
-
-            Console.WriteLine(_httpClient.BaseAddress + "User/GetAll");
-
-            if (response.IsSuccessStatusCode)
+            if (userLogin.RoleName == "Owner")
             {
-                string data = response.Content.ReadAsStringAsync().Result;
-                users = JsonConvert.DeserializeObject<List<UserDto>>(data);
-            }
-            ViewBag.ActiveMenu = "user";
-            return View(users);
 
+                HttpResponseMessage response;
+                response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
+
+                Console.WriteLine(_httpClient.BaseAddress + "User/GetAll");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = response.Content.ReadAsStringAsync().Result;
+                    users = JsonConvert.DeserializeObject<List<UserDto>>(data);
+                }
+                ViewBag.ActiveMenu = "user";
+          
+            }
+            else
+            {
+                HttpResponseMessage response;
+                response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllUserInSchoolRoleUser/" + userLogin.SchoolId).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = response.Content.ReadAsStringAsync().Result;
+                    users = JsonConvert.DeserializeObject<List<UserDto>>(data);
+                }
+                ViewBag.ActiveMenu = "user";
+            }
+            return View(users);
         }
 
         [HttpGet]
