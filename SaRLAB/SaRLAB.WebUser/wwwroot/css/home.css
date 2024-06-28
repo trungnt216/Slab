@@ -2036,23 +2036,9 @@ a.service-link {
         background: #281500;
     }
 
-/*.services .flex-row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.services .flex-item {
-    flex: 1 1 22%;
-    max-width: 220px;
-    box-sizing: border-box;
-}
-
-.service-item img {
-    width: 50px;
-}*/
-
 .service-carousel .flex-item {
-    width: 220px;
+    width: 250px;
+    padding: 25px 5px 25px 5px;
 }
 
 .service-carousel .service-item img {
@@ -2071,6 +2057,50 @@ a.service-link {
         margin-right: 10px; 
         max-width: 100%; 
     }
+
+.service-item {
+    position: relative;
+}
+
+    .service-item .subject-tooltip {
+        position: absolute;
+        background-color: #6b6b6b;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 5px 10px;
+        z-index: 1;
+        top: 91%;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        transition: opacity 0.3s;
+        visibility: hidden;
+        opacity: 0;
+        width: 70%;
+        line-height: 13px;
+        white-space: break-spaces;
+    }
+
+    .service-item .subjectTooltipText {
+        font-size: 11px;
+    }
+
+    .service-item .subject-tooltip::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #6b6b6b transparent;
+    }
+
+.service-item:hover .subject-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
 
 .slick-dots li button:before {
     color: white !important; 

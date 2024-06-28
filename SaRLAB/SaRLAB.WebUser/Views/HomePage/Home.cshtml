@@ -44,7 +44,7 @@
                                 <div class="divider-custom"></div>
                             </div>
 
-                                <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px; margin-top: 30px;">Welcome to SaRLAB</h1>
+                                <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px; margin-top: 30px; margin-bottom: 5px;">Welcome to SaRLAB</h1>
                                 <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
                                     Room management utility application. SaR LAB promises optimal work and facilitates creativity in research!
                                 </p>
@@ -52,11 +52,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="container" style="margin-bottom: 80px">
+                <div class="container" style="margin-bottom: 50px">
                     <div class="service-carousel">
                         @if (ViewBag.SubjectFlag.ChemistryPermissionFlag == true)
                         {
-                            <div class="flex-item p-2">
+                            <div class="flex-item">
                                 <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion" class="service-link">
                                     <div class="service-item first-service">
                                         @if (@ViewBag.school.ChemLogo == null)
@@ -67,14 +67,14 @@
                                         {
                                             <img src="@Url.Content(ViewBag.school.ChemLogo)" class="image" alt="" />
                                         }
-                                            <h4>Chemistry </h4>
+                                        <h4>Chủ nghĩa xã hội khoa học mác lê nin</h4>
                                     </div>
                                 </a>
                             </div>
                         }
                         @if (ViewBag.SubjectFlag.BiologyPermissionFlag == true)
                         {
-                            <div class="flex-item p-2">
+                            <div class="flex-item">
                                 <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Bio" class="service-link">
                                     <div class="service-item second-service">
                                         @if (@ViewBag.school.BioLogo == null)
@@ -85,14 +85,14 @@
                                         {
                                             <img src="@Url.Content(ViewBag.school.BioLogo)" class="image" alt="" />
                                         }
-                                            <h4>Biology </h4>
+                                        <h4>Biology</h4>
                                     </div>
                                 </a>
                             </div>
                         }
                         @if (ViewBag.SubjectFlag.PhysicPermissionFlag == true)
                         {
-                            <div class="flex-item p-2">
+                            <div class="flex-item">
                                 <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Physics" class="service-link">
                                     <div class="service-item third-service">
                                         @if (@ViewBag.school.PhysLogo == null)
@@ -110,7 +110,7 @@
                         }
                         @if (ViewBag.SubjectFlag.MathPermissionFlag == true)
                         {
-                            <div class="flex-item p-2">
+                            <div class="flex-item">
                                 <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Math" class="service-link">
                                     <div class="service-item fourth-service">
                                         @if (@ViewBag.school.BiochemLogo == null)
@@ -129,7 +129,7 @@
 
                         @if (ViewBag.SubjectFlag.BackupSubject1PermissionFlag == true)
                         {
-                            <div class="flex-item p-2">
+                            <div class="flex-item">
                                 <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject1" class="service-link">
                                     <div class="service-item fourth-service">
                                         @if (@ViewBag.school.BackupSubject1Logo == null)
@@ -148,7 +148,7 @@
 
                         @if (ViewBag.SubjectFlag.BackupSubject2PermissionFlag == true)
                         {
-                            <div class="flex-item p-2">
+                            <div class="flex-item">
                                 <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject2" class="service-link">
                                     <div class="service-item fourth-service">
                                         @if (@ViewBag.school.BackupSubject2Logo == null)
@@ -167,7 +167,7 @@
 
                         @if (ViewBag.SubjectFlag.BackupSubject3PermissionFlag == true)
                         {
-                            <div class="flex-item p-2">
+                            <div class="flex-item">
                                 <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject3" class="service-link">
                                     <div class="service-item fourth-service">
                                         @if (@ViewBag.school.BackupSubject3Logo == null)
@@ -186,7 +186,7 @@
 
                         @if (ViewBag.SubjectFlag.BackupSubject4PermissionFlag == true)
                         {
-                            <div class="flex-item p-2">
+                            <div class="flex-item">
                                 <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject4" class="service-link">
                                     <div class="service-item fourth-service">
                                         @if (@ViewBag.school.BackupSubject4Logo == null)
@@ -205,7 +205,7 @@
 
                         @if (ViewBag.SubjectFlag.BackupSubject5PermissionFlag == true)
                         {
-                            <div class="flex-item p-2">
+                            <div class="flex-item">
                                 <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject5" class="service-link">
                                     <div class="service-item fourth-service">
                                         @if (@ViewBag.school.BackupSubject5Logo == null)
@@ -224,7 +224,7 @@
 
                         @if (ViewBag.SubjectFlag.BackupSubject6PermissionFlag == true)
                         {
-                            <div class="flex-item p-2">
+                            <div class="flex-item">
                                 <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject6" class="service-link">
                                     <div class="service-item fourth-service">
                                         @if (@ViewBag.school.BackupSubject6Logo == null)
@@ -253,44 +253,64 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-                $('.service-carousel').slick({
+                var $carousel = $('.service-carousel');
+                var itemCount = $carousel.children('.flex-item').length;
+
+                $carousel.slick({
                     infinite: true,
-                    slidesToShow: 5,
-                    slidesToScroll: 5,
-                    dots: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    dots: itemCount > 4, 
                     arrows: true,
                     responsive: [
                         {
-                            breakpoint: 1200,  // desktop
+                            breakpoint: 1200,
                             settings: {
                                 slidesToShow: 4,
                                 slidesToScroll: 4,
+                                dots: itemCount > 4
                             }
                         },
                         {
-                            breakpoint: 992,  // tablet landscape
+                            breakpoint: 992,
                             settings: {
                                 slidesToShow: 3,
                                 slidesToScroll: 3,
+                                dots: itemCount > 3
                             }
                         },
                         {
-                            breakpoint: 768,  // tablet portrait
+                            breakpoint: 768,
                             settings: {
                                 slidesToShow: 2,
                                 slidesToScroll: 2,
+                                dots: itemCount > 2
                             }
                         },
                         {
-                            breakpoint: 576,  // mobile
+                            breakpoint: 576,
                             settings: {
                                 slidesToShow: 1,
                                 slidesToScroll: 1,
+                                dots: itemCount > 1,
+                                arrows: false,
                                 centerMode: true,
-                                // centerPadding: '30px' 
+                                centerPadding: '0px'
                             }
                         }
                     ]
+                });
+            });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var serviceItems = document.querySelectorAll('.service-item');
+
+                serviceItems.forEach(function (item) {
+                    var h4Text = item.querySelector('h4').textContent.trim();
+                    var tooltipDiv = document.createElement('div');
+                    tooltipDiv.className = 'subject-tooltip';
+                    tooltipDiv.innerHTML = '<span class="subjectTooltipText">' + h4Text + '</span>';
+                    item.appendChild(tooltipDiv);
                 });
             });
         </script>
