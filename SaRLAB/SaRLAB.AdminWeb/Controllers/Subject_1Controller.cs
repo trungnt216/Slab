@@ -132,6 +132,10 @@ namespace SaRLAB.AdminWeb.Controllers
                 subject = JsonConvert.DeserializeObject<Subject>(data);
             }
 
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "configurationsubject1";
+            ViewBag.ActiveSubMenuLv2 = "configurationsubject1";
             return View(subject);
         }
 
@@ -168,14 +172,29 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject1";
+                    ViewBag.ActiveSubMenu = "configurationsubject1";
+                    ViewBag.ActiveSubMenuLv2 = "configurationsubject1";
                     return View();
                 }
             }
             else
             {
+
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "configurationsubject1";
+                ViewBag.ActiveSubMenuLv2 = "configurationsubject1";
                 return View();
             }
 
+
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "configurationsubject1";
+            ViewBag.ActiveSubMenuLv2 = "configurationsubject1";
             return View();
         }
 
@@ -2547,7 +2566,7 @@ namespace SaRLAB.AdminWeb.Controllers
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "subject1";
             ViewBag.ActiveSubMenu = "cauhoiantoansubject1";
-            ViewBag.ActiveSubMenuLv2 = "cauhoisinhhoc";
+            ViewBag.ActiveSubMenuLv2 = "cauhoisubject1";
             return View(equipment);
         }
 
@@ -2569,7 +2588,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "cauhoiantoansubject1";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisinhhoc";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject1";
                 return View();
             }
             else
@@ -2578,7 +2597,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "cauhoiantoansubject1";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisinhhoc";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject1";
                 return RedirectToAction("GetAll_Question");
             }
         }
@@ -2715,7 +2734,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "subject1";
                     ViewBag.ActiveSubMenu = "cauhoiantoansubject1";
-                    ViewBag.ActiveSubMenuLv2 = "cauhoisinhhoc";
+                    ViewBag.ActiveSubMenuLv2 = "cauhoisubject1";
                     return RedirectToAction("GetAll_Question");
                 }
             }
@@ -2725,13 +2744,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "cauhoiantoansubject1";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisinhhoc";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject1";
                 return View();
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "subject1";
             ViewBag.ActiveSubMenu = "cauhoiantoansubject1";
-            ViewBag.ActiveSubMenuLv2 = "cauhoisinhhoc";
+            ViewBag.ActiveSubMenuLv2 = "cauhoisubject1";
             return View();
         }
 
@@ -2768,7 +2787,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "cauhoiantoansubject1";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisinhhoc";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject1";
                 return View(quiz);
             }
             else
@@ -2777,7 +2796,7 @@ namespace SaRLAB.AdminWeb.Controllers
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "cauhoiantoansubject1";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisinhhoc";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject1";
                 return RedirectToAction("GetAll_Question");
             }
         }
@@ -2918,13 +2937,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "cauhoiantoansubject1";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisinhhoc";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject1";
                 return View();
             }
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "subject1";
             ViewBag.ActiveSubMenu = "cauhoiantoansubject1";
-            ViewBag.ActiveSubMenuLv2 = "cauhoisinhhoc";
+            ViewBag.ActiveSubMenuLv2 = "cauhoisubject1";
             return View();
         }
 
