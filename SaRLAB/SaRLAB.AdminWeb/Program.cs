@@ -6,7 +6,7 @@ namespace SaRLAB.AdminWeb
     {
         public static string jwtToken = null;
 
-#if false
+#if true
         public static string api = "http://localhost:5200/api/";
         public static string FilePath = "https://localhost:7135//";
 #else

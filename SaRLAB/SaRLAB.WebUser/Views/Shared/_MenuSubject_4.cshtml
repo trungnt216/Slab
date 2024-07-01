@@ -79,12 +79,14 @@
                     Giáo trình thực hành
                 </a>
                 <ul class="dropdown-menu dropdown-menu-item">
-                    <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "conspectus") ? "active" : "")"
-                            asp-controller="Subject_4" asp-action="GetAll_Conspectus">Đại cương</a></li>
-                    <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "experiment") ? "active" : "")"
-                            asp-controller="Subject_4" asp-action="GetAll_Experiment">Thực nghiệm</a></li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "theory") ? "active" : "")"
+                           asp-controller="Subject_4" asp-action="GetAll_Theory">Lý thuyết</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "practice") ? "active" : "")"
+                           asp-controller="Subject_4" asp-action="GetAll_Practice">Thực hành</a>
+                    </li>
                 </ul>
             </li>
             <li class="scroll-to-section">
@@ -150,12 +152,18 @@
                     Virtual Lab
                 </a>
                 <ul class="dropdown-menu dropdown-menu-item">
-                    <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "experience") ? "active" : "")"
-                            asp-controller="Subject_4" asp-action="GetAll_Experiment">Thực nghiệm</a></li>
-                    <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "conspectus") ? "active" : "")"
-                            asp-controller="Subject_4" asp-action="GetAll_Conspectus">Đại cương</a></li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "vitheory") ? "active" : "")"
+                           asp-controller="Subject_4" asp-action="GetAll_ViTheory">Lý thuyết</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "vipractice") ? "active" : "")"
+                           asp-controller="Subject_4" asp-action="GetAll_ViPractice">Thực hành</a>
+                    </li>
+                    <li class="scroll-to-section">
+                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "experience") ? "active" : "")"
+                           asp-controller="Subject_4" asp-action="GetAll_Experiment">Thực nghiệm</a>
+                    </li>
                 </ul>
             </li>
             <li class="scroll-to-section">

@@ -1662,6 +1662,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51UGh5c2ljcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Shared/_MenuSubject_1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51U3ViamVjdF8xLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Shared/_MenuSubject_2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51U3ViamVjdF8yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Shared/_MenuSubject_3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51U3ViamVjdF8zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Shared/_MenuSubject_4.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51U3ViamVjdF80LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Shared/_MenuSubject_5.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51U3ViamVjdF81LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Shared/_MenuSubject_6.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51U3ViamVjdF82LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Shared/_SearchBox.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZWFyY2hCb3guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -1672,6 +1696,2214 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfRGlyZWN0b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfTGlicmFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Organic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfT3JnYW5pYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfVGVjaG5pY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfSW5mb3JtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9CaW9sb2dpY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9EaXJlY3RvcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9MaWJyYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9UZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9UZWNobmljYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEluZm9ybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfRGlyZWN0b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfTGlicmFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Organic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfT3JnYW5pYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfVGVjaG5pY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfSW5mb3JtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9CaW9sb2dpY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9EaXJlY3RvcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9MaWJyYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9UZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9UZWNobmljYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEluZm9ybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfRGlyZWN0b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfTGlicmFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Organic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfT3JnYW5pYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfVGVjaG5pY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfSW5mb3JtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9CaW9sb2dpY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9EaXJlY3RvcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9MaWJyYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9UZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9UZWNobmljYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEluZm9ybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfRGlyZWN0b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfTGlicmFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Organic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfT3JnYW5pYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfVGVjaG5pY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfSW5mb3JtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9CaW9sb2dpY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9EaXJlY3RvcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9MaWJyYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9UZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9UZWNobmljYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEluZm9ybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfRGlyZWN0b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfTGlicmFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Organic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfT3JnYW5pYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfVGVjaG5pY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfSW5mb3JtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9CaW9sb2dpY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9EaXJlY3RvcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9MaWJyYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9UZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9UZWNobmljYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEluZm9ybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfRGlyZWN0b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfTGlicmFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Organic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfT3JnYW5pYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfVGVjaG5pY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfQmlvbG9naWNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfQ29uc3BlY3R1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfRGVwYXJ0bWVudF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfRXF1aXBtZW50Q2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfRXhhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfRXhhbWVuZ2xpc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfRXhwZXJpbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfSW5mb3JtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfSW50ZXJuYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfUHJhY3RpY2VfUG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfUHJhY3RpY2VfcmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfUHJhY3RpY2VfU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfUHJlcGFyYXRpb25fcXVlc3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfUHJvdmluY2lhbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfVG9vbENoZW1pc3RyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfVG9vbENoZW1pc3RyeVN0b3JhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfVm9jYWJ1bGFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Biological.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9CaW9sb2dpY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Chemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9DaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_ChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9DaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Conspectus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9Db25zcGVjdHVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Department_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9EZXBhcnRtZW50X2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Directors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9EaXJlY3RvcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_EquipmentChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_EquipmentChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9FcXVpcG1lbnRDaGVtaXN0cnlTdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9FeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Examenglish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9FeGFtZW5nbGlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Experiment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9FeHBlcmltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_International_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9JbnRlcm5hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Library.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9MaWJyYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_National_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Practice_Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9QcmFjdGljZV9Qb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Practice_report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9QcmFjdGljZV9yZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Practice_Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9QcmFjdGljZV9TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Preparation_questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9QcmVwYXJhdGlvbl9xdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Provincial_level.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9Qcm92aW5jaWFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9UZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Technical.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9UZWNobmljYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_ToolChemistry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9Ub29sQ2hlbWlzdHJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_ToolChemistryStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9Ub29sQ2hlbWlzdHJ5U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Vocabulary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9Wb2NhYnVsYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Information.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEluZm9ybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/_ViewImports.cshtml]

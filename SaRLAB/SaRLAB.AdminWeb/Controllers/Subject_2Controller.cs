@@ -2963,5 +2963,794 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             return RedirectToAction("GetAll_Question");
         }
+
+        //------------------------------- lý thuyết - theory ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Theory()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/THEORY").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "virtual1";
+            ViewBag.ActiveSubMenuLv2 = "theory1";
+            return View(documents);
+        }
+
+
+        public ActionResult Accept_Theory(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Theory");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    document.UpdateTime = DateTime.Now;
+                    document.PageFlag = true;
+
+                    string data = JsonConvert.SerializeObject(document);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "subject1";
+                        ViewBag.ActiveSubMenu = "virtual1";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
+                        return RedirectToAction("GetAll_Theory");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject1";
+                    ViewBag.ActiveSubMenu = "virtual1";
+                    ViewBag.ActiveSubMenuLv2 = "theory1";
+                    return RedirectToAction("GetAll_Theory");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Theory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Theory");
+            }
+        }
+
+        public ActionResult Delete_Theory(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Theory");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "subject1";
+                        ViewBag.ActiveSubMenu = "virtual1";
+                        ViewBag.ActiveSubMenuLv2 = "theory1";
+                        return RedirectToAction("GetAll_Theory");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject1";
+                    ViewBag.ActiveSubMenu = "virtual1";
+                    ViewBag.ActiveSubMenuLv2 = "theory1";
+                    return RedirectToAction("GetAll_Theory");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Theory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Theory");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Theory(int id)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "virtual1";
+            ViewBag.ActiveSubMenuLv2 = "theory1";
+            return View(document);
+        }
+
+        //------------------------------- thực hành - pratice ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Practice()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/PRACTICE").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "virtual1";
+            ViewBag.ActiveSubMenuLv2 = "practice1";
+            return View(documents);
+        }
+
+
+        public ActionResult Accept_Pratice(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "pratice1";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Practice");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    document.UpdateTime = DateTime.Now;
+                    document.PageFlag = true;
+
+                    string data = JsonConvert.SerializeObject(document);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "subject1";
+                        ViewBag.ActiveSubMenu = "virtual1";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
+                        return RedirectToAction("GetAll_Practice");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject1";
+                    ViewBag.ActiveSubMenu = "virtual1";
+                    ViewBag.ActiveSubMenuLv2 = "theory1";
+                    return RedirectToAction("GetAll_Practice");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Theory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Practice");
+            }
+        }
+
+        public ActionResult Delete_Practice(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Practice");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "subject1";
+                        ViewBag.ActiveSubMenu = "virtual1";
+                        ViewBag.ActiveSubMenuLv2 = "theory1";
+                        return RedirectToAction("GetAll_Practice");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject1";
+                    ViewBag.ActiveSubMenu = "virtual1";
+                    ViewBag.ActiveSubMenuLv2 = "theory1";
+                    return RedirectToAction("GetAll_Practice");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Practice");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Practice");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Practice(int id)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "virtual1";
+            ViewBag.ActiveSubMenuLv2 = "theory1";
+            return View(document);
+        }
+
+        //------------------------------- lý thuyết - theory ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_ViTheory()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/VITHEORY").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "virtual1";
+            ViewBag.ActiveSubMenuLv2 = "theory1";
+            return View(documents);
+        }
+
+
+        public ActionResult Accept_ViTheory(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Theory");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    document.UpdateTime = DateTime.Now;
+                    document.PageFlag = true;
+
+                    string data = JsonConvert.SerializeObject(document);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "subject1";
+                        ViewBag.ActiveSubMenu = "virtual1";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
+                        return RedirectToAction("GetAll_ViTheory");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject1";
+                    ViewBag.ActiveSubMenu = "virtual1";
+                    ViewBag.ActiveSubMenuLv2 = "theory1";
+                    return RedirectToAction("GetAll_ViTheory");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+        }
+
+        public ActionResult Delete_ViTheory(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "subject1";
+                        ViewBag.ActiveSubMenu = "virtual1";
+                        ViewBag.ActiveSubMenuLv2 = "theory1";
+                        return RedirectToAction("GetAll_ViTheory");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject1";
+                    ViewBag.ActiveSubMenu = "virtual1";
+                    ViewBag.ActiveSubMenuLv2 = "theory1";
+                    return RedirectToAction("GetAll_ViTheory");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_ViTheory(int id)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "virtual1";
+            ViewBag.ActiveSubMenuLv2 = "theory1";
+            return View(document);
+        }
+
+        //------------------------------- thực hành - pratice ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_ViPractice()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/VIPRACTICE").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "virtual1";
+            ViewBag.ActiveSubMenuLv2 = "practice1";
+            return View(documents);
+        }
+
+
+        public ActionResult Accept_ViPratice(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "pratice1";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Practice");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    document.UpdateTime = DateTime.Now;
+                    document.PageFlag = true;
+
+                    string data = JsonConvert.SerializeObject(document);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "subject1";
+                        ViewBag.ActiveSubMenu = "virtual1";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
+                        return RedirectToAction("GetAll_Practice");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject1";
+                    ViewBag.ActiveSubMenu = "virtual1";
+                    ViewBag.ActiveSubMenuLv2 = "theory1";
+                    return RedirectToAction("GetAll_Practice");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Theory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Practice");
+            }
+        }
+
+        public ActionResult Delete_ViPractice(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Practice");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "subject1";
+                        ViewBag.ActiveSubMenu = "virtual1";
+                        ViewBag.ActiveSubMenuLv2 = "theory1";
+                        return RedirectToAction("GetAll_Practice");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject1";
+                    ViewBag.ActiveSubMenu = "virtual1";
+                    ViewBag.ActiveSubMenuLv2 = "theory1";
+                    return RedirectToAction("GetAll_Practice");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Practice");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "virtual1";
+                ViewBag.ActiveSubMenuLv2 = "theory1";
+                return RedirectToAction("GetAll_Practice");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_ViPractice(int id)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "virtual1";
+            ViewBag.ActiveSubMenuLv2 = "theory1";
+            return View(document);
+        }
+
     }
 }
