@@ -235,6 +235,7 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
+            
 
             try
             {
@@ -329,7 +330,29 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
 
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
 
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                equipment.CoverImage = "~/images/book.jpg";
+            }
 
             try
             {
@@ -524,7 +547,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_ToolChemistry(Equipment equipment, IFormFile File)
+        public ActionResult Create_ToolChemistry(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -555,6 +578,30 @@ namespace SaRLAB.UserWeb.Controllers
                     File.CopyTo(stream);
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                equipment.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -858,7 +905,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_EquipmentChemistry(Equipment equipment, IFormFile File)
+        public ActionResult Create_EquipmentChemistry(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -889,6 +936,30 @@ namespace SaRLAB.UserWeb.Controllers
                     File.CopyTo(stream);
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                equipment.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -1257,7 +1328,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -1623,7 +1697,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -1983,7 +2060,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -2339,7 +2419,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -2697,7 +2780,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -3056,7 +3142,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -3413,7 +3502,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -3772,7 +3864,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -4129,7 +4224,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -4485,7 +4583,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -4842,7 +4943,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -5373,7 +5477,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -5794,7 +5901,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_ChemistryStorage(Equipment equipment, IFormFile File)
+        public ActionResult Create_ChemistryStorage(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -5825,6 +5932,30 @@ namespace SaRLAB.UserWeb.Controllers
                     File.CopyTo(stream);
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                equipment.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -6021,7 +6152,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_ToolChemistryStorage(Equipment equipment, IFormFile File)
+        public ActionResult Create_ToolChemistryStorage(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -6052,6 +6183,30 @@ namespace SaRLAB.UserWeb.Controllers
                     File.CopyTo(stream);
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                equipment.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -6355,7 +6510,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_EquipmentChemistryStorage(Equipment equipment, IFormFile File)
+        public ActionResult Create_EquipmentChemistryStorage(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -6388,6 +6543,30 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
 
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                equipment.CoverImage = "~/images/book.jpg";
+            }
+            
             try
             {
                 equipment.CreateTime = DateTime.Now;
@@ -6751,7 +6930,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -7111,7 +7293,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -7468,7 +7653,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -7826,7 +8014,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -8184,7 +8375,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try
@@ -8542,7 +8736,10 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     coverImage.CopyTo(stream);
                 }
-                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+                document.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else{
+                document.CoverImage= "~/images/book.jpg";
             }
 
             try

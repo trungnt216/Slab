@@ -95,7 +95,6 @@
                                 <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                             </th>
                             <th>
-                                Bìa
                             </th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.CreateBy)
@@ -106,7 +105,7 @@
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.UpdateBy)
                             </th>
-                            <th>
+                            <th class="d-none">
                                  Thời gian cập nhật
                                 <i class="fa fa-sort" onclick="sortTable('table', 6, true)"></i>
                             </th>
@@ -181,7 +180,7 @@
                                     <td class="d-none">
                                         @Html.DisplayFor(modelItem => item.UpdateBy)
                                     </td>
-                                    <td>
+                                    <td class="d-none">
                                         @Html.DisplayFor(modelItem => item.UpdateTime)
                                     </td>
                                     <td>
