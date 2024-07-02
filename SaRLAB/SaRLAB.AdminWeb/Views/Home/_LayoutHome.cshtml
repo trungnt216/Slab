@@ -111,6 +111,21 @@
                                 </span>
                             </p>
                             <ul id="chemistry" class="nested">
+                                <li class="@((ViewBag.ActiveSubMenu == "configurationchem") ? "menu-item-active" : "")">
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                       onclick="toggleMenu('configurationchem')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Cấu hình phòng thí nghiệm</a>
+                                        </span>
+                                    </p>
+                                    <ul id="configurationchem" class="nested">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationchem") ? "submenu-item-active" : "")">
+                                            <a asp-controller="Chemistry"
+                                               asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="@((ViewBag.ActiveSubMenu == "cauhoiantoan") ? "menu-item-active" : "")">
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('cauhoiantoan')">
                                         <span class="left d-flex" style="align-items: center;">
