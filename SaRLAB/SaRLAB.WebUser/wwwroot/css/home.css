@@ -1240,8 +1240,8 @@ header
         float: left;
     }
 
-        .group-btn-home a p {
-            margin-top: 0px;
+        .group-btn-home p {
+            margin-top: 0px !important;
             color: white;
             font-weight: 500;
             text-transform: uppercase;

@@ -13,15 +13,15 @@
                 <div class="hero-text mt-5 text-center">
                     <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px !important;">Welcome to @TempData["Subject_1"]</h1>
                     <div class="group-home d-flex wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
-                        <div class="group-btn-home group-rules d-flex">
+                        <a class="group-btn-home group-rules d-flex" asp-controller="Subject_2" asp-action="Index">
                             <img class="img-rules" src="@Url.Content("~/images/rules.png")" />
-                            <a class="btn-rules"><p>Nội quy<br>phòng thí nghiệm</p></a>
-                        </div>
-                        <div class="group-btn-home group-news d-flex">
+                            <p>Nội quy<br>phòng thí nghiệm</p>
+                        </a>
+                        <a class="group-btn-home group-news d-flex" asp-controller="Subject_2" asp-action="Index">
                             <img class="img-news" src="@Url.Content("~/images/news.png")" />
-                            <a class="btn-news"><p>Tin tức - News</p></a>
+                            <p>Tin tức - News</p>
                             <label class="txt-news">New</label>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
