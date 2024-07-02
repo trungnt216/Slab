@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Index";
+
     Layout = "~/Views/Physics/_Layout.cshtml";
 }
 
@@ -11,9 +12,17 @@
             <div class="col-lg-8 col-md-10 mx-auto col-12">
                 <div class="hero-text mt-5 text-center">
                     <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 65px !important;">Welcome to PhyLAB</h1>
-                    <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
-                        Room management utility application. SaR LAB promises optimal work and facilitates creativity in research!
-                    </p>
+                    <div class="group-home d-flex wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
+                        <a class="group-btn-home group-rules d-flex" asp-controller="Physics" asp-action="Index">
+                            <img class="img-rules" src="@Url.Content("~/images/rules.png")" />
+                            <p>Nội quy<br>phòng thí nghiệm</p>
+                        </a>
+                        <a class="group-btn-home group-news d-flex" asp-controller="Physics" asp-action="Index">
+                            <img class="img-news" src="@Url.Content("~/images/news.png")" />
+                            <p>Tin tức - News</p>
+                            <label class="txt-news">New</label>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
