@@ -9013,5 +9013,369 @@ namespace SaRLAB.UserWeb.Controllers
             return View(document);
         }
 
+
+        //----------------------------- Tin tức ------------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_New()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/NEW").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_New()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_New");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_New(Document document, IFormFile File, IFormFile coverImage)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = Subject_id;
+                document.Type = "NEW";
+                document.SchoolId = userLogin.SchoolId;
+                document.PageFlag = true;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    return RedirectToAction("GetAll_New");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_New(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return Ok();
+            }
+
+            if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_New");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_New(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    return RedirectToAction("GetAll_New");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View();
+        }
+
+
+        public ActionResult Delete_New(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_New");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "bio";
+                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                        return RedirectToAction("GetAll_New");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    return RedirectToAction("GetAll_ViPractice");
+                }
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_New");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_New");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_New(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View(document);
+        }
+
     }
 }

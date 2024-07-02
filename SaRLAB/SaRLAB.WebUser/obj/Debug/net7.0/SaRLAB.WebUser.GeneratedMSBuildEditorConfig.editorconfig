@@ -66,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbG9neVxDcmVhdGVfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Biology/Create_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbG9neVxDcmVhdGVfTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Biology/Create_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbG9neVxDcmVhdGVfUHJhY3RpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -168,6 +172,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Biology/Details_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbG9neVxEZXRhaWxzX05hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Biology/Details_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbG9neVxEZXRhaWxzX05ldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Biology/Details_Organic.cshtml]
@@ -282,6 +290,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbG9neVxFZGl0X05hdGlvbmFsX2xldmVsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Biology/Edit_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbG9neVxFZGl0X05ldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Biology/Edit_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbG9neVxFZGl0X1ByYWN0aWNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -384,6 +396,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Biology/GetAll_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbG9neVxHZXRBbGxfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Biology/GetAll_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbG9neVxHZXRBbGxfTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Biology/GetAll_Practice.cshtml]
@@ -510,6 +526,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlbWlzdHJ5XENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Chemistry/Create_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlbWlzdHJ5XENyZWF0ZV9OZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Chemistry/Create_Organic.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlbWlzdHJ5XENyZWF0ZV9PcmdhbmljLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -624,6 +644,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Chemistry/Details_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlbWlzdHJ5XERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Chemistry/Details_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlbWlzdHJ5XERldGFpbHNfTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Chemistry/Details_Organic.cshtml]
@@ -746,6 +770,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlbWlzdHJ5XEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Chemistry/Edit_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlbWlzdHJ5XEVkaXRfTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Chemistry/Edit_Organic.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlbWlzdHJ5XEVkaXRfT3JnYW5pYy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -860,6 +888,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Chemistry/GetAll_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlbWlzdHJ5XEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Chemistry/GetAll_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlbWlzdHJ5XEdldEFsbF9OZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Chemistry/GetAll_Organic.cshtml]
@@ -1030,6 +1062,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0aFxDcmVhdGVfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Math/Create_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0aFxDcmVhdGVfTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Math/Create_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0aFxDcmVhdGVfUHJhY3RpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -1132,6 +1168,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Math/Details_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0aFxEZXRhaWxzX05hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Math/Details_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0aFxEZXRhaWxzX05ldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Math/Details_Organic.cshtml]
@@ -1246,6 +1286,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0aFxFZGl0X05hdGlvbmFsX2xldmVsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Math/Edit_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0aFxFZGl0X05ldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Math/Edit_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0aFxFZGl0X1ByYWN0aWNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -1348,6 +1392,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Math/GetAll_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0aFxHZXRBbGxfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Math/GetAll_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0aFxHZXRBbGxfTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Math/GetAll_Practice.cshtml]
@@ -1498,6 +1546,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljc1xDcmVhdGVfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Physics/Create_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljc1xDcmVhdGVfTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Physics/Create_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljc1xDcmVhdGVfUHJhY3RpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -1600,6 +1652,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Physics/Details_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljc1xEZXRhaWxzX05hdGlvbmFsX2xldmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Physics/Details_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljc1xEZXRhaWxzX05ldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Physics/Details_Organic.cshtml]
@@ -1714,6 +1770,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljc1xFZGl0X05hdGlvbmFsX2xldmVsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Physics/Edit_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljc1xFZGl0X05ldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Physics/Edit_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljc1xFZGl0X1ByYWN0aWNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -1816,6 +1876,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Physics/GetAll_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljc1xHZXRBbGxfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Physics/GetAll_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljc1xHZXRBbGxfTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Physics/GetAll_Practice.cshtml]
@@ -1998,6 +2062,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9OZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Create_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXENyZWF0ZV9QcmFjdGljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -2100,6 +2168,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXERldGFpbHNfTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Details_Organic.cshtml]
@@ -2214,6 +2286,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/Edit_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEVkaXRfUHJhY3RpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -2316,6 +2392,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8xXEdldEFsbF9OZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_1/GetAll_Practice.cshtml]
@@ -2430,6 +2510,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9OZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Create_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXENyZWF0ZV9QcmFjdGljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -2532,6 +2616,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXERldGFpbHNfTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Details_Organic.cshtml]
@@ -2646,6 +2734,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/Edit_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEVkaXRfUHJhY3RpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -2748,6 +2840,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8yXEdldEFsbF9OZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_2/GetAll_Practice.cshtml]
@@ -2862,6 +2958,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9OZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Create_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXENyZWF0ZV9QcmFjdGljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -2964,6 +3064,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXERldGFpbHNfTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Details_Organic.cshtml]
@@ -3078,6 +3182,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/Edit_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEVkaXRfUHJhY3RpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -3180,6 +3288,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF8zXEdldEFsbF9OZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_3/GetAll_Practice.cshtml]
@@ -3294,6 +3406,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9OZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Create_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XENyZWF0ZV9QcmFjdGljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -3396,6 +3512,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XERldGFpbHNfTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Details_Organic.cshtml]
@@ -3510,6 +3630,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/Edit_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEVkaXRfUHJhY3RpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -3612,6 +3736,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF80XEdldEFsbF9OZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_4/GetAll_Practice.cshtml]
@@ -3726,6 +3854,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9OZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Create_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XENyZWF0ZV9QcmFjdGljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -3828,6 +3960,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XERldGFpbHNfTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Details_Organic.cshtml]
@@ -3942,6 +4078,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/Edit_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEVkaXRfUHJhY3RpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -4044,6 +4184,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF81XEdldEFsbF9OZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_5/GetAll_Practice.cshtml]
@@ -4158,6 +4302,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9OZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Create_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XENyZWF0ZV9QcmFjdGljZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -4260,6 +4408,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XERldGFpbHNfTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Details_Organic.cshtml]
@@ -4374,6 +4526,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfTmF0aW9uYWxfbGV2ZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/Edit_Practice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEVkaXRfUHJhY3RpY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -4476,6 +4632,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_National_level.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9OYXRpb25hbF9sZXZlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdF82XEdldEFsbF9OZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/SARLAB RELEASE/Slab/SaRLAB/SaRLAB.WebUser/Views/Subject_6/GetAll_Practice.cshtml]
