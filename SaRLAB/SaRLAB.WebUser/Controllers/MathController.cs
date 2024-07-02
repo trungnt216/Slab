@@ -9376,5 +9376,35 @@ namespace SaRLAB.UserWeb.Controllers
             return View(document);
         }
 
+
+        //----------------------------- An toàn phòng thí nghiệm --------------------------------------
+        [HttpGet]
+        public ActionResult Details_RuleClassroom(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Subject subject = new Subject();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                subject = JsonConvert.DeserializeObject<Subject>(data);
+            }
+
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View(subject);
+        }
     }
 }
