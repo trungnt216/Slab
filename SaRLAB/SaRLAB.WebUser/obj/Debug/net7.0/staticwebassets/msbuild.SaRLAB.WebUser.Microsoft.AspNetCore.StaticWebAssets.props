@@ -96,6 +96,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\css\site.css))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\11cebe5f-18a2-423c-8003-6ed54bd6e91a_b0df7b7063a770a0423c7051bd17b800.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>SaRLAB.WebUser</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SaRLAB.WebUser</BasePath>
+      <RelativePath>FileFolder/Document/11cebe5f-18a2-423c-8003-6ed54bd6e91a_b0df7b7063a770a0423c7051bd17b800.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\11cebe5f-18a2-423c-8003-6ed54bd6e91a_b0df7b7063a770a0423c7051bd17b800.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\1aac7dbf-8a36-4e4d-8d64-839b3119409e_756fde0cedff89c1744813cb0db8228d.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>SaRLAB.WebUser</SourceId>
@@ -272,6 +288,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\9af4de8f-32a6-434e-ae9e-73ea1b7dcf2d_756fde0cedff89c1744813cb0db8228d.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\a7a4e31c-0194-45ad-9a8d-89d1abaf69ab_MARKETING INTERN CV - MAI THỊ THÙY DUNG (1).pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>SaRLAB.WebUser</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SaRLAB.WebUser</BasePath>
+      <RelativePath>FileFolder/Document/a7a4e31c-0194-45ad-9a8d-89d1abaf69ab_MARKETING INTERN CV - MAI THỊ THÙY DUNG (1).pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\a7a4e31c-0194-45ad-9a8d-89d1abaf69ab_MARKETING INTERN CV - MAI THỊ THÙY DUNG (1).pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\ae960bd9-943b-4046-9659-8c7e21ace303_test2.pdf))">
       <SourceType>Package</SourceType>
       <SourceId>SaRLAB.WebUser</SourceId>
@@ -319,6 +351,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\bf2f3bbc-4949-42ce-92a4-2c1d1c9248da_BV Job Description_Fresher Embedded Software Development.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\d04377d8-5ba5-44f0-8a9f-ef03413ef283_756fde0cedff89c1744813cb0db8228d.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>SaRLAB.WebUser</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SaRLAB.WebUser</BasePath>
+      <RelativePath>FileFolder/Document/d04377d8-5ba5-44f0-8a9f-ef03413ef283_756fde0cedff89c1744813cb0db8228d.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\d04377d8-5ba5-44f0-8a9f-ef03413ef283_756fde0cedff89c1744813cb0db8228d.jpg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\d3fdfdc1-5cc4-4815-a82f-26fe81072d23_SCHEMATIC.pdf))">
       <SourceType>Package</SourceType>
@@ -416,6 +464,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Document\fd887cf3-0f0b-438e-bae9-b4d42ab984b7_SCHEMATIC.pdf))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Equipment\9bddb6a1-8259-445a-859e-eb40bf14bea3_9Ch.Twe 2.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>SaRLAB.WebUser</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SaRLAB.WebUser</BasePath>
+      <RelativePath>FileFolder/Equipment/9bddb6a1-8259-445a-859e-eb40bf14bea3_9Ch.Twe 2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Equipment\9bddb6a1-8259-445a-859e-eb40bf14bea3_9Ch.Twe 2.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Equipment\9f7f3521-0f43-4f69-ab07-913b2b44bd12_2095 QD khen thuong cua Hieu truong Truong DHBK cho SV dat thanh tich xuat sac trong cac cuoc thi nam 2024 dot 1.PDF))">
       <SourceType>Package</SourceType>
       <SourceId>SaRLAB.WebUser</SourceId>
@@ -431,6 +495,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Equipment\9f7f3521-0f43-4f69-ab07-913b2b44bd12_2095 QD khen thuong cua Hieu truong Truong DHBK cho SV dat thanh tich xuat sac trong cac cuoc thi nam 2024 dot 1.PDF))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Equipment\b3a6694f-b35d-438d-b1cf-933c9db94482_9Ch.Twe 2.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>SaRLAB.WebUser</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SaRLAB.WebUser</BasePath>
+      <RelativePath>FileFolder/Equipment/b3a6694f-b35d-438d-b1cf-933c9db94482_9Ch.Twe 2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Equipment\b3a6694f-b35d-438d-b1cf-933c9db94482_9Ch.Twe 2.pdf))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\FileFolder\Equipment\c3304730-f7f6-46ca-aec4-590398396372_2095 QD khen thuong cua Hieu truong Truong DHBK cho SV dat thanh tich xuat sac trong cac cuoc thi nam 2024 dot 1.PDF))">
       <SourceType>Package</SourceType>

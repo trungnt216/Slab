@@ -95,6 +95,7 @@
                                 Tên
                                 <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                             </th>
+                            <th></th>
                             <th class="d-none">
                                 @Html.DisplayNameFor(model => model.Path)
                             </th>
@@ -145,6 +146,9 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
+                                <td>
+                                        <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;" alt="Image" />
+                                    </td>
                                 <td class="d-none">
                                     @Html.DisplayFor(modelItem => item.Path)
                                 </td>

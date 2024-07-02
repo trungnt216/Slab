@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XMV8DTnBLvcue2LxamsvEZxjtzkkmf1ssL6zyiXoDvI=",
+  "Hash": "gZm/pGQI+hSGTMowwxElI2YhBLtEFVgW3OD2WU/bC30=",
   "Source": "SaRLAB.WebUser",
   "BasePath": "_content/SaRLAB.WebUser",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\FileFolder\\Document\\11cebe5f-18a2-423c-8003-6ed54bd6e91a_b0df7b7063a770a0423c7051bd17b800.jpg",
+      "SourceId": "SaRLAB.WebUser",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\",
+      "BasePath": "_content/SaRLAB.WebUser",
+      "RelativePath": "FileFolder/Document/11cebe5f-18a2-423c-8003-6ed54bd6e91a_b0df7b7063a770a0423c7051bd17b800.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\FileFolder\\Document\\11cebe5f-18a2-423c-8003-6ed54bd6e91a_b0df7b7063a770a0423c7051bd17b800.jpg"
     },
     {
       "Identity": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\FileFolder\\Document\\1aac7dbf-8a36-4e4d-8d64-839b3119409e_756fde0cedff89c1744813cb0db8228d.jpg",
@@ -340,6 +359,25 @@
       "OriginalItemSpec": "wwwroot\\FileFolder\\Document\\9af4de8f-32a6-434e-ae9e-73ea1b7dcf2d_756fde0cedff89c1744813cb0db8228d.jpg"
     },
     {
+      "Identity": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\FileFolder\\Document\\a7a4e31c-0194-45ad-9a8d-89d1abaf69ab_MARKETING INTERN CV - MAI THỊ THÙY DUNG (1).pdf",
+      "SourceId": "SaRLAB.WebUser",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\",
+      "BasePath": "_content/SaRLAB.WebUser",
+      "RelativePath": "FileFolder/Document/a7a4e31c-0194-45ad-9a8d-89d1abaf69ab_MARKETING INTERN CV - MAI THỊ THÙY DUNG (1).pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\FileFolder\\Document\\a7a4e31c-0194-45ad-9a8d-89d1abaf69ab_MARKETING INTERN CV - MAI THỊ THÙY DUNG (1).pdf"
+    },
+    {
       "Identity": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\FileFolder\\Document\\ae960bd9-943b-4046-9659-8c7e21ace303_test2.pdf",
       "SourceId": "SaRLAB.WebUser",
       "SourceType": "Discovered",
@@ -395,6 +433,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\FileFolder\\Document\\bf2f3bbc-4949-42ce-92a4-2c1d1c9248da_BV Job Description_Fresher Embedded Software Development.pdf"
+    },
+    {
+      "Identity": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\FileFolder\\Document\\d04377d8-5ba5-44f0-8a9f-ef03413ef283_756fde0cedff89c1744813cb0db8228d.jpg",
+      "SourceId": "SaRLAB.WebUser",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\",
+      "BasePath": "_content/SaRLAB.WebUser",
+      "RelativePath": "FileFolder/Document/d04377d8-5ba5-44f0-8a9f-ef03413ef283_756fde0cedff89c1744813cb0db8228d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\FileFolder\\Document\\d04377d8-5ba5-44f0-8a9f-ef03413ef283_756fde0cedff89c1744813cb0db8228d.jpg"
     },
     {
       "Identity": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\FileFolder\\Document\\d3fdfdc1-5cc4-4815-a82f-26fe81072d23_SCHEMATIC.pdf",
@@ -511,6 +568,25 @@
       "OriginalItemSpec": "wwwroot\\FileFolder\\Document\\fd887cf3-0f0b-438e-bae9-b4d42ab984b7_SCHEMATIC.pdf"
     },
     {
+      "Identity": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\FileFolder\\Equipment\\9bddb6a1-8259-445a-859e-eb40bf14bea3_9Ch.Twe 2.pdf",
+      "SourceId": "SaRLAB.WebUser",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\",
+      "BasePath": "_content/SaRLAB.WebUser",
+      "RelativePath": "FileFolder/Equipment/9bddb6a1-8259-445a-859e-eb40bf14bea3_9Ch.Twe 2.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\FileFolder\\Equipment\\9bddb6a1-8259-445a-859e-eb40bf14bea3_9Ch.Twe 2.pdf"
+    },
+    {
       "Identity": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\FileFolder\\Equipment\\9f7f3521-0f43-4f69-ab07-913b2b44bd12_2095 QD khen thuong cua Hieu truong Truong DHBK cho SV dat thanh tich xuat sac trong cac cuoc thi nam 2024 dot 1.PDF",
       "SourceId": "SaRLAB.WebUser",
       "SourceType": "Discovered",
@@ -528,6 +604,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\FileFolder\\Equipment\\9f7f3521-0f43-4f69-ab07-913b2b44bd12_2095 QD khen thuong cua Hieu truong Truong DHBK cho SV dat thanh tich xuat sac trong cac cuoc thi nam 2024 dot 1.PDF"
+    },
+    {
+      "Identity": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\FileFolder\\Equipment\\b3a6694f-b35d-438d-b1cf-933c9db94482_9Ch.Twe 2.pdf",
+      "SourceId": "SaRLAB.WebUser",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\",
+      "BasePath": "_content/SaRLAB.WebUser",
+      "RelativePath": "FileFolder/Equipment/b3a6694f-b35d-438d-b1cf-933c9db94482_9Ch.Twe 2.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\FileFolder\\Equipment\\b3a6694f-b35d-438d-b1cf-933c9db94482_9Ch.Twe 2.pdf"
     },
     {
       "Identity": "H:\\SARLAB RELEASE\\Slab\\SaRLAB\\SaRLAB.WebUser\\wwwroot\\FileFolder\\Equipment\\c3304730-f7f6-46ca-aec4-590398396372_2095 QD khen thuong cua Hieu truong Truong DHBK cho SV dat thanh tich xuat sac trong cac cuoc thi nam 2024 dot 1.PDF",
