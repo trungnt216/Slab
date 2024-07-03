@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SaRLAB.Models.Entity.Equipment>
 
 @{
-    ViewData["Title"] = "GetAll_EquipmentChemistry";
-    Layout = "~/Views/Subject_6/_Layout.cshtml";
-    ViewBag.TitleCustom = "Danh sách dự trù thiết bị";
+    ViewData["Title"] = "GetAll_ChemistryStorage";
+
+    Layout = "~/Views/Subject_1/_Layout.cshtml";
+    ViewBag.TitleCustom = "Danh sách hóa chất hiện có";
     int counter = 1;
     int expiredItemCount = 0;
 }
-
 <style>
     .modal {
         display: none;
@@ -74,8 +74,8 @@
             <div class="col-12 table-container">
                 <partial name="_TitleCustom">
                 <div class="table-action d-flex justify-content-between">
-                    <partial name="_SearchBox" />
-                    <a class="btn-custom-create" type="button" asp-action="Create_EquipmentChemistry">
+                    <partial name="_SearchBox"/>
+                        <a class="btn-custom-create" type="button" asp-action="Create_ChemistryStorage">
                         <i class="fa-solid fa-plus"></i>
                         Thêm mới
                     </a>
@@ -106,7 +106,7 @@
                                 @Html.DisplayNameFor(model => model.UpdateBy)
                             </th>
                             <th class="d-none">
-                                Thời gian cập nhật
+                                 Thời gian cập nhật
                                 <i class="fa fa-sort" onclick="sortTable('table', 6, true)"></i>
                             </th>
                                     <th>
@@ -173,7 +173,7 @@
                                 {
                                     expiredItemCount++;
                                 }
-                                
+
                                 <tr style="@style">
                                     <td>
                                         @counter
@@ -230,39 +230,41 @@
                                     <td class="d-none">
                                         @Html.DisplayFor(modelItem => item.SchoolId)
                                     </td>
-                                    <td class="d-none">
+                                            <td class="d-none">
                                         @Html.DisplayFor(modelItem => item.EquipmentQuantity)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.From)
                                     </td>
                                     <td>
-                                       <p style="
-                                            padding: 0px 10px;
-                                            white-space: nowrap;
-                                            margin: 0;
-                                            background: @backgroundColor;
-                                            text-align: center;
-                                            border-radius: 15px;
-                                            color: white;
-                                            font-size: 14px;
-                                            line-height: 25px;">
-                                                @props
+                                        <p style="
+                                        padding: 0px 10px;
+                                        white-space: nowrap;
+                                        margin: 0;
+                                        background: @backgroundColor;
+                                        text-align: center;
+                                        border-radius: 15px;
+                                        color: white;
+                                        font-size: 14px;
+                                        line-height: 25px;">
+                                            @props
                                         </p>
                                     </td>
                                     <td>
-                                        <a class="btn-custom-view-detail" asp-action="Details_EquipmentChemistry" asp-route-id="@item.ID">
+                                        <a class="btn-custom-view-detail" asp-action="Details_ChemistryStorage" asp-route-id="@item.ID">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
-                                        <a class="btn-custom-edit" asp-action="Edit_EquipmentChemistry" asp-route-id="@item.ID">
+                                        <a class="btn-custom-edit" asp-action="Edit_ChemistryStorage" asp-route-id="@item.ID">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                                <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_EquipmentChemistry", "Subject_6", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                                <a class="btn-custom-delete" href="#"
+                                                   data-url="@Url.Action("Delete_ChemistryStorage", "Subject_1", new { id = item.ID })"
+                                                    onclick="openDeleteModal(this)">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
-                                counter++;
+                            counter++;
                             }
                         }
                     </tbody>
@@ -317,6 +319,6 @@
     </script>
 
     <script type="text/javascript">
-        localStorage.setItem('expiredEquipments', @expiredItemCount);
+        localStorage.setItem('expiredItems', @expiredItemCount);
     </script>
 }

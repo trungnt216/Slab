@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<SaRLAB.Models.Entity.Equipment>
 
 @{
-    ViewData["Title"] = "GetAll_EquipmentChemistry";
-    Layout = "~/Views/Subject_6/_Layout.cshtml";
-    ViewBag.TitleCustom = "Danh sách dự trù thiết bị";
+    ViewData["Title"] = "GetAll_EquipmentChemistryStorage";
+    Layout = "~/Views/Subject_2/_Layout.cshtml";
+    ViewBag.TitleCustom = "Danh sách thiết bị hiện có";
     int counter = 1;
     int expiredItemCount = 0;
 }
@@ -75,7 +75,7 @@
                 <partial name="_TitleCustom">
                 <div class="table-action d-flex justify-content-between">
                     <partial name="_SearchBox" />
-                    <a class="btn-custom-create" type="button" asp-action="Create_EquipmentChemistry">
+                        <a class="btn-custom-create" type="button" asp-action="Create_EquipmentChemistryStorage">
                         <i class="fa-solid fa-plus"></i>
                         Thêm mới
                     </a>
@@ -184,10 +184,10 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Name)
                                     </td>
-                                    <td>
-                                            <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
-                                                alt="Image" />
-                                        </td>
+                                            <td>
+                                                <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
+                                                    alt="Image" />
+                                            </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Unit1Amount)
                                             </td>
@@ -237,7 +237,7 @@
                                         @Html.DisplayFor(modelItem => item.From)
                                     </td>
                                     <td>
-                                       <p style="
+                                        <p style="
                                             padding: 0px 10px;
                                             white-space: nowrap;
                                             margin: 0;
@@ -247,17 +247,17 @@
                                             color: white;
                                             font-size: 14px;
                                             line-height: 25px;">
-                                                @props
+                                            @props
                                         </p>
                                     </td>
                                     <td>
-                                        <a class="btn-custom-view-detail" asp-action="Details_EquipmentChemistry" asp-route-id="@item.ID">
+                                        <a class="btn-custom-view-detail" asp-action="Details_EquipmentChemistryStorage" asp-route-id="@item.ID">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
-                                        <a class="btn-custom-edit" asp-action="Edit_EquipmentChemistry" asp-route-id="@item.ID">
+                                        <a class="btn-custom-edit" asp-action="Edit_EquipmentChemistryStorage" asp-route-id="@item.ID">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                                <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_EquipmentChemistry", "Subject_6", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                                <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_EquipmentChemistryStorage", "Subject_2", new { id = item.ID })" onclick="openDeleteModal(this)">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </td>
@@ -315,6 +315,7 @@
             }
         }
     </script>
+
 
     <script type="text/javascript">
         localStorage.setItem('expiredEquipments', @expiredItemCount);

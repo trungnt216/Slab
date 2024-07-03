@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "GetAll_EquipmentChemistry";
-    Layout = "~/Views/Subject_6/_Layout.cshtml";
+    Layout = "~/Views/Subject_1/_Layout.cshtml";
     ViewBag.TitleCustom = "Danh sách dự trù thiết bị";
     int counter = 1;
     int expiredItemCount = 0;
@@ -257,7 +257,7 @@
                                         <a class="btn-custom-edit" asp-action="Edit_EquipmentChemistry" asp-route-id="@item.ID">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                                <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_EquipmentChemistry", "Subject_6", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                                <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_EquipmentChemistry", "Subject_1", new { id = item.ID })" onclick="openDeleteModal(this)">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </td>

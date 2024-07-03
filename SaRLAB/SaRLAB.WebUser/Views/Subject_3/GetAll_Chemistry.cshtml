@@ -1,13 +1,12 @@
 ﻿@model IEnumerable<SaRLAB.Models.Entity.Equipment>
 
 @{
-    ViewData["Title"] = "GetAll_EquipmentChemistry";
-    Layout = "~/Views/Subject_6/_Layout.cshtml";
-    ViewBag.TitleCustom = "Danh sách dự trù thiết bị";
+    ViewData["Title"] = "GetAll_Chemistry";
+    Layout = "~/Views/Subject_3/_Layout.cshtml";
+    ViewBag.TitleCustom = "Danh sách dự trù hóa chất";
     int counter = 1;
     int expiredItemCount = 0;
 }
-
 <style>
     .modal {
         display: none;
@@ -74,8 +73,8 @@
             <div class="col-12 table-container">
                 <partial name="_TitleCustom">
                 <div class="table-action d-flex justify-content-between">
-                    <partial name="_SearchBox" />
-                    <a class="btn-custom-create" type="button" asp-action="Create_EquipmentChemistry">
+                    <partial name="_SearchBox"/>
+                    <a class="btn-custom-create" type="button" asp-action="Create_Chemistry">
                         <i class="fa-solid fa-plus"></i>
                         Thêm mới
                     </a>
@@ -106,7 +105,7 @@
                                 @Html.DisplayNameFor(model => model.UpdateBy)
                             </th>
                             <th class="d-none">
-                                Thời gian cập nhật
+                                 Thời gian cập nhật
                                 <i class="fa fa-sort" onclick="sortTable('table', 6, true)"></i>
                             </th>
                                     <th>
@@ -173,7 +172,7 @@
                                 {
                                     expiredItemCount++;
                                 }
-                                
+
                                 <tr style="@style">
                                     <td>
                                         @counter
@@ -237,7 +236,7 @@
                                         @Html.DisplayFor(modelItem => item.From)
                                     </td>
                                     <td>
-                                       <p style="
+                                        <p style="
                                             padding: 0px 10px;
                                             white-space: nowrap;
                                             margin: 0;
@@ -247,22 +246,22 @@
                                             color: white;
                                             font-size: 14px;
                                             line-height: 25px;">
-                                                @props
+                                            @props
                                         </p>
                                     </td>
                                     <td>
-                                        <a class="btn-custom-view-detail" asp-action="Details_EquipmentChemistry" asp-route-id="@item.ID">
+                                        <a class="btn-custom-view-detail" asp-action="Details_Chemistry" asp-route-id="@item.ID">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
-                                        <a class="btn-custom-edit" asp-action="Edit_EquipmentChemistry" asp-route-id="@item.ID">
+                                        <a class="btn-custom-edit" asp-action="Edit_Chemistry" asp-route-id="@item.ID">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                                <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_EquipmentChemistry", "Subject_6", new { id = item.ID })" onclick="openDeleteModal(this)">
+                                                <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_Chemistry", "Subject_3", new { id = item.ID })" onclick="openDeleteModal(this)">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
-                                counter++;
+                            counter++;
                             }
                         }
                     </tbody>
@@ -317,6 +316,6 @@
     </script>
 
     <script type="text/javascript">
-        localStorage.setItem('expiredEquipments', @expiredItemCount);
+        localStorage.setItem('expiredItems', @expiredItemCount);
     </script>
 }
