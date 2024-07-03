@@ -69,17 +69,22 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
             var existingEquipment = _context.Equipments.Find(id);
             if (existingEquipment == null)
                 return 0;
-            existingEquipment.Name = equipment.Name;
-            existingEquipment.Property = equipment.Property;
-            existingEquipment.From = equipment.From;
-            existingEquipment.ImagePath = equipment.ImagePath;
-            existingEquipment.UpdateBy = equipment.UpdateBy;
-            existingEquipment.UpdateTime = equipment.UpdateTime;
-            existingEquipment.Remark = equipment.Remark;
-            existingEquipment.EquipmentQuantity = equipment.EquipmentQuantity;
-            existingEquipment.Type = equipment.Type;
-            existingEquipment.ExpiredTime = equipment.ExpiredTime;
-            
+            existingEquipment.Name = equipment.Name ?? existingEquipment.Name;
+            existingEquipment.Property = equipment.Property ?? existingEquipment.Property;
+            existingEquipment.From = equipment.From ?? existingEquipment.From;
+            existingEquipment.ImagePath = equipment.ImagePath ?? existingEquipment.ImagePath;
+            existingEquipment.UpdateBy = equipment.UpdateBy ?? existingEquipment.UpdateBy;
+            existingEquipment.UpdateTime = equipment.UpdateTime ?? existingEquipment.UpdateTime;
+            existingEquipment.Remark = equipment.Remark ?? existingEquipment.Remark;
+            existingEquipment.EquipmentQuantity = equipment.EquipmentQuantity ?? existingEquipment.EquipmentQuantity;
+            existingEquipment.Type = equipment.Type ?? existingEquipment.Type;
+            existingEquipment.ExpiredTime = equipment.ExpiredTime ?? existingEquipment.ExpiredTime;
+            existingEquipment.Unit1 = equipment.Unit1 ?? existingEquipment.Unit1;
+            existingEquipment.Unit1Amount = equipment.Unit1Amount ?? existingEquipment.Unit1Amount;
+            existingEquipment.Unit2 = equipment.Unit2 ?? existingEquipment.Unit2;
+            existingEquipment.Unit2Amount = equipment.Unit2Amount ?? existingEquipment.Unit2Amount;
+
+
             return _context.SaveChanges();
         }
     }
