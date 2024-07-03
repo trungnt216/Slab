@@ -423,6 +423,19 @@ a[data-toggle="collapse"] {
     }
 }
 
+.form-update-container .title {
+    color: #9f7d17;
+    margin-bottom: 20px;
+}
+
+.form-update-container .title label {
+    margin-bottom: 0px;
+}
+
+.form-update-container .title i {
+    margin-right: 10px;
+}
+
 
 /* table-container */
 .table-container {
