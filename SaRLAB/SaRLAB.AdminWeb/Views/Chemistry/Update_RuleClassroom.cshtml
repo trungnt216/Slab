@@ -6,12 +6,6 @@
     Layout = "~/Views/Home/_LayoutHome.cshtml";
 }
 
-<style>
-    .hidden {
-        display: none;
-    }
-</style>
-
 <div id="sub-content">
     <div class="d-flex justify-content-between">
         <partial name="TitleCustom">
@@ -20,10 +14,10 @@
             Trở về
         </a>
     </div>
-    <div class="form-container">
+    <div class="form-container form-update-container">
         <form asp-action="Update_RuleClassroom" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="col-12 col-md-8">
+            <div class="col-12">
                 <div class="form-group">
                     <div class="title d-flex">
                         <i class="fa-solid fa-file"></i>
@@ -39,7 +33,7 @@
                         <span id="errorFile" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin: 20px 0px">
                     <input type="submit" value="Thêm mới" class="btn btn-primary" />
                 </div>
             </div>
