@@ -120,7 +120,7 @@
                                         </span>
                                     </p>
                                     <ul id="configurationchem" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationchem") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "ruleClassroomChem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Chemistry"
                                                asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
                                         </li>
@@ -145,17 +145,17 @@
                                         </span>
                                     </p>
                                     <ul id="virtuallab" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vitheorychem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Chemistry" asp-action="GetAll_ViTheory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vipraticechem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Chemistry" asp-action="GetAll_ViPractice">
                                                 Thực hành
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentvirtuallab_toan") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentchem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Chemistry" asp-action="GetAll_Experiment">
                                                 Thực nghiệm
                                             </a>
@@ -170,12 +170,12 @@
                                         </span>
                                     </p>
                                     <ul id="giaotrinh" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gttheorychem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Chemistry" asp-action="GetAll_Theory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gtpracticechem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Chemistry" asp-action="GetAll_Practice">
                                                 Thực hành
                                             </a>
@@ -262,23 +262,22 @@
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('virtuallab_sinh')">
                                         <span class="left d-flex sub-menu-title" style="align-items: center;">
                                             <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                                            <a class="@((ViewBag.ActiveSubMenu == "virtuallab_sinh") ? "active" : "")">Virtual
-                                                Lab</a>
+                                            <a>Virtual Lab</a>
                                         </span>
                                     </p>
                                     <ul id="virtuallab_sinh"
-                                        class="nested @((ViewBag.ActiveSubMenu == "virtuallab_sinh") ? "active" : "")">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        class="nested @((ViewBag.ActiveSubMenu == "virtuallabbio") ? "active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vitheorybio") ? "submenu-item-active" : "")">
                                             <a asp-controller="Biology" asp-action="GetAll_ViTheory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vipracticebio") ? "submenu-item-active" : "")">
                                             <a asp-controller="Biology" asp-action="GetAll_ViPractice">
                                                 Thực hành
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentvirtuallab_toan") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentbio") ? "submenu-item-active" : "")">
                                             <a asp-controller="Biology" asp-action="GetAll_Experiment">
                                                 Thực nghiệm
                                             </a>
@@ -293,12 +292,12 @@
                                         </span>
                                     </p>
                                     <ul id="giaotrinh_sinh" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gttheorybio") ? "submenu-item-active" : "")">
                                             <a asp-controller="Biology" asp-action="GetAll_Theory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gtpracticebio") ? "submenu-item-active" : "")">
                                             <a asp-controller="Biology" asp-action="GetAll_Practice">
                                                 Thực hành
                                             </a>
@@ -393,18 +392,18 @@
                                         </span>
                                     </p>
                                     <ul id="virtuallab_vatly"
-                                        class="nested @((ViewBag.ActiveSubMenu == "virtuallab_vatly") ? "active" : "")">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        class="nested @((ViewBag.ActiveSubMenu == "virtuallabphys") ? "active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vitheoryphys") ? "submenu-item-active" : "")">
                                             <a asp-controller="Physics" asp-action="GetAll_ViTheory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vipracticephys") ? "submenu-item-active" : "")">
                                             <a asp-controller="Physics" asp-action="GetAll_ViPractice">
                                                 Thực hành
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentvirtuallab_toan") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentphys") ? "submenu-item-active" : "")">
                                             <a asp-controller="Physics" asp-action="GetAll_Experiment">
                                                 Thực nghiệm
                                             </a>
@@ -420,12 +419,12 @@
                                         </span>
                                     </p>
                                     <ul id="giaotrinh_vatly" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gttheoryphys") ? "submenu-item-active" : "")">
                                             <a asp-controller="Physics" asp-action="GetAll_Theory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gtpracticephys") ? "submenu-item-active" : "")">
                                             <a asp-controller="Physics" asp-action="GetAll_Practice">
                                                 Thực hành
                                             </a>
@@ -539,18 +538,18 @@
                                         </span>
                                     </p>
                                     <ul id="virtuallab_toan"
-                                        class="nested @((ViewBag.ActiveSubMenu == "virtuallab_toan") ? "active" : "")">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        class="nested @((ViewBag.ActiveSubMenu == "virtuallabbiochem") ? "active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vitheorybiochem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Math" asp-action="GetAll_ViTheory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vipracticebiochem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Math" asp-action="GetAll_ViPractice">
                                                 Thực hành
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentvirtuallab_toan") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentbiochem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Math" asp-action="GetAll_Experiment">
                                                 Thực nghiệm
                                             </a>
@@ -566,12 +565,12 @@
                                         </span>
                                     </p>
                                     <ul id="giaotrinh_toan" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gttheorybiochem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Math" asp-action="GetAll_Theory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gtpracticebiochem") ? "submenu-item-active" : "")">
                                             <a asp-controller="Math" asp-action="GetAll_Practice">
                                                 Thực hành
                                             </a>
@@ -690,18 +689,18 @@
                                         </span>
                                     </p>
                                     <ul id="virtuallabsubject1"
-                                        class="nested @((ViewBag.ActiveSubMenu == "virtual1") ? "active" : "")">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        class="nested @((ViewBag.ActiveSubMenu == "virtuallabsubject1") ? "active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vitheorysubject1") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_1" asp-action="GetAll_ViTheory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vipracticesubject1") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_1" asp-action="GetAll_ViPractice">
                                                 Thực hành
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentvirtuallab_toan") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentsubject1") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_1" asp-action="GetAll_Experiment">
                                                 Thực nghiệm
                                             </a>
@@ -717,12 +716,12 @@
                                         </span>
                                     </p>
                                     <ul id="giaotrinhsubject1" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gttheorysubject1") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_1" asp-action="GetAll_Theory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gtpracticesubject1") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_1" asp-action="GetAll_Practice">
                                                 Thực hành
                                             </a>
@@ -852,17 +851,17 @@
                                     </p>
                                     <ul id="virtuallabsubject2"
                                         class="nested @((ViewBag.ActiveSubMenu == "virtuallabsubject2") ? "active" : "")">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vitheorysubject2") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_2" asp-action="GetAll_ViTheory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vipracticesubject2") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_2" asp-action="GetAll_ViPractice">
                                                 Thực hành
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentvirtuallab_toan") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentsubject2") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_2" asp-action="GetAll_Experiment">
                                                 Thực nghiệm
                                             </a>
@@ -878,12 +877,12 @@
                                         </span>
                                     </p>
                                     <ul id="giaotrinhsubject2" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gttheorysubject2") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_2" asp-action="GetAll_Theory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gtpracticesubject2") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_2" asp-action="GetAll_Practice">
                                                 Thực hành
                                             </a>
@@ -1013,17 +1012,17 @@
                                     </p>
                                     <ul id="virtuallabsubject3"
                                         class="nested @((ViewBag.ActiveSubMenu == "virtuallabsubject3") ? "active" : "")">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vitheorysubject3") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_3" asp-action="GetAll_ViTheory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vipracticesubject3") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_3" asp-action="GetAll_ViPractice">
                                                 Thực hành
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentvirtuallab_toan") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentsubject3") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_3" asp-action="GetAll_Experiment">
                                                 Thực nghiệm
                                             </a>
@@ -1039,12 +1038,12 @@
                                         </span>
                                     </p>
                                     <ul id="giaotrinhsubject3" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gttheorysubject3") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_3" asp-action="GetAll_Theory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gtpracticesubject3") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_3" asp-action="GetAll_Practice">
                                                 Thực hành
                                             </a>
@@ -1174,17 +1173,17 @@
                                     </p>
                                     <ul id="virtuallabsubject4"
                                         class="nested @((ViewBag.ActiveSubMenu == "virtuallabsubject4") ? "active" : "")">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vitheorysubject4") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_4" asp-action="GetAll_ViTheory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vipracticesubject4") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_4" asp-action="GetAll_ViPractice">
                                                 Thực hành
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentvirtuallab_toan") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentsubject4") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_4" asp-action="GetAll_Experiment">
                                                 Thực nghiệm
                                             </a>
@@ -1200,12 +1199,12 @@
                                         </span>
                                     </p>
                                     <ul id="giaotrinhsubject4" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gttheorysubject4") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_4" asp-action="GetAll_Theory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gtpracticesubject4") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_4" asp-action="GetAll_Practice">
                                                 Thực hành
                                             </a>
@@ -1335,17 +1334,17 @@
                                     </p>
                                     <ul id="virtuallabsubject5"
                                         class="nested @((ViewBag.ActiveSubMenu == "virtuallabsubject5") ? "active" : "")">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vitheorysubject5") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_5" asp-action="GetAll_ViTheory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vipracticesubject5") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_5" asp-action="GetAll_ViPractice">
                                                 Thực hành
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentvirtuallab_toan") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentsubject5") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_5" asp-action="GetAll_Experiment">
                                                 Thực nghiệm
                                             </a>
@@ -1361,12 +1360,12 @@
                                         </span>
                                     </p>
                                     <ul id="giaotrinhsubject5" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gttheorysubject5") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_5" asp-action="GetAll_Theory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gtpracticesubject5") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_5" asp-action="GetAll_Practice">
                                                 Thực hành
                                             </a>
@@ -1496,17 +1495,17 @@
                                     </p>
                                     <ul id="virtuallabsubject6"
                                         class="nested @((ViewBag.ActiveSubMenu == "virtuallabsubject6") ? "active" : "")">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vitheorysubject6") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_6" asp-action="GetAll_ViTheory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "vipracticesubject6") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_6" asp-action="GetAll_ViPractice">
                                                 Thực hành
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentvirtuallab_toan") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "experimentsubject6") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_6" asp-action="GetAll_Experiment">
                                                 Thực nghiệm
                                             </a>
@@ -1522,12 +1521,12 @@
                                         </span>
                                     </p>
                                     <ul id="giaotrinhsubject6" class="nested">
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gttheorysubject6") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_6" asp-action="GetAll_Theory">
                                                 Lý thuyết
                                             </a>
                                         </li>
-                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "theory1") ? "submenu-item-active" : "")">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "gtpracticesubject6") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_6" asp-action="GetAll_Practice">
                                                 Thực hành
                                             </a>
