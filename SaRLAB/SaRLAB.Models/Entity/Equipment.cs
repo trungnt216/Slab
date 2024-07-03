@@ -37,5 +37,6 @@ namespace SaRLAB.Models.Entity
         public string? Property { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập xuất xử!")]
         public string? From { get; set; }
+        public string? CoverImage { get; set; }
     }
 }

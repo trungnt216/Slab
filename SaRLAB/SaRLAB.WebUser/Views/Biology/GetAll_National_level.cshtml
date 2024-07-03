@@ -81,7 +81,7 @@
                     </a>
                 </div>
                 <div id="popupNotification" class="alert alert-danger">
-                    @TempData["notice"]
+                        @TempData["notice"]
                 </div>
                 <div class="table-responsive">
                     <table id="table" class="table">
@@ -89,117 +89,121 @@
                         <tr>
                             <th>#</th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.ID)
+                                        @Html.DisplayNameFor(model => model.ID)
                             </th>
                             <th>
                                 Tên
                                 <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                             </th>
+                            <th></th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.Path)
+                                        @Html.DisplayNameFor(model => model.Path)
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.SpecializedEnglishFlag)
+                                        @Html.DisplayNameFor(model => model.SpecializedEnglishFlag)
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.PageFlag)
+                                        @Html.DisplayNameFor(model => model.PageFlag)
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.Type)
+                                        @Html.DisplayNameFor(model => model.Type)
                             </th>
                             <th class="d-none">
                                 Nhận xét
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.SchoolId)
+                                        @Html.DisplayNameFor(model => model.SchoolId)
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.CreateBy)
+                                        @Html.DisplayNameFor(model => model.CreateBy)
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.CreateTime)
+                                        @Html.DisplayNameFor(model => model.CreateTime)
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.UpdateBy)
+                                        @Html.DisplayNameFor(model => model.UpdateBy)
                             </th>
                             <th>
                                 Thời gian cập nhật
                                 <i class="fa fa-sort" onclick="sortTable('table', 12, true)"></i>
                             </th>
                             <th class="d-none">
-                                @Html.DisplayNameFor(model => model.SubjectId)
+                                        @Html.DisplayNameFor(model => model.SubjectId)
                             </th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @counter
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.ID)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.Path)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.PageFlag)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.Type)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.Remark)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.SchoolId)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.CreateBy)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.CreateTime)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.UpdateBy)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UpdateTime)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.SubjectId)
-                                </td>
-                                <td>
-                                    <a class="btn-custom-view-detail" asp-action="Details_National_level" asp-route-id="@item.ID">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
-                                    <a class="btn-custom-edit" asp-action="Edit_National_level" asp-route-id="@item.ID">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                        <a class="btn-custom-delete" href="#"
-                                            data-url="@Url.Action("Delete_National_level", "Biology", new { id = item.ID })"
-                                            onclick="openDeleteModal(this)">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            counter++;
-                        }
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                            @counter
+                                    </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.ID)
+                                    </td>
+                                    <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                        <td>
+                                                <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;" alt="Image" />
+                                            </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.Path)
+                                    </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
+                                    </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.PageFlag)
+                                    </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.Type)
+                                    </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.Remark)
+                                    </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.SchoolId)
+                                    </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.CreateBy)
+                                    </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.CreateTime)
+                                    </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.UpdateBy)
+                                    </td>
+                                    <td>
+                                            @Html.DisplayFor(modelItem => item.UpdateTime)
+                                    </td>
+                                    <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.SubjectId)
+                                    </td>
+                                    <td>
+                                        <a class="btn-custom-view-detail" asp-action="Details_National_level" asp-route-id="@item.ID">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <a class="btn-custom-edit" asp-action="Edit_National_level" asp-route-id="@item.ID">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                            <a class="btn-custom-delete" href="#"
+                                                data-url="@Url.Action("Delete_National_level", "Biology", new { id = item.ID })"
+                                                onclick="openDeleteModal(this)">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                    counter++;
+                                }
                     </tbody>
                 </table>
-                @if (Model == null || !Model.Any())
-                {
-                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500; clear: right">Không có dữ liệu!</p>
-                }
+                        @if (Model == null || !Model.Any())
+                        {
+                        <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500; clear: right">Không có dữ liệu!</p>
+                        }
                 </div>
             </div>
         </div>
@@ -219,29 +223,29 @@
 </div>
 
 @section Scripts {
-    <script src="~/js/table.js"></script>
-    <script type="text/javascript">
-        var deleteUrl = '';
+        <script src="~/js/table.js"></script>
+        <script type="text/javascript">
+            var deleteUrl = '';
 
-        function openDeleteModal(element) {
-            deleteUrl = element.getAttribute("data-url");
-            document.getElementById('deleteModal').style.display = 'block';
-        }
-
-        function closeDeleteModal() {
-            document.getElementById('deleteModal').style.display = 'none';
-        }
-
-        document.getElementById('confirmDeleteButton').onclick = function () {
-            window.location.href = deleteUrl;
-        };
-
-        // Close the modal if the user clicks outside of it
-        window.onclick = function (event) {
-            var modal = document.getElementById('deleteModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
+            function openDeleteModal(element) {
+                deleteUrl = element.getAttribute("data-url");
+                document.getElementById('deleteModal').style.display = 'block';
             }
-        }
-    </script>
+
+            function closeDeleteModal() {
+                document.getElementById('deleteModal').style.display = 'none';
+            }
+
+            document.getElementById('confirmDeleteButton').onclick = function () {
+                window.location.href = deleteUrl;
+            };
+
+            // Close the modal if the user clicks outside of it
+            window.onclick = function (event) {
+                var modal = document.getElementById('deleteModal');
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        </script>
 }
