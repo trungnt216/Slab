@@ -3666,6 +3666,120 @@ namespace SaRLAB.AdminWeb.Controllers
             ViewBag.ActiveSubMenuLv2 = "theory1";
             return View(document);
         }
+        //----------------------------- An toàn phòng thí nghiệm --------------------------------------
+        [HttpGet]
+        public ActionResult Details_RuleClassroom()
+        {
 
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+
+            Subject subject = new Subject();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                subject = JsonConvert.DeserializeObject<Subject>(data);
+            }
+
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View(subject);
+        }
+
+        [HttpGet]
+        public ActionResult Update_RuleClassroom()
+        {
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Update_RuleClassroom(IFormFile File)
+        {
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+
+            Subject subject = new Subject();
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                subject.Rule = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                subject.ID = Subject_id;
+
+                string data = JsonConvert.SerializeObject(subject);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Subject/update", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    return RedirectToAction("Details_RuleClassroom");
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View();
+        }
     }
 }

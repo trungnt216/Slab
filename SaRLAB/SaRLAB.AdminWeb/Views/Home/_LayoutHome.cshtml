@@ -232,6 +232,21 @@
                                 </span>
                             </p>
                             <ul id="bio" class="nested">
+                                <li class="@((ViewBag.ActiveSubMenu == "configurationbio") ? "menu-item-active" : "")">
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                       onclick="toggleMenu('configurationbio')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Cấu hình phòng thí nghiệm</a>
+                                        </span>
+                                    </p>
+                                    <ul id="configurationbio" class="nested">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationbio") ? "submenu-item-active" : "")">
+                                            <a asp-controller="Biology"
+                                               asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="@((ViewBag.ActiveSubMenu == "cauhoiantoanbio") ? "menu-item-active" : "")">
                                     <p class="d-flex justify-content-between cursor-pointer" onclick="toggleMenu('cauhoiantoan_sinh')">
                                         <span class="left d-flex" style="align-items: center;">
@@ -340,6 +355,21 @@
                                 </span>
                             </p>
                             <ul id="physic" class="nested">
+                                <li class="@((ViewBag.ActiveSubMenu == "configurationphys") ? "menu-item-active" : "")">
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                       onclick="toggleMenu('configurationphys')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Cấu hình phòng thí nghiệm</a>
+                                        </span>
+                                    </p>
+                                    <ul id="configurationphys" class="nested">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationphys") ? "submenu-item-active" : "")">
+                                            <a asp-controller="Physics"
+                                               asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="@((ViewBag.ActiveSubMenu == "cauhoiantoanphys") ? "menu-item-active" : "")">
                                     <p class="d-flex justify-content-between cursor-pointer"
                                         onclick="toggleMenu('cauhoiantoan_vatly')">
@@ -471,6 +501,21 @@
                                 </span>
                             </p>
                             <ul id="math" class="nested">
+                                <li class="@((ViewBag.ActiveSubMenu == "configurationbiochem") ? "menu-item-active" : "")">
+                                    <p class="d-flex justify-content-between cursor-pointer"
+                                       onclick="toggleMenu('configurationbiochem')">
+                                        <span class="left d-flex" style="align-items: center;">
+                                            <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                                            <a>Cấu hình phòng thí nghiệm</a>
+                                        </span>
+                                    </p>
+                                    <ul id="configurationbiochem" class="nested">
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationbiochem") ? "submenu-item-active" : "")">
+                                            <a asp-controller="Math"
+                                               asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="@((ViewBag.ActiveSubMenu == "cauhoiantoanbiochem") ? "menu-item-active" : "")">
                                     <p class="d-flex justify-content-between cursor-pointer"
                                         onclick="toggleMenu('cauhoiantoan_toan')">
@@ -614,6 +659,10 @@
                                         <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationsubject1") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_1"
                                                asp-action="Configuration_Subject">Cấu hình</a>
+                                        </li>
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationsubject1") ? "submenu-item-active" : "")">
+                                            <a asp-controller="Subject_1"
+                                                   asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -772,6 +821,10 @@
                                             <a asp-controller="Subject_2"
                                                asp-action="Configuration_Subject">Cấu hình</a>
                                         </li>
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationsubject2") ? "submenu-item-active" : "")">
+                                            <a asp-controller="Subject_2"
+                                               asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="@((ViewBag.ActiveSubMenu == "cauhoiantoansubject2") ? "menu-item-active" : "")">
@@ -928,6 +981,10 @@
                                         <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationsubject3") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_3"
                                                asp-action="Configuration_Subject">Cấu hình</a>
+                                        </li>
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationsubject3") ? "submenu-item-active" : "")">
+                                            <a asp-controller="Subject_3"
+                                               asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -1086,6 +1143,10 @@
                                             <a asp-controller="Subject_4"
                                                asp-action="Configuration_Subject">Cấu hình</a>
                                         </li>
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationsubject4") ? "submenu-item-active" : "")">
+                                            <a asp-controller="Subject_4"
+                                               asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="@((ViewBag.ActiveSubMenu == "cauhoiantoansubject4") ? "menu-item-active" : "")">
@@ -1243,6 +1304,10 @@
                                             <a asp-controller="Subject_5"
                                                asp-action="Configuration_Subject">Cấu hình</a>
                                         </li>
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationsubject5") ? "submenu-item-active" : "")">
+                                            <a asp-controller="Subject_5"
+                                               asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="@((ViewBag.ActiveSubMenu == "cauhoiantoansubject5") ? "menu-item-active" : "")">
@@ -1399,6 +1464,10 @@
                                         <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationsubject6") ? "submenu-item-active" : "")">
                                             <a asp-controller="Subject_6"
                                                asp-action="Configuration_Subject">Cấu hình</a>
+                                        </li>
+                                        <li class="menu-item @((ViewBag.ActiveSubMenuLv2 == "configurationsubject6") ? "submenu-item-active" : "")">
+                                            <a asp-controller="Subject_6"
+                                               asp-action="Details_RuleClassroom">An toàn phòng thí nghiệm</a>
                                         </li>
                                     </ul>
                                 </li>
