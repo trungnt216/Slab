@@ -34,10 +34,31 @@
                         </div>
                         <div class="detail-item">
                             <div class="title">
-                                <i class="fa-solid fa-inbox"></i>
+                                <i class="fa-solid fa-box"></i>
                                 <p>Số lượng</p>
                             </div>
-                            <p class="detail">@Html.DisplayFor(model => model.EquipmentQuantity)</p>
+                            <p class="detail">@Html.DisplayFor(model => model.Unit1Amount)</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-box"></i>
+                                <p>Đơn vị</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.Unit1)</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-box"></i>
+                                <p>Chi tiết</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.Unit2Amount)</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-box"></i>
+                                <p>Đơn vị</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.Unit2)</p>
                         </div>
                         @{
                             var currentTime = DateTime.Now;
