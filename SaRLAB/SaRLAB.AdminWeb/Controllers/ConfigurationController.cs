@@ -35,6 +35,7 @@ namespace SaRLAB.AdminWeb.Controllers
         Subject subject4 = new Subject();
         Subject subject5 = new Subject();
         Subject subject6 = new Subject();
+        List<NoticeAdmin> notice = new List<NoticeAdmin>();
 
         public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -115,6 +116,16 @@ namespace SaRLAB.AdminWeb.Controllers
                 subject6 = JsonConvert.DeserializeObject<Subject>(data);
             }
 
+ 
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllDocumentsBySchoolToAccept/" + userLogin.SchoolId).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                notice = JsonConvert.DeserializeObject<List<NoticeAdmin>>(data);
+            }
+
         }
 
         public IActionResult Index()
@@ -128,6 +139,8 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+
 
             return View();
         }
@@ -145,6 +158,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             School school = new School();
 
@@ -181,6 +195,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             School school = new School();
 
@@ -210,6 +225,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             if (FileChemLogo != null)
             {
@@ -495,6 +511,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<UserDto> users = new List<UserDto>();
 
@@ -612,6 +629,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             User user = new User();
 
@@ -769,6 +787,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
 
             ViewBag.ActiveMenu = "banner";
@@ -845,6 +864,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             /*            string substringToRemove = "/undefined";
 
                         if (id.EndsWith(substringToRemove))
@@ -968,6 +988,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             try
             {
@@ -1011,6 +1032,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             User user = new User();
 
@@ -1089,6 +1111,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<UserDto> users = new List<UserDto>();
 
@@ -1135,6 +1158,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             return View(user);
         }

@@ -102,8 +102,8 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
             if (_subject != null)
             {
-                _subject.SubjectName = subject.SubjectName;
-                _subject.Rule = subject.Rule;
+                _subject.SubjectName = subject.SubjectName ?? _subject.SubjectName;
+                _subject.Rule = subject.Rule ?? _subject.Rule;
                 _context.SaveChanges();
             }
 

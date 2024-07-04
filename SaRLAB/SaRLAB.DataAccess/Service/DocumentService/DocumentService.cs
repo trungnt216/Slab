@@ -1,6 +1,8 @@
-﻿using SaRLAB.Models.Entity;
+﻿using SaRLAB.Models.Dto;
+using SaRLAB.Models.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,61 @@ namespace SaRLAB.DataAccess.Service.DocumentService
 
             _context.Documents.Remove(documentToDelete);
             return _context.SaveChanges();
+        }
+
+        public List<NoticeAdmin> GetAllDocumentsBySchoolToAccept(int schoolId)
+        {
+            var notices = _context.Documents
+                .Where(doc => doc.SchoolId == schoolId && doc.PageFlag == false)
+                .Include(doc => doc.Subject) // Include the related Subject data
+                .Select(doc => new NoticeAdmin
+                {
+                    ID = doc.ID,
+                    Name = doc.Name,
+                    Path = doc.Path,
+                    SpecializedEnglishFlag = doc.SpecializedEnglishFlag,
+                    PageFlag = doc.PageFlag,
+                    Type = doc.Type,
+                    Remark = doc.Remark,
+                    SchoolId = doc.SchoolId,
+                    CreateBy = doc.CreateBy,
+                    CreateTime = doc.CreateTime,
+                    UpdateBy = doc.UpdateBy,
+                    UpdateTime = doc.UpdateTime,
+                    SubjectId = doc.SubjectId,
+                    CoverImage = doc.CoverImage,
+                    SubjectNotice = doc.Subject // Map the related Subject data
+                });
+
+            return notices.ToList();
+        }
+
+        public NoticeAdmin GetByIdDocumentsBySchoolToAccept(int Id)
+        {
+            var notice = _context.Documents
+                .Where(doc => doc.ID == Id)
+                .Include(doc => doc.Subject) // Include the related Subject data
+                .Select(doc => new NoticeAdmin
+                {
+                    ID = doc.ID,
+                    Name = doc.Name,
+                    Path = doc.Path,
+                    SpecializedEnglishFlag = doc.SpecializedEnglishFlag,
+                    PageFlag = doc.PageFlag,
+                    Type = doc.Type,
+                    Remark = doc.Remark,
+                    SchoolId = doc.SchoolId,
+                    CreateBy = doc.CreateBy,
+                    CreateTime = doc.CreateTime,
+                    UpdateBy = doc.UpdateBy,
+                    UpdateTime = doc.UpdateTime,
+                    SubjectId = doc.SubjectId,
+                    CoverImage = doc.CoverImage,
+                    SubjectNotice = doc.Subject // Map the related Subject data
+                })
+                .FirstOrDefault(); // Retrieve the first or default notice
+
+            return notice;
         }
 
 
