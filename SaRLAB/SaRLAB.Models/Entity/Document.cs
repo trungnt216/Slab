@@ -27,5 +27,6 @@ namespace SaRLAB.Models.Entity
         public DateTime? UpdateTime { get; set; }
         public int? SubjectId { get; set; }
         public Subject? Subject { get; set; }
+        public string? CoverImage { get; set; }
     }
 }

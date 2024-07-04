@@ -94,6 +94,7 @@
                                         Tên
                                         <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                                     </th>
+                      <th></th>
                                     <th class="d-none">
                                         @Html.DisplayNameFor(model => model.CreateBy)
                                     </th>
@@ -166,7 +167,6 @@
                                 {
                                     expiredItemCount++;
                                 }
-
                                         <tr style="@style">
                                             <td>
                                                 @counter
@@ -176,6 +176,10 @@
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                      <td>
+                                                <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
+                                                    alt="Image" />
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Unit1Amount)

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SaRLAB.WebUser")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+350fbcfed1febc32b3efd9105d451a1ba342a2c1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1fa8ae8037c38f20bf7305f50e2e57fe6cd8fb63")]
 [assembly: System.Reflection.AssemblyProductAttribute("SaRLAB.WebUser")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SaRLAB.WebUser")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

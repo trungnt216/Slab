@@ -2,9 +2,13 @@
 
 @{
     ViewData["Title"] = "GetAll_EquipmentChemistryStorage";
+
     Layout = "~/Views/Chemistry/_LayoutChem.cshtml";
+
     ViewBag.TitleCustom = "Danh sách thiết bị hiện có";
+
     int counter = 1;
+
     int expiredItemCount = 0;
 }
 
@@ -19,8 +23,8 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .modal-content {
@@ -95,6 +99,7 @@
                                         Tên
                                         <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                                     </th>
+                                    <th></th>
                                     <th class="d-none">
                                         @Html.DisplayNameFor(model => model.CreateBy)
                                     </th>
@@ -163,10 +168,33 @@
                                 var backgroundColor = item.Property == "dangerous" ? "#a8424c" :
                                 item.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
 
-                                if (item.ExpiredTime <= currentTime)
                                 {
-                                    expiredItemCount++;
-                                }
+
+                                    {
+
+                                        var currentTime = DateTime.Now;
+
+                                        var style = item.ExpiredTime <= currentTime ? "color: #cf656f; font-weight: 500" : "";
+
+
+
+                                        var props = item.Property == "dangerous" ? "Nguy hiểm" :
+
+                                        item.Property == "notDangerous" ? "Không nguy hiểm" : "Ít nguy hiểm";
+
+                                        var backgroundColor = item.Property == "dangerous" ? "#a8424c" :
+
+                                        item.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
+
+
+
+                                        if (item.ExpiredTime <= currentTime)
+
+                                        {
+
+                                            expiredItemCount++;
+
+                                        }
 
                                         <tr style="@style">
                                             <td>
@@ -178,6 +206,8 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Name)
                                             </td>
+                                          <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
+                                                    alt="Image" />
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Unit1Amount)
                                             </td>
@@ -220,49 +250,57 @@
                                             <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.SchoolId)
                                             </td>
-
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EquipmentQuantity)
+                                            </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.From)
                                             </td>
-
                                             <td>
                                                 <p style="
-         padding: 0px 10px;
-         white-space: nowrap;
-         margin: 0;
-         background: @backgroundColor;
-         text-align: center;
-         border-radius: 15px;
-         color: white;
-         font-size: 14px;
-         line-height: 25px;">
+                                            padding: 0px 10px;
+                                            white-space: nowrap;
+                                            margin: 0;
+                                            background: @backgroundColor;
+                                            text-align: center;
+                                            border-radius: 15px;
+                                            color: white;
+                                            font-size: 14px;
+                                            line-height: 25px;">
                                                     @props
                                                 </p>
                                             </td>
                                             <td>
-                                                <a class="btn-custom-view-detail" asp-action="Details_ChemistryStorage" asp-route-id="@item.ID">
+
+                                                <a class="btn-custom-view-detail" asp-action="Details_EquipmentChemistryStorage"
+                                                    asp-route-id="@item.ID">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>
-                                                <a class="btn-custom-edit" asp-action="Edit_ChemistryStorage" asp-route-id="@item.ID">
+                                                <a class="btn-custom-edit" asp-action="Edit_EquipmentChemistryStorage"
+                                                    asp-route-id="@item.ID">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                                 <a class="btn-custom-delete" href="#"
-                                                   data-url="@Url.Action("Delete_ChemistryStorage", "Chemistry", new { id = item.ID })"
-                                                   onclick="openDeleteModal(this)">
+                                                    data-url="@Url.Action("Delete_EquipmentChemistryStorage", "Chemistry", new { id = item.ID })"
+                                                    onclick="openDeleteModal(this)">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>
-                                counter++;
-                            }
+                                        counter++;
+
+                                    }
+
+                                }
+                            </tbody>
+                        </table>
+                        @if (Model == null || !Model.Any())
+
+                        {
+                            <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không
+                                có dữ liệu!</p>
                         }
-                    </tbody>
-                </table>
-                @if (Model == null || !Model.Any())
-                {
-                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
-                }
-                </div>
+                    </div>
             </div>
         </div>
     </div>

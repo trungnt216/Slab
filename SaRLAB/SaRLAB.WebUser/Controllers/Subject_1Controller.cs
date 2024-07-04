@@ -17,7 +17,7 @@ namespace SaRLAB.UserWeb.Controllers
 
         private readonly IWebHostEnvironment _env;
 
-        Uri baseAddress = new Uri(Program.api); 
+        Uri baseAddress = new Uri(Program.api);
         private readonly HttpClient _httpClient;
 
         private readonly IConfiguration _configuration;
@@ -41,7 +41,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             string jwtToken = Program.jwtToken;
 
-            if(jwtToken == null)
+            if (jwtToken == null)
             {
                 _hasError = true;
                 return; // Early exit from constructor
@@ -100,12 +100,13 @@ namespace SaRLAB.UserWeb.Controllers
                 }
             }
 
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
                 subject1 = JsonConvert.DeserializeObject<Subject>(data);
             }
+
         }
         //----------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
@@ -114,10 +115,10 @@ namespace SaRLAB.UserWeb.Controllers
         {
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             ViewBag.ActiveMenu = "homePage";
-            TempData["subject_1"] = subject1.SubjectName;
+
 
             return View();
         }
@@ -134,13 +135,13 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
-            TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; TempData["subject_1"] = subject1.SubjectName;
+
+
 
             List<Equipment> equipment = new List<Equipment>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/" +Subject_id+ "/CHEMISTRYE").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/" + Subject_id + "/CHEMISTRYE").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -165,8 +166,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-            TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
@@ -211,8 +212,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -234,6 +235,7 @@ TempData["subject_1"] = subject1.SubjectName;
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
+
 
             try
             {
@@ -275,8 +277,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
@@ -295,7 +297,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Chemistry(Equipment equipment, IFormFile File)
+        public ActionResult Create_Chemistry(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -304,8 +306,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -326,6 +328,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else
+            {
+                equipment.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -396,7 +423,7 @@ TempData["subject_1"] = subject1.SubjectName;
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -441,8 +468,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
 
@@ -471,11 +498,11 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Equipment> equipment = new List<Equipment>();
- 
+
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/" + Subject_id + "/TOOLCHEMISTRY").Result;
 
             if (response.IsSuccessStatusCode)
@@ -501,8 +528,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
@@ -521,7 +548,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_ToolChemistry(Equipment equipment, IFormFile File)
+        public ActionResult Create_ToolChemistry(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -530,8 +557,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -552,6 +579,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else
+            {
+                equipment.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -604,8 +656,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
 
@@ -653,8 +705,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -783,8 +835,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
 
@@ -815,8 +867,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Equipment> equipment = new List<Equipment>();
 
@@ -855,7 +907,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_EquipmentChemistry(Equipment equipment, IFormFile File)
+        public ActionResult Create_EquipmentChemistry(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -864,8 +916,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -886,6 +938,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else
+            {
+                equipment.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -938,8 +1015,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
 
@@ -990,8 +1067,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -1119,8 +1196,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
 
@@ -1154,8 +1231,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Document> documents = new List<Document>();
 
@@ -1183,8 +1260,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
@@ -1203,7 +1280,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Experiment(Document document, IFormFile File)
+        public ActionResult Create_Experiment(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -1212,8 +1289,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null && document.Path == null)
             {
@@ -1234,6 +1311,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -1286,8 +1388,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Document document = new Document();
 
@@ -1335,8 +1437,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null && document.Path == null)
             {
@@ -1466,8 +1568,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Document document = new Document();
 
@@ -1498,8 +1600,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Document> documents = new List<Document>();
 
@@ -1528,8 +1630,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
@@ -1548,7 +1650,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Conspectus(Document document, IFormFile File)
+        public ActionResult Create_Conspectus(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -1557,8 +1659,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null && document.Path == null)
             {
@@ -1579,6 +1681,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -1631,8 +1758,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Document document = new Document();
 
@@ -1680,8 +1807,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null && document.Path == null)
             {
@@ -1766,7 +1893,7 @@ TempData["subject_1"] = subject1.SubjectName;
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -1810,8 +1937,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Document document = new Document();
 
@@ -1842,8 +1969,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Document> documents = new List<Document>();
 
@@ -1872,8 +1999,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 return View();
@@ -1888,7 +2015,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Biological(Document document, IFormFile File)
+        public ActionResult Create_Biological(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -1897,8 +2024,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -1918,6 +2045,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -1970,8 +2122,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2018,8 +2170,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2144,8 +2296,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2175,8 +2327,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/VOCABULARY").Result;
@@ -2204,8 +2356,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "bio";
@@ -2223,7 +2375,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Vocabulary(Document document, IFormFile File)
+        public ActionResult Create_Vocabulary(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -2232,8 +2384,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2253,6 +2405,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -2306,8 +2483,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2354,8 +2531,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2480,8 +2657,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2511,8 +2688,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Document> documents = new List<Document>();
 
@@ -2541,8 +2718,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "bio";
@@ -2560,7 +2737,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Exam(Document document, IFormFile File)
+        public ActionResult Create_Exam(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -2569,8 +2746,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2590,6 +2767,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -2642,8 +2844,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2690,8 +2892,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2819,8 +3021,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2850,8 +3052,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/EXAMENG").Result;
@@ -2879,8 +3081,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "bio";
@@ -2898,7 +3100,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Examenglish(Document document, IFormFile File)
+        public ActionResult Create_Examenglish(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -2907,8 +3109,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -2928,6 +3130,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -2980,8 +3207,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3028,8 +3255,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3113,7 +3340,7 @@ TempData["subject_1"] = subject1.SubjectName;
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -3154,8 +3381,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3185,8 +3412,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Document> documents = new List<Document>();
 
@@ -3215,8 +3442,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "bio";
@@ -3234,7 +3461,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Department_level(Document document, IFormFile File)
+        public ActionResult Create_Department_level(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -3243,8 +3470,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3264,6 +3491,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -3316,8 +3568,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3364,8 +3616,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3493,8 +3745,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3524,8 +3776,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/PROVONCIALLEVEL").Result;
@@ -3553,8 +3805,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "bio";
@@ -3572,7 +3824,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Provincial_level(Document document, IFormFile File)
+        public ActionResult Create_Provincial_level(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -3581,8 +3833,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3602,6 +3854,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -3654,8 +3931,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3699,8 +3976,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3828,8 +4105,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3860,8 +4137,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/NATIONALLEVER").Result;
@@ -3889,8 +4166,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "bio";
@@ -3908,7 +4185,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_National_level(Document document, IFormFile File)
+        public ActionResult Create_National_level(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -3917,8 +4194,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -3938,6 +4215,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -3990,8 +4292,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4038,8 +4340,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4164,8 +4466,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4195,8 +4497,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/PREPARATIONQUESTION").Result;
@@ -4224,8 +4526,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "bio";
@@ -4243,7 +4545,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Preparation_questions(Document document, IFormFile File)
+        public ActionResult Create_Preparation_questions(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -4252,8 +4554,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4273,6 +4575,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -4325,8 +4652,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4373,8 +4700,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4502,8 +4829,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4534,11 +4861,11 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             List<Document> documents = new List<Document>();
 
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/NATIONALLEVER").Result;
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/PRACTICEREPORT").Result;
 
             if (responses.IsSuccessStatusCode)
             {
@@ -4563,8 +4890,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 return View();
@@ -4579,7 +4906,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Practice_report(Document document, IFormFile File)
+        public ActionResult Create_Practice_report(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -4588,8 +4915,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4611,6 +4938,31 @@ TempData["subject_1"] = subject1.SubjectName;
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
 
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
+            }
+
             try
             {
                 document.CreateTime = DateTime.Now;
@@ -4620,7 +4972,7 @@ TempData["subject_1"] = subject1.SubjectName;
                 document.SchoolId = userLogin.SchoolId;
                 document.SubjectId = Subject_id;
                 document.SchoolId = userLogin.SchoolId;
-                document.Type = "NATIONALLEVER";
+                document.Type = "PRACTICEREPORT";
                 document.PageFlag = false;
 
                 string data = JsonConvert.SerializeObject(document);
@@ -4661,8 +5013,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4709,8 +5061,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -4838,8 +5190,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -4868,8 +5220,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             List<User> users = new List<User>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllAdminUser/" + userLogin.SchoolId).Result;
@@ -4896,8 +5248,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             User users = new User();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + email).Result;
@@ -4925,11 +5277,11 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             List<User> users = new List<User>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTeacherUser/" + userLogin.SchoolId + "/3").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTeacherUser/" + userLogin.SchoolId + "/Subject_id").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -4953,8 +5305,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             User users = new User();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + email).Result;
@@ -4982,11 +5334,11 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             List<User> users = new List<User>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTechnicalUser/" + userLogin.SchoolId + "/3").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllTechnicalUser/" + userLogin.SchoolId + "/Subject_id").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -5010,8 +5362,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             User users = new User();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetByID/" + email).Result;
@@ -5040,8 +5392,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Document> documents = new List<Document>();
 
@@ -5070,8 +5422,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -5089,7 +5441,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_International_level(Document document, IFormFile File)
+        public ActionResult Create_International_level(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -5098,8 +5450,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -5119,6 +5471,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -5171,8 +5548,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -5219,8 +5596,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -5348,8 +5725,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -5379,8 +5756,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Equipment> equipment = new List<Equipment>();
 
@@ -5409,8 +5786,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
@@ -5455,8 +5832,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -5519,8 +5896,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
@@ -5539,7 +5916,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_ChemistryStorage(Equipment equipment, IFormFile File)
+        public ActionResult Create_ChemistryStorage(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -5548,8 +5925,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -5570,6 +5947,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else
+            {
+                equipment.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -5686,8 +6088,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
 
@@ -5716,8 +6118,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Equipment> equipment = new List<Equipment>();
 
@@ -5746,8 +6148,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
@@ -5766,7 +6168,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_ToolChemistryStorage(Equipment equipment, IFormFile File)
+        public ActionResult Create_ToolChemistryStorage(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -5775,8 +6177,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -5797,6 +6199,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else
+            {
+                equipment.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -5849,8 +6276,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
 
@@ -5898,8 +6325,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -6028,8 +6455,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
 
@@ -6060,8 +6487,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Equipment> equipment = new List<Equipment>();
 
@@ -6100,7 +6527,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_EquipmentChemistryStorage(Equipment equipment, IFormFile File)
+        public ActionResult Create_EquipmentChemistryStorage(Equipment equipment, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -6109,8 +6536,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -6131,6 +6558,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+            }
+            else
+            {
+                equipment.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -6183,8 +6635,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
 
@@ -6235,8 +6687,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             if (File != null)
             {
@@ -6364,8 +6816,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             Equipment equipment = new Equipment();
 
@@ -6397,8 +6849,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Document> documents = new List<Document>();
 
@@ -6427,8 +6879,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -6446,7 +6898,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Practice_Schedule(Document document, IFormFile File)
+        public ActionResult Create_Practice_Schedule(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -6455,8 +6907,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -6476,6 +6928,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -6528,8 +7005,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -6576,8 +7053,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -6705,8 +7182,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -6736,8 +7213,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
 
             List<Document> documents = new List<Document>();
 
@@ -6766,8 +7243,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "chem";
@@ -6785,7 +7262,7 @@ TempData["subject_1"] = subject1.SubjectName;
             }
         }
         [HttpPost]
-        public ActionResult Create_Practice_Point(Document document, IFormFile File)
+        public ActionResult Create_Practice_Point(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -6794,8 +7271,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -6815,6 +7292,31 @@ TempData["subject_1"] = subject1.SubjectName;
                     File.CopyTo(stream);
                 }
                 document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -6867,8 +7369,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -6915,8 +7417,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             if (File != null && document.Path == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
@@ -7044,8 +7546,8 @@ TempData["subject_1"] = subject1.SubjectName;
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -7061,6 +7563,1848 @@ TempData["subject_1"] = subject1.SubjectName;
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practicepoint";
             return View(document);
+        }
+
+        //------------------------- lý thuyết - theory -------------------------------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Theory()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/THEORY").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLvSubject_id = "theory";
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Theory()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                return RedirectToAction("GetAll_Theory");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Theory(Document document, IFormFile File, IFormFile coverImage)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = Subject_id;
+                document.Type = "THEORY";
+                document.SchoolId = userLogin.SchoolId;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                    return RedirectToAction("GetAll_Theory");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLvSubject_id = "theory";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Theory(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                return Ok();
+            }
+
+            if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                return RedirectToAction("GetAll_Theory");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Theory(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                    return RedirectToAction("GetAll_Theory");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLvSubject_id = "theory";
+            return View();
+        }
+
+
+        public ActionResult Delete_Theory(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                return RedirectToAction("GetAll_Theory");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "bio";
+                        ViewBag.ActiveSubMenu = "giaotrinh";
+                        ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                        return RedirectToAction("GetAll_Theory");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                    return RedirectToAction("GetAll_Theory");
+                }
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                return RedirectToAction("GetAll_Theory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "theory";
+                return RedirectToAction("GetAll_Theory");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Theory(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLvSubject_id = "theory";
+            return View(document);
+        }
+
+        //------------------------- thực hành - practice -------------------------------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Practice()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/PRACTICE").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLvSubject_id = "practice";
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Practice()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                return RedirectToAction("GetAll_Practice");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Practice(Document document, IFormFile File, IFormFile coverImage)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = Subject_id;
+                document.Type = "PRACTICE";
+                document.SchoolId = userLogin.SchoolId;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                    return RedirectToAction("GetAll_Practice");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLvSubject_id = "practice";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Practice(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                return Ok();
+            }
+
+            if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                return RedirectToAction("GetAll_Practice");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Practice(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                    return RedirectToAction("GetAll_Practice");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLvSubject_id = "practice";
+            return View();
+        }
+
+
+        public ActionResult Delete_Practice(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                return RedirectToAction("GetAll_Practice");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "bio";
+                        ViewBag.ActiveSubMenu = "giaotrinh";
+                        ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                        return RedirectToAction("GetAll_Practice");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "giaotrinh";
+                    ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                    return RedirectToAction("GetAll_Practice");
+                }
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                return RedirectToAction("GetAll_Practice");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "giaotrinh";
+                ViewBag.ActiveSubMenuLvSubject_id = "practice";
+                return RedirectToAction("GetAll_Practice");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Practice(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "giaotrinh";
+            ViewBag.ActiveSubMenuLvSubject_id = "practice";
+            return View(document);
+        }
+
+        //------------------------- lý thuyết - theory -------------------------------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_ViTheory()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/VITHEORY").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_ViTheory()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_ViTheory(Document document, IFormFile File, IFormFile coverImage)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = Subject_id;
+                document.Type = "VITHEORY";
+                document.SchoolId = userLogin.SchoolId;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                    return RedirectToAction("GetAll_ViTheory");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_ViTheory(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                return Ok();
+            }
+
+            if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_ViTheory(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                    return RedirectToAction("GetAll_ViTheory");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+            return View();
+        }
+
+
+        public ActionResult Delete_ViTheory(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "bio";
+                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                        return RedirectToAction("GetAll_ViTheory");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                    return RedirectToAction("GetAll_ViTheory");
+                }
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_ViTheory(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vitheory";
+            return View(document);
+        }
+
+        //------------------------- thực hành - practice -------------------------------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_ViPractice()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/VIPRACTICE").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_ViPractice()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_ViPractice(Document document, IFormFile File, IFormFile coverImage)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = Subject_id;
+                document.Type = "VIPRACTICE";
+                document.SchoolId = userLogin.SchoolId;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    return RedirectToAction("GetAll_ViPractice");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_ViPractice(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return Ok();
+            }
+
+            if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_ViPractice(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    return RedirectToAction("GetAll_ViPractice");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View();
+        }
+
+
+        public ActionResult Delete_ViPractice(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "bio";
+                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                        return RedirectToAction("GetAll_ViPractice");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    return RedirectToAction("GetAll_ViPractice");
+                }
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_ViPractice(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View(document);
+        }
+
+        //----------------------------- Tin tức ------------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_New()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByType/" + userLogin.SchoolId + "/" + Subject_id + "/NEW").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_New()
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_New");
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_New(Document document, IFormFile File, IFormFile coverImage)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = Subject_id;
+                document.Type = "NEW";
+                document.SchoolId = userLogin.SchoolId;
+                document.PageFlag = true;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    return RedirectToAction("GetAll_New");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit_New(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return Ok();
+            }
+
+            if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_New");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_New(Document document, IFormFile File)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    return RedirectToAction("GetAll_New");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return View();
+            }
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View();
+        }
+
+
+        public ActionResult Delete_New(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_New");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "bio";
+                        ViewBag.ActiveSubMenu = "virtualLab";
+                        ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                        return RedirectToAction("GetAll_New");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "bio";
+                    ViewBag.ActiveSubMenu = "virtualLab";
+                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    return RedirectToAction("GetAll_ViPractice");
+                }
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_New");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "bio";
+                ViewBag.ActiveSubMenu = "virtualLab";
+                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                return RedirectToAction("GetAll_New");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_New(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View(document);
+        }
+
+
+        //----------------------------- An toàn phòng thí nghiệm --------------------------------------
+        [HttpGet]
+        public ActionResult Details_RuleClassroom(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+
+            Subject subject = new Subject();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                subject = JsonConvert.DeserializeObject<Subject>(data);
+            }
+
+            ViewBag.ActiveMenu = "bio";
+            ViewBag.ActiveSubMenu = "virtualLab";
+            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            return View(subject);
         }
     }
 }

@@ -88,6 +88,7 @@
                     <div class="table-responsive">
                     <table id="table" class="table">
                         <thead>
+
                                     <tr>
                                         <th>#</th>
                                         <th class="d-none">
@@ -97,6 +98,7 @@
                                             Tên
                                             <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                                         </th>
+                          <th></th>
                                         <th class="d-none">
                                             @Html.DisplayNameFor(model => model.CreateBy)
                                         </th>
@@ -152,6 +154,7 @@
                                         </th>
                                         <th></th>
                                     </tr>
+
                         </thead>
                         <tbody id="tableBody">
                             @foreach (var item in Model)
@@ -170,6 +173,7 @@
                                         expiredItemCount++;
                                     }
 
+
                                             <tr style="@style">
                                                 <td>
                                                     @counter
@@ -179,6 +183,10 @@
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Name)
+                                                </td>
+                                              <td>
+                                                    <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
+                                                        alt="Image" />
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Unit1Amount)
@@ -255,6 +263,7 @@
                                                     </a>
                                                 </td>
                                             </tr>
+
                                     counter++;
                                 }
                             }

@@ -34,4 +34,11 @@
     <ProjectReference Include="..\SaRLAB.Models\SaRLAB.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Home\GetAllNotice.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

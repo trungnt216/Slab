@@ -25,6 +25,7 @@ namespace SaRLAB.AdminWeb.Controllers
         private readonly IWebHostEnvironment _env;
 
         UserDto userLogin = new UserDto();
+        List<NoticeAdmin> notice = new List<NoticeAdmin>();
 
         public LoginController(IConfiguration configuration, IWebHostEnvironment env)
         {

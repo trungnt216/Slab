@@ -3,9 +3,14 @@
 @{
     ViewData["Title"] = "GetAll_ToolChemistryStorage";
 
+
+
     Layout = "~/Views/Biology/_Layout.cshtml";
+
     ViewBag.TitleCustom = "Danh sách dụng cụ hiện có";
+
     int counter = 1;
+
     int expiredItemCount = 0;
 }
 
@@ -20,8 +25,8 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .modal-content {
@@ -74,20 +79,22 @@
         <div class="row">
             <div class="col-12 table-container">
                 <partial name="_TitleCustom">
-                <div class="table-action d-flex justify-content-between">
-                    <partial name="_SearchBox" />
-                        <a class="btn-custom-create" type="button" asp-controller="Biology" asp-action="Create_ToolChemistryStorage">
-                        <i class="fa-solid fa-plus"></i>
-                        Thêm mới
-                    </a>
-                </div>
-                <div id="popupNotification" class="alert alert-danger">
-                    @TempData["notice"]
-                </div>
-                <div class="table-responsive">
+                    <div class="table-action d-flex justify-content-between">
+                        <partial name="_SearchBox" />
+                        <a class="btn-custom-create" type="button" asp-controller="Biology"
+                            asp-action="Create_ToolChemistryStorage">
+                            <i class="fa-solid fa-plus"></i>
+                            Thêm mới
+                        </a>
+                    </div>
+                    <div id="popupNotification" class="alert alert-danger">
+                        @TempData["notice"]
+                    </div>
                     <div class="table-responsive">
-                    <table id="table" class="table">
-                        <thead>
+
+                            <table id="table" class="table">
+                                <thead>
+
                                     <tr>
                                         <th>#</th>
                                         <th class="d-none">
@@ -97,6 +104,9 @@
                                             Tên
                                             <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                                         </th>
+
+                                        <th></th>
+
                                         <th class="d-none">
                                             @Html.DisplayNameFor(model => model.CreateBy)
                                         </th>
@@ -107,6 +117,7 @@
                                             @Html.DisplayNameFor(model => model.UpdateBy)
                                         </th>
                                         <th class="d-none">
+
                                             @Html.DisplayNameFor(model => model.UpdateTime)
                                         </th>
                                         <th>
@@ -152,23 +163,38 @@
                                         </th>
                                         <th></th>
                                     </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                            @foreach (var item in Model)
-                            {
-                                {
-                                    var currentTime = DateTime.Now;
-                                    var style = item.ExpiredTime <= currentTime ? "color: #cf656f; font-weight: 500" : "";
 
-                                    var props = item.Property == "dangerous" ? "Nguy hiểm" :
-                                    item.Property == "notDangerous" ? "Không nguy hiểm" : "Ít nguy hiểm";
-                                    var backgroundColor = item.Property == "dangerous" ? "#a8424c" :
-                                    item.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
+                                </thead>
+                                <tbody id="tableBody">
+                                    @foreach (var item in Model)
+
+                                    {
+
+                                        {
+
+                                            var currentTime = DateTime.Now;
+
+                                            var style = item.ExpiredTime <= currentTime ? "color: #cf656f; font-weight: 500" :
+                                            "";
+
+
+
+                                            var props = item.Property == "dangerous" ? "Nguy hiểm" :
+
+                                            item.Property == "notDangerous" ? "Không nguy hiểm" : "Ít nguy hiểm";
+
+                                            var backgroundColor = item.Property == "dangerous" ? "#a8424c" :
+
+                                            item.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
 
                                             if (item.ExpiredTime <= currentTime)
-                                    {
-                                        expiredItemCount++;
-                                    }
+
+
+                                            {
+
+                                                expiredItemCount++;
+
+                                            }
 
                                             <tr style="@style">
                                                 <td>
@@ -180,7 +206,10 @@
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Name)
                                                 </td>
+                                              <td><img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
+                                                       alt="Image" /></td>
                                                 <td>
+
                                                     @Html.DisplayFor(modelItem => item.Unit1Amount)
                                                 </td>
                                                 <td>
@@ -238,78 +267,86 @@
          color: white;
          font-size: 14px;
          line-height: 25px;">
+
                                                         @props
                                                     </p>
                                                 </td>
                                                 <td>
-                                                    <a class="btn-custom-view-detail" asp-action="Details_ChemistryStorage" asp-route-id="@item.ID">
+
+                                                    <a class="btn-custom-view-detail" asp-action="Details_ToolChemistryStorage"
+                                                        asp-route-id="@item.ID">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>
-                                                    <a class="btn-custom-edit" asp-action="Edit_ChemistryStorage" asp-route-id="@item.ID">
+                                                    <a class="btn-custom-edit" asp-action="Edit_ToolChemistryStorage"
+                                                        asp-route-id="@item.ID">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </a>
                                                     <a class="btn-custom-delete" href="#"
-                                                       data-url="@Url.Action("Delete_ChemistryStorage", "Chemistry", new { id = item.ID })"
-                                                       onclick="openDeleteModal(this)">
+                                                        data-url="@Url.Action("Delete_ToolChemistryStorage", "Biology", new { id = item.ID })"
+                                                        onclick="openDeleteModal(this)">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-                                    counter++;
-                                }
+                                            counter++;
+
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+                            @if (Model == null || !Model.Any())
+
+                            {
+                                <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">
+                                    Không có dữ liệu!</p>
                             }
-                        </tbody>
-                    </table>
-                    @if (Model == null || !Model.Any())
-                    {
-                        <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
-                    }
-                </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
-</div>
 
-<div id="deleteModal" class="modal">
-    <div class="modal-content">
-        <img class="modal-img" src="@Url.Content("~/images/ic_warning.png")" />
-        <h6>Xác nhận xóa</h6>
-        <p>Bạn có chắc chắn muốn xóa mục này?</p>
-        <div class="d-flex modal-action">
-            <button class="btn btn-secondary" onclick="closeDeleteModal()">Hủy</button>
-            <button id="confirmDeleteButton" class="btn btn-danger">Xóa</button>
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <img class="modal-img" src="@Url.Content("~/images/ic_warning.png")" />
+            <h6>Xác nhận xóa</h6>
+            <p>Bạn có chắc chắn muốn xóa mục này?</p>
+            <div class="d-flex modal-action">
+                <button class="btn btn-secondary" onclick="closeDeleteModal()">Hủy</button>
+                <button id="confirmDeleteButton" class="btn btn-danger">Xóa</button>
+            </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
-    <script src="~/js/table.js"></script>
-    <script type="text/javascript">
-        var deleteUrl = '';
+    @section Scripts {
+        <script src="~/js/table.js"></script>
+        <script type="text/javascript">
+            var deleteUrl = '';
 
-        function openDeleteModal(element) {
-            deleteUrl = element.getAttribute("data-url");
-            document.getElementById('deleteModal').style.display = 'block';
-        }
-
-        function closeDeleteModal() {
-            document.getElementById('deleteModal').style.display = 'none';
-        }
-
-        document.getElementById('confirmDeleteButton').onclick = function () {
-            window.location.href = deleteUrl;
-        };
-
-        // Close the modal if the user clicks outside of it
-        window.onclick = function (event) {
-            var modal = document.getElementById('deleteModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
+            function openDeleteModal(element) {
+                deleteUrl = element.getAttribute("data-url");
+                document.getElementById('deleteModal').style.display = 'block';
             }
-        }
-    </script>
 
-    <script type="text/javascript">
-        localStorage.setItem('expiredTools', @expiredItemCount);
-    </script>
-}
+            function closeDeleteModal() {
+                document.getElementById('deleteModal').style.display = 'none';
+            }
+
+            document.getElementById('confirmDeleteButton').onclick = function () {
+                window.location.href = deleteUrl;
+            };
+
+            // Close the modal if the user clicks outside of it
+            window.onclick = function (event) {
+                var modal = document.getElementById('deleteModal');
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        </script>
+
+        <script type="text/javascript">
+            localStorage.setItem('expiredTools', @expiredItemCount);
+        </script>
+    }

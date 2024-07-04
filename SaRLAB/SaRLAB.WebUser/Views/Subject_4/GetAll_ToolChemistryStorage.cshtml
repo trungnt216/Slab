@@ -97,6 +97,7 @@
                                     Tên
                                     <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                                 </th>
+                                <th></th>
                                 <th class="d-none">
                                     @Html.DisplayNameFor(model => model.CreateBy)
                                 </th>
@@ -106,10 +107,26 @@
                                 <th class="d-none">
                                     @Html.DisplayNameFor(model => model.UpdateBy)
                                 </th>
-                                <th>
+                                <th class="d-none">
                                     Thời gian cập nhật
                                     <i class="fa fa-sort" onclick="sortTable('table', 6, true)"></i>
                                 </th>
+                                        <th>
+                                            Số lượng
+                                            <i class="fa fa-sort" onclick="sortTable('table', 7)"></i>
+                                        </th>
+                                        <th>
+                                            Đơn vị
+                                            <i class="fa fa-sort" onclick="sortTable('table', 8)"></i>
+                                        </th>
+                                        <th>
+                                            Chi tiết
+                                            <i class="fa fa-sort" onclick="sortTable('table', 9)"></i>
+                                        </th>
+                                        <th>
+                                            Đơn vị
+                                            <i class="fa fa-sort" onclick="sortTable('table', 10)"></i>
+                                        </th>
                                 <th>
                                     Thời gian hết hạn
                                     <i class="fa fa-sort" onclick="sortTable('table', 7, true)"></i>
@@ -129,7 +146,7 @@
                                 <th class="d-none">
                                     @Html.DisplayNameFor(model => model.SchoolId)
                                 </th>
-                                <th>
+                                <th class="d-none">
                                     Số lượng
                                     <i class="fa fa-sort" onclick="sortTable('table', 13)"></i>
                                 </th>
@@ -169,6 +186,22 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Name)
                                         </td>
+                                        <td>
+                                            <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
+                                                alt="Image" />
+                                        </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Unit1Amount)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Unit1)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Unit2Amount)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Unit2)
+                                                </td>
                                         <td class="d-none">
                                             @Html.DisplayFor(modelItem => item.CreateBy)
                                         </td>
@@ -178,7 +211,7 @@
                                         <td class="d-none">
                                             @Html.DisplayFor(modelItem => item.UpdateBy)
                                         </td>
-                                        <td>
+                                        <td class="d-none">
                                             @Html.DisplayFor(modelItem => item.UpdateTime)
                                         </td>
                                         <td>
@@ -199,7 +232,7 @@
                                         <td class="d-none">
                                             @Html.DisplayFor(modelItem => item.SchoolId)
                                         </td>
-                                        <td>
+                                        <td class="d-none">
                                             @Html.DisplayFor(modelItem => item.EquipmentQuantity)
                                         </td>
                                         <td>
