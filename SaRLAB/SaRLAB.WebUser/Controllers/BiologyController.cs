@@ -235,7 +235,7 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
-            
+
 
             try
             {
@@ -350,7 +350,8 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
-            else{
+            else
+            {
                 equipment.CoverImage = "~/images/book.jpg";
             }
 
@@ -600,7 +601,8 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
-            else{
+            else
+            {
                 equipment.CoverImage = "~/images/book.jpg";
             }
 
@@ -958,7 +960,8 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
-            else{
+            else
+            {
                 equipment.CoverImage = "~/images/book.jpg";
             }
 
@@ -1330,8 +1333,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -1646,7 +1650,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_Conspectus(Document document, IFormFile File,IFormFile coverImage)
+        public ActionResult Create_Conspectus(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -1699,8 +1703,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -2062,8 +2067,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -2421,8 +2427,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -2730,7 +2737,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_Exam(Document document, IFormFile File , IFormFile coverImage)
+        public ActionResult Create_Exam(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -2782,8 +2789,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -3092,7 +3100,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_Examenglish(Document document, IFormFile File , IFormFile coverImage)
+        public ActionResult Create_Examenglish(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -3144,8 +3152,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -3452,7 +3461,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_Department_level(Document document, IFormFile File , IFormFile coverImage)
+        public ActionResult Create_Department_level(Document document, IFormFile File, IFormFile coverImage)
         {
             if (_hasError)
             {
@@ -3504,8 +3513,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -3866,8 +3876,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -4226,8 +4237,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -4585,8 +4597,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -4945,8 +4958,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -5391,7 +5405,7 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "nghiencuu";
             ViewBag.ActiveSubMenuLv2 = "internationalLevel";
             return View(documents);
@@ -5412,7 +5426,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                 return View();
@@ -5420,7 +5434,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                 return RedirectToAction("GetAll_International_level");
@@ -5479,8 +5493,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -5503,7 +5518,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "nghiencuu";
                     ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                     return RedirectToAction("GetAll_International_level");
@@ -5512,12 +5527,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "nghiencuu";
             ViewBag.ActiveSubMenuLv2 = "internationalLevel";
             return View();
@@ -5549,7 +5564,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                 return RedirectToAction("GetAll_International_level");
@@ -5557,7 +5572,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                 return View(document);
@@ -5565,7 +5580,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền chinh sửa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                 return RedirectToAction("GetAll_International_level");
@@ -5618,7 +5633,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "nghiencuu";
                     ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                     return RedirectToAction("GetAll_International_level");
@@ -5627,12 +5642,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "nghiencuu";
             ViewBag.ActiveSubMenuLv2 = "internationalLevel";
             return View();
@@ -5654,7 +5669,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                 return RedirectToAction("GetAll_International_level");
@@ -5670,7 +5685,7 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveMenu = "bio";
                         ViewBag.ActiveSubMenu = "nghiencuu";
                         ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                         return RedirectToAction("GetAll_International_level");
@@ -5678,13 +5693,13 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "nghiencuu";
                     ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_International_level");
                 }
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                 return RedirectToAction("GetAll_International_level");
@@ -5692,7 +5707,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "nghiencuu";
                 ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                 return RedirectToAction("GetAll_International_level");
@@ -5723,7 +5738,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "nghiencuu";
             ViewBag.ActiveSubMenuLv2 = "internationalLevel";
             return View(document);
@@ -5754,7 +5769,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "chemistry";
             return View(equipment);
@@ -5785,7 +5800,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy dữ liệu";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return Ok();
@@ -5793,7 +5808,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return View(equipment);
@@ -5801,7 +5816,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return RedirectToAction("GetAll_ChemistryStorage");
@@ -5854,7 +5869,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "kho";
                     ViewBag.ActiveSubMenuLv2 = "chemistry";
                     return RedirectToAction("GetAll_ChemistryStorage");
@@ -5863,7 +5878,7 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return View();
@@ -5886,7 +5901,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return View();
@@ -5894,7 +5909,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return RedirectToAction("GetAll_ChemistryStorage");
@@ -5954,7 +5969,8 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
-            else{
+            else
+            {
                 equipment.CoverImage = "~/images/book.jpg";
             }
 
@@ -5977,7 +5993,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "kho";
                     ViewBag.ActiveSubMenuLv2 = "chemistry";
                     return RedirectToAction("GetAll_ChemistryStorage");
@@ -5986,12 +6002,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "chemistry";
             return View();
@@ -6015,7 +6031,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy dữ liệu";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return RedirectToAction("GetAll_ChemistryStorage");
@@ -6031,7 +6047,7 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveMenu = "bio";
                         ViewBag.ActiveSubMenu = "kho";
                         ViewBag.ActiveSubMenuLv2 = "chemistry";
                         return RedirectToAction("GetAll_ChemistryStorage");
@@ -6040,12 +6056,12 @@ namespace SaRLAB.UserWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "kho";
                     ViewBag.ActiveSubMenuLv2 = "chemistry";
                     return RedirectToAction("GetAll_ChemistryStorage");
                 }
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return RedirectToAction("GetAll_ChemistryStorage");
@@ -6053,7 +6069,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "chemistry";
                 return RedirectToAction("GetAll_ChemistryStorage");
@@ -6085,7 +6101,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "chemistry";
             return View(equipment);
@@ -6115,7 +6131,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "toolChemistry";
             return View(equipment);
@@ -6137,14 +6153,14 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return View();
             }
             else
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
@@ -6205,7 +6221,8 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
-            else{
+            else
+            {
                 equipment.CoverImage = "~/images/book.jpg";
             }
 
@@ -6228,7 +6245,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "kho";
                     ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                     return RedirectToAction("GetAll_ToolChemistryStorage");
@@ -6237,12 +6254,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "toolChemistry";
             return View();
@@ -6276,7 +6293,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy thiết bị";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return Ok();
@@ -6284,7 +6301,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return View(equipment);
@@ -6292,7 +6309,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return RedirectToAction("GetAll_ToolChemistryStorage");
@@ -6345,7 +6362,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "kho";
                     ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                     return RedirectToAction("GetAll_ToolChemistryStorage");
@@ -6354,12 +6371,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "toolChemistry";
             return View();
@@ -6382,7 +6399,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return RedirectToAction("GetAll_ToolChemistryStorage");
@@ -6398,7 +6415,7 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveMenu = "bio";
                         ViewBag.ActiveSubMenu = "kho";
                         ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                         return RedirectToAction("GetAll_ToolChemistryStorage");
@@ -6407,12 +6424,12 @@ namespace SaRLAB.UserWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "kho";
                     ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                     return RedirectToAction("GetAll_ToolChemistryStorage");
                 }
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return RedirectToAction("GetAll_ToolChemistryStorage");
@@ -6420,7 +6437,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "toolChemistry";
                 return RedirectToAction("GetAll_ToolChemistryStorage");
@@ -6452,7 +6469,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "toolChemistry";
             return View(equipment);
@@ -6483,7 +6500,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
             return View(equipment);
@@ -6495,7 +6512,7 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return View();
@@ -6503,7 +6520,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return RedirectToAction("GetAll_EquipmentChemistryStorage");
@@ -6563,10 +6580,11 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
             }
-            else{
+            else
+            {
                 equipment.CoverImage = "~/images/book.jpg";
             }
-            
+
             try
             {
                 equipment.CreateTime = DateTime.Now;
@@ -6586,7 +6604,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "kho";
                     ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                     return RedirectToAction("GetAll_EquipmentChemistryStorage");
@@ -6595,12 +6613,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
             return View();
@@ -6628,7 +6646,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
@@ -6637,7 +6655,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return Ok();
@@ -6645,7 +6663,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return View(equipment);
@@ -6653,7 +6671,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return Ok();
@@ -6706,7 +6724,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "kho";
                     ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                     return RedirectToAction("GetAll_EquipmentChemistryStorage");
@@ -6715,12 +6733,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
             return View();
@@ -6742,7 +6760,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (equipment == null)
             {
                 TempData["notice"] = "không tìm thấy";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return RedirectToAction("GetAll_EquipmentChemistryStorage");
@@ -6758,7 +6776,7 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveMenu = "bio";
                         ViewBag.ActiveSubMenu = "kho";
                         ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                         return RedirectToAction("GetAll_EquipmentChemistryStorage");
@@ -6767,19 +6785,19 @@ namespace SaRLAB.UserWeb.Controllers
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "kho";
                     ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                     return RedirectToAction("GetAll_EquipmentChemistryStorage");
                 }
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 return RedirectToAction("GetAll_EquipmentChemistryStorage");
             }
             else
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "kho";
                 ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
                 TempData["notice"] = "Bạn không có quyền xóa!";
@@ -6812,7 +6830,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "kho";
             ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
             return View(equipment);
@@ -6844,7 +6862,7 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practiceschedule";
             return View(documents);
@@ -6865,7 +6883,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                 return View();
@@ -6873,7 +6891,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                 return RedirectToAction("GetAll_Practice_Schedule");
@@ -6932,8 +6950,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -6956,7 +6975,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "thuchanh";
                     ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                     return RedirectToAction("GetAll_Practice_Schedule");
@@ -6965,12 +6984,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practiceschedule";
             return View();
@@ -7002,7 +7021,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                 return RedirectToAction("GetAll_Practice_Schedule");
@@ -7010,7 +7029,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                 return View(document);
@@ -7018,7 +7037,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền chinh sửa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                 return RedirectToAction("GetAll_Practice_Schedule");
@@ -7071,7 +7090,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "thuchanh";
                     ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                     return RedirectToAction("GetAll_Practice_Schedule");
@@ -7080,12 +7099,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practiceschedule";
             return View();
@@ -7107,7 +7126,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                 return RedirectToAction("GetAll_Practice_Schedule");
@@ -7123,7 +7142,7 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveMenu = "bio";
                         ViewBag.ActiveSubMenu = "thuchanh";
                         ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                         return RedirectToAction("GetAll_Practice_Schedule");
@@ -7131,13 +7150,13 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "thuchanh";
                     ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Practice_Schedule");
                 }
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                 return RedirectToAction("GetAll_Practice_Schedule");
@@ -7145,7 +7164,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practiceschedule";
                 return RedirectToAction("GetAll_Practice_Schedule");
@@ -7176,7 +7195,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practiceschedule";
             return View(document);
@@ -7207,7 +7226,7 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practicepoint";
             return View(documents);
@@ -7228,7 +7247,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practicepoint";
                 return View();
@@ -7236,7 +7255,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practicepoint";
                 return RedirectToAction("GetAll_Practice_Point");
@@ -7295,8 +7314,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -7319,7 +7339,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "thuchanh";
                     ViewBag.ActiveSubMenuLv2 = "practicepoint";
                     return RedirectToAction("GetAll_Practice_Point");
@@ -7328,12 +7348,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practicepoint";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practicepoint";
             return View();
@@ -7365,7 +7385,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practicepoint";
                 return RedirectToAction("GetAll_Practice_Point");
@@ -7373,7 +7393,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practicepoint";
                 return View(document);
@@ -7381,7 +7401,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền chinh sửa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practicepoint";
                 return RedirectToAction("GetAll_Practice_Point");
@@ -7434,7 +7454,7 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "thuchanh";
                     ViewBag.ActiveSubMenuLv2 = "practicepoint";
                     return RedirectToAction("GetAll_Practice_Point");
@@ -7443,12 +7463,12 @@ namespace SaRLAB.UserWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practicepoint";
                 return View();
             }
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practicepoint";
             return View();
@@ -7470,7 +7490,7 @@ namespace SaRLAB.UserWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practicepoint";
                 return RedirectToAction("GetAll_Practice_Point");
@@ -7486,7 +7506,7 @@ namespace SaRLAB.UserWeb.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        ViewBag.ActiveMenu = "chem";
+                        ViewBag.ActiveMenu = "bio";
                         ViewBag.ActiveSubMenu = "thuchanh";
                         ViewBag.ActiveSubMenuLv2 = "practicepoint";
                         return RedirectToAction("GetAll_Practice_Point");
@@ -7494,13 +7514,13 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ViewBag.ActiveMenu = "chem";
+                    ViewBag.ActiveMenu = "bio";
                     ViewBag.ActiveSubMenu = "thuchanh";
                     ViewBag.ActiveSubMenuLv2 = "practicepoint";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Practice_Point");
                 }
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practicepoint";
                 return RedirectToAction("GetAll_Practice_Point");
@@ -7508,7 +7528,7 @@ namespace SaRLAB.UserWeb.Controllers
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenu = "chem";
+                ViewBag.ActiveMenu = "bio";
                 ViewBag.ActiveSubMenu = "thuchanh";
                 ViewBag.ActiveSubMenuLv2 = "practicepoint";
                 return RedirectToAction("GetAll_Practice_Point");
@@ -7539,7 +7559,7 @@ namespace SaRLAB.UserWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
 
-            ViewBag.ActiveMenu = "chem";
+            ViewBag.ActiveMenu = "bio";
             ViewBag.ActiveSubMenu = "thuchanh";
             ViewBag.ActiveSubMenuLv2 = "practicepoint";
             return View(document);
@@ -7655,8 +7675,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -8016,8 +8037,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -8377,8 +8399,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try
@@ -8738,8 +8761,9 @@ namespace SaRLAB.UserWeb.Controllers
                 }
                 document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
-            else{
-                document.CoverImage= "~/images/book.jpg";
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
             }
 
             try

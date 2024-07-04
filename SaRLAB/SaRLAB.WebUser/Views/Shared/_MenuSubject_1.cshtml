@@ -67,8 +67,8 @@
     <li class="scroll-to-section menu"><a class="menu @((ViewBag.ActiveMenu == "homePage") ? "active" : "")"
             data-toggle="dropdown" asp-controller="Subject_1" asp-action="Index">Trang chủ</a></li>
     <li class="scroll-to-section dropdown menu">
-        <a class="menu subject @((ViewBag.ActiveMenu == "bio") ? "active" : "")" data-toggle="dropdown">@TempData["subject_1"]</a>
-        <a class="menu subject-trigger @((ViewBag.ActiveMenu == "bio") ? "active" : "")" data-toggle="dropdown">
+        <a class="menu subject @((ViewBag.ActiveMenu == "subject1") ? "active" : "")" data-toggle="dropdown">@TempData["subject_1"]</a>
+        <a class="menu subject-trigger @((ViewBag.ActiveMenu == "subject1") ? "active" : "")" data-toggle="dropdown">
             <label style="margin-right: 10px; cursor: pointer;">@TempData["subject_1"]</label>
             <i class="fa-solid fa-angles-right"></i>
         </a>
@@ -112,8 +112,7 @@
                     Dự trù
                 </a>
                 <ul class="dropdown-menu dropdown-menu-item">
-                    <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "Subject_1") ? "active" : "")"
+                    <li class="scroll-to-section"><a class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistry") ? "active" : "")"
                             asp-controller="Subject_1" asp-action="GetAll_Chemistry">Hóa chất</a></li>
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "toolChemistry") ? "active" : "")"
