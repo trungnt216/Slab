@@ -3827,9 +3827,10 @@ TempData["noticeCount"] = notice.Count;
                 subject = JsonConvert.DeserializeObject<Subject>(data);
             }
 
-            ViewBag.ActiveMenu = "bio";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject4";
+            ViewBag.ActiveSubMenu = "configurationsubject4";
+            ViewBag.ActiveSubMenuLv2 = "ruleClassroomSubject4";
             return View(subject);
         }
 
@@ -3848,6 +3849,10 @@ TempData["noticeCount"] = notice.Count;
             TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject4";
+            ViewBag.ActiveSubMenu = "configurationsubject4";
+            ViewBag.ActiveSubMenuLv2 = "ruleClassroomSubject4";
             return View();
         }
 
@@ -3900,22 +3905,25 @@ TempData["noticeCount"] = notice.Count;
 
                 if (response.IsSuccessStatusCode)
                 {
-                    ViewBag.ActiveMenu = "bio";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject4";
+                    ViewBag.ActiveSubMenu = "configurationsubject4";
+                    ViewBag.ActiveSubMenuLv2 = "ruleClassroomSubject4";
                     return RedirectToAction("Details_RuleClassroom");
                 }
             }
             catch (Exception ex)
             {
-                ViewBag.ActiveMenu = "bio";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject4";
+                ViewBag.ActiveSubMenu = "configurationsubject4";
+                ViewBag.ActiveSubMenuLv2 = "ruleClassroomSubject4";
                 return View();
             }
-            ViewBag.ActiveMenu = "bio";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject4";
+            ViewBag.ActiveSubMenu = "configurationsubject4";
+            ViewBag.ActiveSubMenuLv2 = "ruleClassroomSubject4";
             return View();
         }
     }
