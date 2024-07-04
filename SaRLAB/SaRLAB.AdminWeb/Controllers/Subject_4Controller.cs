@@ -32,6 +32,7 @@ namespace SaRLAB.AdminWeb.Controllers
         Subject subject4 = new Subject();
         Subject subject5 = new Subject();
         Subject subject6 = new Subject();
+        List<NoticeAdmin> notice = new List<NoticeAdmin>();
 
         public Subject_4(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -108,6 +109,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response_sub6.Content.ReadAsStringAsync().Result;
                 subject6 = JsonConvert.DeserializeObject<Subject>(data);
             }
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllDocumentsBySchoolToAccept/" + userLogin.SchoolId).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                notice = JsonConvert.DeserializeObject<List<NoticeAdmin>>(data);
+            }
 
         }
         //------------------------------ sửa tên logo icon ----------------------------------------
@@ -123,6 +131,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             Subject subject = new Subject();
             HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
@@ -151,6 +160,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             if (userLogin.RoleName == "Owner")
             {
@@ -209,6 +219,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
 
@@ -376,6 +387,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             Document document = new Document();
 
@@ -409,6 +421,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
 
@@ -576,6 +589,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             Document document = new Document();
 
@@ -608,6 +622,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
 
@@ -767,6 +782,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -798,6 +814,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/VOCABULARY").Result;
@@ -957,6 +974,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -988,6 +1006,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
 
@@ -1155,6 +1174,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1186,6 +1206,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/EXAMENG").Result;
@@ -1344,6 +1365,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1375,6 +1397,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
 
@@ -1542,6 +1565,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1573,6 +1597,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/PROVONCIALLEVEL").Result;
@@ -1739,6 +1764,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1771,6 +1797,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/NATIONALLEVER").Result;
@@ -1929,6 +1956,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1960,6 +1988,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/PREPARATIONQUESTION").Result;
@@ -2126,6 +2155,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2158,6 +2188,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/NATIONALLEVER").Result;
@@ -2324,6 +2355,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2355,6 +2387,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/INTERNATIONAL").Result;
@@ -2521,6 +2554,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2551,6 +2585,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Quiz> equipment = new List<Quiz>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/" + Subject_id).Result;
@@ -2580,6 +2615,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
@@ -2611,6 +2647,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
@@ -2764,6 +2801,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Quiz quiz = new Quiz();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetQuizById/" + id).Result;
@@ -2810,6 +2848,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
@@ -2978,6 +3017,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/THEORY").Result;
@@ -3144,6 +3184,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3175,6 +3216,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/PRACTICE").Result;
@@ -3341,6 +3383,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3372,6 +3415,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/VITHEORY").Result;
@@ -3538,6 +3582,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3569,6 +3614,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/VIPRACTICE").Result;
@@ -3735,6 +3781,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -3767,6 +3814,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             Subject subject = new Subject();
 
@@ -3799,6 +3847,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "subject4";
@@ -3820,6 +3869,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             Subject subject = new Subject();
 

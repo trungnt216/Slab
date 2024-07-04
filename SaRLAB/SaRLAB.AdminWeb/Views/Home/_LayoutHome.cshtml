@@ -1618,7 +1618,12 @@
             </div>
             <div class="right d-flex">
                 <div class="icon-group d-flex">
-                    <i class="fa-regular fa-bell icon-right"></i>
+                    <div class="position-relative">
+                        <a asp-controller="Home" asp-action="GetAllNotice">
+                        <i class="fa-regular fa-bell icon-right"></i>
+                        <span id="notification-count" class="notification-badge">@TempData["noticeCount"]</span>
+                        </a>
+                    </div>
                     <i class="fa-regular fa-comments icon-right"></i>
                     <i class="fa-regular fa-moon icon-right"></i>
                 </div>
@@ -1705,6 +1710,7 @@
         });
 
     </script>
+
 </body>
 
 </html>

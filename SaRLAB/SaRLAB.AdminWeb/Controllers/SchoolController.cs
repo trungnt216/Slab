@@ -30,6 +30,7 @@ namespace SaRLAB.AdminWeb.Controllers
         Subject subject4 = new Subject();
         Subject subject5 = new Subject();
         Subject subject6 = new Subject();
+        List<NoticeAdmin> notice = new List<NoticeAdmin>();
 
         public SchoolController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -108,6 +109,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response_sub6.Content.ReadAsStringAsync().Result;
                 subject6 = JsonConvert.DeserializeObject<Subject>(data);
             }
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllDocumentsBySchoolToAccept/" + userLogin.SchoolId).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                notice = JsonConvert.DeserializeObject<List<NoticeAdmin>>(data);
+            }
 
         }
 
@@ -125,6 +133,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<School> schools = new List<School>();
 
@@ -152,6 +161,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             if (userLogin.RoleName == "Owner")
             {
@@ -205,6 +215,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["subject_4"] = subject4.SubjectName;
             TempData["subject_5"] = subject5.SubjectName;
             TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             School school = new School();
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetByID/" + id).Result;
