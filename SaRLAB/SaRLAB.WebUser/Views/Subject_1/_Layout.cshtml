@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="~/css/animated.css">
     <link rel="stylesheet" href="~/css/owl.css">
 </head>
-<body id="bg-math">
-    @* header *@
-    <header class="header-area header-area-bio header-sticky">
+<body id="bg-chem">
+    @* header *@<a href="h:\sarlab release\slab\sarlab\sarlab.webuser\views\chemistry\index.cshtml">h:\sarlab release\slab\sarlab\sarlab.webuser\views\chemistry\index.cshtml</a>
+    <header class="header-area header-area-chem header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -40,7 +40,6 @@
     <div>
         @RenderBody()
     </div>
-
 
     <script src="~/js/home.js"></script>
     <script src="~/js/owl-carousel.js"></script>
@@ -67,7 +66,6 @@
                     }
                 }
             });
-
 
             window.addEventListener('resize', function () {
                 if (window.innerWidth > 1400) {
@@ -196,7 +194,7 @@
                     updateExpiredItemsDisplay('hóa chất', expiredItems);
                     break;
                 case checkUrl(toolChemistryPaths):
-                    const expiredTools = JSON.parse(localStorage.getItem('expiredTools')) || 0;
+                    const expiredTools = JSON.parse(localStorage.getItem('expiredTools')) || 0; 
                     updateExpiredItemsDisplay('dụng cụ', expiredTools);
                     break;
                 case checkUrl(equipmentChemistryPaths):

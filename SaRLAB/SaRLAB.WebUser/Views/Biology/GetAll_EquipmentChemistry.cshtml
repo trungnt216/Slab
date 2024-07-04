@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "GetAll_EquipmentChemistry";
-    Layout = "~/Views/Biology/_Layout.cshtml";
+    Layout = "~/Views/Chemistry/_LayoutChem.cshtml";
     ViewBag.TitleCustom = "Danh sách dự trù thiết bị";
     int counter = 1;
     int expiredItemCount = 0;
@@ -19,8 +19,8 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
     }
 
     .modal-content {
@@ -34,14 +34,14 @@
         align-items: center;
     }
 
-    .modal-content .modal-img {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 15px;
-        background: #ffe4e4;
-        border-radius: 30px;
-        padding: 8px;
-    }
+        .modal-content .modal-img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            background: #ffe4e4;
+            border-radius: 30px;
+            padding: 8px;
+        }
 
     .modal-action {
         justify-content: center;
@@ -49,9 +49,9 @@
         margin: 10px 0px
     }
 
-    .modal-action .btn-secondary {
-        margin-right: 10px;
-    }
+        .modal-action .btn-secondary {
+            margin-right: 10px;
+        }
 
     .close {
         color: #aaa;
@@ -60,12 +60,12 @@
         font-weight: bold;
     }
 
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
 </style>
 
 <div id="sub-content">
@@ -75,8 +75,7 @@
                 <partial name="_TitleCustom">
                     <div class="table-action d-flex justify-content-between">
                         <partial name="_SearchBox" />
-                        <a class="btn-custom-create" type="button" asp-controller="Biology"
-                            asp-action="Create_EquipmentChemistry">
+                        <a class="btn-custom-create" type="button" asp-controller="Chemistry" asp-action="Create_EquipmentChemistry">
                             <i class="fa-solid fa-plus"></i>
                             Thêm mới
                         </a>
@@ -96,7 +95,7 @@
                                         Tên
                                         <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
                                     </th>
-                                  <th></th>
+                                    <th></th>
                                     <th class="d-none">
                                         @Html.DisplayNameFor(model => model.CreateBy)
                                     </th>
@@ -152,62 +151,6 @@
                                     </th>
                                     <th></th>
                                 </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                        @foreach (var item in Model)
-                        {
-                            {
-                                var currentTime = DateTime.Now;
-                                var style = item.ExpiredTime <= currentTime ? "color: #cf656f; font-weight: 500" : "";
-
-                                var props = item.Property == "dangerous" ? "Nguy hiểm" :
-                                item.Property == "notDangerous" ? "Không nguy hiểm" : "Ít nguy hiểm";
-                                var backgroundColor = item.Property == "dangerous" ? "#a8424c" :
-                                item.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
-                                    <th class="d-none">
-                                        @Html.DisplayNameFor(model => model.CreateBy)
-                                    </th>
-                                    <th class="d-none">
-                                        @Html.DisplayNameFor(model => model.CreateTime)
-                                    </th>
-                                    <th class="d-none">
-                                        @Html.DisplayNameFor(model => model.UpdateBy)
-                                    </th>
-                                    <th class="d-none">
-                                        Thời gian cập nhật
-                                        <i class="fa fa-sort" onclick="sortTable('table', 6, true)"></i>
-                                    </th>
-                                    <th>
-                                        Thời gian hết hạn
-                                        <i class="fa fa-sort" onclick="sortTable('table', 7, true)"></i>
-                                    </th>
-                                    <th class="d-none">
-                                        @Html.DisplayNameFor(model => model.Type)
-                                    </th>
-                                    <th class="d-none">
-                                        Nhận xét
-                                    </th>
-                                    <th class="d-none">
-                                        @Html.DisplayNameFor(model => model.ImagePath)
-                                    </th>
-                                    <th class="d-none">
-                                        @Html.DisplayNameFor(model => model.SubjectId)
-                                    </th>
-                                    <th class="d-none">
-                                        @Html.DisplayNameFor(model => model.SchoolId)
-                                    </th>
-                                    <th>
-                                        Số lượng
-                                        <i class="fa fa-sort" onclick="sortTable('table', 13)"></i>
-                                    </th>
-                                    <th>
-                                        Xuất xứ
-                                    </th>
-                                    <th>
-                                        Đặc tính
-                                    </th>
-                                    <th></th>
-                                </tr>
                             </thead>
                             <tbody id="tableBody">
                                 @foreach (var item in Model)
@@ -236,10 +179,9 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Name)
                                             </td>
-                                          <th>
-                                            <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
-                                                    alt="Image" />
-                                          </th>
+                                            <td>
+                                                <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;" alt="Image" />
+                                            </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Unit1Amount)
                                             </td>
@@ -284,39 +226,33 @@
                                             </td>
 
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.EquipmentQuantity)
-                                            </td>
-                                            <td>
                                                 @Html.DisplayFor(modelItem => item.From)
                                             </td>
+
                                             <td>
                                                 <p style="
-                                            padding: 0px 10px;
-                                            white-space: nowrap;
-                                            margin: 0;
-                                            background: @backgroundColor;
-                                            text-align: center;
-                                            border-radius: 15px;
-                                            color: white;
-                                            font-size: 14px;
-                                            line-height: 25px;">
+         padding: 0px 10px;
+         white-space: nowrap;
+         margin: 0;
+         background: @backgroundColor;
+         text-align: center;
+         border-radius: 15px;
+         color: white;
+         font-size: 14px;
+         line-height: 25px;">
                                                     @props
                                                 </p>
                                             </td>
                                             <td>
-
-                                                <a class="btn-custom-view-detail" asp-action="Details_EquipmentChemistry"
-                                                    asp-route-id="@item.ID">
+                                                <a class="btn-custom-view-detail" asp-action="Details_ChemistryStorage" asp-route-id="@item.ID">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>
-                                                <a class="btn-custom-edit" asp-action="Edit_EquipmentChemistry"
-                                                    asp-route-id="@item.ID">
+                                                <a class="btn-custom-edit" asp-action="Edit_ChemistryStorage" asp-route-id="@item.ID">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
                                                 <a class="btn-custom-delete" href="#"
-                                                    data-url="@Url.Action("Delete_EquipmentChemistry", "Biology", new { id = item.ID })"
-                                                    onclick="openDeleteModal(this)">
-
+                                                   data-url="@Url.Action("Delete_ChemistryStorage", "Biology", new { id = item.ID })"
+                                                   onclick="openDeleteModal(this)">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
                                             </td>
@@ -329,9 +265,7 @@
                         </table>
                         @if (Model == null || !Model.Any())
                         {
-                            <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không
-                                có dữ liệu!</p>
-
+                            <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
                         }
                     </div>
             </div>
@@ -377,6 +311,7 @@
             }
         }
     </script>
+
 
     <script type="text/javascript">
         localStorage.setItem('expiredEquipments', @expiredItemCount);
