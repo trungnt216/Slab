@@ -85,11 +85,35 @@
                             </div>
                             <div class="form-group">
                                 <div class="title d-flex">
-                                    <i class="fa-solid fa-inbox"></i>
-                                    <label asp-for="EquipmentQuantity" class="control-label">Số lượng</label>
+                                    <i class="fa-solid fa-box"></i>
+                                    <label asp-for="Unit1Amount" class="control-label">Số lượng</label>
                                 </div>
-                                <input asp-for="EquipmentQuantity" class="form-control" type="number" min="0" />
-                                <span asp-validation-for="EquipmentQuantity" class="text-danger"></span>
+                                <input asp-for="Unit1Amount" class="form-control" type="number" min="0" />
+                                <span asp-validation-for="Unit1Amount" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-box"></i>
+                                    <label asp-for="Unit1" class="control-label">Đơn vị</label>
+                                </div>
+                                <input asp-for="Unit1" class="form-control" />
+                                <span asp-validation-for="Unit1" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-box"></i>
+                                    <label asp-for="Unit2Amount" class="control-label">Chi tiết</label>
+                                </div>
+                                <input asp-for="Unit2Amount" class="form-control" type="number" min="0" />
+                                <span asp-validation-for="Unit2Amount" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-box"></i>
+                                    <label asp-for="Unit2" class="control-label">Đơn vị</label>
+                                </div>
+                                <input asp-for="Unit2" class="form-control" />
+                                <span asp-validation-for="Unit2" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <div class="title d-flex">
