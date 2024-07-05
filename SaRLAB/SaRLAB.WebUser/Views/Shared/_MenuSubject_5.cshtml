@@ -67,8 +67,8 @@
     <li class="scroll-to-section menu"><a class="menu @((ViewBag.ActiveMenu == "homePage") ? "active" : "")"
             data-toggle="dropdown" asp-controller="Subject_5" asp-action="Index">Trang chủ</a></li>
     <li class="scroll-to-section dropdown menu">
-        <a class="menu subject @((ViewBag.ActiveMenu == "bio") ? "active" : "")" data-toggle="dropdown">@TempData["subject_1"]</a>
-        <a class="menu subject-trigger @((ViewBag.ActiveMenu == "bio") ? "active" : "")" data-toggle="dropdown">
+        <a class="menu subject @((ViewBag.ActiveMenu == "subject5") ? "active" : "")" data-toggle="dropdown">@TempData["subject_1"]</a>
+        <a class="menu subject-trigger @((ViewBag.ActiveMenu == "subject5") ? "active" : "")" data-toggle="dropdown">
             <label style="margin-right: 10px; cursor: pointer;">@TempData["subject_1"]</label>
             <i class="fa-solid fa-angles-right"></i>
         </a>
@@ -96,13 +96,13 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-item">
                     <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "Subject_5") ? "active" : "")"
+                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistryStorage") ? "active" : "")"
                             asp-controller="Subject_5" asp-action="GetAll_ChemistryStorage">Hóa chất</a></li>
                     <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "toolChemistry") ? "active" : "")"
+                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "toolChemistryStorage") ? "active" : "")"
                             asp-controller="Subject_5" asp-action="GetAll_ToolChemistryStorage">Dụng cụ</a></li>
                     <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "equipmentChemistry") ? "active" : "")"
+                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "equipmentChemistryStorage") ? "active" : "")"
                             asp-controller="Subject_5" asp-action="GetAll_EquipmentChemistryStorage">Thiết bị</a></li>
                 </ul>
             </li>
@@ -113,7 +113,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-item">
                     <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "Subject_5") ? "active" : "")"
+                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistry") ? "active" : "")"
                             asp-controller="Subject_5" asp-action="GetAll_Chemistry">Hóa chất</a></li>
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "toolChemistry") ? "active" : "")"
