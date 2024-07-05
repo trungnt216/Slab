@@ -5771,7 +5771,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "subject4";
             ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "chemistry";
+            ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
             return View(equipment);
         }
 
@@ -5802,7 +5802,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "không tìm thấy dữ liệu";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                 return Ok();
             }
 
@@ -5810,7 +5810,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                 return View(equipment);
             }
             else
@@ -5818,7 +5818,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                 return RedirectToAction("GetAll_ChemistryStorage");
             }
         }
@@ -5871,7 +5871,7 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject4";
                     ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "chemistry";
+                    ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                     return RedirectToAction("GetAll_ChemistryStorage");
                 }
             }
@@ -5880,7 +5880,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                 return View();
             }
             return View();
@@ -5903,7 +5903,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                 return View();
             }
             else
@@ -5911,7 +5911,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                 return RedirectToAction("GetAll_ChemistryStorage");
             }
         }
@@ -5995,7 +5995,7 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject4";
                     ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "chemistry";
+                    ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                     return RedirectToAction("GetAll_ChemistryStorage");
                 }
             }
@@ -6004,7 +6004,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                 return View();
             }
             ViewBag.ActiveMenu = "subject4";
@@ -6033,7 +6033,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "không tìm thấy dữ liệu";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                 return RedirectToAction("GetAll_ChemistryStorage");
             }
 
@@ -6049,7 +6049,7 @@ namespace SaRLAB.UserWeb.Controllers
                     {
                         ViewBag.ActiveMenu = "subject4";
                         ViewBag.ActiveSubMenu = "kho";
-                        ViewBag.ActiveSubMenuLv2 = "chemistry";
+                        ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                         return RedirectToAction("GetAll_ChemistryStorage");
                     }
                 }
@@ -6058,12 +6058,12 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenu = "subject4";
                     ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "chemistry";
+                    ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                     return RedirectToAction("GetAll_ChemistryStorage");
                 }
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                 return RedirectToAction("GetAll_ChemistryStorage");
             }
             else
@@ -6071,7 +6071,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
                 return RedirectToAction("GetAll_ChemistryStorage");
             }
 
@@ -6103,7 +6103,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "subject4";
             ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "chemistry";
+            ViewBag.ActiveSubMenuLv2 = "chemistryStorage";
             return View(equipment);
         }
 
@@ -6133,7 +6133,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "subject4";
             ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
             return View(equipment);
         }
 
@@ -6155,14 +6155,14 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                 return View();
             }
             else
             {
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
                 return RedirectToAction("GetAll_ToolChemistryStorage");
             }
@@ -6247,7 +6247,7 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject4";
                     ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                    ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                     return RedirectToAction("GetAll_ToolChemistryStorage");
                 }
             }
@@ -6256,12 +6256,12 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                 return View();
             }
             ViewBag.ActiveMenu = "subject4";
             ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
             return View();
         }
 
@@ -6295,7 +6295,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "không tìm thấy thiết bị";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                 return Ok();
             }
 
@@ -6303,7 +6303,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                 return View(equipment);
             }
             else
@@ -6311,7 +6311,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                 return RedirectToAction("GetAll_ToolChemistryStorage");
             }
         }
@@ -6364,7 +6364,7 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject4";
                     ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                    ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                     return RedirectToAction("GetAll_ToolChemistryStorage");
                 }
             }
@@ -6373,12 +6373,12 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                 return View();
             }
             ViewBag.ActiveMenu = "subject4";
             ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
             return View();
         }
 
@@ -6401,7 +6401,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "không tìm thấy";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                 return RedirectToAction("GetAll_ToolChemistryStorage");
             }
 
@@ -6417,7 +6417,7 @@ namespace SaRLAB.UserWeb.Controllers
                     {
                         ViewBag.ActiveMenu = "subject4";
                         ViewBag.ActiveSubMenu = "kho";
-                        ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                        ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                         return RedirectToAction("GetAll_ToolChemistryStorage");
                     }
                 }
@@ -6426,12 +6426,12 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenu = "subject4";
                     ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                    ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                     return RedirectToAction("GetAll_ToolChemistryStorage");
                 }
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                 return RedirectToAction("GetAll_ToolChemistryStorage");
             }
             else
@@ -6439,7 +6439,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
                 return RedirectToAction("GetAll_ToolChemistryStorage");
             }
         }
@@ -6471,7 +6471,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "subject4";
             ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
+            ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
             return View(equipment);
         }
 
@@ -6502,7 +6502,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "subject4";
             ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
             return View(equipment);
         }
 
@@ -6514,7 +6514,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 return View();
             }
             else
@@ -6522,7 +6522,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 return RedirectToAction("GetAll_EquipmentChemistryStorage");
             }
         }
@@ -6606,7 +6606,7 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject4";
                     ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                     return RedirectToAction("GetAll_EquipmentChemistryStorage");
                 }
             }
@@ -6615,12 +6615,12 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 return View();
             }
             ViewBag.ActiveMenu = "subject4";
             ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
             return View();
         }
 
@@ -6648,7 +6648,7 @@ namespace SaRLAB.UserWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
@@ -6657,7 +6657,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "không tìm thấy";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 return Ok();
             }
 
@@ -6665,7 +6665,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 return View(equipment);
             }
             else
@@ -6673,7 +6673,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 return Ok();
             }
         }
@@ -6726,7 +6726,7 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject4";
                     ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                     return RedirectToAction("GetAll_EquipmentChemistryStorage");
                 }
             }
@@ -6735,12 +6735,12 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 return View();
             }
             ViewBag.ActiveMenu = "subject4";
             ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
             return View();
         }
 
@@ -6762,7 +6762,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "không tìm thấy";
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 return RedirectToAction("GetAll_EquipmentChemistryStorage");
             }
 
@@ -6778,7 +6778,7 @@ namespace SaRLAB.UserWeb.Controllers
                     {
                         ViewBag.ActiveMenu = "subject4";
                         ViewBag.ActiveSubMenu = "kho";
-                        ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                        ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                         return RedirectToAction("GetAll_EquipmentChemistryStorage");
                     }
                 }
@@ -6787,19 +6787,19 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenu = "subject4";
                     ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                     return RedirectToAction("GetAll_EquipmentChemistryStorage");
                 }
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 return RedirectToAction("GetAll_EquipmentChemistryStorage");
             }
             else
             {
                 ViewBag.ActiveMenu = "subject4";
                 ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_EquipmentChemistryStorage");
             }
@@ -6832,7 +6832,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "subject4";
             ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
+            ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
             return View(equipment);
         }
 

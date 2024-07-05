@@ -1549,11 +1549,13 @@ Banner Style
         .table-container .table thead th {
             font-weight: 600;
             font-size: var(--text-xss);
+            text-align: center;
         }
 
         .table-container .table tbody td {
             font-size: var(--text-xss);
             align-content: center;
+            text-align: center;
         }
 
             .table-container .table tbody td a.btn-custom-edit {
