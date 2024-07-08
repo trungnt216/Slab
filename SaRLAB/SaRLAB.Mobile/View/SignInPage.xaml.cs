@@ -12,4 +12,9 @@ public partial class SignInPage : ContentPage
         await Navigation.PushAsync(new SignUpPage());
     }
 
+    private async void OnSignInSuccessClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new SubjectPage());
+    }
+
 }

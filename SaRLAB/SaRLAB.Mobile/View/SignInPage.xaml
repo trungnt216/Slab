@@ -16,7 +16,7 @@
 
         <!-- Registration Prompt -->
         <StackLayout Grid.Row="0" Padding="0,25,0,0">
-            <Image 
+            <Image
                 Source="img_signin"
                 WidthRequest="250"
                 HeightRequest="250"
@@ -25,51 +25,69 @@
         </StackLayout>
 
         <!-- Login Form -->
-        <StackLayout Grid.Row="1" Spacing="20" Padding="30, 35">
-            <Label Text="ĐĂNG NHẬP" 
-                   FontSize="Large" 
-                   TextColor="#4285f4" 
-                   HorizontalOptions="Center" 
-                   FontAttributes="Bold"
-                   />
+        <StackLayout Grid.Row="1"
+                Spacing="20"
+                Padding="30, 35">
+            <Label Text="Welcome to SaRLAB"
+                   FontSize="Large"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
 
             <!-- Email Entry -->
-            <Frame BackgroundColor="#f0f0f0" CornerRadius="20" Padding="0" HasShadow="False" HeightRequest="50" BorderColor="Transparent">
-                <Entry Placeholder="Nhập email" 
-                       Keyboard="Email" 
-                       TextColor="Black" 
+            <Frame BackgroundColor="#f0f0f0"
+                    CornerRadius="20"
+                    Padding="0"
+                    HasShadow="False"
+                    HeightRequest="50"
+                    BorderColor="Transparent">
+                <Entry Placeholder="Nhập email"
+                       Keyboard="Email"
+                       TextColor="Black"
                        ClearButtonVisibility="WhileEditing"
                        HeightRequest="40"
                        Margin="20,0"/>
             </Frame>
 
             <!-- Password Entry -->
-            <Frame BackgroundColor="#f0f0f0" CornerRadius="20" Padding="0" HasShadow="False" HeightRequest="50" BorderColor="Transparent">
-                <Entry Placeholder="Nhập mật khẩu" 
-                       IsPassword="True" 
-                       TextColor="Black" 
+            <Frame BackgroundColor="#f0f0f0"
+                    CornerRadius="20"
+                    Padding="0"
+                    HasShadow="False"
+                    HeightRequest="50"
+                    BorderColor="Transparent">
+                <Entry Placeholder="Nhập mật khẩu"
+                       IsPassword="True"
+                       TextColor="Black"
                        HeightRequest="40"
                        Margin="20,0"/>
             </Frame>
 
             <!-- Login Button -->
-            <Button Text="Đăng nhập" 
-                    BackgroundColor="#4285f4" 
+            <Button Text="Đăng nhập"
+                    BackgroundColor="#4285f4"
                     TextColor="White"
-                    HeightRequest="50" 
+                    HeightRequest="50"
                     WidthRequest="150"
-                    CornerRadius="50" 
-                    FontAttributes="Bold"/>
+                    CornerRadius="50"
+                    FontAttributes="Bold">
+                <Button.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSignInSuccessClicked"/>
+                </Button.GestureRecognizers>
+            </Button>
 
-            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="Bạn chưa có tài khoản? " VerticalOptions="Center"/>
+            <StackLayout Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                <Label Text="Bạn chưa có tài khoản? "
+                        VerticalOptions="Center"/>
                 <Label Text="Đăng ký ngay!"
-                   TextColor="#4285f4"
-                   VerticalOptions="Center"
-                   FontAttributes="Bold"
-                   >
+                       TextColor="#4285f4"
+                       VerticalOptions="Center"
+                       FontAttributes="Bold">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnSignUpClicked" />
+                        <TapGestureRecognizer Tapped="OnSignUpClicked"/>
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
