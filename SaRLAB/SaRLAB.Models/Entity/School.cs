@@ -23,7 +23,12 @@ namespace SaRLAB.Models.Entity
         public string? BiochemLogo { get; set; }
         public string? Banner { get; set; }
         public string? SchoolLogo { get; set; }
-
+        public string? BackupSubject1Logo { get; set; }
+        public string? BackupSubject2Logo { get; set; }
+        public string? BackupSubject3Logo { get; set; }
+        public string? BackupSubject4Logo { get; set; }
+        public string? BackupSubject5Logo { get; set; }
+        public string? BackupSubject6Logo { get; set; }
 
     }
 }

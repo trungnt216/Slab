@@ -1,4 +1,5 @@
 ﻿using SaRLAB.Models.Entity;
+using SaRLAB.Models.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,7 @@ namespace SaRLAB.DataAccess.Service.DocumentService
         List<Document> GetDocumentsByType(int schoolId, int subjectId, string type);
         List<Document> GetDocumentsByTypeToAccept(int schoolId, int subjectId, string type);
         List<Document> GetDocumentsBySchool(int schoolId);
+        List<NoticeAdmin> GetAllDocumentsBySchoolToAccept(int schoolId);
+        NoticeAdmin GetByIdDocumentsBySchoolToAccept(int Id);
     }
 }

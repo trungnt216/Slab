@@ -23,6 +23,16 @@ namespace SaRLAB.AdminWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
+        int Subject_id = 2;
+
+        Subject subject1 = new Subject();
+        Subject subject2 = new Subject();
+        Subject subject3 = new Subject();
+        Subject subject4 = new Subject();
+        Subject subject5 = new Subject();
+        Subject subject6 = new Subject();
+        List<NoticeAdmin> notice = new List<NoticeAdmin>();
+
         public MathController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
@@ -36,7 +46,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             var token = tokenHandler.ReadJwtToken(jwtToken);
 
-            foreach(Claim claim in token.Claims)
+            foreach (Claim claim in token.Claims)
             {
                 if (claim.Type == ClaimTypes.Name)
                 {
@@ -61,6 +71,50 @@ namespace SaRLAB.AdminWeb.Controllers
             }
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
+
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub2 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/7").Result;
+            if (response_sub2.IsSuccessStatusCode)
+            {
+                string data = response_sub2.Content.ReadAsStringAsync().Result;
+                subject2 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/8").Result;
+            if (response_sub3.IsSuccessStatusCode)
+            {
+                string data = response_sub3.Content.ReadAsStringAsync().Result;
+                subject3 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub4 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
+            if (response_sub4.IsSuccessStatusCode)
+            {
+                string data = response_sub4.Content.ReadAsStringAsync().Result;
+                subject4 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub5 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/10").Result;
+            if (response_sub5.IsSuccessStatusCode)
+            {
+                string data = response_sub5.Content.ReadAsStringAsync().Result;
+                subject5 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub6 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
+            if (response_sub6.IsSuccessStatusCode)
+            {
+                string data = response_sub6.Content.ReadAsStringAsync().Result;
+                subject6 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllDocumentsBySchoolToAccept/" + userLogin.SchoolId).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                notice = JsonConvert.DeserializeObject<List<NoticeAdmin>>(data);
+            }
         }
 
         //------------------------- thực nghiệm -------------------------------------------------------------------
@@ -70,6 +124,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
 
@@ -81,9 +142,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "virtuallabbiochem";
+            ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
             return View(documents);
         }
 
@@ -104,9 +165,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
                 return RedirectToAction("GetAll_Experiment");
             }
 
@@ -126,9 +187,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "experience";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
                         return RedirectToAction("GetAll_Experiment");
                     }
                 }
@@ -136,24 +197,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "experience";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
                     return RedirectToAction("GetAll_Experiment");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
                 return RedirectToAction("GetAll_Experiment");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -174,10 +235,10 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenu = "physics";
+                ViewBag.ActiveMenu = "biochem";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
                 return RedirectToAction("GetAll_Experiment");
             }
 
@@ -187,14 +248,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
-                        ViewBag.ActiveMenu = "physics";
+                        ViewBag.ActiveMenu = "biochem";
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "experience";
+                        ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
                         return RedirectToAction("GetAll_Experiment");
                     }
                 }
@@ -202,24 +263,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "experience";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
                     return RedirectToAction("GetAll_Experiment");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
                 return RedirectToAction("GetAll_Experiment");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -231,6 +292,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             Document document = new Document();
 
@@ -244,9 +312,9 @@ namespace SaRLAB.AdminWeb.Controllers
             }
 
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "virtuallabbiochem";
+            ViewBag.ActiveSubMenuLv2 = "experimentbiochem";
             return View(document);
         }
 
@@ -258,6 +326,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
 
@@ -270,9 +345,9 @@ namespace SaRLAB.AdminWeb.Controllers
             }
 
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "conspectus";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "virtuallabbiochem";
+            ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
             return View(documents);
         }
 
@@ -293,9 +368,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
                 return RedirectToAction("GetAll_Conspectus");
             }
 
@@ -314,9 +389,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "conspectus";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
                         return RedirectToAction("GetAll_Conspectus");
                     }
                 }
@@ -324,24 +399,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "conspectus";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
                     return RedirectToAction("GetAll_Conspectus");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
                 return RedirectToAction("GetAll_Conspectus");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -363,9 +438,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
                 return RedirectToAction("GetAll_Conspectus");
             }
 
@@ -375,14 +450,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "conspectus";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
                         return RedirectToAction("GetAll_Conspectus");
                     }
                 }
@@ -390,24 +465,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "conspectus";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
                     return RedirectToAction("GetAll_Conspectus");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
                 return RedirectToAction("GetAll_Conspectus");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "conspectus";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -419,6 +494,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             Document document = new Document();
 
@@ -431,13 +513,13 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "conspectus";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "virtuallabbiochem";
+            ViewBag.ActiveSubMenuLv2 = "conspectusbiochem";
             return View(document);
         }
 
-        //--------------------------------hoạt tính sinh học---- biological ------------------------------------
+        //--------------------------------hoạt tính sinh học---- biologicalbiochem ------------------------------------
 
         [HttpGet]
         public IActionResult GetAll_Biological()
@@ -445,6 +527,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
 
@@ -456,14 +545,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "biological";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "virtuallabbiochem";
+            ViewBag.ActiveSubMenuLv2 = "biologicalbiochem";
             return View(documents);
         }
 
 
-       public ActionResult Accept_Biological(int id)
+        public ActionResult Accept_Biological(int id)
         {
             Document document = new Document();
 
@@ -497,9 +586,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "biological";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "biologicalbiochem";
                         return RedirectToAction("GetAll_Biological");
                     }
                 }
@@ -507,24 +596,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "biological";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "biologicalbiochem";
                     return RedirectToAction("GetAll_Biological");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "biological";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "biologicalbiochem";
                 return RedirectToAction("GetAll_Biological");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "biological";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "biologicalbiochem";
                 return RedirectToAction("GetAll_Biological");
             }
         }
@@ -554,14 +643,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "biological";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "biologicalbiochem";
                         return RedirectToAction("GetAll_Biological");
                     }
                 }
@@ -569,24 +658,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "biological";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "biologicalbiochem";
                     return RedirectToAction("GetAll_Biological");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "biological";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "biologicalbiochem";
                 return RedirectToAction("GetAll_Biological");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "biological";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "biologicalbiochem";
                 return RedirectToAction("GetAll_Biological");
             }
         }
@@ -598,6 +687,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -609,9 +705,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "biological";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "virtuallabbiochem";
+            ViewBag.ActiveSubMenuLv2 = "biologicalbiochem";
             return View(document);
         }
 
@@ -623,6 +719,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/VOCABULARY").Result;
@@ -633,9 +736,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "vocabulary";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "tienganhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "vocabularybiochem";
             return View(documents);
         }
 
@@ -674,9 +777,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "tienganhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "vocabularybiochem";
                         return RedirectToAction("GetAll_Vocabulary");
                     }
                 }
@@ -684,24 +787,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "tienganhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "vocabularybiochem";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vocabularybiochem";
                 return RedirectToAction("GetAll_Vocabulary");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vocabularybiochem";
                 return RedirectToAction("GetAll_Vocabulary");
             }
         }
@@ -732,14 +835,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "tienganhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "vocabularybiochem";
                         return RedirectToAction("GetAll_Vocabulary");
                     }
                 }
@@ -747,24 +850,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "tienganhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "vocabularybiochem";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vocabularybiochem";
                 return RedirectToAction("GetAll_Vocabulary");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "vocabulary";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vocabularybiochem";
                 return RedirectToAction("GetAll_Vocabulary");
             }
         }
@@ -776,6 +879,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -787,9 +897,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "vocabulary";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "tienganhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "vocabularybiochem";
             return View(document);
         }
 
@@ -801,6 +911,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
 
@@ -812,9 +929,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "exam";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "tienganhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "exambiochem";
             return View(documents);
         }
 
@@ -836,9 +953,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "exambiochem";
                 return RedirectToAction("GetAll_Exam");
             }
 
@@ -857,9 +974,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "exam";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "tienganhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "exambiochem";
                         return RedirectToAction("GetAll_Exam");
                     }
                 }
@@ -867,24 +984,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "exam";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "tienganhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "exambiochem";
                     return RedirectToAction("GetAll_Exam");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "exambiochem";
                 return RedirectToAction("GetAll_Exam");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "exambiochem";
                 return RedirectToAction("GetAll_Exam");
             }
         }
@@ -906,9 +1023,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "exambiochem";
                 return RedirectToAction("GetAll_Exam");
             }
 
@@ -918,14 +1035,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "exam";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "tienganhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "exambiochem";
                         return RedirectToAction("GetAll_Exam");
                     }
                 }
@@ -933,24 +1050,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "exam";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "tienganhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "exambiochem";
                     return RedirectToAction("GetAll_Exam");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "exambiochem";
                 return RedirectToAction("GetAll_Exam");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "exam";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "exambiochem";
                 return RedirectToAction("GetAll_Exam");
             }
         }
@@ -962,6 +1079,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -973,9 +1097,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "exam";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "tienganhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "exambiochem";
             return View(document);
         }
 
@@ -987,6 +1111,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/EXAMENG").Result;
@@ -997,9 +1128,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "examenglish";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "tienganhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "examenglishbiochem";
             return View(documents);
         }
 
@@ -1021,9 +1152,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "examenglish";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "examenglishbiochem";
                 return RedirectToAction("GetAll_Examenglish");
             }
 
@@ -1042,9 +1173,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "examenglish";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "tienganhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "examenglishbiochem";
                         return RedirectToAction("GetAll_Examenglish");
                     }
                 }
@@ -1052,9 +1183,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "examenglish";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "tienganhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "examenglishbiochem";
                     return RedirectToAction("GetAll_Examenglish");
                 }
                 return RedirectToAction("GetAll_Examenglish");
@@ -1063,9 +1194,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "examenglish";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "examenglishbiochem";
                 return RedirectToAction("GetAll_Examenglish");
             }
         }
@@ -1087,9 +1218,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "examenglish";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "examenglishbiochem";
                 return RedirectToAction("GetAll_Examenglish");
             }
 
@@ -1099,14 +1230,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "tienganh";
-                        ViewBag.ActiveSubMenuLv2 = "examenglish";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "tienganhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "examenglishbiochem";
                         return RedirectToAction("GetAll_Examenglish");
                     }
                 }
@@ -1114,9 +1245,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "tienganh";
-                    ViewBag.ActiveSubMenuLv2 = "examenglish";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "tienganhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "examenglishbiochem";
                     return RedirectToAction("GetAll_Examenglish");
                 }
                 return RedirectToAction("GetAll_Examenglish");
@@ -1125,9 +1256,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "tienganh";
-                ViewBag.ActiveSubMenuLv2 = "examenglish";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "tienganhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "examenglishbiochem";
                 return RedirectToAction("GetAll_Examenglish");
             }
         }
@@ -1139,6 +1270,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1150,9 +1288,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "tienganh";
-            ViewBag.ActiveSubMenuLv2 = "examenglish";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "tienganhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "examenglishbiochem";
             return View(document);
         }
 
@@ -1164,6 +1302,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
 
@@ -1175,9 +1320,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "nghiencuubiochem";
+            ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
             return View(documents);
         }
 
@@ -1199,9 +1344,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
                 return RedirectToAction("GetAll_Department_level");
             }
 
@@ -1220,34 +1365,34 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                        ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
                         return RedirectToAction("GetAll_Department_level");
                     }
                 }
                 catch (Exception ex)
                 {
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                    ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Department_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
                 return RedirectToAction("GetAll_Department_level");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
                 return RedirectToAction("GetAll_Department_level");
             }
         }
@@ -1269,9 +1414,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
                 return RedirectToAction("GetAll_Department_level");
             }
 
@@ -1281,39 +1426,39 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                        ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
                         return RedirectToAction("GetAll_Department_level");
                     }
                 }
                 catch (Exception ex)
                 {
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                    ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Department_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
                 return RedirectToAction("GetAll_Department_level");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
                 return RedirectToAction("GetAll_Department_level");
             }
         }
@@ -1325,6 +1470,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1336,9 +1488,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "departmentLevel";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "nghiencuubiochem";
+            ViewBag.ActiveSubMenuLv2 = "departmentLevelBiochem";
             return View(document);
         }
 
@@ -1350,6 +1502,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/PROVONCIALLEVEL").Result;
@@ -1360,9 +1519,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "nghiencuubiochem";
+            ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
             return View(documents);
         }
 
@@ -1384,9 +1543,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
                 return RedirectToAction("GetAll_Provincial_level");
             }
 
@@ -1405,9 +1564,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                        ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
                         return RedirectToAction("GetAll_Provincial_level");
                     }
                 }
@@ -1415,23 +1574,23 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                    ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
                 return RedirectToAction("GetAll_Provincial_level");
             }
             else
             {
-                ViewBag.ActiveMenu = "physics";
+                ViewBag.ActiveMenu = "biochem";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 return RedirectToAction("GetAll_Provincial_level");
             }
@@ -1454,9 +1613,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
                 return RedirectToAction("GetAll_Provincial_level");
             }
 
@@ -1466,14 +1625,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                        ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
                         return RedirectToAction("GetAll_Provincial_level");
                     }
                 }
@@ -1481,23 +1640,23 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                    ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
                 return RedirectToAction("GetAll_Provincial_level");
             }
             else
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Provincial_level");
             }
@@ -1510,6 +1669,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1521,9 +1687,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "provincialLevel";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "nghiencuubiochem";
+            ViewBag.ActiveSubMenuLv2 = "provincialLevelBiochem";
             return View(document);
         }
 
@@ -1536,6 +1702,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/NATIONALLEVER").Result;
@@ -1546,9 +1719,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "nghiencuubiochem";
+            ViewBag.ActiveSubMenuLv2 = "nationalLevelBiochem";
             return View(documents);
         }
 
@@ -1570,9 +1743,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelBiochem";
                 return RedirectToAction("GetAll_National_level");
             }
 
@@ -1591,9 +1764,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                        ViewBag.ActiveSubMenuLv2 = "nationalLevelBiochem";
                         return RedirectToAction("GetAll_National_level");
                     }
                 }
@@ -1601,9 +1774,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                    ViewBag.ActiveSubMenuLv2 = "nationalLevelBiochem";
                     return RedirectToAction("GetAll_National_level");
                 }
                 return RedirectToAction("GetAll_National_level");
@@ -1611,9 +1784,9 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelBiochem";
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 return RedirectToAction("GetAll_National_level");
             }
@@ -1636,9 +1809,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelBiochem";
                 return RedirectToAction("GetAll_National_level");
             }
 
@@ -1648,14 +1821,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                        ViewBag.ActiveSubMenuLv2 = "nationalLevelBiochem";
                         return RedirectToAction("GetAll_National_level");
                     }
                 }
@@ -1663,9 +1836,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                    ViewBag.ActiveSubMenuLv2 = "nationalLevelBiochem";
                     return RedirectToAction("GetAll_National_level");
                 }
                 return RedirectToAction("GetAll_National_level");
@@ -1673,9 +1846,9 @@ namespace SaRLAB.AdminWeb.Controllers
             else
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelBiochem";
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_National_level");
             }
@@ -1688,6 +1861,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1699,9 +1879,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "nationalLevel";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "nghiencuubiochem";
+            ViewBag.ActiveSubMenuLv2 = "nationalLevelBiochem";
             return View(document);
         }
 
@@ -1713,6 +1893,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/PREPARATIONQUESTION").Result;
@@ -1723,9 +1910,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "thuchanhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
             return View(documents);
         }
 
@@ -1747,9 +1934,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
@@ -1768,9 +1955,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "thuchanh";
-                        ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
                         return RedirectToAction("GetAll_Preparation_questions");
                     }
                 }
@@ -1778,24 +1965,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
         }
@@ -1817,9 +2004,9 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
@@ -1829,14 +2016,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "thuchanh";
-                        ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
                         return RedirectToAction("GetAll_Preparation_questions");
                     }
                 }
@@ -1844,24 +2031,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
         }
@@ -1873,6 +2060,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -1884,9 +2078,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "preparationQuestions";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "thuchanhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "preparationQuestionsBiochem";
             return View(document);
         }
 
@@ -1899,6 +2093,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/2/NATIONALLEVER").Result;
@@ -1909,9 +2110,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "practiceReport";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "thuchanhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
             return View(documents);
         }
 
@@ -1932,9 +2133,9 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Practice_report");
             }
@@ -1954,9 +2155,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "thuchanh";
-                        ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
                         return RedirectToAction("GetAll_Practice_report");
                     }
                 }
@@ -1964,24 +2165,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
                     return RedirectToAction("GetAll_Practice_report");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
                 return RedirectToAction("GetAll_Practice_report");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
                 return RedirectToAction("GetAll_Practice_report");
             }
         }
@@ -2002,9 +2203,9 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Practice_report");
             }
@@ -2015,14 +2216,14 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     HttpResponseMessage response;
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id,content).Result;
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "physics";
-                        ViewBag.ActiveSubMenu = "thuchanh";
-                        ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
                         return RedirectToAction("GetAll_Practice_report");
                     }
                 }
@@ -2030,24 +2231,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "physics";
-                    ViewBag.ActiveSubMenu = "thuchanh";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
                     return RedirectToAction("GetAll_Practice_report");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
                 return RedirectToAction("GetAll_Practice_report");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "physics";
-                ViewBag.ActiveSubMenu = "thuchanh";
-                ViewBag.ActiveSubMenuLv2 = "practiceReport";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "thuchanhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
                 return RedirectToAction("GetAll_Practice_report");
             }
         }
@@ -2059,6 +2260,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2070,9 +2278,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "physics";
-            ViewBag.ActiveSubMenu = "thuchanh";
-            ViewBag.ActiveSubMenuLv2 = "practiceReport";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "thuchanhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "practiceReportBiochem";
             return View(document);
         }
 
@@ -2084,6 +2292,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/3/INTERNATIONAL").Result;
@@ -2094,9 +2309,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "nghiencuubiochem";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
             return View(documents);
         }
 
@@ -2117,9 +2332,9 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_International_level");
             }
@@ -2139,9 +2354,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
                         return RedirectToAction("GetAll_International_level");
                     }
                 }
@@ -2149,24 +2364,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
                     return RedirectToAction("GetAll_International_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
                 return RedirectToAction("GetAll_International_level");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
                 return RedirectToAction("GetAll_International_level");
             }
         }
@@ -2187,9 +2402,9 @@ namespace SaRLAB.AdminWeb.Controllers
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_International_level");
             }
@@ -2205,9 +2420,9 @@ namespace SaRLAB.AdminWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "chem";
-                        ViewBag.ActiveSubMenu = "nghiencuu";
-                        ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
                         return RedirectToAction("GetAll_International_level");
                     }
                 }
@@ -2215,24 +2430,24 @@ namespace SaRLAB.AdminWeb.Controllers
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "chem";
-                    ViewBag.ActiveSubMenu = "nghiencuu";
-                    ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
                     return RedirectToAction("GetAll_International_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
                 return RedirectToAction("GetAll_International_level");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "chem";
-                ViewBag.ActiveSubMenu = "nghiencuu";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "nghiencuubiochem";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
                 return RedirectToAction("GetAll_International_level");
             }
         }
@@ -2244,6 +2459,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
@@ -2255,9 +2477,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "chem";
-            ViewBag.ActiveSubMenu = "nghiencuu";
-            ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "nghiencuubiochem";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevelBiochem";
             return View(document);
         }
 
@@ -2268,6 +2490,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             List<Quiz> equipment = new List<Quiz>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/2").Result;
@@ -2277,7 +2506,10 @@ namespace SaRLAB.AdminWeb.Controllers
                 string data = response.Content.ReadAsStringAsync().Result;
                 equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
             }
-
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "cauhoiantoanbiochem";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoasinh";
             return View(equipment);
         }
 
@@ -2287,9 +2519,20 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "cauhoiantoanbiochem";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoasinh";
                 return View();
             }
             else
@@ -2304,6 +2547,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
@@ -2428,6 +2678,10 @@ namespace SaRLAB.AdminWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "cauhoiantoanbiochem";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoasinh";
                 return View();
             }
             return View();
@@ -2439,6 +2693,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             Quiz quiz = new Quiz();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetQuizById/" + id).Result;
@@ -2458,6 +2719,10 @@ namespace SaRLAB.AdminWeb.Controllers
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "cauhoiantoanbiochem";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoasinh";
                 return View(quiz);
             }
             else
@@ -2472,6 +2737,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
@@ -2594,8 +2866,16 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             catch (Exception ex)
             {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "cauhoiantoanbiochem";
+                ViewBag.ActiveSubMenuLv2 = "cauhoihoasinh";
                 return View();
             }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "cauhoiantoanbiochem";
+            ViewBag.ActiveSubMenuLv2 = "cauhoihoasinh";
             return View();
         }
 
@@ -2605,7 +2885,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 HttpResponseMessage response;
                 StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                response = _httpClient.PostAsync(_httpClient.BaseAddress + "Quiz/Delete/" + id,content).Result;
+                response = _httpClient.PostAsync(_httpClient.BaseAddress + "Quiz/Delete/" + id, content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -2617,6 +2897,930 @@ namespace SaRLAB.AdminWeb.Controllers
                 return RedirectToAction("GetAll_Question");
             }
             return RedirectToAction("GetAll_Question");
+        }
+
+        //------------------------------- lý thuyết - theory ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Theory()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/THEORY").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+            return View(documents);
+        }
+
+
+        public ActionResult Accept_Theory(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Theory");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    document.UpdateTime = DateTime.Now;
+                    document.PageFlag = true;
+
+                    string data = JsonConvert.SerializeObject(document);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+                        return RedirectToAction("GetAll_Theory");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+                    return RedirectToAction("GetAll_Theory");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+                return RedirectToAction("GetAll_Theory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+                return RedirectToAction("GetAll_Theory");
+            }
+        }
+
+        public ActionResult Delete_Theory(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Theory");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+                        return RedirectToAction("GetAll_Theory");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+                    return RedirectToAction("GetAll_Theory");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+                return RedirectToAction("GetAll_Theory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+                return RedirectToAction("GetAll_Theory");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Theory(int id)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "gttheorybiochem";
+            return View(document);
+        }
+
+        //------------------------------- thực hành - pratice ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Practice()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/PRACTICE").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+            return View(documents);
+        }
+
+
+        public ActionResult Accept_Pratice(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Practice");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    document.UpdateTime = DateTime.Now;
+                    document.PageFlag = true;
+
+                    string data = JsonConvert.SerializeObject(document);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+                        return RedirectToAction("GetAll_Practice");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+                    return RedirectToAction("GetAll_Practice");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+                return RedirectToAction("GetAll_Theory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+                return RedirectToAction("GetAll_Practice");
+            }
+        }
+
+        public ActionResult Delete_Practice(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Practice");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+                        return RedirectToAction("GetAll_Practice");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+                    return RedirectToAction("GetAll_Practice");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+                return RedirectToAction("GetAll_Practice");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+                return RedirectToAction("GetAll_Practice");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Practice(int id)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "giaotrinhbiochem";
+            ViewBag.ActiveSubMenuLv2 = "gtpracticebiochem";
+            return View(document);
+        }
+
+        //------------------------------- lý thuyết - theory ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_ViTheory()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/VITHEORY").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "virtuallabbiochem";
+            ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+            return View(documents);
+        }
+
+
+        public ActionResult Accept_ViTheory(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_Theory");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    document.UpdateTime = DateTime.Now;
+                    document.PageFlag = true;
+
+                    string data = JsonConvert.SerializeObject(document);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+                        return RedirectToAction("GetAll_ViTheory");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+                    return RedirectToAction("GetAll_ViTheory");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+        }
+
+        public ActionResult Delete_ViTheory(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+                        return RedirectToAction("GetAll_ViTheory");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+                    return RedirectToAction("GetAll_ViTheory");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+                return RedirectToAction("GetAll_ViTheory");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_ViTheory(int id)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "virtuallabbiochem";
+            ViewBag.ActiveSubMenuLv2 = "vitheorybiochem";
+            return View(document);
+        }
+
+        //------------------------------- thực hành - pratice ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_ViPractice()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/VIPRACTICE").Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "virtuallabbiochem";
+            ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+            return View(documents);
+        }
+
+
+        public ActionResult Accept_ViPratice(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    document.UpdateTime = DateTime.Now;
+                    document.PageFlag = true;
+
+                    string data = JsonConvert.SerializeObject(document);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+                        return RedirectToAction("GetAll_ViPractice");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+                    return RedirectToAction("GetAll_ViPractice");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền duyệt!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+        }
+
+        public ActionResult Delete_ViPractice(int id)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+                TempData["notice"] = "khong tim thay du lieu";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenuMain = "subject";
+                        ViewBag.ActiveMenu = "biochem";
+                        ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                        ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+                        return RedirectToAction("GetAll_ViPractice");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+                    return RedirectToAction("GetAll_ViPractice");
+                }
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "virtuallabbiochem";
+                ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+                return RedirectToAction("GetAll_ViPractice");
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_ViPractice(int id)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "virtuallabbiochem";
+            ViewBag.ActiveSubMenuLv2 = "vipracticebiochem";
+            return View(document);
+        }
+
+
+        //----------------------------- An toàn phòng thí nghiệm --------------------------------------
+        [HttpGet]
+        public ActionResult Details_RuleClassroom()
+        {
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+
+            Subject subject = new Subject();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                subject = JsonConvert.DeserializeObject<Subject>(data);
+            }
+
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "configurationbiochem";
+            ViewBag.ActiveSubMenuLv2 = "ruleClassroomBiochem";
+            return View(subject);
+        }
+
+        [HttpGet]
+        public ActionResult Update_RuleClassroom()
+        {
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "configurationbiochem";
+            ViewBag.ActiveSubMenuLv2 = "ruleClassroomBiochem";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Update_RuleClassroom(IFormFile File)
+        {
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+
+            Subject subject = new Subject();
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                subject.Rule = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                subject.ID = Subject_id;
+
+                string data = JsonConvert.SerializeObject(subject);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Subject/update", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "biochem";
+                    ViewBag.ActiveSubMenu = "configurationbiochem";
+                    ViewBag.ActiveSubMenuLv2 = "ruleClassroomBiochem";
+                    return RedirectToAction("Details_RuleClassroom");
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "biochem";
+                ViewBag.ActiveSubMenu = "configurationbiochem";
+                ViewBag.ActiveSubMenuLv2 = "ruleClassroomBiochem";
+                return View();
+            }
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "biochem";
+            ViewBag.ActiveSubMenu = "configurationbiochem";
+            ViewBag.ActiveSubMenuLv2 = "ruleClassroomBiochem";
+            return View();
         }
     }
 }

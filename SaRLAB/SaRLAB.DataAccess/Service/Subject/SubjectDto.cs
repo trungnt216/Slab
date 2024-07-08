@@ -98,12 +98,12 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
         public Subject Update(Subject subject)
         {
-            var _subject = _context.Subjects.SingleOrDefault(item => (item.SubjectName == subject.SubjectName));
+            var _subject = _context.Subjects.SingleOrDefault(item => (item.ID == subject.ID));
 
             if (_subject != null)
             {
-                _subject.SubjectName = subject.SubjectName;
-                _subject.Rule = subject.Rule;
+                _subject.SubjectName = subject.SubjectName ?? _subject.SubjectName;
+                _subject.Rule = subject.Rule ?? _subject.Rule;
                 _context.SaveChanges();
             }
 

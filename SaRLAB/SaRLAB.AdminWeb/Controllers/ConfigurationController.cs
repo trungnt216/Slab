@@ -29,6 +29,14 @@ namespace SaRLAB.AdminWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
+        Subject subject1 = new Subject();
+        Subject subject2 = new Subject();
+        Subject subject3 = new Subject();
+        Subject subject4 = new Subject();
+        Subject subject5 = new Subject();
+        Subject subject6 = new Subject();
+        List<NoticeAdmin> notice = new List<NoticeAdmin>();
+
         public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
@@ -69,7 +77,55 @@ namespace SaRLAB.AdminWeb.Controllers
             }
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
-            
+
+
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub2 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/7").Result;
+            if (response_sub2.IsSuccessStatusCode)
+            {
+                string data = response_sub2.Content.ReadAsStringAsync().Result;
+                subject2 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/8").Result;
+            if (response_sub3.IsSuccessStatusCode)
+            {
+                string data = response_sub3.Content.ReadAsStringAsync().Result;
+                subject3 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub4 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
+            if (response_sub4.IsSuccessStatusCode)
+            {
+                string data = response_sub4.Content.ReadAsStringAsync().Result;
+                subject4 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub5 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/10").Result;
+            if (response_sub5.IsSuccessStatusCode)
+            {
+                string data = response_sub5.Content.ReadAsStringAsync().Result;
+                subject5 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub6 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
+            if (response_sub6.IsSuccessStatusCode)
+            {
+                string data = response_sub6.Content.ReadAsStringAsync().Result;
+                subject6 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+
+ 
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllDocumentsBySchoolToAccept/" + userLogin.SchoolId).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                notice = JsonConvert.DeserializeObject<List<NoticeAdmin>>(data);
+            }
+
         }
 
         public IActionResult Index()
@@ -77,6 +133,15 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+
+
             return View();
         }
 
@@ -87,6 +152,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             School school = new School();
 
@@ -117,6 +189,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             School school = new School();
 
@@ -132,11 +211,22 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(school);
         }
         [HttpPost]
-        public ActionResult GetAllBanner(School school,IFormFile FileChemLogo, IFormFile FileBioLogo, IFormFile FilePhysLogo, IFormFile FileBiochemLogo, IFormFile FileBanner, IFormFile FileLogoSchool)
+        public ActionResult GetAllBanner(School school,IFormFile FileChemLogo, IFormFile FileBioLogo, IFormFile FilePhysLogo, 
+            IFormFile FileBiochemLogo, IFormFile FileBanner, IFormFile FileLogoSchool, IFormFile FileBackupSubject1Logo,
+            IFormFile FileBackupSubject2Logo, IFormFile FileBackupSubject3Logo, IFormFile FileBackupSubject4Logo,
+            IFormFile FileBackupSubject5Logo, IFormFile FileBackupSubject6Logo)
         {
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+
             if (FileChemLogo != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
@@ -263,6 +353,132 @@ namespace SaRLAB.AdminWeb.Controllers
                 school.SchoolLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
             }
 
+            if (FileBackupSubject1Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject1Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject1Logo.CopyTo(stream);
+                }
+                school.BackupSubject1Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FileBackupSubject2Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject2Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject2Logo.CopyTo(stream);
+                }
+                school.BackupSubject2Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FileBackupSubject3Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject3Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject3Logo.CopyTo(stream);
+                }
+                school.BackupSubject3Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FileBackupSubject4Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject4Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject4Logo.CopyTo(stream);
+                }
+                school.BackupSubject4Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FileBackupSubject5Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject5Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject5Logo.CopyTo(stream);
+                }
+                school.BackupSubject5Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FileBackupSubject6Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject6Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject6Logo.CopyTo(stream);
+                }
+                school.BackupSubject6Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
             try
             {
                 string data = JsonConvert.SerializeObject(school);
@@ -289,22 +505,45 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<UserDto> users = new List<UserDto>();
 
-            HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
-
-            Console.WriteLine(_httpClient.BaseAddress + "User/GetAll");
-
-            if (response.IsSuccessStatusCode)
+            if (userLogin.RoleName == "Owner")
             {
-                string data = response.Content.ReadAsStringAsync().Result;
-                users = JsonConvert.DeserializeObject<List<UserDto>>(data);
-            }
-            ViewBag.ActiveMenu = "user";
-            return View(users);
 
+                HttpResponseMessage response;
+                response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAll").Result;
+
+                Console.WriteLine(_httpClient.BaseAddress + "User/GetAll");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = response.Content.ReadAsStringAsync().Result;
+                    users = JsonConvert.DeserializeObject<List<UserDto>>(data);
+                }
+                ViewBag.ActiveMenu = "user";
+          
+            }
+            else
+            {
+                HttpResponseMessage response;
+                response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllUserInSchool/" + userLogin.SchoolId).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = response.Content.ReadAsStringAsync().Result;
+                    users = JsonConvert.DeserializeObject<List<UserDto>>(data);
+                }
+                ViewBag.ActiveMenu = "user";
+            }
+            return View(users);
         }
 
         [HttpGet]
@@ -384,6 +623,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             User user = new User();
 
@@ -535,6 +781,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
 
             ViewBag.ActiveMenu = "banner";
@@ -605,6 +858,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
             /*            string substringToRemove = "/undefined";
 
                         if (id.EndsWith(substringToRemove))
@@ -722,7 +982,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
-
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             try
             {
@@ -760,6 +1026,13 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             User user = new User();
 
@@ -832,11 +1105,18 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
 
             List<UserDto> users = new List<UserDto>();
 
             HttpResponseMessage response;
-            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllUserInSchoolRoleUser/" + userLogin.SchoolId).Result;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "User/GetAllUserInSchool/" + userLogin.SchoolId).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -857,6 +1137,7 @@ namespace SaRLAB.AdminWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
 
+
             SubjectFlag user = new SubjectFlag();
 
             HttpResponseMessage response;
@@ -870,6 +1151,15 @@ namespace SaRLAB.AdminWeb.Controllers
             }
 
             ViewBag.ActiveMenu = "student";
+
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+TempData["noticeCount"] = notice.Count;
+
             return View(user);
         }
         [HttpPost]

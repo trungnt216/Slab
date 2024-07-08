@@ -45,6 +45,13 @@ namespace SaRLAB.Application.Controllers
             return Ok(_documentService.GetDocumentById(id));
         }
 
+        [HttpGet]
+        [Route("GetByIdDocumentsBySchoolToAccept/{id}")]
+        public IActionResult GetByIdDocumentsBySchoolToAccept(int id)
+        {
+            return Ok(_documentService.GetByIdDocumentsBySchoolToAccept(id));
+        }
+
         [HttpPost]
         [Route("Insert")]
         public IActionResult Insert(Document document)
@@ -107,6 +114,13 @@ namespace SaRLAB.Application.Controllers
         public IActionResult GetAllByTypeToAccept(int schoolId, int subjectId, string type)
         {
             return Ok(_documentService.GetDocumentsByTypeToAccept(schoolId, subjectId, type));
+        }
+
+        [HttpGet]
+        [Route("GetAllDocumentsBySchoolToAccept/{schoolId}")]
+        public IActionResult GetAllDocumentsBySchoolToAccept(int schoolId)
+        {
+            return Ok(_documentService.GetAllDocumentsBySchoolToAccept(schoolId));
         }
 
 

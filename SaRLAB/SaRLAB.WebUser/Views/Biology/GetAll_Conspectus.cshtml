@@ -18,8 +18,8 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .modal-content {
@@ -72,132 +72,145 @@
         <div class="row">
             <div class="col-12 table-container">
                 <partial name="_TitleCustom">
-                <div class="table-action d-flex justify-content-between">
-                    <partial name="_SearchBox" />
-                    <a class="btn-custom-create" type="button" asp-controller="Biology" asp-action="Create_Conspectus">
-                        <i class="fa-solid fa-plus"></i>
-                        Thêm mới
-                    </a>
-                </div>
-                <div id="popupNotification" class="alert alert-danger">
-                    @TempData["notice"]
-                </div>
-                <div class="table-responsive">
-                    <table id="table" class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.ID)
-                            </th>
-                            <th>
-                                Tên
-                                <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.Path)
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.SpecializedEnglishFlag)
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.PageFlag)
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.Type)
-                            </th>
-                            <th class="d-none">
-                                Nhận xét
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.SchoolId)
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.CreateBy)
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.CreateTime)
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.UpdateBy)
-                            </th>
-                            <th>
-                                Thời gian cập nhật
-                                <i class="fa fa-sort" onclick="sortTable('table', 12, true)"></i>
-                            </th>
-                            <th class="d-none">
-                                @Html.DisplayNameFor(model => model.SubjectId)
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
+                    <div class="table-action d-flex justify-content-between">
+                        <partial name="_SearchBox" />
+                        <a class="btn-custom-create" type="button" asp-controller="Biology"
+                            asp-action="Create_Conspectus">
+                            <i class="fa-solid fa-plus"></i>
+                            Thêm mới
+                        </a>
+                    </div>
+                    <div id="popupNotification" class="alert alert-danger">
+                        @TempData["notice"]
+                    </div>
+                    <div class="table-responsive">
+                        <table id="table" class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th class="d-none">
+                                        @Html.DisplayNameFor(model => model.ID)
+                                    </th>
+                                    <th>
+                                        Tên
+                                        <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    <th class="d-none">
+                                        @Html.DisplayNameFor(model => model.Path)
+                                    </th>
+                                    <th class="d-none">
+                                        @Html.DisplayNameFor(model => model.SpecializedEnglishFlag)
+                                    </th>
+                                    <th class="d-none">
+                                        @Html.DisplayNameFor(model => model.PageFlag)
+                                    </th>
+                                    <th class="d-none">
+                                        @Html.DisplayNameFor(model => model.Type)
+                                    </th>
+                                    <th class="d-none">
+                                        Nhận xét
+                                    </th>
+                                    <th class="d-none">
+                                        @Html.DisplayNameFor(model => model.SchoolId)
+                                    </th>
+                                    <th class="d-none">
+                                        @Html.DisplayNameFor(model => model.CreateBy)
+                                    </th>
+                                    <th class="d-none">
+                                        @Html.DisplayNameFor(model => model.CreateTime)
+                                    </th>
+                                    <th class="d-none">
+                                        @Html.DisplayNameFor(model => model.UpdateBy)
+                                    </th>
+                                    <th>
+                                        Thời gian cập nhật
+                                        <i class="fa fa-sort" onclick="sortTable('table', 12, true)"></i>
+                                    </th>
+                                    <th class="d-none">
+                                        @Html.DisplayNameFor(model => model.SubjectId)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @counter
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
+                                                alt="Image" />
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.Path)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.PageFlag)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.Type)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.Remark)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.SchoolId)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.CreateBy)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.CreateTime)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.UpdateBy)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UpdateTime)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.SubjectId)
+                                        </td>
+                                        <td>
+                                            <a class="btn-custom-view-detail" asp-action="Details_Conspectus"
+                                                asp-route-id="@item.ID">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                            <a class="btn-custom-edit" asp-action="Edit_Conspectus" asp-route-id="@item.ID">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                            <a class="btn-custom-delete" href="#"
+                                                data-url="@Url.Action("Delete_Conspectus", "Biology", new { id = item.ID })"
+                                                onclick="openDeleteModal(this)">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    counter++;
+                                }
+                            </tbody>
+                        </table>
+                        @if (Model == null || !Model.Any())
                         {
-                            <tr>
-                                <td>
-                                    @counter
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.ID)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.Path)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.SpecializedEnglishFlag)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.PageFlag)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.Type)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.Remark)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.SchoolId)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.CreateBy)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.CreateTime)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.UpdateBy)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UpdateTime)
-                                </td>
-                                <td class="d-none">
-                                    @Html.DisplayFor(modelItem => item.SubjectId)
-                                </td>
-                                <td>
-                                    <a class="btn-custom-view-detail" asp-action="Details_Conspectus" asp-route-id="@item.ID">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
-                                    <a class="btn-custom-edit" asp-action="Edit_Conspectus" asp-route-id="@item.ID">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                     <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_Conspectus", "Biology", new { id = item.ID })" onclick="openDeleteModal(this)">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            counter++;
+                            <p class="text-danger"
+                                style="text-align: center; font-style: italic; font-weight: 500; clear: right">Không có dữ
+                                liệu!</p>
                         }
-                    </tbody>
-                </table>
-                @if (Model == null || !Model.Any())
-                {
-                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500; clear: right">Không có dữ liệu!</p>
-                }
-                </div>
+                    </div>
             </div>
         </div>
     </div>

@@ -28,10 +28,15 @@ namespace SaRLAB.Models.Entity
         public int? SchoolId { get; set; }
         public Subject? Subject { get; set; }
         public int? EquipmentQuantity { get; set; }
+        public string? Unit1 { get; set; }
+        public int? Unit1Amount { get; set; }
+        public string? Unit2 { get; set; }
+        public int? Unit2Amount { get; set; }
         public ICollection<PlanDetail>? PlanDetails { get; set; }
         [Required(ErrorMessage = "Vui lòng chọn đặc tính!")]
         public string? Property { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập xuất xử!")]
         public string? From { get; set; }
+        public string? CoverImage { get; set; }
     }
 }

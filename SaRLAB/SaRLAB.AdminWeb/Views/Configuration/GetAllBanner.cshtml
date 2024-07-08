@@ -79,7 +79,49 @@
                     <input id="FileLogoSchool" accept="image/*" name="FileLogoSchool" class="form-control" type="file" />
                     <span asp-validation-for="SchoolLogo" class="text-danger"></span>
                 </div>
-            </div>                                                                                                        
+            </div>               
+            <div class="form-group row">
+                <label asp-for="BackupSubject1Logo" class="col-3 form-label">Chọn ảnh môn @TempData["subject_1"]</label>
+                <div class="col">
+                    <input id="BackupSubject1Logo" accept="image/*" name="FileBackupSubject1Logo" class="form-control" type="file" />
+                    <span asp-validation-for="BackupSubject1Logo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="BackupSubject2Logo" class="col-3 form-label">Chọn ảnh môn @TempData["subject_2"]</label>
+                <div class="col">
+                    <input id="BackupSubject2Logo" accept="image/*" name="FileBackupSubject2Logo" class="form-control" type="file" />
+                    <span asp-validation-for="BackupSubject2Logo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="BackupSubject3Logo" class="col-3 form-label">Chọn ảnh môn @TempData["subject_3"]</label>
+                <div class="col">
+                    <input id="BackupSubject3Logo" accept="image/*" name="FileBackupSubject3Logo" class="form-control" type="file" />
+                    <span asp-validation-for="BackupSubject3Logo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="BackupSubject4Logo" class="col-3 form-label">Chọn ảnh môn @TempData["subject_4"]</label>
+                <div class="col">
+                    <input id="BackupSubject4Logo" accept="image/*" name="FileBackupSubject4Logo" class="form-control" type="file" />
+                    <span asp-validation-for="BackupSubject4Logo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="BackupSubject5Logo" class="col-3 form-label">Chọn ảnh môn @TempData["subject_5"]</label>
+                <div class="col">
+                    <input id="BackupSubject5Logo" accept="image/*" name="FileBackupSubject5Logo" class="form-control" type="file" />
+                    <span asp-validation-for="BackupSubject5Logo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="BackupSubject6Logo" class="col-3 form-label">Chọn ảnh môn @TempData["subject_6"]</label>
+                <div class="col">
+                    <input id="BackupSubject6Logo" accept="image/*" name="FileBackupSubject6Logo" class="form-control" type="file" />
+                    <span asp-validation-for="BackupSubject6Logo" class="text-danger"></span>
+                </div>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
