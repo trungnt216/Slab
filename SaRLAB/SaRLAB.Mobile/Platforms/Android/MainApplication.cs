@@ -1,5 +1,8 @@
 ﻿using Android.App;
+using Android.Content.Res;
 using Android.Runtime;
+using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
+using MauiEntry = Microsoft.Maui.Controls.Entry;
 
 namespace SaRLAB.Mobile
 {
@@ -9,6 +12,17 @@ namespace SaRLAB.Mobile
         public MainApplication(IntPtr handle, JniHandleOwnership ownership)
             : base(handle, ownership)
         {
+            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(MauiEntry), (handler, view) =>
+            {
+                if (view is MauiEntry)
+                {
+                    // Remove underline
+                    handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+
+                    // Change placeholder text color
+                    handler.PlatformView.SetHintTextColor(ColorStateList.ValueOf(Android.Graphics.Color.Gray));
+                }
+            });
         }
 
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();

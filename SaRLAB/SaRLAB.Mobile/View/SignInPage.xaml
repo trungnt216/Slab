@@ -1,48 +1,87 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SaRLAB.Mobile.View.SignInPage"
-             Shell.NavBarIsVisible="false">
-    <ScrollView>
-        <VerticalStackLayout Spacing="20" Padding="30" >
+             x:Class="SaRLAB.Mobile.View.SignInPage">
+    <NavigationPage.HasNavigationBar>
+        <x:Boolean>false</x:Boolean>
+    </NavigationPage.HasNavigationBar>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <!-- Registration Prompt -->
-            <VerticalStackLayout VerticalOptions="CenterAndExpand">
-                <Image Source="img_signin"
-                       WidthRequest="250"
-                       HeightRequest="250"></Image>
-            </VerticalStackLayout>
-
+            <RowDefinition Height="*"/>
             <!-- Login Form -->
-            <VerticalStackLayout Spacing="20" Padding="0">
-                <Label Text="Đăng Nhập" 
-                       FontSize="Large" 
-                       TextColor="#4285f4" 
-                       HorizontalOptions="Center" 
-                       FontAttributes="Bold" />
+            <RowDefinition Height="Auto"/>
+            <!-- Footer Image -->
+        </Grid.RowDefinitions>
 
-                <!-- Email Entry -->
-                <Entry Placeholder="john@example.com" 
+        <!-- Registration Prompt -->
+        <StackLayout Grid.Row="0" Padding="0,25,0,0">
+            <Image 
+                Source="img_signin"
+                WidthRequest="250"
+                HeightRequest="250"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"/>
+        </StackLayout>
+
+        <!-- Login Form -->
+        <StackLayout Grid.Row="1" Spacing="20" Padding="30, 35">
+            <Label Text="ĐĂNG NHẬP" 
+                   FontSize="Large" 
+                   TextColor="#4285f4" 
+                   HorizontalOptions="Center" 
+                   FontAttributes="Bold"
+                   />
+
+            <!-- Email Entry -->
+            <Frame BackgroundColor="#f0f0f0" CornerRadius="20" Padding="0" HasShadow="False" HeightRequest="50" BorderColor="Transparent">
+                <Entry Placeholder="Nhập email" 
                        Keyboard="Email" 
-                       PlaceholderColor="Gray" 
                        TextColor="Black" 
-                       BackgroundColor="#efefef" 
-                       HeightRequest="40"/>
+                       ClearButtonVisibility="WhileEditing"
+                       HeightRequest="40"
+                       Margin="20,0"/>
+            </Frame>
 
-                <!-- Password Entry -->
-                <Entry Placeholder="Password" 
+            <!-- Password Entry -->
+            <Frame BackgroundColor="#f0f0f0" CornerRadius="20" Padding="0" HasShadow="False" HeightRequest="50" BorderColor="Transparent">
+                <Entry Placeholder="Nhập mật khẩu" 
                        IsPassword="True" 
-                       PlaceholderColor="Gray" 
                        TextColor="Black" 
-                       BackgroundColor="#efefef" 
-                       HeightRequest="40" />
+                       HeightRequest="40"
+                       Margin="20,0"/>
+            </Frame>
 
-                <!-- Login Button -->
-                <Button Text="ĐĂNG NHẬP" 
-                        BackgroundColor="#4285f4" 
-                        TextColor="White" 
-                        HeightRequest="40" 
-                        CornerRadius="20" />
-            </VerticalStackLayout>
-        </VerticalStackLayout>
-    </ScrollView>
+            <!-- Login Button -->
+            <Button Text="Đăng nhập" 
+                    BackgroundColor="#4285f4" 
+                    TextColor="White"
+                    HeightRequest="50" 
+                    WidthRequest="150"
+                    CornerRadius="50" 
+                    FontAttributes="Bold"/>
+
+            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Bạn chưa có tài khoản? " VerticalOptions="Center"/>
+                <Label Text="Đăng ký ngay!"
+                   TextColor="#4285f4"
+                   VerticalOptions="Center"
+                   FontAttributes="Bold"
+                   >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSignUpClicked" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+        </StackLayout>
+
+        <!-- Footer Image -->
+        <Image Grid.Row="2"
+               Source="img_signin_footer"
+               Aspect="AspectFill"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="End"
+               HeightRequest="180"/>
+    </Grid>
 </ContentPage>

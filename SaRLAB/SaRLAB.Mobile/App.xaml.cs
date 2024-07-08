@@ -1,4 +1,6 @@
-﻿namespace SaRLAB.Mobile
+﻿using SaRLAB.Mobile.View;
+
+namespace SaRLAB.Mobile
 {
     public partial class App : Application
     {
@@ -6,7 +8,8 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new SignInPage());
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }
