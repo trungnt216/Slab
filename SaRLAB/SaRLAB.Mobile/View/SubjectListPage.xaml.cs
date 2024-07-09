@@ -8,7 +8,8 @@ public partial class SubjectListPage : ContentPage
     public SubjectListPage()
     {
         InitializeComponent();
-        BindingContext = new MenuViewModel();
+        BindingContext = new SubjectViewModel();
+        //BindingContext = new MenuViewModel();
     }
 
     private async void OnSubjectTapped(object sender, ItemTappedEventArgs e)
