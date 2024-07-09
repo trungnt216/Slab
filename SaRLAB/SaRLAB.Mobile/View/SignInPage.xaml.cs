@@ -14,7 +14,8 @@ public partial class SignInPage : ContentPage
 
     private async void OnSignInSuccessClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new SubjectPage());
+        Application.Current.MainPage = new NavigationPage(new AppShell());
+        await Task.CompletedTask;
     }
 
 }

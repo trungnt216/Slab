@@ -25,14 +25,13 @@
         </StackLayout>
 
         <!-- Login Form -->
-        <StackLayout Grid.Row="1"
-                Spacing="20"
-                Padding="30, 35">
-            <Label Text="Welcome to SaRLAB"
-                   FontSize="Large"
-                   TextColor="White"
-                   HorizontalOptions="Center"
-                   FontAttributes="Bold"/>
+        <StackLayout Grid.Row="1" Spacing="20" Padding="30, 10">
+            <Label Text="ĐĂNG NHẬP" 
+                FontSize="Large" 
+                TextColor="#4285f4" 
+                HorizontalOptions="Center" 
+                FontAttributes="Bold"
+            />
 
             <!-- Email Entry -->
             <Frame BackgroundColor="#f0f0f0"

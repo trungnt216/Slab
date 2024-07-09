@@ -34,7 +34,7 @@
                     TextColor="#4285f4" 
                     HorizontalOptions="Center" 
                     FontAttributes="Bold"
-            />
+                />
 
                 <!-- Name Entry -->
                 <Frame BackgroundColor="#f0f0f0" CornerRadius="20" Padding="0" HasShadow="False" HeightRequest="50" BorderColor="Transparent">
