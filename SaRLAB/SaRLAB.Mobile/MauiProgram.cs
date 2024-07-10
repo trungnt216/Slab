@@ -15,6 +15,7 @@ namespace SaRLAB.Mobile
                     fonts.AddFont("Montserrat-SemiBold.ttf", "MontserratSemiBold");
                     fonts.AddFont("Montserrat-Medium.ttf", "MontserratMedium");
                     fonts.AddFont("Montserrat-Bold.ttf", "MontserratBold");
+                    fonts.AddFont("Montserrat-Black.ttf", "MontserratBlack");
                 });
 
 #if DEBUG
