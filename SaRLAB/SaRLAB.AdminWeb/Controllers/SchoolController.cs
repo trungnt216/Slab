@@ -24,12 +24,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
-        Subject subject1 = new Subject();
-        Subject subject2 = new Subject();
-        Subject subject3 = new Subject();
-        Subject subject4 = new Subject();
-        Subject subject5 = new Subject();
-        Subject subject6 = new Subject();
+        List<Subject> subjects = new List<Subject>();
         List<NoticeAdmin> notice = new List<NoticeAdmin>();
 
         public SchoolController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
@@ -73,42 +68,13 @@ namespace SaRLAB.AdminWeb.Controllers
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetAll").Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
-                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+                subjects = JsonConvert.DeserializeObject<List<Subject>>(data);
             }
-            HttpResponseMessage response_sub2 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/7").Result;
-            if (response_sub2.IsSuccessStatusCode)
-            {
-                string data = response_sub2.Content.ReadAsStringAsync().Result;
-                subject2 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/8").Result;
-            if (response_sub3.IsSuccessStatusCode)
-            {
-                string data = response_sub3.Content.ReadAsStringAsync().Result;
-                subject3 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub4 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
-            if (response_sub4.IsSuccessStatusCode)
-            {
-                string data = response_sub4.Content.ReadAsStringAsync().Result;
-                subject4 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub5 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/10").Result;
-            if (response_sub5.IsSuccessStatusCode)
-            {
-                string data = response_sub5.Content.ReadAsStringAsync().Result;
-                subject5 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub6 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
-            if (response_sub6.IsSuccessStatusCode)
-            {
-                string data = response_sub6.Content.ReadAsStringAsync().Result;
-                subject6 = JsonConvert.DeserializeObject<Subject>(data);
-            }
+
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllDocumentsBySchoolToAccept/" + userLogin.SchoolId).Result;
 
             if (response.IsSuccessStatusCode)
@@ -125,14 +91,32 @@ namespace SaRLAB.AdminWeb.Controllers
         public IActionResult GetAllSchool()
         {
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-            TempData["subject_1"] = subject1.SubjectName;
-            TempData["subject_2"] = subject2.SubjectName;
-            TempData["subject_3"] = subject3.SubjectName;
-            TempData["subject_4"] = subject4.SubjectName;
-            TempData["subject_5"] = subject5.SubjectName;
-            TempData["subject_6"] = subject6.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
+TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
+TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
+TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
+TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
+TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
+TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
+TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
+TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
+TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
+TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
+TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
+TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
+TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
+TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
+TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
+TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
+TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
+TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
+TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
+TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
+TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
+TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
+TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
+TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             List<School> schools = new List<School>();
@@ -153,14 +137,32 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult CreateSchool()
         {
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-            TempData["subject_1"] = subject1.SubjectName;
-            TempData["subject_2"] = subject2.SubjectName;
-            TempData["subject_3"] = subject3.SubjectName;
-            TempData["subject_4"] = subject4.SubjectName;
-            TempData["subject_5"] = subject5.SubjectName;
-            TempData["subject_6"] = subject6.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
+TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
+TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
+TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
+TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
+TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
+TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
+TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
+TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
+TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
+TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
+TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
+TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
+TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
+TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
+TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
+TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
+TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
+TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
+TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
+TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
+TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
+TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
+TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
+TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             if (userLogin.RoleName == "Owner")
@@ -207,14 +209,32 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult EditSchool(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
-            TempData["subject_1"] = subject1.SubjectName;
-            TempData["subject_2"] = subject2.SubjectName;
-            TempData["subject_3"] = subject3.SubjectName;
-            TempData["subject_4"] = subject4.SubjectName;
-            TempData["subject_5"] = subject5.SubjectName;
-            TempData["subject_6"] = subject6.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
+TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
+TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
+TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
+TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
+TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
+TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
+TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
+TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
+TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
+TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
+TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
+TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
+TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
+TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
+TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
+TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
+TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
+TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
+TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
+TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
+TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
+TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
+TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
+TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             School school = new School();
