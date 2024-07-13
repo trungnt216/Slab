@@ -1,0 +1,34 @@
+﻿@model SaRLAB.Models.Entity.Subject
+
+@{
+    ViewData["Title"] = "Configuration_Subject";
+    Layout = "~/Views/Home/_LayoutHome.cshtml";
+}
+
+<div id="sub-content">
+    <div class="form-container">
+        <form asp-action="Configuration_Subject" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group d-none">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="SubjectName" class="col-4 form-label">Nhập tên môn học</label>
+                <div class="col">
+                    <input asp-for="SubjectName" class="form-control" placeholder="Tên môn học" />
+                    <span asp-validation-for="SubjectName" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

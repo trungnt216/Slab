@@ -31,8 +31,8 @@ namespace SaRLAB.DataAccess.Service.QuizService
             var idList = ids.Split(',').Select(int.Parse).ToList();
 
             // Tìm và xóa các câu hỏi dựa trên danh sách id
-            var quizzes = _context.Quizzes.Where(q => idList.Contains(q.ID.Value)).ToList();
-            _context.Quizzes.RemoveRange(quizzes);
+/*            var quizzes = _context.Quizzes.Where(q => idList.Contains(q.ID.Value)).ToList();
+            _context.Quizzes.RemoveRange(quizzes);*/
 
             // Lưu thay đổi vào cơ sở dữ liệu và trả về số lượng bản ghi bị ảnh hưởng
             return _context.SaveChanges();

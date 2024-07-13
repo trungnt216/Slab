@@ -1,0 +1,264 @@
+﻿@model SaRLAB.Models.Entity.Document
+
+@{
+    ViewData["Title"] = "Details_Preparation_questions";
+    Layout = "~/Views/Home/_LayoutHome.cshtml";
+    ViewBag.TitleCustom = "Chi tiết câu hỏi chuẩn bị";
+}
+
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 200px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .modal-content h6 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .modal-content .modal-img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+        background: #ffe4e4;
+        border-radius: 30px;
+        padding: 8px;
+    }
+
+    .modal-action {
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0px
+    }
+
+    .modal-action .btn-secondary {
+        margin-right: 10px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
+<div id="sub-content">
+    <div class="row">
+        <div class="col-12 detail-container">
+            <div class="d-flex justify-content-between">
+                <partial name="TitleCustom">
+                    <div class="detail-action">
+                        <a asp-area="" asp-action="Accept_Preparation_questions" asp-route-id="@Model.ID" class="btn-custom-accept" type="button">
+                            <i class="fa-solid fa-circle-check"></i>
+                            Duyệt
+                        </a>
+                        <a asp-area="" asp-action="Delete_Preparation_questions" asp-route-id="@Model.ID" class="btn-custom-delete" type="button">
+                            <i class="fa-solid fa-trash"></i>
+                            Xóa
+                        </a>
+                        <a asp-area="" asp-action="GetAll_Preparation_questions" class="btn-custom-return" type="button">
+                            <i class="fa-solid fa-angles-left"></i>
+                            Trở về
+                        </a>
+                    </div>
+            </div>
+            <dl class="row">
+                <div class="col-12 col-md-4">
+                    <div class="detail-item">
+                        <div class="title">
+                            <i class="fa-solid fa-file-signature"></i>
+                            <p>Tên</p>
+                        </div>
+                        <p class="detail">@Html.DisplayFor(model => model.Name)</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="title">
+                            <i class="fa-solid fa-user"></i>
+                            <p>Người tạo</p>
+                        </div>
+                        <p class="detail">@Html.DisplayFor(model => model.CreateBy)</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="title">
+                            <i class="fa-solid fa-clock"></i>
+                            <p>Thời gian tạo</p>
+                        </div>
+                        <p class="detail">@Html.DisplayFor(model => model.CreateTime)</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="title">
+                            <i class="fa-solid fa-user"></i>
+                            <p>Người cập nhật</p>
+                        </div>
+                        <p class="detail">@Html.DisplayFor(model => model.UpdateBy)</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="title">
+                            <i class="fa-solid fa-clock"></i>
+                            <p>Thời gian cập nhật</p>
+                        </div>
+                        <p class="detail">@Html.DisplayFor(model => model.UpdateTime)</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="title">
+                            <i class="fa-solid fa-comment"></i>
+                            <p>Nhận xét</p>
+                        </div>
+                        <p class="detail">@Html.DisplayFor(model => model.Remark)</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-8">
+                    <div class="detail-item">
+                        <div class="title">
+                            <i class="fa-regular fa-file"></i>
+                            <p>Chi tiết file</p>
+                        </div>
+                    </div>
+                    @if (string.IsNullOrEmpty(Model.Path))
+                    {
+                        <span style="color: #5d6975; font-style: italic; padding-left: 25px;">
+                            Không có sẵn file
+                            nào!
+                        </span>
+                    }
+                    else
+                    {
+                        string path = Model.Path;
+                        string extension = System.IO.Path.GetExtension(path).ToLower();
+                        if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
+                        {
+                            <img src="@Url.Content(path)" alt="Image" style="max-width: 100%; height: auto;" />
+                        }
+                        else if (extension == ".mp4" || extension == ".webm" || extension == ".ogg")
+                        {
+                            <video width="100%" height="auto" controls>
+                                <source src="@Url.Content(path)" type="video/@extension.Substring(1)">
+                                Your browser does not support the video tag.
+                            </video>
+                        }
+                        else if (extension == ".pdf")
+                        {
+                            <object class="pdf" data="@Url.Content(path)" width="100%" height="800">
+                            </object>
+                        }
+                        else if (Model.Path.Contains("youtube.com/embed"))
+                        {
+                            <iframe style="width: 100%; height: 300px;" src="@Model.Path" frameborder="0" allowfullscreen></iframe>
+                        }
+                        else
+                        {
+                            <p class="form-text-danger">Không hỗ trợ file!</p>
+                        }
+                    }
+                </div>
+                <dt class="col-sm-2 d-none">
+                    @Html.DisplayNameFor(model => model.ID)
+                </dt>
+                <dd class="col-sm-10 d-none">
+                    @Html.DisplayFor(model => model.ID)
+                </dd>
+                <dt class="col-sm-2 d-none">
+                    @Html.DisplayNameFor(model => model.SpecializedEnglishFlag)
+                </dt>
+                <dd class="col-sm-10 d-none">
+                    @Html.DisplayFor(model => model.SpecializedEnglishFlag)
+                </dd>
+                <dt class="col-sm-2 d-none">
+                    @Html.DisplayNameFor(model => model.PageFlag)
+                </dt>
+                <dd class="col-sm-10 d-none">
+                    @Html.DisplayFor(model => model.PageFlag)
+                </dd>
+                <dt class="col-sm-2 d-none">
+                    @Html.DisplayNameFor(model => model.Type)
+                </dt>
+                <dd class="col-sm-10 d-none">
+                    @Html.DisplayFor(model => model.Type)
+                </dd>
+                <dt class="col-sm-2 d-none">
+                    @Html.DisplayNameFor(model => model.SchoolId)
+                </dt>
+                <dd class="col-sm-10 d-none">
+                    @Html.DisplayFor(model => model.SchoolId)
+                </dd>
+                <dt class="col-sm-2 d-none">
+                    @Html.DisplayNameFor(model => model.SubjectId)
+                </dt>
+                <dd class="col-sm-10 d-none">
+                    @Html.DisplayFor(model => model.SubjectId)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <img class="modal-img" src="@Url.Content("~/images/ic_warning.png")" />
+        <h6>Xác nhận xóa</h6>
+        <p>Bạn có chắc chắn muốn xóa mục này?</p>
+        <div class="d-flex modal-action">
+            <button class="btn btn-secondary" onclick="closeDeleteModal()">Hủy</button>
+            <button id="confirmDeleteButton" class="btn btn-danger">Xóa</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/table.js"></script>
+    <script type="text/javascript">
+        // Mở modal xóa cho từng item
+        function openDeleteModal(element) {
+            deleteUrl = element.getAttribute("data-url");
+            selectedIds = [];
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+
+        // Xác nhận xóa
+        document.getElementById('confirmDeleteButton').onclick = function () {
+            window.location.href = deleteUrl;
+        };
+
+
+        window.onclick = function (event) {
+            var modal = document.getElementById('deleteModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+}
