@@ -14,5 +14,8 @@ namespace SaRLAB.DataAccess.Service.ManageTitleService
         int InsertManageTitle(ManageTitle manageTitle);
         int UpdateManageTitleById(int id, ManageTitle manageTitle);
         int DeleteManageTitleById(int id);
+        List<ManageTitle> GetManageTitlesAccordingSchool(int schoolId);
+
+
     }
 }
