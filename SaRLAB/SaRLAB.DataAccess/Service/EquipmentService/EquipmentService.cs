@@ -78,13 +78,13 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
             existingEquipment.Remark = equipment.Remark ?? existingEquipment.Remark;
             existingEquipment.EquipmentQuantity = equipment.EquipmentQuantity ?? existingEquipment.EquipmentQuantity;
             existingEquipment.Type = equipment.Type ?? existingEquipment.Type;
-            existingEquipment.ExpiredTime = equipment.ExpiredTime ?? existingEquipment.ExpiredTime;
+            existingEquipment.ExpiredDate = equipment.ExpiredDate ?? existingEquipment.ExpiredDate;
+            existingEquipment.ExpiringSoon = equipment.ExpiringSoon ?? existingEquipment.ExpiringSoon;
+            existingEquipment.NormalDate = equipment.NormalDate ?? existingEquipment.NormalDate;
             existingEquipment.Unit1 = equipment.Unit1 ?? existingEquipment.Unit1;
             existingEquipment.Unit1Amount = equipment.Unit1Amount ?? existingEquipment.Unit1Amount;
             existingEquipment.Unit2 = equipment.Unit2 ?? existingEquipment.Unit2;
             existingEquipment.Unit2Amount = equipment.Unit2Amount ?? existingEquipment.Unit2Amount;
-
-
             return _context.SaveChanges();
         }
     }

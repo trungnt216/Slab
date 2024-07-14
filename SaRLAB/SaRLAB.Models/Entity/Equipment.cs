@@ -20,7 +20,9 @@ namespace SaRLAB.Models.Entity
         public string? UpdateBy { get; set; }
         public DateTime? UpdateTime { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập ngày hết hạn!")]
-        public DateTime? ExpiredTime { get; set; }
+        public DateTime? ExpiredDate { get; set; }
+        public DateTime? ExpiringSoon { get; set; }
+        public DateTime? NormalDate { get; set; }
         public string? Remark { get; set; }
         public int? SubjectId { get; set; }
         public string? Type { get; set;}

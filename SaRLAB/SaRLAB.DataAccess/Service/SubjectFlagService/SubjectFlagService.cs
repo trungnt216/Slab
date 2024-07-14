@@ -41,8 +41,7 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
                 _context.SaveChanges();
             }
         }
-
-        public SubjectFlag getSubjectFlagByUserEmail(String userEmail)
+        public SubjectFlag getSubjectFlagByUserEmail(string userEmail)
         {
             var subjectFlag = _context.SubjectFlags.SingleOrDefault(item => item.UserEmail == userEmail);
 
@@ -72,7 +71,58 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
                     BackupSubject4PermissionFlag = subjectFlag.BackupSubject4PermissionFlag,
                     BackupSubject5PermissionFlag = subjectFlag.BackupSubject5PermissionFlag,
                     BackupSubject6PermissionFlag = subjectFlag.BackupSubject6PermissionFlag,
-
+                    BackupSubject7MarkFlag = subjectFlag.BackupSubject7MarkFlag,
+                    BackupSubject7PermissionFlag = subjectFlag.BackupSubject7PermissionFlag,
+                    BackupSubject8MarkFlag = subjectFlag.BackupSubject8MarkFlag,
+                    BackupSubject8PermissionFlag = subjectFlag.BackupSubject8PermissionFlag,
+                    BackupSubject9MarkFlag = subjectFlag.BackupSubject9MarkFlag,
+                    BackupSubject9PermissionFlag = subjectFlag.BackupSubject9PermissionFlag,
+                    BackupSubject10MarkFlag = subjectFlag.BackupSubject10MarkFlag,
+                    BackupSubject10PermissionFlag = subjectFlag.BackupSubject10PermissionFlag,
+                    BackupSubject11MarkFlag = subjectFlag.BackupSubject11MarkFlag,
+                    BackupSubject11PermissionFlag = subjectFlag.BackupSubject11PermissionFlag,
+                    BackupSubject12MarkFlag = subjectFlag.BackupSubject12MarkFlag,
+                    BackupSubject12PermissionFlag = subjectFlag.BackupSubject12PermissionFlag,
+                    BackupSubject13MarkFlag = subjectFlag.BackupSubject13MarkFlag,
+                    BackupSubject13PermissionFlag = subjectFlag.BackupSubject13PermissionFlag,
+                    BackupSubject14MarkFlag = subjectFlag.BackupSubject14MarkFlag,
+                    BackupSubject14PermissionFlag = subjectFlag.BackupSubject14PermissionFlag,
+                    BackupSubject15MarkFlag = subjectFlag.BackupSubject15MarkFlag,
+                    BackupSubject15PermissionFlag = subjectFlag.BackupSubject15PermissionFlag,
+                    BackupSubject16MarkFlag = subjectFlag.BackupSubject16MarkFlag,
+                    BackupSubject16PermissionFlag = subjectFlag.BackupSubject16PermissionFlag,
+                    BackupSubject17MarkFlag = subjectFlag.BackupSubject17MarkFlag,
+                    BackupSubject17PermissionFlag = subjectFlag.BackupSubject17PermissionFlag,
+                    BackupSubject18MarkFlag = subjectFlag.BackupSubject18MarkFlag,
+                    BackupSubject18PermissionFlag = subjectFlag.BackupSubject18PermissionFlag,
+                    BackupSubject19MarkFlag = subjectFlag.BackupSubject19MarkFlag,
+                    BackupSubject19PermissionFlag = subjectFlag.BackupSubject19PermissionFlag,
+                    BackupSubject20MarkFlag = subjectFlag.BackupSubject20MarkFlag,
+                    BackupSubject20PermissionFlag = subjectFlag.BackupSubject20PermissionFlag,
+                    BackupSubject21MarkFlag = subjectFlag.BackupSubject21MarkFlag,
+                    BackupSubject21PermissionFlag = subjectFlag.BackupSubject21PermissionFlag,
+                    BackupSubject22MarkFlag = subjectFlag.BackupSubject22MarkFlag,
+                    BackupSubject22PermissionFlag = subjectFlag.BackupSubject22PermissionFlag,
+                    BackupSubject23MarkFlag = subjectFlag.BackupSubject23MarkFlag,
+                    BackupSubject23PermissionFlag = subjectFlag.BackupSubject23PermissionFlag,
+                    BackupSubject24MarkFlag = subjectFlag.BackupSubject24MarkFlag,
+                    BackupSubject24PermissionFlag = subjectFlag.BackupSubject24PermissionFlag,
+                    BackupSubject25MarkFlag = subjectFlag.BackupSubject25MarkFlag,
+                    BackupSubject25PermissionFlag = subjectFlag.BackupSubject25PermissionFlag,
+                    BackupSubject26MarkFlag = subjectFlag.BackupSubject26MarkFlag,
+                    BackupSubject26PermissionFlag = subjectFlag.BackupSubject26PermissionFlag,
+                    BackupSubject27MarkFlag = subjectFlag.BackupSubject27MarkFlag,
+                    BackupSubject27PermissionFlag = subjectFlag.BackupSubject27PermissionFlag,
+                    BackupSubject28MarkFlag = subjectFlag.BackupSubject28MarkFlag,
+                    BackupSubject28PermissionFlag = subjectFlag.BackupSubject28PermissionFlag,
+                    BackupSubject29MarkFlag = subjectFlag.BackupSubject29MarkFlag,
+                    BackupSubject29PermissionFlag = subjectFlag.BackupSubject29PermissionFlag,
+                    BackupSubject30MarkFlag = subjectFlag.BackupSubject30MarkFlag,
+                    BackupSubject30PermissionFlag = subjectFlag.BackupSubject30PermissionFlag,
+                    BackupSubject31MarkFlag = subjectFlag.BackupSubject31MarkFlag,
+                    BackupSubject31PermissionFlag = subjectFlag.BackupSubject31PermissionFlag,
+                    BackupSubject32MarkFlag = subjectFlag.BackupSubject32MarkFlag,
+                    BackupSubject32PermissionFlag = subjectFlag.BackupSubject32PermissionFlag
                 };
 
                 return _subjectFlag;
@@ -82,7 +132,6 @@ namespace SaRLAB.DataAccess.Service.SubjectFlagService
                 return null;
             }
         }
-
         public int InsertSubjectFlag(String userEmail)
         {
             var checkSubjectFlag = _context.SubjectFlags.SingleOrDefault(item => (item.UserEmail == userEmail));
