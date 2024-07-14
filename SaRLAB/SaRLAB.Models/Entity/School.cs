@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SaRLAB.Models.Entity
 {
@@ -13,10 +10,13 @@ namespace SaRLAB.Models.Entity
     {
         [Key]
         public int? ID { get; set; }
+
         [Required(ErrorMessage = "Vui lòng nhập tên trường!")]
         public string? Name { get; set; }
+
         [Required(ErrorMessage = "Vui lòng nhập địa chỉ!")]
         public string? Address { get; set; }
+
         public string? ChemLogo { get; set; }
         public string? BioLogo { get; set; }
         public string? PhysLogo { get; set; }
@@ -29,6 +29,11 @@ namespace SaRLAB.Models.Entity
         public string? BackupSubject4Logo { get; set; }
         public string? BackupSubject5Logo { get; set; }
         public string? BackupSubject6Logo { get; set; }
+<<<<<<< HEAD
+=======
+
+        // Bổ sung từ BackupSubject7Logo đến BackupSubject32Logo
+>>>>>>> f84137dc778e5c0b95974aeaace6bb9a682fdf6d
         public string? BackupSubject7Logo { get; set; }
         public string? BackupSubject8Logo { get; set; }
         public string? BackupSubject9Logo { get; set; }
