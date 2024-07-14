@@ -13,7 +13,7 @@ namespace SaRLAB.UserWeb.Controllers
     {
         string pathFolderSave = null;
 
-        int Subject_id = 6;
+        int Subject_id = 1;
 
         private readonly IWebHostEnvironment _env;
 

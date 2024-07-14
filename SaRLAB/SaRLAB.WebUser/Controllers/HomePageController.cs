@@ -6,6 +6,7 @@ using SaRLAB.Models.Entity;
 using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 
@@ -29,12 +30,7 @@ namespace SaRLAB.UserWeb.Controllers
 
         private readonly bool _hasError = false;
 
-        Subject subject1 = new Subject();
-        Subject subject2 = new Subject();
-        Subject subject3 = new Subject();
-        Subject subject4 = new Subject();
-        Subject subject5 = new Subject();
-        Subject subject6 = new Subject();
+        List<Subject> subjects = new List<Subject>();
 
         public HomePageController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -83,41 +79,11 @@ namespace SaRLAB.UserWeb.Controllers
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
 
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetAll").Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
-                subject1 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub2 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/7").Result;
-            if (response_sub2.IsSuccessStatusCode)
-            {
-                string data = response_sub2.Content.ReadAsStringAsync().Result;
-                subject2 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/8").Result;
-            if (response_sub3.IsSuccessStatusCode)
-            {
-                string data = response_sub3.Content.ReadAsStringAsync().Result;
-                subject3 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub4 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
-            if (response_sub4.IsSuccessStatusCode)
-            {
-                string data = response_sub4.Content.ReadAsStringAsync().Result;
-                subject4 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub5 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/10").Result;
-            if (response_sub5.IsSuccessStatusCode)
-            {
-                string data = response_sub5.Content.ReadAsStringAsync().Result;
-                subject5 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub6 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
-            if (response_sub6.IsSuccessStatusCode)
-            {
-                string data = response_sub6.Content.ReadAsStringAsync().Result;
-                subject6 = JsonConvert.DeserializeObject<Subject>(data);
+                subjects = JsonConvert.DeserializeObject<List<Subject>>(data);
             }
         }
 
@@ -150,10 +116,25 @@ namespace SaRLAB.UserWeb.Controllers
 
             if(userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
-                subjectFlag.BiologyPermissionFlag = true;
-                subjectFlag.ChemistryPermissionFlag = true;
-                subjectFlag.PhysicPermissionFlag = true;
-                subjectFlag.MathPermissionFlag = true;
+                Type type = subjectFlag.GetType();
+
+                // Set all boolean properties to true
+                foreach (PropertyInfo property in type.GetProperties())
+                {
+                    if (property.PropertyType == typeof(bool?) && property.CanWrite)
+                    {
+                        property.SetValue(subjectFlag, true);
+                    }
+                }
+
+                // Set all boolean fields to true
+                foreach (FieldInfo field in type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
+                {
+                    if (field.FieldType == typeof(bool?))
+                    {
+                        field.SetValue(subjectFlag, true);
+                    }
+                }
             }
 
             ViewBag.SubjectFlag = subjectFlag;
@@ -171,48 +152,32 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.school = school;
 
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
-            if (response_sub1.IsSuccessStatusCode)
-            {
-                string data = response_sub1.Content.ReadAsStringAsync().Result;
-                subject1 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub2 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/7").Result;
-            if (response_sub2.IsSuccessStatusCode)
-            {
-                string data = response_sub2.Content.ReadAsStringAsync().Result;
-                subject2 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/8").Result;
-            if (response_sub3.IsSuccessStatusCode)
-            {
-                string data = response_sub3.Content.ReadAsStringAsync().Result;
-                subject3 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub4 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
-            if (response_sub4.IsSuccessStatusCode)
-            {
-                string data = response_sub4.Content.ReadAsStringAsync().Result;
-                subject4 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub5 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/10").Result;
-            if (response_sub5.IsSuccessStatusCode)
-            {
-                string data = response_sub5.Content.ReadAsStringAsync().Result;
-                subject5 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            HttpResponseMessage response_sub6 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
-            if (response_sub6.IsSuccessStatusCode)
-            {
-                string data = response_sub6.Content.ReadAsStringAsync().Result;
-                subject6 = JsonConvert.DeserializeObject<Subject>(data);
-            }
-            TempData["subject_1"] = subject1.SubjectName;
-            TempData["subject_2"] = subject2.SubjectName;
-            TempData["subject_3"] = subject3.SubjectName;
-            TempData["subject_4"] = subject4.SubjectName;
-            TempData["subject_5"] = subject5.SubjectName;
-            TempData["subject_6"] = subject6.SubjectName;
+            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
+            TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
+            TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
+            TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
+            TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
+            TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
+            TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
+            TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
+            TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
+            TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
+            TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
+            TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
+            TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
+            TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
+            TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
+            TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
+            TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
+            TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
+            TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
+            TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
+            TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
+            TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
+            TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
+            TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
+            TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["subject_26"] = subjects.SingleOrDefault(item => item.ID == 31).SubjectName;
 
             return View();
         }
@@ -225,56 +190,7 @@ namespace SaRLAB.UserWeb.Controllers
                 return View("Error");
             }
 
-            if (subjectID == 1)
-            {
-
-                ViewData["layout"] = "~/Views/Chemistry/_LayoutChem.cshtml";
-            }
-            else if (subjectID == 3)
-            {
-
-                ViewData["layout"] = "~/Views/Biology/_Layout.cshtml";
-            }
-            else if (subjectID == 5)
-            {
-
-                ViewData["layout"] = "~/Views/Physics/_Layout.cshtml";
-            }
-            else if (subjectID == 2)
-            {
-
-                ViewData["layout"] = "~/Views/Math/_Layout.cshtml";
-            }
-            else if (subjectID == 6)
-            {
-                TempData["subject_1"] = subject1.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_1/_Layout.cshtml";
-            }
-            else if (subjectID == 7)
-            {
-                TempData["subject_1"] = subject2.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_2/_Layout.cshtml";
-            }
-            else if (subjectID == 8)
-            {
-                TempData["subject_1"] = subject3.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_3/_Layout.cshtml";
-            }
-            else if (subjectID == 9)
-            {
-                TempData["subject_1"] = subject4.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_4/_Layout.cshtml";
-            }
-            else if (subjectID == 10)
-            {
-                TempData["subject_1"] = subject5.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_5/_Layout.cshtml";
-            }
-            else if (subjectID == 11)
-            {
-                TempData["subject_1"] = subject6.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_6/_Layout.cshtml";
-            }
+            ViewData["layout"] = "~/Views/Chemistry/_LayoutChem.cshtml";
 
             ViewData["subjectID"] = subjectID;
             TempData["name"] = userLogin.Name;
@@ -319,56 +235,9 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             ViewData["subjectID"] = subjectID;
 
-            if (subjectID == 1)
-            {
 
-                ViewData["layout"] = "~/Views/Chemistry/_LayoutChem.cshtml";
-            }
-            else if (subjectID == 3)
-            {
+            ViewData["layout"] = "~/Views/Chemistry/_LayoutChem.cshtml";
 
-                ViewData["layout"] = "~/Views/Biology/_Layout.cshtml";
-            }
-            else if (subjectID == 5)
-            {
-
-                ViewData["layout"] = "~/Views/Physics/_Layout.cshtml";
-            }
-            else if (subjectID == 2)
-            {
-
-                ViewData["layout"] = "~/Views/Math/_Layout.cshtml";
-            }
-            else if (subjectID == 6)
-            {
-                TempData["subject_1"] = subject1.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_1/_Layout.cshtml";
-            }
-            else if (subjectID == 7)
-            {
-                TempData["subject_1"] = subject2.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_2/_Layout.cshtml";
-            }
-            else if (subjectID == 8)
-            {
-                TempData["subject_1"] = subject3.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_3/_Layout.cshtml";
-            }
-            else if (subjectID == 9)
-            {
-                TempData["subject_1"] = subject4.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_4/_Layout.cshtml";
-            }
-            else if (subjectID == 10)
-            {
-                TempData["subject_1"] = subject5.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_5/_Layout.cshtml";
-            }
-            else if (subjectID == 11)
-            {
-                TempData["subject_1"] = subject6.SubjectName;
-                ViewData["layout"] = "~/Views/Subject_6/_Layout.cshtml";
-            }
 
             User users = new User();
 

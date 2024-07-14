@@ -24,10 +24,14 @@ namespace SaRLAB.AdminWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
-        int Subject_id = 12;
+        int Subject_id = 11;
 
-        List<Subject> subjects = new List<Subject>();
-
+        Subject subject1 = new Subject();
+        Subject subject2 = new Subject();
+        Subject subject3 = new Subject();
+        Subject subject4 = new Subject();
+        Subject subject5 = new Subject();
+        Subject subject6 = new Subject();
         List<NoticeAdmin> notice = new List<NoticeAdmin>();
 
         public Subject_7(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
@@ -69,13 +73,42 @@ namespace SaRLAB.AdminWeb.Controllers
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetAll").Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
-                subjects = JsonConvert.DeserializeObject<List<Subject>>(data);
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
             }
-
+            HttpResponseMessage response_sub2 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/7").Result;
+            if (response_sub2.IsSuccessStatusCode)
+            {
+                string data = response_sub2.Content.ReadAsStringAsync().Result;
+                subject2 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/8").Result;
+            if (response_sub3.IsSuccessStatusCode)
+            {
+                string data = response_sub3.Content.ReadAsStringAsync().Result;
+                subject3 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub4 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/9").Result;
+            if (response_sub4.IsSuccessStatusCode)
+            {
+                string data = response_sub4.Content.ReadAsStringAsync().Result;
+                subject4 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub5 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/10").Result;
+            if (response_sub5.IsSuccessStatusCode)
+            {
+                string data = response_sub5.Content.ReadAsStringAsync().Result;
+                subject5 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            HttpResponseMessage response_sub6 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
+            if (response_sub6.IsSuccessStatusCode)
+            {
+                string data = response_sub6.Content.ReadAsStringAsync().Result;
+                subject6 = JsonConvert.DeserializeObject<Subject>(data);
+            }
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllDocumentsBySchoolToAccept/" + userLogin.SchoolId).Result;
 
             if (response.IsSuccessStatusCode)
@@ -90,36 +123,18 @@ namespace SaRLAB.AdminWeb.Controllers
         public IActionResult Configuration_Subject()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
+            TempData["noticeCount"] = notice.Count;
 
             Subject subject = new Subject();
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/11").Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
@@ -127,9 +142,9 @@ TempData["noticeCount"] = notice.Count;
             }
 
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "configurationsubject7";
-            ViewBag.ActiveSubMenuLv2 = "configurationsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "configurationsubject6";
+            ViewBag.ActiveSubMenuLv2 = "configurationsubject6";
             return View(subject);
         }
 
@@ -137,32 +152,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult Configuration_Subject(Subject subject_new)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             if (userLogin.RoleName == "Owner")
@@ -186,25 +183,25 @@ TempData["noticeCount"] = notice.Count;
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveSubMenuLv2 = "internationalLevel";
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "configurationsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "configurationsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "configurationsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "configurationsubject6";
                     return View();
                 }
             }
             else
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "configurationsubject7";
-                ViewBag.ActiveSubMenuLv2 = "configurationsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "configurationsubject6";
+                ViewBag.ActiveSubMenuLv2 = "configurationsubject6";
                 return View();
             }
 
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "configurationsubject7";
-            ViewBag.ActiveSubMenuLv2 = "configurationsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "configurationsubject6";
+            ViewBag.ActiveSubMenuLv2 = "configurationsubject6";
             return View();
         }
 
@@ -213,32 +210,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Experiment()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
@@ -251,9 +230,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "virtuallabsubject7";
-            ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "virtuallabsubject6";
+            ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
             return View(documents);
         }
 
@@ -274,9 +253,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
                 return RedirectToAction("GetAll_Experiment");
             }
 
@@ -296,9 +275,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
                         return RedirectToAction("GetAll_Experiment");
                     }
                 }
@@ -306,24 +285,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
                     return RedirectToAction("GetAll_Experiment");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
                 return RedirectToAction("GetAll_Experiment");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -344,10 +323,10 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenu = "subject7";
+                ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
                 return RedirectToAction("GetAll_Experiment");
             }
 
@@ -361,10 +340,10 @@ TempData["noticeCount"] = notice.Count;
 
                     if (response.IsSuccessStatusCode)
                     {
-                        ViewBag.ActiveMenu = "subject7";
+                        ViewBag.ActiveMenu = "subject6";
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+                        ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
                         return RedirectToAction("GetAll_Experiment");
                     }
                 }
@@ -372,24 +351,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
                     return RedirectToAction("GetAll_Experiment");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
                 return RedirectToAction("GetAll_Experiment");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
                 return RedirectToAction("GetAll_Experiment");
             }
         }
@@ -399,32 +378,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Experiment(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             Document document = new Document();
@@ -439,9 +400,9 @@ TempData["noticeCount"] = notice.Count;
             }
 
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "virtuallabsubject7";
-            ViewBag.ActiveSubMenuLv2 = "experimentsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "virtuallabsubject6";
+            ViewBag.ActiveSubMenuLv2 = "experimentsubject6";
             return View(document);
         }
 
@@ -451,32 +412,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Conspectus()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
@@ -490,9 +433,9 @@ TempData["noticeCount"] = notice.Count;
             }
 
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "virtuallabsubject7";
-            ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "virtuallabsubject6";
+            ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
             return View(documents);
         }
 
@@ -513,9 +456,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
                 return RedirectToAction("GetAll_Conspectus");
             }
 
@@ -534,9 +477,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
                         return RedirectToAction("GetAll_Conspectus");
                     }
                 }
@@ -544,24 +487,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
                     return RedirectToAction("GetAll_Conspectus");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
                 return RedirectToAction("GetAll_Conspectus");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -583,9 +526,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
                 return RedirectToAction("GetAll_Conspectus");
             }
 
@@ -600,9 +543,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
                         return RedirectToAction("GetAll_Conspectus");
                     }
                 }
@@ -610,24 +553,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
                     return RedirectToAction("GetAll_Conspectus");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
                 return RedirectToAction("GetAll_Conspectus");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
                 return RedirectToAction("GetAll_Conspectus");
             }
         }
@@ -637,32 +580,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Conspectus(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             Document document = new Document();
@@ -676,9 +601,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "virtuallabsubject7";
-            ViewBag.ActiveSubMenuLv2 = "conspectussubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "virtuallabsubject6";
+            ViewBag.ActiveSubMenuLv2 = "conspectussubject6";
             return View(document);
         }
 
@@ -688,32 +613,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_subject1logical()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
@@ -726,8 +633,8 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "virtuallabsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "virtuallabsubject6";
             ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
             return View(documents);
         }
@@ -767,8 +674,8 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "virtuallabsubject6";
                         ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
                         return RedirectToAction("GetAll_subject1logical");
                     }
@@ -777,14 +684,14 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "virtuallabsubject6";
                     ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
                     return RedirectToAction("GetAll_subject1logical");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
                 ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
                 return RedirectToAction("GetAll_subject1logical");
             }
@@ -792,8 +699,8 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
                 ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
                 return RedirectToAction("GetAll_subject1logical");
             }
@@ -829,8 +736,8 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "virtuallabsubject6";
                         ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
                         return RedirectToAction("GetAll_subject1logical");
                     }
@@ -839,14 +746,14 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "virtuallabsubject6";
                     ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
                     return RedirectToAction("GetAll_subject1logical");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
                 ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
                 return RedirectToAction("GetAll_subject1logical");
             }
@@ -854,8 +761,8 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
                 ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
                 return RedirectToAction("GetAll_subject1logical");
             }
@@ -866,32 +773,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_subject1logical(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -904,8 +793,8 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "virtuallabsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "virtuallabsubject6";
             ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
             return View(document);
         }
@@ -916,32 +805,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Vocabulary()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -953,9 +824,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "tienganhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "vocabularysubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "tienganhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "vocabularysubject6";
             return View(documents);
         }
 
@@ -994,9 +865,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "tienganhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "vocabularysubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "tienganhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "vocabularysubject6";
                         return RedirectToAction("GetAll_Vocabulary");
                     }
                 }
@@ -1004,24 +875,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "tienganhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "vocabularysubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "tienganhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "vocabularysubject6";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vocabularysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vocabularysubject6";
                 return RedirectToAction("GetAll_Vocabulary");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vocabularysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vocabularysubject6";
                 return RedirectToAction("GetAll_Vocabulary");
             }
         }
@@ -1057,9 +928,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "tienganhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "vocabularysubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "tienganhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "vocabularysubject6";
                         return RedirectToAction("GetAll_Vocabulary");
                     }
                 }
@@ -1067,24 +938,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "tienganhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "vocabularysubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "tienganhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "vocabularysubject6";
                     return RedirectToAction("GetAll_Vocabulary");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vocabularysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vocabularysubject6";
                 return RedirectToAction("GetAll_Vocabulary");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vocabularysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vocabularysubject6";
                 return RedirectToAction("GetAll_Vocabulary");
             }
         }
@@ -1094,32 +965,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Vocabulary(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -1132,9 +985,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "tienganhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "vocabularysubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "tienganhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "vocabularysubject6";
             return View(document);
         }
 
@@ -1144,32 +997,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Exam()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
@@ -1182,9 +1017,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "tienganhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "examsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "tienganhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "examsubject6";
             return View(documents);
         }
 
@@ -1206,9 +1041,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "examsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "examsubject6";
                 return RedirectToAction("GetAll_Exam");
             }
 
@@ -1227,9 +1062,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "tienganhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "examsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "tienganhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "examsubject6";
                         return RedirectToAction("GetAll_Exam");
                     }
                 }
@@ -1237,24 +1072,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "tienganhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "examsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "tienganhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "examsubject6";
                     return RedirectToAction("GetAll_Exam");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "examsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "examsubject6";
                 return RedirectToAction("GetAll_Exam");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "examsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "examsubject6";
                 return RedirectToAction("GetAll_Exam");
             }
         }
@@ -1276,9 +1111,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "examsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "examsubject6";
                 return RedirectToAction("GetAll_Exam");
             }
 
@@ -1293,9 +1128,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "tienganhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "examsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "tienganhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "examsubject6";
                         return RedirectToAction("GetAll_Exam");
                     }
                 }
@@ -1303,24 +1138,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "tienganhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "examsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "tienganhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "examsubject6";
                     return RedirectToAction("GetAll_Exam");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "examsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "examsubject6";
                 return RedirectToAction("GetAll_Exam");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "examsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "examsubject6";
                 return RedirectToAction("GetAll_Exam");
             }
         }
@@ -1330,32 +1165,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Exam(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -1368,9 +1185,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "tienganhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "examsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "tienganhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "examsubject6";
             return View(document);
         }
 
@@ -1380,32 +1197,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Examenglish()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -1417,9 +1216,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "tienganhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "examenglishsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "tienganhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "examenglishsubject6";
             return View(documents);
         }
 
@@ -1441,9 +1240,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "examenglishsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "examenglishsubject6";
                 return RedirectToAction("GetAll_Examenglish");
             }
 
@@ -1462,9 +1261,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "tienganhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "examenglishsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "tienganhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "examenglishsubject6";
                         return RedirectToAction("GetAll_Examenglish");
                     }
                 }
@@ -1472,9 +1271,9 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "tienganhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "examenglishsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "tienganhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "examenglishsubject6";
                     return RedirectToAction("GetAll_Examenglish");
                 }
                 return RedirectToAction("GetAll_Examenglish");
@@ -1483,9 +1282,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "examenglishsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "examenglishsubject6";
                 return RedirectToAction("GetAll_Examenglish");
             }
         }
@@ -1507,9 +1306,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "examenglishsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "examenglishsubject6";
                 return RedirectToAction("GetAll_Examenglish");
             }
 
@@ -1524,9 +1323,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "tienganhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "examenglishsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "tienganhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "examenglishsubject6";
                         return RedirectToAction("GetAll_Examenglish");
                     }
                 }
@@ -1534,9 +1333,9 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "tienganhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "examenglishsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "tienganhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "examenglishsubject6";
                     return RedirectToAction("GetAll_Examenglish");
                 }
                 return RedirectToAction("GetAll_Examenglish");
@@ -1545,9 +1344,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "tienganhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "examenglishsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "tienganhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "examenglishsubject6";
                 return RedirectToAction("GetAll_Examenglish");
             }
         }
@@ -1557,32 +1356,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Examenglish(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -1595,9 +1376,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "tienganhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "examenglishsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "tienganhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "examenglishsubject6";
             return View(document);
         }
 
@@ -1607,32 +1388,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Department_level()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             List<Document> documents = new List<Document>();
@@ -1645,9 +1408,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "nghiencuusubject7";
-            ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "nghiencuusubject6";
+            ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
             return View(documents);
         }
 
@@ -1669,9 +1432,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
                 return RedirectToAction("GetAll_Department_level");
             }
 
@@ -1690,34 +1453,34 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                        ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                        ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
                         return RedirectToAction("GetAll_Department_level");
                     }
                 }
                 catch (Exception ex)
                 {
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                    ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                    ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Department_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
                 return RedirectToAction("GetAll_Department_level");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
                 return RedirectToAction("GetAll_Department_level");
             }
         }
@@ -1739,9 +1502,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
                 return RedirectToAction("GetAll_Department_level");
             }
 
@@ -1756,34 +1519,34 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                        ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                        ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
                         return RedirectToAction("GetAll_Department_level");
                     }
                 }
                 catch (Exception ex)
                 {
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                    ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                    ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
                     TempData["errorMessage"] = ex.Message;
                     return RedirectToAction("GetAll_Department_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
                 return RedirectToAction("GetAll_Department_level");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
                 return RedirectToAction("GetAll_Department_level");
             }
         }
@@ -1793,32 +1556,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Department_level(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -1831,9 +1576,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "nghiencuusubject7";
-            ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "nghiencuusubject6";
+            ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject6";
             return View(document);
         }
 
@@ -1843,32 +1588,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Provincial_level()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -1880,9 +1607,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "nghiencuusubject7";
-            ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "nghiencuusubject6";
+            ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
             return View(documents);
         }
 
@@ -1904,9 +1631,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
                 return RedirectToAction("GetAll_Provincial_level");
             }
 
@@ -1925,9 +1652,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                        ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                        ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
                         return RedirectToAction("GetAll_Provincial_level");
                     }
                 }
@@ -1935,23 +1662,23 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                    ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                    ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
                 return RedirectToAction("GetAll_Provincial_level");
             }
             else
             {
-                ViewBag.ActiveMenu = "subject7";
+                ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 return RedirectToAction("GetAll_Provincial_level");
             }
@@ -1974,9 +1701,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
                 return RedirectToAction("GetAll_Provincial_level");
             }
 
@@ -1991,9 +1718,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                        ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                        ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
                         return RedirectToAction("GetAll_Provincial_level");
                     }
                 }
@@ -2001,23 +1728,23 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                    ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                    ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
                     return RedirectToAction("GetAll_Provincial_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
                 return RedirectToAction("GetAll_Provincial_level");
             }
             else
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_Provincial_level");
             }
@@ -2028,32 +1755,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Provincial_level(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -2066,9 +1775,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "nghiencuusubject7";
-            ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "nghiencuusubject6";
+            ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject6";
             return View(document);
         }
 
@@ -2079,32 +1788,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_National_level()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -2116,9 +1807,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "nghiencuusubject7";
-            ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "nghiencuusubject6";
+            ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject6";
             return View(documents);
         }
 
@@ -2140,9 +1831,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject6";
                 return RedirectToAction("GetAll_National_level");
             }
 
@@ -2161,9 +1852,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                        ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                        ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject6";
                         return RedirectToAction("GetAll_National_level");
                     }
                 }
@@ -2171,9 +1862,9 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                    ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                    ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject6";
                     return RedirectToAction("GetAll_National_level");
                 }
                 return RedirectToAction("GetAll_National_level");
@@ -2181,9 +1872,9 @@ TempData["noticeCount"] = notice.Count;
             else
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject6";
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 return RedirectToAction("GetAll_National_level");
             }
@@ -2206,9 +1897,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject6";
                 return RedirectToAction("GetAll_National_level");
             }
 
@@ -2223,9 +1914,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                        ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                        ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject6";
                         return RedirectToAction("GetAll_National_level");
                     }
                 }
@@ -2233,9 +1924,9 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                    ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                    ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject6";
                     return RedirectToAction("GetAll_National_level");
                 }
                 return RedirectToAction("GetAll_National_level");
@@ -2243,9 +1934,9 @@ TempData["noticeCount"] = notice.Count;
             else
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject6";
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 return RedirectToAction("GetAll_National_level");
             }
@@ -2256,32 +1947,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_National_level(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -2294,9 +1967,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "nghiencuusubject7";
-            ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "nghiencuusubject6";
+            ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject6";
             return View(document);
         }
 
@@ -2306,32 +1979,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Preparation_questions()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -2343,9 +1998,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "thuchanhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "thuchanhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
             return View(documents);
         }
 
@@ -2367,9 +2022,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
@@ -2388,9 +2043,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
                         return RedirectToAction("GetAll_Preparation_questions");
                     }
                 }
@@ -2398,24 +2053,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
         }
@@ -2437,9 +2092,9 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
 
@@ -2454,9 +2109,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
                         return RedirectToAction("GetAll_Preparation_questions");
                     }
                 }
@@ -2464,24 +2119,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
                     return RedirectToAction("GetAll_Preparation_questions");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
                 return RedirectToAction("GetAll_Preparation_questions");
             }
         }
@@ -2491,32 +2146,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Preparation_questions(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -2529,9 +2166,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "thuchanhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "thuchanhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject6";
             return View(document);
         }
 
@@ -2542,32 +2179,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Practice_report()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -2579,9 +2198,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "thuchanhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "thuchanhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
             return View(documents);
         }
 
@@ -2602,9 +2221,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Practice_report");
             }
@@ -2624,9 +2243,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
                         return RedirectToAction("GetAll_Practice_report");
                     }
                 }
@@ -2634,24 +2253,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
                     return RedirectToAction("GetAll_Practice_report");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
                 return RedirectToAction("GetAll_Practice_report");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
                 return RedirectToAction("GetAll_Practice_report");
             }
         }
@@ -2672,9 +2291,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Practice_report");
             }
@@ -2690,9 +2309,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
                         return RedirectToAction("GetAll_Practice_report");
                     }
                 }
@@ -2700,24 +2319,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
                     return RedirectToAction("GetAll_Practice_report");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
                 return RedirectToAction("GetAll_Practice_report");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "thuchanhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "thuchanhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
                 return RedirectToAction("GetAll_Practice_report");
             }
         }
@@ -2727,32 +2346,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Practice_report(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -2765,9 +2366,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "thuchanhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "practiceReportsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "thuchanhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "practiceReportsubject6";
             return View(document);
         }
 
@@ -2777,32 +2378,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_International_level()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -2814,9 +2397,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "nghiencuusubject7";
-            ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "nghiencuusubject6";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
             return View(documents);
         }
 
@@ -2837,9 +2420,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_International_level");
             }
@@ -2859,9 +2442,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                        ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
                         return RedirectToAction("GetAll_International_level");
                     }
                 }
@@ -2869,24 +2452,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                    ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
                     return RedirectToAction("GetAll_International_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
                 return RedirectToAction("GetAll_International_level");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
                 return RedirectToAction("GetAll_International_level");
             }
         }
@@ -2907,9 +2490,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_International_level");
             }
@@ -2925,9 +2508,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                        ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                        ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
                         return RedirectToAction("GetAll_International_level");
                     }
                 }
@@ -2935,24 +2518,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                    ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
                     return RedirectToAction("GetAll_International_level");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
                 return RedirectToAction("GetAll_International_level");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "nghiencuusubject7";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "nghiencuusubject6";
+                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
                 return RedirectToAction("GetAll_International_level");
             }
         }
@@ -2962,32 +2545,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_International_level(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -3000,9 +2565,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "nghiencuusubject7";
-            ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "nghiencuusubject6";
+            ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject6";
             return View(document);
         }
 
@@ -3011,32 +2576,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Question()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Quiz> equipment = new List<Quiz>();
 
@@ -3049,9 +2596,9 @@ TempData["noticeCount"] = notice.Count;
             }
 
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "cauhoiantoansubject7";
-            ViewBag.ActiveSubMenuLv2 = "cauhoisubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "cauhoiantoansubject6";
+            ViewBag.ActiveSubMenuLv2 = "cauhoisubject6";
             return View(equipment);
         }
 
@@ -3059,49 +2606,31 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Create_Question()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "cauhoiantoansubject7";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "cauhoiantoansubject6";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject6";
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "cauhoiantoansubject7";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "cauhoiantoansubject6";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject6";
                 return RedirectToAction("GetAll_Question");
             }
         }
@@ -3109,32 +2638,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Create_Question(Quiz quiz, IFormFile QuestionFile, IFormFile OptionAFile, IFormFile OptionBFile, IFormFile OptionCFile, IFormFile OptionDFile)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
@@ -3255,9 +2766,9 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["notice"] = "Thêm câu hỏi thành công";
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "cauhoiantoansubject7";
-                    ViewBag.ActiveSubMenuLv2 = "cauhoisubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "cauhoiantoansubject6";
+                    ViewBag.ActiveSubMenuLv2 = "cauhoisubject6";
                     return RedirectToAction("GetAll_Question");
                 }
             }
@@ -3265,15 +2776,15 @@ TempData["noticeCount"] = notice.Count;
             {
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "cauhoiantoansubject7";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "cauhoiantoansubject6";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject6";
                 return View();
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "cauhoiantoansubject7";
-            ViewBag.ActiveSubMenuLv2 = "cauhoisubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "cauhoiantoansubject6";
+            ViewBag.ActiveSubMenuLv2 = "cauhoisubject6";
             return View();
         }
 
@@ -3281,32 +2792,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Edit_Question(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Quiz quiz = new Quiz();
 
@@ -3327,18 +2820,18 @@ TempData["noticeCount"] = notice.Count;
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "cauhoiantoansubject7";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "cauhoiantoansubject6";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject6";
                 return View(quiz);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "cauhoiantoansubject7";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "cauhoiantoansubject6";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject6";
                 return RedirectToAction("GetAll_Question");
             }
         }
@@ -3346,32 +2839,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Edit_Question(Quiz quiz, IFormFile QuestionFile, IFormFile OptionAFile, IFormFile OptionBFile, IFormFile OptionCFile, IFormFile OptionDFile)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
@@ -3496,15 +2971,15 @@ TempData["noticeCount"] = notice.Count;
             catch (Exception ex)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "cauhoiantoansubject7";
-                ViewBag.ActiveSubMenuLv2 = "cauhoisubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "cauhoiantoansubject6";
+                ViewBag.ActiveSubMenuLv2 = "cauhoisubject6";
                 return View();
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "cauhoiantoansubject7";
-            ViewBag.ActiveSubMenuLv2 = "cauhoisubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "cauhoiantoansubject6";
+            ViewBag.ActiveSubMenuLv2 = "cauhoisubject6";
             return View();
         }
 
@@ -3533,32 +3008,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Theory()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -3570,9 +3027,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
             return View(documents);
         }
 
@@ -3593,9 +3050,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Theory");
             }
@@ -3615,9 +3072,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
                         return RedirectToAction("GetAll_Theory");
                     }
                 }
@@ -3625,24 +3082,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
                     return RedirectToAction("GetAll_Theory");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
                 return RedirectToAction("GetAll_Theory");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
                 return RedirectToAction("GetAll_Theory");
             }
         }
@@ -3663,9 +3120,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Theory");
             }
@@ -3681,9 +3138,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
                         return RedirectToAction("GetAll_Theory");
                     }
                 }
@@ -3691,24 +3148,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
                     return RedirectToAction("GetAll_Theory");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
                 return RedirectToAction("GetAll_Theory");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
                 return RedirectToAction("GetAll_Theory");
             }
         }
@@ -3718,32 +3175,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Theory(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -3756,9 +3195,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "gttheorysubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "gttheorysubject6";
             return View(document);
         }
 
@@ -3768,32 +3207,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Practice()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -3805,9 +3226,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
             return View(documents);
         }
 
@@ -3828,9 +3249,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Practice");
             }
@@ -3850,9 +3271,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
                         return RedirectToAction("GetAll_Practice");
                     }
                 }
@@ -3860,24 +3281,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
                     return RedirectToAction("GetAll_Practice");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
                 return RedirectToAction("GetAll_Theory");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
                 return RedirectToAction("GetAll_Practice");
             }
         }
@@ -3898,9 +3319,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Practice");
             }
@@ -3916,9 +3337,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
                         return RedirectToAction("GetAll_Practice");
                     }
                 }
@@ -3926,24 +3347,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
                     return RedirectToAction("GetAll_Practice");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
                 return RedirectToAction("GetAll_Practice");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
                 return RedirectToAction("GetAll_Practice");
             }
         }
@@ -3953,32 +3374,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_Practice(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -3991,9 +3394,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "giaotrinhsubject7";
-            ViewBag.ActiveSubMenuLv2 = "gtpracticesubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "giaotrinhsubject6";
+            ViewBag.ActiveSubMenuLv2 = "gtpracticesubject6";
             return View(document);
         }
 
@@ -4003,32 +3406,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_ViTheory()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -4040,9 +3425,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "virtuallabsubject7";
-            ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "virtuallabsubject6";
+            ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
             return View(documents);
         }
 
@@ -4063,9 +3448,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_Theory");
             }
@@ -4085,9 +3470,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
                         return RedirectToAction("GetAll_ViTheory");
                     }
                 }
@@ -4095,24 +3480,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
                     return RedirectToAction("GetAll_ViTheory");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
                 return RedirectToAction("GetAll_ViTheory");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
                 return RedirectToAction("GetAll_ViTheory");
             }
         }
@@ -4133,9 +3518,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_ViTheory");
             }
@@ -4151,9 +3536,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
                         return RedirectToAction("GetAll_ViTheory");
                     }
                 }
@@ -4161,24 +3546,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
                     return RedirectToAction("GetAll_ViTheory");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
                 return RedirectToAction("GetAll_ViTheory");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
                 return RedirectToAction("GetAll_ViTheory");
             }
         }
@@ -4188,32 +3573,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_ViTheory(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -4226,9 +3593,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "virtuallabsubject7";
-            ViewBag.ActiveSubMenuLv2 = "vitheorysubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "virtuallabsubject6";
+            ViewBag.ActiveSubMenuLv2 = "vitheorysubject6";
             return View(document);
         }
 
@@ -4238,32 +3605,14 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_ViPractice()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             List<Document> documents = new List<Document>();
 
@@ -4275,9 +3624,9 @@ TempData["noticeCount"] = notice.Count;
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "virtuallabsubject7";
-            ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "virtuallabsubject6";
+            ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
             return View(documents);
         }
 
@@ -4298,9 +3647,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_ViPractice");
             }
@@ -4320,9 +3669,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
                         return RedirectToAction("GetAll_ViPractice");
                     }
                 }
@@ -4330,24 +3679,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
                     return RedirectToAction("GetAll_ViPractice");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
                 return RedirectToAction("GetAll_ViPractice");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền duyệt!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
                 return RedirectToAction("GetAll_ViPractice");
             }
         }
@@ -4368,9 +3717,9 @@ TempData["noticeCount"] = notice.Count;
             if (document == null)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
                 TempData["notice"] = "khong tim thay du lieu";
                 return RedirectToAction("GetAll_ViPractice");
             }
@@ -4386,9 +3735,9 @@ TempData["noticeCount"] = notice.Count;
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject7";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                        ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                        ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
                         return RedirectToAction("GetAll_ViPractice");
                     }
                 }
@@ -4396,24 +3745,24 @@ TempData["noticeCount"] = notice.Count;
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                    ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                    ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
                     return RedirectToAction("GetAll_ViPractice");
                 }
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
                 return RedirectToAction("GetAll_ViPractice");
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "virtuallabsubject7";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "virtuallabsubject6";
+                ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
                 return RedirectToAction("GetAll_ViPractice");
             }
         }
@@ -4423,32 +3772,14 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Details_ViPractice(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
             Document document = new Document();
 
@@ -4461,9 +3792,9 @@ TempData["noticeCount"] = notice.Count;
                 document = JsonConvert.DeserializeObject<Document>(data);
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "virtuallabsubject7";
-            ViewBag.ActiveSubMenuLv2 = "vipracticesubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "virtuallabsubject6";
+            ViewBag.ActiveSubMenuLv2 = "vipracticesubject6";
             return View(document);
         }
 
@@ -4474,32 +3805,14 @@ TempData["noticeCount"] = notice.Count;
         {
 
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             Subject subject = new Subject();
@@ -4514,8 +3827,8 @@ TempData["noticeCount"] = notice.Count;
             }
 
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "configurationsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "configurationsubject6";
             ViewBag.ActiveSubMenuLv2 = "ruleClassroomSubject6";
             return View(subject);
         }
@@ -4525,37 +3838,19 @@ TempData["noticeCount"] = notice.Count;
         {
 
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "configurationsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "configurationsubject6";
             ViewBag.ActiveSubMenuLv2 = "ruleClassroomSubject6";
             return View();
         }
@@ -4565,32 +3860,14 @@ TempData["noticeCount"] = notice.Count;
         {
 
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            TempData["subject_2"] = subject2.SubjectName;
+            TempData["subject_3"] = subject3.SubjectName;
+            TempData["subject_4"] = subject4.SubjectName;
+            TempData["subject_5"] = subject5.SubjectName;
+            TempData["subject_6"] = subject6.SubjectName;
 TempData["noticeCount"] = notice.Count;
 
             Subject subject = new Subject();
@@ -4628,8 +3905,8 @@ TempData["noticeCount"] = notice.Count;
                 if (response.IsSuccessStatusCode)
                 {
                     ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject7";
-                    ViewBag.ActiveSubMenu = "configurationsubject7";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "configurationsubject6";
                     ViewBag.ActiveSubMenuLv2 = "ruleClassroomSubject6";
                     return RedirectToAction("Details_RuleClassroom");
                 }
@@ -4637,14 +3914,14 @@ TempData["noticeCount"] = notice.Count;
             catch (Exception ex)
             {
                 ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject7";
-                ViewBag.ActiveSubMenu = "configurationsubject7";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "configurationsubject6";
                 ViewBag.ActiveSubMenuLv2 = "ruleClassroomSubject6";
                 return View();
             }
             ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject7";
-            ViewBag.ActiveSubMenu = "configurationsubject7";
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "configurationsubject6";
             ViewBag.ActiveSubMenuLv2 = "ruleClassroomSubject6";
             return View();
         }

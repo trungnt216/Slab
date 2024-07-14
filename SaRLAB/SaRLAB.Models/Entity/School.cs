@@ -29,6 +29,31 @@ namespace SaRLAB.Models.Entity
         public string? BackupSubject4Logo { get; set; }
         public string? BackupSubject5Logo { get; set; }
         public string? BackupSubject6Logo { get; set; }
-
+        public string? BackupSubject7Logo { get; set; }
+        public string? BackupSubject8Logo { get; set; }
+        public string? BackupSubject9Logo { get; set; }
+        public string? BackupSubject10Logo { get; set; }
+        public string? BackupSubject11Logo { get; set; }
+        public string? BackupSubject12Logo { get; set; }
+        public string? BackupSubject13Logo { get; set; }
+        public string? BackupSubject14Logo { get; set; }
+        public string? BackupSubject15Logo { get; set; }
+        public string? BackupSubject16Logo { get; set; }
+        public string? BackupSubject17Logo { get; set; }
+        public string? BackupSubject18Logo { get; set; }
+        public string? BackupSubject19Logo { get; set; }
+        public string? BackupSubject20Logo { get; set; }
+        public string? BackupSubject21Logo { get; set; }
+        public string? BackupSubject22Logo { get; set; }
+        public string? BackupSubject23Logo { get; set; }
+        public string? BackupSubject24Logo { get; set; }
+        public string? BackupSubject25Logo { get; set; }
+        public string? BackupSubject26Logo { get; set; }
+        public string? BackupSubject27Logo { get; set; }
+        public string? BackupSubject28Logo { get; set; }
+        public string? BackupSubject29Logo { get; set; }
+        public string? BackupSubject30Logo { get; set; }
+        public string? BackupSubject31Logo { get; set; }
+        public string? BackupSubject32Logo { get; set; }
     }
 }

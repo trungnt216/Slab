@@ -64,15 +64,15 @@
                         </div>
                         @{
                             var currentTime = DateTime.Now;
-                            var style = Model.ExpiredTime <= currentTime ? "color: #cf656f; font-weight: 500" : "";
-                            var isExpired = Model.ExpiredTime <= currentTime ? "(Đã hết hạn)" : "";
+                            var style = Model.ExpiredDate <= currentTime ? "color: #cf656f; font-weight: 500" : "";
+                            var isExpired = Model.ExpiredDate <= currentTime ? "(Đã hết hạn)" : "";
                         }
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-clock"></i>
                                 <p>Thời gian hết hạn</p>
                             </div>
-                            <p class="detail" style="@style">@Html.DisplayFor(model => model.ExpiredTime)</p>
+                            <p class="detail" style="@style">@Html.DisplayFor(model => model.ExpiredDate)</p>
                             <p class="detail" style="color: #cf656f; font-weight: 600">@isExpired</p>
                         </div>
                         <div class="detail-item">

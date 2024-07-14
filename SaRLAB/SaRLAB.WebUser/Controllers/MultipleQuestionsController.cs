@@ -780,6 +780,1405 @@ namespace SaRLAB.UserWeb.Controllers
             return View(equipment);
         }
 
+        //-------------------------------------
 
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject7()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_7");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/12").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject7(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_7");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/12/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject8()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_8");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/13").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject8(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_8");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/13/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject9()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_9");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/14").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject9(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_9");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/14/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject10()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_10");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/15").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject10(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_10");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/15/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject11()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_11");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/16").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject11(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_11");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/16/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject12()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_12");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/17").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject12(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_12");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/17/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject13()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_13");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/18").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject13(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_13");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/18/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject14()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_14");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/19").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject14(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_14");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/19/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject15()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_15");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/20").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject15(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_15");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/20/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject16()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_16");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/21").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject16(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_16");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/21/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject17()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_17");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/22").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject17(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_17");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/22/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject18()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_18");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/23").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject18(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_18");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/23/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject19()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_19");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/24").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject19(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_19");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/24/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject20()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_20");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/25").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject20(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_20");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/25/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject21()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_21");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/26").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject21(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_21");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/26/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject22()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_22");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/27").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject22(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_22");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/27/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject23()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_23");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/28").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject23(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_23");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/28/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject24()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_24");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/29").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject24(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_24");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/29/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject25()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_25");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/30").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject25(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_25");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/30/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject26()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_26");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/31").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject26(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_26");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/31/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
     }
 }

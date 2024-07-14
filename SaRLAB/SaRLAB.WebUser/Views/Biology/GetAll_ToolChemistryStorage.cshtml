@@ -174,7 +174,7 @@
 
                                             var currentTime = DateTime.Now;
 
-                                            var style = item.ExpiredTime <= currentTime ? "color: #cf656f; font-weight: 500" :
+                                        var style = item.ExpiredDate <= currentTime ? "color: #cf656f; font-weight: 500" :
                                             "";
 
 
@@ -187,7 +187,7 @@
 
                                             item.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
 
-                                            if (item.ExpiredTime <= currentTime)
+                                        if (item.ExpiredDate <= currentTime)
 
 
                                             {
@@ -234,7 +234,7 @@
                                                     @Html.DisplayFor(modelItem => item.UpdateTime)
                                                 </td>
                                                 <td>
-                                                    @item.ExpiredTime
+                                                    @item.ExpiredDate
                                                 </td>
                                                 <td class="d-none">
                                                     @Html.DisplayFor(modelItem => item.Type)
