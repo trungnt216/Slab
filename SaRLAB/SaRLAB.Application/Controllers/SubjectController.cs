@@ -37,6 +37,21 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+/*        [HttpGet]
+        [Route("GetBySchoolAndType/{schoolId}/{type}")]
+        public IActionResult GetByID(int schoolId, int type)
+        {
+            var subject = _subjectDto.GetBy;
+            if (subject == null)
+            {
+                return BadRequest("cannot find the subject");
+            }
+            else
+            {
+                return Ok(subject);
+            }
+        }
+*/
         [HttpGet]
         [Route("GetByName/{name}")]
         public IActionResult GetByName(string name)
