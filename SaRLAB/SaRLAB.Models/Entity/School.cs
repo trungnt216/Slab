@@ -29,11 +29,6 @@ namespace SaRLAB.Models.Entity
         public string? BackupSubject4Logo { get; set; }
         public string? BackupSubject5Logo { get; set; }
         public string? BackupSubject6Logo { get; set; }
-<<<<<<< HEAD
-=======
-
-        // Bổ sung từ BackupSubject7Logo đến BackupSubject32Logo
->>>>>>> f84137dc778e5c0b95974aeaace6bb9a682fdf6d
         public string? BackupSubject7Logo { get; set; }
         public string? BackupSubject8Logo { get; set; }
         public string? BackupSubject9Logo { get; set; }

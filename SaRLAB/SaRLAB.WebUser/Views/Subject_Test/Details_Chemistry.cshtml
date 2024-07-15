@@ -2,8 +2,8 @@
 
 @{
     ViewData["Title"] = "Details_Chemistry";
-    Layout = "~/Views/Subject_1/_Layout.cshtml";
-    ViewBag.TitleCustom = "Chi tiết hóa chất";
+    Layout = ViewBag.Layout;
+    ViewBag.TitleCustom = ViewBag.ActiveSubMenuLv2.ToString();
 }
 
 <div id="sub-content">
@@ -13,12 +13,12 @@
                 <div class="d-flex justify-content-between">
                     <partial name="_TitleCustom">
                     <div class="detail-action">
-                            <a asp-area="" asp-action="Edit_Chemistry" asp-route-id="@Model.ID"
+                            <a asp-area="" asp-action="Edit_Chemistry" asp-route-id="@Model.ID" asp-route-type="@ViewBag.ActiveSubMenuLv2"
                                 class="btn-edit" type="button">
                             <i class="fa-solid fa-pen-to-square"></i>
                             Chỉnh sửa
                         </a>
-                            <a asp-area="" asp-action="GetAll_Chemistry"
+                            <a asp-area="" asp-action="GetAll_Chemistry" asp-route-type="@ViewBag.ActiveSubMenuLv2"
                                 class="btn-custom-return" type="button">
                             <i class="fa-solid fa-angles-left"></i>
                             Trở về

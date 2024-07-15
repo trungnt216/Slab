@@ -34,7 +34,7 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
         public Subject GetByID(int id)
         {
-            var subject = _context.Subjects.SingleOrDefault(item => item.ID == id);
+            var subject = _context.Subjects.SingleOrDefault(item => item.Type == id);
 
             if (subject != null)
             {
@@ -42,7 +42,8 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                 {
                     ID = subject.ID,
                     Rule = subject.Rule,
-                    SubjectName = subject.SubjectName
+                    SubjectName = subject.SubjectName,
+                    Type = subject.Type,
                 };
 
                 return _subject;
@@ -126,7 +127,7 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
         public Subject Update(Subject subject)
         {
-            var _subject = _context.Subjects.SingleOrDefault(item => (item.ID == subject.ID));
+            var _subject = _context.Subjects.SingleOrDefault(item => (item.Type == subject.Type));
 
             if (_subject != null)
             {

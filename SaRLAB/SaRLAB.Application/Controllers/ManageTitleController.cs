@@ -13,6 +13,14 @@ namespace SaRLAB.Application.Controllers
         {
             _manageService = manageTitleService;
         }
+
+        [HttpGet]
+        [Route("GetManageTitlesAccordingSchool/{schoolId}")]
+        public IActionResult GetManageTitlesAccordingSchool(int schoolId)
+        {
+            return Ok(_manageService.GetManageTitlesAccordingSchool(schoolId));
+        }
+
         [HttpGet]
         [Route("GetTitleBySchoolAnSubject/{schoolId}/{subjectId}")]
         public IActionResult GetTitleBySchoolAnSubject(int schoolId, int subjectId)

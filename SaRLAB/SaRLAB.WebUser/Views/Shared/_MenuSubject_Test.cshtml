@@ -79,14 +79,16 @@
                     Giáo trình thực hành
                 </a>
                 <ul class="dropdown-menu dropdown-menu-item">
-                    <li class="scroll-to-section">
-                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "theory") ? "active" : "")"
-                           asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Theory">Lý thuyết</a>
-                    </li>
-                    <li class="scroll-to-section">
-                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "practice") ? "active" : "")"
-                           asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Practice">Thực hành</a>
-                    </li>
+                    @foreach (var subItem in ViewBag.MenuItems){
+                        @if(subItem.Type == 1 ){
+                            <li class="scroll-to-section @((ViewBag.ActiveSubMenuLv2 == @subItem.Title) ? "active" : "")">
+                                <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistryStorage") ? "active" : "")"
+                                asp-controller="Subject_Test" asp-action="GetAll_Document" asp-route-titleDocument="@subItem.Title">
+                                    @subItem.Title
+                                </a>
+                            </li>
+                        }
+                    }
                 </ul>
             </li>
             <li class="scroll-to-section">
@@ -97,13 +99,13 @@
                 <ul class="dropdown-menu dropdown-menu-item">
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistryStorage") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_ChemistryStorage">Hóa chất</a></li>
+                            asp-controller="Subject_Test" asp-action="GetAll_Chemistry" asp-route-type="hoá chất">Hóa chất</a></li>
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "toolChemistryStorage") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_ToolChemistryStorage">Dụng cụ</a></li>
+                            asp-controller="Subject_Test" asp-action="GetAll_Chemistry" asp-route-type="dụng cụ">Dụng cụ</a></li>
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "equipmentChemistryStorage") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_EquipmentChemistryStorage">Thiết bị</a></li>
+                            asp-controller="Subject_Test" asp-action="GetAll_Chemistry" asp-route-type="thiết bị">Thiết bị</a></li>
                 </ul>
             </li>
             <li class="scroll-to-section">
@@ -114,13 +116,13 @@
                 <ul class="dropdown-menu dropdown-menu-item">
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistry") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Chemistry">Hóa chất</a></li>
+                            asp-controller="Subject_Test" asp-action="GetAll_Chemistry" asp-route-type="dự trù hoá chất">Hóa chất</a></li>
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "toolChemistry") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_ToolChemistry">Dụng cụ</a></li>
+                            asp-controller="Subject_Test" asp-action="GetAll_Chemistry" asp-route-type="dự trù dụng cụ">Dụng cụ</a></li>
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "equipmentChemistry") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_EquipmentChemistry">Thiết bị</a></li>
+                            asp-controller="Subject_Test" asp-action="GetAll_Chemistry" asp-route-type="dự trù thiết bị">Thiết bị</a></li>
                 </ul>
             </li>
             <li class="scroll-to-section">
@@ -129,21 +131,16 @@
                     Thực hành
                 </a>
                 <ul class="dropdown-menu dropdown-menu-item">
-                    <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "practiceschedule") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Practice_Schedule">Lịch thực hành</a>
-                    </li>
-                    <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "preparationQuestions") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Preparation_questions">Câu hỏi chuẩn bị</a>
-                    </li>
-                    <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "practiceReport") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Practice_report">Báo cáo thực hành</a></li>
-                    <li class="scroll-to-section"><a
-                            class="submenu @((ViewBag.ActiveSubMenuLv2 == "practicepoint") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Practice_Point">Điểm thực hành</a>
-                    </li>
+                    @foreach (var subItem in ViewBag.MenuItems){
+                        @if(subItem.Type == 2 ){
+                            <li class="scroll-to-section @((ViewBag.ActiveSubMenuLv2 == @subItem.Title) ? "active" : "")">
+                                <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistryStorage") ? "active" : "")"
+                                asp-controller="Subject_Test" asp-action="GetAll_Document" asp-route-titleDocument="@subItem.Title">
+                                    @subItem.Title
+                                </a>
+                            </li>
+                        }
+                    }
                 </ul>
             </li>
             <li class="scroll-to-section">
@@ -152,18 +149,16 @@
                     Virtual Lab
                 </a>
                 <ul class="dropdown-menu dropdown-menu-item">
-                    <li class="scroll-to-section">
-                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "vitheory") ? "active" : "")"
-                           asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_ViTheory">Lý thuyết</a>
-                    </li>
-                    <li class="scroll-to-section">
-                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "vipractice") ? "active" : "")"
-                           asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_ViPractice">Thực hành</a>
-                    </li>
-                    <li class="scroll-to-section">
-                        <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "experience") ? "active" : "")"
-                           asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Experiment">Thực nghiệm</a>
-                    </li>
+                    @foreach (var subItem in ViewBag.MenuItems){
+                        @if(subItem.Type == 3 ){
+                            <li class="scroll-to-section @((ViewBag.ActiveSubMenuLv2 == @subItem.Title) ? "active" : "")">
+                                <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistryStorage") ? "active" : "")"
+                                asp-controller="Subject_Test" asp-action="GetAll_Document" asp-route-titleDocument="@subItem.Title">
+                                    @subItem.Title
+                                </a>
+                            </li>
+                        }
+                    }
                 </ul>
             </li>
             <li class="scroll-to-section">
@@ -174,13 +169,13 @@
                 <ul class="dropdown-menu dropdown-menu-item">
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "directors") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Directors">Ban chủ nhiệm</a></li>
+                            asp-controller="Subject_Test" asp-action="GetAll_Directors">Ban chủ nhiệm</a></li>
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "teacher") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Teacher">Giảng viên</a></li>
+                            asp-controller="Subject_Test" asp-action="GetAll_Teacher">Giảng viên</a></li>
                     <li class="scroll-to-section"><a
                             class="submenu @((ViewBag.ActiveSubMenuLv2 == "technical") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Technical">Tổ kỹ thuật</a></li>
+                            asp-controller="Subject_Test" asp-action="GetAll_Technical">Tổ kỹ thuật</a></li>
                     @* <li class="scroll-to-section"><a class="submenu" href="#vo-co">Lịch công tác</a></li> *@
                 </ul>
             </li>
@@ -190,21 +185,16 @@
                     Nghiên cứu khoa học
                 </a>
                 <ul class="dropdown-menu dropdown-menu-item">
-                    <li class="scroll-to-section"><a
-                            class="submenu  @((ViewBag.ActiveSubMenuLv2 == "departmentLevel") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Department_level">Đề tài cấp cơ sở</a></li>
-                    <li class="scroll-to-section"><a
-                            class="submenu  @((ViewBag.ActiveSubMenuLv2 == "provincialLevel") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Provincial_level">Đề tài cấp thành phố, cấp
-                            tỉnh</a></li>
-                    <li class="scroll-to-section"><a
-                            class="submenu  @((ViewBag.ActiveSubMenuLv2 == "nationalLevel") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_National_level">Đề tài cấp bộ, cấp quốc
-                            gia</a></li>
-                    <li class="scroll-to-section"><a
-                            class="submenu  @((ViewBag.ActiveSubMenuLv2 == "internationalLevel") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_International_level">Đề tài cấp quốc tế</a>
-                    </li>
+                    @foreach (var subItem in ViewBag.MenuItems){
+                        @if(subItem.Type == 4 ){
+                            <li class="scroll-to-section @((ViewBag.ActiveSubMenuLv2 == @subItem.Title) ? "active" : "")">
+                                <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistryStorage") ? "active" : "")"
+                                asp-controller="Subject_Test" asp-action="GetAll_Document" asp-route-titleDocument="@subItem.Title">
+                                    @subItem.Title
+                                </a>
+                            </li>
+                        }
+                    }
                 </ul>
             </li>
             <li class="scroll-to-section">
@@ -213,20 +203,21 @@
                     Tiếng anh chuyên ngành
                 </a>
                 <ul class="dropdown-menu dropdown-menu-item">
-                    <li class="scroll-to-section"><a
-                            class="submenu  @((ViewBag.ActiveSubMenuLv2 == "vocabulary") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Vocabulary">Từ vựng</a></li>
-                    <li class="scroll-to-section"><a
-                            class="submenu  @((ViewBag.ActiveSubMenuLv2 == "examenglish") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Examenglish">Bài giảng song ngữ</a></li>
-                    <li class="scroll-to-section"><a
-                            class="submenu  @((ViewBag.ActiveSubMenuLv2 == "exam") ? "active" : "")"
-                            asp-controller="Subject_Test" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Exam">Bài tập</a></li>
+                    @foreach (var subItem in ViewBag.MenuItems){
+                        @if(subItem.Type == 5 ){
+                            <li class="scroll-to-section @((ViewBag.ActiveSubMenuLv2 == @subItem.Title) ? "active" : "")">
+                                <a class="submenu @((ViewBag.ActiveSubMenuLv2 == "chemistryStorage") ? "active" : "")"
+                                asp-controller="Subject_Test" asp-action="GetAll_Document" asp-route-titleDocument="@subItem.Title">
+                                    @subItem.Title
+                                </a>
+                            </li>
+                        }
+                    }
                 </ul>
             </li>
         </ul>
     </li>
-    <li class="scroll-to-section menu"><a class="menu" data-toggle=" dropdown" asp-controller="Library" asp-action="GetAll_Document"  asp-route-titleDocument="GetAll_Library" asp-route-subjectID="11">Thư viện</a></li>
+    <li class="scroll-to-section menu"><a class="menu" data-toggle=" dropdown" asp-controller="Library" asp-action="GetAll_Library" asp-route-subjectID="11">Thư viện</a></li>
 
     @* noti *@
     <li class="scroll-to-section menu noti-group" id="expiredItemsMenu" style="display: none; margin-right: 10px;">
@@ -246,7 +237,7 @@
 
     @* info group *@
     <li class="scroll-to-section menu-info-group">
-        <a class="menu d-flex" asp-controller="HomePage" asp-action="GetAll_Document"  asp-route-titleDocument="Information" asp-route-subjectID="11">
+        <a class="menu d-flex" asp-controller="HomePage" asp-action="Information" asp-route-subjectID="11">
             @if (TempData["AvtPath"] != null)
             {
                     <img src="@Url.Content(TempData["AvtPath"].ToString())" />
@@ -259,13 +250,13 @@
     </li>
     <li class="scroll-to-section menu menu-info-group-trigger"><a
             class="menu @((ViewBag.ActiveMenu == "user") ? "active" : "")" data-toggle="dropdown"
-            asp-controller="HomePage" asp-action="GetAll_Document"  asp-route-titleDocument="Information">Thông tin người dùng</a></li>
+            asp-controller="HomePage" asp-action="Information">Thông tin người dùng</a></li>
     @* logout *@
     <li class="scroll-to-section logout menu">
-        <div class="main-red-button"><a asp-controller="HomePage" asp-action="GetAll_Document"  asp-route-titleDocument="Logout">Đăng xuất</a></div>
+        <div class="main-red-button"><a asp-controller="HomePage" asp-action="Logout">Đăng xuất</a></div>
     </li>
     <li class="scroll-to-section logout-trigger menu"><a class="menu" asp-controller=" HomePage"
-            asp-action="GetAll_Document"  asp-route-titleDocument="Logout">Đăng xuất</a></li>
+            asp-action="Logout">Đăng xuất</a></li>
 </ul>
 <a class="menu-trigger">
     <span>Menu</span>

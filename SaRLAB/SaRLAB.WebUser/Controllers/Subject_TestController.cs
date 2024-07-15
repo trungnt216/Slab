@@ -13,7 +13,9 @@ namespace SaRLAB.UserWeb.Controllers
     {
         string pathFolderSave = null;
 
-        int Subject_id = 23;
+        int Subject_id = 1;
+
+        string Subject_name = "~/Views/Subject_Test/_Layout.cshtml";
 
         private readonly IWebHostEnvironment _env;
 
@@ -31,6 +33,8 @@ namespace SaRLAB.UserWeb.Controllers
         Subject subject = new Subject();
 
         Subject subject1 = new Subject();
+
+        List<ManageTitle> manageTitles = new List<ManageTitle>();
 
         public Subject_TestController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -107,6 +111,13 @@ namespace SaRLAB.UserWeb.Controllers
                 subject1 = JsonConvert.DeserializeObject<Subject>(data);
             }
 
+            HttpResponseMessage response_title = _httpClient.GetAsync(_httpClient.BaseAddress + "ManageTitle/GetManageTitlesAccordingSchool/" + userLogin.SchoolId).Result;
+            if (response_title.IsSuccessStatusCode)
+            {
+                string data = response_title.Content.ReadAsStringAsync().Result;
+                manageTitles = JsonConvert.DeserializeObject<List<ManageTitle>>(data);
+            }
+
         }
         //----------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
@@ -114,8 +125,9 @@ namespace SaRLAB.UserWeb.Controllers
         public ActionResult Index()
         {
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             ViewBag.ActiveMenu = "homePage";
 
@@ -125,7 +137,7 @@ namespace SaRLAB.UserWeb.Controllers
 
         //----------------------------hóa chất ------------------------------------------
         [HttpGet]
-        public IActionResult GetAll_Chemistry()
+        public IActionResult GetAll_Chemistry(string type)
         {
 
             if (_hasError || userLogin.RoleName == "User")
@@ -134,14 +146,17 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; 
+            TempData["subject_1"] = subject1.SubjectName; 
+            ViewBag.Layout = Subject_name; 
 
 
 
             List<Equipment> equipment = new List<Equipment>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/" + Subject_id + "/CHEMISTRYE").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/" + Subject_id + "/" + type).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -151,13 +166,13 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "subject6";
             ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "chemistry";
+            ViewBag.ActiveSubMenuLv2 = type;
             return View(equipment);
         }
 
 
         [HttpGet]
-        public ActionResult Edit_Chemistry(int id)
+        public ActionResult Edit_Chemistry(int id, string type)
         {
             if (_hasError)
             {
@@ -165,8 +180,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             Equipment equipment = new Equipment();
@@ -182,7 +198,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "không tìm thấy dữ liệu";
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = type;
                 return Ok();
             }
 
@@ -190,7 +206,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = type;
                 return View(equipment);
             }
             else
@@ -198,12 +214,12 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
-                return RedirectToAction("GetAll_Chemistry");
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("GetAll_Chemistry", new { type });
             }
         }
         [HttpPost]
-        public ActionResult Edit_Chemistry(Equipment equipment, IFormFile File)
+        public ActionResult Edit_Chemistry(Equipment equipment, IFormFile File, string type)
         {
             if (_hasError)
             {
@@ -211,8 +227,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             if (File != null)
@@ -252,8 +269,8 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject6";
                     ViewBag.ActiveSubMenu = "dutru";
-                    ViewBag.ActiveSubMenuLv2 = "chemistry";
-                    return RedirectToAction("GetAll_Chemistry");
+                    ViewBag.ActiveSubMenuLv2 = type;
+                    return RedirectToAction("GetAll_Chemistry", new { type });
                 }
             }
             catch (Exception ex)
@@ -261,14 +278,14 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = type;
                 return View();
             }
             return View();
         }
 
         [HttpGet]
-        public ActionResult Create_Chemistry()
+        public ActionResult Create_Chemistry(string type)
         {
             if (_hasError)
             {
@@ -276,15 +293,16 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
             {
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = type;
                 return View();
             }
             else
@@ -292,12 +310,12 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
-                return RedirectToAction("GetAll_Chemistry");
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("GetAll_Chemistry", new { type });
             }
         }
         [HttpPost]
-        public ActionResult Create_Chemistry(Equipment equipment, IFormFile File, IFormFile coverImage)
+        public ActionResult Create_Chemistry(Equipment equipment, IFormFile File, IFormFile coverImage, string type)
         {
             if (_hasError)
             {
@@ -305,8 +323,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             if (File != null)
@@ -363,7 +382,7 @@ namespace SaRLAB.UserWeb.Controllers
                 equipment.UpdateBy = userLogin.Email;
                 equipment.SchoolId = userLogin.SchoolId;
                 equipment.SubjectId = Subject_id;
-                equipment.Type = "CHEMISTRYE";
+                equipment.Type = type;
                 equipment.SchoolId = userLogin.SchoolId;
 
                 string data = JsonConvert.SerializeObject(equipment);
@@ -376,8 +395,8 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject6";
                     ViewBag.ActiveSubMenu = "dutru";
-                    ViewBag.ActiveSubMenuLv2 = "chemistry";
-                    return RedirectToAction("GetAll_Chemistry");
+                    ViewBag.ActiveSubMenuLv2 = type;
+                    return RedirectToAction("GetAll_Chemistry", new { type });
                 }
             }
             catch (Exception ex)
@@ -385,17 +404,17 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
+                ViewBag.ActiveSubMenuLv2 = type;
                 return View();
             }
             ViewBag.ActiveMenu = "subject6";
             ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "chemistry";
+            ViewBag.ActiveSubMenuLv2 = type;
             return View();
         }
 
 
-        public ActionResult Delete_Chemistry(int id)
+        public ActionResult Delete_Chemistry(int id, string type)
         {
 
             Equipment equipment = new Equipment();
@@ -413,8 +432,8 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "không tìm thấy dữ liệu";
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
-                return RedirectToAction("GetAll_Chemistry");
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("GetAll_Chemistry", new { type });
             }
 
             if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
@@ -429,8 +448,8 @@ namespace SaRLAB.UserWeb.Controllers
                     {
                         ViewBag.ActiveMenu = "subject6";
                         ViewBag.ActiveSubMenu = "dutru";
-                        ViewBag.ActiveSubMenuLv2 = "chemistry";
-                        return RedirectToAction("GetAll_Chemistry");
+                        ViewBag.ActiveSubMenuLv2 = type;
+                        return RedirectToAction("GetAll_Chemistry", new { type });
                     }
                 }
                 catch (Exception ex)
@@ -438,28 +457,28 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenu = "subject6";
                     ViewBag.ActiveSubMenu = "dutru";
-                    ViewBag.ActiveSubMenuLv2 = "chemistry";
-                    return RedirectToAction("GetAll_Chemistry");
+                    ViewBag.ActiveSubMenuLv2 = type;
+                    return RedirectToAction("GetAll_Chemistry", new { type });
                 }
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
-                return RedirectToAction("GetAll_Chemistry");
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("GetAll_Chemistry", new { type });
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "chemistry";
-                return RedirectToAction("GetAll_Chemistry");
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("GetAll_Chemistry", new { type });
             }
 
         }
 
 
         [HttpGet]
-        public ActionResult Details_Chemistry(int id)
+        public ActionResult Details_Chemistry(int id, string type)
         {
             if (_hasError)
             {
@@ -467,8 +486,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             Equipment equipment = new Equipment();
@@ -483,739 +503,9 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "subject6";
             ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "chemistry";
+            ViewBag.ActiveSubMenuLv2 = type;
             return View(equipment);
         }
-
-        //----------------------------dụng cụ-----------------------------------------------
-        [HttpGet]
-        public IActionResult GetAll_ToolChemistry()
-        {
-            if (_hasError || userLogin.RoleName == "User")
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            List<Equipment> equipment = new List<Equipment>();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/" + Subject_id + "/TOOLCHEMISTRY").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
-            }
-
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-            return View(equipment);
-        }
-
-
-        [HttpGet]
-        public ActionResult Create_ToolChemistry()
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                return View();
-            }
-            else
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                TempData["notice"] = "Bạn không có quyền thêm mới!";
-                return RedirectToAction("GetAll_ToolChemistry");
-            }
-        }
-        [HttpPost]
-        public ActionResult Create_ToolChemistry(Equipment equipment, IFormFile File, IFormFile coverImage)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            if (File != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    File.CopyTo(stream);
-                }
-                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-
-            if (coverImage != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    coverImage.CopyTo(stream);
-                }
-                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-            else
-            {
-                equipment.CoverImage = "~/images/book.jpg";
-            }
-
-            try
-            {
-                equipment.CreateTime = DateTime.Now;
-                equipment.CreateBy = userLogin.Email;
-                equipment.UpdateTime = DateTime.Now;
-                equipment.UpdateBy = userLogin.Email;
-                equipment.SchoolId = userLogin.SchoolId;
-                equipment.SubjectId = Subject_id;
-                equipment.Type = "TOOLCHEMISTRY";
-                equipment.SchoolId = userLogin.SchoolId;
-
-                string data = JsonConvert.SerializeObject(equipment);
-                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert/", content).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "dutru";
-                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                    return RedirectToAction("GetAll_ToolChemistry");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                return View();
-            }
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-            return View();
-        }
-
-
-        [HttpGet]
-        public ActionResult Edit_ToolChemistry(int id)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            if (equipment == null)
-            {
-                TempData["notice"] = "không tìm thấy thiết bị";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                return Ok();
-            }
-
-            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                return View(equipment);
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                return RedirectToAction("GetAll_ToolChemistry");
-            }
-        }
-        [HttpPost]
-        public ActionResult Edit_ToolChemistry(Equipment equipment, IFormFile File)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            if (File != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    File.CopyTo(stream);
-                }
-                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-
-            try
-            {
-                equipment.UpdateTime = DateTime.Now;
-                equipment.UpdateBy = userLogin.Email;
-
-                string data = JsonConvert.SerializeObject(equipment);
-                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Update/" + equipment.ID, content).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "dutru";
-                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                    return RedirectToAction("GetAll_ToolChemistry");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                return View();
-            }
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-            return View();
-        }
-
-        public ActionResult Delete_ToolChemistry(int id)
-        {
-
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            if (equipment == null)
-            {
-                TempData["notice"] = "không tìm thấy";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                return RedirectToAction("GetAll_ToolChemistry");
-            }
-
-            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenu = "subject6";
-                        ViewBag.ActiveSubMenu = "dutru";
-                        ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                        return RedirectToAction("GetAll_ToolChemistry");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "dutru";
-                    ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                    return RedirectToAction("GetAll_ToolChemistry");
-                }
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                return RedirectToAction("GetAll_ToolChemistry");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-                return RedirectToAction("GetAll_ToolChemistry");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_ToolChemistry(int id)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistry";
-            return View(equipment);
-        }
-
-
-        //------------------------Thiết bị ----------------------------------------------
-        [HttpGet]
-        public IActionResult GetAll_EquipmentChemistry()
-        {
-            if (_hasError || userLogin.RoleName == "User")
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            List<Equipment> equipment = new List<Equipment>();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/" + Subject_id + "/EQUIPMENTCHEMISTRY").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
-            }
-
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-            return View(equipment);
-        }
-
-
-        [HttpGet]
-        public ActionResult Create_EquipmentChemistry()
-        {
-            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                return View();
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền thêm mới!";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                return RedirectToAction("GetAll_EquipmentChemistry");
-            }
-        }
-        [HttpPost]
-        public ActionResult Create_EquipmentChemistry(Equipment equipment, IFormFile File, IFormFile coverImage)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            if (File != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    File.CopyTo(stream);
-                }
-                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-
-            if (coverImage != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    coverImage.CopyTo(stream);
-                }
-                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-            else
-            {
-                equipment.CoverImage = "~/images/book.jpg";
-            }
-
-            try
-            {
-                equipment.CreateTime = DateTime.Now;
-                equipment.CreateBy = userLogin.Email;
-                equipment.UpdateTime = DateTime.Now;
-                equipment.UpdateBy = userLogin.Email;
-                equipment.SchoolId = userLogin.SchoolId;
-                equipment.SubjectId = Subject_id;
-                equipment.Type = "EQUIPMENTCHEMISTRY";
-                equipment.SchoolId = userLogin.SchoolId;
-
-                string data = JsonConvert.SerializeObject(equipment);
-                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert/", content).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "dutru";
-                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                    return RedirectToAction("GetAll_EquipmentChemistry");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                return View();
-            }
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-            return View();
-        }
-
-
-        [HttpGet]
-        public ActionResult Edit_EquipmentChemistry(int id)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            if (equipment == null)
-            {
-                TempData["notice"] = "không tìm thấy";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                return Ok();
-            }
-
-            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                return View(equipment);
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                return Ok();
-            }
-        }
-        [HttpPost]
-        public ActionResult Edit_EquipmentChemistry(Equipment equipment, IFormFile File)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            if (File != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    File.CopyTo(stream);
-                }
-                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-
-            try
-            {
-                equipment.UpdateTime = DateTime.Now;
-                equipment.UpdateBy = userLogin.Email;
-
-                string data = JsonConvert.SerializeObject(equipment);
-                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Update/" + equipment.ID, content).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "dutru";
-                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                    return RedirectToAction("GetAll_EquipmentChemistry");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                return View();
-            }
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-            return View();
-        }
-
-        public ActionResult Delete_EquipmentChemistry(int id)
-        {
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            if (equipment == null)
-            {
-                TempData["notice"] = "không tìm thấy";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                return RedirectToAction("GetAll_EquipmentChemistry");
-            }
-
-            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenu = "subject6";
-                        ViewBag.ActiveSubMenu = "dutru";
-                        ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                        return RedirectToAction("GetAll_EquipmentChemistry");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "dutru";
-                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                    return RedirectToAction("GetAll_EquipmentChemistry");
-                }
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                return RedirectToAction("GetAll_EquipmentChemistry");
-            }
-            else
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "dutru";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                return RedirectToAction("GetAll_EquipmentChemistry");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_EquipmentChemistry(int id)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "dutru";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistry";
-            return View(equipment);
-        }
-        
 
         //---------------------------- Ban chủ nhiệm -----------------------------------------------
         [HttpGet]
@@ -1227,8 +517,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             List<User> users = new List<User>();
 
@@ -1255,8 +546,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             User users = new User();
 
@@ -1284,8 +576,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             List<User> users = new List<User>();
 
@@ -1312,8 +605,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             User users = new User();
 
@@ -1341,8 +635,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             List<User> users = new List<User>();
 
@@ -1369,8 +664,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             User users = new User();
 
@@ -1389,737 +685,6 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
 
-
-        //----------------------------dụng cụ kho-----------------------------------------------
-        [HttpGet]
-        public IActionResult GetAll_ToolChemistryStorage()
-        {
-            if (_hasError || userLogin.RoleName == "User")
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            List<Equipment> equipment = new List<Equipment>();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/" + Subject_id + "/TOOLCHEMISTRYSTORE").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
-            }
-
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-            return View(equipment);
-        }
-
-
-        [HttpGet]
-        public ActionResult Create_ToolChemistryStorage()
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                return View();
-            }
-            else
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                TempData["notice"] = "Bạn không có quyền thêm mới!";
-                return RedirectToAction("GetAll_ToolChemistryStorage");
-            }
-        }
-        [HttpPost]
-        public ActionResult Create_ToolChemistryStorage(Equipment equipment, IFormFile File, IFormFile coverImage)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            if (File != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    File.CopyTo(stream);
-                }
-                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-
-            if (coverImage != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    coverImage.CopyTo(stream);
-                }
-                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-            else
-            {
-                equipment.CoverImage = "~/images/book.jpg";
-            }
-
-            try
-            {
-                equipment.CreateTime = DateTime.Now;
-                equipment.CreateBy = userLogin.Email;
-                equipment.UpdateTime = DateTime.Now;
-                equipment.UpdateBy = userLogin.Email;
-                equipment.SchoolId = userLogin.SchoolId;
-                equipment.SubjectId = Subject_id;
-                equipment.Type = "TOOLCHEMISTRYSTORE";
-                equipment.SchoolId = userLogin.SchoolId;
-
-                string data = JsonConvert.SerializeObject(equipment);
-                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert/", content).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                    return RedirectToAction("GetAll_ToolChemistryStorage");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                return View();
-            }
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-            return View();
-        }
-
-
-        [HttpGet]
-        public ActionResult Edit_ToolChemistryStorage(int id)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            if (equipment == null)
-            {
-                TempData["notice"] = "không tìm thấy thiết bị";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                return Ok();
-            }
-
-            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                return View(equipment);
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                return RedirectToAction("GetAll_ToolChemistryStorage");
-            }
-        }
-        [HttpPost]
-        public ActionResult Edit_ToolChemistryStorage(Equipment equipment, IFormFile File)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            if (File != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    File.CopyTo(stream);
-                }
-                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-
-            try
-            {
-                equipment.UpdateTime = DateTime.Now;
-                equipment.UpdateBy = userLogin.Email;
-
-                string data = JsonConvert.SerializeObject(equipment);
-                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Update/" + equipment.ID, content).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                    return RedirectToAction("GetAll_ToolChemistryStorage");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                return View();
-            }
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-            return View();
-        }
-
-        public ActionResult Delete_ToolChemistryStorage(int id)
-        {
-
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            if (equipment == null)
-            {
-                TempData["notice"] = "không tìm thấy";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                return RedirectToAction("GetAll_ToolChemistryStorage");
-            }
-
-            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenu = "subject6";
-                        ViewBag.ActiveSubMenu = "kho";
-                        ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                        return RedirectToAction("GetAll_ToolChemistryStorage");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                    return RedirectToAction("GetAll_ToolChemistryStorage");
-                }
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                return RedirectToAction("GetAll_ToolChemistryStorage");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-                return RedirectToAction("GetAll_ToolChemistryStorage");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_ToolChemistryStorage(int id)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "toolChemistryStorage";
-            return View(equipment);
-        }
-
-
-        //------------------------Thiết bị kho----------------------------------------------
-        [HttpGet]
-        public IActionResult GetAll_EquipmentChemistryStorage()
-        {
-            if (_hasError || userLogin.RoleName == "User")
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            List<Equipment> equipment = new List<Equipment>();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/" + Subject_id + "/EQUIPMENTCHEMISTRYSTORE").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
-            }
-
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-            return View(equipment);
-        }
-
-
-        [HttpGet]
-        public ActionResult Create_EquipmentChemistryStorage()
-        {
-            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                return View();
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền thêm mới!";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                return RedirectToAction("GetAll_EquipmentChemistryStorage");
-            }
-        }
-        [HttpPost]
-        public ActionResult Create_EquipmentChemistryStorage(Equipment equipment, IFormFile File, IFormFile coverImage)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            if (File != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    File.CopyTo(stream);
-                }
-                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-
-            if (coverImage != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    coverImage.CopyTo(stream);
-                }
-                equipment.CoverImage = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-            else
-            {
-                equipment.CoverImage = "~/images/book.jpg";
-            }
-
-            try
-            {
-                equipment.CreateTime = DateTime.Now;
-                equipment.CreateBy = userLogin.Email;
-                equipment.UpdateTime = DateTime.Now;
-                equipment.UpdateBy = userLogin.Email;
-                equipment.SchoolId = userLogin.SchoolId;
-                equipment.SubjectId = Subject_id;
-                equipment.Type = "EQUIPMENTCHEMISTRYSTORE";
-                equipment.SchoolId = userLogin.SchoolId;
-
-                string data = JsonConvert.SerializeObject(equipment);
-                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Insert/", content).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                    return RedirectToAction("GetAll_EquipmentChemistryStorage");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                return View();
-            }
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-            return View();
-        }
-
-
-        [HttpGet]
-        public ActionResult Edit_EquipmentChemistryStorage(int id)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            if (equipment == null)
-            {
-                TempData["notice"] = "không tìm thấy";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                return Ok();
-            }
-
-            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                return View(equipment);
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                return Ok();
-            }
-        }
-        [HttpPost]
-        public ActionResult Edit_EquipmentChemistryStorage(Equipment equipment, IFormFile File)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            if (File != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    File.CopyTo(stream);
-                }
-                equipment.ImagePath = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
-            }
-
-            try
-            {
-                equipment.UpdateTime = DateTime.Now;
-                equipment.UpdateBy = userLogin.Email;
-
-                string data = JsonConvert.SerializeObject(equipment);
-                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Update/" + equipment.ID, content).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    TempData["successMessage"] = "create success";
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                    return RedirectToAction("GetAll_EquipmentChemistryStorage");
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                return View();
-            }
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-            return View();
-        }
-
-        public ActionResult Delete_EquipmentChemistryStorage(int id)
-        {
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            if (equipment == null)
-            {
-                TempData["notice"] = "không tìm thấy";
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                return RedirectToAction("GetAll_EquipmentChemistryStorage");
-            }
-
-            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenu = "subject6";
-                        ViewBag.ActiveSubMenu = "kho";
-                        ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                        return RedirectToAction("GetAll_EquipmentChemistryStorage");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "kho";
-                    ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                    return RedirectToAction("GetAll_EquipmentChemistryStorage");
-                }
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                return RedirectToAction("GetAll_EquipmentChemistryStorage");
-            }
-            else
-            {
-                ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "kho";
-                ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                return RedirectToAction("GetAll_EquipmentChemistryStorage");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_EquipmentChemistryStorage(int id)
-        {
-            if (_hasError)
-            {
-                return View("Error");
-            }
-
-            TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
-
-
-            Equipment equipment = new Equipment();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<Equipment>(data);
-            }
-
-            ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "kho";
-            ViewBag.ActiveSubMenuLv2 = "equipmentChemistryStorage";
-            return View(equipment);
-        }
-
-
         //----------------------------- Tin tức ------------------------------------------
 
         [HttpGet]
@@ -2131,8 +696,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             List<Document> documents = new List<Document>();
 
@@ -2159,8 +725,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
@@ -2187,8 +754,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             if (File != null && document.Path == null)
             {
@@ -2285,8 +853,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             Document document = new Document();
 
@@ -2333,8 +902,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             if (File != null && document.Path == null)
             {
@@ -2463,8 +1033,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             Document document = new Document();
 
@@ -2493,9 +1064,10 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; 
-            TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             List<Document> documents = new List<Document>();
@@ -2508,8 +1080,7 @@ namespace SaRLAB.UserWeb.Controllers
                 documents = JsonConvert.DeserializeObject<List<Document>>(data);
             }
             ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
             return View(documents);
         }
 
@@ -2523,24 +1094,23 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
                 ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
                 return View();
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
                 ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
         }
         [HttpPost]
@@ -2552,8 +1122,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             if (File != null && document.Path == null)
@@ -2623,22 +1194,19 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "experience";
-                    return RedirectToAction("GetAll_Experiment");
+                    ViewBag.ActiveSubMenuLv2 = titleDocument;
+                    return RedirectToAction("GetAll_Document", new { titleDocument });
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
                 return View();
             }
             ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
             return View();
         }
 
@@ -2651,8 +1219,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             Document document = new Document();
@@ -2670,25 +1239,22 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
                 return Ok();
             }
 
             if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
                 return View(document);
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
                 ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
         }
         [HttpPost]
@@ -2700,8 +1266,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             if (File != null && document.Path == null)
@@ -2740,22 +1307,19 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "experience";
-                    return RedirectToAction("GetAll_Experiment");
+                    ViewBag.ActiveSubMenuLv2 = titleDocument;
+                    return RedirectToAction("GetAll_Document", new { titleDocument });
                 }
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
                 return View();
             }
             ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
             return View();
         }
 
@@ -2777,9 +1341,8 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
@@ -2793,31 +1356,27 @@ namespace SaRLAB.UserWeb.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         ViewBag.ActiveMenu = "subject6";
-                        ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLv2 = "experience";
-                        return RedirectToAction("GetAll_Experiment");
+                        ViewBag.ActiveSubMenuLv2 = titleDocument;
+                        return RedirectToAction("GetAll_Document", new { titleDocument });
                     }
                 }
                 catch (Exception ex)
                 {
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenu = "subject6";
-                    ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLv2 = "experience";
-                    return RedirectToAction("GetAll_Experiment");
+                    ViewBag.ActiveSubMenuLv2 = titleDocument;
+                    return RedirectToAction("GetAll_Document", new { titleDocument });
                 }
                 ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
             else
             {
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenu = "subject6";
-                ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLv2 = "experience";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
         }
 
@@ -2831,8 +1390,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
             Document document = new Document();
@@ -2847,8 +1407,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             ViewBag.ActiveMenu = "subject6";
-            ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLv2 = "experience";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
             return View(document);
         }
 
@@ -2864,8 +1423,9 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
-            TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.MenuItems = manageTitles;
+TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             Subject subject = new Subject();
 

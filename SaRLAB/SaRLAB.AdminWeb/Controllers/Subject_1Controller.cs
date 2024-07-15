@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using Newtonsoft.Json;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SaRLAB.AdminWeb.Controllers
 {
@@ -24,10 +25,12 @@ namespace SaRLAB.AdminWeb.Controllers
 
         UserDto userLogin = new UserDto();
 
-        int Subject_id = 6;
+        int Subject_id = 1;
 
         List<Subject> subjects = new List<Subject>();
         List<NoticeAdmin> notice = new List<NoticeAdmin>();
+
+        List<ManageTitle> manageTitles = new List<ManageTitle>();
 
         public Subject_1(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -68,14 +71,21 @@ namespace SaRLAB.AdminWeb.Controllers
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetAll").Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchool/" + userLogin.SchoolId).Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
                 subjects = JsonConvert.DeserializeObject<List<Subject>>(data);
             }
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllDocumentsBySchoolToAccept/" + userLogin.SchoolId).Result;
 
+            HttpResponseMessage response_title = _httpClient.GetAsync(_httpClient.BaseAddress + "ManageTitle/GetManageTitlesAccordingSchool/" + userLogin.SchoolId).Result;
+            if (response_title.IsSuccessStatusCode)
+            {
+                string data = response_title.Content.ReadAsStringAsync().Result;
+                manageTitles = JsonConvert.DeserializeObject<List<ManageTitle>>(data);
+            }
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllDocumentsBySchoolToAccept/" + userLogin.SchoolId).Result;
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
@@ -88,36 +98,21 @@ namespace SaRLAB.AdminWeb.Controllers
         public IActionResult Configuration_Subject()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
 
             Subject subject = new Subject();
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/6").Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
@@ -135,33 +130,17 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult Configuration_Subject(Subject subject_new)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             if (userLogin.RoleName == "Owner")
             {
@@ -209,42 +188,152 @@ TempData["noticeCount"] = notice.Count;
             return View();
         }
 
-        //------------------------- thực nghiệm -------------------------------------------------------------------
+        //------------------------------ sửa tên title các trường ----------------------------------------
         [HttpGet]
-        public IActionResult GetAll_Experiment()
+        public IActionResult Configuration_Title()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
+            List<ManageTitle> manageTitle = new List<ManageTitle>();
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "ManageTitle/GetTitleBySchoolAnSubject/" + userLogin.SchoolId + "/" + Subject_id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                manageTitle = JsonConvert.DeserializeObject<List<ManageTitle>>(data);
+            }
+
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "configurationtitle1";
+            ViewBag.ActiveSubMenuLv2 = "titlesubject1";
+            return View(manageTitle);
+        }
+
+
+        [HttpGet]
+        public IActionResult Create_Title()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
+            var subjectTypes = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "1", Text = "Giáo trình" },
+            new SelectListItem { Value = "2", Text = "Thực hành" },
+            new SelectListItem { Value = "3", Text = "Virtual Lab" },
+            new SelectListItem { Value = "4", Text = "Nghiên cứu khoa học" },
+            new SelectListItem { Value = "5", Text = "Tiếng Anh chuyên ngành" }
+        };
+
+            ViewBag.SubjectTypes = subjectTypes;
+
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "configurationtitle1";
+            ViewBag.ActiveSubMenuLv2 = "titlesubject1";
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create_Title(ManageTitle manageTitle)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
+            var subjectTypes = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "1", Text = "Giáo trình" },
+            new SelectListItem { Value = "2", Text = "Thực hành" },
+            new SelectListItem { Value = "3", Text = "Virtual Lab" },
+            new SelectListItem { Value = "4", Text = "Nghiên cứu khoa học" },
+            new SelectListItem { Value = "5", Text = "Tiếng Anh chuyên ngành" }
+        };
+
+            ViewBag.SubjectTypes = subjectTypes;
+
+            try
+            {
+                manageTitle.SchoolId = userLogin.SchoolId;
+                manageTitle.SubjectId = Subject_id;
+                string data = JsonConvert.SerializeObject(manageTitle);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "ManageTitle/Insert", content).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Configuration_Title");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "configurationsubject1";
+                ViewBag.ActiveSubMenuLv2 = "titlesubject1";
+                return View();
+            }
+
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "configurationsubject1";
+            ViewBag.ActiveSubMenuLv2 = "titlesubject1";
+            return View();
+        }
+
+        //------------------------- thực nghiệm -------------------------------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Document(string titleDocument)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subject = subjects.SingleOrDefault(item => item.ID == i);
+                if (subject != null)
+                {
+                    TempData[$"subject_{i}"] = subject.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             List<Document> documents = new List<Document>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/EXPERIMENT").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/" + titleDocument).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -254,11 +343,11 @@ TempData["noticeCount"] = notice.Count;
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "subject1";
             ViewBag.ActiveSubMenu = "virtuallabsubject1";
-            ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
             return View(documents);
         }
 
-        public ActionResult Accept_Experiment(int id)
+        public ActionResult Accept_Document(int id, string titleDocument)
         {
             Document document = new Document();
 
@@ -277,8 +366,8 @@ TempData["noticeCount"] = notice.Count;
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
@@ -299,8 +388,8 @@ TempData["noticeCount"] = notice.Count;
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveMenu = "subject1";
                         ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-                        return RedirectToAction("GetAll_Experiment");
+                        ViewBag.ActiveSubMenuLv2 = titleDocument;
+                        return RedirectToAction("GetAll_Document", new { titleDocument });
                     }
                 }
                 catch (Exception ex)
@@ -309,14 +398,14 @@ TempData["noticeCount"] = notice.Count;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "subject1";
                     ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-                    return RedirectToAction("GetAll_Experiment");
+                    ViewBag.ActiveSubMenuLv2 = titleDocument;
+                    return RedirectToAction("GetAll_Document", new { titleDocument });
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
             else
             {
@@ -324,12 +413,12 @@ TempData["noticeCount"] = notice.Count;
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
         }
 
-        public ActionResult Delete_Experiment(int id)
+        public ActionResult Delete_Document(int id, string titleDocument)
         {
             Document document = new Document();
 
@@ -348,8 +437,8 @@ TempData["noticeCount"] = notice.Count;
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
 
             if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
@@ -365,8 +454,8 @@ TempData["noticeCount"] = notice.Count;
                         ViewBag.ActiveMenu = "subject1";
                         ViewBag.ActiveMenuMain = "subject";
                         ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-                        return RedirectToAction("GetAll_Experiment");
+                        ViewBag.ActiveSubMenuLv2 = titleDocument;
+                        return RedirectToAction("GetAll_Document", new { titleDocument });
                     }
                 }
                 catch (Exception ex)
@@ -375,14 +464,14 @@ TempData["noticeCount"] = notice.Count;
                     ViewBag.ActiveMenuMain = "subject";
                     ViewBag.ActiveMenu = "subject1";
                     ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-                    return RedirectToAction("GetAll_Experiment");
+                    ViewBag.ActiveSubMenuLv2 = titleDocument;
+                    return RedirectToAction("GetAll_Document", new { titleDocument });
                 }
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
             else
             {
@@ -390,43 +479,27 @@ TempData["noticeCount"] = notice.Count;
                 ViewBag.ActiveMenuMain = "subject";
                 ViewBag.ActiveMenu = "subject1";
                 ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-                return RedirectToAction("GetAll_Experiment");
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
             }
         }
 
 
         [HttpGet]
-        public ActionResult Details_Experiment(int id)
+        public ActionResult Details_Document(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subject = subjects.SingleOrDefault(item => item.ID == i);
+                if (subject != null)
+                {
+                    TempData[$"subject_{i}"] = subject.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             Document document = new Document();
 
@@ -442,3507 +515,7 @@ TempData["noticeCount"] = notice.Count;
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "subject1";
             ViewBag.ActiveSubMenu = "virtuallabsubject1";
-            ViewBag.ActiveSubMenuLv2 = "experimentsubject1";
-            return View(document);
-        }
-
-        //-------------------------------------- đại cương (Conspectus) ---------------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_Conspectus()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/CONSPECTUS").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "virtuallabsubject1";
-            ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-            return View(documents);
-        }
-
-        public ActionResult Accept_Conspectus(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-                return RedirectToAction("GetAll_Conspectus");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.PageFlag = true;
-                    document.UpdateTime = DateTime.Now;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-                        return RedirectToAction("GetAll_Conspectus");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-                    return RedirectToAction("GetAll_Conspectus");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-                return RedirectToAction("GetAll_Conspectus");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-                return RedirectToAction("GetAll_Conspectus");
-            }
-        }
-
-        public ActionResult Delete_Conspectus(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-                return RedirectToAction("GetAll_Conspectus");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-                        return RedirectToAction("GetAll_Conspectus");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-                    return RedirectToAction("GetAll_Conspectus");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-                return RedirectToAction("GetAll_Conspectus");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-                return RedirectToAction("GetAll_Conspectus");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_Conspectus(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "virtuallabsubject1";
-            ViewBag.ActiveSubMenuLv2 = "conspectussubject1";
-            return View(document);
-        }
-
-        //--------------------------------hoạt tính sinh học---- subject1logicalsubject1 ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_subject1logical()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/subject1LOGICAL").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "virtuallabsubject1";
-            ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_subject1logical(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_subject1logical");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
-                        return RedirectToAction("GetAll_subject1logical");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
-                    return RedirectToAction("GetAll_subject1logical");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
-                return RedirectToAction("GetAll_subject1logical");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
-                return RedirectToAction("GetAll_subject1logical");
-            }
-        }
-
-        public ActionResult Delete_subject1logical(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_subject1logical");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
-                        return RedirectToAction("GetAll_subject1logical");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
-                    return RedirectToAction("GetAll_subject1logical");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
-                return RedirectToAction("GetAll_subject1logical");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallabsubject1";
-                ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
-                return RedirectToAction("GetAll_subject1logical");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_subject1logical(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "virtuallabsubject1";
-            ViewBag.ActiveSubMenuLv2 = "subject1logicalsubject1";
-            return View(document);
-        }
-
-        //-------------------------------Từ Vựng ----- Vocabulary ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_Vocabulary()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/VOCABULARY").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "tienganhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "vocabularysubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_Vocabulary(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Vocabulary");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "tienganhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "vocabularysubject1";
-                        return RedirectToAction("GetAll_Vocabulary");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "tienganhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "vocabularysubject1";
-                    return RedirectToAction("GetAll_Vocabulary");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vocabularysubject1";
-                return RedirectToAction("GetAll_Vocabulary");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vocabularysubject1";
-                return RedirectToAction("GetAll_Vocabulary");
-            }
-        }
-
-
-        public ActionResult Delete_Vocabulary(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Vocabulary");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "tienganhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "vocabularysubject1";
-                        return RedirectToAction("GetAll_Vocabulary");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "tienganhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "vocabularysubject1";
-                    return RedirectToAction("GetAll_Vocabulary");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vocabularysubject1";
-                return RedirectToAction("GetAll_Vocabulary");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vocabularysubject1";
-                return RedirectToAction("GetAll_Vocabulary");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_Vocabulary(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "tienganhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "vocabularysubject1";
-            return View(document);
-        }
-
-        //-------------------------------Bài tập ----- Exam ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_Exam()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/EXAM").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "tienganhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "examsubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_Exam(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "examsubject1";
-                return RedirectToAction("GetAll_Exam");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "tienganhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "examsubject1";
-                        return RedirectToAction("GetAll_Exam");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "tienganhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "examsubject1";
-                    return RedirectToAction("GetAll_Exam");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "examsubject1";
-                return RedirectToAction("GetAll_Exam");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "examsubject1";
-                return RedirectToAction("GetAll_Exam");
-            }
-        }
-
-        public ActionResult Delete_Exam(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "examsubject1";
-                return RedirectToAction("GetAll_Exam");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "tienganhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "examsubject1";
-                        return RedirectToAction("GetAll_Exam");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "tienganhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "examsubject1";
-                    return RedirectToAction("GetAll_Exam");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "examsubject1";
-                return RedirectToAction("GetAll_Exam");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "examsubject1";
-                return RedirectToAction("GetAll_Exam");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_Exam(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "tienganhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "examsubject1";
-            return View(document);
-        }
-
-        //-------------------------------Bài tập song ngữ ----- Examenglish ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_Examenglish()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/EXAMENG").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "tienganhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "examenglishsubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_Examenglish(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "examenglishsubject1";
-                return RedirectToAction("GetAll_Examenglish");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "tienganhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "examenglishsubject1";
-                        return RedirectToAction("GetAll_Examenglish");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "tienganhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "examenglishsubject1";
-                    return RedirectToAction("GetAll_Examenglish");
-                }
-                return RedirectToAction("GetAll_Examenglish");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "examenglishsubject1";
-                return RedirectToAction("GetAll_Examenglish");
-            }
-        }
-
-        public ActionResult Delete_Examenglish(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "examenglishsubject1";
-                return RedirectToAction("GetAll_Examenglish");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "tienganhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "examenglishsubject1";
-                        return RedirectToAction("GetAll_Examenglish");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "tienganhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "examenglishsubject1";
-                    return RedirectToAction("GetAll_Examenglish");
-                }
-                return RedirectToAction("GetAll_Examenglish");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "tienganhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "examenglishsubject1";
-                return RedirectToAction("GetAll_Examenglish");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_Examenglish(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "tienganhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "examenglishsubject1";
-            return View(document);
-        }
-
-        //-------------------------------Đề tài cấp sở----- Department_level topic ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_Department_level()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/DEPARTMENTLEVEL").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "nghiencuusubject1";
-            ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_Department_level(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-                return RedirectToAction("GetAll_Department_level");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                        ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-                        return RedirectToAction("GetAll_Department_level");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                    ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-                    TempData["errorMessage"] = ex.Message;
-                    return RedirectToAction("GetAll_Department_level");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-                return RedirectToAction("GetAll_Department_level");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-                return RedirectToAction("GetAll_Department_level");
-            }
-        }
-
-        public ActionResult Delete_Department_level(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-                return RedirectToAction("GetAll_Department_level");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                        ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-                        return RedirectToAction("GetAll_Department_level");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                    ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-                    TempData["errorMessage"] = ex.Message;
-                    return RedirectToAction("GetAll_Department_level");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-                return RedirectToAction("GetAll_Department_level");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-                return RedirectToAction("GetAll_Department_level");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_Department_level(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "nghiencuusubject1";
-            ViewBag.ActiveSubMenuLv2 = "departmentLevelsubject1";
-            return View(document);
-        }
-
-        //-------------------------------Đề tài cấp tỉnh----- Provincial_level topic ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_Provincial_level()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/PROVONCIALLEVEL").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "nghiencuusubject1";
-            ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_Provincial_level(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-                return RedirectToAction("GetAll_Provincial_level");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                        ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-                        return RedirectToAction("GetAll_Provincial_level");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                    ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-                    return RedirectToAction("GetAll_Provincial_level");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-                return RedirectToAction("GetAll_Provincial_level");
-            }
-            else
-            {
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                return RedirectToAction("GetAll_Provincial_level");
-            }
-        }
-
-        public ActionResult Delete_Provincial_level(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-                return RedirectToAction("GetAll_Provincial_level");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                        ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-                        return RedirectToAction("GetAll_Provincial_level");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                    ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-                    return RedirectToAction("GetAll_Provincial_level");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-                return RedirectToAction("GetAll_Provincial_level");
-            }
-            else
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                return RedirectToAction("GetAll_Provincial_level");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_Provincial_level(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "nghiencuusubject1";
-            ViewBag.ActiveSubMenuLv2 = "provincialLevelsubject1";
-            return View(document);
-        }
-
-
-        //-------------------------------Đề tài cấp quốc gia----- National_level topic ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_National_level()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/NATIONALLEVER").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "nghiencuusubject1";
-            ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_National_level(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject1";
-                return RedirectToAction("GetAll_National_level");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                        ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject1";
-                        return RedirectToAction("GetAll_National_level");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                    ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject1";
-                    return RedirectToAction("GetAll_National_level");
-                }
-                return RedirectToAction("GetAll_National_level");
-            }
-            else
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject1";
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                return RedirectToAction("GetAll_National_level");
-            }
-        }
-
-        public ActionResult Delete_National_level(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject1";
-                return RedirectToAction("GetAll_National_level");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                        ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject1";
-                        return RedirectToAction("GetAll_National_level");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                    ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject1";
-                    return RedirectToAction("GetAll_National_level");
-                }
-                return RedirectToAction("GetAll_National_level");
-            }
-            else
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject1";
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                return RedirectToAction("GetAll_National_level");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_National_level(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "nghiencuusubject1";
-            ViewBag.ActiveSubMenuLv2 = "nationalLevelsubject1";
-            return View(document);
-        }
-
-        //------------------------------- câu hỏi chuẩn bị ----- Preparation_questions ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_Preparation_questions()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/PREPARATIONQUESTION").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "thuchanhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_Preparation_questions(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-                return RedirectToAction("GetAll_Preparation_questions");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-                        return RedirectToAction("GetAll_Preparation_questions");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-                    return RedirectToAction("GetAll_Preparation_questions");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-                return RedirectToAction("GetAll_Preparation_questions");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-                return RedirectToAction("GetAll_Preparation_questions");
-            }
-        }
-
-        public ActionResult Delete_Preparation_questions(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                TempData["notice"] = "khong tim thay du lieu";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-                return RedirectToAction("GetAll_Preparation_questions");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-                        return RedirectToAction("GetAll_Preparation_questions");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-                    return RedirectToAction("GetAll_Preparation_questions");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-                return RedirectToAction("GetAll_Preparation_questions");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-                return RedirectToAction("GetAll_Preparation_questions");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_Preparation_questions(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "thuchanhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "preparationQuestionssubject1";
-            return View(document);
-        }
-
-
-        //------------------------------- báo cáo thực hành ----- Practice_report------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_Practice_report()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/NATIONALLEVER").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "thuchanhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_Practice_report(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Practice_report");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-                        return RedirectToAction("GetAll_Practice_report");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-                    return RedirectToAction("GetAll_Practice_report");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-                return RedirectToAction("GetAll_Practice_report");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-                return RedirectToAction("GetAll_Practice_report");
-            }
-        }
-
-        public ActionResult Delete_Practice_report(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Practice_report");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-                        return RedirectToAction("GetAll_Practice_report");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-                    return RedirectToAction("GetAll_Practice_report");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-                return RedirectToAction("GetAll_Practice_report");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "thuchanhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-                return RedirectToAction("GetAll_Practice_report");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_Practice_report(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "thuchanhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "practiceReportsubject1";
-            return View(document);
-        }
-
-        //------------------------------- đề tài cấp quốc tế ----- International_level------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_International_level()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/INTERNATIONAL").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "nghiencuusubject1";
-            ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_International_level(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_International_level");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                        ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-                        return RedirectToAction("GetAll_International_level");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                    ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-                    return RedirectToAction("GetAll_International_level");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-                return RedirectToAction("GetAll_International_level");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-                return RedirectToAction("GetAll_International_level");
-            }
-        }
-
-        public ActionResult Delete_International_level(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_International_level");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                        ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-                        return RedirectToAction("GetAll_International_level");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                    ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-                    return RedirectToAction("GetAll_International_level");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-                return RedirectToAction("GetAll_International_level");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "nghiencuusubject1";
-                ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-                return RedirectToAction("GetAll_International_level");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_International_level(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "nghiencuusubject1";
-            ViewBag.ActiveSubMenuLv2 = "internationalLevelsubject1";
-            return View(document);
-        }
-
-        //------------------------------- lý thuyết - theory ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_Theory()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/THEORY").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_Theory(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Theory");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-                        return RedirectToAction("GetAll_Theory");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-                    return RedirectToAction("GetAll_Theory");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-                return RedirectToAction("GetAll_Theory");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-                return RedirectToAction("GetAll_Theory");
-            }
-        }
-
-        public ActionResult Delete_Theory(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Theory");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-                        return RedirectToAction("GetAll_Theory");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-                    return RedirectToAction("GetAll_Theory");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-                return RedirectToAction("GetAll_Theory");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-                return RedirectToAction("GetAll_Theory");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_Theory(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "gttheorysubject1";
-            return View(document);
-        }
-
-        //------------------------------- thực hành - pratice ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_Practice()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/PRACTICE").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_Pratice(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Practice");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-                        return RedirectToAction("GetAll_Practice");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-                    return RedirectToAction("GetAll_Practice");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-                return RedirectToAction("GetAll_Theory");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-                return RedirectToAction("GetAll_Practice");
-            }
-        }
-
-        public ActionResult Delete_Practice(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Practice");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-                        return RedirectToAction("GetAll_Practice");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-                    return RedirectToAction("GetAll_Practice");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-                return RedirectToAction("GetAll_Practice");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-                ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-                return RedirectToAction("GetAll_Practice");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_Practice(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "giaotrinhsubject1";
-            ViewBag.ActiveSubMenuLv2 = "gtpracticesubject1";
-            return View(document);
-        }
-
-        //------------------------------- lý thuyết - theory ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_ViTheory()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/VITHEORY").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "virtuallablsubject1";
-            ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_ViTheory(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_Theory");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-                        return RedirectToAction("GetAll_ViTheory");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-                    return RedirectToAction("GetAll_ViTheory");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-                return RedirectToAction("GetAll_ViTheory");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-                return RedirectToAction("GetAll_ViTheory");
-            }
-        }
-
-        public ActionResult Delete_ViTheory(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_ViTheory");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-                        return RedirectToAction("GetAll_ViTheory");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-                    return RedirectToAction("GetAll_ViTheory");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-                return RedirectToAction("GetAll_ViTheory");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-                return RedirectToAction("GetAll_ViTheory");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_ViTheory(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "virtuallablsubject1";
-            ViewBag.ActiveSubMenuLv2 = "vitheorysubject1";
-            return View(document);
-        }
-
-        //------------------------------- thực hành - pratice ------------------------------------
-
-        [HttpGet]
-        public IActionResult GetAll_ViPractice()
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            List<Document> documents = new List<Document>();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetAllByTypeToAccept/" + userLogin.SchoolId + "/" + Subject_id + "/VIPRACTICE").Result;
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                documents = JsonConvert.DeserializeObject<List<Document>>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "virtuallablsubject1";
-            ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-            return View(documents);
-        }
-
-
-        public ActionResult Accept_ViPratice(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-                return RedirectToAction("GetAll_ViPractice");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    document.UpdateTime = DateTime.Now;
-                    document.PageFlag = true;
-
-                    string data = JsonConvert.SerializeObject(document);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-                        return RedirectToAction("GetAll_ViPractice");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-                    return RedirectToAction("GetAll_ViPractice");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-                return RedirectToAction("GetAll_ViPractice");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền duyệt!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-                return RedirectToAction("GetAll_ViPractice");
-            }
-        }
-
-        public ActionResult Delete_ViPractice(int id)
-        {
-            Document document = new Document();
-
-            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (responses.IsSuccessStatusCode)
-            {
-                string data = responses.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-
-            if (document == null)
-            {
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-                TempData["notice"] = "khong tim thay du lieu";
-                return RedirectToAction("GetAll_ViPractice");
-            }
-
-            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
-            {
-                try
-                {
-                    HttpResponseMessage response;
-                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        ViewBag.ActiveMenuMain = "subject";
-                        ViewBag.ActiveMenu = "subject1";
-                        ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                        ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-                        return RedirectToAction("GetAll_ViPractice");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    TempData["errorMessage"] = ex.Message;
-                    ViewBag.ActiveMenuMain = "subject";
-                    ViewBag.ActiveMenu = "subject1";
-                    ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                    ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-                    return RedirectToAction("GetAll_ViPractice");
-                }
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-                return RedirectToAction("GetAll_ViPractice");
-            }
-            else
-            {
-                TempData["notice"] = "Bạn không có quyền xóa!";
-                ViewBag.ActiveMenuMain = "subject";
-                ViewBag.ActiveMenu = "subject1";
-                ViewBag.ActiveSubMenu = "virtuallablsubject1";
-                ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
-                return RedirectToAction("GetAll_ViPractice");
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult Details_ViPractice(int id)
-        {
-            TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
-            Document document = new Document();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
-
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                document = JsonConvert.DeserializeObject<Document>(data);
-            }
-            ViewBag.ActiveMenuMain = "subject";
-            ViewBag.ActiveMenu = "subject1";
-            ViewBag.ActiveSubMenu = "virtuallablsubject1";
-            ViewBag.ActiveSubMenuLv2 = "vipracticesubject1";
+            ViewBag.ActiveSubMenuLv2 = document.Type;
             return View(document);
         }
 
@@ -3951,33 +524,17 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_Question()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subject = subjects.SingleOrDefault(item => item.ID == i);
+                if (subject != null)
+                {
+                    TempData[$"subject_{i}"] = subject.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
             List<Quiz> equipment = new List<Quiz>();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/" + Subject_id).Result;
@@ -3999,33 +556,17 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Create_Question()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subject = subjects.SingleOrDefault(item => item.ID == i);
+                if (subject != null)
+                {
+                    TempData[$"subject_{i}"] = subject.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
             {
@@ -4049,33 +590,17 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Create_Question(Quiz quiz, IFormFile QuestionFile, IFormFile OptionAFile, IFormFile OptionBFile, IFormFile OptionCFile, IFormFile OptionDFile)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subject = subjects.SingleOrDefault(item => item.ID == i);
+                if (subject != null)
+                {
+                    TempData[$"subject_{i}"] = subject.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
@@ -4221,33 +746,17 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Edit_Question(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subject = subjects.SingleOrDefault(item => item.ID == i);
+                if (subject != null)
+                {
+                    TempData[$"subject_{i}"] = subject.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
             Quiz quiz = new Quiz();
 
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetQuizById/" + id).Result;
@@ -4286,33 +795,17 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Edit_Question(Quiz quiz, IFormFile QuestionFile, IFormFile OptionAFile, IFormFile OptionBFile, IFormFile OptionCFile, IFormFile OptionDFile)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subject = subjects.SingleOrDefault(item => item.ID == i);
+                if (subject != null)
+                {
+                    TempData[$"subject_{i}"] = subject.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
             if (QuestionFile != null && quiz.QuestionImage == null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Quizz");
@@ -4474,33 +967,17 @@ TempData["noticeCount"] = notice.Count;
         {
 
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             Subject subject = new Subject();
 
@@ -4525,33 +1002,17 @@ TempData["noticeCount"] = notice.Count;
         {
 
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subject = subjects.SingleOrDefault(item => item.ID == i);
+                if (subject != null)
+                {
+                    TempData[$"subject_{i}"] = subject.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             ViewBag.ActiveMenuMain = "subject";
             ViewBag.ActiveMenu = "subject1";
@@ -4565,33 +1026,17 @@ TempData["noticeCount"] = notice.Count;
         {
 
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
-TempData["noticeCount"] = notice.Count;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             Subject subject = new Subject();
 
