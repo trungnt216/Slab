@@ -2145,7 +2145,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
             ViewBag.ActiveMenu = "subject6";
             ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            ViewBag.ActiveSubMenuLv2 = "vipractice";
             return View(documents);
         }
 
@@ -2166,7 +2166,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveSubMenuLv2 = "vipractice";
                 return View();
             }
             else
@@ -2174,7 +2174,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền thêm mới!";
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveSubMenuLv2 = "vipractice";
                 return RedirectToAction("GetAll_New");
             }
         }
@@ -2258,7 +2258,7 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject6";
                     ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    ViewBag.ActiveSubMenuLv2 = "vipractice";
                     return RedirectToAction("GetAll_New");
                 }
             }
@@ -2267,12 +2267,12 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveSubMenuLv2 = "vipractice";
                 return View();
             }
             ViewBag.ActiveMenu = "subject6";
             ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            ViewBag.ActiveSubMenuLv2 = "vipractice";
             return View();
         }
 
@@ -2304,7 +2304,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveSubMenuLv2 = "vipractice";
                 return Ok();
             }
 
@@ -2312,7 +2312,7 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveSubMenuLv2 = "vipractice";
                 return View(document);
             }
             else
@@ -2320,7 +2320,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveSubMenuLv2 = "vipractice";
                 return RedirectToAction("GetAll_New");
             }
         }
@@ -2373,7 +2373,7 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["successMessage"] = "create success";
                     ViewBag.ActiveMenu = "subject6";
                     ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    ViewBag.ActiveSubMenuLv2 = "vipractice";
                     return RedirectToAction("GetAll_New");
                 }
             }
@@ -2382,12 +2382,12 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveSubMenuLv2 = "vipractice";
                 return View();
             }
             ViewBag.ActiveMenu = "subject6";
             ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            ViewBag.ActiveSubMenuLv2 = "vipractice";
             return View();
         }
 
@@ -2410,7 +2410,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "khong tim thay du lieu";
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveSubMenuLv2 = "vipractice";
                 return RedirectToAction("GetAll_New");
             }
 
@@ -2426,7 +2426,7 @@ namespace SaRLAB.UserWeb.Controllers
                     {
                         ViewBag.ActiveMenu = "subject6";
                         ViewBag.ActiveSubMenu = "virtualLab";
-                        ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                        ViewBag.ActiveSubMenuLv2 = "vipractice";
                         return RedirectToAction("GetAll_New");
                     }
                 }
@@ -2435,12 +2435,12 @@ namespace SaRLAB.UserWeb.Controllers
                     TempData["errorMessage"] = ex.Message;
                     ViewBag.ActiveMenu = "subject6";
                     ViewBag.ActiveSubMenu = "virtualLab";
-                    ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                    ViewBag.ActiveSubMenuLv2 = "vipractice";
                     return RedirectToAction("GetAll_ViPractice");
                 }
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveSubMenuLv2 = "vipractice";
                 return RedirectToAction("GetAll_New");
             }
             else
@@ -2448,7 +2448,7 @@ namespace SaRLAB.UserWeb.Controllers
                 TempData["notice"] = "Bạn không có quyền xóa!";
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "virtualLab";
-                ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+                ViewBag.ActiveSubMenuLv2 = "vipractice";
                 return RedirectToAction("GetAll_New");
             }
         }
@@ -2479,7 +2479,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "subject6";
             ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            ViewBag.ActiveSubMenuLv2 = "vipractice";
             return View(document);
         }
 
@@ -2880,7 +2880,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "subject6";
             ViewBag.ActiveSubMenu = "virtualLab";
-            ViewBag.ActiveSubMenuLvSubject_id = "vipractice";
+            ViewBag.ActiveSubMenuLv2 = "vipractice";
             return View(subject);
         }
     }

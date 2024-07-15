@@ -109,30 +109,11 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/*chem*/
-#bg-chem {
-    background-color: #ebd2b0;
+/*bg subject */
+#bg-subject {
+    background-color: #515151;
 }
 
-/*bio*/
-#bg-bio {
-    background-color: #c8dcf9;
-}
-
-/*math*/
-#bg-math {
-    background-color: #fce2e5;
-}
-
-/*phys*/
-#bg-phys {
-    background-color: #caefde;
-}
-
-/*library*/
-#bg-library {
-    background-color: #dbc9ab;
-}
 
 a {
     text-decoration: none !important;
@@ -250,50 +231,12 @@ html, body {
 }
 
 /*chem*/
-.header-area-chem .main-red-button a {
-    background-color: #e9c288;
+.header-area-subject .main-red-button a {
+    background-color: #585858;
 }
 
-    .header-area-chem .main-red-button a:hover {
-        background-color: #ceab76;
-    }
-
-/*bio*/
-.header-area-bio .main-red-button a {
-    background-color: #82b0f3;
-}
-
-    .header-area-bio .main-red-button a:hover {
-        background-color: #5fa5e3;
-    }
-
-
-/*math*/
-.header-area-math .main-red-button a {
-    background-color: #cc6e77;
-}
-
-    .header-area-math .main-red-button a:hover {
-        background-color: #bd5c65;
-    }
-
-/*phys*/
-.header-area-phys .main-red-button a {
-    background-color: #52bf8c;
-}
-
-    .header-area-phys .main-red-button a:hover {
-        background-color: #2ba36b;
-    }
-
-
-/*lib*/
-.header-area-library .main-red-button a {
-    background-color: #ddab6b;
-}
-
-    .header-area-library .main-red-button a:hover {
-        background-color: #cf974f;
+    .header-area-subject .main-red-button a:hover {
+        background-color: #7c7c7c;
     }
 
 .main-white-button a {
@@ -328,24 +271,8 @@ header
 }
 
 
-.header-area-chem {
-    background: linear-gradient(to top, #a17d10, #7f5f00);
-}
-
-.header-area-bio {
-    background: linear-gradient(to top, #597caf, #0d4291);
-}
-
-.header-area-phys {
-    background: linear-gradient(to top, #538d72, #117245);
-}
-
-.header-area-math {
-    background: linear-gradient(to top, #a8414b, #58070e);
-}
-
-.header-area-library {
-    background: linear-gradient(to top, #5d3407, #7d600a);
+.header-area-subject {
+    background: #353535;
 }
 
 .header-area .main-nav {
@@ -448,7 +375,6 @@ header
         display: block;
         font-weight: 600;
         font-size: 15px;
-        color: white;
         text-transform: capitalize;
         -webkit-transition: all 0.3s ease 0s;
         -moz-transition: all 0.3s ease 0s;
@@ -460,7 +386,7 @@ header
     }
 
     .header-area .main-nav .nav li a {
-        color: white;
+        color: #c9c9c9;
     }
 
     .header-area .main-nav .nav li.menu-info-group a {
@@ -485,24 +411,8 @@ header
                 font-size: 12px;
             }
 
-/*chem*/
-.header-area-chem .main-nav .nav li.menu-info-group a .info-user p.role {
-    color: antiquewhite;
-}
-
-/*bio*/
-.header-area-bio .main-nav .nav li.menu-info-group a .info-user p.role {
-    color: #c1daff;
-}
-
-/*math*/
-.header-area-math .main-nav .nav li.menu-info-group a .info-user p.role {
-    color: #f4c2c6;
-}
-
-/*phys*/
-.header-area-phys .main-nav .nav li.menu-info-group a .info-user p.role {
-    color: #9cebc6;
+.header-area-subject .main-nav .nav li.menu-info-group a .info-user p.role {
+    color: #c1c1c1;
 }
 
 .header-area .main-nav .nav li:hover a.menu,
@@ -521,93 +431,27 @@ header
 }
 
 /*chem*/
-.header-area-chem .main-nav .nav li:hover a.menu,
-.header-area-chem .main-nav .nav li a.active {
-    color: #e9c290;
+.header-area-subject .main-nav .nav li:hover a.menu,
+.header-area-subject .main-nav .nav li a.active {
+    color: #ffffff;
 }
 
-.header-area-chem .main-nav .nav li:last-child:hover a.menu,
-.header-area-chem .main-nav .nav li a.active {
-    color: #e9c290;
+.header-area-subject .main-nav .nav li:last-child:hover a.menu,
+.header-area-subject .main-nav .nav li a.active {
+    color: #ffffff;
 }
 
-.header-area-chem .main-nav .nav .dropdown-menu-title li a.active {
-    color: #bf8944 !important;
+.header-area-subject .main-nav .nav .dropdown-menu-title li a.active {
+    color: #ffffff !important
 }
 
-.header-area-chem .main-nav .nav .dropdown-menu-title li a:hover {
-    color: #bf8944 !important;
+.header-area-subject .main-nav .nav .dropdown-menu-title li a:hover {
+    color: #ffffff !important
 }
 
-.header-area-chem .main-nav .nav li.menu-info-group:hover a.menu,
-.header-area-chem .main-nav .nav li a.active {
-    color: #e9c290;
-}
-
-/*bio*/
-.header-area-bio .main-nav .nav li:hover a.menu {
-    color: #aeccf9;
-}
-
-.header-area-bio .main-nav .nav li:last-child:hover a.menu,
-.header-area-bio .main-nav .nav li a.active {
-    color: #a0c2f5;
-}
-
-.header-area-bio .main-nav .nav .dropdown-menu-title li a.active {
-    color: #78a8ef !important;
-}
-
-.header-area-bio .main-nav .nav .dropdown-menu-title li a:hover {
-    color: #78a8ef !important;
-}
-
-/*math*/
-.header-area-math .main-nav .nav li:hover a.menu,
-.header-area-math .main-nav .nav li a.active {
-    color: #ffafb6;
-}
-
-.header-area-math .main-nav .nav li:last-child:hover a.menu,
-.header-area-math .main-nav .nav li a.active {
-    color: #ffafb6;
-}
-
-.header-area-math .main-nav .nav .dropdown-menu-title li a.active {
-    color: #ffafb6 !important;
-}
-
-.header-area-math .main-nav .nav .dropdown-menu-title li a:hover {
-    color: #ffafb6 !important;
-}
-
-.header-area-math .main-nav .nav li.menu-info-group:hover a.menu,
-.header-area-math .main-nav .nav li a.active {
-    color: #ffafb6;
-}
-
-/*phys*/
-.header-area-phys .main-nav .nav li:hover a.menu,
-.header-area-phys .main-nav .nav li a.active {
-    color: #9cebc6;
-}
-
-.header-area-phys .main-nav .nav li:last-child:hover a.menu,
-.header-area-phys .main-nav .nav li a.active {
-    color: #9cebc6;
-}
-
-.header-area-phys .main-nav .nav .dropdown-menu-title li a.active {
-    color: #38c080 !important;
-}
-
-.header-area-phys .main-nav .nav .dropdown-menu-title li a:hover {
-    color: #38c080 !important;
-}
-
-.header-area-phys .main-nav .nav li.menu-info-group:hover a.menu,
-.header-area-phys .main-nav .nav li a.active {
-    color: #9cebc6;
+.header-area-subject.main-nav .nav li.menu-info-group:hover a.menu,
+.header-area-subject .main-nav .nav li a.active {
+    color: #ffffff;
 }
 
 .header-area .main-nav .nav li.menu-info-group:last-child {
@@ -632,23 +476,8 @@ header
         top: 12px;
     }
 
-/*chem*/
-.header-area-chem .main-nav .nav li.submenu:after {
-    color: #2a2a2a;
-}
 
-/*bio*/
-.header-area-bio .main-nav .nav li.submenu:after {
-    color: #2a2a2a;
-}
-
-/*math*/
-.header-area-math .main-nav .nav li.submenu:after {
-    color: #2a2a2a;
-}
-
-/*phys*/
-.header-area-phys .main-nav .nav li.submenu:after {
+.header-area-subject .main-nav .nav li.submenu:after {
     color: #2a2a2a;
 }
 
@@ -733,20 +562,8 @@ header
     font-size: 20px;
 }
 
-.header-area-chem #expiredItemsMenu .fa-bell {
-    color: #edcb97;
-}
-
-.header-area-bio #expiredItemsMenu .fa-bell {
-    color: #b0cffd;
-}
-
-.header-area-phys #expiredItemsMenu .fa-bell {
-    color: #76ddad;
-}
-
-.header-area-math #expiredItemsMenu .fa-bell {
-    color: #ffd3d7;
+.header-area-subject #expiredItemsMenu .fa-bell {
+    color: #c7c7c7;
 }
 
 .header-area #expiredItemsMenu .expiredItems {
@@ -771,7 +588,7 @@ header
 
 .header-area .noti-group .noti-tooltip {
     position: absolute;
-    background-color: #333;
+    background-color: #959494;
     color: #fff;
     text-align: center;
     border-radius: 5px;
@@ -962,7 +779,7 @@ header
     }
 
     .header-area {
-        background-color: #f7f7f7;
+        background-color: #353535;
         padding: 0px 15px;
         height: 100px;
         box-shadow: none;
@@ -1025,14 +842,9 @@ header
         color: #e9c290;
     }
 
-    .header-area .main-nav .nav li:first-child {
-        border-top: 1px solid #eee;
-    }
-
     .header-area .main-nav .nav li {
         width: 100%;
         background: #fff;
-        border-bottom: 1px solid #e7e7e7;
         padding-left: 0px !important;
         padding-right: 0px !important;
     }
@@ -1042,23 +854,11 @@ header
             line-height: 50px !important;
             padding: 0px 15px;
             border: none !important;
-            color: #191a20;
+            color: #c7c7c7;
         }
 
-    .header-area-chem .main-nav .nav li a {
-        background: #ffefda;
-    }
-
-    .header-area-math .main-nav .nav li a {
-        background: #ffe5e7;
-    }
-
-    .header-area-phys .main-nav .nav li a {
-        background: #e3faef;
-    }
-
-    .header-area-bio .main-nav .nav li a {
-        background: #e5f0ff;
+    .header-area-subject .main-nav .nav li a {
+        background: #636363;
     }
 
     .header-area .main-nav .nav li a.submenu {
@@ -1068,74 +868,24 @@ header
     }
 
     /*chem*/
-    .header-area-chem .main-nav .nav li a.submenu {
+    .header-area-subject .main-nav .nav .dropdown-menu-title li a {
+        color: #e3e3e3 !important;
+    }
+    .header-area-subject .main-nav .nav li a.submenu {
         background: #fff0dc;
     }
-    .header-area-chem .main-nav .nav .dropdown-menu li a.submenu {
-        background: #fff5e7 !important;
+    .header-area-subject .main-nav .nav .dropdown-menu li a.submenu {
+        background: #8f8f8f !important;
     }
-    .header-area-chem .main-nav .nav .dropdown-menu-item li a.submenu {
-        background: #fff9f2 !important;
-    }
-
-    /*bio*/
-    .header-area-bio .main-nav .nav li a.submenu {
-        background: #d2dff3;
-    }
-    .header-area-bio .main-nav .nav .dropdown-menu li a.submenu {
-        background: #f0f7ff !important;
+    .header-area-subject .main-nav .nav .dropdown-menu-item li a.submenu {
+        background: #afafaf !important;
     }
 
-    .header-area-bio .main-nav .nav .dropdown-menu-item li a.submenu {
-        background: #fefeff !important;
-    }
-
-    /*math*/
-    .header-area-math .main-nav .nav li a.submenu {
-        background: #ffe5e7;
-    }
-    .header-area-math .main-nav .nav .dropdown-menu li a.submenu {
-        background: #fff0f1 !important;
-    }
-
-    .header-area-math .main-nav .nav .dropdown-menu-item li a.submenu {
-        background: #fff4f5 !important;
-    }
-
-    /*phys*/
-    .header-area-phys .main-nav .nav li a.submenu {
-        background: #e3fdf2;
-    }
-    .header-area-phys .main-nav .nav .dropdown-menu li a.submenu {
-        background: #f5fffb !important;
-    }
-
-    .header-area-phys .main-nav .nav .dropdown-menu-item li a.submenu {
-        background: #fafafa !important;
-    }
 
     /*chem*/
-    .header-area-chem .main-nav .nav li a:hover {
-        color: #e9c290 !important;
-        background: #fff5e8;
-    }
-
-    /*bio*/
-    .header-area-bio .main-nav .nav li a:hover {
-        color: #315e9f !important;
-        background: #eefaff;
-    }
-
-    /*math*/
-    .header-area-math .main-nav .nav li a:hover {
-        color: #8d1723 !important;
-        background: #ffeef0;
-    }
-
-    /*phys*/
-    .header-area-phys .main-nav .nav li a:hover {
-        color: #09482b !important;
-        background: #f2fff9;
+    .header-area-subject .main-nav .nav li a:hover {
+        color: white !important;
+        background: #757575;
     }
 
     .header-area .main-nav .nav li.submenu ul li a {
@@ -1158,22 +908,7 @@ header
     }
 
     /*chem*/
-    .header-area-chem .main-nav .nav li.submenu:after {
-        color: #3B566E;
-    }
-
-    /*bio*/
-    .header-area-bio .main-nav .nav li.submenu:after {
-        color: #3B566E;
-    }
-
-    /*math*/
-    .header-area-math .main-nav .nav li.submenu:after {
-        color: #3B566E;
-    }
-
-    /*phys*/
-    .header-area-phys .main-nav .nav li.submenu:after {
+    .header-area-subject .main-nav .nav li.submenu:after {
         color: #3B566E;
     }
 
@@ -1535,11 +1270,11 @@ Banner Style
     }
 
     /* table-container */
-    .table-container {
-        background: #ffffffd9;
-        padding: 35px 50px;
-        border-radius: 15px;
-    }
+.table-container {
+    background: #f5f5f5;
+    padding: 35px 50px;
+    border-radius: 15px;
+}
 
         .table-container .table-action {
             margin-top: 20px;
@@ -1743,12 +1478,12 @@ Banner Style
         }
 
     /*details container*/
-    .detail-container {
-        background: white;
-        padding: 35px 50px;
-        border-radius: 15px;
-        margin-bottom: 35px;
-    }
+.detail-container {
+    background: #f5f5f5;
+    padding: 35px 50px;
+    border-radius: 15px;
+    margin-bottom: 35px;
+}
 
         .detail-container .detail-item {
             margin-top: 10px;
@@ -1762,12 +1497,13 @@ Banner Style
             }
 
                 .detail-container .detail-item .title i {
-                    color: #6e5532;
+                    color: #141414;
                 }
 
                 .detail-container .detail-item .title p {
-                    color: #b78644;
+                    color: #141414;
                     padding-left: 8px;
+                    font-size: 16px;
                 }
 
             .detail-container .detail-item .detail {
@@ -1852,12 +1588,12 @@ Banner Style
     }
 
     /*edit container*/
-    .edit-container {
-        background: white;
-        padding: 35px 50px;
-        border-radius: 15px;
-        margin-bottom: 35px;
-    }
+.edit-container {
+    background: #f5f5f5;
+    padding: 35px 50px;
+    border-radius: 15px;
+    margin-bottom: 35px;
+}
 
         .edit-container .form-group {
             margin-top: 10px;
@@ -2064,49 +1800,13 @@ Banner Style
             margin-bottom: 20px;
         }
 
-    .first-service {
-        color: #ffffff;
-        background: #ad8200;
-    }
+.first-service {
+    color: #ffffff;
+    background: #3d3d3d;
+}
 
         .first-service:hover {
-            background: #6d5201;
-        }
-
-    .second-service {
-        color: #ffffff;
-        background: #0d4291;
-    }
-
-        .second-service:hover {
-            background: #002760;
-        }
-
-    .third-service {
-        color: #ffffff;
-        background: #075a33;
-    }
-
-        .third-service:hover {
-            background: #01331c;
-        }
-
-    .fourth-service {
-        color: #ffffff;
-        background: #951515;
-    }
-
-        .fourth-service:hover {
-            background: #640808;
-        }
-
-    .fifth-service {
-        color: #ffffff;
-        background: #402302;
-    }
-
-        .fifth-service:hover {
-            background: #281500;
+            background: #636363;
         }
 
     .service-carousel .flex-item {
@@ -2211,4 +1911,61 @@ Banner Style
 
     .form-control-file {
         width: 100%;
+    }
+
+/*bo sung menu*/
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background: #4f4f4f;
+    box-shadow: 0 8px 16px rgb(0 0 0 / 6%);
+    z-index: 1;
+    border: none;
+    min-width: 9rem;
+}
+
+.dropdown-menu-item {
+    background: #656565;
+}
+
+.dropdown-menu > li {
+    position: relative;
+}
+
+.dropdown-menu a {
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu .dropdown-menu {
+    top: 0;
+    left: 100%;
+}
+
+.dropdown-menu > li:hover > .dropdown-menu {
+    display: block;
+}
+
+a.submenu {
+    color: #c5c5c5 !important;
+    align-content: center;
+    padding-left: 15px;
+    line-height: 0px !important;
+}
+
+    a.submenu:hover {
+        color: #bf8944;
+    }
+
+    a.submenu i {
+        margin-right: 3px;
     }

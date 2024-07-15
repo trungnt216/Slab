@@ -4,19 +4,19 @@
 }
 
 .quiz-chem {
-    background: #ebd2b0;
+    background: #515151;
 }
 
 .quiz-bio {
-    background: #c1daff;
+    background: #515151;
 }
 
 .quiz-math {
-    background: #fce2e5;
+    background: #515151;
 }
 
 .quiz-phys {
-    background: #caefde;
+    background: #515151;
 }
 
 
@@ -28,19 +28,19 @@
 }
 
 .header-chem {
-    color: #c49e2c;
+    color: #b73c3c;
 }
 
 .header-bio {
-    color: #084298;
+    color: #b73c3c;
 }
 
 .header-math {
-    color: #971824;
+    color: #b73c3c;
 }
 
 .header-phys {
-    color: #16784a;
+    color: #b73c3c;
 }
 
 .quiz-container {
