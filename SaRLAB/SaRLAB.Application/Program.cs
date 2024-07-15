@@ -21,6 +21,7 @@ using SaRLAB.DataAccess.Service.SchoolService;
 using SaRLAB.DataAccess.Service.QuizService;
 using SaRLAB.DataAccess.Service.SubjectFlagService;
 using SaRLAB.DataAccess.Service.ManageTitleService;
+using SaRLAB.DataAccess.Service.EquipmentPropertyService;
 
 namespace SaRLAB.Application
 {
@@ -56,6 +57,7 @@ namespace SaRLAB.Application
             builder.Services.AddScoped<IQuizService, QuizService>();
             builder.Services.AddScoped<ISubjectFlagService, SubjectFlagService>();
             builder.Services.AddScoped<IManageTitleService, ManageTitleService>();
+            builder.Services.AddScoped<IEquipmentPropertyService, EquipmentPropertyService>();
 
 
             //Add Authentication and JwtBearer

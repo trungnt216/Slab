@@ -66,7 +66,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
-        public IActionResult DeletePlanDetailById(int id)
+        public IActionResult DeleteById(int id)
         {
             return Ok(_manageService.DeleteManageTitleById(id));
         }
