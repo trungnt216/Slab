@@ -74,6 +74,20 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
             }
         }
 
+        public Subject GetSubjectBySchool(int schoolId)
+        {
+            var subject = _context.Subjects
+                .SingleOrDefault(item => item.SchoolId == schoolId);
+            return subject != null ? new Subject
+            {
+                ID = subject.ID,
+                Rule = subject.Rule,
+                SubjectName = subject.SubjectName,
+                SchoolId = subject.SchoolId,
+                Type = subject.Type
+            } : null;
+        }
+
         public Subject GetSubjectBySchoolAndType(int schoolId, int type)
         {
             var subject = _context.Subjects
@@ -125,7 +139,9 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
             return _subject;
         }
 
-        
-
+        List<Subject> ISubjectDto.GetSubjectBySchool(int schoolId)
+        {
+            return _context.Subjects.Where(s => s.SchoolId == schoolId).ToList();
+        }
     }
 }

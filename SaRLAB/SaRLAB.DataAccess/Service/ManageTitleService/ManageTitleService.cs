@@ -42,6 +42,11 @@ namespace SaRLAB.DataAccess.Service.ManageTitleService
             } : null;
         }
 
+        public List<ManageTitle> GetManageTitlesAccordingSchool(int schoolId)
+        {
+            return _context.ManageTitles.Where(q => q.SchoolId == schoolId).ToList();
+        }
+
         public List<ManageTitle> GetManageTitlesAccordingSchoolAndSubject(int schoolId, int subjectId)
         {
             return _context.ManageTitles.Where(q => q.SchoolId == schoolId && q.SubjectId == subjectId).ToList();
