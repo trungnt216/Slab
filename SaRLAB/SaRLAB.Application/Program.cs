@@ -22,6 +22,8 @@ using SaRLAB.DataAccess.Service.QuizService;
 using SaRLAB.DataAccess.Service.SubjectFlagService;
 using SaRLAB.DataAccess.Service.ManageTitleService;
 using SaRLAB.DataAccess.Service.EquipmentPropertyService;
+using SaRLAB.Models.Entity;
+using SaRLAB.DataAccess.Service.WareHouseService;
 
 namespace SaRLAB.Application
 {
@@ -58,6 +60,8 @@ namespace SaRLAB.Application
             builder.Services.AddScoped<ISubjectFlagService, SubjectFlagService>();
             builder.Services.AddScoped<IManageTitleService, ManageTitleService>();
             builder.Services.AddScoped<IEquipmentPropertyService, EquipmentPropertyService>();
+            builder.Services.AddScoped<IWareHouseService, WareHouse>();
+
 
 
             //Add Authentication and JwtBearer
