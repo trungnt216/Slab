@@ -385,7 +385,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/6").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/1").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -419,7 +419,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/6/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/1/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -455,7 +455,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/7").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/2").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -489,7 +489,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/7/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/2/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -525,7 +525,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/8").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/3").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -559,7 +559,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/8/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/3/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -595,7 +595,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/9").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/4").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -629,7 +629,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/9/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/4/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -665,7 +665,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/10").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/5").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -699,7 +699,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/10/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/5/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -735,7 +735,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/11").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/6").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -769,7 +769,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/11/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/6/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -805,7 +805,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/12").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/7").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -839,7 +839,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/12/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/7/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -875,7 +875,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/13").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/8").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -909,7 +909,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/13/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/8/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -945,7 +945,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/14").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/9").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -979,7 +979,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/14/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/9/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1015,7 +1015,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/15").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/10").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1049,7 +1049,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/15/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/10/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1085,7 +1085,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/16").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/11").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1119,7 +1119,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/16/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/11/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1155,7 +1155,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/17").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/12").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1189,7 +1189,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/17/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/12/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1225,7 +1225,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/18").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/13").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1259,7 +1259,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/18/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/13/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1295,7 +1295,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/19").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/14").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1329,7 +1329,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/19/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/14/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1365,7 +1365,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/20").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/15").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1399,7 +1399,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/20/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/15/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1436,7 +1436,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/21").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/16").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1470,7 +1470,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/21/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/16/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1506,7 +1506,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/22").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/17").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1540,7 +1540,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/22/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/17/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1576,7 +1576,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/23").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/18").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1610,7 +1610,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/23/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/18/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1646,7 +1646,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/24").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/19").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1680,7 +1680,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/24/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/19/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1716,7 +1716,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/25").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/20").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1750,7 +1750,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/25/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/20/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1786,7 +1786,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/26").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/21").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1820,7 +1820,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/26/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/21/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1856,7 +1856,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/27").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/22").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1890,7 +1890,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/27/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/22/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1926,7 +1926,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/28").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/23").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1960,7 +1960,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/28/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/23/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -1996,7 +1996,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/29").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/24").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -2030,7 +2030,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/29/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/24/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -2066,7 +2066,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/30").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/25").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -2100,7 +2100,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/30/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/25/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -2136,7 +2136,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/31").Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/26").Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -2170,7 +2170,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             List<Quiz> equipment = new List<Quiz>();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/31/" + count).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/26/" + count).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -2180,5 +2180,286 @@ namespace SaRLAB.UserWeb.Controllers
 
             return View(equipment);
         }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject27()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_27");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/27").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject27(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_27");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/27/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject28()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_28");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/28").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject28(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_28");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/28/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject29()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_29");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/29").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject29(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_29");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/29/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        //-------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAllQuestion_Subject30()
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_30");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzes/" + userLogin.SchoolId + "/30").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+        [HttpGet]
+        public IActionResult GetQuestionRepeat_Subject30(int count)
+        {
+            if (_queFlag)
+            {
+                return RedirectToAction("index", "Subject_30");
+            }
+
+            if (subjectFlag.BackupSubject1PermissionFlag == false)
+            {
+                return View("Error");
+            }
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            List<Quiz> equipment = new List<Quiz>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Quiz/GetRandomQuizzesAfterDone/" + userLogin.SchoolId + "/30/" + count).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Quiz>>(data);
+            }
+
+            return View(equipment);
+        }
+
+
     }
 }
