@@ -1805,9 +1805,9 @@ Banner Style
     background: #3d3d3d;
 }
 
-        .first-service:hover {
-            background: #636363;
-        }
+    .first-service:hover {
+        background: #1e1e1e;
+    }
 
     .service-carousel .flex-item {
         width: 250px;

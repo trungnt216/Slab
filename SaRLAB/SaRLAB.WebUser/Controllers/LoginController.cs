@@ -62,28 +62,6 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            List<School> schools = new List<School>();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetAllSchool").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                schools = JsonConvert.DeserializeObject<List<School>>(data);
-            }
-            // Tạo danh sách SelectListItem từ danh sách trường học
-            List<SelectListItem> schoolItems = schools.Select(s => new SelectListItem
-            {
-                Value = s.ID.ToString(), // Giá trị của mỗi item là Id của trường học
-                Text = s.Name // Hiển thị tên của trường học
-            }).ToList();
-
-            // Thêm một option mặc định cho người dùng chọn
-            schoolItems.Insert(0, new SelectListItem { Value = "", Text = "Chọn trường học" });
-
-            // Truyền danh sách SelectListItem vào ViewBag
-            ViewBag.Schools = schoolItems;
-
             return View();
         }
         [HttpPost]
@@ -129,6 +107,33 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
         //----------------------------register-------------------------
+        [HttpGet]
+        public IActionResult Register()
+        {
+            List<School> schools = new List<School>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetAllSchool").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                schools = JsonConvert.DeserializeObject<List<School>>(data);
+            }
+            // Tạo danh sách SelectListItem từ danh sách trường học
+            List<SelectListItem> schoolItems = schools.Select(s => new SelectListItem
+            {
+                Value = s.ID.ToString(), // Giá trị của mỗi item là Id của trường học
+                Text = s.Name // Hiển thị tên của trường học
+            }).ToList();
+
+            // Thêm một option mặc định cho người dùng chọn
+            schoolItems.Insert(0, new SelectListItem { Value = "", Text = "Chọn trường học" });
+
+            // Truyền danh sách SelectListItem vào ViewBag
+            ViewBag.Schools = schoolItems;
+
+            return View();
+        }
         [HttpPost]
         public IActionResult Register(User user)
         {
@@ -145,17 +150,17 @@ namespace SaRLAB.UserWeb.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     TempData["Success"] = "User create success";
-                    return RedirectToAction("Login");
+                    return View();
                 }
 
             }
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
-                return RedirectToAction("Login");
+                return View();
             }
             TempData["Error"] = "Email hoặc số điện thoại đã tồn tại";
-            return RedirectToAction("Login");
+            return View();
         }
     }
 }

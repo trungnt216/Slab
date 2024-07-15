@@ -1,0 +1,67 @@
+﻿@model SaRLAB.Models.Entity.User
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="containers">
+        <div class="login-container" asp-action="Register">
+            <h2>ĐĂNG KÝ</h2>
+            <form asp-action="Register" class="sign-in-form">
+                <div class="form-group">
+                    <img src="@Url.Content("~/images/ic_name.png")" />
+                    <input class="form-control" asp-for="Name" type="text" placeholder="Họ và tên">
+                </div>
+                <div class="form-group">
+                    <img src="@Url.Content("~/images/ic_email.png")" />
+                    <input class="form-control" asp-for="Email" type="text" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <img src="@Url.Content("~/images/ic_password.png")" />
+                    <input type="password" id="password" class="form-control" asp-for="Password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <img src="@Url.Content("~/images/ic_phone.png")" />
+                    <input class="form-control" asp-for="Phone" type="text" placeholder="Số điện thoại">
+                </div>
+                <div class="form-group">
+                    <img src="@Url.Content("~/images/ic_school.png")" />
+                    <select asp-for="SchoolId" class="form-control form-control-select">
+                        @if (ViewBag.Schools != null)
+                        {
+                            @foreach (var schoolItem in ViewBag.Schools as List<SelectListItem>)
+                            {
+                                <option value="@schoolItem.Value">@schoolItem.Text</option>
+                            }
+                        }
+                    </select>
+                </div>
+                @if (TempData["Error"] != null)
+                {
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
+                    </div>
+                }
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+                <div class="divider"></div>
+                <div class="text-signup">
+                    <p>Bạn đã có tài khoản?</p>
+                    <a asp-action="Login">Đăng nhập ngay!</a>
+                </div> 
+            </form>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</body>
+</html>

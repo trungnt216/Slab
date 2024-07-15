@@ -1,45 +1,47 @@
 ﻿@model SaRLAB.Models.Dto.LoginDto
 
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Login/_LayoutLogin.cshtml";
-}
+<!DOCTYPE html>
 
-<form asp-action="Login" class="sign-in-form">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <h2 class="title">Đăng Nhập</h2>
-    <div class="input-field">
-        <i class="fas fa-user"></i>
-        <input asp-for="Email" type="text" placeholder="Tên đăng nhập" />
-    </div>
-    <span asp-validation-for="Email" class="text-danger"></span>
-    <div class="input-field">
-        <i class="fas fa-lock"></i>
-        <input asp-for="Password" type="password" placeholder="Mật khẩu" />
-    </div>
-    <span asp-validation-for="Password" class="text-danger"></span>
-    <input type="submit" value="Đăng nhập" class="btn solid" />
-    @if (TempData["Error"] != null)
-    {
-        <div>
-            <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="containers">
+        <div class="login-container">
+            <h2>ĐĂNG NHẬP</h2>
+            <form asp-action="Login" class="sign-in-form">
+                <div class="form-group">
+                    <img src="@Url.Content("~/images/ic_email.png")" />
+                    <input class="form-control" asp-for="Email" type="text" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <img src="@Url.Content("~/images/ic_password.png")" />
+                    <input type="password" id="password" class="form-control" asp-for="Password" placeholder="Password">
+                </div>
+                @if (TempData["Error"] != null)
+                {
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
+                    </div>
+                }
+                @if (TempData["Success"] != null)
+                {
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <span class="text-warning"><b>Success!</b> - @TempData["Success"] </span>
+                    </div>
+                }
+                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+            </form>
         </div>
-    }
-</form>
-@* 
-<form asp-action="Register" class="sign-up-form">
-    <h2 class="title">Đăng Ký</h2>
-    <div class="input-field">
-        <i class="fas fa-envelope"></i>
-        <input asp-for="Email" type="email" placeholder="Email" />
     </div>
-    <div class="input-field">
-        <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Password" />
-    </div>
-    <input type="submit" class="btn" value="Đăng ký" />
-</form> *@
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</body>
+</html>
