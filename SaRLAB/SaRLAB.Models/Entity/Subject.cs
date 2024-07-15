@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SaRLAB.Models.Entity
 {
@@ -13,8 +10,13 @@ namespace SaRLAB.Models.Entity
     {
         [Key]
         public int ID { get; set; }
+
         public string? SubjectName { get; set; }
         public string? Rule { get; set; }
+
+        public int? SchoolId { get; set; }
+        public int? Type { get; set; }      
+
         public ICollection<PracticePlan>? PracticePlans { get; set; }
         public ICollection<ScientificResearch>? ScientificResearches { get; set; }
     }

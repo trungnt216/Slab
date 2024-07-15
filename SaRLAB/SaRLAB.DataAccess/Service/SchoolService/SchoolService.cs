@@ -53,7 +53,7 @@ namespace SaRLAB.DataAccess.Service.SchoolService
             var school = _context.Schools.FirstOrDefault(s => s.ID == id);
             if (school != null)
             {
-                // Update properties of the existing school with the properties of the updated school
+                // Reset các logo về null
                 school.ChemLogo = null;
                 school.PhysLogo = null;
                 school.BioLogo = null;
@@ -65,11 +65,38 @@ namespace SaRLAB.DataAccess.Service.SchoolService
                 school.BackupSubject4Logo = null;
                 school.BackupSubject5Logo = null;
                 school.BackupSubject6Logo = null;
+                school.BackupSubject7Logo = null;
+                school.BackupSubject8Logo = null;
+                school.BackupSubject9Logo = null;
+                school.BackupSubject10Logo = null;
+                school.BackupSubject11Logo = null;
+                school.BackupSubject12Logo = null;
+                school.BackupSubject13Logo = null;
+                school.BackupSubject14Logo = null;
+                school.BackupSubject15Logo = null;
+                school.BackupSubject16Logo = null;
+                school.BackupSubject17Logo = null;
+                school.BackupSubject18Logo = null;
+                school.BackupSubject19Logo = null;
+                school.BackupSubject20Logo = null;
+                school.BackupSubject21Logo = null;
+                school.BackupSubject22Logo = null;
+                school.BackupSubject23Logo = null;
+                school.BackupSubject24Logo = null;
+                school.BackupSubject25Logo = null;
+                school.BackupSubject26Logo = null;
+                school.BackupSubject27Logo = null;
+                school.BackupSubject28Logo = null;
+                school.BackupSubject29Logo = null;
+                school.BackupSubject30Logo = null;
+                school.BackupSubject31Logo = null;
+                school.BackupSubject32Logo = null;
 
                 return _context.SaveChanges(); // Returns the number of entities updated
             }
             return 0; // School with given ID not found
         }
+
 
         public int UpdateSchoolById(int id, School updatedSchool)
         {
@@ -77,7 +104,7 @@ namespace SaRLAB.DataAccess.Service.SchoolService
             if (school != null)
             {
                 // Update properties of the existing school with the properties of the updated school
-                school.Name =  updatedSchool.Name ?? school.Name;
+                school.Name = updatedSchool.Name ?? school.Name;
                 school.Address = updatedSchool.Address ?? school.Address;
                 school.ChemLogo = updatedSchool.ChemLogo ?? school.ChemLogo;
                 school.PhysLogo = updatedSchool.PhysLogo ?? school.PhysLogo;
@@ -91,9 +118,37 @@ namespace SaRLAB.DataAccess.Service.SchoolService
                 school.BackupSubject4Logo = updatedSchool.BackupSubject4Logo ?? school.BackupSubject4Logo;
                 school.BackupSubject5Logo = updatedSchool.BackupSubject5Logo ?? school.BackupSubject5Logo;
                 school.BackupSubject6Logo = updatedSchool.BackupSubject6Logo ?? school.BackupSubject6Logo;
+                school.BackupSubject7Logo = updatedSchool.BackupSubject7Logo ?? school.BackupSubject7Logo;
+                school.BackupSubject8Logo = updatedSchool.BackupSubject8Logo ?? school.BackupSubject8Logo;
+                school.BackupSubject9Logo = updatedSchool.BackupSubject9Logo ?? school.BackupSubject9Logo;
+                school.BackupSubject10Logo = updatedSchool.BackupSubject10Logo ?? school.BackupSubject10Logo;
+                school.BackupSubject11Logo = updatedSchool.BackupSubject11Logo ?? school.BackupSubject11Logo;
+                school.BackupSubject12Logo = updatedSchool.BackupSubject12Logo ?? school.BackupSubject12Logo;
+                school.BackupSubject13Logo = updatedSchool.BackupSubject13Logo ?? school.BackupSubject13Logo;
+                school.BackupSubject14Logo = updatedSchool.BackupSubject14Logo ?? school.BackupSubject14Logo;
+                school.BackupSubject15Logo = updatedSchool.BackupSubject15Logo ?? school.BackupSubject15Logo;
+                school.BackupSubject16Logo = updatedSchool.BackupSubject16Logo ?? school.BackupSubject16Logo;
+                school.BackupSubject17Logo = updatedSchool.BackupSubject17Logo ?? school.BackupSubject17Logo;
+                school.BackupSubject18Logo = updatedSchool.BackupSubject18Logo ?? school.BackupSubject18Logo;
+                school.BackupSubject19Logo = updatedSchool.BackupSubject19Logo ?? school.BackupSubject19Logo;
+                school.BackupSubject20Logo = updatedSchool.BackupSubject20Logo ?? school.BackupSubject20Logo;
+                school.BackupSubject21Logo = updatedSchool.BackupSubject21Logo ?? school.BackupSubject21Logo;
+                school.BackupSubject22Logo = updatedSchool.BackupSubject22Logo ?? school.BackupSubject22Logo;
+                school.BackupSubject23Logo = updatedSchool.BackupSubject23Logo ?? school.BackupSubject23Logo;
+                school.BackupSubject24Logo = updatedSchool.BackupSubject24Logo ?? school.BackupSubject24Logo;
+                school.BackupSubject25Logo = updatedSchool.BackupSubject25Logo ?? school.BackupSubject25Logo;
+                school.BackupSubject26Logo = updatedSchool.BackupSubject26Logo ?? school.BackupSubject26Logo;
+                school.BackupSubject27Logo = updatedSchool.BackupSubject27Logo ?? school.BackupSubject27Logo;
+                school.BackupSubject28Logo = updatedSchool.BackupSubject28Logo ?? school.BackupSubject28Logo;
+                school.BackupSubject29Logo = updatedSchool.BackupSubject29Logo ?? school.BackupSubject29Logo;
+                school.BackupSubject30Logo = updatedSchool.BackupSubject30Logo ?? school.BackupSubject30Logo;
+                school.BackupSubject31Logo = updatedSchool.BackupSubject31Logo ?? school.BackupSubject31Logo;
+                school.BackupSubject32Logo = updatedSchool.BackupSubject32Logo ?? school.BackupSubject32Logo;
+
                 return _context.SaveChanges(); // Returns the number of entities updated
             }
             return 0; // School with given ID not found
         }
+
     }
 }

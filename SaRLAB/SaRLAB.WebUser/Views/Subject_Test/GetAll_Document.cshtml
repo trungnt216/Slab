@@ -2,8 +2,8 @@
 
 @{
     ViewData["Title"] = "GetAll_ViTheory";
-    ViewBag.TitleCustom = "Danh sách giáo trình môn học";
-    Layout = "~/Views/Subject_1/_Layout.cshtml";
+    ViewBag.TitleCustom = "Danh sách " + ViewBag.ActiveSubMenuLv2.ToString();;
+    Layout = ViewBag.Layout;
     int counter = 1;
 }
 
@@ -75,7 +75,7 @@
                 <div class="table-action d-flex justify-content-between">
                     <partial name="_SearchBox" />
                         <a class="btn-custom-create" type="button"
-                            asp-action="Create_ViTheory">
+                           asp-action="Create_Document" asp-route-titleDocument="@ViewBag.ActiveSubMenuLv2">
                         <i class="fa-solid fa-plus"></i>
                         Thêm mới
                     </a>
@@ -184,14 +184,14 @@
                                     @Html.DisplayFor(modelItem => item.SubjectId)
                                 </td>
                                 <td>
-                                    <a class="btn-custom-view-detail" asp-action="Details_ViTheory" asp-route-id="@item.ID">
+                                    <a class="btn-custom-view-detail" asp-action="Details_Document" asp-route-titleDocument="@ViewBag.ActiveSubMenuLv2" asp-route-id="@item.ID">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a class="btn-custom-edit" asp-action="Edit_ViTheory" asp-route-id="@item.ID">
+                                            <a class="btn-custom-edit" asp-action="Edit_Document" asp-route-titleDocument="@ViewBag.ActiveSubMenuLv2" asp-route-id="@item.ID">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                         <a class="btn-custom-delete" href="#"
-                                               data-url="@Url.Action("Delete_ViTheory", "Subject_1", new { id = item.ID })"
+                                               data-url="@Url.Action("Delete_Document", "Subject_Test", new { id = item.ID,  titleDocument = item.Type})"
                                             onclick="openDeleteModal(this)">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
