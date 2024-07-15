@@ -81,15 +81,20 @@ input:-webkit-autofill {
     font-size: 17px;
 }
 
-    .btn-primary:hover {
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
         background: #4b4b4b;
     }
 
-.divider {
-    background: #6f6f6f;
-    height: 1px;
-    margin: 20px 100px;
-}
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+        border: none;
+        outline: none;
+    }
+
+    .divider {
+        background: #6f6f6f;
+        height: 1px;
+        margin: 20px 100px;
+    }
 
 .text-signup {
     display: flex;

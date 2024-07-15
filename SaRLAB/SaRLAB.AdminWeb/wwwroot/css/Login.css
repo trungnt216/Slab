@@ -81,8 +81,13 @@ input:-webkit-autofill {
     font-size: 17px;
 }
 
-    .btn-primary:hover {
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
         background: #4b4b4b;
+    }
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+        border: none;
+        outline: none;
     }
 
 .divider {
