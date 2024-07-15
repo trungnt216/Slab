@@ -125,6 +125,12 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
         }
 
+        public void InsertSubjects(List<Subject> subjects)
+        {
+            _context.Subjects.AddRange(subjects);
+            _context.SaveChanges();
+        }
+
         public Subject Update(Subject subject)
         {
             var _subject = _context.Subjects.SingleOrDefault(item => (item.Type == subject.Type));

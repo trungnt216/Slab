@@ -17,5 +17,6 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
         void DeleteById(int id);
         Subject GetSubjectBySchoolAndType(int schoolId, int Type);
         List<Subject> GetSubjectBySchool(int schoolId);
+        void InsertSubjects(List<Subject> subjects);
     }
 }

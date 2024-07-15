@@ -15,5 +15,6 @@ namespace SaRLAB.DataAccess.Service.SchoolService
         int UpdateSchoolById(int id, School school);
         int InsertSchool(School school);
         int RecoverSchool(int id);
+        public School GetSchoolWithMaxId();
     }
 }

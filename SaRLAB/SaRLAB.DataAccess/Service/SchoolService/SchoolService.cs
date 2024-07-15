@@ -42,6 +42,11 @@ namespace SaRLAB.DataAccess.Service.SchoolService
             return _context.Schools.SingleOrDefault(s => s.ID == id);
         }
 
+        public School GetSchoolWithMaxId()
+        {
+            return _context.Schools.OrderByDescending(s => s.ID).FirstOrDefault(); 
+        }
+
         public int InsertSchool(School school)
         {
             _context.Schools.Add(school);
@@ -149,6 +154,5 @@ namespace SaRLAB.DataAccess.Service.SchoolService
             }
             return 0; // School with given ID not found
         }
-
     }
 }
