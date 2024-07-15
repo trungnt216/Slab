@@ -5,9 +5,9 @@
 
 <ul class="nav">
     <li class="scroll-to-section menu"><a class="menu" data-toggle=" dropdown" asp-controller="HomePage"
-            asp-action="GetAll_Document"  asp-route-titleDocument="Home">Chung</a></li>
+            asp-action="Home">Chung</a></li>
     <li class="scroll-to-section menu"><a class="menu @((ViewBag.ActiveMenu == "homePage") ? "active" : "")"
-            data-toggle="dropdown" asp-controller="Subject_1" asp-action="GetAll_Document"  asp-route-titleDocument="Index">Trang chủ</a></li>
+            data-toggle="dropdown" asp-controller="Subject_1" asp-action="Index">Trang chủ</a></li>
     <li class="scroll-to-section dropdown menu">
         <a class="menu subject @((ViewBag.ActiveMenu == "subject6") ? "active" : "")" data-toggle="dropdown">@TempData["subject_1"]</a>
         <a class="menu subject-trigger @((ViewBag.ActiveMenu == "subject6") ? "active" : "")" data-toggle="dropdown">
@@ -159,7 +159,7 @@
             </li>
         </ul>
     </li>
-    <li class="scroll-to-section menu"><a class="menu" data-toggle=" dropdown" asp-controller="Library" asp-action="GetAll_Library" asp-route-subjectID="11">Thư viện</a></li>
+    <li class="scroll-to-section menu"><a class="menu" data-toggle=" dropdown" asp-controller="Library" asp-action="GetAll_Library" asp-route-subjectID="1">Thư viện</a></li>
 
     @* noti *@
     <li class="scroll-to-section menu noti-group" id="expiredItemsMenu" style="display: none; margin-right: 10px;">
@@ -179,7 +179,7 @@
 
     @* info group *@
     <li class="scroll-to-section menu-info-group">
-        <a class="menu d-flex" asp-controller="HomePage" asp-action="Information" asp-route-subjectID="11">
+        <a class="menu d-flex" asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
             @if (TempData["AvtPath"] != null)
             {
                     <img src="@Url.Content(TempData["AvtPath"].ToString())" />

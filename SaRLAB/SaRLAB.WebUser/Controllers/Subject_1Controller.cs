@@ -104,7 +104,7 @@ namespace SaRLAB.UserWeb.Controllers
                 }
             }
 
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchoolAndType/" + userLogin.SchoolId + "/" + Subject_id).Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
@@ -126,13 +126,320 @@ namespace SaRLAB.UserWeb.Controllers
         {
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             ViewBag.ActiveMenu = "homePage";
 
 
             return View();
+        }
+        //-----------------kho ----------------------
+
+        [HttpGet]
+        public IActionResult GetAll_WareHouse(int id, string type)
+        {
+
+            if (_hasError || userLogin.RoleName == "User" || userLogin.RoleName == "Teacher")
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.Layout = Subject_name;
+
+
+
+            List<WareHouse> wareHouses = new List<WareHouse>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "WareHouseControler/GetWareHouseByEquipmentId/" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                wareHouses = JsonConvert.DeserializeObject<List<WareHouse>>(data);
+            }
+
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = type;
+            ViewBag.idEquipment = id;
+            return View(wareHouses);
+        }
+
+        [HttpGet]
+        public ActionResult Create_WareHouse(int id, string type)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
+
+            if (userLogin.RoleName == "Technical" || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = type;
+                ViewBag.idEquipment = id;
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("GetAll_WareHouse", new { id, type });
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_WareHouse(WareHouse wareHouse, int id , string type)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
+
+    
+            try
+            {
+                wareHouse.ID = null;
+                wareHouse.EquipmentId = id;
+                wareHouse.AmountEquipment = 0;
+                string data = JsonConvert.SerializeObject(wareHouse);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "WareHouseControler/Insert", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = type;
+                    return RedirectToAction("GetAll_WareHouse", new { id, type });
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = type;
+                return View();
+            }
+            return View();
+        }
+
+        public ActionResult Edit_WareHouse(int id, string type, Double amountEquipment, int idEquipment)
+        {
+
+            WareHouse wareHouse = new WareHouse();
+
+            try
+            {
+                wareHouse.AmountEquipment = amountEquipment;
+                wareHouse.ID = idEquipment;
+                wareHouse.EquipmentId = id;
+
+                string data = JsonConvert.SerializeObject(wareHouse);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "WareHouseControler/Update/" + idEquipment, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    List<WareHouse> wareHouses = new List<WareHouse>();
+
+                    HttpResponseMessage response3 = _httpClient.GetAsync(_httpClient.BaseAddress + "WareHouseControler/GetWareHouseByEquipmentId/" + id).Result;
+
+                    if (response3.IsSuccessStatusCode)
+                    {
+                        string data2 = response3.Content.ReadAsStringAsync().Result;
+                        wareHouses = JsonConvert.DeserializeObject<List<WareHouse>>(data2);
+
+                        Double totalAmountEquipment = (Double)wareHouses.Sum(wh => wh.AmountEquipment);
+
+                        StringContent content1 = new StringContent("", Encoding.UTF8, "application/json");
+                        HttpResponseMessage response1 = _httpClient.PostAsync(_httpClient.BaseAddress + "Equipment/UpdateUnitEquipmentById/" + id + "/" + totalAmountEquipment, content).Result;
+                    }
+
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = type;
+                    return RedirectToAction("GetAll_WareHouse", new { id, type });
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("GetAll_WareHouse", new { id, type });
+            }
+            return RedirectToAction("GetAll_WareHouse", new { id, type });
+        }
+
+
+            //------------------------------ đặc tính ----------------
+        [HttpGet]
+        public IActionResult Edit_ChemistryProperty(int id, string type)
+        {
+
+            if (_hasError || userLogin.RoleName == "User")
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.Layout = Subject_name;
+
+
+
+            List<EquipmentProperty> equipment = new List<EquipmentProperty>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "EquipmentProperty/Get/" + id).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<EquipmentProperty>>(data);
+            }
+
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = type;
+            ViewBag.idEquipment = id;
+            return View(equipment);
+        }
+
+        public ActionResult Delete_ChemistryProperty(int id, string type, int idEquipment)
+        {
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "EquipmentProperty/Delete/" + idEquipment, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "dutru";
+                        ViewBag.ActiveSubMenuLv2 = type;
+                        return RedirectToAction("Edit_ChemistryProperty", new { id, type });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenu = "dutru";
+                    ViewBag.ActiveSubMenuLv2 = type;
+                    return RedirectToAction("Edit_ChemistryProperty", new { id, type });
+                }
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("Edit_ChemistryProperty", new { id, type });
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("Edit_ChemistryProperty", new { id, type });
+            }
+
+        }
+
+        public ActionResult Create_ChemistryProperty(int id, string type, IFormFile File)
+        {
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Technical")
+            {
+                if (File != null)
+                {
+                    EquipmentProperty equipmentProperty = new EquipmentProperty();
+                    string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Equipment");
+
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        File.CopyTo(stream);
+                    }
+                    equipmentProperty.Image = pathFolderSave + "FileFolder/Equipment/" + uniqueFileName;
+
+
+                    try
+                    {
+                        equipmentProperty.EquipmentId = id;
+                        HttpResponseMessage response;
+                        string data = JsonConvert.SerializeObject(equipmentProperty);
+                        StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                        response = _httpClient.PostAsync(_httpClient.BaseAddress + "EquipmentProperty/Insert", content).Result;
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            ViewBag.ActiveMenu = "subject6";
+                            ViewBag.ActiveSubMenu = "dutru";
+                            ViewBag.ActiveSubMenuLv2 = type;
+                            return RedirectToAction("Edit_ChemistryProperty", new { id, type });
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        TempData["errorMessage"] = ex.Message;
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenu = "dutru";
+                        ViewBag.ActiveSubMenuLv2 = type;
+                        return RedirectToAction("Edit_ChemistryProperty", new { id, type });
+                    }
+                }
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("Edit_ChemistryProperty", new { id, type });
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenu = "dutru";
+                ViewBag.ActiveSubMenuLv2 = type;
+                return RedirectToAction("Edit_ChemistryProperty", new { id, type });
+            }
+
         }
 
         //----------------------------hóa chất ------------------------------------------
@@ -148,9 +455,9 @@ TempData["role"] = userLogin.RoleName;
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath; 
-            TempData["subject_1"] = subject1.SubjectName; 
-            ViewBag.Layout = Subject_name; 
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.Layout = Subject_name;
 
 
 
@@ -181,7 +488,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
@@ -202,7 +509,7 @@ TempData["role"] = userLogin.RoleName;
                 return Ok();
             }
 
-            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            if (userLogin.RoleName == "Technical" || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 ViewBag.ActiveMenu = "subject6";
                 ViewBag.ActiveSubMenu = "dutru";
@@ -228,7 +535,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
@@ -437,7 +744,7 @@ TempData["role"] = userLogin.RoleName;
                 return RedirectToAction("GetAll_Chemistry", new { type });
             }
 
-            if (userLogin.Email == equipment.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            if (userLogin.RoleName == "Technical" || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 try
                 {
@@ -493,20 +800,41 @@ TempData["role"] = userLogin.RoleName;
 
 
             Equipment equipment = new Equipment();
-
             HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetById/" + id).Result;
-
             if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
                 equipment = JsonConvert.DeserializeObject<Equipment>(data);
             }
 
+            List<EquipmentProperty> equipmentProperty = new List<EquipmentProperty>();
+            HttpResponseMessage response_pro = _httpClient.GetAsync(_httpClient.BaseAddress + "EquipmentProperty/Get/" + id).Result;
+            if (response_pro.IsSuccessStatusCode)
+            {
+                string data = response_pro.Content.ReadAsStringAsync().Result;
+                equipmentProperty = JsonConvert.DeserializeObject<List<EquipmentProperty>>(data);
+            }
+
+            ViewBag.equipmentProperty = equipmentProperty;
+
+            List<WareHouse> wareHouses = new List<WareHouse>();
+
+            HttpResponseMessage response1 = _httpClient.GetAsync(_httpClient.BaseAddress + "WareHouseControler/GetWareHouseByEquipmentId/" + id).Result;
+
+            if (response1.IsSuccessStatusCode)
+            {
+                string data = response1.Content.ReadAsStringAsync().Result;
+                wareHouses = JsonConvert.DeserializeObject<List<WareHouse>>(data);
+            }
+            ViewBag.wareHouses = wareHouses;
+
             ViewBag.ActiveMenu = "subject6";
             ViewBag.ActiveSubMenu = "dutru";
             ViewBag.ActiveSubMenuLv2 = type;
             return View(equipment);
         }
+
+
 
         //---------------------------- Ban chủ nhiệm -----------------------------------------------
         [HttpGet]
@@ -519,7 +847,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             List<User> users = new List<User>();
@@ -548,7 +876,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             User users = new User();
@@ -578,7 +906,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             List<User> users = new List<User>();
@@ -607,7 +935,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             User users = new User();
@@ -637,7 +965,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             List<User> users = new List<User>();
@@ -666,7 +994,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             User users = new User();
@@ -698,7 +1026,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             List<Document> documents = new List<Document>();
@@ -727,7 +1055,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
@@ -756,7 +1084,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             if (File != null && document.Path == null)
@@ -855,7 +1183,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             Document document = new Document();
@@ -904,7 +1232,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             if (File != null && document.Path == null)
@@ -1035,7 +1363,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             Document document = new Document();
@@ -1066,7 +1394,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
             TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
@@ -1096,7 +1424,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
@@ -1124,7 +1452,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
@@ -1221,7 +1549,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
@@ -1268,7 +1596,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
@@ -1392,7 +1720,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
 
@@ -1425,7 +1753,7 @@ TempData["role"] = userLogin.RoleName;
 
             TempData["name"] = userLogin.Name;
             ViewBag.MenuItems = manageTitles;
-TempData["role"] = userLogin.RoleName;
+            TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             Subject subject = new Subject();

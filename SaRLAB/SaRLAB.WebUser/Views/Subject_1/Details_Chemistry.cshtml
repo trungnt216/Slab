@@ -1,4 +1,6 @@
-﻿@model SaRLAB.Models.Entity.Equipment
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using SaRLAB.Models.Entity
+@model SaRLAB.Models.Entity.Equipment
 
 @{
     ViewData["Title"] = "Details_Chemistry";
@@ -13,6 +15,16 @@
                 <div class="d-flex justify-content-between">
                     <partial name="_TitleCustom">
                     <div class="detail-action">
+                        <a asp-area="" asp-action="Edit_ChemistryProperty" asp-route-id="@Model.ID" asp-route-type="@ViewBag.ActiveSubMenuLv2"
+                                class="btn-edit" type="button">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Chỉnh sửa đặc tính
+                        </a>
+                        <a asp-area="" asp-action="GetAll_WareHouse" asp-route-id="@Model.ID" asp-route-type="@ViewBag.ActiveSubMenuLv2"
+                                class="btn-edit" type="button">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Chỉnh sửa kho hàng
+                        </a>
                             <a asp-area="" asp-action="Edit_Chemistry" asp-route-id="@Model.ID" asp-route-type="@ViewBag.ActiveSubMenuLv2"
                                 class="btn-edit" type="button">
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -30,32 +42,40 @@
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-file-signature"></i>
-                                <p>Tên</p>
+                                <p>Hoá chất</p>
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.Name)</p>
                         </div>
                         <div class="detail-item">
                             <div class="title">
-                                <i class="fa-solid fa-box"></i>
-                                <p>Số lượng</p>
+                                <i class="fa-solid fa-file-signature"></i>
+                                <p>Công thức</p>
                             </div>
-                            <p class="detail">@Html.DisplayFor(model => model.Unit1Amount)</p>
+                            <p class="detail">@Html.Raw(Model.Property)
+                            </p>
                         </div>
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-box"></i>
-                                <p>Đơn vị</p>
+                                <p>Quy cách</p>
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.Unit1)</p>
-                        </div>  
+                        </div>
                         <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-box"></i>
+                                <p>Lượng tổng</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.Unit1Amount)</p>
+                        </div>  
+                        <div class="detail-item d-none">
                             <div class="title">
                                 <i class="fa-solid fa-box"></i>
                                 <p>Chi tiết</p>
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.Unit2Amount)</p>
                         </div>
-                        <div class="detail-item">
+                        <div class="detail-item d-none">
                             <div class="title">
                                 <i class="fa-solid fa-box"></i>
                                 <p>Đơn vị</p>
@@ -70,11 +90,65 @@
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-clock"></i>
-                                <p>Thời gian hết hạn</p>
+                                <p>Hạn sử dụng</p>
                             </div>
                             <p class="detail" style="@style">@Html.DisplayFor(model => model.ExpiredDate)</p>
                             <p class="detail" style="color: #cf656f; font-weight: 600">@isExpired</p>
                         </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-clock"></i>
+                                <p>Thời gian cảnh báo hết hạn</p>
+                            </div>
+                            <p class="detail" style="@style">@Html.DisplayFor(model => model.NormalDate)</p>
+                            <p class="detail" style="color: #cf656f; font-weight: 600">@isExpired</p>
+                        </div>
+                        @* ------------------------------------------------------ *@
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-box"></i>
+                                <p>Đặc tính</p>
+                            </div>
+                            @if (ViewBag.equipmentProperty != null)
+                            {
+                                <div class="image-row">
+                                    @foreach (var equipmentProperty in ViewBag.equipmentProperty)
+                                    {
+                                        <div class="image-wrapper">
+                                            <img src="@equipmentProperty.Image" alt="Equipment Image" style="width: 50px; height: 50px;">
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <p>Không có cảnh báo nào</p>
+                            }
+                        </div>
+
+                        @* ------------------------------------------------------ *@
+                        @* ------------------------------------------------------ *@
+                        <div class="detail-item">
+                            @if (ViewBag.wareHouses != null)
+                            {
+                                @foreach (var wareHouse in ViewBag.wareHouses)
+                                {
+                                    <div class="detail-item">
+                                        <div class="title">
+                                            <i class="fa-solid fa-box"></i>
+                                            <p class="detail">@wareHouse.Name</p>
+                                        </div>
+                                        <p class="detail">@wareHouse.AmountEquipment</p>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <p>Không có kho nào</p>
+                            }
+                        </div>
+
+                        @* ------------------------------------------------------ *@
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-user"></i>
@@ -102,32 +176,6 @@
                                 <p>Thời gian cập nhật</p>
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.UpdateTime)</p>
-                        </div>
-                        @{
-                            var props = Model.Property == "dangerous" ? "Nguy hiểm" :
-                            Model.Property == "notDangerous" ? "Không nguy hiểm" : "Ít nguy hiểm";
-                            var backgroundColor = Model.Property == "dangerous" ? "#a8424c" :
-                            Model.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
-                        }
-                        <div class="detail-item">
-                            <div class="title">
-                                <i class="fa-solid fa-tag"></i>
-                                <p>Đặc tính</p>
-                            </div>
-                            <p style="padding: 0px 10px;
-                                white-space: nowrap;
-                                margin-left: 20px;
-                                margin-top: 5px;
-                                background: @backgroundColor;
-                                text-align: center;
-                                border-radius: 15px;
-                                color: white;
-                                font-size: 14px;
-                                line-height: 25px;
-                                width: fit-content;
-                                font-style: italic;">
-                                @props
-                            </p>
                         </div>
                         <div class="detail-item">
                             <div class="title">
@@ -214,3 +262,21 @@
         </div>
     </div>
 </div>
+
+<style>
+    .image-row {
+        display: flex;
+        flex-wrap: nowrap; /* Không ngắt dòng */
+    }
+
+    .image-wrapper {
+        margin-right: 10px; /* Khoảng cách giữa các ảnh */
+    }
+
+        .image-wrapper img {
+            width: 50px; /* Chiều rộng ảnh */
+            height: 50px; /* Chiều cao ảnh */
+            object-fit: cover; /* Đảm bảo hình ảnh phù hợp trong vùng chứa */
+            border-radius: 5px; /* Bo góc */
+        }
+</style>

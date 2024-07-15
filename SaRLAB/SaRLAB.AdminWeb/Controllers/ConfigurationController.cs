@@ -1549,32 +1549,14 @@ TempData["noticeCount"] = notice.Count;
             }
 
             ViewBag.ActiveMenu = "student";
-
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-            TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-            TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-            TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-            TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-            TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-            TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-            TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-            TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-            TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-            TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-            TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-            TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-            TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-            TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-            TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-            TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-            TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-            TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-            TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-            TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-            TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-            TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-            TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-            TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
             TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 

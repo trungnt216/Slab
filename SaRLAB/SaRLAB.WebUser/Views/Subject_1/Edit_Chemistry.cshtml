@@ -30,10 +30,18 @@
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-file-signature"></i>
-                                    <label asp-for="Name" class="control-label">Tên</label>
+                                    <label asp-for="Name" class="control-label">Hoá chất</label>
                                 </div>
                                 <input asp-for="Name" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <label asp-for="Property" class="control-label">Công thức</label>
+                                </div>
+                                <input asp-for="Property" class="form-control" />
+                                <span asp-validation-for="Property" class="text-danger"></span>
                             </div>
                             <div class="form-group d-none">
                                 <label asp-for="CreateBy" class="control-label"></label>
@@ -58,10 +66,18 @@
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-clock"></i>
-                                    <label asp-for="ExpiredDate" class="control-label">Thời gian hết hạn</label>
+                                    <label asp-for="ExpiredDate" class="control-label">Hạn sử dụng</label>
                                 </div>
                                 <input asp-for="ExpiredDate" class="form-control" />
                                 <span asp-validation-for="ExpiredDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <label asp-for="NormalDate" class="control-label">Thời gian cảnh báo hết hạn</label>
+                                </div>
+                                <input asp-for="NormalDate" class="form-control" />
+                                <span asp-validation-for="NormalDate" class="text-danger"></span>
                             </div>
                             <div class="form-group d-none">
                                 <label asp-for="Type" class="control-label"></label>
@@ -86,46 +102,18 @@
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-box"></i>
-                                    <label asp-for="Unit1Amount" class="control-label">Số lượng</label>
-                                </div>
-                                <input asp-for="Unit1Amount" class="form-control" type="number" min="0" />
-                                <span asp-validation-for="Unit1Amount" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="title d-flex">
-                                    <i class="fa-solid fa-box"></i>
-                                    <label asp-for="Unit1" class="control-label">Đơn vị</label>
+                                    <label asp-for="Unit1" class="control-label">Quy cách</label>
                                 </div>
                                 <input asp-for="Unit1" class="form-control" />
                                 <span asp-validation-for="Unit1" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group d-none">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-box"></i>
-                                    <label asp-for="Unit2Amount" class="control-label">Chi tiết</label>
+                                    <label asp-for="Unit1Amount" class="control-label">Lượng tổng</label>
                                 </div>
-                                <input asp-for="Unit2Amount" class="form-control" type="number" min="0" />
-                                <span asp-validation-for="Unit2Amount" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="title d-flex">
-                                    <i class="fa-solid fa-box"></i>
-                                    <label asp-for="Unit2" class="control-label">Đơn vị</label>
-                                </div>
-                                <input asp-for="Unit2" class="form-control" />
-                                <span asp-validation-for="Unit2" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="title d-flex">
-                                    <i class="fa-solid fa-tag"></i>
-                                    <label asp-for="Property" class="control-label">Đặc tính</label>
-                                </div>
-                                <select asp-for="Property" class="select">
-                                    <option value="dangerous">Nguy hiểm</option>
-                                    <option value="notDangerous">Không nguy hiểm</option>
-                                    <option value="slightlyDangerous">Ít nguy hiểm</option>
-                                </select>
-                                <span asp-validation-for="Property" class="text-danger"></span>
+                                <input asp-for="Unit1Amount" class="form-control" type="number" min="0" />
+                                <span asp-validation-for="Unit1Amount" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <div class="title d-flex">
@@ -156,7 +144,7 @@
                                 <div id="fileDisplay">
                                     @if (string.IsNullOrEmpty(Model.ImagePath))
                                     {
-                                                <span style="color: #5d6975; font-style: italic; padding-left: 25px;">Không có sẵn file nào!</span>
+                                        <span style="color: #5d6975; font-style: italic; padding-left: 25px;">Không có sẵn file nào!</span>
                                     }
                                     else
                                     {

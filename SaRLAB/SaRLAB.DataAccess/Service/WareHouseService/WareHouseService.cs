@@ -48,7 +48,6 @@ namespace SaRLAB.DataAccess.Service.WareHouseService
 
             if (_wareHouse != null)
             {
-                _wareHouse.Name = wareHouse.Name ?? _wareHouse.Name;
                 _wareHouse.AmountEquipment = wareHouse.AmountEquipment ?? _wareHouse.AmountEquipment;
                 return _context.SaveChanges();
             }

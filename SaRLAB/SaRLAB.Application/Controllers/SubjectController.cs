@@ -31,9 +31,9 @@ namespace SaRLAB.Application.Controllers
         }
 
         [HttpGet]
-        [Route("GetByID/{id}")]
-        public IActionResult GetByID(int id) {
-            var subject = _subjectDto.GetByID(id);
+        [Route("GetSubjectBySchoolAndType/{schoolId}/{id}")]
+        public IActionResult GetSubjectBySchoolAndType(int schoolId, int id) {
+            var subject = _subjectDto.GetSubjectBySchoolAndType(schoolId,id);
             if (subject == null)
             {
                 return BadRequest("cannot find the subject");

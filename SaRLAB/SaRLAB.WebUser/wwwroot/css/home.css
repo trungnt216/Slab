@@ -1101,9 +1101,9 @@ Banner Style
         z-index: 1;
     }
 
-    .hero-chem {
-        background-image: url('../images/bannerChem.png');
-    }
+.hero-chem {
+    background-image: url('../images/background.jpg');
+}
 
     .hero-bio {
         background-image: url('../images/banner_bio.jpg');

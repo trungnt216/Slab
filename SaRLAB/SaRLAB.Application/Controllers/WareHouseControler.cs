@@ -5,6 +5,9 @@ using SaRLAB.Models.Entity;
 
 namespace SaRLAB.Application.Controllers
 {
+
+    [Route("api/[controller]")]
+    [ApiController]
     public class WareHouseControler : Controller
     {
         private readonly IWareHouseService _wareHouseService;

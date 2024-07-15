@@ -32,6 +32,8 @@ namespace SaRLAB.UserWeb.Controllers
 
         List<Subject> subjects = new List<Subject>();
 
+        List<ManageTitle> manageTitles = new List<ManageTitle>();
+
         public HomePageController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
@@ -85,6 +87,13 @@ namespace SaRLAB.UserWeb.Controllers
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
                 subjects = JsonConvert.DeserializeObject<List<Subject>>(data);
             }
+
+            HttpResponseMessage response_title = _httpClient.GetAsync(_httpClient.BaseAddress + "ManageTitle/GetManageTitlesAccordingSchool/" + userLogin.SchoolId).Result;
+            if (response_title.IsSuccessStatusCode)
+            {
+                string data = response_title.Content.ReadAsStringAsync().Result;
+                manageTitles = JsonConvert.DeserializeObject<List<ManageTitle>>(data);
+            }
         }
 
 
@@ -99,7 +108,8 @@ namespace SaRLAB.UserWeb.Controllers
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
+            ViewBag.MenuItems = manageTitles;
+TempData["AvtPath"] = userLogin.AvtPath;
 
             return View();
         }
@@ -177,7 +187,8 @@ namespace SaRLAB.UserWeb.Controllers
             ViewData["subjectID"] = subjectID;
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
+            ViewBag.MenuItems = manageTitles;
+TempData["AvtPath"] = userLogin.AvtPath;
             School school = new School();
 
             HttpResponseMessage response;
@@ -214,7 +225,8 @@ namespace SaRLAB.UserWeb.Controllers
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
+            ViewBag.MenuItems = manageTitles;
+TempData["AvtPath"] = userLogin.AvtPath;
             ViewData["subjectID"] = subjectID;
 
 
@@ -246,7 +258,8 @@ namespace SaRLAB.UserWeb.Controllers
 
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
-            TempData["AvtPath"] = userLogin.AvtPath;
+            ViewBag.MenuItems = manageTitles;
+TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/User");

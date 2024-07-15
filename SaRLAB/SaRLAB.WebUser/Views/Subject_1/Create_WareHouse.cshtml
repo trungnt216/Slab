@@ -1,0 +1,102 @@
+﻿@model SaRLAB.Models.Entity.WareHouse
+
+@{
+    ViewData["Title"] = "Create_Chemistry";
+    Layout = ViewBag.Layout;
+    ViewBag.TitleCustom = "Thêm mới nhà kho";
+    var typeitem = ViewBag.ActiveSubMenuLv2;
+    var id_equipment = ViewBag.idEquipment;
+}
+
+<div id="sub-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 edit-container">
+                <div class="edit-action d-flex justify-content-between">
+                    <partial name="_TitleCustom">
+                </div>
+                <form asp-action="Create_WareHouse" asp-route-id="@ViewBag.idEquipment" asp-route-type="@ViewBag.ActiveSubMenuLv2" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="form-group">
+                                <div class="title d-flex">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <label asp-for="Name" class="control-label">Tên kho</label>
+                                </div>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                            <div class="form-group">
+                                <input type="submit" value="Thêm mới" class="btn btn-primary" />
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        document.getElementById('File').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            var fileDisplay = document.getElementById('fileDisplay');
+            var fileURL = URL.createObjectURL(file);
+            var extension = file.name.split('.').pop().toLowerCase();
+
+            fileDisplay.innerHTML = '';
+
+            if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
+                var img = document.createElement('img');
+                img.src = fileURL;
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                fileDisplay.appendChild(img);
+                document.getElementById('errorFile').innerText = "";
+            } else if (['mp4', 'webm', 'ogg'].includes(extension)) {
+                var video = document.createElement('video');
+                video.src = fileURL;
+                video.style.maxWidth = '100%';
+                video.style.height = 'auto';
+                video.controls = true;
+                fileDisplay.appendChild(video);
+                document.getElementById('errorFile').innerText = "";
+            } else if (extension === 'pdf') {
+                var object = document.createElement('object');
+                object.data = fileURL;
+                object.width = '100%';
+                object.height = '800px';
+                fileDisplay.appendChild(object);
+                document.getElementById('errorFile').innerText = "";
+            } else {
+                document.getElementById('errorFile').innerText = "Vui lòng chọn một file hợp lệ!";
+            }
+        });
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+            var fileInput = document.getElementById('File');
+            var file = fileInput.files[0];
+            if (!file) {
+                document.getElementById('errorFile').innerText = "Vui lòng chọn một file!";
+                fileDisplay.innerText = "";
+                event.preventDefault();
+            } else {
+                var extension = file.name.split('.').pop().toLowerCase();
+                var supportedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'ogg', 'pdf'];
+                if (!supportedExtensions.includes(extension)) {
+                    document.getElementById('errorFile').innerText = "Vui lòng chọn một file hợp lệ!";
+                    event.preventDefault();
+                } else {
+                    document.getElementById('errorFile').innerText = "";
+                }
+            }
+        });
+    </script>
+}

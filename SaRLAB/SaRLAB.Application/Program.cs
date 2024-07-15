@@ -60,7 +60,7 @@ namespace SaRLAB.Application
             builder.Services.AddScoped<ISubjectFlagService, SubjectFlagService>();
             builder.Services.AddScoped<IManageTitleService, ManageTitleService>();
             builder.Services.AddScoped<IEquipmentPropertyService, EquipmentPropertyService>();
-            builder.Services.AddScoped<IWareHouseService, WareHouse>();
+            builder.Services.AddScoped<IWareHouseService, WareHouseService>();
 
 
 

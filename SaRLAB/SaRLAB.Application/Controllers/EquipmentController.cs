@@ -79,6 +79,20 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("UpdateUnitEquipmentById/{id}/{unit}")]
+        public IActionResult UpdateUnitEquipmentById(int id, Double unit)
+        {
+            if (id == 0)
+            {
+                return BadRequest("not have id");
+            }
+            else
+            {
+                return Ok(_equipmentService.UpdateUnitEquipmentById(id, unit));
+            }
+        }
+
         [HttpGet]
         [Route("GetAll/{schoolId}/{subjectId}/{type}")]
         public IActionResult GetAllEquipmentByType(int schoolId, int subjectId, string type)

@@ -31,9 +31,9 @@ namespace SaRLAB.Models.Entity
         public Subject? Subject { get; set; }
         public int? EquipmentQuantity { get; set; }
         public string? Unit1 { get; set; }
-        public float? Unit1Amount { get; set; }
+        public Double? Unit1Amount { get; set; }
         public string? Unit2 { get; set; }
-        public float? Unit2Amount { get; set; }
+        public Double? Unit2Amount { get; set; }
         public ICollection<PlanDetail>? PlanDetails { get; set; }
         [Required(ErrorMessage = "Vui lòng chọn đặc tính!")]
         public string? Property { get; set; }

@@ -87,5 +87,14 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
             existingEquipment.Unit2Amount = equipment.Unit2Amount ?? existingEquipment.Unit2Amount;
             return _context.SaveChanges();
         }
+
+        public int UpdateUnitEquipmentById(int id, double Unit)
+        {
+            var existingEquipment = _context.Equipments.Find(id);
+            if (existingEquipment == null)
+                return 0;
+            existingEquipment.Unit1Amount = Unit;
+            return _context.SaveChanges();
+        }
     }
 }
