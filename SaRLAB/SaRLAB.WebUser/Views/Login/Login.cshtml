@@ -8,6 +8,7 @@
     <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
     <title>@ViewBag.Title</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -29,12 +30,6 @@
                 {
                     <div style="text-align: center; margin-bottom: 15px;">
                         <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
-                    </div>
-                }
-                @if (TempData["Success"] != null)
-                {
-                    <div style="text-align: center; margin-bottom: 15px;">
-                        <span class="text-warning"><b>Success!</b> - @TempData["Success"] </span>
                     </div>
                 }
                 <button type="submit" class="btn btn-primary">Đăng nhập</button>
