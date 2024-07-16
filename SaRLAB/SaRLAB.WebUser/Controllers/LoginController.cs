@@ -149,8 +149,7 @@ namespace SaRLAB.UserWeb.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["Success"] = "User create success";
-                    return View();
+                    return View("Login");
                 }
 
             }
