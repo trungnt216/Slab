@@ -34,7 +34,7 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
         public Subject GetByID(int id)
         {
-            var subject = _context.Subjects.SingleOrDefault(item => item.ID == id);
+            var subject = _context.Subjects.SingleOrDefault(item => item.Type == id);
 
             if (subject != null)
             {
@@ -42,7 +42,8 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                 {
                     ID = subject.ID,
                     Rule = subject.Rule,
-                    SubjectName = subject.SubjectName
+                    SubjectName = subject.SubjectName,
+                    Type = subject.Type,
                 };
 
                 return _subject;
@@ -74,6 +75,34 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
             }
         }
 
+        public Subject GetSubjectBySchool(int schoolId)
+        {
+            var subject = _context.Subjects
+                .SingleOrDefault(item => item.SchoolId == schoolId);
+            return subject != null ? new Subject
+            {
+                ID = subject.ID,
+                Rule = subject.Rule,
+                SubjectName = subject.SubjectName,
+                SchoolId = subject.SchoolId,
+                Type = subject.Type
+            } : null;
+        }
+
+        public Subject GetSubjectBySchoolAndType(int schoolId, int type)
+        {
+            var subject = _context.Subjects
+                .SingleOrDefault(item => item.SchoolId == schoolId && item.Type == type);
+            return subject != null ? new Subject
+            {
+                ID = subject.ID,
+                Rule = subject.Rule,
+                SubjectName = subject.SubjectName,
+                SchoolId = subject.SchoolId,
+                Type = subject.Type
+            } : null;
+        }
+
         public Subject Insert(Subject subject)
         {
             var checkSubject = _context.Subjects.SingleOrDefault(item => (item.SubjectName == subject.SubjectName));
@@ -96,9 +125,15 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
         }
 
+        public void InsertSubjects(List<Subject> subjects)
+        {
+            _context.Subjects.AddRange(subjects);
+            _context.SaveChanges();
+        }
+
         public Subject Update(Subject subject)
         {
-            var _subject = _context.Subjects.SingleOrDefault(item => (item.ID == subject.ID));
+            var _subject = _context.Subjects.SingleOrDefault(item => (item.Type == subject.Type));
 
             if (_subject != null)
             {
@@ -111,5 +146,9 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
             return _subject;
         }
 
+        List<Subject> ISubjectDto.GetSubjectBySchool(int schoolId)
+        {
+            return _context.Subjects.Where(s => s.SchoolId == schoolId).ToList();
+        }
     }
 }

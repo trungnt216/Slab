@@ -31,106 +31,250 @@
                     <span asp-validation-for="UserEmail" class="text-danger form-text"></span>
                 </div>
             </div>
+
+
             <div class="form-group row">
-                <label asp-for="MathPermissionFlag" class="col-4 control-label">Quyền truy cập môn Hoá Sinh</label>
-                <select asp-for="MathPermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <span asp-validation-for="MathPermissionFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group d-none">
-                <label asp-for="MathMarkFlag" class="control-label"></label>
-                <input asp-for="MathMarkFlag" class="form-control" />
-                <span asp-validation-for="MathMarkFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="PhysicPermissionFlag" class="col-4 control-label">Quyền truy cập môn Vật Lý</label>
-                <select asp-for="PhysicPermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <span asp-validation-for="PhysicPermissionFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group d-none">
-                <label asp-for="PhysicMarkFlag" class="control-label"></label>
-                <input asp-for="PhysicMarkFlag" class="form-control" />
-                <span asp-validation-for="PhysicMarkFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="ChemistryPermissionFlag" class="col-4 control-label">Quyền truy cập môn Hóa Học</label>
-                <select asp-for="ChemistryPermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <span asp-validation-for="ChemistryPermissionFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group d-none">
-                <label asp-for="ChemistryMarkFlag" class="control-label"></label>
-                <input asp-for="ChemistryMarkFlag" class="form-control" />
-                <span asp-validation-for="ChemistryMarkFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="BiologyPermissionFlag" class="col-4 control-label">Quyền truy cập môn Sinh Học</label>
-                <select asp-for="BiologyPermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <span asp-validation-for="BiologyPermissionFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group d-none">
-                <label asp-for="BiologyMarkFlag" class="control-label"></label>
-                <input asp-for="BiologyMarkFlag" class="form-control" />
-                <span asp-validation-for="BiologyMarkFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="BackupSubject1PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_1"]</label>
-                <select asp-for="BackupSubject1PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <span asp-validation-for="BackupSubject1PermissionFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="BackupSubject2PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_2"]</label>
-                <select asp-for="BackupSubject2PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <span asp-validation-for="BackupSubject2PermissionFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="BackupSubject3PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_3"]</label>
-                <select asp-for="BackupSubject3PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <span asp-validation-for="BackupSubject3PermissionFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="BackupSubject4PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_4"]</label>
-                <select asp-for="BackupSubject4PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <span asp-validation-for="BackupSubject4PermissionFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="BackupSubject5PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_5"]</label>
-                <select asp-for="BackupSubject5PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <span asp-validation-for="BackupSubject5PermissionFlag" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="BackupSubject6PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_6"]</label>
-                <select asp-for="BackupSubject6PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <span asp-validation-for="BackupSubject6PermissionFlag" class="text-danger"></span>
-            </div>
+    <label asp-for="BackupSubject1PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_1"]</label>
+    <select asp-for="BackupSubject1PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject1PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject2PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_2"]</label>
+    <select asp-for="BackupSubject2PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject2PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject3PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_3"]</label>
+    <select asp-for="BackupSubject3PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject3PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject4PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_4"]</label>
+    <select asp-for="BackupSubject4PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject4PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject5PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_5"]</label>
+    <select asp-for="BackupSubject5PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject5PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject6PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_6"]</label>
+    <select asp-for="BackupSubject6PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject6PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject7PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_7"]</label>
+    <select asp-for="BackupSubject7PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject7PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject8PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_8"]</label>
+    <select asp-for="BackupSubject8PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject8PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject9PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_9"]</label>
+    <select asp-for="BackupSubject9PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject9PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject10PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_10"]</label>
+    <select asp-for="BackupSubject10PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject10PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject11PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_11"]</label>
+    <select asp-for="BackupSubject11PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject11PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject12PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_12"]</label>
+    <select asp-for="BackupSubject12PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject12PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject13PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_13"]</label>
+    <select asp-for="BackupSubject13PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject13PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject14PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_14"]</label>
+    <select asp-for="BackupSubject14PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject14PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject15PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_15"]</label>
+    <select asp-for="BackupSubject15PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject15PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject16PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_16"]</label>
+    <select asp-for="BackupSubject16PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject16PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject17PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_17"]</label>
+    <select asp-for="BackupSubject17PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject17PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject18PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_18"]</label>
+    <select asp-for="BackupSubject18PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject18PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject19PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_19"]</label>
+    <select asp-for="BackupSubject19PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject19PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject20PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_20"]</label>
+    <select asp-for="BackupSubject20PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject20PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject21PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_21"]</label>
+    <select asp-for="BackupSubject21PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject21PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject22PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_22"]</label>
+    <select asp-for="BackupSubject22PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject22PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject23PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_23"]</label>
+    <select asp-for="BackupSubject23PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject23PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject24PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_24"]</label>
+    <select asp-for="BackupSubject24PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject24PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject25PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_25"]</label>
+    <select asp-for="BackupSubject25PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject25PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject26PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_26"]</label>
+    <select asp-for="BackupSubject26PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject26PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject27PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_27"]</label>
+    <select asp-for="BackupSubject27PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject27PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject28PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_28"]</label>
+    <select asp-for="BackupSubject28PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject28PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject29PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_29"]</label>
+    <select asp-for="BackupSubject29PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject29PermissionFlag" class="text-danger"></span>
+</div>
+<div class="form-group row">
+    <label asp-for="BackupSubject30PermissionFlag" class="col-4 control-label">Quyền truy cập môn @TempData["subject_30"]</label>
+    <select asp-for="BackupSubject30PermissionFlag" class="col form-control" style="margin-left: 7px; margin-right: 7px;">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <span asp-validation-for="BackupSubject30PermissionFlag" class="text-danger"></span>
+</div>
+
+
             <div class="form-group">
                 <input type="submit" value="Cập nhật" class="btn btn-primary" />
             </div>

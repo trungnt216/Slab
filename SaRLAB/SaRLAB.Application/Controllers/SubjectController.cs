@@ -24,9 +24,16 @@ namespace SaRLAB.Application.Controllers
         }
 
         [HttpGet]
-        [Route("GetByID/{id}")]
-        public IActionResult GetByID(int id) {
-            var subject = _subjectDto.GetByID(id);
+        [Route("GetSubjectBySchool/{schoolId}")]
+        public IActionResult GetSubjectBySchool(int schoolId)
+        {
+            return Ok(_subjectDto.GetSubjectBySchool(schoolId));
+        }
+
+        [HttpGet]
+        [Route("GetSubjectBySchoolAndType/{schoolId}/{id}")]
+        public IActionResult GetSubjectBySchoolAndType(int schoolId, int id) {
+            var subject = _subjectDto.GetSubjectBySchoolAndType(schoolId,id);
             if (subject == null)
             {
                 return BadRequest("cannot find the subject");
@@ -37,6 +44,21 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+/*        [HttpGet]
+        [Route("GetBySchoolAndType/{schoolId}/{type}")]
+        public IActionResult GetByID(int schoolId, int type)
+        {
+            var subject = _subjectDto.GetBy;
+            if (subject == null)
+            {
+                return BadRequest("cannot find the subject");
+            }
+            else
+            {
+                return Ok(subject);
+            }
+        }
+*/
         [HttpGet]
         [Route("GetByName/{name}")]
         public IActionResult GetByName(string name)

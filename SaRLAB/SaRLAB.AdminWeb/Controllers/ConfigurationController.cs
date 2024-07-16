@@ -32,6 +32,8 @@ namespace SaRLAB.AdminWeb.Controllers
         List<Subject> subjects = new List<Subject>();
         List<NoticeAdmin> notice = new List<NoticeAdmin>();
 
+        List<ManageTitle> manageTitles = new List<ManageTitle>();
+
         public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
         {
             _env = env;
@@ -74,7 +76,7 @@ namespace SaRLAB.AdminWeb.Controllers
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
 
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetAll").Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchool/" + userLogin.SchoolId).Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
@@ -91,38 +93,29 @@ namespace SaRLAB.AdminWeb.Controllers
                 notice = JsonConvert.DeserializeObject<List<NoticeAdmin>>(data);
             }
 
+            HttpResponseMessage response_title = _httpClient.GetAsync(_httpClient.BaseAddress + "ManageTitle/GetManageTitlesAccordingSchool/" + userLogin.SchoolId).Result;
+            if (response_title.IsSuccessStatusCode)
+            {
+                string data = response_title.Content.ReadAsStringAsync().Result;
+                manageTitles = JsonConvert.DeserializeObject<List<ManageTitle>>(data);
+            }
+
         }
 
         public IActionResult Index()
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
 
             return View();
@@ -134,32 +127,16 @@ TempData["noticeCount"] = notice.Count;
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             School school = new School();
 
@@ -189,32 +166,16 @@ TempData["noticeCount"] = notice.Count;
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             School school = new School();
 
@@ -230,123 +191,26 @@ TempData["noticeCount"] = notice.Count;
             return View(school);
         }
         [HttpPost]
-        public ActionResult GetAllBanner(School school,IFormFile FileChemLogo, IFormFile FileBioLogo, IFormFile FilePhysLogo, 
-            IFormFile FileBiochemLogo, IFormFile FileBanner, IFormFile FileLogoSchool, IFormFile FileBackupSubject1Logo,
-            IFormFile FileBackupSubject2Logo, IFormFile FileBackupSubject3Logo, IFormFile FileBackupSubject4Logo,
-            IFormFile FileBackupSubject5Logo, IFormFile FileBackupSubject6Logo)
+        public ActionResult GetAllBanner(School school, IFormFile FileBanner, IFormFile FileLogoSchool, 
+        IFormFile FileBackupSubject1Logo, IFormFile FileBackupSubject2Logo, IFormFile FileBackupSubject3Logo, IFormFile FileBackupSubject4Logo, IFormFile FileBackupSubject5Logo, 
+        IFormFile FileBackupSubject6Logo, IFormFile FileBackupSubject7Logo, IFormFile FileBackupSubject8Logo, IFormFile FileBackupSubject9Logo, IFormFile FileBackupSubject10Logo,
+        IFormFile FileBackupSubject11Logo, IFormFile FileBackupSubject12Logo, IFormFile FileBackupSubject13Logo, IFormFile FileBackupSubject14Logo, IFormFile FileBackupSubject15Logo,
+        IFormFile FileBackupSubject16Logo, IFormFile FileBackupSubject17Logo, IFormFile FileBackupSubject18Logo, IFormFile FileBackupSubject19Logo, IFormFile FileBackupSubject20Logo,
+        IFormFile FileBackupSubject21Logo, IFormFile FileBackupSubject22Logo, IFormFile FileBackupSubject23Logo, IFormFile FileBackupSubject24Logo, IFormFile FileBackupSubject25Logo,
+        IFormFile FileBackupSubject26Logo, IFormFile FileBackupSubject27Logo, IFormFile FileBackupSubject28Logo, IFormFile FileBackupSubject29Logo, IFormFile FileBackupSubject30Logo)
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
-
-            if (FileChemLogo != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileChemLogo.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    FileChemLogo.CopyTo(stream);
-                }
-                school.ChemLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
-            }
-
-            if (FileBioLogo != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBioLogo.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    FileBioLogo.CopyTo(stream);
-                }
-                school.BioLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
-            }
-
-            if (FilePhysLogo != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FilePhysLogo.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    FilePhysLogo.CopyTo(stream);
-                }
-                school.PhysLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
-            }
-
-            if (FileBiochemLogo != null)
-            {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
-
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBiochemLogo.FileName);
-
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    FileBiochemLogo.CopyTo(stream);
-                }
-                school.BiochemLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
-            }
+            ViewBag.MenuItems = manageTitles;
 
             if (FileBanner != null)
             {
@@ -516,6 +380,489 @@ TempData["noticeCount"] = notice.Count;
                 school.BackupSubject6Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
             }
 
+            if (FileBackupSubject7Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject7Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject7Logo.CopyTo(stream);
+                }
+                school.BackupSubject7Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject8Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject8Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject8Logo.CopyTo(stream);
+                }
+                school.BackupSubject8Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject9Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject9Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject9Logo.CopyTo(stream);
+                }
+                school.BackupSubject9Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject10Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject10Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject10Logo.CopyTo(stream);
+                }
+                school.BackupSubject10Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject11Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject11Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject11Logo.CopyTo(stream);
+                }
+                school.BackupSubject11Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject12Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject12Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject12Logo.CopyTo(stream);
+                }
+                school.BackupSubject12Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject13Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject13Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject13Logo.CopyTo(stream);
+                }
+                school.BackupSubject13Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject14Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject14Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject14Logo.CopyTo(stream);
+                }
+                school.BackupSubject14Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject15Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject15Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject15Logo.CopyTo(stream);
+                }
+                school.BackupSubject15Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject16Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject16Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject16Logo.CopyTo(stream);
+                }
+                school.BackupSubject16Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject17Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject17Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject17Logo.CopyTo(stream);
+                }
+                school.BackupSubject17Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject18Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject18Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject18Logo.CopyTo(stream);
+                }
+                school.BackupSubject18Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject19Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject19Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject19Logo.CopyTo(stream);
+                }
+                school.BackupSubject19Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject20Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject20Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject20Logo.CopyTo(stream);
+                }
+                school.BackupSubject20Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject21Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject21Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject21Logo.CopyTo(stream);
+                }
+                school.BackupSubject21Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject22Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject22Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject22Logo.CopyTo(stream);
+                }
+                school.BackupSubject22Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject23Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject23Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject23Logo.CopyTo(stream);
+                }
+                school.BackupSubject23Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject24Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject24Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject24Logo.CopyTo(stream);
+                }
+                school.BackupSubject24Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject25Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject25Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject25Logo.CopyTo(stream);
+                }
+                school.BackupSubject25Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject26Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject26Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject26Logo.CopyTo(stream);
+                }
+                school.BackupSubject26Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject27Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject27Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject27Logo.CopyTo(stream);
+                }
+                school.BackupSubject27Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject28Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject28Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject28Logo.CopyTo(stream);
+                }
+                school.BackupSubject28Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject29Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject29Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject29Logo.CopyTo(stream);
+                }
+                school.BackupSubject29Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+            if (FileBackupSubject30Logo != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileBackupSubject30Logo.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileBackupSubject30Logo.CopyTo(stream);
+                }
+                school.BackupSubject30Logo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+
+
             try
             {
                 string data = JsonConvert.SerializeObject(school);
@@ -541,32 +888,16 @@ TempData["noticeCount"] = notice.Count;
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             List<UserDto> users = new List<UserDto>();
 
@@ -677,32 +1008,16 @@ TempData["noticeCount"] = notice.Count;
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             User user = new User();
 
@@ -853,32 +1168,16 @@ TempData["noticeCount"] = notice.Count;
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
 
             ViewBag.ActiveMenu = "banner";
@@ -948,32 +1247,16 @@ TempData["noticeCount"] = notice.Count;
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
             /*            string substringToRemove = "/undefined";
 
                         if (id.EndsWith(substringToRemove))
@@ -1090,32 +1373,16 @@ TempData["noticeCount"] = notice.Count;
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             try
             {
@@ -1152,32 +1419,16 @@ TempData["noticeCount"] = notice.Count;
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             User user = new User();
 
@@ -1249,32 +1500,16 @@ TempData["noticeCount"] = notice.Count;
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
 TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             List<UserDto> users = new List<UserDto>();
 
@@ -1314,33 +1549,16 @@ TempData["noticeCount"] = notice.Count;
             }
 
             ViewBag.ActiveMenu = "student";
-
-            TempData["subject_1"] = subjects.SingleOrDefault(item => item.ID == 6).SubjectName;
-            TempData["subject_2"] = subjects.SingleOrDefault(item => item.ID == 7).SubjectName;
-            TempData["subject_3"] = subjects.SingleOrDefault(item => item.ID == 8).SubjectName;
-            TempData["subject_4"] = subjects.SingleOrDefault(item => item.ID == 9).SubjectName;
-            TempData["subject_5"] = subjects.SingleOrDefault(item => item.ID == 10).SubjectName;
-            TempData["subject_6"] = subjects.SingleOrDefault(item => item.ID == 11).SubjectName;
-            TempData["subject_7"] = subjects.SingleOrDefault(item => item.ID == 12).SubjectName;
-            TempData["subject_8"] = subjects.SingleOrDefault(item => item.ID == 13).SubjectName;
-            TempData["subject_9"] = subjects.SingleOrDefault(item => item.ID == 14).SubjectName;
-            TempData["subject_10"] = subjects.SingleOrDefault(item => item.ID == 15).SubjectName;
-            TempData["subject_11"] = subjects.SingleOrDefault(item => item.ID == 16).SubjectName;
-            TempData["subject_12"] = subjects.SingleOrDefault(item => item.ID == 17).SubjectName;
-            TempData["subject_13"] = subjects.SingleOrDefault(item => item.ID == 18).SubjectName;
-            TempData["subject_14"] = subjects.SingleOrDefault(item => item.ID == 19).SubjectName;
-            TempData["subject_15"] = subjects.SingleOrDefault(item => item.ID == 20).SubjectName;
-            TempData["subject_16"] = subjects.SingleOrDefault(item => item.ID == 21).SubjectName;
-            TempData["subject_17"] = subjects.SingleOrDefault(item => item.ID == 22).SubjectName;
-            TempData["subject_18"] = subjects.SingleOrDefault(item => item.ID == 23).SubjectName;
-            TempData["subject_19"] = subjects.SingleOrDefault(item => item.ID == 24).SubjectName;
-            TempData["subject_20"] = subjects.SingleOrDefault(item => item.ID == 25).SubjectName;
-            TempData["subject_21"] = subjects.SingleOrDefault(item => item.ID == 26).SubjectName;
-            TempData["subject_22"] = subjects.SingleOrDefault(item => item.ID == 27).SubjectName;
-            TempData["subject_23"] = subjects.SingleOrDefault(item => item.ID == 28).SubjectName;
-            TempData["subject_24"] = subjects.SingleOrDefault(item => item.ID == 29).SubjectName;
-            TempData["subject_25"] = subjects.SingleOrDefault(item => item.ID == 30).SubjectName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
             TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
 
             return View(user);
         }

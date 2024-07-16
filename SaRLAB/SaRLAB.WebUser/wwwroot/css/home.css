@@ -1101,8 +1101,33 @@ Banner Style
         z-index: 1;
     }
 
-    .hero-subject {
-        background: radial-gradient(circle, rgb(57 57 57) 0%, rgb(0 0 0) 100%);
+.hero-chem {
+    background-image: url('../images/background.jpg');
+}
+
+    .hero-bio {
+        background-image: url('../images/banner_bio.jpg');
+    }
+
+    .hero-math {
+        background-image: url('../images/banner_math.jpg');
+    }
+
+    .hero-phys {
+        background-image: url('../images/banner_phys.jpg');
+    }
+
+    .bg-overlay {
+        background: #000000ed;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.85;
+        z-index: 2;
     }
 
     .hero-text {

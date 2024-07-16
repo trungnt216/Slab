@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.SchoolService;
+using SaRLAB.DataAccess.Service.SubjectDto;
 using SaRLAB.DataAccess.Service.UserService;
 using SaRLAB.Models.Dto;
 using SaRLAB.Models.Entity;
@@ -12,11 +13,13 @@ namespace SaRLAB.Application.Controllers
     {
         private readonly ISchoolService _schoolService;
         private readonly IUserService _userService;
+        private readonly ISubjectDto _subjectService;
 
-        public SchoolController(ISchoolService schoolService, IUserService userService)
+        public SchoolController(ISchoolService schoolService, IUserService userService, ISubjectDto subjectDto)
         {
             _schoolService = schoolService;
             _userService = userService;
+            _subjectService = subjectDto;
         }
 
 
@@ -42,18 +45,52 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("max")]
+        public IActionResult GetBydstID()
+        {
+
+            {
+                return Ok(_schoolService.GetSchoolWithMaxId());
+            }
+        }
+
         [HttpPost]
         [Route("Insert")]
         public IActionResult Insert(School school)
         {
             if (school == null)
             {
-                return BadRequest("not have equipment");
+                return BadRequest("School cannot be null");
             }
-            else
+            var insertedSchool = _schoolService.InsertSchool(school);
+
+            if (insertedSchool == null)
             {
-                return Ok(_schoolService.InsertSchool(school));
+                return BadRequest("Failed to insert school");
             }
+            int maxId = 0;
+            School schoolMaxId = _schoolService.GetSchoolWithMaxId();
+            if(schoolMaxId != null)
+            {
+                maxId = schoolMaxId.ID.GetValueOrDefault();
+            } else
+            {
+                maxId = 1;
+            }
+            List<Subject> subjects = new List<Subject>();
+            for (int i = 1; i <= 32; i++)
+            {
+                subjects.Add(new Subject
+                {
+                    SubjectName = "B" + i,
+                    Rule = "Rule for subject " + i,
+                    SchoolId = maxId, // Use the generated school ID
+                    Type = i
+                });
+            }
+            _subjectService.InsertSubjects(subjects);
+            return Ok(insertedSchool);
         }
 
         [HttpPost]

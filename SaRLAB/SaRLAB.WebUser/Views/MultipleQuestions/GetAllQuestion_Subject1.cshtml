@@ -150,14 +150,14 @@
 
                 let incorrectCount = totalQuestions - correctCount;
                 let message = `Bạn đã trả lời đúng ${correctCount}/${totalQuestions} câu hỏi. Vui lòng làm lại!`;
-                let modalAction = '<a class="btn btn-danger" href="/MultipleQuestions/GetAllQuestion_Bio">Làm lại</a>';
+                let modalAction = '<a class="btn btn-danger" href="/MultipleQuestions/GetAllQuestion_Subject1">Làm lại</a>';
 
                 if (correctCount === totalQuestions) {
                     message = 'Bạn đã trả lời đúng tất cả các câu hỏi!';
-                    modalAction = '<a class="btn btn-success" href="/Biology/index">Truy cập</a>';
+                    modalAction = '<a class="btn btn-success" href="/Subject_1/index">Truy cập</a>';
                 } else if (correctCount > 30) {
                     message = `Bạn đã trả lời đúng ${correctCount}/${totalQuestions} câu hỏi. Đang tải lại các câu hỏi sai...`;
-                    modalAction = `<a class="btn btn-warning" href="/MultipleQuestions/GetQuestionRepeat_Bio?count=${incorrectCount}">Làm lại câu sai</a>`;
+                    modalAction = `<a class="btn btn-warning" href="/MultipleQuestions/GetQuestionRepeat_Subject1?count=${incorrectCount}">Làm lại câu sai</a>`;
                 }
 
                 $('#message').html(message);
