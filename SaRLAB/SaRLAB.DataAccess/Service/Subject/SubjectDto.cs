@@ -133,7 +133,7 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
         public Subject Update(Subject subject)
         {
-            var _subject = _context.Subjects.SingleOrDefault(item => (item.Type == subject.Type));
+            var _subject = _context.Subjects.SingleOrDefault(item => (item.Type == subject.Type && item.SchoolId == subject.SchoolId));
 
             if (_subject != null)
             {

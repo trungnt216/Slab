@@ -111,7 +111,7 @@ namespace SaRLAB.UserWeb.Controllers
                 subject1 = JsonConvert.DeserializeObject<Subject>(data);
             }
 
-            HttpResponseMessage response_title = _httpClient.GetAsync(_httpClient.BaseAddress + "ManageTitle/GetManageTitlesAccordingSchool/" + userLogin.SchoolId).Result;
+            HttpResponseMessage response_title = _httpClient.GetAsync(_httpClient.BaseAddress + "ManageTitle/GetTitleBySchoolAnSubject/" + userLogin.SchoolId + "/" + Subject_id).Result;
             if (response_title.IsSuccessStatusCode)
             {
                 string data = response_title.Content.ReadAsStringAsync().Result;

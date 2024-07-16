@@ -1,0 +1,282 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using SaRLAB.Models.Entity
+@model SaRLAB.Models.Entity.Equipment
+
+@{
+    ViewData["Title"] = "Details_Chemistry";
+    Layout = ViewBag.Layout;
+    ViewBag.TitleCustom = ViewBag.ActiveSubMenuLv2.ToString();
+}
+
+<div id="sub-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 detail-container">
+                <div class="d-flex justify-content-between">
+                    <partial name="_TitleCustom">
+                    <div class="detail-action">
+                        <a asp-area="" asp-action="Edit_ChemistryProperty" asp-route-id="@Model.ID" asp-route-type="@ViewBag.ActiveSubMenuLv2"
+                                class="btn-edit" type="button">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Chỉnh sửa đặc tính
+                        </a>
+                        <a asp-area="" asp-action="GetAll_WareHouse" asp-route-id="@Model.ID" asp-route-type="@ViewBag.ActiveSubMenuLv2"
+                                class="btn-edit" type="button">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Chỉnh sửa kho hàng
+                        </a>
+                            <a asp-area="" asp-action="Edit_Chemistry" asp-route-id="@Model.ID" asp-route-type="@ViewBag.ActiveSubMenuLv2"
+                                class="btn-edit" type="button">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Chỉnh sửa
+                        </a>
+                            <a asp-area="" asp-action="GetAll_Chemistry" asp-route-type="@ViewBag.ActiveSubMenuLv2"
+                                class="btn-custom-return" type="button">
+                            <i class="fa-solid fa-angles-left"></i>
+                            Trở về
+                        </a>
+                    </div>
+                </div>
+                <dl class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <p>Hoá chất</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.Name)</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <p>Công thức</p>
+                            </div>
+                            <p class="detail">@Html.Raw(Model.Property)
+                            </p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-box"></i>
+                                <p>Quy cách</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.Unit1)</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-box"></i>
+                                <p>Lượng tổng</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.Unit1Amount)</p>
+                        </div>  
+                        <div class="detail-item d-none">
+                            <div class="title">
+                                <i class="fa-solid fa-box"></i>
+                                <p>Chi tiết</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.Unit2Amount)</p>
+                        </div>
+                        <div class="detail-item d-none">
+                            <div class="title">
+                                <i class="fa-solid fa-box"></i>
+                                <p>Đơn vị</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.Unit2)</p>
+                        </div>
+                        @{
+                            var currentTime = DateTime.Now;
+                            var style = Model.ExpiredDate <= currentTime ? "color: #cf656f; font-weight: 500" : "";
+                            var isExpired = Model.ExpiredDate <= currentTime ? "(Đã hết hạn)" : "";
+                        }
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-clock"></i>
+                                <p>Hạn sử dụng</p>
+                            </div>
+                            <p class="detail" style="@style">@Html.DisplayFor(model => model.ExpiredDate)</p>
+                            <p class="detail" style="color: #cf656f; font-weight: 600">@isExpired</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-clock"></i>
+                                <p>Thời gian cảnh báo hết hạn</p>
+                            </div>
+                            <p class="detail" style="@style">@Html.DisplayFor(model => model.NormalDate)</p>
+                            <p class="detail" style="color: #cf656f; font-weight: 600">@isExpired</p>
+                        </div>
+                        @* ------------------------------------------------------ *@
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-box"></i>
+                                <p>Đặc tính</p>
+                            </div>
+                            @if (ViewBag.equipmentProperty != null)
+                            {
+                                <div class="image-row">
+                                    @foreach (var equipmentProperty in ViewBag.equipmentProperty)
+                                    {
+                                        <div class="image-wrapper">
+                                            <img src="@equipmentProperty.Image" alt="Equipment Image" style="width: 50px; height: 50px;">
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <p>Không có cảnh báo nào</p>
+                            }
+                        </div>
+
+                        @* ------------------------------------------------------ *@
+                        @* ------------------------------------------------------ *@
+                        <div class="detail-item">
+                            @if (ViewBag.wareHouses != null)
+                            {
+                                @foreach (var wareHouse in ViewBag.wareHouses)
+                                {
+                                    <div class="detail-item">
+                                        <div class="title">
+                                            <i class="fa-solid fa-box"></i>
+                                            <p class="detail">@wareHouse.Name</p>
+                                        </div>
+                                        <p class="detail">@wareHouse.AmountEquipment</p>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <p>Không có kho nào</p>
+                            }
+                        </div>
+
+                        @* ------------------------------------------------------ *@
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Người tạo</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.CreateBy)</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-clock"></i>
+                                <p>Thời gian tạo</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.CreateTime)</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Người cập nhật</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.UpdateBy)</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-clock"></i>
+                                <p>Thời gian cập nhật</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.UpdateTime)</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-barcode"></i>
+                                <p>Xuất xứ</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.From)</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-solid fa-comment"></i>
+                                <p>Ghi chú</p>
+                            </div>
+                            <p class="detail">@Html.DisplayFor(model => model.Remark)</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="detail-item">
+                            <div class="title">
+                                <i class="fa-regular fa-file"></i>
+                                <p>Chi tiết file</p>
+                            </div>
+                        </div>
+                        @if (string.IsNullOrEmpty(Model.ImagePath))
+                        {
+                            <span style="color: #5d6975; font-style: italic; padding-left: 25px;">Không có sẵn file nào!</span>
+                        }
+                        else
+                        {
+                            string path = Model.ImagePath;
+                            string extension = System.IO.Path.GetExtension(path).ToLower();
+
+                            if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
+                            {
+                                <img src="@Url.Content(path)" alt="Image" style="max-width: 100%; height: auto;" />
+                            }
+                            else if (extension == ".mp4" || extension == ".webm" || extension == ".ogg")
+                            {
+                                <video width="100%" height="auto" controls>
+                                    <source src="@Url.Content(path)" type="video/@extension.Substring(1)">
+                                    Your browser does not support the video tag.
+                                </video>
+                            }
+                            else if (extension == ".pdf")
+                            {
+                                <object class="pdf"
+                                        data="@Url.Content(path)"
+                                        width="100%"
+                                        height="800">
+                                </object>
+                            }
+                            else
+                            {
+                                <p class="form-text-danger">Không hỗ trợ file!</p>
+                            }
+                        }
+                    </div>
+                    <dt class = "col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.ID)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.ID)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.Type)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.Type)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.SubjectId)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.SubjectId)
+                    </dd>
+                    <dt class="col-sm-2 d-none">
+                        @Html.DisplayNameFor(model => model.SchoolId)
+                    </dt>
+                    <dd class="col-sm-10 d-none">
+                        @Html.DisplayFor(model => model.SchoolId)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .image-row {
+        display: flex;
+        flex-wrap: nowrap; /* Không ngắt dòng */
+    }
+
+    .image-wrapper {
+        margin-right: 10px; /* Khoảng cách giữa các ảnh */
+    }
+
+        .image-wrapper img {
+            width: 50px; /* Chiều rộng ảnh */
+            height: 50px; /* Chiều cao ảnh */
+            object-fit: cover; /* Đảm bảo hình ảnh phù hợp trong vùng chứa */
+            border-radius: 5px; /* Bo góc */
+        }
+</style>

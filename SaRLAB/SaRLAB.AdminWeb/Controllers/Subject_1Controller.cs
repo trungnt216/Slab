@@ -1063,7 +1063,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
             try
             {
-                subject.ID = Subject_id;
+                subject.Type = Subject_id;
+                subject.SchoolId = userLogin.SchoolId;
 
                 string data = JsonConvert.SerializeObject(subject);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
