@@ -1758,7 +1758,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             Subject subject = new Subject();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByTypeSchool/" + Subject_id + "/" + userLogin.SchoolId).Result;
 
 
             if (response.IsSuccessStatusCode)

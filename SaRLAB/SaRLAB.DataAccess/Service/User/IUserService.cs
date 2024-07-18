@@ -21,6 +21,8 @@ namespace SaRLAB.DataAccess.Service.UserService
 
         User Update(User user);
 
+        User UpdateSchool(string email, int schoolId);
+
         User ForgotPassword(User user);
 
         User Register(User user);

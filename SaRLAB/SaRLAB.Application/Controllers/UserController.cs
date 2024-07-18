@@ -78,6 +78,24 @@ namespace SaRLAB.Application.Controllers
             }
         }
 
+
+        [HttpPost]
+        [Route("UpdateSchool/{email}/{schoolid}")]
+        public IActionResult UpdateSchool(string email, int schoolid)
+        {
+            var _user = _loginDto.UpdateSchool(email,schoolid);
+
+            if (_user == null)
+            {
+                return BadRequest("Find the user error"); ;
+            }
+            else
+            {
+                return Ok(_user);
+            }
+        }
+        
+
         [HttpPost]
         [Route("forgotpassword")]
         public IActionResult ForgotPassword([FromBody] User user)

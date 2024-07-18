@@ -100,8 +100,18 @@ namespace SaRLAB.DataAccess.Service.UserService
                 _user.AcademyRank = user.AcademyRank;
                 _context.SaveChanges();
             }
+            return _user;
+        }
 
+        public User UpdateSchool(string email, int schoolId)
+        {
+            var _user = _context.Users.SingleOrDefault(item => (item.Email == email));
 
+            if (_user != null)
+            {
+                _user.SchoolId = schoolId;
+                _context.SaveChanges();
+            }
             return _user;
         }
 

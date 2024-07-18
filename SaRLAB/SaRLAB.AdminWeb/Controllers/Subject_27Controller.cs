@@ -112,7 +112,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
 
             Subject subject = new Subject();
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByTypeSchool/" + Subject_id+"/" + userLogin.SchoolId).Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;
@@ -146,6 +146,7 @@ namespace SaRLAB.AdminWeb.Controllers
             {
                 try
                 {
+                    subject_new.SchoolId = userLogin.SchoolId;
                     string data = JsonConvert.SerializeObject(subject_new);
                     StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 
@@ -981,7 +982,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             Subject subject = new Subject();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByTypeSchool/" + Subject_id + "/" + userLogin.SchoolId).Result;
 
 
             if (response.IsSuccessStatusCode)
@@ -1063,7 +1064,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
             try
             {
-                subject.ID = Subject_id;
+                subject.Type = Subject_id;
+                subject.SchoolId = userLogin.SchoolId;
 
                 string data = JsonConvert.SerializeObject(subject);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");

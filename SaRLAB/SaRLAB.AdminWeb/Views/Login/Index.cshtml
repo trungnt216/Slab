@@ -25,6 +25,18 @@
                     <img src="@Url.Content("~/images/ic_password.png")" />
                     <input type="password" id="password" class="form-control" asp-for="Password" placeholder="Password">
                 </div>
+                <div class="form-group">
+                    <img src="@Url.Content("~/images/ic_school.png")" />
+                    <select asp-for="SchoolId" class="form-control form-control-select">
+                        @if (ViewBag.Schools != null)
+                        {
+                            @foreach (var schoolItem in ViewBag.Schools as List<SelectListItem>)
+                            {
+                                        <option value="@schoolItem.Value">@schoolItem.Text</option>
+                            }
+                        }
+                    </select>
+                </div>
                 @if (TempData["Error"] != null)
                 {
                     <div style="text-align: center; margin-bottom: 15px;">

@@ -202,7 +202,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_WareHouse(WareHouse wareHouse, int id , string type)
+        public ActionResult Create_WareHouse(WareHouse wareHouse, int id, string type)
         {
             if (_hasError)
             {
@@ -214,7 +214,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
-    
+
             try
             {
                 wareHouse.ID = null;
@@ -296,7 +296,7 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
 
-            //------------------------------ đặc tính ----------------
+        //------------------------------ đặc tính ----------------
         [HttpGet]
         public IActionResult Edit_ChemistryProperty(int id, string type)
         {
@@ -1758,7 +1758,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             Subject subject = new Subject();
 
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByID/" + Subject_id).Result;
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByTypeSchool/" + Subject_id + "/" + userLogin.SchoolId).Result;
 
 
             if (response.IsSuccessStatusCode)

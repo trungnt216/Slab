@@ -11,6 +11,7 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
     {
         List<Subject> GetAll();
         Subject GetByID(int id);
+        Subject GetByTypeSchool(int type, int schoolId);
         Subject GetByName(string name);
         Subject Update(Subject subject);
         Subject Insert(Subject subject);

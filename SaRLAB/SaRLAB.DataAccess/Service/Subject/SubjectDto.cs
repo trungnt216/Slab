@@ -34,7 +34,7 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
         public Subject GetByID(int id)
         {
-            var subject = _context.Subjects.SingleOrDefault(item => item.Type == id);
+            var subject = _context.Subjects.SingleOrDefault(item => item.ID == id);
 
             if (subject != null)
             {
@@ -75,6 +75,28 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
             }
         }
 
+        public Subject GetByTypeSchool(int type, int schoolId)
+        {
+            var subject = _context.Subjects.SingleOrDefault(item => (item.Type == type && item.SchoolId == schoolId));
+
+            if (subject != null)
+            {
+                Subject _subject = new Subject
+                {
+                    ID = subject.ID,
+                    Rule = subject.Rule,
+                    SubjectName = subject.SubjectName,
+                    Type = subject.Type,
+                };
+
+                return _subject;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public Subject GetSubjectBySchool(int schoolId)
         {
             var subject = _context.Subjects
@@ -91,16 +113,24 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
 
         public Subject GetSubjectBySchoolAndType(int schoolId, int type)
         {
-            var subject = _context.Subjects
-                .SingleOrDefault(item => item.SchoolId == schoolId && item.Type == type);
-            return subject != null ? new Subject
+            var subject = _context.Subjects.SingleOrDefault(item => (item.Type == type && item.SchoolId == schoolId));
+
+            if (subject != null)
             {
-                ID = subject.ID,
-                Rule = subject.Rule,
-                SubjectName = subject.SubjectName,
-                SchoolId = subject.SchoolId,
-                Type = subject.Type
-            } : null;
+                Subject _subject = new Subject
+                {
+                    ID = subject.ID,
+                    Rule = subject.Rule,
+                    SubjectName = subject.SubjectName,
+                    Type = subject.Type,
+                };
+
+                return _subject;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Subject Insert(Subject subject)
@@ -141,8 +171,6 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                 _subject.Rule = subject.Rule ?? _subject.Rule;
                 _context.SaveChanges();
             }
-
-
             return _subject;
         }
 
