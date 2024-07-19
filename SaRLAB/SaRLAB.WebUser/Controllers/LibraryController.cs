@@ -79,11 +79,6 @@ namespace SaRLAB.UserWeb.Controllers
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
-            if (userLogin.RoleName == ("Admin"))
-            {
-                checkRole = 1;
-            }
-
             HttpResponseMessage response_title = _httpClient.GetAsync(_httpClient.BaseAddress + "ManageTitle/GetManageTitlesAccordingSchool/" + userLogin.SchoolId).Result;
             if (response_title.IsSuccessStatusCode)
             {
@@ -107,7 +102,8 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
 TempData["AvtPath"] = userLogin.AvtPath;
-            
+
+
 
             List<Document> documents = new List<Document>();
 
@@ -131,6 +127,8 @@ TempData["AvtPath"] = userLogin.AvtPath;
         [HttpGet]
         public ActionResult Create_Library(int subjectID)
         {
+
+
             if (_hasError)
             {
                 return View("Error");
@@ -162,6 +160,8 @@ TempData["AvtPath"] = userLogin.AvtPath;
         [HttpPost]
         public ActionResult Create_Library(Document document, IFormFile File, int subjectID)
         {
+
+
             if (_hasError)
             {
                 return View("Error");
@@ -237,6 +237,8 @@ TempData["AvtPath"] = userLogin.AvtPath;
         [HttpGet]
         public ActionResult Details_Library(int id)
         {
+
+
             if (_hasError)
             {
                 return View("Error");
@@ -267,6 +269,8 @@ TempData["AvtPath"] = userLogin.AvtPath;
         [HttpGet]
         public ActionResult Edit_Library(int id)
         {
+
+
             if (_hasError)
             {
                 return View("Error");
@@ -319,6 +323,7 @@ TempData["AvtPath"] = userLogin.AvtPath;
         [HttpPost]
         public ActionResult Edit_Library(Document document, IFormFile File, int subjectID)
         {
+            
             if (_hasError)
             {
                 return View("Error");
