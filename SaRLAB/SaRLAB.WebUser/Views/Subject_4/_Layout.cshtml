@@ -1,11 +1,13 @@
 ﻿<!DOCTYPE html>
 
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
     <title>@ViewBag.Title</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -15,10 +17,34 @@
     <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/animated.css">
     <link rel="stylesheet" href="~/css/owl.css">
+    <style>
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
+
 <body id="bg-subject">
     @* header *@
-    <a href="h:\sarlab release\slab\sarlab\sarlab.webuser\views\subject_4\index.cshtml">h:\sarlab release\slab\sarlab\sarlab.webuser\views\subject_4\index.cshtml</a>
+    <a href="h:\sarlab release\slab\sarlab\sarlab.webuser\views\subject_4\index.cshtml">h:\sarlab
+        release\slab\sarlab\sarlab.webuser\views\subject_4\index.cshtml</a>
     <header class="header-area header-area-subject header-sticky">
         <div class="container">
             <div class="row">
@@ -39,6 +65,12 @@
         </div>
     </header>
     <div>
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="@Url.Content("~/images/abc.mp4")" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
+        </div>
         @RenderBody()
     </div>
 
@@ -195,7 +227,7 @@
                     updateExpiredItemsDisplay('hóa chất', expiredItems);
                     break;
                 case checkUrl(toolChemistryPaths):
-                    const expiredTools = JSON.parse(localStorage.getItem('expiredTools')) || 0; 
+                    const expiredTools = JSON.parse(localStorage.getItem('expiredTools')) || 0;
                     updateExpiredItemsDisplay('dụng cụ', expiredTools);
                     break;
                 case checkUrl(equipmentChemistryPaths):
@@ -208,4 +240,5 @@
         });
     </script>
 </body>
+
 </html>

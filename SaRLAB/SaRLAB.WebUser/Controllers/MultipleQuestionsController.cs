@@ -365,7 +365,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject1()
         {
-            if (_queFlag)
+            if (_queFlag == true || subjectFlag.BackupSubject1MarkFlag == true) 
             {
                 return RedirectToAction("index", "Subject_1");
             }
@@ -435,7 +435,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject2()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject2MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_2");
             }
@@ -505,7 +505,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject3()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject3MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_3");
             }
@@ -575,7 +575,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject4()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject4MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_4");
             }
@@ -645,7 +645,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject5()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject5MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_5");
             }
@@ -715,7 +715,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject6()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject6MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_6");
             }
@@ -785,7 +785,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject7()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject7MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_7");
             }
@@ -855,7 +855,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject8()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject8MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_8");
             }
@@ -925,7 +925,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject9()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject9MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_9");
             }
@@ -995,7 +995,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject10()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject10MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_10");
             }
@@ -1065,7 +1065,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject11()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject11MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_11");
             }
@@ -1135,7 +1135,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject12()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject12MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_12");
             }
@@ -1205,7 +1205,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject13()
         {
-            if (_queFlag)
+            if(_queFlag || subjectFlag.BackupSubject13MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_13");
             }
@@ -1275,7 +1275,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject14()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject14MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_14");
             }
@@ -1345,7 +1345,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject15()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject15MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_15");
             }
@@ -1416,7 +1416,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject16()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject16MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_16");
             }
@@ -1486,7 +1486,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject17()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject17MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_17");
             }
@@ -1556,7 +1556,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject18()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject18MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_18");
             }
@@ -1626,7 +1626,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject19()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject19MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_19");
             }
@@ -1696,7 +1696,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject20()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject20MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_20");
             }
@@ -1766,7 +1766,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject21()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject21MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_21");
             }
@@ -1836,7 +1836,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject22()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject22MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_22");
             }
@@ -1906,7 +1906,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject23()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject23MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_23");
             }
@@ -1976,7 +1976,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject24()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject24MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_24");
             }
@@ -2046,7 +2046,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject25()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject25MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_25");
             }
@@ -2116,7 +2116,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject26()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject26MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_26");
             }
@@ -2186,7 +2186,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject27()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject27MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_27");
             }
@@ -2256,7 +2256,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject28()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject28MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_28");
             }
@@ -2325,7 +2325,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject29()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject29MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_29");
             }
@@ -2395,7 +2395,7 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult GetAllQuestion_Subject30()
         {
-            if (_queFlag)
+            if (_queFlag || subjectFlag.BackupSubject30MarkFlag == true)
             {
                 return RedirectToAction("index", "Subject_30");
             }

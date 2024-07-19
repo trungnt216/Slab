@@ -15,6 +15,11 @@
 </head>
 <body>
     <div class="containers">
+        <div class="video-container">
+          <video id="video1" class="myVideo" autoplay muted>
+            <source src="~/images/login.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div class="login-container">
             <h2>ĐĂNG NHẬP</h2>
             <form asp-action="Login" class="sign-in-form">
@@ -44,7 +49,7 @@
                         <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
                     </div>
                 }
-                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
                 <div class="divider"></div>
                 <div class="text-signup">
                     <p>Bạn chưa có tài khoản?</p>

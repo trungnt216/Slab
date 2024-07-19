@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "GetAll_Library";
-    ViewBag.TitleCustom = "Danh sách tài liệu";
+    Layout = ViewBag.Layout;
     Layout = "~/Views/Subject_1/_Layout.cshtml";
     int counter = 1;
 }
@@ -177,7 +177,7 @@
                                     @Html.DisplayFor(modelItem => item.SubjectId)
                                 </td>
                                 <td>
-                                    <a class="btn-custom-view-detail" asp-action="Details_Library" asp-route-id="@item.ID">
+                                        <a class="btn-custom-view-detail" asp-action="Details_Library" asp-route-id="@item.ID" asp-route-subjectID=@ViewData["subject"]>
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
                                             <a class="btn-custom-edit" asp-action="Edit_Library" asp-route-id="@item.ID" asp-route-subjectID=@ViewData["subject"]>

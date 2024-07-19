@@ -3,15 +3,22 @@
     Layout = ViewBag.Layout;
 }
 
-@* banner *@
-<section class="hero hero-chem d-flex flex-column justify-content-center align-items-center " id="home">
+<section class="hero hero-subject d-flex flex-column justify-content-center align-items-center" id="home">
+    <div class="video-background">
+        <video autoplay muted loop style="top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+            <source src="@Url.Content("~/images/abc.mp4")" type="video/mp4">
+            Your browser does not support video.
+        </video>
+    </div>
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto col-12">
                 <div class="hero-text mt-5 text-center">
                     <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s"
-                        style="font-size: 65px !important;">Welcome to @TempData["Subject_29"]</h1>
+                        style="font-size: 65px !important;">
+                        Welcome to <span style="color: #D6C187 !important;">@TempData["Subject_1"]</span>
+                    </h1>
                     <div class="group-home d-flex wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
                         <a class="group-btn-home group-rules d-flex" asp-controller="Subject_29"
                             asp-action="Details_RuleClassroom">
@@ -21,7 +28,7 @@
                         <a class="group-btn-home group-news d-flex" asp-controller="Subject_29" asp-action="GetAll_New">
                             <img class="img-news" src="@Url.Content("~/images/news.png")" />
                             <p>Tin tức - News</p>
-                            <label class="txt-news">New</label>
+                            @* <label class="txt-news">New</label> *@
                         </a>
                     </div>
                 </div>
@@ -29,3 +36,17 @@
         </div>
     </div>
 </section>
+
+<footer class="text-center"
+    style="background-color: #111111; color: #D6C187; padding: 5px 0; position: fixed; bottom: 0; width: 100%; z-index: 10;">
+    <div class="container" style="padding: 0; display: flex; justify-content: space-between;">
+        <div style="text-align: left;">
+            <p style="color: #D6C187;font-size: 15px; line-height: 20px;">&copy; Author: Dinh Quang Canh.</p>
+            <p style="color: #D6C187;font-size: 15px; line-height: 20px;"><a href="#" style="color: #D6C187;">Email:
+                    dinhquangcanh@ump.edu.vn - Contact: +84 914 33 35 37</a></p>
+        </div>
+        <div style="text-align: right;">
+            <p style="color: #D6C187;font-size: 15px; line-height: 20px;">Version: 1.0.0</p>
+        </div>
+    </div>
+</footer>

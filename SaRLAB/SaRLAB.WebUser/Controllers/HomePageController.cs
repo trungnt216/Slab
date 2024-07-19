@@ -182,8 +182,15 @@ TempData["AvtPath"] = userLogin.AvtPath;
                 return View("Error");
             }
 
-            ViewData["layout"] = "~/Views/Chemistry/_LayoutChem.cshtml";
-
+            ViewData["layout"] = "~/Views/Subject_"+ subjectID + "/_Layout.cshtml";
+            Subject subject1 = new Subject();
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchoolAndType/" + userLogin.SchoolId + "/" + subjectID).Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            TempData["subject_1"] = subject1.SubjectName;
             ViewData["subjectID"] = subjectID;
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;

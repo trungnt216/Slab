@@ -17,6 +17,28 @@
     <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/animated.css">
     <link rel="stylesheet" href="~/css/owl.css">
+    <style>
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
 
 <body id="bg-subject">
@@ -43,6 +65,12 @@
         </div>
     </header>
     <div>
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="@Url.Content("~/images/abc.mp4")" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
+        </div>
         @RenderBody()
     </div>
 

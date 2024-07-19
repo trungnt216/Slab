@@ -98,12 +98,20 @@ namespace SaRLAB.UserWeb.Controllers
                 return View("Error");
             }
 
+            Subject subject1 = new Subject();
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchoolAndType/" + userLogin.SchoolId + "/" + subjectID).Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            TempData["subject_1"] = subject1.SubjectName;
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
 TempData["AvtPath"] = userLogin.AvtPath;
 
-
+            ViewData["layout"] = "~/Views/Subject_" + subjectID + "/_Layout.cshtml";
 
             List<Document> documents = new List<Document>();
 
@@ -133,7 +141,14 @@ TempData["AvtPath"] = userLogin.AvtPath;
             {
                 return View("Error");
             }
-
+            Subject subject1 = new Subject();
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchoolAndType/" + userLogin.SchoolId + "/" + subjectID).Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            TempData["subject_1"] = subject1.SubjectName;
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
@@ -166,7 +181,15 @@ TempData["AvtPath"] = userLogin.AvtPath;
             {
                 return View("Error");
             }
-
+            ViewData["layout"] = "~/Views/Subject_" + subjectID + "/_Layout.cshtml";
+            Subject subject1 = new Subject();
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchoolAndType/" + userLogin.SchoolId + "/" + subjectID).Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            TempData["subject_1"] = subject1.SubjectName;
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
@@ -235,15 +258,22 @@ TempData["AvtPath"] = userLogin.AvtPath;
         }
 
         [HttpGet]
-        public ActionResult Details_Library(int id)
+        public ActionResult Details_Library(int id, int subjectID)
         {
-
+            Subject subject1 = new Subject();
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchoolAndType/" + userLogin.SchoolId + "/" + subjectID).Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            TempData["subject_1"] = subject1.SubjectName;
 
             if (_hasError)
             {
                 return View("Error");
             }
-
+            ViewData["layout"] = "~/Views/Subject_" + subjectID + "/_Layout.cshtml";
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
@@ -267,9 +297,16 @@ TempData["AvtPath"] = userLogin.AvtPath;
         }
 
         [HttpGet]
-        public ActionResult Edit_Library(int id)
+        public ActionResult Edit_Library(int id, int subjectID)
         {
-
+            Subject subject1 = new Subject();
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchoolAndType/" + userLogin.SchoolId + "/" + subjectID).Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            TempData["subject_1"] = subject1.SubjectName;
 
             if (_hasError)
             {
@@ -323,7 +360,15 @@ TempData["AvtPath"] = userLogin.AvtPath;
         [HttpPost]
         public ActionResult Edit_Library(Document document, IFormFile File, int subjectID)
         {
-            
+            ViewData["layout"] = "~/Views/Subject_" + subjectID + "/_Layout.cshtml";
+            Subject subject1 = new Subject();
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchoolAndType/" + userLogin.SchoolId + "/" + subjectID).Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            TempData["subject_1"] = subject1.SubjectName;
             if (_hasError)
             {
                 return View("Error");
@@ -394,11 +439,20 @@ TempData["AvtPath"] = userLogin.AvtPath;
 
         public ActionResult Delete_Library(int id, int subjectID)
         {
+
+            ViewData["layout"] = "~/Views/Subject_" + subjectID + "/_Layout.cshtml";
             Document document = new Document();
 
             HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
 
-
+            Subject subject1 = new Subject();
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchoolAndType/" + userLogin.SchoolId + "/" + subjectID).Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject1 = JsonConvert.DeserializeObject<Subject>(data);
+            }
+            TempData["subject_1"] = subject1.SubjectName;
             if (responses.IsSuccessStatusCode)
             {
                 string data = responses.Content.ReadAsStringAsync().Result;
