@@ -105,6 +105,7 @@ namespace SaRLAB.UserWeb.Controllers
                 string jwtToken = response.Content.ReadAsStringAsync().Result;
 
                 Program.jwtToken = jwtToken;
+                Program.pass = login.Password;
 
                 DecodeJwtToken(jwtToken);
 
@@ -116,20 +117,7 @@ namespace SaRLAB.UserWeb.Controllers
                 {
                     if (claim.Type == ClaimTypes.Role)
                     {
-                        if(claim.Value == "Owner")
-                        {
-                            StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-
-                            HttpResponseMessage response2 = _httpClient.PostAsync(_httpClient.BaseAddress + "User/UpdateSchool/"+login.Email+"/"+login.SchoolId, content).Result;
-
-                            HttpResponseMessage response3;
-                            response3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Login/login/" + login.Email + "/" + login.Password).Result;
-
-                            string jwtToken1 = response3.Content.ReadAsStringAsync().Result;
-
-                            Program.jwtToken = jwtToken1;
-                        }
-                        return RedirectToAction("Home", "HomePage");
+                        return RedirectToAction("HomeSchool", "HomePage");
                     }
                 }
                 return View();

@@ -109,7 +109,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
-TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["AvtPath"] = userLogin.AvtPath;
 
             return View();
         }
@@ -124,7 +124,7 @@ TempData["AvtPath"] = userLogin.AvtPath;
                 subjectFlag = JsonConvert.DeserializeObject<SubjectFlag>(data);
             }
 
-            if(userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
             {
                 Type type = subjectFlag.GetType();
 
@@ -174,6 +174,44 @@ TempData["AvtPath"] = userLogin.AvtPath;
             return View();
         }
 
+        public ActionResult HomeSchool()
+        {
+            if (userLogin.RoleName != "Owner")
+            {
+                return RedirectToAction("Home", "HomePage");
+            }
+
+            List<School> schools = new List<School>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetAllSchool").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                schools = JsonConvert.DeserializeObject<List<School>>(data);
+            }
+
+            ViewBag.schoolItems = schools;
+
+            return View();
+        }
+
+        public ActionResult ChangeSchool(int SchoolId)
+        {
+            StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response2 = _httpClient.PostAsync(_httpClient.BaseAddress + "User/UpdateSchool/" + userLogin.Email + "/" + SchoolId, content).Result;
+
+            HttpResponseMessage response3;
+            response3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Login/login/" + userLogin.Email + "/" + Program.pass).Result;
+
+            string jwtToken1 = response3.Content.ReadAsStringAsync().Result;
+
+            Program.jwtToken = jwtToken1;
+
+            return RedirectToAction("Home", "HomePage");
+        }
+
         [HttpGet]
         public ActionResult Information(int subjectID)
         {
@@ -182,7 +220,7 @@ TempData["AvtPath"] = userLogin.AvtPath;
                 return View("Error");
             }
 
-            ViewData["layout"] = "~/Views/Subject_"+ subjectID + "/_Layout.cshtml";
+            ViewData["layout"] = "~/Views/Subject_" + subjectID + "/_Layout.cshtml";
             Subject subject1 = new Subject();
             HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetSubjectBySchoolAndType/" + userLogin.SchoolId + "/" + subjectID).Result;
             if (response_sub1.IsSuccessStatusCode)
@@ -195,7 +233,7 @@ TempData["AvtPath"] = userLogin.AvtPath;
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
-TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["AvtPath"] = userLogin.AvtPath;
             School school = new School();
 
             HttpResponseMessage response;
@@ -233,7 +271,7 @@ TempData["AvtPath"] = userLogin.AvtPath;
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
-TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["AvtPath"] = userLogin.AvtPath;
             ViewData["subjectID"] = subjectID;
 
 
@@ -266,7 +304,7 @@ TempData["AvtPath"] = userLogin.AvtPath;
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
-TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["AvtPath"] = userLogin.AvtPath;
             if (File != null)
             {
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/User");

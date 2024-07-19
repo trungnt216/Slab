@@ -71,7 +71,6 @@ namespace SaRLAB.UserWeb.Controllers
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
 
             HttpResponseMessage response_sub = _httpClient.GetAsync(_httpClient.BaseAddress + "SubjectFlag/GetByID/" + userLogin.Email).Result;
-
             if (response_sub.IsSuccessStatusCode)
             {
                 string data = response_sub.Content.ReadAsStringAsync().Result;
