@@ -24,6 +24,8 @@ namespace SaRLAB.UserWeb.Controllers
 
         private readonly IConfiguration _configuration;
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         UserDto userLogin = new UserDto();
 
         int checkRole = 0;
@@ -36,14 +38,18 @@ namespace SaRLAB.UserWeb.Controllers
 
         List<ManageTitle> manageTitles = new List<ManageTitle>();
 
-        public Subject_13Controller(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
+        public Subject_13Controller(ILogger<HomePageController> logger, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment env)
         {
             _env = env;
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
 
-            string jwtToken = Program.jwtToken;
+            var httpContext = _httpContextAccessor.HttpContext;
+            var jwtToken = httpContext.Session.GetString("jwtToken");
+
+
 
             if (jwtToken == null)
             {

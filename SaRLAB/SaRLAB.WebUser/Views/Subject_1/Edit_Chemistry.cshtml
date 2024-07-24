@@ -30,7 +30,11 @@
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-file-signature"></i>
-                                    <label asp-for="Name" class="control-label">Hoá chất</label>
+                                    @if(ViewBag.ActiveSubMenuLv2 == "hoá chất"){
+                                        <label asp-for="Name" class="control-label">Hoá chất</label>
+                                    }else{
+                                        <label asp-for="Name" class="control-label">Tên thiết bị</label>
+                                    }
                                 </div>
                                 <input asp-for="Name" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
@@ -38,7 +42,11 @@
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-file-signature"></i>
-                                    <label asp-for="Property" class="control-label">Công thức</label>
+                                    @if(ViewBag.ActiveSubMenuLv2 == "hoá chất"){
+                                        <label asp-for="Property" class="control-label">Công thức</label>
+                                    }else{
+                                        <label asp-for="Property" class="control-label">Vật liệu</label>
+                                    }
                                 </div>
                                 <input asp-for="Property" class="form-control" />
                                 <span asp-validation-for="Property" class="text-danger"></span>

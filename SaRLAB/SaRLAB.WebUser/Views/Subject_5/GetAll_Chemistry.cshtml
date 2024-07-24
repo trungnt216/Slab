@@ -91,14 +91,28 @@
                                     <th class="d-none">
                                         @Html.DisplayNameFor(model => model.ID)
                                     </th>
-                                    <th>
-                                        Hoá chất
-                                        <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
-                                    </th>
-                                    <th>
-                                        Công thức
-                                        <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
-                                    </th>
+                                    @if (ViewBag.ActiveSubMenuLv2 == "hoá chất" || ViewBag.ActiveSubMenuLv2 == "dự trù hoá chất")
+                                    {
+                                        <th>
+                                            Hoá chất
+                                            <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
+                                        </th>
+                                        <th>
+                                            Công thức
+                                            <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
+                                        </th>
+                                    }
+                                    else
+                                    {
+                                        <th>
+                                            Tên thiết bị
+                                            <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
+                                        </th>
+                                        <th>
+                                            Vật liệu
+                                            <i class="fa fa-sort" onclick="sortTable('table', 2)"></i>
+                                        </th>
+                                    }
                                     <th class="d-none">
                                         @Html.DisplayNameFor(model => model.CreateBy)
                                     </th>
@@ -180,78 +194,78 @@
                                             expiredItemCount++;
                                         }
 
-                                        <tr style="@style">
-                                            <td>
+                                                        <tr style="@style">
+                                                            <td>
                                                 @counter
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.ID)
-                                            </td>
-                                            <td>
+                                                            </td>
+                                                            <td>
                                                 @Html.Raw(item.Name)
-                                            </td>
-                                            <td>
+                                                            </td>
+                                                            <td>
                                                 @Html.Raw(item.Property)
-                                            </td>
-                                            <td>
+                                                            </td>
+                                                            <td>
                                                 @Html.DisplayFor(modelItem => item.Unit1)
-                                            </td>
-                                            <td>
+                                                            </td>
+                                                            <td>
                                                 @Html.DisplayFor(modelItem => item.Unit1Amount)
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.CreateBy)
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.CreateTime)
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.UpdateBy)
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.UpdateTime)
-                                            </td>
-                                            <td>
+                                                            </td>
+                                                            <td>
                                                 @item.ExpiredDate
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.Type)
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.Remark)
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.ImagePath)
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.SubjectId)
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.SchoolId)
-                                            </td>
-                                            <td class="d-none">
+                                                            </td>
+                                                            <td class="d-none">
                                                 @Html.DisplayFor(modelItem => item.EquipmentQuantity)
-                                            </td>
-                                            <td>
-                                                <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
-                                                    alt="Image" />
-                                            </td>
-                                            <td>
-                                                <a class="btn-custom-view-detail" asp-action="Details_Chemistry"
-                                                    asp-route-type="@ViewBag.ActiveSubMenuLv2" asp-route-id="@item.ID">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>
-                                                <a class="btn-custom-edit" asp-action="Edit_Chemistry"
-                                                    asp-route-type="@ViewBag.ActiveSubMenuLv2" asp-route-id="@item.ID">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                </a>
-                                                <a class="btn-custom-delete" href="#"
-                                                    data-url="@Url.Action("Delete_Chemistry", "Subject_5", new { id = item.ID, type = item.Type })"
-                                                    onclick="openDeleteModal(this)">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                                            </td>
+                                                            <td>
+                                                                <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
+                                                                    alt="Image" />
+                                                            </td>
+                                                            <td>
+                                                                <a class="btn-custom-view-detail" asp-action="Details_Chemistry"
+                                                                    asp-route-type="@ViewBag.ActiveSubMenuLv2" asp-route-id="@item.ID">
+                                                                    <i class="fa-solid fa-eye"></i>
+                                                                </a>
+                                                                <a class="btn-custom-edit" asp-action="Edit_Chemistry"
+                                                                    asp-route-type="@ViewBag.ActiveSubMenuLv2" asp-route-id="@item.ID">
+                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                </a>
+                                                                <a class="btn-custom-delete" href="#"
+                                                                    data-url="@Url.Action("Delete_Chemistry", "Subject_5", new { id = item.ID, type = item.Type })"
+                                                                    onclick="openDeleteModal(this)">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
                                         counter++;
                                     }
                                 }
@@ -259,8 +273,8 @@
                         </table>
                         @if (Model == null || !Model.Any())
                         {
-                            <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không
-                                có dữ liệu!</p>
+                                    <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không
+                                        có dữ liệu!</p>
                         }
                     </div>
             </div>
@@ -281,33 +295,33 @@
 </div>
 
 @section Scripts {
-    <script src="~/js/table.js"></script>
-    <script type="text/javascript">
-        var deleteUrl = '';
+            <script src="~/js/table.js"></script>
+            <script type="text/javascript">
+                var deleteUrl = '';
 
-        function openDeleteModal(element) {
-            deleteUrl = element.getAttribute("data-url");
-            document.getElementById('deleteModal').style.display = 'block';
-        }
+                function openDeleteModal(element) {
+                    deleteUrl = element.getAttribute("data-url");
+                    document.getElementById('deleteModal').style.display = 'block';
+                }
 
-        function closeDeleteModal() {
-            document.getElementById('deleteModal').style.display = 'none';
-        }
+                function closeDeleteModal() {
+                    document.getElementById('deleteModal').style.display = 'none';
+                }
 
-        document.getElementById('confirmDeleteButton').onclick = function () {
-            window.location.href = deleteUrl;
-        };
+                document.getElementById('confirmDeleteButton').onclick = function () {
+                    window.location.href = deleteUrl;
+                };
 
-        // Close the modal if the user clicks outside of it
-        window.onclick = function (event) {
-            var modal = document.getElementById('deleteModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-    </script>
+                // Close the modal if the user clicks outside of it
+                window.onclick = function (event) {
+                    var modal = document.getElementById('deleteModal');
+                    if (event.target == modal) {
+                        modal.style.display = 'none';
+                    }
+                }
+            </script>
 
-    <script type="text/javascript">
-        localStorage.setItem('expiredItems', @expiredItemCount);
-    </script>
+            <script type="text/javascript">
+                localStorage.setItem('expiredItems', @expiredItemCount);
+            </script>
 }

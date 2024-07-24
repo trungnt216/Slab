@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using SaRLAB.UserWeb.Models;
 using System.Diagnostics;
@@ -104,10 +105,15 @@ namespace SaRLAB.UserWeb.Controllers
 
                 string jwtToken = response.Content.ReadAsStringAsync().Result;
 
-                Program.jwtToken = jwtToken;
-                Program.pass = login.Password;
+                // Program.jwtToken = jwtToken;
+                // Program.pass = login.Password;
+
+                HttpContext.Session.SetString("jwtToken", jwtToken);
+                HttpContext.Session.SetString("pass", login.Password);
 
                 DecodeJwtToken(jwtToken);
+
+                string jwtToken1 = HttpContext.Session.GetString("jwtToken");
 
                 var tokenHandler = new JwtSecurityTokenHandler();
 

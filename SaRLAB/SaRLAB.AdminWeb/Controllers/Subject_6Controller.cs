@@ -16,6 +16,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
         private readonly IWebHostEnvironment _env;
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
 
         Uri baseAddress = new Uri(Program.api);
 
@@ -32,14 +34,18 @@ namespace SaRLAB.AdminWeb.Controllers
 
         List<ManageTitle> manageTitles = new List<ManageTitle>();
 
-        public Subject_6(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
+        public Subject_6(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor)
         {
             _env = env;
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
 
-            string jwtToken = Program.jwtToken;
+            var httpContext = _httpContextAccessor.HttpContext;
+            var jwtToken = httpContext.Session.GetString("jwtToken");
+
+
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -112,7 +118,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
 
             Subject subject = new Subject();
-            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByTypeSchool/" + Subject_id+"/" + userLogin.SchoolId).Result;
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByTypeSchool/" + Subject_id + "/" + userLogin.SchoolId).Result;
             if (response_sub1.IsSuccessStatusCode)
             {
                 string data = response_sub1.Content.ReadAsStringAsync().Result;

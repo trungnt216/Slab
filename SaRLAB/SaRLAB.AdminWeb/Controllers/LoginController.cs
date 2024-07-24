@@ -25,10 +25,12 @@ namespace SaRLAB.AdminWeb.Controllers
 
         private readonly IWebHostEnvironment _env;
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         UserDto userLogin = new UserDto();
         List<NoticeAdmin> notice = new List<NoticeAdmin>();
 
-        public LoginController(IConfiguration configuration, IWebHostEnvironment env)
+        public LoginController(IConfiguration configuration, IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor)
         {
             _env = env;
 
@@ -36,6 +38,10 @@ namespace SaRLAB.AdminWeb.Controllers
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
+
+            var httpContext = _httpContextAccessor.HttpContext;
+            var jwtToken = httpContext.Session.GetString("jwtToken");
         }
 
         public void DecodeJwtToken(string jwtToken)
@@ -125,7 +131,9 @@ namespace SaRLAB.AdminWeb.Controllers
                 string jwtToken = response.Content.ReadAsStringAsync().Result;
                 Console.WriteLine(jwtToken);
 
-                Program.jwtToken = jwtToken;
+                /*Program.jwtToken = jwtToken;*/
+
+                HttpContext.Session.SetString("jwtToken", jwtToken);
 
                 DecodeJwtToken(jwtToken);
 
@@ -155,7 +163,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
                 string jwtToken1 = response3.Content.ReadAsStringAsync().Result;
 
-                Program.jwtToken = jwtToken1;
+                /*Program.jwtToken = jwtToken1;*/
+                HttpContext.Session.SetString("jwtToken", jwtToken1);
 
                 /* return RedirectToAction("Index", "Home");*/
                 return RedirectToAction("GetAllBanner", "Configuration");

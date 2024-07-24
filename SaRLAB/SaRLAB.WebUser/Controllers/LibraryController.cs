@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 
 namespace SaRLAB.UserWeb.Controllers
 {
@@ -19,6 +20,8 @@ namespace SaRLAB.UserWeb.Controllers
 
         private readonly IConfiguration _configuration;
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         UserDto userLogin = new UserDto();
 
         int checkRole = 0;
@@ -31,16 +34,19 @@ namespace SaRLAB.UserWeb.Controllers
 
         List<ManageTitle> manageTitles = new List<ManageTitle>();
 
-        public LibraryController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
+        public LibraryController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor)
         {
             _env = env;
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
 
-            string jwtToken = Program.jwtToken;
+            var httpContext = _httpContextAccessor.HttpContext;
+            var jwtToken = httpContext.Session.GetString("jwtToken");
 
-            if(jwtToken == null){
+            if (jwtToken == null)
+            {
                 _hasError = true;
                 return;
             }
@@ -85,7 +91,6 @@ namespace SaRLAB.UserWeb.Controllers
                 string data = response_title.Content.ReadAsStringAsync().Result;
                 manageTitles = JsonConvert.DeserializeObject<List<ManageTitle>>(data);
             }
-
         }
 
         //------------------------------- thư viện Library ------------------------------------

@@ -26,6 +26,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
         private readonly IWebHostEnvironment _env;
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
 
         UserDto userLogin = new UserDto();
 
@@ -34,15 +36,18 @@ namespace SaRLAB.AdminWeb.Controllers
 
         List<ManageTitle> manageTitles = new List<ManageTitle>();
 
-        public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
+        public ConfigurationController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor)
         {
             _env = env;
 
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
 
-            string jwtToken = Program.jwtToken;
+            var httpContext = _httpContextAccessor.HttpContext;
+            var jwtToken = httpContext.Session.GetString("jwtToken");
+            _httpContextAccessor = httpContextAccessor;
 
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -105,7 +110,7 @@ namespace SaRLAB.AdminWeb.Controllers
         public IActionResult Index()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -114,7 +119,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
 
@@ -126,7 +131,7 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult Recover_Banner()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -135,7 +140,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             School school = new School();
@@ -165,7 +170,7 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAllBanner()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -174,7 +179,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             School school = new School();
@@ -191,8 +196,8 @@ TempData["noticeCount"] = notice.Count;
             return View(school);
         }
         [HttpPost]
-        public ActionResult GetAllBanner(School school, IFormFile FileBanner, IFormFile FileLogoSchool, 
-        IFormFile FileBackupSubject1Logo, IFormFile FileBackupSubject2Logo, IFormFile FileBackupSubject3Logo, IFormFile FileBackupSubject4Logo, IFormFile FileBackupSubject5Logo, 
+        public ActionResult GetAllBanner(School school, IFormFile FileBanner, IFormFile FileLogoSchool,
+        IFormFile FileBackupSubject1Logo, IFormFile FileBackupSubject2Logo, IFormFile FileBackupSubject3Logo, IFormFile FileBackupSubject4Logo, IFormFile FileBackupSubject5Logo,
         IFormFile FileBackupSubject6Logo, IFormFile FileBackupSubject7Logo, IFormFile FileBackupSubject8Logo, IFormFile FileBackupSubject9Logo, IFormFile FileBackupSubject10Logo,
         IFormFile FileBackupSubject11Logo, IFormFile FileBackupSubject12Logo, IFormFile FileBackupSubject13Logo, IFormFile FileBackupSubject14Logo, IFormFile FileBackupSubject15Logo,
         IFormFile FileBackupSubject16Logo, IFormFile FileBackupSubject17Logo, IFormFile FileBackupSubject18Logo, IFormFile FileBackupSubject19Logo, IFormFile FileBackupSubject20Logo,
@@ -200,7 +205,7 @@ TempData["noticeCount"] = notice.Count;
         IFormFile FileBackupSubject26Logo, IFormFile FileBackupSubject27Logo, IFormFile FileBackupSubject28Logo, IFormFile FileBackupSubject29Logo, IFormFile FileBackupSubject30Logo)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -209,7 +214,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             if (FileBanner != null)
@@ -887,7 +892,7 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAllUser()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -896,7 +901,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             List<UserDto> users = new List<UserDto>();
@@ -915,7 +920,7 @@ TempData["noticeCount"] = notice.Count;
                     users = JsonConvert.DeserializeObject<List<UserDto>>(data);
                 }
                 ViewBag.ActiveMenu = "user";
-          
+
             }
             else
             {
@@ -936,7 +941,7 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult InsertUser()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
 
             List<School> schools = new List<School>();
@@ -966,15 +971,16 @@ TempData["noticeCount"] = notice.Count;
             return View();
         }
         [HttpPost]
-        public IActionResult InsertUser(User user) {
+        public IActionResult InsertUser(User user)
+        {
 
-            if (user == null) 
+            if (user == null)
             {
                 ViewBag.ActiveMenu = "user";
                 return View();
             }
 
-            try 
+            try
             {
                 user.CreateBy = userLogin.Email;
                 user.UpdateBy = userLogin.Email;
@@ -985,7 +991,7 @@ TempData["noticeCount"] = notice.Count;
 
                 HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/register", content).Result;
 
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     TempData["successMessage"] = "User create success";
                     ViewBag.ActiveMenu = "user";
@@ -1007,7 +1013,7 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult Edit(string email)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -1016,7 +1022,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             User user = new User();
@@ -1118,7 +1124,7 @@ TempData["noticeCount"] = notice.Count;
             {
                 Console.WriteLine(id.ToString());
                 StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                HttpResponseMessage response1 = _httpClient.PostAsync(_httpClient.BaseAddress + "User/DeleteById/" + id,content).Result;
+                HttpResponseMessage response1 = _httpClient.PostAsync(_httpClient.BaseAddress + "User/DeleteById/" + id, content).Result;
 
                 Console.WriteLine(response);
 
@@ -1144,7 +1150,7 @@ TempData["noticeCount"] = notice.Count;
                 foreach (var id in request.Ids)
                 {
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/DeleteById/" + id,content).Result;
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "User/DeleteById/" + id, content).Result;
 
                     if (!response.IsSuccessStatusCode)
                     {
@@ -1167,7 +1173,7 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult InsertBanner()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -1176,7 +1182,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
 
@@ -1246,7 +1252,7 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult EditBanner(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -1255,7 +1261,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
             /*            string substringToRemove = "/undefined";
 
@@ -1348,7 +1354,7 @@ TempData["noticeCount"] = notice.Count;
                 Console.WriteLine(id.ToString());
                 HttpResponseMessage response;
                 StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                response = _httpClient.PostAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id,content).Result;
+                response = _httpClient.PostAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id, content).Result;
 
                 Console.WriteLine(response);
 
@@ -1372,7 +1378,7 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult DeleteMultipleBanners([FromBody] DeleteMultipleRequest request)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -1381,7 +1387,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             try
@@ -1389,7 +1395,7 @@ TempData["noticeCount"] = notice.Count;
                 foreach (var id in request.Ids)
                 {
                     StringContent content = new StringContent("", Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id,content).Result;
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Banner/DeleteById/" + id, content).Result;
 
                     if (!response.IsSuccessStatusCode)
                     {
@@ -1418,7 +1424,7 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult Fix_Information()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -1427,7 +1433,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             User user = new User();
@@ -1499,7 +1505,7 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult GetAll_User()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -1508,7 +1514,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             List<UserDto> users = new List<UserDto>();
@@ -1532,7 +1538,7 @@ TempData["noticeCount"] = notice.Count;
         public IActionResult Edit_User(string email)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath;
 
 

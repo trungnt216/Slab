@@ -1,4 +1,4 @@
-﻿ using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using NuGet.Common;
@@ -21,6 +21,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
         private readonly IConfiguration _configuration;
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         UserDto userLogin = new UserDto();
 
         List<Subject> subjects = new List<Subject>();
@@ -28,12 +30,16 @@ namespace SaRLAB.AdminWeb.Controllers
 
         List<ManageTitle> manageTitles = new List<ManageTitle>();
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
-            string jwtToken = Program.jwtToken;
+            _httpContextAccessor = httpContextAccessor;
+
+            var httpContext = _httpContextAccessor.HttpContext;
+            var jwtToken = httpContext.Session.GetString("jwtToken");
+            _httpContextAccessor = httpContextAccessor;
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.ReadJwtToken(jwtToken);
@@ -97,7 +103,7 @@ namespace SaRLAB.AdminWeb.Controllers
 
             Console.WriteLine(response.StatusCode);
 
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 string data = response.Content.ReadAsStringAsync().Result;
                 subjects = JsonConvert.DeserializeObject<List<Subject>>(data);
@@ -134,7 +140,7 @@ namespace SaRLAB.AdminWeb.Controllers
         public IActionResult GetAllNotice()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -164,7 +170,7 @@ namespace SaRLAB.AdminWeb.Controllers
         public ActionResult Details_Notice(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);

@@ -1,6 +1,6 @@
 ﻿.containers {
     /* background: radial-gradient(circle, rgb(57 57 57) 0%, rgb(0 0 0) 100%); */
-    background: #1f1c1f;
+    background: #000000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@
     position: absolute;
     z-index: 10;
     left: 50%;
-    top: 20%;
+    top: 30%;
     transform: translateX(-50%);
 }
 

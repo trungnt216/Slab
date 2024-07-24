@@ -21,6 +21,8 @@ namespace SaRLAB.AdminWeb.Controllers
 
         private readonly IWebHostEnvironment _env;
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
 
         UserDto userLogin = new UserDto();
 
@@ -29,15 +31,19 @@ namespace SaRLAB.AdminWeb.Controllers
 
         List<ManageTitle> manageTitles = new List<ManageTitle>();
 
-        public SchoolController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env)
+        public SchoolController(ILogger<HomeController> logger, IConfiguration configuration, IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor)
         {
             _env = env;
 
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
 
-            string jwtToken = Program.jwtToken;
+            var httpContext = _httpContextAccessor.HttpContext;
+            var jwtToken = httpContext.Session.GetString("jwtToken");
+
+
 
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -100,7 +106,7 @@ namespace SaRLAB.AdminWeb.Controllers
         public IActionResult GetAllSchool()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -109,7 +115,7 @@ namespace SaRLAB.AdminWeb.Controllers
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             List<School> schools = new List<School>();
@@ -130,7 +136,7 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult CreateSchool()
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -139,7 +145,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             if (userLogin.RoleName == "Owner")
@@ -186,7 +192,7 @@ TempData["noticeCount"] = notice.Count;
         public ActionResult EditSchool(int id)
         {
             TempData["name"] = userLogin.Name;
-            TempData["AvtPath"] = userLogin.AvtPath;TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
             for (int i = 1; i <= 30; i++)
             {
                 var subjectname = subjects.SingleOrDefault(item => item.Type == i);
@@ -195,7 +201,7 @@ TempData["noticeCount"] = notice.Count;
                     TempData[$"subject_{i}"] = subjectname.SubjectName;
                 }
             }
-TempData["noticeCount"] = notice.Count;
+            TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
 
             School school = new School();

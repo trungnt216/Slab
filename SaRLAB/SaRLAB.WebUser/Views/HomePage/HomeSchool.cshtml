@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+@{
+    var bannerUrl = Url.Content("~/images/banner.jpg");
+}
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
+        <title>Home</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+        <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/animated.css">
+        <link rel="stylesheet" href="~/css/owl.css">
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
+        <style>
+            .school-name {
+                word-wrap: break-word;
+                word-break: break-all;
+                text-align: center;
+                padding: 10px;
+                margin: 10px 0;
+        }
+    </style>
+    </head>
+
+    <body style="overflow: hidden">
+
+        <div id="services" class="services section" style="background: url('@bannerUrl') center;">
+            <div class="overlay"></div>
+            <div class="services-content">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col">
+                            <div class="section-heading wow fadeInDown">
+                                <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 45px; margin-top: 30px; margin-bottom: 5px;">Welcome to SaRLAB</h1>
+                                <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
+                                    Room management utility application. SaRLAB promises optimal work and facilitates creativity in research!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="margin-bottom: 50px">
+                    <div class="service-carousel">
+                    @foreach (var school in ViewBag.schoolItems){
+                            <div class="flex-item">
+                                <a asp-controller="HomePage" asp-action="ChangeSchool" asp-route-SchoolId="@school.ID" class="service-link">
+                                    <div class="service-item first-service">
+                                    @if (school.SchoolLogo == null)
+                                    {
+                                        <img src="@Url.Content("~/images/schoollogo.png")" class="image" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(school.SchoolLogo)" class="image" alt="" />
+                                    }
+                                            <h4 class="school-name">@school.Name</h4>
+                                    </div>
+                                </a>
+                            </div>
+                    }
+
+
+                    @* @if (ViewBag.SubjectFlag.BackupSubject30PermissionFlag == true)
+                    {
+                        <div class="flex-item">
+                            <a asp-controller="MultipleQuestions" asp-action="GetAllQuestion_Subject30" class="service-link">
+                                <div class="service-item first-service">
+                                    @if (@ViewBag.school.BackupSubject30Logo == null)
+                                    {
+                                        <img src="@Url.Content("~/images/library.png")" class="image" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(ViewBag.school.BackupSubject30Logo)" class="image" alt="" />
+                                    }
+                                    <h4>@TempData["subject_30"]</h4>
+                                </div>
+                            </a>
+                        </div>
+                    } *@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var $carousel = $('.service-carousel');
+                var itemCount = $carousel.children('.flex-item').length;
+
+                $carousel.slick({
+                    infinite: true,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    dots: itemCount > 2, 
+                    arrows: true,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                                dots: itemCount > 2
+                            }
+                        },
+                        {
+                            breakpoint: 992,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: itemCount > 1
+                            }
+                        }
+                    ]
+                });
+            });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var serviceItems = document.querySelectorAll('.service-item');
+
+                serviceItems.forEach(function (item) {
+                    var h4Text = item.querySelector('h4').textContent.trim();
+                    var tooltipDiv = document.createElement('div');
+                    tooltipDiv.className = 'subject-tooltip';
+                    tooltipDiv.innerHTML = '<span class="subjectTooltipText">' + h4Text + '</span>';
+                    item.appendChild(tooltipDiv);
+                });
+            });
+        </script>
+    </body>
+</html>

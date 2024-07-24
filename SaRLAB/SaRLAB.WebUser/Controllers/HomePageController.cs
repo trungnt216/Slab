@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using NuGet.Protocol.Plugins;
 using SaRLAB.Models.Dto;
@@ -18,11 +19,15 @@ namespace SaRLAB.UserWeb.Controllers
 
         Uri baseAddress = new Uri(Program.api);
 
+        string password = null;
+
         private readonly IWebHostEnvironment _env;
 
         private readonly HttpClient _httpClient;
 
         private readonly IConfiguration _configuration;
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         UserDto userLogin = new UserDto();
 
@@ -34,14 +39,17 @@ namespace SaRLAB.UserWeb.Controllers
 
         List<ManageTitle> manageTitles = new List<ManageTitle>();
 
-        public HomePageController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
+        public HomePageController(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor)
         {
             _env = env;
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
-
-            string jwtToken = Program.jwtToken;
+            _httpContextAccessor = httpContextAccessor;
+            
+            var httpContext = _httpContextAccessor.HttpContext;
+            var jwtToken = httpContext.Session.GetString("jwtToken");
+            password = httpContext.Session.GetString("pass");
 
             pathFolderSave = _configuration["PathFolder:Value"];
 
@@ -203,11 +211,14 @@ namespace SaRLAB.UserWeb.Controllers
             HttpResponseMessage response2 = _httpClient.PostAsync(_httpClient.BaseAddress + "User/UpdateSchool/" + userLogin.Email + "/" + SchoolId, content).Result;
 
             HttpResponseMessage response3;
-            response3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Login/login/" + userLogin.Email + "/" + Program.pass).Result;
+            response3 = _httpClient.GetAsync(_httpClient.BaseAddress + "Login/login/" + userLogin.Email + "/" + password).Result;
 
             string jwtToken1 = response3.Content.ReadAsStringAsync().Result;
 
-            Program.jwtToken = jwtToken1;
+
+            var httpContext = _httpContextAccessor.HttpContext;
+            httpContext.Session.SetString("jwtToken", jwtToken1);
+            /*            Program.jwtToken = jwtToken1;*/
 
             return RedirectToAction("Home", "HomePage");
         }
@@ -355,7 +366,8 @@ namespace SaRLAB.UserWeb.Controllers
 
         public IActionResult Logout()
         {
-            Program.jwtToken = null;
+            var httpContext = _httpContextAccessor.HttpContext;
+            httpContext.Session.Clear();
             return RedirectToAction("Login", "Login");
         }
     }

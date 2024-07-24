@@ -192,12 +192,13 @@
     </li>
     <li class="scroll-to-section menu menu-info-group-trigger"><a
             class="menu @((ViewBag.ActiveMenu == "user") ? "active" : "")" data-toggle="dropdown"
-            asp-controller="HomePage" asp-action="Information">Thông tin người dùng</a></li>
+           asp-controller="HomePage" asp-action="Information" asp-route-subjectID="20">Thông tin người dùng</a>
+    </li>
     @* logout *@
     <li class="scroll-to-section logout menu">
         <div class="main-red-button"><a asp-controller="HomePage" asp-action="Logout">Đăng xuất</a></div>
     </li>
-    <li class="scroll-to-section logout-trigger menu"><a class="menu" asp-controller=" HomePage"
+    <li class="scroll-to-section logout-trigger menu"><a class="menu" asp-controller="HomePage"
             asp-action="Logout">Đăng xuất</a></li>
 </ul>
 <a class="menu-trigger">

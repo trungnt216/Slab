@@ -17,6 +17,8 @@ namespace SaRLAB.UserWeb.Controllers
 
         private readonly IConfiguration _configuration;
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         UserDto userLogin = new UserDto();
 
         int checkRole = 0;
@@ -27,13 +29,15 @@ namespace SaRLAB.UserWeb.Controllers
 
         SubjectFlag subjectFlag = new SubjectFlag();
 
-        public MultipleQuestionsController(ILogger<HomePageController> logger, IConfiguration configuration)
+        public MultipleQuestionsController(ILogger<HomePageController> logger, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
 
-            string jwtToken = Program.jwtToken;
+            var httpContext = _httpContextAccessor.HttpContext;
+            var jwtToken = httpContext.Session.GetString("jwtToken");
 
             if (jwtToken == null)
             {
@@ -83,7 +87,6 @@ namespace SaRLAB.UserWeb.Controllers
                 _queFlag = true;
                 return;
             }
-
         }
 
 

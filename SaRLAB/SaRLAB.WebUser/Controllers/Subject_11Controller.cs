@@ -24,6 +24,8 @@ namespace SaRLAB.UserWeb.Controllers
 
         private readonly IConfiguration _configuration;
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         UserDto userLogin = new UserDto();
 
         int checkRole = 0;
@@ -36,14 +38,18 @@ namespace SaRLAB.UserWeb.Controllers
 
         List<ManageTitle> manageTitles = new List<ManageTitle>();
 
-        public Subject_11Controller(ILogger<HomePageController> logger, IConfiguration configuration, IWebHostEnvironment env)
+        public Subject_11Controller(ILogger<HomePageController> logger, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment env)
         {
             _env = env;
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = baseAddress;
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
 
-            string jwtToken = Program.jwtToken;
+            var httpContext = _httpContextAccessor.HttpContext;
+            var jwtToken = httpContext.Session.GetString("jwtToken");
+
+
 
             if (jwtToken == null)
             {
@@ -202,7 +208,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create_WareHouse(WareHouse wareHouse, int id , string type)
+        public ActionResult Create_WareHouse(WareHouse wareHouse, int id, string type)
         {
             if (_hasError)
             {
@@ -214,7 +220,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
-    
+
             try
             {
                 wareHouse.ID = null;
@@ -296,7 +302,7 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
 
-            //------------------------------ đặc tính ----------------
+        //------------------------------ đặc tính ----------------
         [HttpGet]
         public IActionResult Edit_ChemistryProperty(int id, string type)
         {
