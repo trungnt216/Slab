@@ -136,7 +136,18 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
 
             ViewBag.ActiveMenu = "homePage";
-
+            SubjectFlag subjectFlag = new SubjectFlag();
+            HttpResponseMessage response_sub = _httpClient.GetAsync(_httpClient.BaseAddress + "SubjectFlag/GetByID/" + userLogin.Email).Result;
+            if (response_sub.IsSuccessStatusCode)
+            {
+                string data1 = response_sub.Content.ReadAsStringAsync().Result;
+                subjectFlag = JsonConvert.DeserializeObject<SubjectFlag>(data1);
+            }
+            subjectFlag.UserEmail = userLogin.Email;
+            subjectFlag.BackupSubject5MarkFlag = true;
+            string data = JsonConvert.SerializeObject(subjectFlag);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "SubjectFlag/Update/" + userLogin.Email, content).Result;
 
             return View();
         }
