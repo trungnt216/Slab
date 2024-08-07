@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.EquipmentPropertyService;
 using SaRLAB.DataAccess.Service.ManageTitleService;
 using SaRLAB.Models.Entity;
@@ -18,6 +19,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Insert(EquipmentProperty equipmentProperty)
         {
             if (equipmentProperty == null)
@@ -32,6 +34,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Update(int id, EquipmentProperty equipmentProperty)
         {
             if (id == 0)
@@ -47,6 +50,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult DeletelById(int id)
         {
             return Ok(_equipmentPropertyService.DeleteEquipmentPropertyById(id));
@@ -54,6 +58,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("Get/{equipmentId}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetEquipmentPropertiesAccordingEquipment(int equipmentId)
         {
             return Ok(_equipmentPropertyService.GetEquipmentPropertiesByEquipmentId(equipmentId));

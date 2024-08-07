@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.EquipmentService;
 using SaRLAB.DataAccess.Service.PlanDetailService;
 using SaRLAB.Models.Entity;
@@ -19,6 +20,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetPlanDetailListByPracticePlanId")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetPlanDetailListByPracticePlanId(PlanDetail planDetail)
         {
             return Ok(_planDetailService.GetPlanDetailListByPracticePlanId(planDetail));
@@ -26,6 +28,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetById/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetPlanDetailById(int id)
         {
             return Ok(_planDetailService.GetPlanDetailById(id));
@@ -33,6 +36,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult UpdatePlanDetailById(int id, [FromBody] PlanDetail planDetail)
         {
             return Ok(_planDetailService.UpdatePlanDetailById(id, planDetail));
@@ -40,6 +44,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult InsertPlanDetailById([FromBody] PlanDetail planDetail)
         {
   
@@ -57,6 +62,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult DeletePlanDetailById(int id)
         {
             return Ok(_planDetailService.DeletePlanDetailById(id));

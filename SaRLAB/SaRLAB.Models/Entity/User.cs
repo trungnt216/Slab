@@ -30,6 +30,7 @@ namespace SaRLAB.Models.Entity
         public string? AcademyRank { get; set; }
         public int? Experience { get; set; }
         public string? AvtPath { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập mã trường!")]
         public int? SchoolId { get; set; }
        [ForeignKey("RoleManages")]
         public int Role_ID { get; set; }

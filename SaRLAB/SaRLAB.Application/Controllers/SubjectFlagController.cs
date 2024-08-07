@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.SubjectDto;
 using SaRLAB.DataAccess.Service.SubjectFlagService;
 using SaRLAB.Models.Entity;
@@ -17,6 +18,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetByID/{email}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetByID(String email)
         {
             var subjectFlag = _subjectFlagService.getSubjectFlagByUserEmail(email);
@@ -32,6 +34,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{email}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult updateSubjectFlag(String email,[FromBody]SubjectFlag sub)
         {
             var subjectFlag = _subjectFlagService.updateSubjectFlag(email,sub);

@@ -98,6 +98,7 @@ namespace SaRLAB.DataAccess.Service.UserService
                 _user.AvtPath = user.AvtPath;
                 _user.Experience = user.Experience;
                 _user.AcademyRank = user.AcademyRank;
+                _user.SchoolId = user.SchoolId;
                 _context.SaveChanges();
             }
             return _user;

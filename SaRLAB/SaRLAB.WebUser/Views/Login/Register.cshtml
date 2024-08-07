@@ -35,16 +35,8 @@
                     <input class="form-control" asp-for="Phone" type="text" placeholder="Số điện thoại">
                 </div>
                 <div class="form-group">
-                    <img src="@Url.Content("~/images/ic_school.png")" />
-                    <select asp-for="SchoolId" class="form-control form-control-select">
-                        @if (ViewBag.Schools != null)
-                        {
-                            @foreach (var schoolItem in ViewBag.Schools as List<SelectListItem>)
-                            {
-                                <option value="@schoolItem.Value">@schoolItem.Text</option>
-                            }
-                        }
-                    </select>
+                    <img src="@Url.Content("~/images/ic_name.png")" />
+                    <input class="form-control" asp-for="SchoolId" type="number" placeholder="Mã trường">
                 </div>
                 @if (TempData["Error"] != null)
                 {

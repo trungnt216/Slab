@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.EquipmentService;
 using SaRLAB.DataAccess.Service.PracticePlanService;
 using SaRLAB.Models.Entity;
@@ -19,6 +20,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("SearchPracticePlan")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult SearchPracticePlan(String? name)
         {
             return Ok(_practicePlanService.SearchPracticePlan(name));
@@ -26,6 +28,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("GetPracticePlanAccordingtoProgramList")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetPracticePlanAccordingtoProgramList()
         {
             return Ok(_practicePlanService.GetPracticePlanAccordingtoProgramList());
@@ -33,6 +36,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("GetPracticePlanResearchList")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetPracticePlanResearchList()
         {
             return Ok(_practicePlanService.GetPracticePlanResearchList());
@@ -40,6 +44,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetByID/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetPracticePlanById(int id)
         {
             return Ok(_practicePlanService.GetPracticePlanById(id));
@@ -47,6 +52,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult UpdatePracticePlanById(int id, [FromBody] PracticePlan practicePlan)
         {
             return Ok(_practicePlanService.UpdatePracticePlanById(id,practicePlan));
@@ -54,6 +60,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult InsertPracticePlan([FromBody] PracticePlan practicePlan)
         {
 
@@ -62,6 +69,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult DeletePracticePlanById(int id)
         {
             return Ok(_practicePlanService.DeletePracticePlanById(id));

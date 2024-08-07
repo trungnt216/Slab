@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.ScientificResearchFileService;
 using SaRLAB.DataAccess.Service.ScientificResearchService;
 using SaRLAB.Models.Entity;
@@ -17,6 +18,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public ActionResult Delete(int id)
         {
             if (id == 0)
@@ -31,6 +33,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetAll/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAllBySubject(int id)
         {
             return Ok(_scientificResearchFileService.GetFilesByScientificResearchId(id));
@@ -38,6 +41,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetById/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetById(int id)
         {
             return Ok(_scientificResearchFileService.GetScientificResearchFileId(id));
@@ -45,6 +49,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Insert(ScientificResearchFile sc)
         {
             if(sc == null)
@@ -59,6 +64,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Update(int id, ScientificResearchFile sc)
         {
             if(id == 0) 
@@ -74,6 +80,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetScientificResearchFileByType/{type}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetScientificResearchFileByType(string type)
         {
             return Ok(_scientificResearchFileService.GetScientificResearchFileByType(type));

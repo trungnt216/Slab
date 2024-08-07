@@ -42,10 +42,17 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label asp-for="Phone" class="col-3 form-label">Số điện thoại</label>
+                <label asp-for="Email" class="col-3 form-label">Email</label>
                 <div class="col">
-                    <input asp-for="Phone" class="form-control" placeholder="Nhập số điện thoại" />
-                    <span asp-validation-for="Phone" class="text-danger form-text"></span>
+                    <input asp-for="Email" class="form-control" placeholder="Nhập email" />
+                    <span asp-validation-for="Email" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="SchoolId" class="col-3 form-label">Mã trường</label>
+                <div class="col">
+                    <input asp-for="SchoolId" class="form-control" placeholder="Nhập mã trường" />
+                    <span asp-validation-for="SchoolId" class="text-danger form-text"></span>
                 </div>
             </div>
             <div class="form-group row d-none">

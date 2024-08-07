@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SaRLAB.DataAccess.Service.SchoolService;
 using SaRLAB.DataAccess.Service.SubjectDto;
 using SaRLAB.DataAccess.Service.UserService;
@@ -32,6 +33,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetByID/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetByID(int id)
         {
             var school = _schoolService.GetSchoolById(id);
@@ -47,6 +49,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("max")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetBydstID()
         {
 
@@ -57,6 +60,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Insert(School school)
         {
             if (school == null)
@@ -95,6 +99,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public ActionResult Delete(int id)
         {
             if (id == 0)
@@ -112,6 +117,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Update(int id, School school)
         {
             if (id == 0)
@@ -127,6 +133,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("RecoverSchool/{id}")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult RecoverSchool(int id)
         {
             if (id == 0)
