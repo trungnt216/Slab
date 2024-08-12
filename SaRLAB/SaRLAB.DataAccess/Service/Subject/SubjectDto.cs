@@ -27,7 +27,9 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
             {
                 ID = value.ID,
                 Rule = value.Rule,
-                SubjectName = value.SubjectName
+                SubjectName = value.SubjectName,
+                Type = value.Type,
+                VideoBackGround = value.VideoBackGround
             });
             return user.ToList();
         }
@@ -44,6 +46,7 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                     Rule = subject.Rule,
                     SubjectName = subject.SubjectName,
                     Type = subject.Type,
+                    VideoBackGround = subject.VideoBackGround
                 };
 
                 return _subject;
@@ -64,7 +67,9 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                 {
                     ID = subject.ID,
                     Rule = subject.Rule,
-                    SubjectName = subject.SubjectName
+                    SubjectName = subject.SubjectName,
+                    Type = subject.Type,
+                    VideoBackGround = subject.VideoBackGround
                 };
 
                 return _subject;
@@ -87,6 +92,8 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                     Rule = subject.Rule,
                     SubjectName = subject.SubjectName,
                     Type = subject.Type,
+                    SchoolId = subject.SchoolId,
+                    VideoBackGround = subject.VideoBackGround
                 };
 
                 return _subject;
@@ -107,7 +114,8 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                 Rule = subject.Rule,
                 SubjectName = subject.SubjectName,
                 SchoolId = subject.SchoolId,
-                Type = subject.Type
+                Type = subject.Type,
+                VideoBackGround = subject.VideoBackGround
             } : null;
         }
 
@@ -123,6 +131,7 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                     Rule = subject.Rule,
                     SubjectName = subject.SubjectName,
                     Type = subject.Type,
+                    VideoBackGround = subject.VideoBackGround
                 };
 
                 return _subject;

@@ -10,13 +10,11 @@ namespace SaRLAB.Models.Entity
     {
         [Key]
         public int ID { get; set; }
-
         public string? SubjectName { get; set; }
         public string? Rule { get; set; }
-
         public int? SchoolId { get; set; }
-        public int? Type { get; set; }      
-
+        public int? Type { get; set; }
+        public string? VideoBackGround { get; set; }
         public ICollection<PracticePlan>? PracticePlans { get; set; }
         public ICollection<ScientificResearch>? ScientificResearches { get; set; }
     }
