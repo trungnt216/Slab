@@ -24,6 +24,7 @@ using SaRLAB.DataAccess.Service.ManageTitleService;
 using SaRLAB.DataAccess.Service.EquipmentPropertyService;
 using SaRLAB.Models.Entity;
 using SaRLAB.DataAccess.Service.WareHouseService;
+using SaRLAB.DataAccess.Service.ReferenceService;
 
 namespace SaRLAB.Application
 {
@@ -61,6 +62,7 @@ namespace SaRLAB.Application
             builder.Services.AddScoped<IManageTitleService, ManageTitleService>();
             builder.Services.AddScoped<IEquipmentPropertyService, EquipmentPropertyService>();
             builder.Services.AddScoped<IWareHouseService, WareHouseService>();
+            builder.Services.AddScoped<IReferenceService, ReferenceService>();
 
 
 
