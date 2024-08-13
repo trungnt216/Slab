@@ -93,9 +93,14 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         //------------------------------- thư viện Library ------------------------------------
 
-        [HttpGet]
+            [HttpGet]
         public IActionResult GetAll_Library(int subjectID)
         {
             if (_hasError)

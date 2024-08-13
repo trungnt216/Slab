@@ -186,7 +186,7 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName != "Owner")
             {
-                return RedirectToAction("Home", "HomePage");
+                return RedirectToAction("Index", "HomePage");
             }
 
             List<School> schools = new List<School>();
@@ -220,7 +220,7 @@ namespace SaRLAB.UserWeb.Controllers
             httpContext.Session.SetString("jwtToken", jwtToken1);
             /*            Program.jwtToken = jwtToken1;*/
 
-            return RedirectToAction("Home", "HomePage");
+            return RedirectToAction("Index", "HomePage");
         }
 
         [HttpGet]
