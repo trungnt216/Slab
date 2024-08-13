@@ -114,7 +114,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["name"] = userLogin.Name;
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
-TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["AvtPath"] = userLogin.AvtPath;
 
             ViewData["layout"] = "~/Views/Subject_" + subjectID + "/_Layout.cshtml";
 

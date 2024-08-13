@@ -139,28 +139,6 @@ namespace SaRLAB.UserWeb.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            List<School> schools = new List<School>();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetAllSchool").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                schools = JsonConvert.DeserializeObject<List<School>>(data);
-            }
-            // Tạo danh sách SelectListItem từ danh sách trường học
-            List<SelectListItem> schoolItems = schools.Select(s => new SelectListItem
-            {
-                Value = s.ID.ToString(), // Giá trị của mỗi item là Id của trường học
-                Text = s.Name // Hiển thị tên của trường học
-            }).ToList();
-
-            // Thêm một option mặc định cho người dùng chọn
-            schoolItems.Insert(0, new SelectListItem { Value = "", Text = "Chọn trường học" });
-
-            // Truyền danh sách SelectListItem vào ViewBag
-            ViewBag.Schools = schoolItems;
-
             return View();
         }
         [HttpPost]
@@ -171,6 +149,9 @@ namespace SaRLAB.UserWeb.Controllers
                 user.CreateBy = user.Email;
                 user.UpdateBy = user.Email;
                 user.AvtPath = "~/images/defaultAvatar.jpg";
+                if(user.SchoolId == null){
+                    user.SchoolId = 1;
+                }
                 string data = JsonConvert.SerializeObject(user);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
 

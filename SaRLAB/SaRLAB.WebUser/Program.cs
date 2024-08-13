@@ -1,4 +1,4 @@
-namespace SaRLAB.UserWeb
+﻿namespace SaRLAB.UserWeb
 {
     public class Program
     {
@@ -9,7 +9,7 @@ namespace SaRLAB.UserWeb
         public static string FilePath = "https://localhost:7116//";
 #else
         public static string api = "http://api.sarlabeducation.com/api/";
-        public static string FilePath = "https://user.sarlabeducation.com//";
+        public static string FilePath = "https://sarlabeducation.com//";
 #endif
         public static void Main(string[] args)
         {
@@ -17,6 +17,18 @@ namespace SaRLAB.UserWeb
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Thêm dịch vụ session
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(180); // Thời gian hết hạn của session
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+            // Đăng ký IHttpContextAccessor
+            builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
 
@@ -34,6 +46,9 @@ namespace SaRLAB.UserWeb
             app.UseRouting();
 
             app.UseAuthorization();
+
+            // Thêm Session Middleware
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",

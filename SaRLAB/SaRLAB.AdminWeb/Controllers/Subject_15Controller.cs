@@ -133,7 +133,7 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Configuration_Subject(Subject subject_new)
+        public IActionResult Configuration_Subject(Subject subject_new, IFormFile File)
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
@@ -147,6 +147,27 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Subject");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                subject_new.VideoBackGround = pathFolderSave + "FileFolder/Subject/" + uniqueFileName;
+            }
 
             if (userLogin.RoleName == "Owner")
             {

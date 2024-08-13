@@ -178,6 +178,7 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
             {
                 _subject.SubjectName = subject.SubjectName ?? _subject.SubjectName;
                 _subject.Rule = subject.Rule ?? _subject.Rule;
+                _subject.VideoBackGround = subject.VideoBackGround ?? _subject.VideoBackGround;
                 _context.SaveChanges();
             }
             return _subject;

@@ -133,7 +133,7 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Configuration_Subject(Subject subject_new)
+        public IActionResult Configuration_Subject(Subject subject_new, IFormFile File)
         {
             TempData["name"] = userLogin.Name;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
@@ -147,6 +147,27 @@ namespace SaRLAB.AdminWeb.Controllers
             }
             TempData["noticeCount"] = notice.Count;
             ViewBag.MenuItems = manageTitles;
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Subject");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                subject_new.VideoBackGround = pathFolderSave + "FileFolder/Subject/" + uniqueFileName;
+            }
 
             if (userLogin.RoleName == "Owner")
             {
@@ -966,6 +987,122 @@ namespace SaRLAB.AdminWeb.Controllers
                 return RedirectToAction("GetAll_Question");
             }
             return RedirectToAction("GetAll_Question");
+        }
+        //----------------------------- background --------------------------------------
+        [HttpGet]
+        public IActionResult Configuration_BackgroundSubject()
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
+
+            Subject subject = new Subject();
+            HttpResponseMessage response_sub1 = _httpClient.GetAsync(_httpClient.BaseAddress + "Subject/GetByTypeSchool/" + Subject_id + "/" + userLogin.SchoolId).Result;
+            if (response_sub1.IsSuccessStatusCode)
+            {
+                string data = response_sub1.Content.ReadAsStringAsync().Result;
+                subject = JsonConvert.DeserializeObject<Subject>(data);
+            }
+
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "configurationsubject1";
+            ViewBag.ActiveSubMenuLv2 = "configurationsubject1";
+            return View(subject);
+        }
+
+        [HttpPost]
+        public IActionResult Configuration_BackgroundSubject(Subject subject_new, IFormFile File)
+        {
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
+            if (File != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Subject");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                subject_new.VideoBackGround = pathFolderSave + "FileFolder/Subject/" + uniqueFileName;
+            }
+
+            if (userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    subject_new.SchoolId = userLogin.SchoolId;
+                    string data = JsonConvert.SerializeObject(subject_new);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Subject/update", content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        TempData["successMessage"] = "create success";
+
+                        return RedirectToAction("Configuration_BackgroundSubject");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveSubMenuLv2 = "internationalLevel";
+
+                    ViewBag.ActiveMenuMain = "subject";
+                    ViewBag.ActiveMenu = "subject1";
+                    ViewBag.ActiveSubMenu = "configurationsubject1";
+                    ViewBag.ActiveSubMenuLv2 = "configurationsubject1";
+                    return View();
+                }
+            }
+            else
+            {
+
+                ViewBag.ActiveMenuMain = "subject";
+                ViewBag.ActiveMenu = "subject1";
+                ViewBag.ActiveSubMenu = "configurationsubject1";
+                ViewBag.ActiveSubMenuLv2 = "configurationsubject1";
+                return View();
+            }
+
+
+            ViewBag.ActiveMenuMain = "subject";
+            ViewBag.ActiveMenu = "subject1";
+            ViewBag.ActiveSubMenu = "configurationsubject1";
+            ViewBag.ActiveSubMenuLv2 = "configurationsubject1";
+            return View();
         }
 
         //----------------------------- An toàn phòng thí nghiệm --------------------------------------

@@ -82,7 +82,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner")]
         public IActionResult Insert(Subject newsubject)
         {
             var _subject = _subjectDto.Insert(newsubject);
@@ -99,7 +99,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("update")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner")]
         public IActionResult Update(Subject newsubject)
         {
             var _subject = _subjectDto.Update(newsubject);
