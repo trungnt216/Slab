@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SaRLAB.Models.Entity;
-
 namespace SaRLAB.DataAccess
 {
 
@@ -26,5 +25,6 @@ namespace SaRLAB.DataAccess
         public DbSet<ManageTitle> ManageTitles { get; set; }
         public DbSet<EquipmentProperty> EquipmentProperties { get; set; }
         public DbSet<WareHouse> WareHouses { get; set; }
+        public DbSet<Reference> References { get; set; }
     }
 }
