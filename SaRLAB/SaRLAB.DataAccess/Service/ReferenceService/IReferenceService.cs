@@ -15,6 +15,7 @@ namespace SaRLAB.DataAccess.Service.ReferenceService
         int InsertReference(Reference reference);
         int UpdateReferenceById(int id, Reference reference);
         int DeleteReferenceById(int id);
+        List<Reference> GetReferenceByType(string type,int schoolID);
 
     }
 }

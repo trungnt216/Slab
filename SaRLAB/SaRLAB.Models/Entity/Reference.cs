@@ -20,6 +20,7 @@ namespace SaRLAB.Models.Entity
         public DateTime? CreateTime { get; set; }
         public string? CoverImage { get; set; }
         public string? Path { get; set; }
+        public string? Type { get; set; }
         public int? SchoolId { get; set; }
     }
 }

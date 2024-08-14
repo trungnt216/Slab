@@ -18,12 +18,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Library\GetAll_Reference.cshtml" />
     <Content Remove="wwwroot\css\login.css" />
     <Content Remove="wwwroot\images\login.svg" />
     <Content Remove="wwwroot\images\register.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Library\GetAll_Reference.cshtml" />
     <None Include="wwwroot\css\login.css" />
     <None Include="wwwroot\images\login.svg" />
     <None Include="wwwroot\images\register.svg" />

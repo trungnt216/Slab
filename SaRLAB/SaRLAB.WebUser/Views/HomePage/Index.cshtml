@@ -1,23 +1,119 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/HomePage/_LayoutHomePage.cshtml";
+﻿@{
+    ViewData["Title"] = "Library Management";
+    Layout = null;
+    var schoolValue = TempData["School"] as int?;
 }
 
-@* banner *@
-<section class="hero d-flex flex-column justify-content-center align-items-center " id="home">
-    <div class="bg-overlay"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <!-- css -->
+    <link rel="stylesheet" href="~/css/styles.css">
+    <!-- icon-tab -->
+    <link rel="icon" href="~/assets/icon/icon_tab.png">
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+</head>
+<body>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto col-12">
-                <div class="hero-text mt-5 text-center">
-                    <h3 class="text-white wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">Welcome to</h3>
-                    <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.7s">The Lab App</h1>
-                    <p class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
-                        Ứng dụng quản lý phòng thí nghiệm tiện ích. SaR LAB hứa hẹn tối ưu hóa công việc và tạo điều kiện cho sáng tạo trong nghiên cứu!
-                    </p>
-                </div>
+        <!-- title - username -->
+        <!-- title -->
+        <div class="title-username">
+            <div class="title">
+                <h1>You are welcome!</h1>
+            </div>
+            <div class="username">
+                @if (TempData["AvtPath"] != null && TempData["AvtPath"] is string avtPath && !string.IsNullOrWhiteSpace(avtPath))
+                {
+                    <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="User Avatar">
+                }
+                else
+                {
+                    <img src="~/images/defaultAvatar.jpg" alt="Default Avatar">
+                }
+
+                @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
+                {
+                    <span>@Html.Raw(name)</span>
+                }
+                else
+                {
+                    <span>Unknown User</span>
+                }
+            </div>
+
+        </div>
+
+        <!-- video -->
+        <div class="video">
+            <div class="form-video">
+                <video controls autoplay muted src="~/assets/video/bg_book.mp4"></video>
+            </div>
+        </div>
+
+        <!-- sar-lab -->
+        <div class="sarlab">
+            <div class="new">
+                <img src="~/assets/img/new.png" alt="">
+            </div>
+            <div class="sar">
+                <p>SarLab</p>
+                <h1>NEWS</h1>
+            </div>
+        </div>
+
+        <!-- button -->
+        <div class="event">
+            <button class="library" onclick="window.location.href='@Url.Action("Index", "Library")'">
+                <span style="font-size: 30px; font-family: 'MyCustomFont', sans-serif;">Thư viện</span>
+            </button>
+            <button id="practiceRoomButton" class="library">
+                <span>PHÒNG THỰC HÀNH</span>
+            </button>
+
+            @if (schoolValue == 1)
+            {
+                <img src="~/assets/img/lock.png" alt="">
+            }
+        </div>
+
+        <!-- text -->
+        <div class="text">
+            <div class="content">
+                <h2>BẢN QUYỀN</h2>
+                <p>Tác giả cũng là chủ sở hữu phần mềm cam kết tính bảo mật, tính hợp pháp cho đơn vị khi đăng ký nhận chuyển nhượng.</p>
+            </div>
+
+            <div class="content">
+                <h2>HƯỚNG DẪN SỬ DỤNG</h2>
+                <p>Hướng dẫn sử dụng được thêm vào mỗi phòng thực hành theo đặc thù môn học. Để nhận bản đầy đủ vui lòng liên hệ tác giả phần mềm.</p>
+            </div>
+
+            <div class="content">
+                <h2>THÔNG TIN LIÊN HỆ</h2>
+                <p>Tác giả phần mềm: Đinh Quang Cảnh</p>
+                <p>Số điện thoại: 0914.333.537</p>
+                <p>E-mail: dinhquangcanh@ump.edu.vn</p>
             </div>
         </div>
     </div>
-</section>
+    <!-- scripts -->
+    <script src="~/js/scripts.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var schoolValue = @schoolValue; // Giá trị TempData được chèn vào JavaScript
+
+            document.getElementById('practiceRoomButton').addEventListener('click', function () {
+                if (schoolValue != 1) {
+                    window.location.href = '@Url.Action("Home", "HomePage")';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -18,20 +18,19 @@
 </head>
 <body id="bg-subject">
     @* header *@
-    <header class="header-area header-area-subject header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a asp-controller="Chemistry" asp-action="Index" class="logo">
-                            <img src="@Url.Content("~/images/logo.png")" />
-                            <h4>SaR<span>LAB</span></h4>
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                    </nav>
-                </div>
+    <header>
+        <div class="infor">
+            <img src="~/assets/icon/icon_userhead.png" alt="">
+            <h1>User name</h1>
+        </div>
+
+        <div class="search">
+            <h1>Chung</h1>
+            <div class="tk">
+                <input type="search" placeholder="Tìm kiếm">
+                <i class="fa-solid fa-magnifying-glass"></i>
             </div>
+            <i class="fa-solid fa-bars"></i>
         </div>
     </header>
     <div>

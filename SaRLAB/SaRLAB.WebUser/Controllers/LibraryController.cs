@@ -95,6 +95,17 @@ namespace SaRLAB.UserWeb.Controllers
 
         public IActionResult Index()
         {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            ViewBag.MenuItems = manageTitles;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["School"] = userLogin.SchoolId;
+
             return View();
         }
 
@@ -515,6 +526,132 @@ TempData["AvtPath"] = userLogin.AvtPath;
                 ViewBag.ActiveSubMenuLv2 = "experience";
                 return RedirectToAction("GetAll_Library", new { subjectID });
             }
+        }
+
+
+        //------------------------------- thư viện main Library ------------------------------------
+
+        [HttpGet]
+        public IActionResult GetAll_Reference(string type)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            List<Reference> references = new List<Reference>();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Reference/GetReferenceByType/" + userLogin.SchoolId + "/" + type).Result;
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                references = JsonConvert.DeserializeObject<List<Reference>>(data);
+            }
+
+            return View(references);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Reference(string type)
+        {
+
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                return RedirectToAction("GetAll_Reference", new { type });
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Reference(Reference reference, IFormFile File, string type)
+        {
+
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+
+            if (File != null && reference.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                reference.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                reference.CreateTime = DateTime.Now;
+                reference.CreateBy = userLogin.Email;
+                reference.SchoolId = userLogin.SchoolId;
+                reference.SchoolId = userLogin.SchoolId;
+                reference.Type = type;
+
+                string data = JsonConvert.SerializeObject(reference);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Reference/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("GetAll_Reference", new { type });
+                }
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Reference(int id)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+           
+            Reference reference = new Reference();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Reference/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                reference = JsonConvert.DeserializeObject<Reference>(data);
+            }
+
+            return View(reference);
         }
     }
 }

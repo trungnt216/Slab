@@ -45,6 +45,15 @@ namespace SaRLAB.DataAccess.Service.ReferenceService
                    .ToList();
         }
 
+        public List<Reference> GetReferenceByType(string type, int schoolID)
+        {
+            var lowerCaseName = type.ToLower();
+
+            return _context.References
+                   .Where(r => r.Type.ToLower().Contains(lowerCaseName) && r.SchoolId == schoolID)
+                   .ToList();
+        }
+
 
         public List<Reference> GetReferencesBySchoolId(int schoolId)
         {

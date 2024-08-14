@@ -131,6 +131,7 @@ namespace SaRLAB.UserWeb.Controllers
             ViewBag.MenuItems = manageTitles;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
+            TempData["BackGround"] = subject1.VideoBackGround;
 
             ViewBag.ActiveMenu = "homePage";
             SubjectFlag subjectFlag = new SubjectFlag();

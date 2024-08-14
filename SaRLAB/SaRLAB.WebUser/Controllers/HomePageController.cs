@@ -118,6 +118,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["role"] = userLogin.RoleName;
             ViewBag.MenuItems = manageTitles;
             TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["School"] = userLogin.SchoolId;
 
             return View();
         }
