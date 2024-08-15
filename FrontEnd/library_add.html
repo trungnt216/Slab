@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library- Management</title>
+    <!-- css -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- icon-tab -->
+    <link rel="icon" href="assets/icon/icon_tab.png" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+  </head>
+  <body>
+    <div class="container" id="li-index">
+      <!-- header -->
+      <div id="header-placeholder" class="men"></div>
+      <!-- main -->
+      <main>
+        <!-- add-product -->
+        <div class="add-product">
+          <div class="add-file-pdf">
+            <form
+              action="/upload_pdf"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <label for="pdf-upload">Chọn file PDF mới:</label>
+              <input
+                type="file"
+                id="pdf-upload"
+                name="pdf-upload"
+                accept="application/pdf"
+              />
+              <button type="submit">Cập nhật</button>
+            </form>
+            <!-- Embed PDF -->
+            <embed
+              id="pdf-add"
+              src="/FrontEnd/assets/file/test.pdf"
+              type="application/pdf"
+            />
+          </div>
+
+          <!-- add-des -->
+          <div class="add-des">
+            <form
+              action="/add_book_details"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <div class="io">
+                <label for="book-title">Tên sách:</label>
+                <input
+                  type="text"
+                  id="book-title"
+                  name="book-title"
+                  placeholder="............................................"
+                  required
+                />
+              </div>
+
+              <div class="io">
+                <label for="author-name">Tên tác giả:</label>
+                <input
+                  type="text"
+                  id="author-name"
+                  name="author-name"
+                  placeholder="............................................"
+                  required
+                />
+              </div>
+
+              <div class="io">
+                <label for="publish-year">Năm xuất bản:</label>
+                <input
+                  type="number"
+                  id="publish-year"
+                  name="publish-year"
+                  min="1000"
+                  max="9999"
+                  placeholder="............................................"
+                  required
+                />
+              </div>
+
+              <div class="io">
+                <label for="publisher">Nhà xuất bản:</label>
+                <input
+                  type="text"
+                  id="publisher"
+                  name="publisher"
+                  placeholder="............................................"
+                  required
+                />
+              </div>
+
+              <div class="io ik">
+                <label for="summary">Tóm tắt nội dung:</label>
+                <textarea
+                  id="summary"
+                  name="summary"
+                  rows="4"
+                  placeholder="...................................."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="ix">
+                <a
+                  href="#"
+                  onclick="document.getElementById('file-upload').click(); return false;"
+                  >Thêm file</a
+                >
+                <input
+                  type="file"
+                  id="file-upload"
+                  name="file-upload"
+                  style="display: none"
+                />
+              </div>
+
+              <div class="ix il">
+                <a
+                  href="#"
+                  onclick="document.getElementById('cover-upload').click(); return false;"
+                  >Ảnh bìa</a
+                >
+                <input
+                  type="file"
+                  id="cover-upload"
+                  name="cover-upload"
+                  accept="image/*"
+                  style="display: none"
+                />
+              </div>
+
+              <button type="submit">GỞI BÀI ĐÓNG GÓP</button>
+            </form>
+          </div>
+          <div class="fix-add"></div>
+        </div>
+      </main>
+    </div>
+    <!-- scripts -->
+    <script src="lab.js"></script>
+  </body>
+</html>

@@ -852,6 +852,121 @@ img#p_lab {
   color: #da6619;
 }
 
+/*........ */
+/* add - product */
+.add-product {
+  width: 1270px;
+  height: 800px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.add-product #pdf-add {
+  width: 800px;
+  height: 720px;
+}
+
+.add-file-pdf form {
+  width: 800px;
+  height: 30px;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.add-file-pdf form button {
+  background-color: #3ac2e4;
+  border: none;
+  border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  font-size: 13px;
+  margin-left: 280px;
+}
+
+.add-des {
+  position: relative;
+  width: 360px;
+  height: 710px;
+  margin-top: 60px;
+  margin-left: 30px;
+  background-color: rgba(163, 160, 160, 0.6);
+  z-index: 1;
+}
+
+.fix-add {
+  position: absolute;
+  top: 200px;
+  right: 130px;
+  width: 360px;
+  height: 710px;
+  background-color: #36332e;
+}
+.add-des form button {
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(to bottom, rgb(149, 179, 149), rgb(45, 134, 57));
+}
+
+.add-des form button:hover {
+  transform: scale(0.94);
+  transition: 0.2s ease-in-out;
+}
+
+.io {
+  height: 70px;
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.ix {
+  margin-top: 20px;
+  height: 40px;
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+}
+
+.il {
+  margin-top: -10px;
+}
+
+.add-des form {
+  font-weight: bold;
+  color: #d6a51e;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-des form input,
+textarea {
+  margin-top: 5px;
+  margin-left: -20px;
+  width: 200px;
+  font-size: 20px;
+  padding: 10px 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.add-des input::placeholder,
+textarea::placeholder {
+  color: #d6a51e;
+}
+.ik {
+  height: 120px;
+}
 @media (max-width: 468px) {
   .page {
     font-size: 10px;
@@ -1159,6 +1274,135 @@ img#p_lab {
 }
 
 @media (min-width: 469px) and (max-width: 968px) {
+  .add-file-pdf {
+    order: 2;
+  }
+
+  .add-des {
+    order: 1;
+  }
+
+  .add-product {
+    margin-top: 10px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .add-product #pdf-add {
+    margin-left: 10px;
+    width: 710px;
+    height: 720px;
+  }
+
+  .add-file-pdf form {
+    margin-left: 25px;
+    width: 710px;
+    height: 30px;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .add-file-pdf form button {
+    background-color: #3ac2e4;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    font-size: 13px;
+    margin-left: 180px;
+  }
+
+  .add-des {
+    position: relative;
+    width: 640px;
+    height: 680px;
+    margin-top: 720px;
+    margin-left: 30px;
+    background-color: rgba(163, 160, 160, 0.6);
+    z-index: 1;
+  }
+
+  .fix-add {
+    position: absolute;
+    top: 150px;
+    right: 90px;
+    width: 640px;
+    height: 650px;
+    background-color: #36332e;
+  }
+  .add-des form button {
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(
+      to bottom,
+      rgb(149, 179, 149),
+      rgb(45, 134, 57)
+    );
+  }
+
+  .add-des form button:hover {
+    transform: scale(0.94);
+    transition: 0.2s ease-in-out;
+  }
+
+  .io {
+    height: 30px;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
+  .ix {
+    margin-top: -10px;
+    height: 40px;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .il {
+    margin-top: -10px;
+  }
+
+  .add-des form {
+    margin-top: -50px;
+    height: 700px;
+    font-weight: bold;
+    color: #d6a51e;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add-des form input,
+  textarea {
+    margin-top: 5px;
+    margin-left: -20px;
+    width: 200px;
+    font-size: 20px;
+    padding: 10px 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+  .add-des input::placeholder,
+  textarea::placeholder {
+    color: #d6a51e;
+  }
+  .ik {
+    height: 120px;
+  }
+
   img#n_lab {
     right: 30px;
   }
@@ -1472,6 +1716,10 @@ img#p_lab {
 }
 
 @media (min-width: 969px) and (max-width: 1600px) {
+  .fix-add {
+    top: 185px;
+    right: 155px;
+  }
   /* container */
   .container {
     width: 1500px;
