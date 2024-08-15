@@ -1,15 +1,81 @@
-<header>
-    <div class="infor">
-        <img src="assets/icon/icon_userhead.png" alt="">
-        <h1>User name</h1>
-    </div>
+<!-- style -->
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Grey+Qo&display=swap");
+  * {
+    padding: 0;
+    margin: 0;
+  }
 
-    <div class="search">
-        <h1>Chung</h1>
-        <div class="tk">
-            <input type="search" placeholder="Tìm kiếm">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-        <i class="fa-solid fa-bars"></i>
+  body {
+    max-width: 1920px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  header {
+    background: linear-gradient(to right, rgb(240, 236, 236), #ccc);
+    width: 1300px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .infor,
+  .search {
+    width: 620px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .infor {
+    font-size: 12px;
+    justify-content: flex-start;
+  }
+
+  .infor img {
+    width: 60px;
+  }
+
+  .search {
+    font-size: 12px;
+    gap: 40px;
+    justify-content: flex-end;
+  }
+
+  .tk {
+    position: relative;
+  }
+  .tk input {
+    outline: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+  }
+  .fa-magnifying-glass {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    font-size: 20px;
+  }
+  .fa-bars {
+    font-size: 40px;
+  }
+</style>
+<header>
+  <div class="infor">
+    <img src="assets/icon/icon_userhead.png" alt="" />
+    <h1>User name</h1>
+  </div>
+
+  <div class="search">
+    <h1>Chung</h1>
+    <div class="tk">
+      <input type="search" placeholder="Tìm kiếm" />
+      <i class="fa-solid fa-magnifying-glass"></i>
     </div>
+    <i class="fa-solid fa-bars"></i>
+  </div>
 </header>
+<script src="https://kit.fontawesome.com/f0add9272d.js"></script>
