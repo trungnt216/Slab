@@ -106,6 +106,7 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["AvtPath"] = userLogin.AvtPath;
             TempData["School"] = userLogin.SchoolId;
 
+            
             return View();
         }
 
@@ -549,6 +550,11 @@ TempData["AvtPath"] = userLogin.AvtPath;
                 references = JsonConvert.DeserializeObject<List<Reference>>(data);
             }
 
+            TempData["type"] = type;
+
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             return View(references);
         }
 
@@ -633,7 +639,7 @@ TempData["AvtPath"] = userLogin.AvtPath;
 
 
         [HttpGet]
-        public ActionResult Details_Reference(int id)
+        public ActionResult Details_Reference(int id, string type)
         {
             if (_hasError)
             {
@@ -649,6 +655,15 @@ TempData["AvtPath"] = userLogin.AvtPath;
             {
                 string data = response.Content.ReadAsStringAsync().Result;
                 reference = JsonConvert.DeserializeObject<Reference>(data);
+            }
+
+            TempData["type"] = type;
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            if (reference == null)
+            {
+                return NotFound(); // Handle case where the reference is not found
             }
 
             return View(reference);

@@ -180,6 +180,10 @@ namespace SaRLAB.UserWeb.Controllers
                 }
             }
 
+/*            TempData["type"] = type;*/
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
             return View();
         }
 

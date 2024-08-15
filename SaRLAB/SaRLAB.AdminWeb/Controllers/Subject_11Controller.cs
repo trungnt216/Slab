@@ -267,9 +267,9 @@ namespace SaRLAB.AdminWeb.Controllers
 
             var subjectTypes = new List<SelectListItem>
         {
-            new SelectListItem { Value = "1", Text = "Giáo trình" },
+            new SelectListItem { Value = "1", Text = "Tài liệu" },
             new SelectListItem { Value = "2", Text = "Thực hành" },
-            new SelectListItem { Value = "3", Text = "Virtual Lab" },
+            new SelectListItem { Value = "3", Text = "Hợp tác quốc tế" },
             new SelectListItem { Value = "4", Text = "Nghiên cứu khoa học" },
             new SelectListItem { Value = "5", Text = "Tiếng Anh chuyên ngành" }
         };
@@ -301,9 +301,9 @@ namespace SaRLAB.AdminWeb.Controllers
 
             var subjectTypes = new List<SelectListItem>
         {
-            new SelectListItem { Value = "1", Text = "Giáo trình" },
+            new SelectListItem { Value = "1", Text = "Tài liệu" },
             new SelectListItem { Value = "2", Text = "Thực hành" },
-            new SelectListItem { Value = "3", Text = "Virtual Lab" },
+            new SelectListItem { Value = "3", Text = "Hợp tác quốc tế" },
             new SelectListItem { Value = "4", Text = "Nghiên cứu khoa học" },
             new SelectListItem { Value = "5", Text = "Tiếng Anh chuyên ngành" }
         };

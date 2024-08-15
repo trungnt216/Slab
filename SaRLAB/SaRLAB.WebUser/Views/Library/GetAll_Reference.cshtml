@@ -1,1 +1,114 @@
-﻿
+﻿@model IEnumerable<SaRLAB.Models.Entity.Reference>
+@{
+    Layout = null;
+    var type = TempData["type"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library- Management</title>
+    <!-- css -->
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <!-- icon-tab -->
+    <link rel="icon" href="~/assets/icon/icon_tab.png" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="infor">
+            <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
+            @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
+            {
+                <h1>
+                    <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                        @TempData["name"]
+                    </a>
+                </h1>
+
+            }
+            else
+            {
+                <h1>Unknown User</h1>
+            }
+        </div>
+
+        <div class="search">
+            <h1>Chung</h1>
+            <div class="tk">
+                <input type="search" placeholder="Tìm kiếm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+    <div class="container" id="li-index">
+        <!-- header -->
+        <div id="header-placeholder"></div>
+        <!-- main -->
+        <main>
+            <!-- nav -->
+            <nav>
+                <div class="logo">
+                    <h1>SaRLAB</h1>
+                </div>
+                <div class="menu">
+                    <a id="active" href="" onclick="window.location.href='@Url.Action("Index", "HomePage")'">Trang
+                        chủ</a>
+                    <a href="" onclick="window.location.href='@Url.Action("Logout", "HomePage")'">Đăng xuất</a>
+                </div>
+            </nav>
+            <!-- title -->
+            <div class="title_li" id="list-title">
+                <!-- add -->
+                <button id="add"
+                    onclick="window.location.href='@Url.Action("Create_Reference", "Library", new { type = type })'">
+                    <span>Thêm tài liệu</span>
+                </button>
+
+                <div class="f-li">
+                    <img id="li" src="~/assets/img/li.png" alt="" />
+                    <div class="des-li">
+                        <h1>-</h1>
+                        <h1>@type</h1>
+                    </div>
+                </div>
+                <img src="~/assets/icon/icon_fly.png" alt="" />
+            </div>
+
+            <!-- list-book -->
+            <div class="book-container">
+                <div class="books">
+                    @foreach (var item in Model)
+                    {
+                        <a class="book-item" onclick="window.location.href='@Url.Action("Details_Reference", "Library", new {id = item.ID , type = type })'">
+                            <img src="@Url.Content(item.CoverImage)" alt="Cover Image">
+                            <div class="xx">
+                                <div class="an">
+                                    <p>
+                                        Tác giả: @Html.DisplayFor(modelItem => item.Author)<br />
+                                        Tên: @Html.DisplayFor(modelItem => item.Name)<br />
+                                        @Html.DisplayFor(modelItem => item.Summary)
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="ke">
+            </div>
+
+            <div class="pagination"></div>
+        </main>
+    </div>
+    <!-- scripts -->
+    <script src="~/js/scripts.js"></script>
+</body>
+
+</html>

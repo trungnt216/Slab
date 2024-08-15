@@ -1,0 +1,107 @@
+﻿@model SaRLAB.Models.Entity.Reference
+@{
+    Layout = null;
+    var type = TempData["type"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library- Management</title>
+    <!-- css -->
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <!-- icon-tab -->
+    <link rel="icon" href="~/assets/icon/icon_tab.png" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+</head>
+<body>
+    <header>
+        <div class="infor">
+            <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
+            @if (TempData["name"] != null)
+            {
+                <h1>
+                    <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                        @TempData["name"]
+                    </a>
+                </h1>
+            }
+            else
+            {
+                <h1>Unknown User</h1>
+            }
+        </div>
+
+        <div class="search">
+            <h1>Chung</h1>
+            <div class="tk">
+                <input type="search" placeholder="Tìm kiếm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+    <div class="container" id="li-index">
+        <!-- header -->
+        <div id="header-placeholder"></div>
+        <!-- main -->
+        <main>
+            <!-- nav -->
+            <nav class="note_f">
+                <div class="logo">
+                    <h1>SaRLAB</h1>
+                </div>
+                <div class="menu">
+                    <a id="active" href="" onclick="window.location.href='@Url.Action("Index", "HomePage")'">
+                        Trang
+                        chủ
+                    </a>
+                    <a href="" onclick="window.location.href='@Url.Action("Logout", "HomePage")'">Đăng xuất</a>
+                </div>
+            </nav>
+            <!-- title -->
+            <div class="title_li" id="list-title">
+                <div class="f-li">
+                    <img id="li" src="~/assets/img/li.png" alt="" />
+                    <div class="des-li">
+                        <h1>-</h1>
+                        <h1>@(TempData["type"]?.ToString() ?? "Default Type")</h1>
+                    </div>
+                </div>
+                <img src="~/assets/icon/icon_fly.png" alt="" />
+            </div>
+            <!-- detail -->
+            <div class="form_detail" id="f-de">
+                <!-- Embed PDF -->
+                @if (@Model.Path != null)
+                {
+                    <embed id="pdf"
+                    src="@Model.Path"
+                       type="application/pdf" />}
+                <!-- conti -->
+                <div class="conti">
+                    <img id="next_note" src="~/assets/icon/icon_next.png" alt="" />
+                </div>
+                <!-- note -->
+                <div id="notification" class="note">
+                    <h1>NOTE</h1>
+                    <div class="text_note">
+                        <textarea id="noteInput"
+                                  rows="5"
+                                  cols="50"
+                                  placeholder=".........................."></textarea>
+                    </div>
+                    <div class="back">
+                        <img id="prev_note" src="~/assets/icon/icon_prev.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- scripts -->
+    <script src="~/js/next.js"></script>
+</body>
+</html>
