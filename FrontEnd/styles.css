@@ -1063,6 +1063,50 @@ img#pk {
   box-shadow: 0 12px 24px rgb(223, 190, 8);
 }
 
+/* ...... */
+/* expected */
+
+h2#lix {
+  position: absolute;
+  font-size: 40px;
+  color: rgb(158, 19, 19);
+  width: 300px;
+  right: 10px;
+}
+
+.opx a {
+  width: 300px;
+  height: 300px;
+}
+
+.opx img {
+  width: 200px;
+  height: 260px;
+}
+
+.opx a h1 {
+  margin-left: 20px;
+  font-size: 30px;
+  transform: rotate(0deg);
+}
+
+nav .oil a {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ccc;
+}
+
+nav .oil h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ccc;
+}
+
+h1#vnx {
+  top: 40px;
+  font-family: "Playwrite NO", cursive;
+  color: #da920e;
+  position: absolute;
+}
+
 @media (max-width: 468px) {
   .page {
     font-size: 10px;
@@ -1370,6 +1414,17 @@ img#pk {
 }
 
 @media (min-width: 469px) and (max-width: 968px) {
+  nav .oil a {
+    font-size: 30px;
+  }
+  h1#vnx {
+    top: 1%;
+    font-size: 17px;
+  }
+
+  h2#lix {
+    width: 90px;
+  }
   .lab-detail {
     position: relative;
     width: 1270px;
@@ -1627,7 +1682,7 @@ img#pk {
 
   nav.lab_menu a {
     width: 70px;
-    font-size: 15px;
+    font-size: 14px;
   }
 
   /* form-detail */
@@ -1888,6 +1943,9 @@ img#pk {
 }
 
 @media (min-width: 969px) and (max-width: 1600px) {
+  h1#vnx {
+    top: 29px;
+  }
   .fix-add {
     top: 185px;
     right: 155px;

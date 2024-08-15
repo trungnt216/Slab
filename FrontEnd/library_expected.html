@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library- Management</title>
+    <!-- css -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- icon-tab -->
+    <link rel="icon" href="assets/icon/icon_tab.png" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+  </head>
+  <body>
+    <div class="container" id="li-index">
+      <!-- LAB -->
+      <h1 id="vnx">CHemLAB</h1>
+      <!-- header -->
+      <div id="header-placeholder" class="men"></div>
+      <!-- main -->
+      <main>
+        <!-- nav -->
+        <nav class="note_f lab_menu">
+          <div class="logo oil" id="x-1">
+            <h1>SaRLAB</h1>
+          </div>
+          <div class="menu oil" id="x-2">
+            <a href="">Chung</a>
+            <a href="">Trang chủ</a>
+            <a id="logout" href="">Thư viện</a>
+            <a href="">Đăng xuất</a>
+          </div>
+        </nav>
+
+        <!-- expected -->
+        <div class="ti">
+          <img src="assets/img/bank_lab.png" alt="" />
+          <h1 id="tix">Dự trù</h1>
+          <h2 id="lix">(*)</h2>
+        </div>
+        <!-- lab -->
+        <div class="lab opx">
+          <!-- fix -->
+          <img id="bg_lab" src="assets/img/bg_detail_lab.png" alt="" />
+          <div id="bg_bl"></div>
+
+          <!-- data-lab -->
+          <a href="#">
+            <img src="assets/img/ex.png" alt="Image 1" />
+            <h1>HÓA CHẤT</h1>
+          </a>
+          <a href="#">
+            <img src="assets/img/ex.png" alt="Image 2" />
+            <h1>DỤNG CỤ</h1>
+          </a>
+          <a href="#">
+            <img src="assets/img/ex.png" alt="Image 3" />
+            <h1>THIẾT BỊ</h1>
+          </a>
+          <a href="#">
+            <img src="assets/img/ex.png" alt="Image 4" />
+            <h1>DỤNG CỤ</h1>
+          </a>
+          <a href="#">
+            <img src="assets/img/ex.png" alt="Image 5" />
+            <h1>DỤNG CỤ</h1>
+          </a>
+          <a href="#">
+            <img src="assets/img/ex.png" alt="Image 6" />
+            <h1>DỤNG CỤ</h1>
+          </a>
+        </div>
+
+        <div class="pagination_lab">
+          <img
+            id="p_lab"
+            onclick="prevPage()"
+            src="assets/icon/lab_button.png"
+            alt=""
+          />
+          <span id="page-num"></span>
+          <img
+            id="n_lab"
+            onclick="nextPage()"
+            src="assets/icon/lab_button.png"
+            alt=""
+          />
+          <div id="pagination-buttons"></div>
+        </div>
+      </main>
+    </div>
+    <!-- scripts -->
+    <script src="labxx.js"></script>
+  </body>
+</html>
