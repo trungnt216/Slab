@@ -40,5 +40,10 @@ namespace SaRLAB.Models.Entity
         [Required(ErrorMessage = "Vui lòng nhập xuất xử!")]
         public string? From { get; set; }
         public string? CoverImage { get; set; }
+        public string? ExpectedInfo { get; set; }
+        public DateTime? ExpectedDate { get; set; }
+        public Double? Cost { get; set; }
+        public Double? TotalCost { get; set; }
+
     }
 }

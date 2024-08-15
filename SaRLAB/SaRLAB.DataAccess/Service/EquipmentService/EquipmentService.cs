@@ -60,6 +60,10 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
 
         public int InsertEquipment(Equipment equipment)
         {
+            if(equipment.Unit1Amount != null && equipment.Cost != null)
+            {
+                equipment.TotalCost = equipment.Unit1Amount * equipment.Cost;
+            }
             _context.Equipments.Add(equipment);
             return _context.SaveChanges();
         }
@@ -85,6 +89,10 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
             existingEquipment.Unit1Amount = equipment.Unit1Amount ?? existingEquipment.Unit1Amount;
             existingEquipment.Unit2 = equipment.Unit2 ?? existingEquipment.Unit2;
             existingEquipment.Unit2Amount = equipment.Unit2Amount ?? existingEquipment.Unit2Amount;
+            existingEquipment.ExpectedDate = equipment.ExpectedDate ?? existingEquipment.ExpectedDate;
+            existingEquipment.ExpectedInfo = equipment.ExpectedInfo ?? existingEquipment.ExpectedInfo;
+            existingEquipment.Cost = equipment.Cost ?? existingEquipment.Cost;
+            existingEquipment.TotalCost = existingEquipment.Unit1Amount * existingEquipment.Cost;
             return _context.SaveChanges();
         }
 
