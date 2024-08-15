@@ -5,6 +5,7 @@ fetch("header.html")
     (data) => (document.getElementById("header-placeholder").innerHTML = data)
   );
 
+// note
 var notification = document.getElementById("notification");
 var pdf = document.getElementById("pdf");
 var next_note = document.getElementById("next_note");
