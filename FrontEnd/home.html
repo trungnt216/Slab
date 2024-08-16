@@ -1,84 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
     <title>Library- Management</title>
     <!-- css -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <!-- icon-tab -->
-    <link rel="icon" href="assets/icon/icon_tab.png">
+    <link rel="icon" href="assets/icon/icon_tab.png" />
     <!-- font -->
-     <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
-</head>
-<body>
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+  </head>
+  <body>
     <div class="container">
-        <!-- title - username -->
-        <!-- title -->
-        <div class="title-username">
-            <div class="title">
-                <h1>You are welcome!</h1>
-            </div>
-            <div class="username">
-                <img src="assets/icon/icon_user.png" alt="">
-                <span>User name</span>
-            </div>
+      <!-- title - username -->
+      <!-- title -->
+      <div class="title-username">
+        <div class="title">
+          <h1>You are welcome!</h1>
+        </div>
+        <div class="username">
+          <img src="assets/icon/icon_user.png" alt="" />
+          <span>User name</span>
+        </div>
+      </div>
+
+      <!-- video -->
+      <div class="video">
+        <div class="form-video">
+          <video controls autoplay muted src="assets/video/bg_book.mp4"></video>
+        </div>
+      </div>
+
+      <!-- sar-lab -->
+      <div class="sarlab">
+        <div class="new">
+          <img src="assets/img/new.png" alt="" />
+        </div>
+        <div class="sar">
+          <p>SarLab</p>
+          <h1>NEWS</h1>
+        </div>
+      </div>
+
+      <!-- button -->
+      <div class="event">
+        <button class="library">
+          <img id="bt-li" src="assets/img/button_li.png" alt="" />
+        </button>
+        <button id="pra" class="library">
+          <span>PHÒNG THỰC HÀNH</span>
+        </button>
+        <!-- popup -->
+        <div class="notif">
+          Opps! Bạn cần liên hệ người quản lý đơn vị để được cấp mã vào phòng
+          thực hành
+        </div>
+        <img id="lock" src="assets/img/lock.png" alt="" />
+      </div>
+
+      <!-- text -->
+      <div class="text">
+        <div class="content">
+          <h2>BẢN QUYỀN</h2>
+          <p>
+            Tác giả cũng là chủ sở hữu phần mềm cam kết tính bảo mật, tính hợp
+            phát cho đơn vị khi đăng ký nhận chuyển nhượng.
+          </p>
         </div>
 
-        <!-- video -->
-        <div class="video">
-            <div class="form-video">
-                <video controls autoplay muted src="assets/video/bg_book.mp4"></video>
-            </div>
+        <div class="content">
+          <h2>HƯỚNG DẪN SỬ DỤNG</h2>
+          <p>
+            Hướng dẫn sử dụng được thêm vào mỗi phòng thực hành theo đặc thù môn
+            học. Để nhận bản đầy đủ vui lòng liên hệ tác giả phần mềm.
+          </p>
         </div>
 
-        <!-- sar-lab -->
-        <div class="sarlab">
-            <div class="new">
-                <img src="assets/img/new.png" alt="">
-            </div>
-            <div class="sar">
-                <p>SarLab</p>
-                <h1>NEWS</h1>
-            </div>
+        <div class="content">
+          <h2>THÔNG TIN LIÊN HỆ</h2>
+          <p>Tác giả phần mềm: Đinh Quang Cảnh</p>
+          <p>Số điện thoại: 0914.333.537</p>
+          <p>E-mail: dinhquangcanh@ump.edu.vn</p>
         </div>
-
-        <!-- button -->
-        <div class="event">
-            <button class="library">
-                <img id="bt-li" src="assets/img/button_li.png" alt="">
-            </button>
-            <button id="pra" class="library">
-                <span>PHÒNG THỰC HÀNH</span>
-            </button>
-            <!-- popup -->
-            <div class="notif">
-                Opps! Bạn cần liên hệ người quản lý đơn vị để được cấp mã vào phòng thực hành
-            </div>
-            <img id="lock" src="assets/img/lock.png" alt="">
-        </div>
-
-        <!-- text -->
-        <div class="text">
-            <div class="content">
-                <h2>BẢN QUYỀN</h2>
-                <p>Tác giả cũng là chủ sở hữu phần mềm cam kết tính bảo mật, tính hợp phát cho đơn vị khi đăng ký nhận chuyển nhượng.</p>
-            </div>
-
-            <div class="content">
-                <h2>HƯỚNG DẪN SỬ DỤNG</h2>
-                <p>Hướng dẫn sử dụng được thêm vào mỗi phòng thực hành theo đặc thù môn học. Để nhận bản đầy đủ vui lòng liên hệ tác giả phần mềm.</p>
-            </div>
-
-            <div class="content">
-                <h2>THÔNG TIN LIÊN HỆ</h2>
-                <p>Tác giả phần mềm: Đinh Quang Cảnh</p>
-                <p>Số điện thoại: 0914.333.537</p>
-                <p>E-mail: dinhquangcanh@ump.edu.vn</p>
-            </div>
-        </div>
+      </div>
     </div>
     <!-- scripts -->
     <script src="scripts.js"></script>
-</body>
+  </body>
 </html>
