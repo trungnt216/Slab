@@ -245,6 +245,8 @@ header {
 
 .infor img {
   width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
 
 .search {
@@ -1397,6 +1399,80 @@ textarea::placeholder {
   transform: scale(0.95);
   transition: 0.2s ease-in-out;
   background-color: #2d8b36;
+}
+
+@font-face {
+  font-family: "Zapfino";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Zapfino"), url("assets/DFVNEDLavonia/Zapfino.woff") format("woff");
+}
+.inful {
+  background-image: url("assets/img/bg_detail_lab.png");
+  height: 100vh;
+  background-position: calc(10px) calc(30% - 20px);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title-1 {
+  margin-top: 10px;
+  width: 1270px;
+  height: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #ddd;
+  z-index: 1;
+}
+
+h1#xo {
+  color: #c59568;
+}
+.title-2 {
+  margin-top: 20px;
+  width: 1270px;
+  height: 100px;
+  font-family: "Zapfino";
+  display: flex;
+  justify-content: center;
+  color: #c59568;
+  font-size: 27px;
+  z-index: 1;
+}
+
+.fif {
+  display: flex;
+  justify-content: space-around;
+  width: 1270px;
+  height: 500px;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.fif img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  opacity: 0.6;
+}
+
+.fif button {
+  width: 270px;
+  height: 390px;
+  border-radius: 20px;
+  background-color: rgb(167, 170, 169, 0.6);
+  border: none;
+}
+
+.fif button img:hover {
+  margin-top: -40px;
+  opacity: 1;
+  transition: margin-top 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  box-shadow: 0 0 65px rgba(253, 249, 242, 0.9);
 }
 
 @media (max-width: 468px) {
