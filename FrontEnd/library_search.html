@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library- Management</title>
+    <!-- css -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- icon-tab -->
+    <link rel="icon" href="assets/icon/icon_tab.png" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+  </head>
+  <body>
+    <div class="container" id="li-index">
+      <!-- LAB -->
+      <h1 id="vnx">CHemLAB</h1>
+      <!-- header -->
+      <div id="header-placeholder" class="men"></div>
+      <!-- main -->
+      <main>
+        <!-- nav -->
+        <nav class="note_f lab_menu">
+          <div class="logo oil" id="x-1">
+            <h1>SaRLAB</h1>
+          </div>
+          <div class="menu oil" id="x-2">
+            <a href="">Chung</a>
+            <a href="">Trang chủ</a>
+            <a id="logout" href="">Thư viện</a>
+            <a href="">Đăng xuất</a>
+          </div>
+        </nav>
+
+        <!-- expected -->
+        <div id="op" class="ti cl">
+          <img src="assets/img/bank_lab.png" alt="" />
+          <h1 id="tix">Kho dụng cụ</h1>
+          <button id="search">
+            <span>Tìm hóa chất</span>
+          </button>
+        </div>
+
+        <!-- search -->
+        <div class="search-ss">
+          <div class="cc">
+            <div class="s-1">
+              <div class="table-container">
+                <table
+                  id="main-table"
+                  border="1"
+                  cellspacing="0"
+                  cellpadding="5"
+                >
+                  <thead></thead>
+                  <tbody>
+                    <!-- Data rows -->
+                    <tr>
+                      <td>data 1111111</td>
+                      <td>data 1111111111111111</td>
+                      <td>data 1</td>
+                      <td>data 1</td>
+                      <td>data 1</td>
+                      <td>data 1</td>
+                      <td>13/09/2024</td>
+                      <td>
+                        <img id="dtimg" src="assets/img/bg_lab.jpg" alt="" />
+                      </td>
+                      <td id="tt-p">
+                        <a href="#">
+                          <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <a href="#">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href="#">
+                          <i class="fa-solid fa-trash"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>data 1111111</td>
+                      <td>data 1111111111111111</td>
+                      <td>data 1</td>
+                      <td>data 1</td>
+                      <td>data 1</td>
+                      <td>data 1</td>
+                      <td>13/07/2024</td>
+                      <td>
+                        <img id="dtimg" src="assets/img/bg_lab.jpg" alt="" />
+                      </td>
+                      <td id="tt-p">
+                        <a href="#">
+                          <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <a href="#">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href="#">
+                          <i class="fa-solid fa-trash"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>data 1111111</td>
+                      <td>data 1111111111111111</td>
+                      <td>data 1</td>
+                      <td>data 1</td>
+                      <td>data 1</td>
+                      <td>data 1</td>
+                      <td>12/01/2024</td>
+                      <td>
+                        <img id="dtimg" src="assets/img/bg_lab.jpg" alt="" />
+                      </td>
+                      <td id="tt-p">
+                        <a href="#">
+                          <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <a href="#">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href="#">
+                          <i class="fa-solid fa-trash"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="pagination" id="oki">
+              <button id="prev" disabled>
+                <img src="assets/icon/lab_button.png" alt="" />
+              </button>
+              <span id="page-info"></span>
+              <button id="next">
+                <img src="assets/icon/lab_button.png" alt="" />
+              </button>
+            </div>
+          </div>
+          <div class="xp">
+            <button id="add-s">
+              <span>Thêm mới</span>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- scripts -->
+    <script src="table.js"></script>
+
+    <!-- setup-time -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        function parseDate(dateStr) {
+          const [day, month, year] = dateStr.split("/");
+          return new Date(`${year}-${month}-${day}`);
+        }
+
+        const current = new Date();
+        const time2 = parseDate("12/06/2024");
+        //   const time2 = parseDate("12/10/2024");
+        const rows = document.querySelectorAll("#main-table tbody tr");
+
+        rows.forEach((row) => {
+          // Trích xuất thời gian từ ô thứ 7
+          const time1Str = row.querySelectorAll("td")[6].textContent.trim(); // Cột thứ 7 (chỉ số 6)
+          const time1 = parseDate(time1Str);
+
+          if (current < time1 && time1 < time2) {
+            row.classList.add("row-green");
+          } else if (time1 < current && current < time2) {
+            row.classList.add("row-yellow");
+          } else if (time1 < time2 && current > time2) {
+            row.classList.add("row-red");
+          }
+        });
+      });
+    </script>
+
+    <!-- page-data -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        function createTableFromRows(rows) {
+          const table = document.createElement("table");
+          table.border = 1;
+          table.cellSpacing = 0;
+          table.cellPadding = 5;
+
+          const thead = document.createElement("thead");
+          thead.innerHTML = `
+            <tr>
+                <th>STT</th>
+                <th>Tên dụng cụ</th>
+                <th>Nguồn gốc</th>
+                <th>Quy cách</th>
+                <th>Số lượng</th>
+                <th>Đơn vị</th>
+                <th>Ngày hiệu chuẩn</th>
+                <th>Hình ảnh</th>
+                <th>Thao tác</th>
+            </tr>
+        `;
+          table.appendChild(thead);
+
+          const tbody = document.createElement("tbody");
+          rows.forEach((row) => tbody.appendChild(row));
+          table.appendChild(tbody);
+
+          return table;
+        }
+
+        function renderPage(page) {
+          tableContainer.innerHTML = "";
+          const startIndex = (page - 1) * tablesPerPage * rowsPerPage;
+          const endIndex = Math.min(
+            startIndex + tablesPerPage * rowsPerPage,
+            allRows.length
+          );
+
+          const pageDiv = document.createElement("div");
+          pageDiv.classList.add("table-page");
+
+          for (let i = startIndex; i < endIndex; i += rowsPerPage) {
+            const rowsForTable = allRows.slice(i, i + rowsPerPage);
+            pageDiv.appendChild(createTableFromRows(rowsForTable));
+          }
+
+          tableContainer.appendChild(pageDiv);
+
+          pageInfo.textContent = `Page ${currentPage}`;
+          prevButton.disabled = currentPage === 1;
+          nextButton.disabled = endIndex >= allRows.length;
+        }
+
+        const allRows = Array.from(mainTable.querySelectorAll("tbody tr"));
+        let currentPage = 1;
+
+        prevButton.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderPage(currentPage);
+          }
+        });
+
+        nextButton.addEventListener("click", () => {
+          if (currentPage * tablesPerPage * rowsPerPage < allRows.length) {
+            currentPage++;
+            renderPage(currentPage);
+          }
+        });
+
+        renderPage(currentPage);
+      });
+    </script>
+  </body>
+</html>
