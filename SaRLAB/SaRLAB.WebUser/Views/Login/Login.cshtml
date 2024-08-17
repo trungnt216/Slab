@@ -1,52 +1,35 @@
 ﻿@model SaRLAB.Models.Entity.User
-
+@{
+    Layout = null;
+}
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
-    <title>@ViewBag.Title</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+    <title>Login Form</title>
+    <link rel="stylesheet" href="~/css/login_copy.css" />
 </head>
 <body>
-    <div class="containers">
-        <div class="video-container">
-          <video id="video1" class="myVideo" autoplay muted>
-            <source src="~/images/login.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="login-container">
+    <div class="container">
+        <div class="login-form" id="loginForm">
             <h2>ĐĂNG NHẬP</h2>
-            <form asp-action="Login" class="sign-in-form">
-                <div class="form-group">
-                    <img src="@Url.Content("~/images/ic_email.png")"/>
-                    <input class="form-control" asp-for="Email" type="text" placeholder="Tên đăng nhập">
-                </div>
-                <div class="form-group">
-                    <img src="@Url.Content("~/images/ic_password.png")" />
-                    <input type="password" id="password" class="form-control" asp-for="Password" placeholder="Password">
-                </div>
-                @if (TempData["Error"] != null)
-                {
-                    <div style="text-align: center; margin-bottom: 15px;">
-                        <span class="text-danger"><b>Sorry!</b> - @TempData["Error"] </span>
-                    </div>
-                }
-                <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
-                <div class="divider"></div>
-                <div class="text-signup">
-                    <p>Bạn chưa có tài khoản?</p>
-                    <a asp-action="Register">Đăng ký ngay!</a>
-                </div>
-            </form>
+            <div class="input-box">
+                <input type="text" required />
+                <label>Tên đăng nhập</label>
+            </div>
+            <div class="input-box">
+                <input type="password" required />
+                <label>Password</label>
+            </div>
+            <button class="login-btn">Đăng nhập</button>
+            <p>Ban chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
         </div>
     </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <div class="title-sar">
+        <h1>SarLAB</h1>
+    </div>
+    <script src="~/js/login.js"></script>
 </body>
 </html>

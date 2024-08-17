@@ -167,7 +167,7 @@ namespace SaRLAB.DataAccess.Service.DocumentService
             var existingDocument = _context.Documents.FirstOrDefault(d => d.ID == id);
 
             if (existingDocument == null)
-            {SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Documents__Subje__18EBB532". The conflict occurred in database "SLAB", table "dbo.Subject", column 'ID'.
+            {
                 // Document with the specified ID does not exist
                 return 0; // Or you can throw an exception or handle it based on your requirement
             }

@@ -20,32 +20,46 @@
 </head>
 
 <body>
+    <!---head-->
     <header>
         <div class="infor">
             <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
-            @if (TempData["name"] != null)
+            @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
             {
-                <h1>
-                    <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
-                        @TempData["name"]
-                    </a>
-                </h1>
+                    <h1>
+                        <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                        @Html.Raw(name)
+                        </a>
+                    </h1>
+
             }
             else
             {
-                <h1>Unknown User</h1>
+                    <h1>Unknown User</h1>
             }
         </div>
 
         <div class="search">
             <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
-            <div class="tk">
+            @* <div class="tk">
                 <input type="search" placeholder="Tìm kiếm">
                 <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-            <i class="fa-solid fa-bars"></i>
+            </div> *@
+            <i class="fa-solid fa-bars" id="menu-btn"></i>
         </div>
     </header>
+
+    <div class="menu_head">
+        <a href="">Giới thiệu</a>
+        <a href="">Văn bản - Biểu mẫu</a>
+        <a href="">Hướng dẫn sử dụng</a>
+        <a href="">Kho hình ảnh</a>
+        <a href="">Liên hệ</a>
+    </div>
+
+    <div class="olay" id="olay"></div>
+
+     <!---head-->
     <div class="container" id="li-index">
         <!-- header -->
         <div id="header-placeholder"></div>
