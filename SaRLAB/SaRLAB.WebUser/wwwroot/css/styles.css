@@ -2261,6 +2261,109 @@ h1#ce {
     gap: 20px;
     width: 500px;
     height: 800px;
+}
+
+.money {
+    width: 760px;
+    height: 590px;
+    background-color: rgb(167, 170, 169, 0.6);
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.form {
+    width: 420px;
+    height: 550px;
+    background-color: rgb(167, 170, 169, 0.6);
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.form-money h2 {
+    margin-top: 30px;
+    color: #359d43;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+.form-money label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+
+textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    resize: none;
+}
+
+.form-money input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    font-size: 30px;
+}
+
+.form-money input::placeholder,
+textarea::placeholder {
+    color: #f3f0e9;
+}
+
+.form-money button {
+    background-color: #39b54a;
+    color: white;
+    padding: 15px 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.form-money button:hover {
+    transform: scale(0.95);
+    transition: 0.2s ease-in-out;
+    background-color: #2d8b36;
+}
+
+@font-face {
+    font-family: "Zapfino";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Zapfino"), url("../assets/DFVNEDLavonia/Zapfino.woff") format("woff");
+}
+
+.inful {
+    background-image: url("../images/banner.jpg");
+    height: 100vh;
+    background-position: calc(10px) calc(30% - 20px);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title-1 {
+    margin-top: 10px;
+    width: 1270px;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
     flex-direction: column;
     background-image: url("../assets/img/library.png");
     background-size: 390% 75%;

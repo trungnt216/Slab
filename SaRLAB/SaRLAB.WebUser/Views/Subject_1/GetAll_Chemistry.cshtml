@@ -69,7 +69,6 @@
                     <h1>SaRLAB</h1>
                 </div>
                 <div class="menu oil" id="x-2">
-                    <a href="@Url.Action("Index", "HomePage")">Chung</a>
                     <a href="@Url.Action("Index", "HomePage")">Trang chủ</a>
                     <a href="@Url.Action("Index", "Library")">Thư viện</a>
                     <a id="logout" href="@Url.Action("Logout", "HomePage")">Đăng xuất</a>
@@ -78,11 +77,11 @@
 
             <!-- expected -->
             <div id="op" class="ti cl">
-                <img src="~/assets/img/bank_lab.png" alt="" />
                 <h1 id="tix">@ViewBag.TitleCustom</h1>
-                <button id="search">
-                    <span>Tìm hóa chất</span>
-                </button>
+                <form method="get" action="@Url.Action("GetAll_Chemistry_Search")" class="tk">
+                    <input type="search" name="name" placeholder="Tìm kiếm">
+                    <input type="hidden" name="type" value="@ViewBag.ActiveSubMenuLv2">
+                </form>
             </div>
 
             <!-- search -->

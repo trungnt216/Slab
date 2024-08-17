@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SaRLAB.DataAccess.Service.EquipmentService
 {
@@ -55,6 +56,19 @@ namespace SaRLAB.DataAccess.Service.EquipmentService
         {
             return _context.Equipments
                .Where(d => d.SchoolId == schoolId && d.SubjectId == subjectId && d.Type == type)
+               .ToList();
+        }
+
+        public List<Equipment> GetEquipmentsSearch(int schoolId, int subjectId, string type, string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return _context.Equipments
+                 .Where(d => d.SchoolId == schoolId && d.SubjectId == subjectId && d.Type == type)
+                 .ToList();
+            }
+                  return _context.Equipments
+               .Where(d => d.SchoolId == schoolId && d.SubjectId == subjectId && d.Type == type && d.Name.ToLower().Contains(name))
                .ToList();
         }
 
