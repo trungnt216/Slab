@@ -119,6 +119,17 @@ p a:hover {
   color: #e5e4e2;
 }
 
+.message {
+  color: rgba(255, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  display: block;
+}
+
 @media (min-width: 469px) and (max-width: 968px) {
   .title-sar {
     display: none;
