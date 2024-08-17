@@ -74,11 +74,18 @@
                 <partial name="_TitleCustom">
                 <div class="table-action d-flex justify-content-between">
                     <partial name="_SearchBox" />
-                        <a class="btn-custom-create" type="button"
-                           asp-action="Create_Document" asp-route-titleDocument="@ViewBag.ActiveSubMenuLv2">
-                        <i class="fa-solid fa-plus"></i>
-                        Thêm mới
-                    </a>
+                        <div class="d-flex">
+                            <a class="btn-custom-create" type="button" style="margin-right : 5px;"
+                               asp-action="Create_Document" asp-route-titleDocument="@ViewBag.ActiveSubMenuLv2">
+                                <i class="fa-solid fa-plus"></i>
+                                Thêm mới
+                            </a>
+                            <a class="btn-custom-create" type="button" href="@Url.Action("Index", "HomePage")">
+                                <i class="fa-solid fa-home"></i>
+                                Trang chủ
+                            </a>
+                    </div>
+
                 </div>
                 <div id="popupNotification" class="alert alert-danger">
                     @TempData["notice"]
