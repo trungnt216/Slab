@@ -15,6 +15,7 @@ namespace SaRLAB.Models.Entity
         public int? SchoolId { get; set; }
         public int? Type { get; set; }
         public string? VideoBackGround { get; set; }
+        public string? MarkName { get; set; }
         public ICollection<PracticePlan>? PracticePlans { get; set; }
         public ICollection<ScientificResearch>? ScientificResearches { get; set; }
     }
