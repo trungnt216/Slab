@@ -111,16 +111,16 @@ p a:hover {
   color: #ffa200;
 }
 
-.title-sar{
-    left: 270px;
-    position: absolute;
-    font-size: 70px;
-    opacity: 0.6;
-    color: #e5e4e2;
+.title-sar {
+  left: 270px;
+  position: absolute;
+  font-size: 70px;
+  opacity: 0.6;
+  color: #e5e4e2;
 }
 
-@media (min-width: 469px) and (max-width: 968px){
-    .title-sar{
-        display: none;
-    }
+@media (min-width: 469px) and (max-width: 968px) {
+  .title-sar {
+    display: none;
+  }
 }
