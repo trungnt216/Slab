@@ -289,5 +289,6 @@ namespace SaRLAB.AdminWeb.Controllers
                 return RedirectToAction("GetAllNotice");
             }
         }
+
     }
 }

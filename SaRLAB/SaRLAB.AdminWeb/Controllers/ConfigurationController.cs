@@ -1616,5 +1616,373 @@ namespace SaRLAB.AdminWeb.Controllers
             ViewBag.ActiveMenu = "student";
             return View();
         }
+
+
+        //----------------------------------------------------------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Document(string titleDocument)
+        {
+
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetDocumentsByTypeNoneSchool/" + titleDocument).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
+            return View(documents);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create_Document(string titleDocument)
+        {
+
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
+
+            if (userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner" || userLogin.RoleName == "Teacher")
+            {
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return View();
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền thêm mới!";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
+            }
+        }
+        [HttpPost]
+        public ActionResult Create_Document(Document document, IFormFile File, IFormFile coverImage, string titleDocument)
+        {
+
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (coverImage != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(coverImage.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    coverImage.CopyTo(stream);
+                }
+                document.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+            else
+            {
+                document.CoverImage = "~/images/book.jpg";
+            }
+
+            try
+            {
+                document.CreateTime = DateTime.Now;
+                document.CreateBy = userLogin.Email;
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.SchoolId = userLogin.SchoolId;
+                document.SubjectId = 1;
+                document.Type = titleDocument;
+                document.SchoolId = userLogin.SchoolId;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Insert/", content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenuLv2 = titleDocument;
+                    return RedirectToAction("GetAll_Document", new { titleDocument });
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
+            }
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
+            return RedirectToAction("GetAll_Document", new { titleDocument });
+        }
+
+        [HttpGet]
+        public ActionResult Edit_Document(int id, string titleDocument)
+        {
+
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return Ok();
+            }
+
+            if (userLogin.Email == document.CreateBy || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return View(document);
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền chỉnh sửa!";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit_Document(Document document, IFormFile File, string titleDocument)
+        {
+
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
+
+            if (File != null && document.Path == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(File.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    File.CopyTo(stream);
+                }
+                document.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            try
+            {
+                document.UpdateTime = DateTime.Now;
+                document.UpdateBy = userLogin.Email;
+                document.PageFlag = false;
+
+                string data = JsonConvert.SerializeObject(document);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Update/" + document.ID, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["successMessage"] = "create success";
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenuLv2 = titleDocument;
+                    return RedirectToAction("GetAll_Document", new { titleDocument });
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return View();
+            }
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
+            return View();
+        }
+
+
+        public ActionResult Delete_Document(int id, string titleDocument)
+        {
+            Document document = new Document();
+
+            HttpResponseMessage responses = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (responses.IsSuccessStatusCode)
+            {
+                string data = responses.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            if (document == null)
+            {
+                TempData["notice"] = "khong tim thay du lieu";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
+            }
+
+            if (document.CreateBy == userLogin.Email || userLogin.RoleName == "Admin" || userLogin.RoleName == "Owner")
+            {
+                try
+                {
+                    HttpResponseMessage response;
+                    StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+                    response = _httpClient.PostAsync(_httpClient.BaseAddress + "Document/Delete/" + id, content).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewBag.ActiveMenu = "subject6";
+                        ViewBag.ActiveSubMenuLv2 = titleDocument;
+                        return RedirectToAction("GetAll_Document", new { titleDocument });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["errorMessage"] = ex.Message;
+                    ViewBag.ActiveMenu = "subject6";
+                    ViewBag.ActiveSubMenuLv2 = titleDocument;
+                    return RedirectToAction("GetAll_Document", new { titleDocument });
+                }
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
+            }
+            else
+            {
+                TempData["notice"] = "Bạn không có quyền xóa!";
+                ViewBag.ActiveMenu = "subject6";
+                ViewBag.ActiveSubMenuLv2 = titleDocument;
+                return RedirectToAction("GetAll_Document", new { titleDocument });
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Details_Document(int id, string titleDocument)
+        {
+
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["role"] = userLogin.RoleName;
+            for (int i = 1; i <= 30; i++)
+            {
+                var subjectname = subjects.SingleOrDefault(item => item.Type == i);
+                if (subjectname != null)
+                {
+                    TempData[$"subject_{i}"] = subjectname.SubjectName;
+                }
+            }
+            TempData["noticeCount"] = notice.Count;
+            ViewBag.MenuItems = manageTitles;
+
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
+            return View(document);
+        }
     }
 }

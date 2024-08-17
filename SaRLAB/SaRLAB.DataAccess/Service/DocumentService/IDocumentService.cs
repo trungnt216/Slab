@@ -22,6 +22,7 @@ namespace SaRLAB.DataAccess.Service.DocumentService
         List<Document> getSpecializedEnglishDocument();
         List<Document> GetDocumentsByType(int schoolId, int subjectId, string type);
         List<Document> GetDocumentsByTypeToAccept(int schoolId, int subjectId, string type);
+        List<Document> GetDocumentsByTypeNoneSchool(string type);
         List<Document> GetDocumentsBySchool(int schoolId);
         List<NoticeAdmin> GetAllDocumentsBySchoolToAccept(int schoolId);
         NoticeAdmin GetByIdDocumentsBySchoolToAccept(int Id);

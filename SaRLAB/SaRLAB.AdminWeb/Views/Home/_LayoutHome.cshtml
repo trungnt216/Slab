@@ -75,6 +75,56 @@
                         </span>
                     </p>
                 </li>
+                <li class="@((ViewBag.ActiveMenu == "user") ? "active" : "")">
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <i class="icon fa-solid fa-file col-2"></i>
+                            <a class="title title-menu col-6" asp-controller="Configuration" asp-action="GetAll_Document" asp-route-titleDocument="giới thiệu">
+                                Giới thiệu
+                            </a>
+                        </span>
+                    </p>
+                </li>
+                <li class="@((ViewBag.ActiveMenu == "user") ? "active" : "")">
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <i class="icon fa-solid fa-file col-2"></i>
+                            <a class="title title-menu col-6" asp-controller="Configuration" asp-action="GetAll_Document" asp-route-titleDocument="văn bản biểu mẫu">
+                               Văn bản biểu mẫu
+                            </a>
+                        </span>
+                    </p>
+                </li>
+                <li class="@((ViewBag.ActiveMenu == "user") ? "active" : "")">
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <i class="icon fa-solid fa-file col-2"></i>
+                            <a class="title title-menu col-6" asp-controller="Configuration" asp-action="GetAll_Document" asp-route-titleDocument="hướng dẫn sử dụng">
+                               Hướng dẫn sử dụng
+                            </a>
+                        </span>
+                    </p>
+                </li>
+                <li class="@((ViewBag.ActiveMenu == "user") ? "active" : "")">
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <i class="icon fa-solid fa-file col-2"></i>
+                            <a class="title title-menu col-6" asp-controller="Configuration" asp-action="GetAll_Document" asp-route-titleDocument="kho ảnh">
+                                Kho ảnh
+                            </a>
+                        </span>
+                    </p>
+                </li>
+                <li class="@((ViewBag.ActiveMenu == "user") ? "active" : "")">
+                    <p class="d-flex justify-content-between">
+                        <span class="left row">
+                            <i class="icon fa-solid fa-file col-2"></i>
+                            <a class="title title-menu col-6" asp-controller="Configuration" asp-action="GetAll_Document" asp-route-titleDocument="liên hệ">
+                                Liên hệ
+                            </a>
+                        </span>
+                    </p>
+                </li>
                 <li class="@((ViewBag.ActiveMenu == "student") ? "active" : "")">
                     <p class="d-flex justify-content-between">
                         <span class="left row">

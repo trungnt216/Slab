@@ -117,6 +117,13 @@ namespace SaRLAB.DataAccess.Service.DocumentService
                    .ToList();
         }
 
+        public List<Document> GetDocumentsByTypeNoneSchool(string type)
+        {
+            return _context.Documents
+                    .Where(d => d.Type == type)
+                   .ToList();
+        }
+
         public List<Document> GetDocumentsByTypeToAccept(int schoolId, int subjectId, string type)
         {
             return _context.Documents
@@ -160,7 +167,7 @@ namespace SaRLAB.DataAccess.Service.DocumentService
             var existingDocument = _context.Documents.FirstOrDefault(d => d.ID == id);
 
             if (existingDocument == null)
-            {
+            {SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Documents__Subje__18EBB532". The conflict occurred in database "SLAB", table "dbo.Subject", column 'ID'.
                 // Document with the specified ID does not exist
                 return 0; // Or you can throw an exception or handle it based on your requirement
             }
