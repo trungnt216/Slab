@@ -445,5 +445,66 @@ namespace SaRLAB.UserWeb.Controllers
             httpContext.Session.Clear();
             return RedirectToAction("Login", "Login");
         }
+
+        //------------------------- document biến động -------------------------------------------------------------------
+        [HttpGet]
+        public IActionResult GetAll_Document(string titleDocument)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+
+
+
+            List<Document> documents = new List<Document>();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetDocumentsByTypeNoneSchool/" + titleDocument).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                documents = JsonConvert.DeserializeObject<List<Document>>(data);
+            }
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
+            return View(documents);
+        }
+
+        [HttpGet]
+        public ActionResult Details_Document(int id, string titleDocument)
+        {
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
+            TempData["role"] = userLogin.RoleName;
+
+
+            Document document = new Document();
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Document/GetById/" + id).Result;
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                document = JsonConvert.DeserializeObject<Document>(data);
+            }
+
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenuLv2 = titleDocument;
+            return View(document);
+        }
+
     }
 }

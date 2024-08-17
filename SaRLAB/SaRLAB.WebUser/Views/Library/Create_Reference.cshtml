@@ -47,11 +47,11 @@
         </header>
 
         <div class="menu_head">
-            <a href="">Giới thiệu</a>
-            <a href="">Văn bản - Biểu mẫu</a>
-            <a href="">Hướng dẫn sử dụng</a>
-            <a href="">Kho hình ảnh</a>
-            <a href="">Liên hệ</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="giới thiệu">Giới thiệu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="văn bản biểu mẫu">Văn bản - Biểu mẫu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hướng dẫn sử dụng">Hướng dẫn sử dụng</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hình ảnh">Kho hình ảnh</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="liên hệ">Liên hệ</a>
         </div>
 
         <div class="olay" id="olay"></div>

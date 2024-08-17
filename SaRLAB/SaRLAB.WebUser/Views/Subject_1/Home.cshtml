@@ -1,11 +1,9 @@
 ﻿@{
-    ViewData["Title"] = "Index";
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=0.5" />
@@ -17,33 +15,35 @@
     <!-- font -->
     <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
 </head>
-
 <body>
     <div class="container" id="li-index">
-        <!-- header -->
+        <!---head-->
         <header>
             <div class="infor">
                 <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
                 @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
                 {
-                            <h1>
-                                <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
-                            @TempData["name"]
-                                </a>
-                            </h1>
+                    <h1>
+                        <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                            @Html.Raw(name)
+                        </a>
+                    </h1>
 
                 }
                 else
                 {
-                            <h1>Unknown User</h1>
+                    <h1>Unknown User</h1>
                 }
             </div>
 
             <div class="search">
                 <i class="fa-solid fa-house" onclick="window.location.href='@Url.Action("Index", "HomePage")'"></i>
+
                 <i class="fa-solid fa-bars" id="menu-btn"></i>
             </div>
         </header>
+
+
         <div class="menu_head">
             <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="giới thiệu">Giới thiệu</a>
             <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="văn bản biểu mẫu">Văn bản - Biểu mẫu</a>
@@ -53,6 +53,8 @@
         </div>
 
         <div class="olay" id="olay"></div>
+
+        <!---head-->
         <!-- main -->
         <main>
             <!-- nav -->
@@ -69,31 +71,31 @@
             </nav>
             <!-- lab-detail -->
             <div class="lab-detail">
-                @if (TempData["BackGround"] != null)
-                {
-                            <img id="pk" src="@Url.Content(TempData["BackGround"].ToString())" alt="" />
-                }
-                else
-                {
-                            <img id="pk" src="~/assets/img/bg_detail_lab.png" alt="" />
-                }
+                <img id="pk" src="~/assets/img/bg_detail_lab.png" alt="" />
                 <div class="ti">
                     <img src="~/assets/img/bank_lab.png" alt="" />
-                    <h1>@TempData["Subject_1"]</h1>
+                    <h1 id="ce">CHemLAB</h1>
                 </div>
-                <div class="fl-ti">
-                    <div class="column">
-                        <a class="me-box" asp-action="Title_GetAll_By_Type" asp-route-id="0" asp-route-type="Kho vật tư">Kho vật tư</a>
-                        <a asp-controller="Subject_1" asp-action="Title_GetAll_By_Type" asp-route-id="4" asp-route-type="Nghiên cứu khoa học" class="me-box">Nghiên cứu khoa học</a>
+
+                <!-- section -->
+                <div class="nq-kt">
+                    <form id="myForm1" asp-action="Details_RuleClassroom" style="display:none;" method="get">
+                        <!-- Các input fields -->
+                    </form>
+                    <div class="nq">
+                        <div class="tp1" onclick="document.getElementById('myForm1').submit();">
+                            <h1>NỘI QUY</h1>
+                            <h1>PHÒNG THÍ NGHIỆM</h1>
+                        </div>
                     </div>
-                    <div class="column">
-                        <a asp-controller="Subject_1" asp-action="Title_GetAll_By_Type" asp-route-id="2" asp-route-type="Thực hành" class="big-box">Thực hành</a>
-                        <a asp-controller="Subject_1" asp-action="Title_GetAll_By_Type" asp-route-id="5" asp-route-type="Tiếng Anh chuyên ngành" class="small-box">Tiếng Anh chuyên ngành</a>
-                    </div>
-                    <div class="column">
-                        <a asp-action="Title_GetAll_By_Type" asp-route-id="0" asp-route-type="Nhân sự" class="small-box">Nhân sự</a>
-                        <a asp-controller="Subject_1" asp-action="Title_GetAll_By_Type" asp-route-id="1" asp-route-type="Tài liệu" class="small-box">Tài liệu</a>
-                        <a asp-controller="Subject_1" asp-action="Title_GetAll_By_Type" asp-route-id="3" asp-route-type="Hợp tác quốc tế" class="small-box" class="small-box">Hợp tác quốc tế</a>
+                    <form id="myForm2" asp-controller="MultipleQuestions" asp-action="@TempData["action"]" style="display:none;" method="get">
+                        <!-- Các input fields -->
+                    </form>
+                    <div class="kt">
+                        <div class="tp2" onclick="document.getElementById('myForm2').submit();">
+                            <h1>KIỂM TRA TRẢI NGHIỆM</h1>
+                            <h1>@TempData["rome"]</h1>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -120,7 +122,6 @@
             console.error("Phần tử menuBtn không tồn tại trong DOM.");
         }
     </script>
-    <script src="~/js/lab.js" defer></script>
+    <script src="~/js/lab.js"></script>
 </body>
-
 </html>
