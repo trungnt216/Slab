@@ -460,10 +460,31 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
         //----------------------------hóa chất ------------------------------------------
+
+        private List<Equipment> GetEquipmentList(string type, string name = null)
+        {
+            List<Equipment> equipment = new List<Equipment>();
+            string url = $"Equipment/GetAll/{userLogin.SchoolId}/{Subject_id}/{type}";
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                url += $"/{name}";
+            }
+
+            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + url).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
+            }
+
+            return equipment;
+        }
+
         [HttpGet]
         public IActionResult GetAll_Chemistry(string type)
         {
-
             if (_hasError || userLogin.RoleName == "User")
             {
                 return View("Error");
@@ -476,23 +497,37 @@ namespace SaRLAB.UserWeb.Controllers
             TempData["subject_1"] = subject1.SubjectName;
             ViewBag.Layout = Subject_name;
 
-
-
-            List<Equipment> equipment = new List<Equipment>();
-
-            HttpResponseMessage response = _httpClient.GetAsync(_httpClient.BaseAddress + "Equipment/GetAll/" + userLogin.SchoolId + "/" + Subject_id + "/" + type).Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                equipment = JsonConvert.DeserializeObject<List<Equipment>>(data);
-            }
+            List<Equipment> equipment = GetEquipmentList(type);
 
             ViewBag.ActiveMenu = "subject6";
             ViewBag.ActiveSubMenu = "dutru";
             ViewBag.ActiveSubMenuLv2 = type;
             return View(equipment);
         }
+
+        [HttpGet]
+        public IActionResult GetAll_Chemistry_Search(string type, string name)
+        {
+            if (_hasError || userLogin.RoleName == "User")
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["subject_1"] = subject1.SubjectName;
+            ViewBag.Layout = Subject_name;
+
+            List<Equipment> equipment = GetEquipmentList(type, name);
+
+            ViewBag.ActiveMenu = "subject6";
+            ViewBag.ActiveSubMenu = "dutru";
+            ViewBag.ActiveSubMenuLv2 = type;
+            return View("GetAll_Chemistry", equipment);
+        }
+
 
 
         [HttpGet]

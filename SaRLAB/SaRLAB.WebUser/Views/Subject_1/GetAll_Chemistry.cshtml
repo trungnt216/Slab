@@ -47,10 +47,6 @@
 
             <div class="search">
                 <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
-                <div class="tk">
-                    <input type="search" placeholder="Tìm kiếm">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
                 <i class="fa-solid fa-bars"></i>
             </div>
         </header>
@@ -71,9 +67,10 @@
             <!-- expected -->
             <div id="op" class="ti cl">
                 <h1 id="tix">@ViewBag.TitleCustom</h1>
-                <button id="search">
-                    <span>Tìm hóa chất</span>
-                </button>
+                <form method="get" action="@Url.Action("GetAll_Chemistry_Search")" class="tk">
+                    <input type="search" name="name" placeholder="Tìm kiếm">
+                    <input type="hidden" name="type" value="@ViewBag.ActiveSubMenuLv2">
+                </form>
             </div>
 
             <!-- search -->

@@ -107,5 +107,13 @@ namespace SaRLAB.Application.Controllers
         {
             return Ok(_equipmentService.GetEquipmentsByType(schoolId, subjectId, type));
         }
+
+        [HttpGet]
+        [Route("GetAll/{schoolId}/{subjectId}/{type}/{name}")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        public IActionResult GetAllEquipmentSearch(int schoolId, int subjectId, string type, string name)
+        {
+            return Ok(_equipmentService.GetEquipmentsSearch(schoolId, subjectId, type, name));
+        }
     }
 }
