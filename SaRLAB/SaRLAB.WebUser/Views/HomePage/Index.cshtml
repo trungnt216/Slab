@@ -28,11 +28,11 @@
             <div class="username">
                 @if (TempData["AvtPath"] != null && TempData["AvtPath"] is string avtPath && !string.IsNullOrWhiteSpace(avtPath))
                 {
-                        <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="User Avatar">
+                    <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="User Avatar" style="border-radius:50%;">
                 }
                 else
                 {
-                        <img src="~/images/defaultAvatar.jpg" alt="Default Avatar">
+                    <img src="~/images/defaultAvatar.jpg" alt="Default Avatar" style="border-radius:50%;">
                 }
 
                 @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))

@@ -40,14 +40,24 @@
             </div>
 
             <div class="search">
-                <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
-                <div class="tk">
-                    <input type="search" placeholder="Tìm kiếm">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+                <i class="fa-solid fa-house" onclick="window.location.href='@Url.Action("Index", "HomePage")'"></i>
+                @* <div class="tk">
+                <input type="search" placeholder="Tìm kiếm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                </div> *@
+                <i class="fa-solid fa-bars" id="menu-btn"></i>
                 <i class="fa-solid fa-bars"></i>
             </div>
         </header>
+        <div class="menu_head">
+            <a href="">Giới thiệu</a>
+            <a href="">Văn bản - Biểu mẫu</a>
+            <a href="">Hướng dẫn sử dụng</a>
+            <a href="">Kho hình ảnh</a>
+            <a href="">Liên hệ</a>
+        </div>
+
+        <div class="olay" id="olay"></div>
         <!-- main -->
         <main>
             <!-- nav -->
@@ -95,7 +105,7 @@
         </main>
     </div>
     <!-- scripts -->
-    <script src="~/js/lab.js"></script>
+    <script src="~/js/lab.js" defer></script>
 </body>
 
 </html>

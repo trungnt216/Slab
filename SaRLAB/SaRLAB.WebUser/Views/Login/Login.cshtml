@@ -8,23 +8,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=0.5" />
     <title>Login Form</title>
-    <link rel="stylesheet" href="~/css/login_copy.css" />
+    <link rel="stylesheet" href="~/css/loginnew.css" />
 </head>
 <body>
     <div class="container">
-        <div class="login-form" id="loginForm">
+        <form class="login-form" id="loginForm" asp-action="Login">
             <h2>ĐĂNG NHẬP</h2>
             <div class="input-box">
-                <input type="text" required />
+                <input type="text" asp-for="Email" required />
                 <label>Tên đăng nhập</label>
             </div>
             <div class="input-box">
-                <input type="password" required />
+                <input type="password" asp-for="Password" required />
                 <label>Password</label>
             </div>
-            <button class="login-btn">Đăng nhập</button>
-            <p>Ban chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
-        </div>
+
+            <div class="message" id="loginMessage">
+                <i>Vui lòng nhập thông tin</i>
+            </div>
+
+            <button class="login-btn" type="submit">Đăng nhập</button>
+            <p>Bạn chưa có tài khoản? <a asp-action="Register">Đăng ký ngay</a></p>
+        </form>
     </div>
 
     <div class="title-sar">

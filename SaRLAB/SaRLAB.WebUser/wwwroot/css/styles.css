@@ -242,6 +242,16 @@ header {
     align-items: center;
 }
 
+.infor a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #1b4bb3;
+}
+
+.search .fa-house {
+    font-size: 30px;
+}
+
 .infor,
 .search {
     width: 620px;
