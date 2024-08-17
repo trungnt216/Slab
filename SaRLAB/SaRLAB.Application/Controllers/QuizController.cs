@@ -25,7 +25,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetRandomQuizzes/{schoolId}/{subjectId}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetQuizzes(int schoolId, int subjectId)
         {
             return Ok(_quizService.GetRandomQuizzes(50, schoolId, subjectId));
@@ -33,7 +33,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetRandomQuizzesAfterDone/{schoolId}/{subjectId}/{count}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetQuizzesAfterDone(int count,int schoolId, int subjectId)
         {
             return Ok(_quizService.GetRandomQuizzesAfter(count, schoolId, subjectId));
@@ -41,7 +41,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetQuizById/{id}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetQuizById(int id)
         {
             return Ok(_quizService.GetQuizById(id));
@@ -50,7 +50,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Insert(Quiz quiz)
         {
             if (quiz == null)
@@ -65,7 +65,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Update(int id, Quiz quiz)
         {
             if (id == 0)
@@ -80,7 +80,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{ids}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public ActionResult Delete(String ids)
         {
             if (ids == null)

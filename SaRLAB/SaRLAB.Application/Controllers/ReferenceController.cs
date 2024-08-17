@@ -19,7 +19,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
-//[Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public ActionResult Delete(int id)
         {
             if (id == 0)
@@ -34,7 +34,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetById/{id}")]
-        //[Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetById(int id)
         {
             return Ok(_referenceService.GetReferenceById(id));
@@ -42,7 +42,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
-//[Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Insert(Reference reference)
         {
             if (reference == null)
@@ -57,7 +57,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
-//[Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Update(int id, Reference reference)
         {
             if (id == 0)
@@ -72,7 +72,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetReferenceBySchoolId/{schoolId}")]
-//[Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetReferenceBySchoolId(int schoolId)
         {
             return Ok(_referenceService.GetReferencesBySchoolId(schoolId));
@@ -80,7 +80,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetReferenceByName/{name}")]
-//[Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetReferenceByName(string name)
         {
             return Ok(_referenceService.GetReferenceByName(name));
@@ -88,7 +88,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetReferenceByType/{schoolID}/{type}")]
-//[Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetReferenceByType(string type, int schoolID)
         {
             return Ok(_referenceService.GetReferenceByType(type, schoolID));

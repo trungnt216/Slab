@@ -18,7 +18,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAll()
         {
             return Ok();
@@ -26,7 +26,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("{subjectId}/GetAll")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAllBySubject(int subjectId)
         {
             return Ok(_scientificResearchService.GetScientificResearchsBySubjectId(subjectId));
@@ -34,7 +34,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetById/{id}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetById(int id)
         {
             return Ok(_scientificResearchService.GetScientificResearchById(id));
@@ -42,7 +42,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{subjectId}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult UpdateBySubject(int subjectId, ScientificResearch updatedResearch)
         {
             if(subjectId == null)
@@ -57,7 +57,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult InsertBySubject(ScientificResearch updatedResearch)
         {
             if (updatedResearch == null)
@@ -72,7 +72,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult DeleteBySubject(int id)
         {
             if (id == null)

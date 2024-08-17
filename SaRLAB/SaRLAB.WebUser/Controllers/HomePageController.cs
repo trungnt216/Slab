@@ -104,6 +104,76 @@ namespace SaRLAB.UserWeb.Controllers
             }
         }
 
+        public ActionResult Welcome()
+        {
+            ViewBag.ActiveMenu = "homePage";
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            ViewBag.MenuItems = manageTitles;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["School"] = userLogin.SchoolId;
+
+            School school = new School();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetByID/" + userLogin.SchoolId).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                school = JsonConvert.DeserializeObject<School>(data);
+            }
+
+            ViewBag.school = school;
+
+            return View();
+        }
+
+        public ActionResult sumary(string type)
+        {
+            ViewBag.ActiveMenu = "homePage";
+
+            if (_hasError)
+            {
+                return View("Error");
+            }
+
+            TempData["name"] = userLogin.Name;
+            TempData["role"] = userLogin.RoleName;
+            ViewBag.MenuItems = manageTitles;
+            TempData["AvtPath"] = userLogin.AvtPath;
+            TempData["School"] = userLogin.SchoolId;
+
+            School school = new School();
+
+            HttpResponseMessage response;
+            response = _httpClient.GetAsync(_httpClient.BaseAddress + "School/GetByID/" + userLogin.SchoolId).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                school = JsonConvert.DeserializeObject<School>(data);
+            }
+
+            ViewBag.school = school;
+
+            if (type == "school")
+            {
+                ViewBag.url = school.SchoolSumary;
+            }
+            else
+            {
+                ViewBag.url = school.BranchSumary;
+            }
+            return View();
+        }
+
 
         public ActionResult Index()
         {
@@ -191,7 +261,7 @@ namespace SaRLAB.UserWeb.Controllers
         {
             if (userLogin.RoleName != "Owner")
             {
-                return RedirectToAction("Index", "HomePage");
+                return RedirectToAction("welcome", "HomePage");
             }
 
             List<School> schools = new List<School>();
@@ -225,7 +295,7 @@ namespace SaRLAB.UserWeb.Controllers
             httpContext.Session.SetString("jwtToken", jwtToken1);
             /*            Program.jwtToken = jwtToken1;*/
 
-            return RedirectToAction("Index", "HomePage");
+            return RedirectToAction("welcome", "HomePage");
         }
 
         [HttpGet]
@@ -362,10 +432,10 @@ namespace SaRLAB.UserWeb.Controllers
             {
                 TempData["errorMessage"] = ex.Message;
                 ViewBag.ActiveMenu = "homePage";
-                return View();
+                return RedirectToAction("Information", new { subjectID = subjectID });
             }
             ViewBag.ActiveMenu = "homePage";
-            return View();
+            return RedirectToAction("Information", new { subjectID = subjectID });
         }
 
 

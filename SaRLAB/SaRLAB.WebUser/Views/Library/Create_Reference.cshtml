@@ -1,1 +1,143 @@
-﻿
+﻿@{
+    Layout = null;
+}
+
+@model SaRLAB.Models.Entity.Reference
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+    <title>Library- Management</title>
+    <!-- css -->
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <!-- icon-tab -->
+    <link rel="icon" href="~/assets/icon/icon_tab.png" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+</head>
+
+<body>
+    <div class="container" id="li-index">
+        <header>
+            <div class="infor">
+                <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
+                @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
+
+
+
+
+
+
+
+                {
+                    <h1>
+                        <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                            @Html.Raw(name)
+                        </a>
+                    </h1>
+
+                }
+
+
+
+
+
+
+
+                else
+
+
+
+
+
+
+
+                {
+                    <h1>Unknown User</h1>
+                }
+            </div>
+
+            <div class="search">
+                <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
+                <div class="tk">
+                    <input type="search" placeholder="Tìm kiếm">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+        <!-- main -->
+        <main>
+            <!-- add-product -->
+            <div class="add-product">
+                <div class="add-file-pdf">
+                    <form method="post" enctype="multipart/form-data">
+                        <label for="pdf-upload"></label>
+                        <input type="file" id="pdf-upload" name="pdf-upload" accept="application/pdf" />
+                    </form>
+                    <!-- Embed PDF -->
+                    <embed id="pdf-add" src="" type="application/pdf" />
+                </div>
+
+                <!-- add-des -->
+                <div class="add-des">
+                    <form asp-action="Create_Reference" asp-route-type="@TempData["type"]" method="post"
+                        enctype="multipart/form-data">
+
+                        <div class="io">
+                            <label asp-for="Name">Tên sách:</label>
+                            <input asp-for="Name" type="text" id="book-title"
+                                placeholder="............................................" required />
+                        </div>
+
+                        <div class="io">
+                            <label asp-for="Author">Tên tác giả:</label>
+                            <input asp-for="Author" type="text" id="author-name"
+                                placeholder="............................................" required />
+                        </div>
+
+                        <div class="io">
+                            <label asp-for="PublicationYear">Năm xuất bản:</label>
+                            <input asp-for="PublicationYear" type="number" id="publish-year" min="1000" max="9999"
+                                placeholder="............................................" required />
+                        </div>
+
+                        <div class="io">
+                            <label asp-for="Publisher">Nhà xuất bản:</label>
+                            <input asp-for="Publisher" type="text" id="publisher"
+                                placeholder="............................................" required />
+                        </div>
+
+                        <div class="io ik">
+                            <label asp-for="Summary">Tóm tắt nội dung:</label>
+                            <textarea asp-for="Summary" id="summary" rows="4"
+                                placeholder="...................................." required></textarea>
+                        </div>
+
+                        <div class="ix">
+                            <a href="#" onclick="document.getElementById('file-upload').click(); return false;">Thêm
+                                file</a>
+                            <input type="file" id="file-upload" name="File" style="display: none" />
+                        </div>
+
+                        <div class="ix il">
+                            <a href="#" onclick="document.getElementById('cover-upload').click(); return false;">Ảnh
+                                bìa</a>
+                            <input type="file" id="cover-upload" name="Cover" accept="image/*" style="display: none" />
+                        </div>
+
+                        <button type="submit">GỞI BÀI ĐÓNG GÓP</button>
+                    </form>
+                </div>
+                <div class="fix-add"></div>
+            </div>
+        </main>
+    </div>
+    <!-- scripts -->
+    <script src="~/js/lab.js"></script>
+</body>
+
+</html>

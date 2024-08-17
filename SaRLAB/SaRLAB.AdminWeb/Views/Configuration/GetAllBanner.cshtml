@@ -46,12 +46,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label asp-for="SchoolLogo" class="col-3 form-label">Chọn ảnh trường học</label>
+                <label asp-for="SchoolLogo" class="col-3 form-label">Chọn logo trường học</label>
                 <div class="col">
                     <input id="FileLogoSchool" accept="image/*" name="FileLogoSchool" class="form-control" type="file" />
                     <span asp-validation-for="SchoolLogo" class="text-danger"></span>
                 </div>
-            </div>               
+            </div>      
+            <div class="form-group row">
+                <label asp-for="BranchLogo" class="col-3 form-label">Chọn logo khoa</label>
+                <div class="col">
+                    <input id="FileLogoBranch" accept="image/*" name="FileLogoBranch" class="form-control" type="file" />
+                    <span asp-validation-for="BranchLogo" class="text-danger"></span>
+                </div>
+            </div>
             <div class="form-group row">
                 <label asp-for="BackupSubject1Logo" class="col-3 form-label">Chọn ảnh môn @TempData["subject_1"]</label>
                 <div class="col">

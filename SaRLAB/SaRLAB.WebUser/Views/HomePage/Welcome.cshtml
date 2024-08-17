@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="inful">
+        <div class="title-1">
+            <h1>@ViewBag.school.Name</h1>
+            <h1 id="xo">@ViewBag.school.Branch</h1>
+        </div>
+        <div class="title-2">
+            <h1>Welcome to SARLAB</h1>
+        </div>
+
+        <!-- button -->
+        <div class="fif">
+            <button onclick="window.location.href='@Url.Action("sumary", "HomePage", new { type = "branch" })'">
+                <img src="@Url.Content(ViewBag.school.BranchLogo)" alt="" />
+            </button>
+
+            <button onclick="window.location.href='@Url.Action("sumary", "HomePage", new { type = "school" })'">
+                <img src="@Url.Content(ViewBag.school.SchoolLogo)" alt="" />
+            </button>
+
+            <button onclick="window.location.href='@Url.Action("Index", "HomePage")'">
+                <img src="~/assets/img/l1.png" alt="" />
+            </button>
+        </div>
+    </div>
+</body>
+</html>

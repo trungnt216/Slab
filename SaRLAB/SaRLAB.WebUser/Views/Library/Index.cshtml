@@ -5,9 +5,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <title>@ViewData["Title"]</title>
     <!-- css -->
     <link rel="stylesheet" href="~/css/styles.css">
@@ -16,6 +17,7 @@
     <!-- font -->
     <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
 </head>
+
 <body>
     <header>
         <div class="infor">
@@ -36,7 +38,7 @@
         </div>
 
         <div class="search">
-            <h1>Chung</h1>
+            <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
             <div class="tk">
                 <input type="search" placeholder="Tìm kiếm">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -55,7 +57,8 @@
                     <h1>SaRLAB</h1>
                 </div>
                 <div class="menu">
-                    <a id="active" href="#" onclick="window.location.href='@Url.Action("Index", "HomePage")'">Trang chủ</a>
+                    <a id="active" href="#" onclick="window.location.href='@Url.Action("Index", "HomePage")'">Trang
+                        chủ</a>
                     <a href="#" onclick="window.location.href='@Url.Action("Logout", "HomePage")'">Đăng xuất</a>
                 </div>
             </nav>
@@ -72,66 +75,78 @@
                 <div class="content-book">
                     <ul>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC TỰ NHIÊN" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC TỰ NHIÊN" })"
+                                class="action-link">
                                 <span>KHOA HỌC TỰ NHIÊN</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC TRÁI ĐẤT" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC TRÁI ĐẤT" })"
+                                class="action-link">
                                 <span>KHOA HỌC TRÁI ĐẤT</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC Y - DƯỢC" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC Y - DƯỢC" })"
+                                class="action-link">
                                 <span>KHOA HỌC <br> Y - DƯỢC</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC KỸ THUẬT CÔNG NGHỆ" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC KỸ THUẬT CÔNG NGHỆ" })"
+                                class="action-link">
                                 <span>KHOA HỌC KỸ THUẬT CÔNG NGHỆ</span>
                             </a>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC MÁY TÍNH" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC MÁY TÍNH" })"
+                                class="action-link">
                                 <span>KHOA HỌC MÁY TÍNH</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC BIÊN" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC BIÊN" })"
+                                class="action-link">
                                 <span>KHOA HỌC BIÊN</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC LIÊN NGÀNH" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC LIÊN NGÀNH" })"
+                                class="action-link">
                                 <span>KHOA HỌC LIÊN NGÀNH</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC SỨC KHỎE" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC SỨC KHỎE" })"
+                                class="action-link">
                                 <span>KHOA HỌC SỨC KHỎE</span>
                             </a>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC VŨ TRỤ" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC VŨ TRỤ" })"
+                                class="action-link">
                                 <span>KHOA HỌC VŨ TRỤ</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC XÃ HỘI VÀ NHÂN VĂN" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC XÃ HỘI VÀ NHÂN VĂN" })"
+                                class="action-link">
                                 <span>KHOA HỌC XÃ HỘI VÀ NHÂN VĂN</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC NÔNG NGHIỆP" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC NÔNG NGHIỆP" })"
+                                class="action-link">
                                 <span>KHOA HỌC NÔNG NGHIỆP</span>
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC TỔNG HỢP" })" class="action-link">
+                            <a href="@Url.Action("GetAll_Reference", "Library", new { type = "KHOA HỌC TỔNG HỢP" })"
+                                class="action-link">
                                 <span>KHOA HỌC TỔNG HỢP</span>
                             </a>
                         </li>
@@ -143,4 +158,5 @@
     <!-- scripts -->
     <script src="~/js/scripts.js"></script>
 </body>
+
 </html>

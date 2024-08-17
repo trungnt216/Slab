@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <title>@ViewData["Title"]</title>
     <!-- css -->
     <link rel="stylesheet" href="~/css/styles.css">
@@ -28,20 +28,20 @@
             <div class="username">
                 @if (TempData["AvtPath"] != null && TempData["AvtPath"] is string avtPath && !string.IsNullOrWhiteSpace(avtPath))
                 {
-                    <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="User Avatar">
+                        <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="User Avatar">
                 }
                 else
                 {
-                    <img src="~/images/defaultAvatar.jpg" alt="Default Avatar">
+                        <img src="~/images/defaultAvatar.jpg" alt="Default Avatar">
                 }
 
                 @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
                 {
-                    <span>@Html.Raw(name)</span>
+                        <span>@Html.Raw(name)</span>
                 }
                 else
                 {
-                    <span>Unknown User</span>
+                        <span>Unknown User</span>
                 }
             </div>
 
@@ -50,7 +50,7 @@
         <!-- video -->
         <div class="video">
             <div class="form-video">
-                <video controls autoplay muted src="~/assets/video/bg_book.mp4"></video>
+                <img src="~/assets/img/bg_book.gif" alt="" />
             </div>
         </div>
 
@@ -76,10 +76,10 @@
 
             @if (schoolValue == 1)
             {
-                <div class="notif">
-                    Opps! Bạn cần liên hệ người quản lý đơn vị để được cấp mã vào phòng thực hành
-                </div>
-                <img id="lock" src="~/assets/img/lock.png" alt="">
+                    <div class="notif">
+                        Opps! Bạn cần liên hệ người quản lý đơn vị để được cấp mã vào phòng thực hành
+                    </div>
+                    <img id="lock" src="~/assets/img/lock.png" alt="">
             }
         </div>
 

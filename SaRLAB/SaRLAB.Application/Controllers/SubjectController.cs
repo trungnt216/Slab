@@ -19,7 +19,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAll()
         {
             return Ok(_subjectDto.GetAll());
@@ -27,7 +27,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetSubjectBySchool/{schoolId}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetSubjectBySchool(int schoolId)
         {
             return Ok(_subjectDto.GetSubjectBySchool(schoolId));
@@ -35,7 +35,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetSubjectBySchoolAndType/{schoolId}/{id}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetSubjectBySchoolAndType(int schoolId, int id) {
             var subject = _subjectDto.GetSubjectBySchoolAndType(schoolId,id);
             if (subject == null)
@@ -50,7 +50,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetByTypeSchool/{type}/{schoolId}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetByID(int schoolId, int type)
         {
             var subject = _subjectDto.GetByTypeSchool(type,schoolId);
@@ -66,7 +66,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetByName/{name}")]
-        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetByName(string name)
         {
             var subject = _subjectDto.GetByName(name);
@@ -82,7 +82,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
-        [Authorize(Roles = "Admin,Owner")]
+        // [Authorize(Roles = "Admin,Owner")]
         public IActionResult Insert(Subject newsubject)
         {
             var _subject = _subjectDto.Insert(newsubject);
@@ -99,7 +99,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("update")]
-        [Authorize(Roles = "Admin,Owner")]
+        // [Authorize(Roles = "Admin,Owner")]
         public IActionResult Update(Subject newsubject)
         {
             var _subject = _subjectDto.Update(newsubject);

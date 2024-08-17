@@ -1790,5 +1790,19 @@ namespace SaRLAB.UserWeb.Controllers
             ViewBag.ActiveSubMenuLv2 = "vipractice";
             return View(subject);
         }
+
+
+        [HttpGet]
+        public ActionResult Title_GetAll_By_Type(int id, string type)
+        {
+            TempData["type"] = type;
+            ViewBag.MenuItems = manageTitles;
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            TempData["id"] = id.ToString();
+
+            return View();
+        }
     }
 }

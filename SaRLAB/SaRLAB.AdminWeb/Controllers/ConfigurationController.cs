@@ -196,7 +196,7 @@ namespace SaRLAB.AdminWeb.Controllers
             return View(school);
         }
         [HttpPost]
-        public ActionResult GetAllBanner(School school, IFormFile FileBanner, IFormFile FileLogoSchool,
+        public ActionResult GetAllBanner(School school, IFormFile FileBanner, IFormFile FileLogoSchool, IFormFile FileLogoBranch,
         IFormFile FileBackupSubject1Logo, IFormFile FileBackupSubject2Logo, IFormFile FileBackupSubject3Logo, IFormFile FileBackupSubject4Logo, IFormFile FileBackupSubject5Logo,
         IFormFile FileBackupSubject6Logo, IFormFile FileBackupSubject7Logo, IFormFile FileBackupSubject8Logo, IFormFile FileBackupSubject9Logo, IFormFile FileBackupSubject10Logo,
         IFormFile FileBackupSubject11Logo, IFormFile FileBackupSubject12Logo, IFormFile FileBackupSubject13Logo, IFormFile FileBackupSubject14Logo, IFormFile FileBackupSubject15Logo,
@@ -257,6 +257,27 @@ namespace SaRLAB.AdminWeb.Controllers
                     FileLogoSchool.CopyTo(stream);
                 }
                 school.SchoolLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (FileLogoBranch != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileLogoBranch.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    FileLogoBranch.CopyTo(stream);
+                }
+                school.BranchLogo = pathFolderSave + "FileFolder/School/" + uniqueFileName;
             }
 
             if (FileBackupSubject1Logo != null)
@@ -1094,10 +1115,10 @@ namespace SaRLAB.AdminWeb.Controllers
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                return View();
+                return RedirectToAction("GetAllUser");
             }
             ViewBag.ActiveMenu = "user";
-            return View();
+            return RedirectToAction("GetAllUser");
         }
 
         public IActionResult Delete(int id)

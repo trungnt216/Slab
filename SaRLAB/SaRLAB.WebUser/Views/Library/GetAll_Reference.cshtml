@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
     <title>Library- Management</title>
     <!-- css -->
     <link rel="stylesheet" href="~/css/styles.css" />
@@ -39,7 +39,7 @@
         </div>
 
         <div class="search">
-            <h1>Chung</h1>
+            <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
             <div class="tk">
                 <input type="search" placeholder="Tìm kiếm">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -86,7 +86,8 @@
                 <div class="books">
                     @foreach (var item in Model)
                     {
-                        <a class="book-item" onclick="window.location.href='@Url.Action("Details_Reference", "Library", new {id = item.ID , type = type })'">
+                        <a class="book-item"
+                            onclick="window.location.href='@Url.Action("Details_Reference", "Library", new {id = item.ID , type = type })'">
                             <img src="@Url.Content(item.CoverImage)" alt="Cover Image">
                             <div class="xx">
                                 <div class="an">

@@ -1,13 +1,10 @@
 ﻿<!DOCTYPE html>
 
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
     <title>@ViewBag.Title</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -15,57 +12,116 @@
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true">
     <link rel="stylesheet" href="~/font-awesome/css/all.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animated.css">
+    @*     <link rel="stylesheet" href="~/css/animated.css"> *@
     <link rel="stylesheet" href="~/css/owl.css">
-    <style>
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
 
-        .video-background video {
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    <!-- Importing Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Grey+Qo&display=swap" rel="stylesheet">
+    <!-- style -->
+    <style>
+
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .headerflex {
+        max-width: 1920px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        font-family: 'Times New Roman', Times, serif;
+      }
+
+      headernew {
+        background: linear-gradient(to right, rgb(240, 236, 236), #ccc);
+        width: 1300px;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .infornew,
+      .searchnew {
+        width: 620px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .infornew {
+        font-size: 12px;
+        justify-content: flex-start;
+      }
+
+      .infornew img {
+        width: 60px;
+      }
+
+      .searchnew {
+        font-size: 12px;
+        gap: 40px;
+        justify-content: flex-end;
+      }
+
+      .tk {
+        position: relative;
+      }
+
+      .tk input {
+        outline: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 20px;
+      }
+
+      .fa-magnifying-glass {
+        position: absolute;
+        right: 20px;
+        top: 12px;
+        font-size: 20px;
+      }
+
+      .fa-bars {
+        font-size: 40px;
+      }
     </style>
 </head>
-
 <body id="bg-subject">
-    @* header *@
-    <a href="h:\sarlab release\slab\sarlab\sarlab.webuser\views\subject_22\index.cshtml">h:\sarlab
-        release\slab\sarlab\sarlab.webuser\views\subject_22\index.cshtml</a>
-    <header class="header-area header-area-subject header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a asp-controller="Subject_22" asp-action="Index" class="logo">
-                            <img src="@Url.Content("~/images/logo.png")" />
-                            <h4>SaR<span>LAB - @TempData["subject_1"]</span></h4>
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <partial name="_MenuSubject_22" />
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
+    <div class="headerflex">
+        <headernew>
+            <div class="infornew">
+                <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="" />
+                @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
+                {
+                        <h1>
+                            <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                            @TempData["name"]
+                            </a>
+                        </h1>
+
+                }
+                else
+                {
+                        <h1>Unknown User</h1>
+                }
             </div>
-        </div>
+
+            <div class="searchnew">
+                <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
+                <div class="tk">
+                    <input type="searchnew" placeholder="Tìm kiếm" />
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </headernew>
+        <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+    </div>
     </header>
     <div>
-
         @RenderBody()
     </div>
 
@@ -222,7 +278,7 @@
                     updateExpiredItemsDisplay('hóa chất', expiredItems);
                     break;
                 case checkUrl(toolChemistryPaths):
-                    const expiredTools = JSON.parse(localStorage.getItem('expiredTools')) || 0;
+                    const expiredTools = JSON.parse(localStorage.getItem('expiredTools')) || 0; 
                     updateExpiredItemsDisplay('dụng cụ', expiredTools);
                     break;
                 case checkUrl(equipmentChemistryPaths):
@@ -235,5 +291,4 @@
         });
     </script>
 </body>
-
 </html>

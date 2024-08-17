@@ -19,7 +19,7 @@ namespace SaRLAB.Application.Controllers
         }
         [HttpPost]
         [Route("Insert")]
-        [Authorize(Roles = "Admin,Owner,Technical")]
+        // [Authorize(Roles = "Admin,Owner,Technical")]
         public IActionResult Insert(WareHouse wareHouse)
         {
             if (wareHouse == null)
@@ -34,7 +34,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
-        [Authorize(Roles = "Admin,Owner,Technical")]
+        // [Authorize(Roles = "Admin,Owner,Technical")]
         public IActionResult Update(int id, WareHouse wareHouse)
         {
             if (id == 0)
@@ -49,7 +49,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
-        [Authorize(Roles = "Admin,Owner,Technical")]
+        // [Authorize(Roles = "Admin,Owner,Technical")]
         public IActionResult DeleteById(int id)
         {
             return Ok(_wareHouseService.DeleteWareHouseById(id));
@@ -57,7 +57,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetWareHouseByEquipmentId/{equipmentId}")]
-        [Authorize(Roles = "Admin,Owner,Technical")]
+        // [Authorize(Roles = "Admin,Owner,Technical")]
         public IActionResult GetAllEquipmentByType(int equipmentId)
         {
             return Ok(_wareHouseService.GetWareHousesByEquipmentId(equipmentId));

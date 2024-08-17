@@ -11,10 +11,8 @@ namespace SaRLAB.Models.Entity
         [Key]
         public int? ID { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng nhập tên trường!")]
         public string? Name { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng nhập địa chỉ!")]
         public string? Address { get; set; }
 
         public string? ChemLogo { get; set; }
@@ -55,5 +53,9 @@ namespace SaRLAB.Models.Entity
         public string? BackupSubject30Logo { get; set; }
         public string? BackupSubject31Logo { get; set; }
         public string? BackupSubject32Logo { get; set; }
+        public string? SchoolSumary { get; set; }
+        public string? BranchSumary { get; set; }
+        public string? Branch { get; set; }
+        public string? BranchLogo { get; set; }
     }
 }

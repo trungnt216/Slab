@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
     <title>Library- Management</title>
     <!-- css -->
     <link rel="stylesheet" href="~/css/styles.css" />
@@ -32,12 +32,12 @@
             }
             else
             {
-                    <h1>Unknown User</h1>
+                <h1>Unknown User</h1>
             }
         </div>
 
         <div class="search">
-            <h1>Chung</h1>
+            <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
             <div class="tk">
                 <input type="search" placeholder="Tìm kiếm">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -80,19 +80,22 @@
                 <!-- data-lab -->
                 @for (int i = 1; i <= 30; i++)
                 {
-                    var actionName = $"GetAllQuestion_Subject{i}";
-                    <a href="@Url.Action(actionName, "MultipleQuestions")">
-                        @if (ViewBag.school.GetType().GetProperty($"BackupSubject{i}Logo").GetValue(ViewBag.school) == null)
-                        {
-                            <img src="~/assets/img/lab1.jpg" alt="Image @i" />
-                        }
-                        else
-                        {
-                            <img src="@Url.Content(ViewBag.school.GetType().GetProperty($"BackupSubject{i}Logo").GetValue(ViewBag.school).ToString())"
+                    @if (ViewBag.SubjectFlag.GetType().GetProperty($"BackupSubject{i}PermissionFlag").GetValue(ViewBag.SubjectFlag) == true)
+                    {
+                        var actionName = $"GetAllQuestion_Subject{i}";
+                        <a href="@Url.Action(actionName, "MultipleQuestions")">
+                            @if (ViewBag.school.GetType().GetProperty($"BackupSubject{i}Logo").GetValue(ViewBag.school) == null)
+                            {
+                                <img src="~/assets/img/lab1.jpg" alt="Image @i" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content(ViewBag.school.GetType().GetProperty($"BackupSubject{i}Logo").GetValue(ViewBag.school).ToString())"
                                 alt="Image @i" />
-                        }
-                        <h1>@TempData[$"subject_{i}"]</h1>
-                    </a>
+                            }
+                            <h1>@TempData[$"subject_{i}"]</h1>
+                        </a>
+                    }
                 }
 
 

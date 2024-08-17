@@ -6,9 +6,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
     <title>Library- Management</title>
     <!-- css -->
     <link rel="stylesheet" href="~/css/styles.css" />
@@ -17,6 +18,7 @@
     <!-- font -->
     <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
 </head>
+
 <body>
     <header>
         <div class="infor">
@@ -36,7 +38,7 @@
         </div>
 
         <div class="search">
-            <h1>Chung</h1>
+            <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
             <div class="tk">
                 <input type="search" placeholder="Tìm kiếm">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -78,9 +80,8 @@
                 <!-- Embed PDF -->
                 @if (@Model.Path != null)
                 {
-                    <embed id="pdf"
-                    src="@Model.Path"
-                       type="application/pdf" />}
+                    <embed id="pdf" src="@Model.Path" type="application/pdf" />
+                }
                 <!-- conti -->
                 <div class="conti">
                     <img id="next_note" src="~/assets/icon/icon_next.png" alt="" />
@@ -89,10 +90,7 @@
                 <div id="notification" class="note">
                     <h1>NOTE</h1>
                     <div class="text_note">
-                        <textarea id="noteInput"
-                                  rows="5"
-                                  cols="50"
-                                  placeholder=".........................."></textarea>
+                        <textarea id="noteInput" rows="5" cols="50" placeholder=".........................."></textarea>
                     </div>
                     <div class="back">
                         <img id="prev_note" src="~/assets/icon/icon_prev.png" alt="" />
@@ -104,4 +102,5 @@
     <!-- scripts -->
     <script src="~/js/next.js"></script>
 </body>
+
 </html>

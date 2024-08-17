@@ -562,7 +562,10 @@ TempData["AvtPath"] = userLogin.AvtPath;
         [HttpGet]
         public ActionResult Create_Reference(string type)
         {
+            TempData["type"] = type;
 
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath;
 
             if (_hasError)
             {
@@ -580,7 +583,7 @@ TempData["AvtPath"] = userLogin.AvtPath;
             }
         }
         [HttpPost]
-        public ActionResult Create_Reference(Reference reference, IFormFile File, string type)
+        public ActionResult Create_Reference(Reference reference, IFormFile File, IFormFile Cover, string type)
         {
 
 
@@ -609,6 +612,27 @@ TempData["AvtPath"] = userLogin.AvtPath;
                     File.CopyTo(stream);
                 }
                 reference.Path = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
+            }
+
+            if (Cover != null && reference.CoverImage == null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/Document");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(Cover.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    Cover.CopyTo(stream);
+                }
+                reference.CoverImage = pathFolderSave + "FileFolder/Document/" + uniqueFileName;
             }
 
             try

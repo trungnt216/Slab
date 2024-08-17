@@ -129,6 +129,14 @@
                             </div>
                             <div class="form-group">
                                 <div class="title d-flex">
+                                    <i class="fa-solid fa-box"></i>
+                                    <label asp-for="Unit2" class="control-label">Đơn vị</label>
+                                </div>
+                                <input asp-for="Unit2" class="form-control" />
+                                <span asp-validation-for="Unit2" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="title d-flex">
                                     <i class="fa-solid fa-barcode"></i>
                                     <label asp-for="From" class="control-label">Xuất xứ</label>
                                 </div>

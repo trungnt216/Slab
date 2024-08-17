@@ -1,11 +1,13 @@
 ﻿<!DOCTYPE html>
 
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
     <title>@ViewBag.Title</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -16,6 +18,7 @@
     <link rel="stylesheet" href="~/css/animated.css">
     <link rel="stylesheet" href="~/css/owl.css">
 </head>
+
 <body id="bg-subject">
     @* header *@
     <header>
@@ -25,7 +28,7 @@
         </div>
 
         <div class="search">
-            <h1>Chung</h1>
+            <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
             <div class="tk">
                 <input type="search" placeholder="Tìm kiếm">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -46,4 +49,5 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

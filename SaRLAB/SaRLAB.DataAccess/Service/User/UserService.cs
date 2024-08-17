@@ -88,17 +88,23 @@ namespace SaRLAB.DataAccess.Service.UserService
 
             if (_user != null)
             {
-                _user.Password = user.Password;
-                _user.Name = user.Name;
-                _user.DateOfBirth = user.DateOfBirth;
-                _user.CreateBy = user.CreateBy;
-                _user.UpdateBy = user.UpdateBy;
+                _user.Password = user.Password ?? _user.Password;
+                _user.Name = user.Name ?? _user.Name;
+                if (user.DateOfBirth != default(DateTime))
+                {
+                    _user.DateOfBirth = user.DateOfBirth;
+                }
+                _user.CreateBy = user.CreateBy ?? _user.CreateBy;
+                _user.UpdateBy = user.UpdateBy ?? _user.UpdateBy;
                 _user.CreateTime = DateTime.Now;
-                _user.Role_ID = user.Role_ID;
-                _user.AvtPath = user.AvtPath;
-                _user.Experience = user.Experience;
-                _user.AcademyRank = user.AcademyRank;
-                _user.SchoolId = user.SchoolId;
+                if (user.Role_ID != 0) // hoặc giá trị mặc định khác
+                {
+                    _user.Role_ID = user.Role_ID;
+                }
+                _user.AvtPath = user.AvtPath ?? _user.AvtPath;
+                _user.Experience = user.Experience ?? _user.Experience;
+                _user.AcademyRank = user.AcademyRank ?? _user.AcademyRank;
+                _user.SchoolId = user.SchoolId ?? _user.SchoolId;
                 _context.SaveChanges();
             }
             return _user;

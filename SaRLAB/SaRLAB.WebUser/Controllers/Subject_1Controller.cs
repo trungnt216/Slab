@@ -145,7 +145,7 @@ namespace SaRLAB.UserWeb.Controllers
             subjectFlag.BackupSubject1MarkFlag = true;
             string data = JsonConvert.SerializeObject(subjectFlag);
             StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "SubjectFlag/Update/"+ userLogin.Email, content).Result;
+            HttpResponseMessage response = _httpClient.PostAsync(_httpClient.BaseAddress + "SubjectFlag/Update/" + userLogin.Email, content).Result;
 
 
 
@@ -1769,6 +1769,7 @@ namespace SaRLAB.UserWeb.Controllers
             }
 
             TempData["name"] = userLogin.Name;
+            TempData["BackGround"] = subject1.VideoBackGround;
             ViewBag.MenuItems = manageTitles;
             TempData["role"] = userLogin.RoleName;
             TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
@@ -1789,5 +1790,20 @@ namespace SaRLAB.UserWeb.Controllers
             ViewBag.ActiveSubMenuLv2 = "vipractice";
             return View(subject);
         }
+
+        [HttpGet]
+        public ActionResult Title_GetAll_By_Type(int id,string type)
+        {
+            TempData["type"] = type;
+            ViewBag.MenuItems = manageTitles;
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath;
+
+            TempData["id"] = id.ToString();
+            TempData["BackGround"] = subject1.VideoBackGround;
+
+            return View();
+        }
+
     }
 }

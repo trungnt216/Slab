@@ -161,8 +161,50 @@ namespace SaRLAB.AdminWeb.Controllers
             }
         }
         [HttpPost]
-        public ActionResult CreateSchool(School school)
+        public ActionResult CreateSchool(School school, IFormFile BranchFile, IFormFile SchoolFile)
         {
+            if (BranchFile != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(BranchFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    BranchFile.CopyTo(stream);
+                }
+                school.BranchSumary = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (SchoolFile != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(SchoolFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    SchoolFile.CopyTo(stream);
+                }
+                school.SchoolSumary = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
             try
             {
 
@@ -233,8 +275,50 @@ namespace SaRLAB.AdminWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditSchool(School school)
+        public ActionResult EditSchool(School school, IFormFile BranchFile, IFormFile SchoolFile)
         {
+            if (BranchFile != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(BranchFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    BranchFile.CopyTo(stream);
+                }
+                school.BranchSumary = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
+            if (SchoolFile != null)
+            {
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "FileFolder/School");
+
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(SchoolFile.FileName);
+
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    SchoolFile.CopyTo(stream);
+                }
+                school.SchoolSumary = pathFolderSave + "FileFolder/School/" + uniqueFileName;
+            }
+
             try
             {
 

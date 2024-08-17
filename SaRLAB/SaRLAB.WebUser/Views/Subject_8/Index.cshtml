@@ -1,120 +1,103 @@
 ﻿@{
     ViewData["Title"] = "Index";
-    Layout = ViewBag.Layout;
+    Layout = null;
 }
 
-<section class="hero hero-subject d-flex flex-column justify-content-center align-items-center" id="home">
-    <div class="image-background">
-        @if (TempData["BackGround"] != null)
-        {
-                        <img src="@Url.Content(TempData["BackGround"].ToString())" alt="Background Image">
-        }
-        else
-        {
-                        <img src="@Url.Content("~/images/bannerChem.png")" alt="Default Background Image">
-        }
-    </div>
-    <div class="bg-overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto col-12">
-                <div class="hero-text mt-5 text-center">
-                    <h1 class="text-white wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s"
-                        style="font-size: 65px !important;">
-                        Welcome to <span style="color: #D6C187 !important;">@TempData["Subject_1"]</span>
-                    </h1>
-                    <div class="group-home d-flex wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
-                        <a class="group-btn-home group-rules d-flex" asp-controller="Subject_8"
-                            asp-action="Details_RuleClassroom">
-                            <img class="img-rules" src="@Url.Content("~/images/rules.png")" />
-                            <p>Nội quy<br>phòng thí nghiệm</p>
-                        </a>
-                        <a class="group-btn-home group-news d-flex" asp-controller="Subject_8" asp-action="GetAll_New">
-                            <img class="img-news" src="@Url.Content("~/images/news.png")" />
-                            <p>Tin tức - News</p>
-                            @* <label class="txt-news">New</label> *@
-                        </a>
-                    </div>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+    <title>Library- Management</title>
+    <!-- css -->
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <!-- icon-tab -->
+    <link rel="icon" href="~/assets/icon/icon_tab.png" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+</head>
+
+<body>
+    <div class="container" id="li-index">
+        <!-- header -->
+        <header>
+            <div class="infor">
+                <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
+                @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
+                {
+                            <h1>
+                                <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                            @TempData["name"]
+                                </a>
+                            </h1>
+
+                }
+                else
+                {
+                            <h1>Unknown User</h1>
+                }
             </div>
-        </div>
+
+            <div class="search">
+                <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
+                <div class="tk">
+                    <input type="search" placeholder="Tìm kiếm">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+        <!-- main -->
+        <main>
+            <!-- nav -->
+            <nav class="note_f lab_menu">
+                <div class="logo" id="x-1">
+                    <h1>SaRLAB</h1>
+                </div>
+                <div class="menu" id="x-2">
+                    <a href="@Url.Action("Index", "HomePage")">Chung</a>
+                    <a href="@Url.Action("Index", "HomePage")">Trang chủ</a>
+                    <a href="@Url.Action("Index", "Library")">Thư viện</a>
+                    <a id="logout" href="@Url.Action("Logout", "HomePage")">Đăng xuất</a>
+                </div>
+            </nav>
+            <!-- lab-detail -->
+            <div class="lab-detail">
+                <img id="pk" src="~/assets/img/bg_detail_lab.png" alt="" />
+                @if (TempData["BackGround"] != null)
+                {
+                            <img id="pk" src="@Url.Content(TempData["BackGround"].ToString())" alt="" />
+                }
+                else
+                {
+                            <img id="pk" src="~/assets/img/bg_detail_lab.png" alt="" />
+                }
+                <div class="ti">
+
+                    <img src="~/assets/img/bank_lab.png" alt="" />
+                    <h1>@TempData["Subject_1"]</h1>
+                </div>
+                <div class="fl-ti">
+    <div class="column">
+        <a class="me-box" asp-action="Title_GetAll_By_Type" asp-route-id="0" asp-route-type="Kho vật tư">Kho vật tư</a>
+        <a asp-controller="Subject_8" asp-action="Title_GetAll_By_Type" asp-route-id="4" asp-route-type="Nghiên cứu khoa học" class="me-box">Nghiên cứu khoa học</a>
     </div>
-</section>
-
-<footer class="text-center" style="background-color: #111111; color: #D6C187; padding: 5px 0; position: fixed; bottom: 0; width: 100%; z-index: 10;">
-    <div class="container" style="padding: 0; display: flex; justify-content: space-between;">
-        <div style="text-align: left;">
-            <p style="color: #D6C187;font-size: 12px; line-height: 15px;">&copy; Author: Dinh Quang Canh.</p>
-            <p style="color: #D6C187;font-size: 12px; line-height: 15px;"><a href="#" style="color: #D6C187;">Email: dinhquangcanh@ump.edu.vn - Contact: +84 914 33 35 37</a></p>
-        </div>
-        <div style="text-align: right;">
-            <p style="color: #D6C187;font-size: 12px; line-height: 15px;">Version: 1.0.0</p>
-        </div>
+    <div class="column">
+        <a asp-controller="Subject_8" asp-action="Title_GetAll_By_Type" asp-route-id="2" asp-route-type="Thực hành" class="big-box">Thực hành</a>
+        <a asp-controller="Subject_8" asp-action="Title_GetAll_By_Type" asp-route-id="5" asp-route-type="Tiếng Anh chuyên ngành" class="small-box">Tiếng Anh chuyên ngành</a>
     </div>
-</footer>
+    <div class="column">
+        <a asp-action="Title_GetAll_By_Type" asp-route-id="0" asp-route-type="Nhân sự" class="small-box">Nhân sự</a>
+        <a asp-controller="Subject_8" asp-action="Title_GetAll_By_Type" asp-route-id="1" asp-route-type="Tài liệu" class="small-box">Tài liệu</a>
+        <a asp-controller="Subject_8" asp-action="Title_GetAll_By_Type" asp-route-id="3" asp-route-type="Hợp tác quốc tế" class="small-box" class="small-box">Hợp tác quốc tế</a>
+    </div>
+</div>
+            </div>
+        </main>
+    </div>
+    <!-- scripts -->
+    <script src="~/js/lab.js"></script>
+</body>
 
-
-<style>
-    /* Styles for the image background */
-    .image-background {
-        position: absolute; /* Make sure it sits behind other content */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh; /* Full viewport height */
-        overflow: hidden;
-        z-index: -1; /* Ensure it stays behind other content */
-    }
-
-        .image-background img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.4;  /* 70% opacity */
-        }
-
-    /* Optional overlay for additional opacity effect */
-    .bg-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5); /* Optional: overlay for additional opacity effect */
-        z-index: 0;
-    }
-
-    /* Ensure footer remains fixed at the bottom */
-    footer {
-        background-color: #111111;
-        color: #D6C187;
-        padding: 5px 0;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        z-index: 10;
-    }
-
-        footer .container {
-            padding: 0;
-            display: flex;
-            justify-content: space-between;
-        }
-
-            footer .container div {
-                text-align: left;
-            }
-
-        footer p {
-            color: #D6C187;
-            font-size: 12px;
-            line-height: 15px;
-        }
-
-        footer a {
-            color: #D6C187;
-        }
-</style>
+</html>

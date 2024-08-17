@@ -115,14 +115,7 @@
                 <div class="col">
                     @{
                         string url = "";
-                        if (string.IsNullOrEmpty(Model.AvtPath))
-                        {
-                            url = "~/images/defaultAvatar.jpg";
-                        }
-                        else
-                        {
                             url = Model.AvtPath;
-                        }
                     }
                     <img id="previewImage" src="@Url.Content(url)"
                          style="width: 100%;

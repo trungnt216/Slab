@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="inful">
+        <div class="title-1">
+            <h1>@ViewBag.school.Name</h1>
+            <h1 id="xo">@ViewBag.school.Branch</h1>
+        </div>
+        <div class="title-2">
+            <h1>Welcome to SARLAB</h1>
+        </div>
+
+        <!-- button -->
+        <div class="fif">
+            <embed src="@ViewBag.url" type="" />
+        </div>
+    </div>
+</body>
+</html>

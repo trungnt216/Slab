@@ -1,0 +1,180 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+    <title>Library- Management</title>
+    <!-- css -->
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <!-- icon-tab -->
+    <link rel="icon" href="~/assets/icon/icon_tab.png" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
+</head>
+<body>
+    <div class="container" id="li-index">
+        <!-- LAB -->
+        <h1 id="vnx">@TempData["subject_1"]</h1>
+        <!-- header -->
+        <header>
+            <div class="infor">
+                <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
+                @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
+                {
+                                        <h1>
+                                            <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                            @TempData["name"]
+                                            </a>
+                                        </h1>
+
+                }
+                else
+                {
+                                        <h1>Unknown User</h1>
+                }
+            </div>
+
+            <div class="search">
+                <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
+                <div class="tk">
+                    <input type="search" placeholder="Tìm kiếm">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+        <!-- main -->
+        <main>
+            <!-- nav -->
+            <nav class="note_f lab_menu">
+                <div class="logo oil" id="x-1">
+                    <h1>SaRLAB</h1>
+                </div>
+                <div class="menu oil" id="x-2">
+                    <a href="@Url.Action("Index", "HomePage")">Chung</a>
+                    <a href="@Url.Action("Index", "HomePage")">Trang chủ</a>
+                    <a href="@Url.Action("Index", "Library")">Thư viện</a>
+                    <a id="logout" href="@Url.Action("Logout", "HomePage")">Đăng xuất</a>
+                </div>
+            </nav>
+
+            <!-- expected -->
+            <div class="ti">
+                <img src="~/assets/img/bank_lab.png" alt="" />
+                <h1 id="tix">@TempData["type"]</h1>
+            </div>
+            <!-- lab -->
+            <div class="lab opx">
+                <!-- fix -->
+                @if (TempData["BackGround"] != null)
+                {
+                                        <img id="bg_lab" src="@Url.Content(TempData["BackGround"].ToString())" alt="" />
+                }
+                else
+                {
+                                        <img id="bg_lab" src="~/assets/img/bg_detail_lab.png" alt="" />
+                }
+
+                <div id="bg_bl"></div>
+
+                <!-- data-lab -->
+                @if (Convert.ToInt32(TempData["id"]) != 0)
+                {
+                    @foreach (var subItem in ViewBag.MenuItems)
+                    {
+                        @if (subItem.Type == Convert.ToInt32(TempData["id"]))
+                        {
+                                                                                        <a asp-controller="Subject_7" asp-action="GetAll_Document" asp-route-titleDocument="@subItem.Title">
+                                                                                            <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                                            <h1>@subItem.Title</h1>
+                                                                                        </a>
+                        }
+                    }
+                }
+                else
+                {
+                    if (TempData["type"]?.ToString() == "Kho vật tư")
+                    {
+                                                                <a asp-action="Title_GetAll_By_Type" asp-route-id="0" asp-route-type="Vật tư">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Vật tư</h1>
+                                                                </a>
+                                                                <a asp-action="Title_GetAll_By_Type" asp-route-id="0" asp-route-type="Dự trù">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Dự trù</h1>
+                                                                </a>
+                    }
+                    else if (TempData["type"]?.ToString() == "Nhân sự")
+                    {
+                                                                <a asp-controller="Subject_7" asp-action="GetAll_Directors">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Ban chủ nhiệm</h1>
+                                                                </a>
+                                                                <a asp-controller="Subject_7" asp-action="GetAll_Teacher">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Giảng viên</h1>
+                                                                </a>
+                                                                <a asp-controller="Subject_7" asp-action="GetAll_Technical">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Tổ kỹ thuật</h1>
+                                                                </a>
+                    }
+                    else if (TempData["type"]?.ToString() == "Vật tư")
+                    {
+                                                                <a asp-controller="Subject_7" asp-action="GetAll_Chemistry" asp-route-type="hoá chất">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Hoá chất</h1>
+                                                                </a>
+                                                                <a asp-controller="Subject_7" asp-action="GetAll_Chemistry" asp-route-type="dụng cụ">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Dụng cụ</h1>
+                                                                </a>
+                                                                <a asp-controller="Subject_7" asp-action="GetAll_Chemistry" asp-route-type="thiết bị">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Thiết bị</h1>
+                                                                </a>
+                    }
+                    else if (TempData["type"]?.ToString() == "Dự trù")
+                    {
+                                                                <a asp-controller="Subject_7" asp-action="GetAll_Chemistry" asp-route-type="dự trù hoá chất">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Hoá chất</h1>
+                                                                </a>
+                                                                <a asp-controller="Subject_7" asp-action="GetAll_Chemistry" asp-route-type="dự trù dụng cụ">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Dụng cụ</h1>
+                                                                </a>
+                                                                <a asp-controller="Subject_7" asp-action="GetAll_Chemistry" asp-route-type="dự trù thiết bị">
+                                                                    <img src="~/assets/img/ex.png" alt="Image 1" />
+                                                                    <h1>Thiết bị</h1>
+                                                                </a>
+                    }
+
+
+                }
+
+            </div>
+
+            <div class="pagination_lab">
+                <img id="p_lab"
+                     onclick="prevPage()"
+                     src="~/assets/icon/lab_button.png"
+                     alt="" />
+                <span id="page-num"></span>
+                <img id="n_lab"
+                     onclick="nextPage()"
+                     src="~/assets/icon/lab_button.png"
+                     alt="" />
+                <div id="pagination-buttons"></div>
+            </div>
+        </main>
+    </div>
+    <!-- scripts -->
+    <script src="~/js/labxx.js"></script>
+</body>
+</html>

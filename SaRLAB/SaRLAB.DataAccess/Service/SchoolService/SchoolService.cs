@@ -32,7 +32,8 @@ namespace SaRLAB.DataAccess.Service.SchoolService
             {
                 ID = value.ID.Value,
                 Name = value.Name,
-                Address = value.Address
+                Address = value.Address,
+                Branch = value.Branch,
             });
             return school.ToList();
         }
@@ -64,6 +65,7 @@ namespace SaRLAB.DataAccess.Service.SchoolService
                 school.BioLogo = null;
                 school.BiochemLogo = null;
                 school.Banner = null;
+                school.BranchLogo = null;
                 school.BackupSubject1Logo = null;
                 school.BackupSubject2Logo = null;
                 school.BackupSubject3Logo = null;
@@ -149,7 +151,10 @@ namespace SaRLAB.DataAccess.Service.SchoolService
                 school.BackupSubject30Logo = updatedSchool.BackupSubject30Logo ?? school.BackupSubject30Logo;
                 school.BackupSubject31Logo = updatedSchool.BackupSubject31Logo ?? school.BackupSubject31Logo;
                 school.BackupSubject32Logo = updatedSchool.BackupSubject32Logo ?? school.BackupSubject32Logo;
-
+                school.SchoolSumary = updatedSchool.SchoolSumary ?? school.SchoolSumary;
+                school.BranchSumary = updatedSchool.BranchSumary ?? school.SchoolSumary;
+                school.Branch = updatedSchool.Branch ?? school.SchoolSumary;
+                school.BranchLogo = updatedSchool.BranchLogo ?? school.BranchLogo;
                 return _context.SaveChanges(); // Returns the number of entities updated
             }
             return 0; // School with given ID not found
