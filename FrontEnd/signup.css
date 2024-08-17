@@ -92,4 +92,5 @@ button {
 
 button:hover {
   background: #e0a800;
+  opacity: 1;
 }
