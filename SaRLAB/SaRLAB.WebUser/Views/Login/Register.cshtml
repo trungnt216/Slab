@@ -39,10 +39,12 @@
                 <input type="number" asp-for="SchoolId" required />
                 <label>Mã trường</label>
             </div>
-
-            <div class="message" id="loginMessage">
-                <i>Vui lòng nhập thông tin</i>
+            @if (TempData["Error"] != null)
+            {
+                <div class="message" id="loginMessage">
+                    <i>@TempData["Error"]</i>
             </div>
+            }
 
             <button type="submit">Gửi đăng ký</button>
         </form>

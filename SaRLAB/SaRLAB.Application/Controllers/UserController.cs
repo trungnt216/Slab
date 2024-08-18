@@ -25,7 +25,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        // [Authorize(Roles = "Admin,Owner")]
+        [Authorize(Roles = "Admin,Owner")]
         public IActionResult GetAll()
         {
             return Ok(_loginDto.GetAll());
@@ -33,7 +33,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetUser")]
-        // [Authorize(Roles = "Admin,Owner")]
+        [Authorize(Roles = "Admin,Owner")]
         public IActionResult GetAllUser()
         {
             return Ok(_loginDto.GetAllUser());
@@ -67,7 +67,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("update")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Update(User user)
         {
             var _user = _loginDto.Update(user);
@@ -85,7 +85,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("UpdateSchool/{email}/{schoolid}")]
-        // [Authorize(Roles = "Admin,Owner")]
+        [Authorize(Roles = "Admin,Owner")]
         public IActionResult UpdateSchool(string email, int schoolid)
         {
             var _user = _loginDto.UpdateSchool(email,schoolid);
@@ -103,7 +103,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("forgotpassword")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult ForgotPassword([FromBody] User user)
         {
             var _user = _loginDto.ForgotPassword(user);
@@ -144,7 +144,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetByID/{email}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetByID(string email)
         {
             if (email == null)
@@ -166,7 +166,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetByID_ID/{id}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetByID_ID(int id)
         {
 
@@ -184,7 +184,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("DeleteById/{id}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult DeleteById(int id)
         {
             var user = _loginDto.GetByID_ID(id);
@@ -195,7 +195,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("DeleteByIds")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult DeleteByIds([FromBody] string userIds)
         {
             if (string.IsNullOrEmpty(userIds))
@@ -211,7 +211,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("SearchUser")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult SearchUsers(string? name, string? email, int? roleId)
         {
             return Ok(_loginDto.SearchUsers(name, email, roleId));
@@ -221,7 +221,7 @@ namespace SaRLAB.Application.Controllers
         //lấy toàn bộ user có schoolID, subjectID được nhập vào và có role là Admin
         [HttpGet]
         [Route("GetAllAdminUser/{schoolId}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAllAdminUser(int schoolId)
         {
             return Ok(_loginDto.GetUsersByRole(1, schoolId, 0));
@@ -230,7 +230,7 @@ namespace SaRLAB.Application.Controllers
         //lấy toàn bộ user có schoolID, subjectID được nhập vào và có role là Teacher
         [HttpGet]
         [Route("GetAllTeacherUser/{schoolId}/{subjectId}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAllTeacherUser(int schoolId, int subjectId)
         {
             return Ok(_loginDto.GetUsersByRole(3, schoolId, subjectId));
@@ -239,7 +239,7 @@ namespace SaRLAB.Application.Controllers
         //lấy toàn bộ user có schoolID, subjectID được nhập vào và có role là Technical
         [HttpGet]
         [Route("GetAllTechnicalUser/{schoolId}/{subjectId}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAllTechnicalUser(int schoolId, int subjectId)
         {
             return Ok(_loginDto.GetUsersByRole(4, schoolId, subjectId));
@@ -248,7 +248,7 @@ namespace SaRLAB.Application.Controllers
         //lấy toàn bộ user có schoolID được nhập vào
         [HttpGet]
         [Route("GetAllUserInSchool/{schoolId}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAllUserInSchool(int schoolId)
         {
             return Ok(_loginDto.GetAllUserInSchool(schoolId));
@@ -257,7 +257,7 @@ namespace SaRLAB.Application.Controllers
         //lấy toàn bộ user có schoolID được nhập vào có role = 5
         [HttpGet]
         [Route("GetAllUserInSchoolRoleUser/{schoolId}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAllUserInSchoolRoleUser(int schoolId)
         {
 

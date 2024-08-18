@@ -32,28 +32,35 @@
                 <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
                 @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
                 {
-                            <h1>
-                                <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                        <h1>
+                            <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
                             @TempData["name"]
-                                </a>
-                            </h1>
+                            </a>
+                        </h1>
 
                 }
                 else
                 {
-                            <h1>Unknown User</h1>
+                        <h1>Unknown User</h1>
                 }
             </div>
 
             <div class="search">
-                <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
-                <div class="tk">
-                    <input type="search" placeholder="Tìm kiếm">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-house" onclick="window.location.href='@Url.Action("Index", "HomePage")'"></i>
+                <i class="fa-solid fa-bars" id="menu-btn"></i>
             </div>
         </header>
+
+        <div class="menu_head">
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="giới thiệu">Giới thiệu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="văn bản biểu mẫu">Văn bản - Biểu mẫu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hướng dẫn sử dụng">Hướng dẫn sử dụng</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hình ảnh">Kho hình ảnh</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="liên hệ">Liên hệ</a>
+        </div>
+
+
+        <div class="olay" id="olay"></div>
         <!-- main -->
         <main>
             <!-- nav -->
@@ -62,7 +69,6 @@
                     <h1>SaRLAB</h1>
                 </div>
                 <div class="menu oil" id="x-2">
-                    <a href="@Url.Action("Index", "HomePage")">Chung</a>
                     <a href="@Url.Action("Index", "HomePage")">Trang chủ</a>
                     <a href="@Url.Action("Index", "Library")">Thư viện</a>
                     <a id="logout" href="@Url.Action("Logout", "HomePage")">Đăng xuất</a>
@@ -71,11 +77,11 @@
 
             <!-- expected -->
             <div id="op" class="ti cl">
-                <img src="~/assets/img/bank_lab.png" alt="" />
                 <h1 id="tix">@ViewBag.TitleCustom</h1>
-                <button id="search">
-                    <span>Tìm hóa chất</span>
-                </button>
+                <form method="get" action="@Url.Action("GetAll_Chemistry_Search")" class="tk">
+                    <input type="search" name="name" placeholder="Tìm kiếm">
+                    <input type="hidden" name="type" value="@ViewBag.ActiveSubMenuLv2">
+                </form>
             </div>
 
             <!-- search -->
@@ -90,36 +96,36 @@
                                     <!-- Data rows -->
                                     @foreach (var item in Model)
                                     {
-                                                <tr>
-                                                    <td>@counter</td>
-                                                    <td>@Html.Raw(item.Name)</td>
-                                                    <td>@Html.Raw(item.From)</td>
-                                                    <td>@Html.DisplayFor(modelItem => item.Unit1)</td>
-                                                    <td>@Html.DisplayFor(modelItem => item.Unit1Amount)</td>
-                                                    <td>@Html.DisplayFor(modelItem => item.Unit2)</td>
-                                                    <td>@(item.NormalDate.HasValue ? item.NormalDate.Value.ToString("dd/MM/yyyy")
+                                            <tr>
+                                                <td>@counter</td>
+                                                <td>@Html.Raw(item.Name)</td>
+                                                <td>@Html.Raw(item.From)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Unit1)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Unit1Amount)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Unit2)</td>
+                                                <td>@(item.NormalDate.HasValue ? item.NormalDate.Value.ToString("dd/MM/yyyy")
                                                         : "")</td>
-                                                    <td style="display: none;">@(item.ExpiredDate.HasValue ?
+                                                <td style="display: none;">@(item.ExpiredDate.HasValue ?
                                             item.ExpiredDate.Value.ToString("dd/MM/yyyy")
                                             : "")</td>
-                                                    <td>
-                                                        <img id="dtimg" src="@Url.Content(item.CoverImage)" alt="" />
-                                                    </td>
-                                                    <td id="tt-p">
-                                                        <a asp-action="Details_Chemistry" asp-route-type="@ViewBag.ActiveSubMenuLv2"
-                                                            asp-route-id="@item.ID">
-                                                            <i class="fa-solid fa-eye"></i>
-                                                        </a>
-                                                        <a asp-action="Edit_Chemistry" asp-route-type="@ViewBag.ActiveSubMenuLv2"
-                                                            asp-route-id="@item.ID">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </a>
-                                                        <a asp-action="Delete_Chemistry" asp-route-type="@ViewBag.ActiveSubMenuLv2"
-                                                            asp-route-id="@item.ID">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                <td>
+                                                    <img id="dtimg" src="@Url.Content(item.CoverImage)" alt="" />
+                                                </td>
+                                                <td id="tt-p">
+                                                    <a asp-action="Details_Chemistry" asp-route-type="@ViewBag.ActiveSubMenuLv2"
+                                                        asp-route-id="@item.ID">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </a>
+                                                    <a asp-action="Edit_Chemistry" asp-route-type="@ViewBag.ActiveSubMenuLv2"
+                                                        asp-route-id="@item.ID">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </a>
+                                                    <a asp-action="Delete_Chemistry" asp-route-type="@ViewBag.ActiveSubMenuLv2"
+                                                        asp-route-id="@item.ID">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         counter++;
                                     }
 
@@ -149,6 +155,27 @@
         </main>
     </div>
     <!-- scripts -->
+
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        if (menuBtn) {
+            const menuHead = document.querySelector(".menu_head");
+            const header = document.querySelector("header");
+            const olay = document.getElementById("olay");
+
+            menuBtn.addEventListener("click", () => {
+                menuHead.classList.toggle("active");
+                olay.classList.toggle("active");
+            });
+
+            olay.addEventListener("click", () => {
+                menuHead.classList.remove("active");
+                olay.classList.remove("active");
+            });
+        } else {
+            console.error("Phần tử menuBtn không tồn tại trong DOM.");
+        }
+    </script>
     <script src="~/js/tablenew.js"></script>
 
     <!-- setup-time -->

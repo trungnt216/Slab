@@ -19,7 +19,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public ActionResult Delete(int id) 
         {
             if(id == 0)
@@ -34,7 +34,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetBySubject/{id}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAllBySubject(int id) 
         {
             return Ok(_equipmentService.GetEquipmentsBySubjectId(id));
@@ -49,7 +49,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetById/{id}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetById(int id)
         {
             return Ok(_equipmentService.GetEquipmentById(id));
@@ -57,7 +57,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Insert(Equipment equipment)
         {
             if (equipment == null)
@@ -72,7 +72,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update/{id}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Update(int id, Equipment equipment)
         {
             if(id == 0)
@@ -87,7 +87,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("UpdateUnitEquipmentById/{id}/{unit}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult UpdateUnitEquipmentById(int id, Double unit)
         {
             if (id == 0)
@@ -102,7 +102,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetAll/{schoolId}/{subjectId}/{type}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAllEquipmentByType(int schoolId, int subjectId, string type)
         {
             return Ok(_equipmentService.GetEquipmentsByType(schoolId, subjectId, type));
@@ -110,7 +110,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetAll/{schoolId}/{subjectId}/{type}/{name}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAllEquipmentSearch(int schoolId, int subjectId, string type, string name)
         {
             return Ok(_equipmentService.GetEquipmentsSearch(schoolId, subjectId, type, name));

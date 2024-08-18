@@ -4,7 +4,7 @@
 
 @{
     ViewData["Title"] = "Details_Chemistry";
-    Layout = ViewBag.Layout;
+    Layout = "~/Views/Subject_1/_Layout.cshtml";
     ViewBag.TitleCustom = ViewBag.ActiveSubMenuLv2.ToString();
 }
 
@@ -42,14 +42,22 @@
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-file-signature"></i>
-                                <p>Hoá chất</p>
+                                @if(ViewBag.ActiveSubMenuLv2 == "hoá chất"){
+                                    <p>Hoá chất</p>
+                                }else{
+                                    <p>Tên thiết bị</p>
+                                }
                             </div>
                             <p class="detail">@Html.DisplayFor(model => model.Name)</p>
                         </div>
                         <div class="detail-item">
                             <div class="title">
                                 <i class="fa-solid fa-file-signature"></i>
-                                <p>Công thức</p>
+                                @if(ViewBag.ActiveSubMenuLv2 == "hoá chất"){
+                                    <p>Công thức</p>
+                                }else{
+                                    <p>Vật liệu</p>
+                                }
                             </div>
                             <p class="detail">@Html.Raw(Model.Property)
                             </p>

@@ -2351,7 +2351,7 @@ textarea::placeholder {
 }
 
 .inful {
-    background-image: url("../images/banner.jpg");
+    background-image: url("../images/homebackground.jpg");
     height: 100vh;
     background-position: calc(10px) calc(30% - 20px);
     background-repeat: no-repeat;

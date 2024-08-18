@@ -26,28 +26,33 @@
                 <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
                 @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
                 {
-                                <h1>
-                                    <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                            <h1>
+                                <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
                             @TempData["name"]
-                                    </a>
-                                </h1>
+                                </a>
+                            </h1>
 
                 }
                 else
                 {
-                                <h1>Unknown User</h1>
+                            <h1>Unknown User</h1>
                 }
             </div>
 
             <div class="search">
-                <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
-                <div class="tk">
-                    <input type="search" placeholder="Tìm kiếm">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-house" onclick="window.location.href='@Url.Action("Index", "HomePage")'"></i>
+                <i class="fa-solid fa-bars" id="menu-btn"></i>
             </div>
         </header>
+        <div class="menu_head">
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="giới thiệu">Giới thiệu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="văn bản biểu mẫu">Văn bản - Biểu mẫu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hướng dẫn sử dụng">Hướng dẫn sử dụng</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hình ảnh">Kho hình ảnh</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="liên hệ">Liên hệ</a>
+        </div>
+
+        <div class="olay" id="olay"></div>
         <!-- main -->
         <main>
             <!-- nav -->
@@ -63,38 +68,57 @@
             </nav>
             <!-- lab-detail -->
             <div class="lab-detail">
-                <img id="pk" src="~/assets/img/bg_detail_lab.png" alt="" />
                 @if (TempData["BackGround"] != null)
                 {
-                                <img id="pk" src="@Url.Content(TempData["BackGround"].ToString())" alt="" />
+                            <img id="pk" src="@Url.Content(TempData["BackGround"].ToString())" alt="" />
                 }
                 else
                 {
-                                <img id="pk" src="~/assets/img/bg_detail_lab.png" alt="" />
+                            <img id="pk" src="~/assets/img/bg_detail_lab.png" alt="" />
                 }
                 <div class="ti">
                     <h1>@TempData["Subject_1"]</h1>
                 </div>
                 <div class="fl-ti">
-    <div class="column">
-        <a class="me-box" asp-action="Title_GetAll_By_Type" asp-route-id="0" asp-route-type="Kho vật tư">Kho vật tư</a>
-        <a asp-controller="Subject_5" asp-action="Title_GetAll_By_Type" asp-route-id="4" asp-route-type="Nghiên cứu khoa học" class="me-box">Nghiên cứu khoa học</a>
-    </div>
-    <div class="column">
-        <a asp-controller="Subject_5" asp-action="Title_GetAll_By_Type" asp-route-id="2" asp-route-type="Thực hành" class="big-box">Thực hành</a>
-        <a asp-controller="Subject_5" asp-action="Title_GetAll_By_Type" asp-route-id="5" asp-route-type="Tiếng Anh chuyên ngành" class="small-box">Tiếng Anh chuyên ngành</a>
-    </div>
-    <div class="column">
-        <a asp-action="Title_GetAll_By_Type" asp-route-id="0" asp-route-type="Nhân sự" class="small-box">Nhân sự</a>
-        <a asp-controller="Subject_5" asp-action="Title_GetAll_By_Type" asp-route-id="1" asp-route-type="Tài liệu" class="small-box">Tài liệu</a>
-        <a asp-controller="Subject_5" asp-action="Title_GetAll_By_Type" asp-route-id="3" asp-route-type="Hợp tác quốc tế" class="small-box" class="small-box">Hợp tác quốc tế</a>
-    </div>
-</div>
+                    <div class="column">
+                        <a class="me-box" asp-action="Title_GetAll_By_Type" asp-route-id="0" asp-route-type="Kho vật tư">Kho vật tư</a>
+                        <a asp-action="Title_GetAll_By_Type" asp-route-id="4" asp-route-type="Nghiên cứu khoa học" class="me-box">Nghiên cứu khoa học</a>
+                    </div>
+                    <div class="column">
+                        <a asp-action="Title_GetAll_By_Type" asp-route-id="2" asp-route-type="Thực hành" class="big-box">Thực hành</a>
+                        <a asp-action="Title_GetAll_By_Type" asp-route-id="5" asp-route-type="Tiếng Anh chuyên ngành" class="small-box">Tiếng Anh chuyên ngành</a>
+                    </div>
+                    <div class="column">
+                        <a asp-action="Title_GetAll_By_Type" asp-route-id="0" asp-route-type="Nhân sự" class="small-box">Nhân sự</a>
+                        <a asp-action="Title_GetAll_By_Type" asp-route-id="1" asp-route-type="Tài liệu" class="small-box">Tài liệu</a>
+                        <a asp-action="Title_GetAll_By_Type" asp-route-id="3" asp-route-type="Hợp tác quốc tế" class="small-box" class="small-box">Hợp tác quốc tế</a>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
     <!-- scripts -->
-    <script src="~/js/lab.js"></script>
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        if (menuBtn) {
+            const menuHead = document.querySelector(".menu_head");
+            const header = document.querySelector("header");
+            const olay = document.getElementById("olay");
+
+            menuBtn.addEventListener("click", () => {
+                menuHead.classList.toggle("active");
+                olay.classList.toggle("active");
+            });
+
+            olay.addEventListener("click", () => {
+                menuHead.classList.remove("active");
+                olay.classList.remove("active");
+            });
+        } else {
+            console.error("Phần tử menuBtn không tồn tại trong DOM.");
+        }
+    </script>
+    <script src="~/js/lab.js" defer></script>
 </body>
 
 </html>

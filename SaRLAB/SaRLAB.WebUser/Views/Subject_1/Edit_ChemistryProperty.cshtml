@@ -128,7 +128,8 @@
                                         <img src="@item.Image" alt="Item Image" style="height: 200px; width: auto;">
                                     </td>
                                     <td>
-                                                <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_ChemistryProperty", "Subject_1", new { id = id_equipment, type = typeitem, idEquipment = item.ID })" onclick="openDeleteModal(this)">
+                                             <a class="btn-custom-delete" asp-action="Delete_ChemistryProperty" asp-route-id="@id_equipment" asp-route-type="@typeitem" asp-route-idEquipment="@item.ID" onclick="openDeleteModal(this)">
+
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </td>

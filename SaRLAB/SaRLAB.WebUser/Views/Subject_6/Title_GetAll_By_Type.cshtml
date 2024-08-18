@@ -40,14 +40,20 @@
             </div>
 
             <div class="search">
-                <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
-                <div class="tk">
-                    <input type="search" placeholder="Tìm kiếm">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-house" onclick="window.location.href='@Url.Action("Index", "HomePage")'"></i>
+                <i class="fa-solid fa-bars" id="menu-btn"></i>
             </div>
         </header>
+
+        <div class="menu_head">
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="giới thiệu">Giới thiệu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="văn bản biểu mẫu">Văn bản - Biểu mẫu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hướng dẫn sử dụng">Hướng dẫn sử dụng</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hình ảnh">Kho hình ảnh</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="liên hệ">Liên hệ</a>
+        </div>
+
+        <div class="olay" id="olay"></div>
         <!-- main -->
         <main>
             <!-- nav -->
@@ -56,7 +62,6 @@
                     <h1>SaRLAB</h1>
                 </div>
                 <div class="menu oil" id="x-2">
-                    <a href="@Url.Action("Index", "HomePage")">Chung</a>
                     <a href="@Url.Action("Index", "HomePage")">Trang chủ</a>
                     <a href="@Url.Action("Index", "Library")">Thư viện</a>
                     <a id="logout" href="@Url.Action("Logout", "HomePage")">Đăng xuất</a>
@@ -65,7 +70,6 @@
 
             <!-- expected -->
             <div class="ti">
-                <img src="~/assets/img/bank_lab.png" alt="" />
                 <h1 id="tix">@TempData["type"]</h1>
             </div>
             <!-- lab -->
@@ -89,7 +93,7 @@
                     {
                         @if (subItem.Type == Convert.ToInt32(TempData["id"]))
                         {
-                                                                            <a asp-controller="Subject_6" asp-action="GetAll_Document" asp-route-titleDocument="@subItem.Title">
+                                                                            <a asp-action="GetAll_Document" asp-route-titleDocument="@subItem.Title">
                                                                                 <img src="~/assets/img/ex.png" alt="Image 1" />
                                                                                 <h1>@subItem.Title</h1>
                                                                             </a>
@@ -111,45 +115,45 @@
                     }
                     else if (TempData["type"]?.ToString() == "Nhân sự")
                     {
-                                                        <a asp-controller="Subject_6" asp-action="GetAll_Directors">
+                                                        <a asp-action="GetAll_Directors">
                                                             <img src="~/assets/img/ex.png" alt="Image 1" />
                                                             <h1>Ban chủ nhiệm</h1>
                                                         </a>
-                                                        <a asp-controller="Subject_6" asp-action="GetAll_Teacher">
+                                                        <a asp-action="GetAll_Teacher">
                                                             <img src="~/assets/img/ex.png" alt="Image 1" />
                                                             <h1>Giảng viên</h1>
                                                         </a>
-                                                        <a asp-controller="Subject_6" asp-action="GetAll_Technical">
+                                                        <a asp-action="GetAll_Technical">
                                                             <img src="~/assets/img/ex.png" alt="Image 1" />
                                                             <h1>Tổ kỹ thuật</h1>
                                                         </a>
                     }
                     else if (TempData["type"]?.ToString() == "Vật tư")
                     {
-                                                        <a asp-controller="Subject_6" asp-action="GetAll_Chemistry" asp-route-type="hoá chất">
+                                                        <a asp-action="GetAll_Chemistry" asp-route-type="hoá chất">
                                                             <img src="~/assets/img/ex.png" alt="Image 1" />
                                                             <h1>Hoá chất</h1>
                                                         </a>
-                                                        <a asp-controller="Subject_6" asp-action="GetAll_Chemistry" asp-route-type="dụng cụ">
+                                                        <a asp-action="GetAll_Chemistry" asp-route-type="dụng cụ">
                                                             <img src="~/assets/img/ex.png" alt="Image 1" />
                                                             <h1>Dụng cụ</h1>
                                                         </a>
-                                                        <a asp-controller="Subject_6" asp-action="GetAll_Chemistry" asp-route-type="thiết bị">
+                                                        <a asp-action="GetAll_Chemistry" asp-route-type="thiết bị">
                                                             <img src="~/assets/img/ex.png" alt="Image 1" />
                                                             <h1>Thiết bị</h1>
                                                         </a>
                     }
                     else if (TempData["type"]?.ToString() == "Dự trù")
                     {
-                                                        <a asp-controller="Subject_6" asp-action="GetAll_Chemistry" asp-route-type="dự trù hoá chất">
+                                                        <a asp-action="GetAll_Chemistry" asp-route-type="dự trù hoá chất">
                                                             <img src="~/assets/img/ex.png" alt="Image 1" />
                                                             <h1>Hoá chất</h1>
                                                         </a>
-                                                        <a asp-controller="Subject_6" asp-action="GetAll_Chemistry" asp-route-type="dự trù dụng cụ">
+                                                        <a asp-action="GetAll_Chemistry" asp-route-type="dự trù dụng cụ">
                                                             <img src="~/assets/img/ex.png" alt="Image 1" />
                                                             <h1>Dụng cụ</h1>
                                                         </a>
-                                                        <a asp-controller="Subject_6" asp-action="GetAll_Chemistry" asp-route-type="dự trù thiết bị">
+                                                        <a asp-action="GetAll_Chemistry" asp-route-type="dự trù thiết bị">
                                                             <img src="~/assets/img/ex.png" alt="Image 1" />
                                                             <h1>Thiết bị</h1>
                                                         </a>
@@ -175,6 +179,27 @@
         </main>
     </div>
     <!-- scripts -->
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        if (menuBtn) {
+            const menuHead = document.querySelector(".menu_head");
+            const header = document.querySelector("header");
+            const olay = document.getElementById("olay");
+
+            menuBtn.addEventListener("click", () => {
+                menuHead.classList.toggle("active");
+                olay.classList.toggle("active");
+            });
+
+            olay.addEventListener("click", () => {
+                menuHead.classList.remove("active");
+                olay.classList.remove("active");
+            });
+        } else {
+            console.error("Phần tử menuBtn không tồn tại trong DOM.");
+        }
+    </script>
     <script src="~/js/labxx.js"></script>
+    <script src="~/js/lab.js" defer></script>
 </body>
 </html>

@@ -1580,9 +1580,8 @@ Banner Style
     margin-bottom: 35px;
 }
 
-.detail-container .detail-item {
-    margin-top: 10px;
-    margin-bottom: 15px;
+.col-12.detail-container {
+    width: 1400px
 }
 
 .detail-container .detail-item .title {

@@ -128,6 +128,22 @@ namespace SaRLAB.UserWeb.Controllers
         //----------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
         //-------------------------------hoá học--------------------------------------------------------
+        public ActionResult Home()
+        {
+            TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
+            TempData["BackGround"] = subject1.VideoBackGround;
+
+            ViewBag.ActiveMenu = "homePage";
+
+            TempData["rome"] = subject1.MarkName;
+            TempData["action"] = "GetAllQuestion_Subject27";
+
+
+            return View();
+        }
         public ActionResult Index()
         {
             TempData["name"] = userLogin.Name;

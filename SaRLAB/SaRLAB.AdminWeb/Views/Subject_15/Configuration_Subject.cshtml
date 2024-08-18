@@ -27,6 +27,13 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label asp-for="MarkName" class="col-4 form-label">Nhập tên bài kiểm tra</label>
+                <div class="col">
+                    <input asp-for="MarkName" class="form-control" placeholder="Tên bài kiểm tra" />
+                    <span asp-validation-for="MarkName" class="text-danger form-text"></span>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-4 form-label">Chọn background</label>
                 <div class="title d-flex">
                     <i class="fa-solid fa-file"></i>

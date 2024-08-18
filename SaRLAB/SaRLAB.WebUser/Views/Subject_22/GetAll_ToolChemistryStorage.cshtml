@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "GetAll_ToolChemistryStorage";
 
-    Layout = ViewBag.Layout;
+    Layout = "~/Views/Subject_1/_Layout.cshtml";
     ViewBag.TitleCustom = "Danh sách dụng cụ hiện có";
     int counter = 1;
     int expiredItemCount = 0;
@@ -82,7 +82,7 @@
                     </a>
                 </div>
                 <div id="popupNotification" class="alert alert-danger">
-                        @TempData["notice"]
+                    @TempData["notice"]
                 </div>
                 <div class="table-responsive">
                     <div class="table-responsive">
@@ -91,7 +91,7 @@
                             <tr>
                                 <th>#</th>
                                 <th class="d-none">
-                                            @Html.DisplayNameFor(model => model.ID)
+                                    @Html.DisplayNameFor(model => model.ID)
                                 </th>
                                 <th>
                                     Tên
@@ -99,13 +99,13 @@
                                 </th>
                                 <th></th>
                                 <th class="d-none">
-                                            @Html.DisplayNameFor(model => model.CreateBy)
+                                    @Html.DisplayNameFor(model => model.CreateBy)
                                 </th>
                                 <th class="d-none">
-                                            @Html.DisplayNameFor(model => model.CreateTime)
+                                    @Html.DisplayNameFor(model => model.CreateTime)
                                 </th>
                                 <th class="d-none">
-                                            @Html.DisplayNameFor(model => model.UpdateBy)
+                                    @Html.DisplayNameFor(model => model.UpdateBy)
                                 </th>
                                 <th class="d-none">
                                     Thời gian cập nhật
@@ -132,19 +132,19 @@
                                     <i class="fa fa-sort" onclick="sortTable('table', 7, true)"></i>
                                 </th>
                                 <th class="d-none">
-                                            @Html.DisplayNameFor(model => model.Type)
+                                    @Html.DisplayNameFor(model => model.Type)
                                 </th>
                                 <th class="d-none">
                                     Nhận xét
                                 </th>
                                 <th class="d-none">
-                                            @Html.DisplayNameFor(model => model.ImagePath)
+                                    @Html.DisplayNameFor(model => model.ImagePath)
                                 </th>
                                 <th class="d-none">
-                                            @Html.DisplayNameFor(model => model.SubjectId)
+                                    @Html.DisplayNameFor(model => model.SubjectId)
                                 </th>
                                 <th class="d-none">
-                                            @Html.DisplayNameFor(model => model.SchoolId)
+                                    @Html.DisplayNameFor(model => model.SchoolId)
                                 </th>
                                 <th class="d-none">
                                     Số lượng
@@ -160,86 +160,86 @@
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                                    @foreach (var item in Model)
-                                    {
-                                        {
-                                            var currentTime = DateTime.Now;
-                                            var style = item.ExpiredDate <= currentTime ? "color: #cf656f; font-weight: 500" : "";
+                            @foreach (var item in Model)
+                            {
+                                {
+                                    var currentTime = DateTime.Now;
+                                    var style = item.ExpiredDate <= currentTime ? "color: #cf656f; font-weight: 500" : "";
 
-                                            var props = item.Property == "dangerous" ? "Nguy hiểm" :
-                                            item.Property == "notDangerous" ? "Không nguy hiểm" : "Ít nguy hiểm";
-                                            var backgroundColor = item.Property == "dangerous" ? "#a8424c" :
-                                            item.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
+                                    var props = item.Property == "dangerous" ? "Nguy hiểm" :
+                                    item.Property == "notDangerous" ? "Không nguy hiểm" : "Ít nguy hiểm";
+                                    var backgroundColor = item.Property == "dangerous" ? "#a8424c" :
+                                    item.Property == "notDangerous" ? "#32a771" : "#e0ae6a";
 
                                             if (item.ExpiredDate <= currentTime)
-                                            {
-                                                expiredItemCount++;
-                                            }
+                                    {
+                                        expiredItemCount++;
+                                    }
 
-                                            <tr style="@style">
+                                    <tr style="@style">
+                                        <td>
+                                            @counter
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
+                                                alt="Image" />
+                                        </td>
                                                 <td>
-                                                    @counter
-                                                </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.ID)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Name)
-                                                </td>
-                                                <td>
-                                                    <img src="@Url.Content(item.CoverImage)" style="height: 125px; width: auto;"
-                                                        alt="Image" />
-                                                </td>
-                                                        <td>
                                                     @Html.DisplayFor(modelItem => item.Unit1Amount)
-                                                        </td>
-                                                        <td>
+                                                </td>
+                                                <td>
                                                     @Html.DisplayFor(modelItem => item.Unit1)
-                                                        </td>
-                                                        <td>
+                                                </td>
+                                                <td>
                                                     @Html.DisplayFor(modelItem => item.Unit2Amount)
-                                                        </td>
-                                                        <td>
+                                                </td>
+                                                <td>
                                                     @Html.DisplayFor(modelItem => item.Unit2)
-                                                        </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.CreateBy)
                                                 </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.CreateTime)
-                                                </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.UpdateBy)
-                                                </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.UpdateTime)
-                                                </td>
-                                                <td>
-                                                    @item.ExpiredDate
-                                                </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.Type)
-                                                </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.Remark)
-                                                </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.ImagePath)
-                                                </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.SubjectId)
-                                                </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.SchoolId)
-                                                </td>
-                                                <td class="d-none">
-                                                    @Html.DisplayFor(modelItem => item.EquipmentQuantity)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.From)
-                                                </td>
-                                                <td>
-                                                    <p style="
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.CreateBy)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.CreateTime)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.UpdateBy)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.UpdateTime)
+                                        </td>
+                                        <td>
+                                            @item.ExpiredDate
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.Type)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.Remark)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.ImagePath)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.SubjectId)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.SchoolId)
+                                        </td>
+                                        <td class="d-none">
+                                            @Html.DisplayFor(modelItem => item.EquipmentQuantity)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.From)
+                                        </td>
+                                        <td>
+                                            <p style="
                                                 padding: 0px 10px;
                                                 white-space: nowrap;
                                                 margin: 0;
@@ -249,30 +249,30 @@
                                                 color: white;
                                                 font-size: 14px;
                                                 line-height: 25px;">
-                                                        @props
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a class="btn-custom-view-detail" asp-action="Details_ToolChemistryStorage" asp-route-id="@item.ID">
-                                                        <i class="fa-solid fa-eye"></i>
-                                                    </a>
-                                                    <a class="btn-custom-edit" asp-action="Edit_ToolChemistryStorage" asp-route-id="@item.ID">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
-                                                            <a class="btn-custom-delete" href="#" data-url="@Url.Action("Delete_ToolChemistryStorage", "Subject_22", new { id = item.ID })" onclick="openDeleteModal(this)">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            counter++;
-                                        }
-                                    }
+                                                @props
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <a class="btn-custom-view-detail" asp-action="Details_ToolChemistryStorage" asp-route-id="@item.ID">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                            <a class="btn-custom-edit" asp-action="Edit_ToolChemistryStorage" asp-route-id="@item.ID">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                                    <a class="btn-custom-delete" asp-action="Delete_ToolChemistryStorage" asp-route-id="@item.ID" onclick="openDeleteModal(this)">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    counter++;
+                                }
+                            }
                         </tbody>
                     </table>
-                            @if (Model == null || !Model.Any())
-                            {
-                            <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
-                            }
+                    @if (Model == null || !Model.Any())
+                    {
+                        <p class="text-danger" style="text-align: center; font-style: italic; font-weight: 500;">Không có dữ liệu!</p>
+                    }
                 </div>
             </div>
         </div>
@@ -291,34 +291,34 @@
     </div>
 </div>
 
-    @section Scripts {
-        <script src="~/js/table.js"></script>
-        <script type="text/javascript">
-            var deleteUrl = '';
+@section Scripts {
+    <script src="~/js/table.js"></script>
+    <script type="text/javascript">
+        var deleteUrl = '';
 
-            function openDeleteModal(element) {
-                deleteUrl = element.getAttribute("data-url");
-                document.getElementById('deleteModal').style.display = 'block';
+        function openDeleteModal(element) {
+            deleteUrl = element.getAttribute("data-url");
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+
+        document.getElementById('confirmDeleteButton').onclick = function () {
+            window.location.href = deleteUrl;
+        };
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function (event) {
+            var modal = document.getElementById('deleteModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
             }
+        }
+    </script>
 
-            function closeDeleteModal() {
-                document.getElementById('deleteModal').style.display = 'none';
-            }
-
-            document.getElementById('confirmDeleteButton').onclick = function () {
-                window.location.href = deleteUrl;
-            };
-
-            // Close the modal if the user clicks outside of it
-            window.onclick = function (event) {
-                var modal = document.getElementById('deleteModal');
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            }
-        </script>
-
-        <script type="text/javascript">
-            localStorage.setItem('expiredTools', @expiredItemCount);
-        </script>
-    }
+    <script type="text/javascript">
+        localStorage.setItem('expiredTools', @expiredItemCount);
+    </script>
+}
