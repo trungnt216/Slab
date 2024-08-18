@@ -99,8 +99,7 @@
                             }
                             else
                             {
-                                <img src="@Url.Content(ViewBag.school.GetType().GetProperty($"BackupSubject{i}Logo").GetValue(ViewBag.school).ToString())"
-                                alt="Image @i" />
+                                <img src="@Url.Content(ViewBag.school.GetType().GetProperty($"BackupSubject{i}Logo").GetValue(ViewBag.school).ToString())"/>
                             }
                             <h1>@TempData[$"subject_{i}"]</h1>
                         </a>
