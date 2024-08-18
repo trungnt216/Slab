@@ -20,7 +20,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetALL")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetAll()
         {
             return Ok(bannerService.GetAll());
@@ -28,7 +28,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("GetByID/{id}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult GetByID(int id)
         {
             var banner = bannerService.GetById(id);
@@ -44,7 +44,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Insert")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Insert(Banner banner)
         {
             var _banner= bannerService.Insert(banner);
@@ -60,7 +60,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("Update")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult Update(Banner banner)
         {
             var _banner = bannerService.Update(banner);
@@ -76,7 +76,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("DeleteById/{id}")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult DeleteById(int id)
         {
             bannerService.DeleteById(id);
@@ -85,7 +85,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpPost]
         [Route("DeleteByIds")]
-        // [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
+        [Authorize(Roles = "Admin,Owner,Teacher,Technical,User")]
         public IActionResult DeleteByIds([FromBody] string bannerIds)
         {
             if (string.IsNullOrEmpty(bannerIds))

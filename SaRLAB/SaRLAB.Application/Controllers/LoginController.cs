@@ -23,7 +23,7 @@ namespace SaRLAB.Application.Controllers
 
         [HttpGet]
         [Route("test")]
-        // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult test()
         {
             return Ok(_loginDto.GetAll());
