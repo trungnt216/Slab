@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Create_Chemistry";
-    Layout = ViewBag.Layout;
+    Layout = "~/Views/Subject_1/_Layout.cshtml";
     ViewBag.TitleCustom = "Thêm mới nhà kho";
     var typeitem = ViewBag.ActiveSubMenuLv2;
     var id_equipment = ViewBag.idEquipment;
@@ -26,14 +26,6 @@
                                 </div>
                                 <input asp-for="Name" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="title d-flex">
-                                    <i class="fa-solid fa-file-signature"></i>
-                                    <label asp-for="AmountEquipment" class="control-label">Tên kho</label>
-                                </div>
-                                <input asp-for="AmountEquipment" class="form-control" />
-                                <span asp-validation-for="AmountEquipment" class="text-danger"></span>
                             </div>
                         </div>
                             <div class="form-group">

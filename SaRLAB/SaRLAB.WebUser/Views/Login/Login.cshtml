@@ -22,10 +22,12 @@
                 <input type="password" asp-for="Password" required />
                 <label>Password</label>
             </div>
-
+            @if (TempData["Error"] != null)
+                {
             <div class="message" id="loginMessage">
-                <i>Vui lòng nhập thông tin</i>
+                    <i>@TempData["Error"]</i>
             </div>
+            }
 
             <button class="login-btn" type="submit">Đăng nhập</button>
             <p>Bạn chưa có tài khoản? <a asp-action="Register">Đăng ký ngay</a></p>

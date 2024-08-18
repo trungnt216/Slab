@@ -29,7 +29,8 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                 Rule = value.Rule,
                 SubjectName = value.SubjectName,
                 Type = value.Type,
-                VideoBackGround = value.VideoBackGround
+                VideoBackGround = value.VideoBackGround,
+                MarkName = value.MarkName,
             });
             return user.ToList();
         }
@@ -46,7 +47,8 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                     Rule = subject.Rule,
                     SubjectName = subject.SubjectName,
                     Type = subject.Type,
-                    VideoBackGround = subject.VideoBackGround
+                    VideoBackGround = subject.VideoBackGround,
+                    MarkName = subject.MarkName,
                 };
 
                 return _subject;
@@ -118,7 +120,8 @@ namespace SaRLAB.DataAccess.Service.SubjectDto
                 SubjectName = subject.SubjectName,
                 SchoolId = subject.SchoolId,
                 Type = subject.Type,
-                VideoBackGround = subject.VideoBackGround
+                VideoBackGround = subject.VideoBackGround,
+                MarkName = subject.MarkName,
             } : null;
         }
 

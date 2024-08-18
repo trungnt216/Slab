@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
     <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
     <title>@ViewBag.Title</title>
 
@@ -93,10 +93,10 @@
     <div class="headerflex">
         <headernew>
             <div class="infornew">
-                <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="" />
+                <img style="border-radius:50%" src="@Url.Content(TempData["AvtPath"].ToString())" alt="" />
                 @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
                 {
-                        <h1>
+                    <h1 style="font-size: 24px; text-decoration: underline;">
                             <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
                             @TempData["name"]
                             </a>
@@ -110,28 +110,48 @@
             </div>
 
             <div class="searchnew">
-                <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
-                <div class="tk">
-                    <input type="searchnew" placeholder="Tìm kiếm" />
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-house" onclick="window.location.href='@Url.Action("Index", "HomePage")'"></i>
+
+                <i class="fa-solid fa-bars" id="menu-btn"></i>
             </div>
         </headernew>
+
+        <div class="menu_head">
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="giới thiệu">Giới thiệu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="văn bản biểu mẫu">Văn bản - Biểu mẫu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hướng dẫn sử dụng">Hướng dẫn sử dụng</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hình ảnh">Kho hình ảnh</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="liên hệ">Liên hệ</a>
+        </div>
+
+        <div class="olay" id="olay"></div>
         <script src="https://kit.fontawesome.com/f0add9272d.js"></script>
     </div>
     </header>
-    <div>
+    <div style="margin-top: 4%">
         @RenderBody()
     </div>
 
-    <script src="~/js/home.js"></script>
-    <script src="~/js/owl-carousel.js"></script>
-    <script src="~/js/animation.js"></script>
-    <script src="~/js/imagesloaded.js"></script>
-    <script src="~/js/custom.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+        const menuBtn = document.getElementById("menu-btn");
+        if (menuBtn) {
+            const menuHead = document.querySelector(".menu_head");
+            const header = document.querySelector("header");
+            const olay = document.getElementById("olay");
+
+            menuBtn.addEventListener("click", () => {
+                menuHead.classList.toggle("active");
+                olay.classList.toggle("active");
+            });
+
+            olay.addEventListener("click", () => {
+                menuHead.classList.remove("active");
+                olay.classList.remove("active");
+            });
+        } else {
+            console.error("Phần tử menuBtn không tồn tại trong DOM.");
+        }
+        </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 
@@ -254,22 +274,22 @@
             }
 
             const chemistryPaths = [
-                'Subject_11/GetAll_Chemistry',
-                'Subject_11/Create_Chemistry',
-                'Subject_11/Edit_Chemistry',
-                'Subject_11/Details_Chemistry',
+                'Subject_1/GetAll_Chemistry',
+                'Subject_1/Create_Chemistry',
+                'Subject_1/Edit_Chemistry',
+                'Subject_1/Details_Chemistry',
             ];
             const toolChemistryPaths = [
-                'Subject_11/GetAll_ToolChemistry',
-                'Subject_11/Create_ToolChemistry',
-                'Subject_11/Edit_ToolChemistry',
-                'Subject_11/Details_ToolChemistry',
+                'Subject_1/GetAll_ToolChemistry',
+                'Subject_1/Create_ToolChemistry',
+                'Subject_1/Edit_ToolChemistry',
+                'Subject_1/Details_ToolChemistry',
             ];
             const equipmentChemistryPaths = [
-                'Subject_11/GetAll_EquipmentChemistry',
-                'Subject_11/Create_EquipmentChemistry',
-                'Subject_11/Edit_EquipmentChemistry',
-                'Subject_11/Details_EquipmentChemistry',
+                'Subject_1/GetAll_EquipmentChemistry',
+                'Subject_1/Create_EquipmentChemistry',
+                'Subject_1/Edit_EquipmentChemistry',
+                'Subject_1/Details_EquipmentChemistry',
             ];
 
             switch (true) {

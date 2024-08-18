@@ -2,8 +2,8 @@
 
 @{
     ViewData["Title"] = "Edit_Chemistry";
-    Layout = ViewBag.Layout;
-    ViewBag.TitleCustom = "Chỉnh sửa " + ViewBag.ActiveSubMenuLv2.ToString(); ;
+    Layout = "~/Views/Subject_1/_Layout.cshtml";
+    ViewBag.TitleCustom = "Chỉnh sửa " + ViewBag.ActiveSubMenuLv2.ToString();;
 }
 
 <div id="sub-content">
@@ -30,13 +30,10 @@
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-file-signature"></i>
-                                    @if (ViewBag.ActiveSubMenuLv2 == "hoá chất" || ViewBag.ActiveSubMenuLv2 == "dự trù hoá chất")
-                                    {
-                                                <label asp-for="Name" class="control-label">Hoá chất</label>
-                                    }
-                                    else
-                                    {
-                                                <label asp-for="Name" class="control-label">Tên dụng cụ</label>
+                                    @if(ViewBag.ActiveSubMenuLv2 == "hoá chất"){
+                                        <label asp-for="Name" class="control-label">Hoá chất</label>
+                                    }else{
+                                        <label asp-for="Name" class="control-label">Tên thiết bị</label>
                                     }
                                 </div>
                                 <input asp-for="Name" class="form-control" />
@@ -45,13 +42,10 @@
                             <div class="form-group">
                                 <div class="title d-flex">
                                     <i class="fa-solid fa-file-signature"></i>
-                                    @if (ViewBag.ActiveSubMenuLv2 == "hoá chất" || ViewBag.ActiveSubMenuLv2 == "dự trù hoá chất")
-                                    {
-                                                <label asp-for="Property" class="control-label">Công thức</label>
-                                    }
-                                    else
-                                    {
-                                                <label asp-for="Property" class="control-label">Vật liệu</label>
+                                    @if(ViewBag.ActiveSubMenuLv2 == "hoá chất"){
+                                        <label asp-for="Property" class="control-label">Công thức</label>
+                                    }else{
+                                        <label asp-for="Property" class="control-label">Vật liệu</label>
                                     }
                                 </div>
                                 <input asp-for="Property" class="form-control" />
@@ -158,7 +152,7 @@
                                 <div id="fileDisplay">
                                     @if (string.IsNullOrEmpty(Model.ImagePath))
                                     {
-                                                <span style="color: #5d6975; font-style: italic; padding-left: 25px;">Không có sẵn file nào!</span>
+                                        <span style="color: #5d6975; font-style: italic; padding-left: 25px;">Không có sẵn file nào!</span>
                                     }
                                     else
                                     {
@@ -167,18 +161,18 @@
 
                                         if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
                                         {
-                                                                            <img src="@path" alt="Image" style="max-width: 100%; height: auto;" />
+                                                            <img src="@path" alt="Image" style="max-width: 100%; height: auto;" />
                                         }
                                         else if (extension == ".mp4" || extension == ".webm" || extension == ".ogg")
                                         {
-                                                                            <video width="100%" height="auto" controls>
-                                                                                <source src="@path" type="video/@extension.Substring(1)">
-                                                                                Your browser does not support the video tag.
-                                                                            </video>
+                                                            <video width="100%" height="auto" controls>
+                                                                <source src="@path" type="video/@extension.Substring(1)">
+                                                                Your browser does not support the video tag.
+                                                            </video>
                                         }
                                         else if (extension == ".pdf")
                                         {
-                                                                            <object class="pdf" data="@path" width="100%" height="800"></object>
+                                                            <object class="pdf" data="@path" width="100%" height="800"></object>
                                         }
                                         else
                                         {
@@ -207,58 +201,58 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 
-                    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-                    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
-                    <script>
-                        document.getElementById('File').addEventListener('change', function (event) {
-                            var file = event.target.files[0];
-                            var fileDisplay = document.getElementById('fileDisplay');
-                            var fileURL = URL.createObjectURL(file);
-                            var extension = file.name.split('.').pop().toLowerCase();
+            <script>
+                document.getElementById('File').addEventListener('change', function (event) {
+                    var file = event.target.files[0];
+                    var fileDisplay = document.getElementById('fileDisplay');
+                    var fileURL = URL.createObjectURL(file);
+                    var extension = file.name.split('.').pop().toLowerCase();
 
-                            fileDisplay.innerHTML = '';
+                    fileDisplay.innerHTML = '';
 
-                            if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
-                                var img = document.createElement('img');
-                                img.src = fileURL;
-                                img.style.maxWidth = '100%';
-                                img.style.height = 'auto';
-                                fileDisplay.appendChild(img);
-                                document.getElementById('errorFile').innerText = "";
-                            } else if (['mp4', 'webm', 'ogg'].includes(extension)) {
-                                var video = document.createElement('video');
-                                video.src = fileURL;
-                                video.style.maxWidth = '100%';
-                                video.style.height = 'auto';
-                                video.controls = true;
-                                fileDisplay.appendChild(video);
-                                document.getElementById('errorFile').innerText = "";
-                            } else if (extension === 'pdf') {
-                                var object = document.createElement('object');
-                                object.data = fileURL;
-                                object.width = '100%';
-                                object.height = '800px';
-                                fileDisplay.appendChild(object);
-                                document.getElementById('errorFile').innerText = "";
-                            } else {
-                                document.getElementById('errorFile').innerText = "Vui lòng chọn một file hợp lệ!";
-                            }
-                        });
+                    if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
+                        var img = document.createElement('img');
+                        img.src = fileURL;
+                        img.style.maxWidth = '100%';
+                        img.style.height = 'auto';
+                        fileDisplay.appendChild(img);
+                        document.getElementById('errorFile').innerText = "";
+                    } else if (['mp4', 'webm', 'ogg'].includes(extension)) {
+                        var video = document.createElement('video');
+                        video.src = fileURL;
+                        video.style.maxWidth = '100%';
+                        video.style.height = 'auto';
+                        video.controls = true;
+                        fileDisplay.appendChild(video);
+                        document.getElementById('errorFile').innerText = "";
+                    } else if (extension === 'pdf') {
+                        var object = document.createElement('object');
+                        object.data = fileURL;
+                        object.width = '100%';
+                        object.height = '800px';
+                        fileDisplay.appendChild(object);
+                        document.getElementById('errorFile').innerText = "";
+                    } else {
+                        document.getElementById('errorFile').innerText = "Vui lòng chọn một file hợp lệ!";
+                    }
+                });
 
-                        document.querySelector("form").addEventListener("submit", function (event) {
-                            var fileInput = document.getElementById('File');
-                            var file = fileInput.files[0];
-                            if (file) {
-                                var extension = file.name.split('.').pop().toLowerCase();
-                                var supportedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'ogg', 'pdf'];
-                                if (!supportedExtensions.includes(extension)) {
-                                    document.getElementById('errorFile').innerText = "Vui lòng chọn một file hợp lệ!";
-                                    event.preventDefault();
-                                } else {
-                                    document.getElementById('errorFile').innerText = "";
-                                }
-                            }
-                        });
-                    </script>
+                document.querySelector("form").addEventListener("submit", function (event) {
+                    var fileInput = document.getElementById('File');
+                    var file = fileInput.files[0];
+                    if (file) {
+                        var extension = file.name.split('.').pop().toLowerCase();
+                        var supportedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'ogg', 'pdf'];
+                        if (!supportedExtensions.includes(extension)) {
+                            document.getElementById('errorFile').innerText = "Vui lòng chọn một file hợp lệ!";
+                            event.preventDefault();
+                        } else {
+                            document.getElementById('errorFile').innerText = "";
+                        }
+                    }
+                });
+            </script>
 }

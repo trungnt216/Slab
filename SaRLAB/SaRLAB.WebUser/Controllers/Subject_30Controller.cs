@@ -128,6 +128,22 @@ namespace SaRLAB.UserWeb.Controllers
         //----------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------
         //-------------------------------hoá học--------------------------------------------------------
+        public ActionResult Home()
+        {
+            TempData["name"] = userLogin.Name;
+            ViewBag.MenuItems = manageTitles;
+            TempData["role"] = userLogin.RoleName;
+            TempData["AvtPath"] = userLogin.AvtPath; TempData["subject_1"] = subject1.SubjectName; ViewBag.Layout = Subject_name;
+            TempData["BackGround"] = subject1.VideoBackGround;
+
+            ViewBag.ActiveMenu = "homePage";
+
+            TempData["rome"] = subject1.MarkName;
+            TempData["action"] = "GetAllQuestion_Subject30";
+
+
+            return View();
+        }
         public ActionResult Index()
         {
             TempData["name"] = userLogin.Name;
@@ -1793,16 +1809,16 @@ namespace SaRLAB.UserWeb.Controllers
 
 
         [HttpGet]
-public ActionResult Title_GetAll_By_Type(int id,string type)
-{
-    TempData["type"] = type;
-    ViewBag.MenuItems = manageTitles;
-    TempData["name"] = userLogin.Name;
-    TempData["AvtPath"] = userLogin.AvtPath;
+        public ActionResult Title_GetAll_By_Type(int id, string type)
+        {
+            TempData["type"] = type;
+            ViewBag.MenuItems = manageTitles;
+            TempData["name"] = userLogin.Name;
+            TempData["AvtPath"] = userLogin.AvtPath;
 
-    TempData["id"] = id.ToString();
+            TempData["id"] = id.ToString();
 
-    return View();
-}
+            return View();
+        }
     }
 }

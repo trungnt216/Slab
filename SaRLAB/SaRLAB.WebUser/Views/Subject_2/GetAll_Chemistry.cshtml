@@ -46,14 +46,21 @@
             </div>
 
             <div class="search">
-                <h1 onclick="window.location.href='@Url.Action("Index", "HomePage")'">Chung</h1>
-                <div class="tk">
-                    <input type="search" placeholder="Tìm kiếm">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-house" onclick="window.location.href='@Url.Action("Index", "HomePage")'"></i>
+                <i class="fa-solid fa-bars" id="menu-btn"></i>
             </div>
         </header>
+
+        <div class="menu_head">
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="giới thiệu">Giới thiệu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="văn bản biểu mẫu">Văn bản - Biểu mẫu</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hướng dẫn sử dụng">Hướng dẫn sử dụng</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="hình ảnh">Kho hình ảnh</a>
+            <a asp-action="GetAll_Document" asp-controller="HomePage" asp-route-titleDocument="liên hệ">Liên hệ</a>
+        </div>
+
+
+        <div class="olay" id="olay"></div>
         <!-- main -->
         <main>
             <!-- nav -->
@@ -62,7 +69,6 @@
                     <h1>SaRLAB</h1>
                 </div>
                 <div class="menu oil" id="x-2">
-                    <a href="@Url.Action("Index", "HomePage")">Chung</a>
                     <a href="@Url.Action("Index", "HomePage")">Trang chủ</a>
                     <a href="@Url.Action("Index", "Library")">Thư viện</a>
                     <a id="logout" href="@Url.Action("Logout", "HomePage")">Đăng xuất</a>
@@ -71,11 +77,11 @@
 
             <!-- expected -->
             <div id="op" class="ti cl">
-                <img src="~/assets/img/bank_lab.png" alt="" />
                 <h1 id="tix">@ViewBag.TitleCustom</h1>
-                <button id="search">
-                    <span>Tìm hóa chất</span>
-                </button>
+                <form method="get" action="@Url.Action("GetAll_Chemistry_Search")" class="tk">
+                    <input type="search" name="name" placeholder="Tìm kiếm">
+                    <input type="hidden" name="type" value="@ViewBag.ActiveSubMenuLv2">
+                </form>
             </div>
 
             <!-- search -->
@@ -149,6 +155,27 @@
         </main>
     </div>
     <!-- scripts -->
+
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        if (menuBtn) {
+            const menuHead = document.querySelector(".menu_head");
+            const header = document.querySelector("header");
+            const olay = document.getElementById("olay");
+
+            menuBtn.addEventListener("click", () => {
+                menuHead.classList.toggle("active");
+                olay.classList.toggle("active");
+            });
+
+            olay.addEventListener("click", () => {
+                menuHead.classList.remove("active");
+                olay.classList.remove("active");
+            });
+        } else {
+            console.error("Phần tử menuBtn không tồn tại trong DOM.");
+        }
+    </script>
     <script src="~/js/tablenew.js"></script>
 
     <!-- setup-time -->
@@ -199,7 +226,7 @@
             function createTableHeader() {
                 const activeSubMenu = decodeHtml("@ViewBag.ActiveSubMenuLv2".trim());
 
-                // Debugging output to ensure correct value
+            // Debugging output to ensure correct value
                 console.log("Active SubMenu:", activeSubMenu);
 
                 let headerHtml = "";

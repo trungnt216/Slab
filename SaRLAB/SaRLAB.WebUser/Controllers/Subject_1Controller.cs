@@ -135,7 +135,7 @@ namespace SaRLAB.UserWeb.Controllers
 
             ViewBag.ActiveMenu = "homePage";
 
-            TempData["rome"] = "phòng thí nghiệm";
+            TempData["rome"] = subject1.MarkName;
             TempData["action"] = "GetAllQuestion_Subject1";
 
 
@@ -1844,7 +1844,7 @@ namespace SaRLAB.UserWeb.Controllers
         }
 
         [HttpGet]
-        public ActionResult Title_GetAll_By_Type(int id,string type)
+        public ActionResult Title_GetAll_By_Type(int id, string type)
         {
             TempData["type"] = type;
             ViewBag.MenuItems = manageTitles;

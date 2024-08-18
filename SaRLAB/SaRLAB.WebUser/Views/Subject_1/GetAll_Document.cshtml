@@ -197,9 +197,7 @@
                                             <a class="btn-custom-edit" asp-action="Edit_Document" asp-route-titleDocument="@ViewBag.ActiveSubMenuLv2" asp-route-id="@item.ID">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                        <a class="btn-custom-delete" href="#"
-                                               data-url="@Url.Action("Delete_Document", "Subject_1", new { id = item.ID,  titleDocument = item.Type})"
-                                            onclick="openDeleteModal(this)">
+                                        <a class="btn-custom-delete" asp-action="Delete_Document" asp-route-id="@item.ID" asp-route-titleDocument="@item.Type" onclick="openDeleteModal(this)">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>

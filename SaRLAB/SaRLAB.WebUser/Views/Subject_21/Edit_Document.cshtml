@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit_Biological";
-    Layout = "~/Views/Subject_21/_Layout.cshtml";
+    Layout = "~/Views/Subject_1/_Layout.cshtml";
     ViewBag.TitleCustom = "Chỉnh sửa hoạt tính sinh học";
 }
 
@@ -18,8 +18,7 @@
                             Trở về
                         </a>
                 </div>
-                <form asp-action="Edit_Document" asp-route-titleDocument="@ViewBag.ActiveSubMenuLv2" method="post"
-                    enctype="multipart/form-data">
+                <form asp-action="Edit_Document" asp-route-titleDocument="@ViewBag.ActiveSubMenuLv2" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row">
                         <div class="col-12 col-md-4">
@@ -102,16 +101,14 @@
                                 <div id="fileDisplay">
                                     @if (string.IsNullOrEmpty(Model.Path))
                                     {
-                                        <span style="color: #5d6975; font-style: italic; padding-left: 25px;">Không có sẵn
-                                            file nào!</span>
+                                        <span style="color: #5d6975; font-style: italic; padding-left: 25px;">Không có sẵn file nào!</span>
                                     }
                                     else
                                     {
                                         string path = Model.Path;
                                         string extension = System.IO.Path.GetExtension(path).ToLower();
 
-                                        if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension
-                                        == ".gif")
+                                        if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
                                         {
                                             <img src="@path" alt="Image" style="max-width: 100%; height: auto;" />
                                         }
