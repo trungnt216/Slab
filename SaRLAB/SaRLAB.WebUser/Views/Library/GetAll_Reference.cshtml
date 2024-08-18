@@ -26,11 +26,11 @@
             <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
             @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
             {
-                    <h1>
+
                         <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
                         @Html.Raw(name)
                         </a>
-                    </h1>
+
             }
             else
             {

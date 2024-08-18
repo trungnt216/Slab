@@ -27,11 +27,11 @@
                 <img src="@Url.Content(TempData["AvtPath"].ToString())" alt="">
                 @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
                 {
-                        <h1>
+       
                             <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
                             @Html.Raw(name)
                             </a>
-                        </h1>
+  
 
                 }
                 else
@@ -62,10 +62,6 @@
             <!-- add-product -->
             <div class="add-product">
                 <div class="add-file-pdf">
-                    <form method="post" enctype="multipart/form-data">
-                        <label for="pdf-upload"></label>
-                        <input type="file" id="pdf-upload" name="pdf-upload" accept="application/pdf" />
-                    </form>
                     <!-- Embed PDF -->
                     <embed id="pdf-add" src="" type="application/pdf" />
                 </div>
@@ -124,6 +120,31 @@
             </div>
         </main>
     </div>
+    <script>
+        document
+            .getElementById("file-upload")
+            .addEventListener("change", function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const fileURL = URL.createObjectURL(file);
+                    document.getElementById("pdf-add").src = fileURL;
+                } else {
+                    alert("Vui lòng chọn một file hợp lệ.");
+                }
+            });
+
+        document
+            .getElementById("cover-upload")
+            .addEventListener("change", function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const fileURL = URL.createObjectURL(file);
+                    document.getElementById("pdf-add").src = fileURL;
+                } else {
+                    alert("Vui lòng chọn một file hợp lệ.");
+                }
+            });
+    </script>
     <!-- scripts -->
     <script src="~/js/lab.js"></script>
 </body>

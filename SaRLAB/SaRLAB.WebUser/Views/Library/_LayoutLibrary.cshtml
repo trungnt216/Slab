@@ -96,11 +96,9 @@
                 <img style="border-radius:50%" src="@Url.Content(TempData["AvtPath"].ToString())" alt="" />
                 @if (TempData["name"] != null && TempData["name"] is string name && !string.IsNullOrWhiteSpace(name))
                 {
-                    <h1 style="font-size: 24px; text-decoration: underline;">
-                        <a asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
+                        <a style="font-size: 24px; text-decoration: underline;" asp-controller="HomePage" asp-action="Information" asp-route-subjectID="1">
                             @TempData["name"]
                         </a>
-                    </h1>
 
                 }
                 else

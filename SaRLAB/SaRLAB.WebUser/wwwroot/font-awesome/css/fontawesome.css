@@ -1232,7 +1232,13 @@ readers do not read off random characters that represent icons */
 .fa-heading::before {
   content: "\f1dc"; }
 
-.fa-header::before {
+.fa-
+
+
+
+
+
+::before {
   content: "\f1dc"; }
 
 .fa-ghost::before {
