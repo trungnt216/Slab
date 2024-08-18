@@ -1030,17 +1030,24 @@ img#pk {
 }
 .fl-ti {
   z-index: 2;
-  top: 130px;
+  top: 54%;
   position: absolute;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .column {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.column #fj {
+  display: flex;
   gap: 10px;
 }
 
@@ -1052,8 +1059,8 @@ img#pk {
   padding: 20px;
   color: white;
   font-weight: bold;
-  border: 3px solid rgba(228, 151, 8, 0.5);
-  background-color: rgba(245, 245, 245, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.15);
   text-decoration: none;
   font-size: 25px;
   font-family: Arial, Helvetica, sans-serif;
@@ -1063,21 +1070,25 @@ img#pk {
 }
 
 .small-box {
-  height: 102px;
+  width: 400px;
+  height: 23%;
 }
 
 .big-box {
-  height: 260px;
+  width: 500px;
+  height: 180px;
 }
 
 .me-box {
-  height: 182px;
+  width: 225px;
+  height: 200px;
 }
 
 .fl-ti a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
   transform: scale(1.02);
   transition: 0.2s ease-in-out;
-  box-shadow: 0 12px 24px rgb(223, 190, 8);
+  box-shadow: 0 12px 24px rgb(255, 255, 255);
 }
 
 /* ...... */
@@ -1796,14 +1807,15 @@ h1#ce {
     opacity: 0.7;
   }
   .fl-ti {
-    left: 255px;
     z-index: 2;
-    top: 130px;
+    top: 54%;
     position: absolute;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     padding: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .column {
@@ -1812,22 +1824,21 @@ h1#ce {
     gap: 10px;
   }
 
-  .fl-ti a {
+  .column #fj {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    color: white;
-    font-weight: bold;
-    border: 3px solid rgba(228, 151, 8, 0.5);
-    background-color: rgba(245, 245, 245, 0.4);
-    text-decoration: none;
-    font-size: 13px;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-transform: uppercase;
+    gap: 10px;
+  }
+
+  .small-box {
+    width: 200px;
+  }
+
+  .big-box {
+    width: 300px;
+  }
+
+  .me-box {
+    width: 125px;
   }
 
   .add-file-pdf {
